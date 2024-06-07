@@ -17,3 +17,23 @@ Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquan
 #### Objectifs {-}
 
 Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+### Feuille de route {-}
+
+Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+### Crédits {-}
+
+Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+### Contact {-}
+
+###### Élise Filotas {-} 
+
+![](images/photo.jpg)
+
+Je suis professeure au Département Science et technologie de la TELUQ en écologie quantitative et je suis responsable du cours SCI 1031. 
+<br>
+Vous pouvez me contacter à l'adresse suivante: elise.filotas@teluq.ca
+
+Consultez mon [site web](http://elisefilotas.ca/fr/maison/) pour en savoir plus sur ma recherche.
