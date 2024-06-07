@@ -688,7 +688,7 @@ Ainsi, l'équation originale $z = \frac{x_i - \mu}{\sigma}$ qui dépendait de la
 
 $$
 \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}} = \frac{12.89}{\sqrt{9}} = 4.30 \\
-z &= \frac{\bar{x} - \mu}{\sigma_{\bar{x}}} = \frac{50 - 47.5}{4.30} = 0.58 \\
+z = \frac{\bar{x} - \mu}{\sigma_{\bar{x}}} = \frac{50 - 47.5}{4.30} = 0.58 \\
 P(\bar{x} > 50 \: \mathrm{mm}) = P(z > 0.58) = 0.2803
 $$
 
