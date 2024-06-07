@@ -76,10 +76,12 @@ L'estimateur de $\bar{x}$ est un estimateur non-biaisé de $\mu$ si:
 
 La **moyenne géométrique** est une autre mesure de tendance centrale, particulièrement appropriée pour décrire des processus multiplicatifs^[Dans un processus multiplicatif, une variable a un effet multiplicatif sur une variable réponse. Parexemple, si on remarque que la croissance de semis à concentration modérée d'engrais est 2.5 fois plus élevée qu'à concentration faible, la concentration a un effet multiplicatif sur la croissance.]. Un processus multiplicatif est un effet qui ou en présence de valeurs extrêmes:
 
+{% raw %}
 $$
 \bar{x}_{g\acute{e}om} = \sqrt[n]{\prod_{i=1}^n x_i} \\
 \bar{x}_{g\acute{e}om} = e^\frac{{\sum\limits_{i=1}^n \log(x_i)}}{n}
 $$
+{% endraw %}
 
 ---
 
@@ -95,9 +97,11 @@ La moyenne géométrique de ces valeurs nous donne 10, alors que la moyenne arit
 
 La **moyenne harmonique** peut s'appliquer à des taux (p. ex., vitesses):
 
+{% raw %}
 $$
 \bar{x}_{harm} = \frac{n}{\sum\limits_{i=1}^n \frac{1}{x_i}}
 $$
+{% endraw %}
 
 ---
 

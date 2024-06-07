@@ -60,69 +60,6 @@ set in the _output.yml file.</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  background-color: #f8f8f8; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -282,10 +219,12 @@ div.csl-indent {
 <li>les observations de la variable décrivant la population suivent une distribution normale.</li>
 </ul>
 <p>La <strong>moyenne géométrique</strong> est une autre mesure de tendance centrale, particulièrement appropriée pour décrire des processus multiplicatifs<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Un processus multiplicatif est un effet qui ou en présence de valeurs extrêmes:</p>
-<p><span class="math display">\[
+<p>{% raw %}
+<span class="math display">\[
 \bar{x}_{g\acute{e}om} = \sqrt[n]{\prod_{i=1}^n x_i} \\
 \bar{x}_{g\acute{e}om} = e^\frac{{\sum\limits_{i=1}^n \log(x_i)}}{n}
-\]</span></p>
+\]</span>
+{% endraw %}</p>
 <hr />
 <p><strong>Exemple 1.2</strong> Disons qu’après un décompte d’insectes sur 5 quadrats<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> dans un champ agricole, on observe les abondances suivantes: 10, 1, 1000, 1, 10.</p>
 <p><span class="math display">\[
@@ -295,9 +234,11 @@ div.csl-indent {
 La moyenne géométrique de ces valeurs nous donne 10, alors que la moyenne arithmétique nous donne 204.4. La valeur 1000 se démarque nettement des autres et exerce une influence démesurée sur la moyenne arithmétique, et dans ce cas, la moyenne géométrique est un meilleur estimateur de la tendance centrale.</p>
 <hr />
 <p>La <strong>moyenne harmonique</strong> peut s’appliquer à des taux (p. ex., vitesses):</p>
-<p><span class="math display">\[
+<p>{% raw %}
+<span class="math display">\[
 \bar{x}_{harm} = \frac{n}{\sum\limits_{i=1}^n \frac{1}{x_i}}
-\]</span></p>
+\]</span>
+{% endraw %}</p>
 <hr />
 <p><strong>Exemple 1.3</strong> Par exemple, disons que nous avons suivi un ours noir par télémétrie. L’ours a parcouru un segment de 2 km à une vitesse de 1 km/h, un deuxième segment de 2 km à une vitesse de 2 km/h, un troisième segment de 2 km à une vitesse de 4 km/h et un dernier segment de 2 km à une vitesse de 1 km/h. Quelle est la vitesse moyenne de l’ours?</p>
 <p>On pourrait utiliser la moyenne harmonique pour résoudre le problème. Sachant que <span class="math inline">\(vitesse = distance/temps\)</span>, nous pouvons déterminer la distance totale parcourue: <span class="math inline">\(4 * 2 \: \mathrm{km} = 8 \:\mathrm{km}\)</span>. On peut ensuite évaluer le temps mis à parcourir ces 8 km:</p>
