@@ -12,3 +12,15 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+.column {
+  float: left;
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
