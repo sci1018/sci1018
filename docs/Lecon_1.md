@@ -1,3 +1,4 @@
+# (PART) APPRENTISSAGE {-}
 
 # Statistiques descriptives
 
@@ -53,10 +54,14 @@ où $x_i$ correspond à la valeur $i$ de la variable $x$ et $n$ correspond au no
 
 **Exemple 1.1** Lors d'une expérience sur la hauteur de semis sur un sol argileux après une saison de croissance, on obtient les valeurs suivantes en cm: 12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1. Le calcul de la moyenne arithmétique se fait comme suit:
 
+{% raw %}
 $$
 \bar{x} = \frac{\sum\limits_{i=1}^nx_i}{n} = \frac{12.3 + 4.2 + 5.9 +  \ldots + 8.0 + 6.1}{10} \\
 \bar{x} = 6.51 
 $$
+{% endraw %}
+
+
 
 <!-- je n'arrive pas à mettre les calculs dans les équations ci-dessus comme dans le texte ci-dessous pour afficher le résultat 6.51 -->
 Ainsi, la moyenne arithmétique de cet échantillon est de 6.51 cm.
