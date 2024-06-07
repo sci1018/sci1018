@@ -28,18 +28,20 @@ Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquan
 
 ### Contact {-}
 
-###### Élise Filotas {-} 
-
 <div class="row">
-  <div class="column">
+
+  <div class="column left">
   ![](images/photo.jpg) 
   </div>
  
-  <div class="column">
-  Je suis professeure au Département Science et technologie de la TELUQ en écologie quantitative et je suis responsable du cours SCI 1031. <br>
-  Vous pouvez me contacter à l'adresse suivante: elise.filotas@teluq.ca <br>
+  <div class="column right">
+##### Élise Filotas {-} 
+  Je suis professeure au Département Science et technologie de la TELUQ en écologie quantitative et je suis responsable du cours SCI 1018. <br>
+  Vous pouvez me contacter à l'adresse suivante: elise.filotas@teluq.ca <br>  
+  
   Consultez mon [site web](http://elisefilotas.ca/fr/maison/) pour en savoir plus sur ma recherche.
   </div>
+  
 </div> 
 
 

@@ -13,9 +13,18 @@ pre code {
   white-space: inherit;
 }
 
+/* Two unequal columns for presentation section */
 .column {
   float: left;
-  width: 30%;
+  padding: 10px;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
 }
 
 /* Clear floats after the columns */

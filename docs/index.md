@@ -15,8 +15,6 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
-# {-}
-
 ---
 
 Bienvenue sur le site du cours SCI 1018! L'entièreté du contenu du cours est disponible en accès libre sur ce site. 
