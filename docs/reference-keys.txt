@@ -9,6 +9,8 @@ fig:zex1
 fig:zex2
 fig:zex3
 fig:zex4
+eq:binom
+thm:tri
 statistiques-descriptives
 théories
 paramètre-vs-statistique
@@ -25,6 +27,7 @@ caractéristiques-de-la-distribution-normale
 distribution-normale-centrée-réduite
 probabilités-cumulatives
 applications-de-la-statistique-z-à-un-échantillon
+conclusion
 introduction-à-r
 exercices-et-corrections
 parts
@@ -44,4 +47,3 @@ theorie-8
 théorie-9
 théorie-10
 examen
-conclusion
