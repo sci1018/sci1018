@@ -5,4 +5,4 @@ language:
   ui:
     chapter_name: 'Module '
 new_session: true
-rmd_files: ["index.Rmd", "Presentation.Rmd", "Ressources.Rmd", "Module_1/index.Rmd","Lecon_2.Rmd","Lecon_3.Rmd","Lecon_4.Rmd","Lecon_5.Rmd","Lecon_6.Rmd","Lecon_7.Rmd","Lecon_8.Rmd","Lecon_9.Rmd","Lecon_10.Rmd","Examen.Rmd"]
+rmd_files: ["index.Rmd", "Presentation.Rmd", "Ressources.Rmd", "Lecon_1.Rmd","Lecon_2.Rmd","Lecon_3.Rmd","Lecon_4.Rmd","Lecon_5.Rmd","Lecon_6.Rmd","Lecon_7.Rmd","Lecon_8.Rmd","Lecon_9.Rmd","Lecon_10.Rmd","Examen.Rmd"]
