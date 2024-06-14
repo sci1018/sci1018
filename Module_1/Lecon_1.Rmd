@@ -61,10 +61,8 @@ $$
 $$
 {% endraw %}
 
-
-
 <!-- je n'arrive pas à mettre les calculs dans les équations ci-dessus comme dans le texte ci-dessous pour afficher le résultat 6.51 -->
-Ainsi, la moyenne arithmétique de cet échantillon est de 6.51 cm.
+Ainsi, la moyenne arithmétique de cet échantillon est de `r round(mean(c(12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1)), digits = 2) ` cm.
 
 ---
 
@@ -147,14 +145,29 @@ Il existe d'autres mesures de tendance centrale, notamment la **médiane** qui s
 
 ---
 
-**Exemple 1.4** Dans une expérience sur le temps de survie d'insectes exposés à un insecticide, on obtient les valeurs (en secondes) 1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2. La moyenne arithmétique de cet échantillon est de 2.29 secondes et la médiane est de 1.6 secondes. Si l'on ajoute une dernière observation dont la valeur extrême est 40 secondes, la moyenne arithmétique sera alors de 7 secondes et la médiane de 2 secondes. On constate que la médiane est beaucoup moins sensible à l'ajout de la valeur extrême, ce qui n'est pas le cas de la moyenne arithmétique.
+**Exemple 1.4** Dans une expérience sur le temps de survie d'insectes exposés à un insecticide, on obtient les valeurs (en secondes) 1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2. La moyenne arithmétique de cet échantillon est de `r round(mean(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2)), digits = 2)` secondes et la médiane est de `r round(median(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2)), digits = 2)` secondes. Si l'on ajoute une dernière observation dont la valeur extrême est 40 secondes, la moyenne arithmétique sera alors de `r round(mean(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2, 40)) , digits = 2)` secondes et la médiane de `r round(median(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2, 40)), digits = 2)` secondes. On constate que la médiane est beaucoup moins sensible à l'ajout de la valeur extrême, ce qui n'est pas le cas de la moyenne arithmétique.
 
 ---
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/histomode-1.png" alt="Histogramme illustrant une distribution unimodale (a) et bimodale (b)." width="672" />
-<p class="caption">(\#fig:histomode)Histogramme illustrant une distribution unimodale (a) et bimodale (b).</p>
-</div>
+```{r histomode, echo=FALSE, fig.cap="Histogramme illustrant une distribution unimodale (a) et bimodale (b)."}
+##mode
+xmod <- c(1, 3, 4, 5, 6, 8, 8, 8, 8, 8, 8, 8, 9, 1, 3, 4, 
+          6, 8, 10, 1, 12, 13, 10)
+par(mfrow = c(1, 2), cex = 1.2)
+hist(xmod, breaks = 10, main = "Mode = 8", 
+     ylab = "Fréquences", xlab = "Valeurs de x", col = "turquoise")
+##add text
+text(x = 1, y = 7.8, labels = expression(bold(a)), 
+     cex = 1.2)
+xmod2 <- c(1, 3, 4, 5, 6, 8, 8, 8, 8, 8, 8, 8, 9, 1, 3, 4, 
+           6, 8, 10, 1, 12, 13, 10, 15, 16, 16, 11, 16, 16,
+           14, 15, 16, 16, 18)
+hist(xmod2, breaks = 18, main = "Mode = 8 et mode = 16", 
+     ylab = "Fréquences", xlab = "Valeurs de x",
+     col = "turquoise")
+text(x = 1, y = 7.8, labels = expression(bold(b)),
+     cex = 1.2)
+```
 
 Le **mode** permet aussi de caractériser la tendance centrale, car il donne la ou les valeurs qui reviennent le plus souvent dans l'échantillon (Figure \@ref(fig:histomode)). Par exemple, si, dans un échantillon, on obtient les valeurs 12, 12, 12, 12, 12, 3, 3, 3, 3, 3, 3, 1, 2, 14, 15, 16, 21, 32, on dira qu'il y a deux modes (12 et 3).
 
@@ -214,10 +227,22 @@ L'**écart-type** ($s$) est simplement la racine carrée de la variance, et il i
 
 On remarque que l'estimation de la variance est parfois très loin de la vraie valeur de 4, particulièrement pour les très petits échantillons ($n \leq 10$). On obtient de meilleures estimations pour de plus grands échantillons, particulièrement au-delà de 30. C'est une des raisons pour laquelle on considère un échantillon de 30 observations comme ayant une taille suffisante -- il permet de bien estimer la variance. On comprend rapidement que l'utilisation d'un petit échantillon peut nous amener loin de la vraie valeur de la variance. Mais pourquoi s'intéresser autant à la variance?
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/variance-1.png" alt="Effet du nombre d'observations sur l'estimation de la variance. À noter que la ligne pointillée représente la vraie valeur de la population ($\sigma^2 = 4$) à partir de laquelle les observations ont été sélectionnées aléatoirement" width="672" />
-<p class="caption">(\#fig:variance)Effet du nombre d'observations sur l'estimation de la variance. À noter que la ligne pointillée représente la vraie valeur de la population ($\sigma^2 = 4$) à partir de laquelle les observations ont été sélectionnées aléatoirement</p>
-</div>
+```{r variance, echo=FALSE, fig.cap="Effet du nombre d'observations sur l'estimation de la variance. À noter que la ligne pointillée représente la vraie valeur de la population ($\\sigma^2 = 4$) à partir de laquelle les observations ont été sélectionnées aléatoirement"}
+##Sample size and variance
+plot(x = c(0, 52), y = c(0, 20), type = "n", 
+     xlab = "Taille de l'échantillon (n)", ylab = expression(paste("Variance estimée (", sigma^2, ")")))
+
+##try scenarios with sample sizes of 3 to 50 observations
+for (df in 3:50) {          
+  ##obtain 30 data sets for each scenario
+  for (i in 1:50){            
+    #obtain sample of size df with mean and sd
+    x <- rnorm(df, mean = 10.1, sd = 2) 
+    points(df, var(x))           #plot the points on graph
+  }
+}
+abline(h = 4, lty = 2, lwd = 3, col = "blue") #add line to indicate variance
+```
 
 ---
 
@@ -229,10 +254,9 @@ La variance est une quantité importante en statistiques, puisqu'elle est requis
 La réalisation d'une expérience, impliquant l'échantillonnage des observations et l'estimation des quantités, s'apparente à un archer qui lance une flèche sur une cible, où la flèche correspond à une expérience et le point sur la cible correspond à une estimation. On veut que la flèche se rende le plus près du centre de la cible (c.-à-d., une bonne estimation), mais on veut que les flèches ne soient pas trop éloignées les unes des autres (c.-à-d., une bonne précision). En d'autres termes, un archer est précis si toutes ses flèches tombent très près du même point sur la cible (fig. \ref{Figure:accuracy}a, c), ou encore il peut manquer d'exactitude lorsque ses flèches sont loin du centre de la cible (fig. \ref{Figure:accuracy}c, d). Le meilleur des scénarios est un tir précis et exact (fig. \ref{Figure:accuracy}a), et le pire est un tir ni précis, ni exact (fig. \ref{Figure:accuracy}d). Le tir exact mais peu précis implique que l'estimation varie beaucoup d'un échantillon à l'autre (fig. \ref{Figure:accuracy}b), et cette variation n'est pas souhaitable. 
 
 
-<div class="figure" style="text-align: left">
-<a href="images/Target3.png" target="_blank"><img src="images/Target3.png" alt="Utilisation de cibles pour expliquer le concept de précision et d'exactitude avec quatre archers dans une compétition. Si tous les points se trouvent au centre et très près les uns des autres, l'archer est précis et exact (a), alors que si les points sont dans la région centrale mais éloignés les uns des autres, l'archer est exact mais peu précis (b). À l'opposé, si les points sont très près les uns des autres et loin du centre, l'archer est précis mais manque d'exactitude (c), tandis que dans le dernier scénario l'archer n'est ni précis ni exact (d)." width="379" /></a>
-<p class="caption">(\#fig:accuracy)Utilisation de cibles pour expliquer le concept de précision et d'exactitude avec quatre archers dans une compétition. Si tous les points se trouvent au centre et très près les uns des autres, l'archer est précis et exact (a), alors que si les points sont dans la région centrale mais éloignés les uns des autres, l'archer est exact mais peu précis (b). À l'opposé, si les points sont très près les uns des autres et loin du centre, l'archer est précis mais manque d'exactitude (c), tandis que dans le dernier scénario l'archer n'est ni précis ni exact (d).</p>
-</div>
+```{r accuracy, fig.align='left', echo=FALSE, fig.link='images/Target3.png', fig.cap="Utilisation de cibles pour expliquer le concept de précision et d'exactitude avec quatre archers dans une compétition. Si tous les points se trouvent au centre et très près les uns des autres, l'archer est précis et exact (a), alors que si les points sont dans la région centrale mais éloignés les uns des autres, l'archer est exact mais peu précis (b). À l'opposé, si les points sont très près les uns des autres et loin du centre, l'archer est précis mais manque d'exactitude (c), tandis que dans le dernier scénario l'archer n'est ni précis ni exact (d)."}
+knitr::include_graphics("images/Target3.png")
+```
 
 L'exactitude peut être vue comme un terme qualitatif. La valeur qui quantifie la déviation entre les estimations et la valeur réelle du paramètre s'appelle biais. Plus formellement, on appelle **biais** la différence entre la *8{valeur attendue** d'une estimation et la **valeur réelle** qu'on désire estimer :
 
@@ -294,10 +318,22 @@ Les variables continues sont celles qui peuvent prendre une infinité de valeurs
 
 La présentation des valeurs d'une variable peut aussi varier selon le type de variable. Nous utilisons habituellement un diagramme à bâtons pour une variable discrète, alors qu'un histogramme illustre mieux les données d'une variable continue (Figure \@ref(fig:randomvar)). 
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/randomvar-1.png" alt="Présentation des longueurs de 100 serpents (variable continue, a) et du nombre de pucerons dans 100 sites (variable discrète, b)" width="672" />
-<p class="caption">(\#fig:randomvar)Présentation des longueurs de 100 serpents (variable continue, a) et du nombre de pucerons dans 100 sites (variable discrète, b)</p>
-</div>
+```{r randomvar, echo=FALSE, fig.cap="Présentation des longueurs de 100 serpents (variable continue, a) et du nombre de pucerons dans 100 sites (variable discrète, b)"}
+
+par(cex = 1.2, mfrow = c(1, 2))
+
+##créer une variable aléatoire continue de 100 observations provenant d'une population avec moyenne de 15 et écart-type de 3
+x <- rnorm(n = 100, mean = 15, sd = 3)
+hist(x, xlim = c(5, 25), col = "turquoise", ylab = "Fréquence", xlab = "Longueur de serpents (cm)", main = "Histogramme de fréquences") #histogramme de fréquence
+text(x = 5, y = 24, labels = expression(bold(a)))
+
+##créer une variable aléatoire Poisson avec lambda=12
+x2 <- rpois(100, lambda = 12)
+data <- table(x2)
+barplot(data, axis.lty = 1, space = 1, ylim =c(0, 22), ylab = "Fréquence", 
+        xlab = "Nombre de pucerons", main = "Diagramme en bâton", col = "bisque")
+text(x = 1, y = 20, labels = expression(bold(b)))
+```
 ### Loi des grands nombres et théorème de la limite centrale
 
 Deux principes importants agissent sur l'échantillonnage (et les échantillons) et nous permettent d'analyser les données. La **loi des grands nombres** stipule que la moyenne de l'échantillon ($\bar{x}$) tend vers la moyenne de la population ($\mu$) au fur et à mesure que la taille de l'échantillon augmente. D'où l'importance d'une bonne taille d'échantillon. 
@@ -366,19 +402,75 @@ On peut ensuite représenter ces valeurs sur une distribution normale avec $\mu 
 <!-- Pas vraiment le même texte pdf et latex -->
 
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/normdensity-1.png" alt="Distribution normale d'une population de masses de souris où la moyenne est de 4.1 g et l'écart-type est de 1.5 g. À noter qu'on peut tracer la courbe de la distribution en substituant une série de valeurs de $x$ dans la fonction de densité de probabilité pour un $\mu = 4.1$ et $\sigma = 1.5$, c.-à-d., N(4.1, 1.5)." width="672" />
-<p class="caption">(\#fig:normdensity)Distribution normale d'une population de masses de souris où la moyenne est de 4.1 g et l'écart-type est de 1.5 g. À noter qu'on peut tracer la courbe de la distribution en substituant une série de valeurs de $x$ dans la fonction de densité de probabilité pour un $\mu = 4.1$ et $\sigma = 1.5$, c.-à-d., N(4.1, 1.5).</p>
-</div>
+```{r normdensity, echo=FALSE, fig.cap="Distribution normale d'une population de masses de souris où la moyenne est de 4.1 g et l'écart-type est de 1.5 g. À noter qu'on peut tracer la courbe de la distribution en substituant une série de valeurs de $x$ dans la fonction de densité de probabilité pour un $\\mu = 4.1$ et $\\sigma = 1.5$, c.-à-d., N(4.1, 1.5)."}
+
+##calculer densité de probabilité
+mouse1 <- dnorm(x = 3.4, mean = 4.1, sd = 1.5)
+mouse2 <- dnorm(x = 8.9, mean = 4.1, sd = 1.5)
+mouse3 <- dnorm(x = 10.2, mean = 4.1, sd = 1.5)
+
+##créer vecteur de valeurs
+masses <- seq(from = 0.1, to = 11, by = 0.01)
+
+##calculer densité
+dens <- dnorm(x = masses, mean = 4.1, sd = 1.5)
+
+##présenter la courbe dans un graphique
+plot(dens ~ masses, type = "l", ylab = "Densité de probabilité",
+     xlab = "Masses (g)", main = expression(paste("Population avec N(4.1, 1.5)")))
+
+##ajouter points sur le graphique
+points(y = mouse1, x = 3.4, pch = 17, col = "red")
+points(y = mouse2, x = 8.9, pch = 17, col = "blue")
+points(y = mouse3, x = 10.2, pch = 17, col = "green")
+
+##ajouter légende
+legend(x = "topright", pch = 17, col = c("red", "blue", "green"),
+       legend = c("3.4 g", "8.9 g", "10.2 g"), title = "Souris")
+```
 
 ---
 
 La distribution normale comprend deux paramètres, $\mu$ et $\sigma$, ce qui signifie que l'on peut tracer une courbe normale dès que nous connaissons ces deux valeurs. La moyenne ($\mu$) détermine la position (fig. \@ref(fig:shape)a) et la variance détermine la forme de la courbe (Figure \@ref(fig:shape)b).
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/shape-1.png" alt="Position de distributions normales avec même variance, mais différentes moyennes (a) et forme de distributions normales pour des variances différentes, mais une même moyenne (b)." width="672" />
-<p class="caption">(\#fig:shape)Position de distributions normales avec même variance, mais différentes moyennes (a) et forme de distributions normales pour des variances différentes, mais une même moyenne (b).</p>
-</div>
+```{r shape, echo=FALSE, fig.cap="Position de distributions normales avec même variance, mais différentes moyennes (a) et forme de distributions normales pour des variances différentes, mais une même moyenne (b)."}
+
+par(mfrow = c(1, 2))
+##position
+x <- seq(-10, 10, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.16), xlim = c(-40, 40), 
+     xlab = expression(italic(mu)), ylab = "Densité", 
+     type = "n")
+##abline(v=2,lty=2, lwd=3)
+curve(dnorm(x, mean = 2, sd = 5),-18, 20, add = TRUE)
+text(-6, 0.075, expression(paste(mu, " = 2")))
+curve(dnorm(x, mean = 20, sd = 5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité",
+      add = TRUE, col = "blue")
+text(30, 0.075, expression(paste(mu, " = 20")))
+curve(dnorm(x, mean = -20, sd = 5),-35, -5, add = TRUE, col = "red")
+text(-30, 0.075, expression(paste(mu, " = -20")))
+
+##forme
+plot(x = 0,y = 0,ylim = c(0, 0.16), xlim = c(-40, 40),
+     xlab = expression(paste(italic(mu), " = 20")), ylab = "Densité",
+     type = "n")
+abline(v = 20, lty = 2, lwd = 3)
+curve(dnorm(x, mean = 20, sd = 5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité",
+      add = TRUE)
+text(30, 0.075, expression(paste(sigma, " = 5")))
+
+curve(dnorm(x, mean = 20, sd = 2.5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité", 
+      col = "blue", add = TRUE)
+text(29, 0.15, expression(paste(sigma, " = 2.5")))
+
+curve(dnorm(x, mean = 20, sd = 10),-5, 42, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité", 
+      col = "red", add = TRUE)
+text(33, 0.04, expression(paste(sigma, " = 10")))
+```
 
 #### Caractéristiques de la distribution normale
 
@@ -392,19 +484,48 @@ La distribution normale est une distribution continue dans l'intervalle $[-\inft
 
 La distribution normale centrée réduite (*standard normal distribution*) est un cas particulier de la distribution normale où $\mu = 0$ et $\sigma = 1$ (Figure \@ref(fig:standardnormal)). **Centrer** consiste à soustraire la moyenne de chaque observation, $x_{i \: centr\acute{e}e} = x_i - \mu$. L'opération n'influence pas la variance, mais les observations centrées ont une moyenne de 0. Centrer et **réduire**, parfois aussi connu sous le terme **standardiser**, consiste à diviser chaque observation centrée par l'écart-type de l'échantillon, $x_{i \: centr\acute{e}e \: r\acute{e}duite} = \frac{x_i - \mu}{\sigma}$. Les observations centrées réduites ont une moyenne de 0 et une écart-type de 1. L'opération de centrer réduire est aussi appelée la transformation $z$ ou l'écart normal, $z = \frac{x_i - \mu}{\sigma}$. Cette opération modifie l'échelle de la variable. La variable centrée réduite est exprimée en terme du nombre d'écart-types séparant chaque valeur de la moyenne.
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/standardnormal-1.png" alt="Distribution normale centrée réduite, c.-à-d., N(0, 1)." width="672" />
-<p class="caption">(\#fig:standardnormal)Distribution normale centrée réduite, c.-à-d., N(0, 1).</p>
-</div>
+```{r standardnormal, echo=FALSE, fig.cap="Distribution normale centrée réduite, c.-à-d., N(0, 1)."}
+##distribution normale centrée-réduite
+x <- seq(-3, 3, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = 
+     expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1),-3, 3, add = TRUE)
+abline(v = 0, lty = 2, lwd = 3)
+```
 
 ---
 
 **Exemple 1.9** On s'intéresse à la longueur d'ailes de pucerons dans une population. Après un recensement exhaustif, on détermine que la moyenne ($\mu$) des longueurs d'aile dans une population est de 14.2 mm et que l'écart-type ($\sigma$) est de 5.05 mm. On veut ensuite déterminer à combien d'écart-types de la moyenne se trouve une longueur d'aile de 22.6 mm chez un puceron de cette population. Nous avons donc, $z_i = \frac{x_i - \mu}{\sigma} = \frac{22.6 - 14.2}{5.05} = 1.66$. On conclut que $x_i = 22$ mm se trouve à $1.66 \: \sigma$ de $\mu$ (Figure \@ref(fig:zex1)).
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/zex1-1.png" alt="Écart normal associé à une longueur d'ailes de puceron de 22.6 mm." width="672" />
-<p class="caption">(\#fig:zex1)Écart normal associé à une longueur d'ailes de puceron de 22.6 mm.</p>
-</div>
+```{r zex1, echo=FALSE, fig.cap="Écart normal associé à une longueur d'ailes de puceron de 22.6 mm."}
+##exemple de longueur d'ailes de puceron
+##longueur de 22 mm observée dans population N(14, 5)
+mu <- 14.2
+sigma <- 5.05
+xi <- 22.6
+
+##compute standard normal deviate (z) statistic
+z <- (xi - mu)/sigma
+
+##plot graph
+x <- seq(-3, 3, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+abline(v = 0, lty = 2, lwd = 3)
+abline(v = 1.66, lty = 2, lwd = 3)
+##add arrows
+arrows(x0 = 0, y0 = 0.1, x1 = 1.66, y1 = 0.1, lty = "dashed",
+       col = "blue", code = 3, angle = 45, length = 0.05)
+##add value
+text(x = 0.8, y = 0.11, labels = expression(paste("1.66 ", sigma)), 
+     col = "blue")
+```
 
 ---
 
@@ -434,10 +555,25 @@ On peut écrire :
 $$
 P(x_i \leq 160 \: \mathrm{cm}) = P(z \leq -1.25) = 0.1056
 $$
-<div class="figure">
-<img src="Lecon_1_files/figure-html/zex2-1.png" alt="Probabilité cumulative associée à une valeur $\leq$ 160 cm dans une population avec N(170, 8)." width="672" />
-<p class="caption">(\#fig:zex2)Probabilité cumulative associée à une valeur $\leq$ 160 cm dans une population avec N(170, 8).</p>
-</div>
+```{r zex2, echo=FALSE, fig.cap="Probabilité cumulative associée à une valeur $\\leq$ 160 cm dans une population avec N(170, 8)."}
+##avec la distribution centrée-réduite
+##exemple 1
+x <- seq(-3, 3, 0.001)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+##ajouter polygone
+polygon(c(x[x<=(-1.25)], -1.25), c(dnorm(x[x <= (-1.25)], 0, 1), 0.004),
+        col = "red")
+z <- (160 - 170)/8
+#pnorm(-1.25, mean = 0, sd = 1)
+#pnorm(160, mean = 170, sd = 8)
+v1 <- c(x[x<=(-1.25)], -1.25)
+v2 <- c(dnorm(x[x <= (-1.25)], 0, 1), 0.004) #0.004 represents the lowest probability of the value farthest on the tail, dnorm(-3) = 0.0044
+
+```
 
 Ici, $P$ est une probabilité cumulative que l'on peut obtenir en calculant l'aire sous la courbe pour la portion de la courbe à gauche du point -1.25 (Figure \ref{fig:z.ex2}).  
 
@@ -458,10 +594,28 @@ P(x_i \leq 185 \: \mathrm{cm}) = P(z \leq 1.875) = 0.9696
 $$
 Toutefois, nous désirons $P(x_i > 185 \: \mathrm{cm})$, ce qui diffère des exemples précédents avec $P(x_i \leq X)$ (Figure \ref{fig:z.ex3}a). L'astuce ici consiste à calculer le complément de $P(x_i \leq 185 \: \mathrm{cm})$ (Figure \@ref(fig:zex3)b). Puisque l'aire sous la courbe est de 1, on peut obtenir $P(x_i > 185 \: \mathrm{cm})$ simplement avec:
 
-<div class="figure">
-<img src="Lecon_1_files/figure-html/zex3-1.png" alt="Probabilité cumulative associée à une valeur &gt; 185 cm dans une population avec N(170, 8)." width="672" />
-<p class="caption">(\#fig:zex3)Probabilité cumulative associée à une valeur > 185 cm dans une population avec N(170, 8).</p>
-</div>
+```{r zex3, echo=FALSE, fig.cap="Probabilité cumulative associée à une valeur > 185 cm dans une population avec N(170, 8)."}
+par(mfrow = c(1, 2), cex = 1.2)
+##exemple 2
+z <- (185 - 170)/8
+##premier graphique P(x < 185)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste(italic(P), "(", italic(x[i]), " < 185)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z)], z),c(dnorm(x[x<=(z)],0,1),0.004), col = "red")
+text(y = 0.4, x = -2.9, labels = expression(bold("a")))
+
+##deuxième graphique P(x > 185)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste(italic(P), "(", italic(x[i]), " > 185) = 1 - ", italic(P), "(", italic(x[i]), " < 185)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x>(z)], z),c(dnorm(x[x>(z)],0,1),0.004), col = "blue")
+text(y = 0.4, x = -2.9, labels = expression(bold("b")))
+```
 
 ---
 
@@ -484,10 +638,38 @@ La différence entre les deux probabilités cumulatives nous donnera la probabil
 $$
 P(165 \: \mathrm{cm} \leq x_i \leq 180 \: \mathrm{cm}) = 0.8944 - 0.2660 = 0.6284
 $$
-<div class="figure">
-<img src="Lecon_1_files/figure-html/zex4-1.png" alt="Probabilité cumulative associée à 165 cm $\leq$ $\ x_i$ $\leq$ 180 cm dans une population avec N(170, 8)." width="672" />
-<p class="caption">(\#fig:zex4)Probabilité cumulative associée à 165 cm $\leq$ $\ x_i$ $\leq$ 180 cm dans une population avec N(170, 8).</p>
-</div>
+```{r zex4, echo=FALSE, fig.cap="Probabilité cumulative associée à 165 cm $\\leq$ $\\ x_i$ $\\leq$ 180 cm dans une population avec N(170, 8)."}
+par(mfrow = c(1, 3), cex = 1.2)
+
+##exemple 3
+z1 <- (180 - 170)/8
+z2 <- (165 - 170)/8
+##P(xi < 180 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), ylab = "Densité", type = "n", main = expression(paste(italic(P), "(", italic(x[i]), " <= 180)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z1)], z1), c(dnorm(x[x<=(z1)], 0, 1), 0.0044),
+        col = "red")
+
+##P(xi < 165 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), 
+     ylab="Densité", type="n", main = expression(paste(italic(P), "(", italic(x[i]), " <= 165)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z2)], z2), c(dnorm(x[x<=(z2)], 0, 1), 0.0044),
+        col = "blue")
+#pnorm(z1, mean = 0, sd = 1)
+#pnorm(z2, mean = 0, sd = 1)
+
+##P(165 cm < xi < 180 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), 
+     ylab="Densité", type="n", main = expression(paste(italic(P), "(165 <= ", italic(x[i]), " <= 180)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x>z2 & x<=z1],z1,z2), c(dnorm(x[x>z2 & x <= z1], 0, 1),
+                                   0.0044, 0.0044), col = "purple")
+#pnorm(z1, mean = 0, sd = 1) - pnorm(z2, mean = 0, sd = 1)
+```
 <!-- Des différences entre le pdf et le latex -->
 
 ---
@@ -516,7 +698,3 @@ Malheureusement, on connaît rarement $\sigma$ dans la vraie vie et on doit util
 
 Dans cette leçon, nous avons brièvement présenté les concepts de base importants en statistique, notamment les caractéristiques d'une population et d'un échantillon, les variables aléatoires, les mesures de tendance centrale et de dispersion. La distribution normale a été présentée, ainsi que le théorème de la limite centrale et la loi des grands nombres.
 
-
-## Introduction à R
-
-## Exercices et corrections
