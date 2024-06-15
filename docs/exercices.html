@@ -252,9 +252,9 @@ Réponse
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="exercices.html#cb1-1" tabindex="-1"></a><span class="do">##Calcul de l&#39;erreur-type de la moyenne</span></span>
-<span id="cb1-2"><a href="exercices.html#cb1-2" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fl">4.5</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="exercices.html#cb1-3" tabindex="-1"></a>SE</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exercices.html#cb41-1" tabindex="-1"></a><span class="do">##Calcul de l&#39;erreur-type de la moyenne</span></span>
+<span id="cb41-2"><a href="exercices.html#cb41-2" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fl">4.5</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
+<span id="cb41-3"><a href="exercices.html#cb41-3" tabindex="-1"></a>SE</span></code></pre></div>
 <pre><code>## [1] 0.45</code></pre>
 </details>
 <p><br></p>
@@ -264,23 +264,32 @@ Réponse
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="exercices.html#cb3-1" tabindex="-1"></a><span class="do">##On assemble les valeurs dans un vecteur</span></span>
-<span id="cb3-2"><a href="exercices.html#cb3-2" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">90</span>, <span class="dv">61</span>, <span class="dv">80</span>, <span class="dv">120</span>, <span class="dv">30</span>, </span>
-<span id="cb3-3"><a href="exercices.html#cb3-3" tabindex="-1"></a>           <span class="dv">58</span>, <span class="dv">95</span>, <span class="dv">40</span>, <span class="dv">48</span>, <span class="dv">31</span>, <span class="dv">29</span>, <span class="dv">51</span>, </span>
-<span id="cb3-4"><a href="exercices.html#cb3-4" tabindex="-1"></a>           <span class="dv">70</span>, <span class="dv">66</span>, <span class="dv">110</span>, <span class="dv">97</span>, <span class="dv">49</span>, <span class="dv">99</span>)</span>
-<span id="cb3-5"><a href="exercices.html#cb3-5" tabindex="-1"></a><span class="do">##On calcule la moyenne arithmétique</span></span>
-<span id="cb3-6"><a href="exercices.html#cb3-6" tabindex="-1"></a><span class="fu">mean</span>(temps)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exercices.html#cb43-1" tabindex="-1"></a><span class="do">##On assemble les valeurs dans un vecteur</span></span>
+<span id="cb43-2"><a href="exercices.html#cb43-2" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">90</span>, <span class="dv">61</span>, <span class="dv">80</span>, <span class="dv">120</span>, <span class="dv">30</span>, </span>
+<span id="cb43-3"><a href="exercices.html#cb43-3" tabindex="-1"></a>           <span class="dv">58</span>, <span class="dv">95</span>, <span class="dv">40</span>, <span class="dv">48</span>, <span class="dv">31</span>, <span class="dv">29</span>, <span class="dv">51</span>, </span>
+<span id="cb43-4"><a href="exercices.html#cb43-4" tabindex="-1"></a>           <span class="dv">70</span>, <span class="dv">66</span>, <span class="dv">110</span>, <span class="dv">97</span>, <span class="dv">49</span>, <span class="dv">99</span>)</span>
+<span id="cb43-5"><a href="exercices.html#cb43-5" tabindex="-1"></a><span class="do">##On calcule la moyenne arithmétique</span></span>
+<span id="cb43-6"><a href="exercices.html#cb43-6" tabindex="-1"></a><span class="fu">mean</span>(temps)</span></code></pre></div>
 <pre><code>## [1] 65.95</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="exercices.html#cb5-1" tabindex="-1"></a><span class="do">##La variance</span></span>
-<span id="cb5-2"><a href="exercices.html#cb5-2" tabindex="-1"></a><span class="fu">var</span>(temps)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exercices.html#cb45-1" tabindex="-1"></a><span class="do">##La variance</span></span>
+<span id="cb45-2"><a href="exercices.html#cb45-2" tabindex="-1"></a><span class="fu">var</span>(temps)</span></code></pre></div>
 <pre><code>## [1] 774.7868</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exercices.html#cb7-1" tabindex="-1"></a><span class="fu">sd</span>(temps)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exercices.html#cb47-1" tabindex="-1"></a><span class="fu">sd</span>(temps)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 774.7868</code></pre>
 </details>
 
 </div>
 </div>
 <!-- </div> -->
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
