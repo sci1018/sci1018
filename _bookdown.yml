@@ -4,5 +4,6 @@ output_dir: docs
 language:
   ui:
     chapter_name: 'Module '
-rmd_files: ["index.Rmd", "Presentation/Presentation.Rmd", "Presentation/Ressources.Rmd", "Module_1/Lecon_1.Rmd"]
+rmd_files: ["index.Rmd", "Presentation/Presentation.Rmd", "Presentation/Ressources.Rmd", 
+"Module_1/Lecon.Rmd", "Module_1/Tuto_R.Rmd", "Module_1/Exercice.Rmd"]
 rmd_subdir: ["Presentation/","Module_1/"]

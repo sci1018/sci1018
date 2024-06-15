@@ -1,0 +1,71 @@
+# {-}
+
+## Exercices
+
+Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives*pour réaliser les exercices suivants dans R. 
+
+### Question 1
+
+**a.** La somme des carrés des erreurs est une mesure de tendance centrale: Vrai ou Faux?
+
+<details>
+<summary> Réponse</summary>
+**Faux** -- C'est une mesure de dispersion.
+</details>
+
+<br>
+
+**b.** Parmi les mesures suivantes, déterminez laquelle des valeurs n'est pas un paramètre:   
+  (a) $\mu$   
+  (b) $\sigma$   
+  (c) $\bar{x}$   
+  (d) $\sigma^2$   
+
+<details>
+<summary> Réponse</summary>
+**(c)** $\bar{x}$ \indent  -- C'est une statistique.
+</details>
+
+<br>
+
+**c.** L'écart-type est une mesure de précision d'un paramètre: Vrai ou Faux?
+
+<details>
+<summary> Réponse</summary>
+**Faux** -- C'est une mesure de variabilité des données.
+</details>
+
+<br>
+
+### Question 2
+
+**a.** On mesure la profondeur de matière organique dans le sol de 100 parcelles en milieu agricole. À partir de 100 valeurs de profondeurs de sols, on obtient une moyenne de 12.3 cm et un écart-type de 4.5 cm. Calculez l'erreur-type de la moyenne. N.B. Cette question s'applique uniquement à l'approche par programmation. 
+
+<details>
+<summary> Réponse</summary>
+```{r echo=TRUE}
+##Calcul de l'erreur-type de la moyenne
+SE <- 4.5/sqrt(100)
+SE
+```
+</details>
+
+<br>
+
+**b.** Dans une étude d'observation sur le temps de démarrage de 20 ordinateurs, on note les valeurs suivantes en secondes :
+50, 45, 90, 61, 80, 120, 30, 58, 95, 40, 48, 31, 29, 51, 70, 66, 110, 97, 49, 99. Calculez la moyenne arithmétique et la variance de cet échantillon.
+
+<details>
+<summary> Réponse</summary>
+```{r echo=TRUE}
+##On assemble les valeurs dans un vecteur
+temps <- c(50, 45, 90, 61, 80, 120, 30, 
+           58, 95, 40, 48, 31, 29, 51, 
+           70, 66, 110, 97, 49, 99)
+##On calcule la moyenne arithmétique
+mean(temps)
+##La variance
+var(temps)
+sd(temps)^2
+```
+</details>

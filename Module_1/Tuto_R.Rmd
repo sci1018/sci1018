@@ -1,0 +1,116 @@
+# {-}
+
+## Introduction à R - Statistiques de base
+
+### Fonctions statistiques de base
+
+Plusieurs fonctions de base sont disponibles pour réaliser les calculs présentés à la leçon *Statistiques descriptives*. Par exemple, on peut obtenir la moyenne arithmétique à l'aide de la fonction `mean( )`:
+
+```{r echo=TRUE}
+##On crée un vecteur
+variable <- c(1.2, 1.5, 2.3, 2.1, 0.1, 5.4, 6.1, 3.2)
+##Moyenne arithmétique
+mean(variable)
+```
+On peut calculer l'écart-type d'un échantillon à l'aide de la fonction `sd( )`, et la variance à l'aide de `var( )`:
+
+```{r echo=TRUE}
+##Écart-type
+sd(variable)
+##Écart-type
+sqrt(var(variable))
+##Carré moyen des erreurs
+MSE <- sum((variable - mean(variable))^2)/(length(variable) - 1)
+##Racine-carrée du MSE = écart-type
+sqrt(MSE)
+```
+
+La médiane s'obtient facilement à l'aide de la fonction `median( )`:
+
+```{r}
+##on calcule la médiane
+median(variable)
+```
+
+De façon plus générale, on peut obtenir les quantiles d'un échantillon (quartiles, déciles, percentiles) à l'aide de `quantile( )`:
+
+```{r}
+##Quartiles
+quantile(variable)
+##Déciles
+quantile(variable, prob = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+##2.5ième et 97.5ième percentiles
+quantile(variable, prob = c(0.025, 0.975))
+```
+Bien qu'il n'existe pas de fonctions toute prête pour calculer l'erreur-type, on peut l'obtenir facilement:
+
+```{r echo=TRUE}
+sd(variable)/sqrt(length(variable))
+```
+
+### Distribution statistiques
+
+**R** comprend plusieurs distributions statistiques, ce qui rend obsolètes les tables de distributions statistiques que l'on utilisait autrefois. Les noms des fonctions de distributions statistiques commencent typiquement par la lettre "d", telles que `dnorm( )`, `dchisq( )`, `dpois( )`, pour les fonctions de densité de la distribution normale, du khi-carré et de Poisson, respectivement. Ainsi, l'énoncé $f(x \: \vert \: \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}$ se traduit dans le langage **R** par `dnorm(x, mean, sd)`. On peut donc solutionner $f(x = 3.4 \: \vert \: 4.1, 1.5) = \frac{1}{1.5 \cdot \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{3.4 - 4.1}{1.5})^2}$ avec :
+
+```{r}
+##Calculer densité de probabilité
+dnorm(x = 3.4, mean = 4.1, sd = 1.5)
+```
+
+
+#### Probabilité cumulative
+
+On peut obtenir la probabilité cumulative associée à $P(x \leq 2.3 \:\mathrm{cm})$ dans une population avec N($\mu = 4$, $\sigma = 12$) directement à l'aide de `pnorm(q, mean, sd)`:
+
+```{r echo=TRUE}
+##Probabilité cumulative P(x <  2.3)
+pnorm(q = 2.3, mean = 4, sd = 12)
+```
+
+Il est aussi possible de calculer l'écart normal $z$ pour obtenir la probabilité cumulative :
+
+```{r}
+##Probabilité cumulative à partir du z
+z <- (2.3 - 4)/12
+pnorm(q = z, mean = 0, sd = 1)
+```
+
+On peut calculer le complément, $P(x > 2.3 \:\mathrm{cm})$:
+
+```{r}
+##P(x > 2.3)
+1 - pnorm(q = 2.3, mean = 4, sd = 12)
+##P(x > 2.3) à l'aide de l'argument lower.tail
+pnorm(q = 2.3, mean = 4, sd = 12, lower.tail = FALSE)
+```
+
+À noter que l'argument `lower.tail` permet de spécifier la partie gauche de la distribution. Par défaut, cet argument prend la valeur `TRUE`, ce qui veut dire que `pnorm()` donne la probabilité cumulative associée à $P(x \leq 2.3 \: \mathrm{cm})$. Si `lower.tail = FALSE`, c'est la probabilité cumulative pour la portion droite de la distribution qui est calculée, $P(x > 2.3 \: \mathrm{cm})$.
+
+#### Fonction de quantile
+
+Alors que `pnorm()` nous donne la probabilité cumulative pour un quantile et N($\mu, \sigma)$ donnés, `qnorm()` permet d'obtenir le quantile associé à une probabilité cumulative et N($\mu, \sigma)$ donnés. 
+
+```{r}
+##On connaît q, on veut trouver p
+pnorm(q = 1.96, mean = 0, sd = 1)
+##On connaît p, on veut trouver q
+qnorm(p = 0.975, mean = 0, sd = 1)
+```
+
+#### Nombres aléatoires
+
+On peut générer des nombres aléatoires provenant d'une distribution normale avec une moyenne et un écart-type donnés à l'aide de `rnorm()`. Par exemple, pour générer un échantillon de 30 observations provenant d'une distribution normale avec une moyenne de 5.2 ($\mu = 5.2$) et un écart-type de 9.3 ($\sigma = 9.3)$, on procède ainsi:
+
+```{r}
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+```
+
+On remarque qu'à chaque fois que l'on utilise `rnorm()`, on obtient un résultat des observations (aléatoires) différentes.
+
+

@@ -26,3 +26,12 @@ distribution-normale-centrée-réduite
 probabilités-cumulatives
 applications-de-la-statistique-z-à-un-échantillon
 conclusion
+introduction-à-r---statistiques-de-base
+fonctions-statistiques-de-base
+distribution-statistiques
+probabilité-cumulative
+fonction-de-quantile
+nombres-aléatoires
+exercices
+question-1
+question-2
