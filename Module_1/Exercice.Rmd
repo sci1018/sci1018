@@ -2,7 +2,7 @@
 
 ## Exercices
 
-Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives*pour réaliser les exercices suivants dans R. 
+Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives* pour réaliser les exercices suivants dans R. 
 
 ### Question 1
 
