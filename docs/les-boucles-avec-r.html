@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.2 Les boucles avec R | Statistiques avec R</title>
+  <meta name="description" content="6.2 Les boucles avec R | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.2 Les boucles avec R | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="6.2 Les boucles avec R | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.2 Les boucles avec R | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="6.2 Les boucles avec R | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2024-08-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="théories-5.html"/>
+<link rel="next" href="exercices-4.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistiques avec R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#pourquoi-suivre-ce-cours"><i class="fa fa-check"></i>Pourquoi suivre ce cours ?</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-notés"><i class="fa fa-check"></i>Travaux notés</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="1" data-path="statistiques-descriptives.html"><a href="statistiques-descriptives.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="théories.html"><a href="théories.html"><i class="fa fa-check"></i><b>1.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="théories.html"><a href="théories.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="théories.html"><a href="théories.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="théories.html"><a href="théories.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a>
+<ul>
+<li class="chapter" data-level="1.1.3.1" data-path="théories.html"><a href="théories.html#somme-des-carrés-des-erreurs"><i class="fa fa-check"></i><b>1.1.3.1</b> Somme des carrés des erreurs</a></li>
+<li class="chapter" data-level="1.1.3.2" data-path="théories.html"><a href="théories.html#carré-moyen-variance"><i class="fa fa-check"></i><b>1.1.3.2</b> Carré moyen (variance)</a></li>
+<li class="chapter" data-level="1.1.3.3" data-path="théories.html"><a href="théories.html#précision-vs-exactitude"><i class="fa fa-check"></i><b>1.1.3.3</b> Précision vs exactitude</a></li>
+<li class="chapter" data-level="1.1.3.4" data-path="théories.html"><a href="théories.html#autres-mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3.4</b> Autres mesures de dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.4" data-path="théories.html"><a href="théories.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="théories.html"><a href="théories.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="théories.html"><a href="théories.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a>
+<ul>
+<li class="chapter" data-level="1.1.6.1" data-path="théories.html"><a href="théories.html#caractéristiques-de-la-distribution-normale"><i class="fa fa-check"></i><b>1.1.6.1</b> Caractéristiques de la distribution normale</a></li>
+<li class="chapter" data-level="1.1.6.2" data-path="théories.html"><a href="théories.html#distribution-normale-centrée-réduite"><i class="fa fa-check"></i><b>1.1.6.2</b> Distribution normale centrée réduite</a></li>
+<li class="chapter" data-level="1.1.6.3" data-path="théories.html"><a href="théories.html#probabilités-cumulatives"><i class="fa fa-check"></i><b>1.1.6.3</b> Probabilités cumulatives</a></li>
+<li class="chapter" data-level="1.1.6.4" data-path="théories.html"><a href="théories.html#applications-de-la-statistique-z-à-un-échantillon"><i class="fa fa-check"></i><b>1.1.6.4</b> Applications de la statistique z à un échantillon</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.7" data-path="théories.html"><a href="théories.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a>
+<ul>
+<li class="chapter" data-level="1.2.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#probabilité-cumulative"><i class="fa fa-check"></i><b>1.2.2.1</b> Probabilité cumulative</a></li>
+<li class="chapter" data-level="1.2.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonction-de-quantile"><i class="fa fa-check"></i><b>1.2.2.2</b> Fonction de quantile</a></li>
+<li class="chapter" data-level="1.2.2.3" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#nombres-aléatoires"><i class="fa fa-check"></i><b>1.2.2.3</b> Nombres aléatoires</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i><b>1.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="exercices.html"><a href="exercices.html#question-1"><i class="fa fa-check"></i><b>1.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="1.3.2" data-path="exercices.html"><a href="exercices.html#question-2"><i class="fa fa-check"></i><b>1.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><a href="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="théories-1.html"><a href="théories-1.html"><i class="fa fa-check"></i><b>2.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="théories-1.html"><a href="théories-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.1.1" data-path="théories-1.html"><a href="théories-1.html#portion-de-la-population-non-représentée"><i class="fa fa-check"></i><b>2.1.1.1</b> Portion de la population non représentée</a></li>
+<li class="chapter" data-level="2.1.1.2" data-path="théories-1.html"><a href="théories-1.html#erreurs-de-mesure-ou-de-saisie-des-données"><i class="fa fa-check"></i><b>2.1.1.2</b> Erreurs de mesure ou de saisie des données</a></li>
+<li class="chapter" data-level="2.1.1.3" data-path="théories-1.html"><a href="théories-1.html#erreurs-liées-à-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.1.3</b> Erreurs liées à la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="théories-1.html"><a href="théories-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a>
+<ul>
+<li class="chapter" data-level="2.1.3.1" data-path="théories-1.html"><a href="théories-1.html#distribution-du-t-de-student"><i class="fa fa-check"></i><b>2.1.3.1</b> Distribution du <em>t</em> de Student</a></li>
+<li class="chapter" data-level="2.1.3.2" data-path="théories-1.html"><a href="théories-1.html#rééchantillonnage"><i class="fa fa-check"></i><b>2.1.3.2</b> Rééchantillonnage</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.4" data-path="théories-1.html"><a href="théories-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.4.1" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-stratifié"><i class="fa fa-check"></i><b>2.1.4.1</b> Échantillonnage stratifié</a></li>
+<li class="chapter" data-level="2.1.4.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-par-grappes-et-échantillonnage-systématique"><i class="fa fa-check"></i><b>2.1.4.2</b> Échantillonnage par grappes et échantillonnage systématique</a></li>
+<li class="chapter" data-level="2.1.4.3" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-multistade"><i class="fa fa-check"></i><b>2.1.4.3</b> Échantillonnage multistade</a></li>
+<li class="chapter" data-level="2.1.4.4" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-adaptatif"><i class="fa fa-check"></i><b>2.1.4.4</b> Échantillonnage adaptatif</a></li>
+<li class="chapter" data-level="2.1.4.5" data-path="théories-1.html"><a href="théories-1.html#estimation-de-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.4.5</b> Estimation de la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.5" data-path="théories-1.html"><a href="théories-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="exercices-1.html"><a href="exercices-1.html"><i class="fa fa-check"></i><b>2.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="exercices-1.html"><a href="exercices-1.html#question-1-1"><i class="fa fa-check"></i><b>2.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="exercices-1.html"><a href="exercices-1.html#question-2-1"><i class="fa fa-check"></i><b>2.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tests-dhypothèse-sur-un-seul-groupe.html"><a href="tests-dhypothèse-sur-un-seul-groupe.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="théories-2.html"><a href="théories-2.html"><i class="fa fa-check"></i><b>3.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse-scientifique"><i class="fa fa-check"></i><b>3.1.1.1</b> Hypothèse scientifique</a></li>
+<li class="chapter" data-level="3.1.1.2" data-path="théories-2.html"><a href="théories-2.html#méthode-scientifique"><i class="fa fa-check"></i><b>3.1.1.2</b> Méthode scientifique</a></li>
+<li class="chapter" data-level="3.1.1.3" data-path="théories-2.html"><a href="théories-2.html#inférence-bayésienne"><i class="fa fa-check"></i><b>3.1.1.3</b> Inférence bayésienne</a></li>
+<li class="chapter" data-level="3.1.1.4" data-path="théories-2.html"><a href="théories-2.html#méthode-hypothético-déductive"><i class="fa fa-check"></i><b>3.1.1.4</b> Méthode hypothético-déductive</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.2" data-path="théories-2.html"><a href="théories-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="théories-2.html"><a href="théories-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a>
+<ul>
+<li class="chapter" data-level="3.1.3.1" data-path="théories-2.html"><a href="théories-2.html#puissance"><i class="fa fa-check"></i><b>3.1.3.1</b> Puissance</a></li>
+<li class="chapter" data-level="3.1.3.2" data-path="théories-2.html"><a href="théories-2.html#relation-entre-les-erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3.2</b> Relation entre les erreurs de type I et II</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.4" data-path="théories-2.html"><a href="théories-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.4.1" data-path="théories-2.html"><a href="théories-2.html#conseils-sur-la-présentation-des-résultats-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4.1</b> Conseils sur la présentation des résultats de tests d’hypothèse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.5" data-path="théories-2.html"><a href="théories-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="théories-2.html"><a href="théories-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1.6.1" data-path="théories-2.html"><a href="théories-2.html#test-bilatéral-et-test-unilatéral"><i class="fa fa-check"></i><b>3.1.6.1</b> Test bilatéral et test unilatéral</a></li>
+<li class="chapter" data-level="3.1.6.2" data-path="théories-2.html"><a href="théories-2.html#suppositions"><i class="fa fa-check"></i><b>3.1.6.2</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.7" data-path="théories-2.html"><a href="théories-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="exercices-2.html"><a href="exercices-2.html"><i class="fa fa-check"></i><b>3.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="exercices-2.html"><a href="exercices-2.html#question-1-2"><i class="fa fa-check"></i><b>3.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exercices-2.html"><a href="exercices-2.html#question-2-2"><i class="fa fa-check"></i><b>3.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tests-dhypothèse-sur-deux-groupes.html"><a href="tests-dhypothèse-sur-deux-groupes.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="théories-3.html"><a href="théories-3.html"><i class="fa fa-check"></i><b>4.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a>
+<ul>
+<li class="chapter" data-level="4.1.1.1" data-path="théories-3.html"><a href="théories-3.html#suppositions-1"><i class="fa fa-check"></i><b>4.1.1.1</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.2" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="théories-3.html"><a href="théories-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a>
+<ul>
+<li class="chapter" data-level="4.1.3.1" data-path="théories-3.html"><a href="théories-3.html#transformation-logarithmique"><i class="fa fa-check"></i><b>4.1.3.1</b> Transformation logarithmique</a></li>
+<li class="chapter" data-level="4.1.3.2" data-path="théories-3.html"><a href="théories-3.html#transformation-racine-carrée"><i class="fa fa-check"></i><b>4.1.3.2</b> Transformation racine carrée</a></li>
+<li class="chapter" data-level="4.1.3.3" data-path="théories-3.html"><a href="théories-3.html#transformation-arcsinus"><i class="fa fa-check"></i><b>4.1.3.3</b> Transformation arcsinus</a></li>
+<li class="chapter" data-level="4.1.3.4" data-path="théories-3.html"><a href="théories-3.html#autres-transformations"><i class="fa fa-check"></i><b>4.1.3.4</b> Autres transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.4" data-path="théories-3.html"><a href="théories-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="laboratoire.html"><a href="laboratoire.html#question-1-3"><i class="fa fa-check"></i><b>4.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="4.2.2" data-path="laboratoire.html"><a href="laboratoire.html#question-2-3"><i class="fa fa-check"></i><b>4.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="théories-4.html"><a href="théories-4.html"><i class="fa fa-check"></i><b>5.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="théories-4.html"><a href="théories-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1.1.1" data-path="théories-4.html"><a href="théories-4.html#la-distribution-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.1</b> La distribution du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.2" data-path="théories-4.html"><a href="théories-4.html#le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.2</b> Le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.3" data-path="théories-4.html"><a href="théories-4.html#conditions-dutilisation"><i class="fa fa-check"></i><b>5.1.1.3</b> Conditions d’utilisation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.2" data-path="théories-4.html"><a href="théories-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a>
+<ul>
+<li class="chapter" data-level="5.1.2.1" data-path="théories-4.html"><a href="théories-4.html#formulation-des-hypothèse-nulles"><i class="fa fa-check"></i><b>5.1.2.1</b> Formulation des hypothèse nulles</a></li>
+<li class="chapter" data-level="5.1.2.2" data-path="théories-4.html"><a href="théories-4.html#fréquences-théoriques"><i class="fa fa-check"></i><b>5.1.2.2</b> Fréquences théoriques</a></li>
+<li class="chapter" data-level="5.1.2.3" data-path="théories-4.html"><a href="théories-4.html#calcul-du-chi2-dindépendance"><i class="fa fa-check"></i><b>5.1.2.3</b> Calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.3" data-path="théories-4.html"><a href="théories-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="théories-4.html"><a href="théories-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="théories-4.html"><a href="théories-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="exercices-3.html"><a href="exercices-3.html"><i class="fa fa-check"></i><b>5.2</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exercices-3.html"><a href="exercices-3.html#question-1-4"><i class="fa fa-check"></i><b>5.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exercices-3.html"><a href="exercices-3.html#question-2-4"><i class="fa fa-check"></i><b>5.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analyse-de-variance-à-un-critère.html"><a href="analyse-de-variance-à-un-critère.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="théories-5.html"><a href="théories-5.html"><i class="fa fa-check"></i><b>6.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="théories-5.html"><a href="théories-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="théories-5.html"><a href="théories-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="6.1.2.1" data-path="théories-5.html"><a href="théories-5.html#décomposition-de-la-variance"><i class="fa fa-check"></i><b>6.1.2.1</b> Décomposition de la variance</a></li>
+<li class="chapter" data-level="6.1.2.2" data-path="théories-5.html"><a href="théories-5.html#la-distribution-du-f"><i class="fa fa-check"></i><b>6.1.2.2</b> La distribution du <span class="math inline">\(F\)</span></a></li>
+<li class="chapter" data-level="6.1.2.3" data-path="théories-5.html"><a href="théories-5.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>6.1.2.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="6.1.2.4" data-path="théories-5.html"><a href="théories-5.html#suppositions-2"><i class="fa fa-check"></i><b>6.1.2.4</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.3" data-path="théories-5.html"><a href="théories-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a>
+<ul>
+<li class="chapter" data-level="6.1.3.1" data-path="théories-5.html"><a href="théories-5.html#erreurs-associées-aux-comparaisons-multiples"><i class="fa fa-check"></i><b>6.1.3.1</b> Erreurs associées aux comparaisons multiples</a></li>
+<li class="chapter" data-level="6.1.3.2" data-path="théories-5.html"><a href="théories-5.html#suppositions-3"><i class="fa fa-check"></i><b>6.1.3.2</b> Suppositions</a></li>
+<li class="chapter" data-level="6.1.3.3" data-path="théories-5.html"><a href="théories-5.html#structure-générale"><i class="fa fa-check"></i><b>6.1.3.3</b> Structure générale</a></li>
+<li class="chapter" data-level="6.1.3.4" data-path="théories-5.html"><a href="théories-5.html#test-de-tukey"><i class="fa fa-check"></i><b>6.1.3.4</b> Test de Tukey</a></li>
+<li class="chapter" data-level="6.1.3.5" data-path="théories-5.html"><a href="théories-5.html#présentation-des-résultats"><i class="fa fa-check"></i><b>6.1.3.5</b> Présentation des résultats</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.4" data-path="théories-5.html"><a href="théories-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.1.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#structure"><i class="fa fa-check"></i><b>6.2.1.1</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#apply-et-fonctions-apparentées"><i class="fa fa-check"></i><b>6.2.2.1</b> <code>apply( )</code> et fonctions apparentées</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="exercices-4.html"><a href="exercices-4.html"><i class="fa fa-check"></i><b>6.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="exercices-4.html"><a href="exercices-4.html#question-1-5"><i class="fa fa-check"></i><b>6.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="6.3.2" data-path="exercices-4.html"><a href="exercices-4.html#question-2-5"><i class="fa fa-check"></i><b>6.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analyse-de-variance-à-deux-critères.html"><a href="analyse-de-variance-à-deux-critères.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="théories-6.html"><a href="théories-6.html"><i class="fa fa-check"></i><b>7.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="théories-6.html"><a href="théories-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="théories-6.html"><a href="théories-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="théories-6.html"><a href="théories-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="théories-6.html"><a href="théories-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="théories-6.html"><a href="théories-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="théories-6.html"><a href="théories-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="blocs-complets-aléatoires.html"><a href="blocs-complets-aléatoires.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="théories-7.html"><a href="théories-7.html"><i class="fa fa-check"></i><b>8.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="théories-7.html"><a href="théories-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.1.1" data-path="théories-7.html"><a href="théories-7.html#anova-à-un-critère"><i class="fa fa-check"></i><b>8.1.1.1</b> ANOVA à un critère</a></li>
+<li class="chapter" data-level="8.1.1.2" data-path="théories-7.html"><a href="théories-7.html#anova-à-deux-critères-1"><i class="fa fa-check"></i><b>8.1.1.2</b> ANOVA à deux critères</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.2" data-path="théories-7.html"><a href="théories-7.html#blocs-complets-aléatoires-1"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.2.1" data-path="théories-7.html"><a href="théories-7.html#révision-de-léchantillonnage"><i class="fa fa-check"></i><b>8.1.2.1</b> Révision de l’échantillonnage</a></li>
+<li class="chapter" data-level="8.1.2.2" data-path="théories-7.html"><a href="théories-7.html#origine-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.2</b> Origine du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.3" data-path="théories-7.html"><a href="théories-7.html#particularité-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.3</b> Particularité du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.4" data-path="théories-7.html"><a href="théories-7.html#applications-moins-conventionnelles"><i class="fa fa-check"></i><b>8.1.2.4</b> Applications moins conventionnelles</a></li>
+<li class="chapter" data-level="8.1.2.5" data-path="théories-7.html"><a href="théories-7.html#conditions-dapplication"><i class="fa fa-check"></i><b>8.1.2.5</b> Conditions d’application</a></li>
+<li class="chapter" data-level="8.1.2.6" data-path="théories-7.html"><a href="théories-7.html#avantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.6</b> Avantages du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.7" data-path="théories-7.html"><a href="théories-7.html#désavantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.7</b> Désavantages du dispositif en blocs complets aléatoires</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.3" data-path="théories-7.html"><a href="théories-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="exercices-5.html"><a href="exercices-5.html"><i class="fa fa-check"></i><b>8.2</b> Exercices</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="les-boucles-avec-r" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Les boucles avec R<a href="les-boucles-avec-r.html#les-boucles-avec-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="les-boucles" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Les boucles<a href="les-boucles-avec-r.html#les-boucles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les boucles dans R permettent de réaliser des tâches répétitives et ennuyeuses. Elles sont plus rapides que les tâches exécutées à la main et réduisent les occasions de commettre des erreurs. Par exemple, on peut utiliser une boucle pour effectuer une manipulation d’un jeu de données, telle que d’importer une série de fichiers stockés dans le même répertoire afin d’y extraire les données d’intérêt.</p>
+<div id="structure" class="section level4 hasAnchor" number="6.2.1.1">
+<h4><span class="header-section-number">6.2.1.1</span> Structure<a href="les-boucles-avec-r.html#structure" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Il existe plusieurs façons de créer une boucle. Celle que nous verrons ici utilise la fonction <code>for( )</code> pour mettre en place la boucle. Le contenu de la boucle sera inclus entre des accolades { }. Comme premier exemple, nous allons générer 100 échantillons contenant chacun 30 observations qui proviennent d’une distribution normale N(<span class="math inline">\(\mu = 10\)</span>, <span class="math inline">\(\sigma = 1\)</span>), puis nous calculerons la moyenne de chaque échantillon.</p>
+<p>Premièrement, on crée un objet pour stocker les moyennes calculées :</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="les-boucles-avec-r.html#cb288-1" tabindex="-1"></a><span class="do">##objet pour stocker résultats</span></span>
+<span id="cb288-2"><a href="les-boucles-avec-r.html#cb288-2" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="cn">NA</span>, <span class="at">times =</span> <span class="dv">100</span>)</span>
+<span id="cb288-3"><a href="les-boucles-avec-r.html#cb288-3" tabindex="-1"></a>output</span></code></pre></div>
+<pre><code>##   [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [40] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [79] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<p>La boucle comme telle sera initiée par la commande :</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="les-boucles-avec-r.html#cb290-1" tabindex="-1"></a><span class="do">##on crée la boucle</span></span>
+<span id="cb290-2"><a href="les-boucles-avec-r.html#cb290-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb290-3"><a href="les-boucles-avec-r.html#cb290-3" tabindex="-1"></a>  <span class="do">##on génère l&#39;échantillon</span></span>
+<span id="cb290-4"><a href="les-boucles-avec-r.html#cb290-4" tabindex="-1"></a>  simdata <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb290-5"><a href="les-boucles-avec-r.html#cb290-5" tabindex="-1"></a>  <span class="do">##on remplace le NA par la moyenne</span></span>
+<span id="cb290-6"><a href="les-boucles-avec-r.html#cb290-6" tabindex="-1"></a>  output[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(simdata)</span>
+<span id="cb290-7"><a href="les-boucles-avec-r.html#cb290-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>Décortiquons le code présenté ci-dessus:</p>
+<ol style="list-style-type: decimal">
+<li>La commande <code>for( )</code> indique que la boucle sera effectuée de <code>i = 1</code> jusqu’à <code>i = 100</code>. À noter que la boucle nécessite un nom de variable quelconque, par exemple, <code>i</code>, <code>j</code>, <code>iter</code>, <code>sim</code>, ou tout autre nom de notre choix. Toutefois, la boucle doit se référer à cette même variable plus tard. Immédiatement après la commande <code>for( )</code>, on trouvera une accolade { qui indique le début du corps de la boucle.</li>
+<li>À la deuxième ligne, on crée un objet temporaire <code>simdata</code> qui contiendra 30 observations provenant d’une distribution normale ayant une moyenne de 10 et un écart-type de 1.</li>
+<li>La prochaine ligne calcule la moyenne des observations de l’objet <code>simdata</code> et stocke cette moyenne dans l’objet <code>output</code>. Ainsi, le premier <code>NA</code> sera remplacé par la première moyenne.</li>
+<li>La dernière ligne contient une accolade } qui indique la fin de la première itération <code>(i = 1)</code>.</li>
+<li>À l’itération <code>i = 2</code>, l’objet <code>simdata</code> stockera 30 nouvelles observations, et cette moyenne sera stockée dans <code>output[i = 2]</code>. La boucle continue jusqu’à l’itération <code>i = 100</code>}`.</li>
+</ol>
+<p>Dans notre cas, la boucle a donné le résultat, qui sera différent sur votre machine puisque nous n’avons pas spécifié <code>set.seed( )</code> :</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="les-boucles-avec-r.html#cb291-1" tabindex="-1"></a>output</span></code></pre></div>
+<pre><code>##   [1]  9.843143  9.843070  9.905685 10.194206  9.792114  9.897694  9.962324  9.898893 10.186835  9.955964  9.932570
+##  [12] 10.047830  9.575321  9.712321 10.054829 10.092733  9.989643  9.982827 10.043200 10.228745 10.197045 10.086565
+##  [23] 10.249376 10.177044 10.298926  9.943895 10.046831  9.395522  9.990081  9.933483  9.918902 10.033769 10.107036
+##  [34] 10.085682 10.126150 10.112908  9.953102  9.725974 10.070861 10.270107 10.063887 10.098440 10.061172 10.437588
+##  [45] 10.166183 10.194932  9.820259 10.192904  9.777376 10.090552  9.763093  9.824848 10.127299 10.249598  9.790525
+##  [56] 10.253496  9.876486  9.753068  9.975168  9.916710  9.890595  9.959431 10.028949 10.053114  9.968057 10.011333
+##  [67] 10.006457  9.764378 10.126387 10.181128 10.020601  9.862828 10.048828  9.955702  9.872555 10.035752 10.225581
+##  [78]  9.989991 10.107747 10.055392 10.146808  9.739223  9.797985  9.995382 10.134123 10.402918  9.991563  9.951723
+##  [89]  9.947842 10.018451  9.989671  9.820996 10.023143 10.155746 10.350405 10.155261  9.895186  9.974955  9.903979
+## [100]  9.901210</code></pre>
+<p>Nous avons 100 moyennes calculées à partir de 100 échantillons de 30 observations provenant d’une population N(<span class="math inline">\(\mu = 10\)</span>, <span class="math inline">\(\sigma = 1\)</span>).</p>
+<p>On peut utiliser les boucles pour effectuer des manipulations plus complexes. D’ailleurs, les boucles sont utiles pour effectuer des tests de randomisation ou des simulations. Comme deuxième exemple, illustrons comment estimer la probabilité de commettre une erreur au niveau de l’expérience et au niveau des comparaisons telles que discutées dans le texte <em>Analyse de variance à un critère</em>. Dans l’exemple en question, nous avons considéré les probabilités de commettre des erreurs au niveau de l’expérience et au niveau des comparaisons avec trois groupes.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="les-boucles-avec-r.html#cb293-1" tabindex="-1"></a><span class="do">##illustration des erreurs au niveau de l&#39;expérience et </span></span>
+<span id="cb293-2"><a href="les-boucles-avec-r.html#cb293-2" tabindex="-1"></a><span class="do">##au niveau des comparaisons</span></span>
+<span id="cb293-3"><a href="les-boucles-avec-r.html#cb293-3" tabindex="-1"></a><span class="do">##3 groupes de n = 50 qui ne diffèrent pas les uns des autres</span></span>
+<span id="cb293-4"><a href="les-boucles-avec-r.html#cb293-4" tabindex="-1"></a><span class="do">##tous provenant d&#39;une même population normale avec mu=5 et sd=3</span></span>
+<span id="cb293-5"><a href="les-boucles-avec-r.html#cb293-5" tabindex="-1"></a><span class="do">##alpha = 0.05</span></span>
+<span id="cb293-6"><a href="les-boucles-avec-r.html#cb293-6" tabindex="-1"></a><span class="do">#############################</span></span>
+<span id="cb293-7"><a href="les-boucles-avec-r.html#cb293-7" tabindex="-1"></a><span class="do">##on crée une matrice pour stocker les résultats</span></span>
+<span id="cb293-8"><a href="les-boucles-avec-r.html#cb293-8" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="at">seed =</span> <span class="dv">221</span>)</span>
+<span id="cb293-9"><a href="les-boucles-avec-r.html#cb293-9" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>   <span class="co">#nombre de simulations</span></span>
+<span id="cb293-10"><a href="les-boucles-avec-r.html#cb293-10" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> nsims, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb293-11"><a href="les-boucles-avec-r.html#cb293-11" tabindex="-1"></a><span class="fu">colnames</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1 vs 2&quot;</span>, <span class="st">&quot;1 vs 3&quot;</span>, <span class="st">&quot;2 vs 3&quot;</span>, <span class="st">&quot;Erreur liée à l&#39;expérience&quot;</span>)</span>
+<span id="cb293-12"><a href="les-boucles-avec-r.html#cb293-12" tabindex="-1"></a><span class="do">##débuter boucle</span></span>
+<span id="cb293-13"><a href="les-boucles-avec-r.html#cb293-13" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb293-14"><a href="les-boucles-avec-r.html#cb293-14" tabindex="-1"></a>  <span class="do">##on crée 1er groupe</span></span>
+<span id="cb293-15"><a href="les-boucles-avec-r.html#cb293-15" tabindex="-1"></a>  <span class="do">##tous les groupes sont égaux (H0 est vraie)</span></span>
+<span id="cb293-16"><a href="les-boucles-avec-r.html#cb293-16" tabindex="-1"></a>  groupe1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb293-17"><a href="les-boucles-avec-r.html#cb293-17" tabindex="-1"></a>  <span class="do">##on crée 2ième groupe</span></span>
+<span id="cb293-18"><a href="les-boucles-avec-r.html#cb293-18" tabindex="-1"></a>  groupe2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb293-19"><a href="les-boucles-avec-r.html#cb293-19" tabindex="-1"></a>  <span class="do">##on crée 3ième groupe</span></span>
+<span id="cb293-20"><a href="les-boucles-avec-r.html#cb293-20" tabindex="-1"></a>  groupe3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb293-21"><a href="les-boucles-avec-r.html#cb293-21" tabindex="-1"></a>  <span class="do">##1vs2</span></span>
+<span id="cb293-22"><a href="les-boucles-avec-r.html#cb293-22" tabindex="-1"></a>  comp1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(groupe1, groupe2)</span>
+<span id="cb293-23"><a href="les-boucles-avec-r.html#cb293-23" tabindex="-1"></a>  <span class="do">##1vs3</span></span>
+<span id="cb293-24"><a href="les-boucles-avec-r.html#cb293-24" tabindex="-1"></a>  comp2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(groupe1, groupe3)</span>
+<span id="cb293-25"><a href="les-boucles-avec-r.html#cb293-25" tabindex="-1"></a>  <span class="do">##2vs3</span></span>
+<span id="cb293-26"><a href="les-boucles-avec-r.html#cb293-26" tabindex="-1"></a>  comp3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(groupe2, groupe3)</span>
+<span id="cb293-27"><a href="les-boucles-avec-r.html#cb293-27" tabindex="-1"></a>  out[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(comp1<span class="sc">$</span>p.value<span class="sc">&lt;=</span><span class="fl">0.05</span>, <span class="st">&quot;*&quot;</span>, <span class="st">&quot;NS&quot;</span>)</span>
+<span id="cb293-28"><a href="les-boucles-avec-r.html#cb293-28" tabindex="-1"></a>  out[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(comp2<span class="sc">$</span>p.value<span class="sc">&lt;=</span><span class="fl">0.05</span>, <span class="st">&quot;*&quot;</span>, <span class="st">&quot;NS&quot;</span>)</span>
+<span id="cb293-29"><a href="les-boucles-avec-r.html#cb293-29" tabindex="-1"></a>  out[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(comp3<span class="sc">$</span>p.value<span class="sc">&lt;=</span><span class="fl">0.05</span>, <span class="st">&quot;*&quot;</span>, <span class="st">&quot;NS&quot;</span>)</span>
+<span id="cb293-30"><a href="les-boucles-avec-r.html#cb293-30" tabindex="-1"></a>  out[i, <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">any</span>(<span class="fu">c</span>(comp1<span class="sc">$</span>p.value, </span>
+<span id="cb293-31"><a href="les-boucles-avec-r.html#cb293-31" tabindex="-1"></a>                            comp2<span class="sc">$</span>p.value,</span>
+<span id="cb293-32"><a href="les-boucles-avec-r.html#cb293-32" tabindex="-1"></a>                            comp3<span class="sc">$</span>p.value) <span class="sc">&lt;=</span> <span class="fl">0.05</span>), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb293-33"><a href="les-boucles-avec-r.html#cb293-33" tabindex="-1"></a>}</span></code></pre></div>
+<p>Le code ci-dessus commence en spécifiant une valeur initiale afin d’alimenter l’algorithme du générateur de nombres aléatoires, ce qui permet de reproduire les mêmes résultats sur tous les ordinateurs. La prochaine ligne crée l’objet <code>nsims</code> pour spécifier le nombre d’itérations désirées pour la boucle (ici, 1000 itérations). La création d’un objet pour spécifier les itérations permet de se référer à cet objet tout le long du code. Ainsi, si on désire modifier le nombre d’itérations, nous n’aurons qu’à modifier l’objet <code>nsims</code> et le reste du code demeurera inchangé. La ligne suivante crée la matrice <code>out</code> de 4 colonnes et <code>nsims</code> rangées. À noter qu’ici, les résultats des trois comparaisons (groupe 1 <em>vs</em> groupe 2, groupe 1 <em>vs</em> groupe 3 et groupe 2 <em>vs</em> groupe 3) seront sauvegardés dans les trois premières colonnes alors que la dernière colonne sera réservée pour déterminer l’erreur au niveau de l’expérience.</p>
+<p>La fonction <code>colnames</code> permet d’ajouter des étiquettes aux colonnes pour clairement identifier chaque colonne. La ligne débutant par <code>for(i in 1:nsims)</code> indique qu’on veut une boucle de <code>i = 1</code> jusqu’à <code>i = nsims</code>. Ensuite, nous avons trois lignes de codes pour générer les données de chaque groupe conforme à <span class="math inline">\(H_0\)</span>, c’est-à-dire qu’il n’y a pas de différences entre les trois groupes (ils proviennent de la même population). Nous effectuons ensuite les comparaisons entre chaque groupe à l’aide d’un test <span class="math inline">\(t\)</span>. Pour chacun des tests, si la valeur de <span class="math inline">\(P \leq \alpha\)</span>, nous avons décidé d’ajouter un <code>*</code> dans la colonne, autrement nous avons inséré les caractères <code>NS</code>. À noter que si on rejette <span class="math inline">\(H_0\)</span> pour un test <span class="math inline">\(t\)</span> sur ces données, nous avons commis une erreur de type I puisque les données simulées sont réellement tirées de la même population (la boucle a été construite pour générer des données conformes à <span class="math inline">\(H_0\)</span>).</p>
+<p>Pour une itération <code>i</code> donnée, à chaque fois que la colonne 1 contient <code>*</code>, c’est une erreur au niveau de la comparaison. Il en va de même avec les colonnes 2 et 3. La quatrième colonne de la matrice <code>out</code> prend la valeur de 1 si au moins une des colonnes à l’itération <code>i</code> a rejeté <span class="math inline">\(H_0\)</span> ce qui correspond à l’erreur au niveau de l’expérience, autrement la colonne prend la valeur de 0. Ces étapes sont répétées <code>i</code> fois.</p>
+<p>Lorsque toutes les itérations de la boucle sont complétées, nous obtenons les résultats suivants :</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="les-boucles-avec-r.html#cb294-1" tabindex="-1"></a><span class="do">##20 premières itérations</span></span>
+<span id="cb294-2"><a href="les-boucles-avec-r.html#cb294-2" tabindex="-1"></a>out[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ]</span></code></pre></div>
+<pre><code>##       1 vs 2 1 vs 3 2 vs 3 Erreur liée à l&#39;expérience
+##  [1,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [2,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [3,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [4,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [5,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [6,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [7,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+##  [8,] &quot;NS&quot;   &quot;*&quot;    &quot;*&quot;    &quot;1&quot;                       
+##  [9,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [10,] &quot;NS&quot;   &quot;*&quot;    &quot;NS&quot;   &quot;1&quot;                       
+## [11,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [12,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [13,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [14,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [15,] &quot;NS&quot;   &quot;*&quot;    &quot;NS&quot;   &quot;1&quot;                       
+## [16,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [17,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [18,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [19,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;                       
+## [20,] &quot;NS&quot;   &quot;NS&quot;   &quot;NS&quot;   &quot;0&quot;</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="les-boucles-avec-r.html#cb296-1" tabindex="-1"></a><span class="do">##erreurs au niveau de la comparaison 1 vs 2</span></span>
+<span id="cb296-2"><a href="les-boucles-avec-r.html#cb296-2" tabindex="-1"></a>err.comp1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(out[, <span class="dv">1</span>] <span class="sc">==</span> <span class="st">&quot;*&quot;</span>)<span class="sc">/</span>nsims</span>
+<span id="cb296-3"><a href="les-boucles-avec-r.html#cb296-3" tabindex="-1"></a>err.comp2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(out[, <span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;*&quot;</span>)<span class="sc">/</span>nsims</span>
+<span id="cb296-4"><a href="les-boucles-avec-r.html#cb296-4" tabindex="-1"></a>err.comp3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(out[, <span class="dv">3</span>] <span class="sc">==</span> <span class="st">&quot;*&quot;</span>)<span class="sc">/</span>nsims</span>
+<span id="cb296-5"><a href="les-boucles-avec-r.html#cb296-5" tabindex="-1"></a>err.comp1</span></code></pre></div>
+<pre><code>## [1] 0.045</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="les-boucles-avec-r.html#cb298-1" tabindex="-1"></a>err.comp2</span></code></pre></div>
+<pre><code>## [1] 0.05</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="les-boucles-avec-r.html#cb300-1" tabindex="-1"></a>err.comp3</span></code></pre></div>
+<pre><code>## [1] 0.057</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="les-boucles-avec-r.html#cb302-1" tabindex="-1"></a><span class="do">##erreur au niveau de l&#39;expérience</span></span>
+<span id="cb302-2"><a href="les-boucles-avec-r.html#cb302-2" tabindex="-1"></a>err.exp <span class="ot">&lt;-</span> <span class="fu">sum</span>(out[, <span class="dv">4</span>] <span class="sc">==</span> <span class="st">&quot;1&quot;</span>)<span class="sc">/</span>nsims</span></code></pre></div>
+<p>Afin de déterminer la probabilité de commettre une erreur au niveau des comparaisons, on peut calculer la proportion du nombre de résultats significatifs (<span class="math inline">\(P &lt; \alpha\)</span>) par rapport au nombre total de simulations. On obtient les valeurs de 0.045, 0.05 et 0.057, pour les comparaions 1 <em>vs</em> 2, 1 <em>vs</em> 3 et 2 <em>vs</em> 3, respectivement. Ces valeurs oscillent très près du seuil de signification car elles dépendent directement de cette valeur (ici, 0.05). L’erreur au niveau de l’expérience est de 0.124.</p>
+<p>Si on avait utilisé un seuil de 0.10, nous aurions obtenu les valeurs 0.109, 0.104 et 0.101 pour les comparaisons 1 <em>vs</em> 2, 1 <em>vs</em> 3 et 2 <em>vs</em> 3, respectivement. L’erreur au niveau de l’expérience dans ce cas serait de 0.245, obtenu en divisant le nombre de lignes avec au moins un résultat significatif par le nombre total d’itérations. Les calculs pour les erreurs au niveau de l’expérience et au niveau des comparaisons ne sont pas montrés ici pour un seuil <span class="math inline">\(\alpha = 0.10\)</span>. Nous vous suggérons de les faire comme exercice.</p>
+</div>
+</div>
+<div id="alternatives-aux-boucles" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Alternatives aux boucles<a href="les-boucles-avec-r.html#alternatives-aux-boucles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’utilisation de boucles dans R permet beaucoup de flexibilité pour réaliser des tâches très variées. Les boucles peuvent être imbriquées les unes dans les autres. Nous avons illustré l’utilisation de <code>for( )</code>, bien qu’il est aussi possible de réaliser des boucles avec des fonctions comme <code>while( )</code> ou <code>break( )</code>. Pour de très gros jeux de données ou certains types de calculs, les boucles peuvent être lentes. Certaines fonctions peuvent aussi agir un peu comme des boucles. C’est le cas de la fonction <code>apply( )</code> que nous verrons dans la section qui suit.</p>
+<div id="apply-et-fonctions-apparentées" class="section level4 hasAnchor" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> <code>apply( )</code> et fonctions apparentées<a href="les-boucles-avec-r.html#apply-et-fonctions-apparentées" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La fonction <code>apply( )</code> et ses fonctions apparentées telles que <code>lapply( )</code> et <code>tapply( )</code> (pour plus d’options, faites <code>help.search(apropos = "apply"</code>) permettent d’appliquer des calculs ou des manipulations à une matrice, à une liste ou à un jeu de données, entre autres. Les fonctions de la famille <code>apply( )</code> utilisent un processus qu’on appelle la vectorisation, c’est-à-dire que les calculs sont effectués simultanément sur des vecteurs au lieu d’une valeur à la fois comme avec la boucle. Les fonctions <code>apply( )</code> sont souvent beaucoup plus rapides que les boucles. On peut utiliser <code>tapply( )</code> pour calculer une statistique (<code>FUN</code>) d’une variable numérique <code>X = Ozone</code> pour différents groupes définis par une variable catégorique <code>INDEX = Jardin</code> dans le jeu de données <code>jardins.txt</code>.</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="les-boucles-avec-r.html#cb303-1" tabindex="-1"></a><span class="do">##importer le jeu de données jardins.txt</span></span>
+<span id="cb303-2"><a href="les-boucles-avec-r.html#cb303-2" tabindex="-1"></a>ozone <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/jardins.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb303-3"><a href="les-boucles-avec-r.html#cb303-3" tabindex="-1"></a><span class="fu">str</span>(ozone)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    45 obs. of  2 variables:
+##  $ Ozone : num  14.82 20.59 6.18 7.61 31.35 ...
+##  $ Jardin: chr  &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; ...</code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="les-boucles-avec-r.html#cb305-1" tabindex="-1"></a><span class="do">##on calcule la moyenne de Ozone pour chacun des groupes</span></span>
+<span id="cb305-2"><a href="les-boucles-avec-r.html#cb305-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##        A        B        C 
+## 16.34200 18.20133 18.07800</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="les-boucles-avec-r.html#cb307-1" tabindex="-1"></a><span class="do">##on calcule la SD de Ozone pour chacun des groupes</span></span>
+<span id="cb307-2"><a href="les-boucles-avec-r.html#cb307-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> sd)</span></code></pre></div>
+<pre><code>##        A        B        C 
+## 8.550944 4.506536 9.037485</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="les-boucles-avec-r.html#cb309-1" tabindex="-1"></a><span class="do">##on calcule le n pour chacun des groupes</span></span>
+<span id="cb309-2"><a href="les-boucles-avec-r.html#cb309-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> length)</span></code></pre></div>
+<pre><code>##  A  B  C 
+## 15 15 15</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="les-boucles-avec-r.html#cb311-1" tabindex="-1"></a><span class="do">##on détermine si chaque groupe contient des valeurs numériques</span></span>
+<span id="cb311-2"><a href="les-boucles-avec-r.html#cb311-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> is.matrix)</span></code></pre></div>
+<pre><code>##     A     B     C 
+## FALSE FALSE FALSE</code></pre>
+<p>La fonction <code>tapply( )</code> est destinée aux jeux de données. De façon plus générale, on peut appliquer une fonction (<code>FUN</code>) sur les rangées ou colonnes (<code>MARGIN</code>) d’une matrice (<code>X</code>) à l’aide de <code>apply( )</code> :</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="les-boucles-avec-r.html#cb313-1" tabindex="-1"></a><span class="do">##on crée une matrice</span></span>
+<span id="cb313-2"><a href="les-boucles-avec-r.html#cb313-2" tabindex="-1"></a>mat.sim <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb313-3"><a href="les-boucles-avec-r.html#cb313-3" tabindex="-1"></a>mat.sim</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    7   13   19
+## [2,]    2    8   14   20
+## [3,]    3    9   15   21
+## [4,]    4   10   16   22
+## [5,]    5   11   17   23
+## [6,]    6   12   18   24</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="les-boucles-avec-r.html#cb315-1" tabindex="-1"></a><span class="do">##on calcule la somme de chaque rangée</span></span>
+<span id="cb315-2"><a href="les-boucles-avec-r.html#cb315-2" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> mat.sim, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> sum)</span></code></pre></div>
+<pre><code>## [1] 40 44 48 52 56 60</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="les-boucles-avec-r.html#cb317-1" tabindex="-1"></a><span class="do">##on compare à rowSums - identique</span></span>
+<span id="cb317-2"><a href="les-boucles-avec-r.html#cb317-2" tabindex="-1"></a><span class="fu">rowSums</span>(mat.sim)</span></code></pre></div>
+<pre><code>## [1] 40 44 48 52 56 60</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="les-boucles-avec-r.html#cb319-1" tabindex="-1"></a><span class="do">##on calcule le produit de chaque rangée</span></span>
+<span id="cb319-2"><a href="les-boucles-avec-r.html#cb319-2" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> mat.sim, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> prod)</span></code></pre></div>
+<pre><code>## [1]  1729  4480  8505 14080 21505 31104</code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="les-boucles-avec-r.html#cb321-1" tabindex="-1"></a><span class="do">##on calcule la somme de chaque colonne </span></span>
+<span id="cb321-2"><a href="les-boucles-avec-r.html#cb321-2" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> mat.sim, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum)</span></code></pre></div>
+<pre><code>## [1]  21  57  93 129</code></pre>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="les-boucles-avec-r.html#cb323-1" tabindex="-1"></a><span class="do">##on compare à colSums - identique</span></span>
+<span id="cb323-2"><a href="les-boucles-avec-r.html#cb323-2" tabindex="-1"></a><span class="fu">colSums</span>(mat.sim)</span></code></pre></div>
+<pre><code>## [1]  21  57  93 129</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="les-boucles-avec-r.html#cb325-1" tabindex="-1"></a><span class="do">##on calcule le produit de chaque colonne</span></span>
+<span id="cb325-2"><a href="les-boucles-avec-r.html#cb325-2" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> mat.sim, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> prod)</span></code></pre></div>
+<pre><code>## [1]      720   665280 13366080 96909120</code></pre>
+<p>On comprend que lorsque l’argument <code>MARGIN</code> prend la valeur de 1, les calculs sont effectués sur chacune des rangées. Si <code>MARGIN</code> a la valeur de 2, les calculs se réalisent sur chaque colonne.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="théories-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercices-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Module_6/Module_6.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Cours_Stats_R.pdf", "Cours_Stats_R.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

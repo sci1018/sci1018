@@ -1,0 +1,50 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+/* Two unequal columns for presentation section */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body {
+  counter-reset: exemple; /* Initialize the example counter */
+}
+
+.exemple {
+  counter-increment: exemple; /* Increment the example counter for each .exemple block */
+  margin-bottom: 1em;
+}
+
+.exemple::before {
+  content: "Exemple " attr(section) "." counter(exemple) ": "; /* Display the hierarchical example number */
+  font-weight: bold;
+}
+

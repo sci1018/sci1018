@@ -1,0 +1,28 @@
+book_filename: Cours_Stats_R
+delete_merged_file: true
+output_dir: docs
+language:
+  ui:
+    chapter_name: 'Module '
+rmd_files: 
+  - index.Rmd
+  - Presentation/Presentation.Rmd
+  - Presentation/Ressources.Rmd
+  - Module_1/Module_1.Rmd
+  - Module_2/Module_2.Rmd
+  - Module_3/Module_3.Rmd
+  - Module_4/Module_4.Rmd
+  - Module_5/Module_5.Rmd
+  - Module_6/Module_6.Rmd
+  - Module_7/Module_7.Rmd
+  - Module_8/Module_8.Rmd
+rmd_subdir: 
+  - Presentation/
+  - Module_1/
+  - Module_2/
+  - Module_3/
+  - Module_4/
+  - Module_5/
+  - Module_6/
+  - Module_7/
+  - Module_8/

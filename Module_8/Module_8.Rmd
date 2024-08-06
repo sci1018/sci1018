@@ -1,0 +1,41 @@
+# Blocs complets aléatoires
+
+## Théories
+
+### Effets fixes et effets aléatoires 
+
+#### ANOVA à un critère 
+
+
+#### ANOVA à deux critères 
+
+
+
+### Blocs complets aléatoires 
+
+
+#### Révision de l'échantillonnage 
+
+
+#### Origine du dispositif en blocs complets aléatoires
+
+
+#### Particularité du dispositif en blocs complets aléatoires
+
+
+#### Applications moins conventionnelles
+
+
+#### Conditions d'application
+
+
+#### Avantages du dispositif en blocs complets aléatoires 
+
+
+#### Désavantages du dispositif en blocs complets aléatoires 
+
+
+### Conclusion
+
+
+## Exercices

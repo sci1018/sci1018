@@ -1,0 +1,735 @@
+# Tests d'hypothèse sur un seul groupe
+
+Lors de la leçon précédente, nous avons illustré le concept d'intervalle de confiance en nous appuyant sur le rééchantillonnage. Afin de construire des intervalles de confiance, nous avons utilisé la distribution normale ou la distribution du *t* de Student selon la taille de l'échantillon. Différentes stratégies d'échantillonnage ont été présentées, bien que l'échantillonnage complètement aléatoire et l'échantillonnage stratifié aléatoire soient les approches les plus fréquemment utilisées dans le cours.
+
+## Théories
+
+### Hypothèse
+
+Une **hypothèse** est une explication potentielle que l'on formule pour décrire nos observations du monde extérieur. On entend par "observations"", les "données" qui sont recueillies. Les hypothèses impliquent souvent une relation de cause à effet. Les études scientifiques permettent de comprendre la cause des phénomènes observés. La formulation d'hypothèses peut provenir d'observations personnelles préliminaires, de prédictions à partir de modèles théoriques, de la littérature scientifique ou du raisonnement.  
+
+Les données utilisées pour tester les hypothèses peuvent provenir d'**expériences contrôlées** (*controlled experiments*) ou d'**études d'observation** (*observational studies*). Lors d'une expérience contrôlée (exemple 3.1), les traitements sont assignés aléatoirement aux unités expérimentales, et on contrôle toutes les variables sauf celles pour lesquelles on veut mesurer l'effet. Le résultat d'une expérience est très robuste et permet de tirer des conclusions solides quant aux traitements étudiés. L'étude d'observation (exemple 3.2), quant à elle, implique de sélectionner aléatoirement les unités expérimentales, mais l'assignation des traitements n'est pas déterminée aléatoirement par l'expérimentateur. Puisqu'on contrôle très peu de variables, il est plus difficile de conclure en une relation de cause à effet d'une variable sur une autre. 
+
+On peut faire davantage confiance à des conclusions qui reposent sur des manipulations plutôt que sur des observations où on ne contrôle peu ou pas de variables. Les deux types d'approches expérimentales sont importantes et complémentaires. L'expérience contrôlée peut parfois manquer de réalisme en simplifiant trop le système à l'étude, alors que l'étude d'observation mesure la variation en conditions plus naturelles, mais non contrôlées. Une étude d'observation peut révéler des patrons bruts et suggérer une expérience contrôlée afin de raffiner notre enquête.
+
+---
+
+::: {.exemple section=3}
+On réalise une expérience visant l'effet de différents types de fourrage sur le goût du lait de vache. Pour ce faire, on sélectionne 30 vaches de la même race et on leur attribue aléatoirement l'un de trois types de fourrage (millet, trèfle, et luzerne), afin d'avoir 10 vaches pour chaque traitement. On soumet les vaches aux mêmes conditions de séjour (photopériode, température ambiante, disponibilité d'eau, "bonne" musique). 
+
+À la fin d'une période donnée pendant laquelle les vaches ont été nourries avec le type de fourrage prescrit (p. ex., une semaine, un mois), nous pourrons ensuite échantillonner le lait de chaque vache. Après avoir soumis les échantillons de lait à notre goûteur, le résultat de l'expérience permettra de déterminer la différence de goût du lait selon le type de fourrage perceptible par un goûteur. 
+:::
+
+---
+
+---
+
+::: {.exemple section=3}
+On réalise une étude d'observation afin d'étudier le nombre de grenouilles présentant des malformations dans des étangs en milieux agricoles. On sélectionne aléatoirement 20 étangs dans des milieux à faible intensité agricole et 20 étangs additionnels dans des milieux à forte intensité agricole. Dans chaque étang, on effectue des inventaires afin d'estimer le nombre de grenouilles qui ont des malformations à l'aide de méthodes qui tiennent compte de la probabilité de détection. On mesure également d'autres variables, telles que la taille de l'étang, la distance de chaque étang par rapport au champ agricole le plus près, et la concentration d'une substance toxique dans l'eau de chaque étang. 
+
+Une analyse statistique permet de déterminer comment le nombre de malformations varie selon les autres variables mesurées. Si on observe que le nombre de malformations est plus élevé dans les étangs près des champs agricoles, on ne peut pas conclure avec certitude que cette augmentation est due à la proximité des champs puisque nous n'avons pas contrôlé toutes les variables. 
+
+En fait, il se peut que certaines substances toxiques différentes de celles qu'on a mesurées, provenant des champs agricoles situés à proximité, soient amenées par ruissellement dans les étangs. Ainsi, la cause des malformations n'est pas nécessairement la proximité des champs agricoles, mais plutôt les produits toxiques qui y sont appliqués. Après avoir détecté un effet de la proximité, il serait approprié d'effectuer une expérience contrôlée en faisant varier certaines variables pour quantifier directement leurs effets.
+:::
+
+---
+
+#### Hypothèse scientifique
+
+Une **hypothèse scientifique** est une hypothèse qui peut être testée avec des observations ou des résultats expérimentaux et qui permettront de la modifier ou de la rejeter. Toute bonne hypothèse scientifique devrait générer de nouvelles prédictions^[Par prédiction, on entend une généralisation d'un phénomène qui permet de prédire le comportement d'une variable d'intérêt pour une condition donnée. Par exemple, si on effectue une étude sur la pression artérielle et la masse corporelle, on pourrait par la suite prédire la pression artérielle pour une masse corporelle de 50 kg.]. À noter aussi qu'un modèle peut appuyer une hypothèse particulière et que ce modèle mène à des prédictions. Une bonne hypothèse scientifique ne devrait fournir qu'une seule prédiction qui ne provient pas d'explications alternatives. Finalement, une bonne hypothèse doit avoir la possibilité d'être rejetée ou **réfutée** (ou falsifiée) en présence de données qui la contredisent. 
+
+Une hypothèse qui n'a aucune chance d'être rejetée, pour laquelle il est impossible de récolter des données, n'est pas une hypothèse scientifique -- on doit distinguer croyance et hypothèse. Par exemple, on pourrait considérer les énoncés suivants qui ne peuvent pas être réfutés et qui ne sont donc pas de vraies hypothèses (pour le moment, en tout cas ...) :
+
+> Il y a de la vie sur Pluton.
+
+> Les populations de yétis et de sasquatchs sont repoussées dans des milieux encore plus reculés à la suite du développment urbain.
+
+> Les chiens rêvent à leurs meilleurs moments de la journée pendant la nuit. 
+
+En contrepartie, les énoncés suivants sont des hypothèses qui peuvent être potentiellement réfutées avec des données:
+
+> La lumière abondante dans les coupes forestières favorise les espèces végétales intolérantes à l'ombre.
+
+> Un groupe de grande taille confère à des poissons une meilleure chance de survie face à un prédateur.
+
+> Les ordinateurs de la compagnie XX ont une durée de vie plus grande que les ordinateurs manufacturés par la compagnie YY.
+
+Pour chacune des hypothèses ci-dessus, on pourrait développer un protocole afin de tester l'hypothèse à partir d'une expérience contrôlée ou d'une étude d'observation. Les données récoltées permettraient de rejeter ou non l'hypothèse. Il faut garder à l'esprit que la formulation d'une bonne hypothèse est le point de départ d'un bon projet scientifique. 
+  
+#### Méthode scientifique 
+
+La **méthode scientifique** est une approche utilisée pour élaborer des hypothèses selon des observations et des prédictions. Différents types de raisonnements peuvent être utilisés selon la méthode scientifique, notamment la **déduction** (exemple 3.3) et l'**induction** (exemple 3.4). Le raisonnement déductif consiste à tirer des conclusions (inférer) à partir de données ou modèles partant du **général pour arriver au spécifique**. Par opposition, le raisonnement inductif consiste à tirer des conclusions à partir de données ou modèles partant du **spécifique au général**.
+
+--- 
+
+::: {.exemple section=3}
+Voici un exemple de déduction :  
+1. Tous les mélèzes en Abitibi sont de l'espèce *Larix laricina*.  
+2. J'ai échantillonné ce mélèze en Abitibi.  
+3. Ce mélèze est un *Larix laricina*.  
+Les éléments 1 et 2 sont des **prémisses** et le troisième est la conclusion. Ensemble, ces trois éléments forment un **syllogisme**. 
+:::
+
+---
+
+--- 
+
+::: {.exemple section=3}
+Voici un exemple d'induction :   
+1. Ces 25 mélèzes sont des *Larix laricina*.  
+2. Ces 25 mélèzes ont été échantillonnés en Abitibi.  
+3. Tous les mélèzes d'Abitibi sont des *Larix laricina*.  
+:::
+
+---
+
+Avec la déduction, si les prémisses sont vraies, la conclusion a de très bonnes chances d'être correcte, alors qu'avec l'induction, si les prémisses sont vraies, la conclusion est probablement vraie, mais elle peut aussi être fausse. On utilise l'un ou l'autre de ces raisonnements pour construire des hypothèses, mais on peut aussi les utiliser de façon concomitante. La statistique est une approche inductive, puisqu'on tire des conclusions en partant du spécifique (l'échantillon) pour l'appliquer au plus général (la population). La figure \@ref(fig:induction) montre l'utilisation de l'induction dans la démarche scientifique.
+
+```{r induction, fig.align='center', echo=FALSE, fig.link='images/induction.png', fig.cap="Schéma de l'approche d'induction en sciences."}
+knitr::include_graphics("Module_3/images/induction.png")
+```
+
+#### Inférence bayésienne
+
+L'**inférence bayésienne** est une version moderne de l'approche inductive qui peut utiliser toute l'information disponible (résultats publiés, estimations des paramètres, croyances ou connaissances) afin de construire une hypothèse. Cette méthode a été développée au 18$^{\mathrm{e}}$ siècle. Cependant, comme les calculs sont très complexes, elle a été peu utilisée jusqu'au début des années 1990. Avec la venue d'ordinateurs puissants et d'algorithmes efficaces disponibles dans des logiciels libres (`BUGS`, `WinBUGS`, `OpenBUGS`, `JAGS`), cette branche des statistiques est en plein essor. Puisque le cours couvre les statistiques fréquentistes ou fishériennes, développées par Sir Ronald A. Fisher, nous ne discuterons pas plus des approches bayésiennes qui nécessitent une connaissance approfondie des statistiques.
+
+#### Méthode hypothético-déductive
+
+Avec la méthode hypothético-déductive, au lieu de commencer avec une seule hypothèse, on considère plusieurs hypothèses de travail pouvant expliquer le phénomène d'intérêt (Figure \@ref(fig:hypodeduction)). Chaque hypothèse est testée et peut être réfutée avec de nouvelles données. On élimine des hypothèses au fur et à mesure selon les données qui sont récoltées dans des études ou des expériences successives. L'explication la plus plausible est l'hypothèse qui a résisté à la falsification à plusieurs reprises.
+
+```{r hypodeduction, fig.align='center', echo=FALSE, fig.link='images/hypodeduction.png', fig.cap="Schéma de l'approche hypothético-déductive en sciences. L'hypothèse qui est conforme aux prédictions est celle qui a résisté à la falsification après plusieurs expériences successives."}
+knitr::include_graphics("Module_3/images/hypodeduction.png")
+```
+
+La méthode hypothético-déductive comporte plusieurs avantages :  
+
+ - Elle force à considérer plusieurs hypothèses dès le début.
+ - Elle illustre les différences de prédiction entre chaque hypothèse.
+ - Les explications simples sont les premières considérées, les plus complexes ensuite.
+ - Plusieurs hypothèses sont testées en même temps (l'induction teste une hypothèse à la fois).
+
+Toutefois, la méthode hypothético-déductive comporte un désavantage important :
+
+ - La méthode ne fonctionne pas si l'hypothèse correcte ne figure pas parmi les hypothèses énoncées avant l'expérience. En contrepartie, la méthode inductive peut commencer par une hypothèse incorrecte mais peut arriver à celle correcte après modification répétée de l'hypothèse suite à de nouvelles observations.
+
+### Hypothèse statistiques
+
+Alors que l'hypothèse scientifique est l'élément qui devrait avoir motivé l'expérience, l'**hypothèse statistique** est une formulation "mathématique"  de l'hypothèse scientifique. En effet, dans les approches classiques de tests d'hypothèse statistique, on compte deux hypothèses, l'**hypothèse nulle** ($H_0$) et l'**hypothèse alternative** ($H_a$). L'hypothèse nulle ($H_0$) représente l'absence de différence ou l'absence d'un effet. Elle se base sur un test statistique et une distribution indiquant que la variabilité observée dans les données est due au hasard ou à l'erreur d'échantillonnage. En d'autres mots, l'hypothèse nulle suppose qu'il ne se passe rien. 
+
+L'hypothèse alternative ($H_a$), quant à elle, est l'hypothèse statistique qui correspond à un effet ou une différence. C'est cette hypothèse qui indique qu'il se passe quelque chose. Le test d'hypothèse statistique consiste à essayer de rejeter $H_0$. Si l'hypothèse nulle ($H_0$) est fausse, on la rejette et on se tourne vers l'hypothèse alternative ($H_a$). On parle toujours en termes de $H_0$: on rejette $H_0$ ou non. On ne peut pas accepter $H_0$, seulement échouer de la rejeter faute de preuves. C'est ce système binaire d'hypothèses que les chercheurs utilisent depuis près d'un siècle. Toutefois, des méthodes alternatives ont été développées récemment qui permettent de comparer plusieurs hypothèses (> 2) simultanément, à l'aide de la sélection de modèles.
+
+--- 
+
+::: {.exemple section=3}
+On réalise une expérience pour tester l'hypothèse scientifique suivante: la lumière abondante dans les coupes forestières favorise les espèces végétales intolérantes à l'ombre. 
+
+Pour ce faire, on pourrait comparer la croissance moyenne de certaines espèces intolérantes à l'ombre dans 10 parcelles en coupes forestières et 10 parcelles en forêt sans coupe (témoins). Après avoir récolté les données, on pourrait procéder à une analyse statistique pour tester les hypothèses statistiques suivantes à propos des moyennes des deux groupes: 
+$H_0$ (hypothèse nulle): $\mu_{coupes} = \mu_{t\acute{e}moins}$ \\
+$H_a$ (hypothèse alternative): $\mu_{coupes} \neq \mu_{t\acute{e}moins}$
+
+Si le test statistique indique que la différence observée entre les parcelle coupées et témoins est peu probable pour un échantillon de même taille tiré à partir de la même population lorsque $H_0$ est vraie, nous allons rejeter $H_0$. En d'autres mots, on se base sur une distribution statistique qui reflète $H_0$ pour situer la valeur observée de la statistique du test obtenue à partir de l'échantillon. Si cette valeur se trouve dans les extrémités de la distribution (c.-à-d., dans les queues), on va considérer cette valeur comme peu plausible lorsque $H_0$ est vraie. On conclura alors qu'il y a une différence de croissance des espèces intolérantes à l'ombre dans les coupes et dans les témoins, ce qui confirmera notre hypothèse scientifique de départ.
+:::
+
+---
+
+Pour déterminer si une différence est **statistiquement significative** (*statistically significant*) entre deux groupes ou deux échantillons, on doit procéder à un test statistique. Le test statistique est le processus par lequel on évalue la probabilité d'observer la valeur d'une statistique lorsque $H_0$ est vraie pour une taille d'échantillon donnée dans une population. Par le fait même, nous effectuons un test d'hypothèse. 
+
+Lorsqu'on compare les moyennes de deux groupes, il est peu probable d'observer exactement les mêmes valeurs dans les deux groupes. Il faut alors déterminer si la différence que nous avons observée est due à la variabilité naturelle dans la population ou à un effet réel (une vraie différence). Pour ce faire, il faut connaître la variabilité (la variance, $s^2$) dans chaque groupe. Il est normal que deux échantillons tirés de la même population soient différents en raison de la variabilité naturelle de la population et de l'erreur d'échantillonnage. Il faut un moyen de décider si la  différence observée est due au hasard ou à un effet réel.
+
+Le **seuil de signification** ($\alpha$, *significance level*) est justement un critère qui est utilisé depuis longtemps pour distinguer entre le résultat du hasard et d'un effet réel. Par convention, on utilise $\alpha = 0.01, 0.05$ ou $0.10$. Si la probabilité cumulative de la statistique du test utilisé est inférieure ou égale au seuil de signification ($P \leq \alpha$), on rejette $H_0$. Ainsi, avec $P \leq 0.05$, on devrait observer une différence comme celle de l'échantillon lorsque $H_0$ est vraie dans moins de 5 \% des cas, si on répétait l'expérience. Autrement dit, si pour les caractéristiques des données le phénomène ($H_0$) est rare (c.-à-d., $P \leq \alpha$), on rejette $H_0$. Par conséquent, on ne rejette pas $H_0$ si le phénomène ($H_0$) est fréquent pour les caractéristiques des données de notre échantillon.
+
+--- 
+
+::: {.exemple section=3}
+On poursuit l'exemple précédent sur la croissance d'espèces végétales intolérantes à l'ombre dans des coupes et des parcelles témoins. Comme mentionné plus tôt, nous considérons les deux hypothèses suivantes et un seul de signification de $0.05$:
+
+$H_0$: $\mu_{coupes} = \mu_{t\acute{e}moins}$   
+$H_a$: $\mu_{coupes} \neq \mu_{t\acute{e}moins}$  
+$\alpha = 0.05$ 
+
+On effectue un test statistique qui détermine la probabilité que l'échantillon provienne d'une population où $H_0$ est vraie. Si d'après le test, on a une probabilité cumulative inférieure ou égale à 5 \% ($P \leq 0.05$) d'observer une différence comme celle dans notre échantillon lorsque $H_0$ est vraie, on rejette $H_0$. Autrement dit, si $P \leq 0.05$, il est peu probable d'observer une différence comme celle de notre échantillon lorsque $H_0$ est vraie si on répète l'étude un grand nombre de fois.
+
+:::
+
+---
+
+La déclaration que le résultat du test est statistiquement significatif apporte peu d'information. Il est préférable d'ajouter l'estimation du paramètre pour chaque groupe, comme la la moyenne $\bar{x}$ ainsi qu'une mesure de précision. Toutefois, le choix d'un seuil de signification (0.05, 0.01, 0.10) n'est pas sans conséquence -- il influence notre probabilité de commettre des erreurs dans nos conclusions.
+
+### Erreurs de type I et II
+
+Le choix du seuil de signification influence la probabilité d'arriver à la bonne conclusion. Si on fixe $\alpha$ à 0.05, on va rejeter $H_0$ si la probabilité d'observer une différence comme celle de l'échantillon (lorsque $H_0$ est vraie) est inférieure à 0.05. Même avec la meilleure des intentions, on va donc rejeter $H_0$ dans des cas où $H_0$ est vraie avec une probabilité de $\alpha$. Bien qu'il existe des valeurs dans les extrémités d'une distribution lorsque $H_0$ est vraie, notre choix de traiter ces valeurs comme des cas peu probables fait en sorte qu'on rejette parfois $H_0$ alors que nous n'aurions pas dû la rejeter. Avec $\alpha = 0.05$, on va rejeter $H_0$ à tort 5 \% du temps (1 fois sur 20). On appelle ce type d'erreur, l'**erreur de type I** (erreur $\alpha$, *type I error*). C'est équivalent de déclarer un accusé "coupable" alors qu'il est "non coupable"  (Table \@ref(tab:hoha)).
+
+De la même façon, à d'autres occasions, nous ne rejetterons pas $H_0$ lorsqu'elle est fausse et qu'elle aurait dû être rejetée. Il s'agit de **l'erreur de type II** (erreur $\beta$, *type II error*) -- on déclare l'accusé "non coupable" alors qu'il est "coupable". La probabilité de commettre une erreur de type II peut se calculer à partir de formules ou de simulations, mais elle dépend de la taille de l'effet que l'on veut observer, de la taille de l'échantillon, de la variance des données, de la formulation de $H_0$, du design expérimental et du type d'échantillonnage. Les calculs de la puissance ne seront pas présentés dans le cours.
+
+
+```{r hoha, echo=FALSE, results='asis'}
+library(knitr)
+library(kableExtra)
+# Create the data frame with the appropriate structure
+df <- data.frame(
+  Col1 = c("", "**RÉALITÉ**", ""),
+  Col2 = c("", "$H_0$ vraie", "$H_0$ fausse"),
+  Col3 = c("On ne rejette pas $H_0$", 
+           "décision correcte", 
+           "erreur de type II ($\\beta$) <br> (faux négatif)"),
+  Col4 = c("On rejette $H_0$", 
+           "erreur de type I ($\\alpha$) <br> (faux positif)", 
+           "décision correcte <br> (puissance = 1 - $\\beta$)")
+)
+
+# Generate the table with custom styling for merged cells
+kable(df, 
+      col.names = NULL, 
+      row.names = FALSE, 
+      caption = "Représentation des différents scénarios lors d'un test d'hypothèse nulle ($H_0$).",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  add_header_above(c(" " = 2, "**CONCLUSION À PARTIR DU TEST**" = 2)) %>%
+  kable_styling(full_width = F, position = "center")
+
+```
+
+
+#### Puissance
+
+La **puissance**, définie comme étant $1 - \beta$, est la probabilité de rejeter correctement $H_0$ lorsqu'elle est fausse. La puissance dépend de la taille de l'effet, de la taille de l'échantillon, de la variabilité des données, de l'hypothèse testée et du dispositif expérimental. Cette quantité peut être calculée à l'aide de données préliminaires avant d'effectuer l'échantillonnage afin de nous guider quant à la taille d'échantillon nécessaire étant donné l'effet que l'on veut mesurer (p. ex., les différences entre moyennes de groupes). Le calcul de la puissance doit s'effectuer *a priori* avec des données préliminaires. Le calcul *a posteriori* de la puissance, à partir des données de l'expérience ou de l'étude d'observation, est à proscrire. %D'ailleurs, l'usage des analyses de puissance *a posteriori* a fait l'objet de vives critiques dans les années 1990's dans le monde statistique.
+
+Dans toute analyse, nous voulons que la puissance soit élevée (le plus près possible de 1). Les mesures suivantes permettent d'augmenter la puissance d'une analyse :
+
+ - augmenter l'erreur de type I -- si $\alpha$ augmente, $\beta$ diminue, et par conséquent, $1 - \beta$ augmente;
+ - augmenter la taille d'échantillon;
+ - minimiser la variance des données.
+      
+#### Relation entre les erreurs de type I et II 
+
+On doit viser de faibles erreurs de type I et II. Toutefois, les deux types d'erreur sont liées entre elles: lorsqu'on réduit un type d'erreur, l'autre augmente automatiquement. Le choix de réduire un type d'erreur plutôt qu'un autre dépend du type d'étude réalisée et de la nature de sa discipline. Par exemple, en pharmacologie, il est à l'avantage d'une compagnie pharmaceutique de fixer le seuil $\alpha$ à une valeur plus faible afin de réduire la probabilité de déclarer un médicament nocif, ce qui augmente l'erreur de type II. En biologie de la conservation, on veut réduire les chances de ne pas déclarer un effet sur une espèce en voie d'extinction lorsqu'il y a réellement un effet -- pour ce faire, on augmentera l'erreur de type I en augmentant le seuil $\alpha$.
+
+Certains auteurs argumentent que l'erreur de type I est la plus sérieuse. L'erreur de type I est liée à une déclaration (basée sur le rejet de $H_0$) qu'un mécanisme complexe se produit dans le système étudié alors que ce n'est pas le cas, puisqu'on a incorrectement rejeté $H_0$. D'autres chercheurs construiront leur expérience en se basant sur les résultats erronés. L'erreur de type II, quant à elle, représente notre incapacité à rejeter $H_0$ alors que nous aurions dû la rejeter. Cependant, quelqu'un avec un meilleur dispositif expérimental ou avec plus de données pourra la rejeter plus tard. Dans le domaine médical ou environnemental, l'erreur de type II peut avoir de graves répercussions. Le meilleur moyen de réduire simultanément les deux types d'erreur est d'augmenter la taille de l'échantillon.
+
+### Utilisation de tests d'hypothèse
+
+Pour utiliser correctement les tests d'hypothèse, nous avons besoin de données qui proviennent d'un échantillon aléatoire. Toutefois, il faut être conscient que les tests $H_0$ ne font pas l'unanimité puisque des problèmes potentiels sont associés à leur utilisation. Le choix du seuil $\alpha$, c'est-à-dire la probabilité d'erreur de type I, est arbitraire. Il a des conséquences sur les erreurs de type I et II, sur la puissance, et donc sur nos conclusions. Le choix du seuil $\alpha$ devrait se baser sur les conséquences associés à commettre une erreur de type I ou II. 
+
+Par exemple, le coût d'une erreur de type I, comme pour le verdict de coupable pour un innocent, a de sérieuses conséquences pour un accusé de meurtre dans un pays avec peine de mort. Dans ce cas, il est souhaitable de réduire l'erreur de type I afin de diminuer le risque de rejeter $H_0$ alors qu'elle n'aurait pas dû être rejetée. Par contre, pour un accusé d'excès de vitesse, les conséquences d'une erreur de type I sont beaucoup moindres. En effet, le verdict de culpabilité requiert peu de preuves et entraîne une amende. Dans ce cas, on peut se permettre d'augmenter l'erreur de type I. 
+
+L'utilisation d'un seuil $\alpha$ rigide est déconseillée. Certains déclarent un effet à $P = 0.05$, mais pas à $P = 0.051$, même si le phénomène est toujours présent. L'utilisation de tests $H_0$ pour des résultats évidents n'amène pas beaucoup d'information (test pour déterminer si un échantillon avec $\bar{x} = 20$ et $SE = 1.2$ provient d'une population avec $\mu = 2000$). Il faut faire attention à l'interprétation incorrecte de $P$. $P$ n'indique pas la probabilité que $H_0$ soit vraie. En fait, lors d'une expérience, $H_0$ est vraie ou fausse. La probabilité $P$ indique la plausibilité des données de l'échantillon quand $H_0$ est vraie. Plus cette valeur est faible (c.-à-d., $P < \alpha$), moins il y a de preuve que notre échantillon provienne d'une population où l'hypothèse nulle est vraie. 
+
+Il est important de faire la distinction entre un effet statistiquement significatif et un effet biologiquement significatif. Avec un échantillon suffisamment grand, on peut rejeter n'importe quelle $H_0$. Il est donc important de distinguer lorsque l'effet, bien que statistiquement significatif, n'a pas d'importance pratique ou scientifique. C'est à l'expérimentateur de décider si une différence statistiquement significative a une importance scientifique. Par exemple, nous effectuons une expérience de trois semaines sur la croissance de semis avec deux types d'engrais. À la fin de l'expérience, nous comparons la hauteur moyenne des semis des deux groupes. Si notre effet est de 0.01 mm ($\bar{x}_{\mathrm{engrais \: A}} - \bar{x}_{\mathrm{engrais \: B}} = 0.01 \: \mathrm{mm}$), est-ce suffisant pour déclarer l'engrais A meilleur que l'engrais B? Est-ce que le résultat justifiera d'acheter l'engrais A même s'il coûte trois fois plus cher que l'engrais B?
+
+Le non-rejet de $H_0$ n'équivaut pas à l'absence d'un effet. Si la puissance est trop faible, il sera impossible de rejeter $H_0$ lorsqu'elle est fausse. De plus, après un grand nombre de tests $H_0$, il est normal de rejeter $H_0$ même lorsqu'elle est vraie. Avec $\alpha = 0.05$, le rejet d'une seule $H_0$ sur 20 tests effectués pourrait être le fruit du pur hasard et une conséquence directe du choix de $\alpha$.
+
+#### Conseils sur la présentation des résultats de tests d'hypothèse
+
+La simple déclaration que l'hypothèse nulle a été rejetée amène peu d'information. Il est préférable d'au moins présenter la valeur du test statistique, les degrés de liberté qui y sont associés ainsi que la valeur exacte du $P$. Ainsi, les lecteurs pourront juger par eux-mêmes de la pertinence de vos conclusions, qu'ils utilisent ou non le même seuil de signification que vous. Afin de bonifier l'utilisation des tests $H_0$, il est fortement conseillé de joindre à tout test d'hypothèse les estimations des paramètres (p. ex., moyennes de groupes) ainsi que des mesures de précision de ces estimations, telles que des erreurs-types ou des intervalles de confiance. Ces valeurs sont nécessaires dans les méta-analyses, lesquelles sont des analyses effectuées lors d'une revue de littérature sur un thème particulier à partir des résultats d'articles publiés.
+
+### Estimation de paramètres
+
+Lorsque nous effectuons une analyse statistique, nous désirons parfois obtenir plus d'information que de simplement savoir s'il y a un effet ou non. Par exemple, quel est le taux de croissance de larves de grenouilles si nous augmentons la quantité de nourriture de 1 g par jour? Quel est le succès de germination lorsque nous utilisons une certaine variété de graines? Dans de tels cas, le problème de test d'hypothèse statistique devient un problème d'estimation de paramètre. La régression linéaire, où on estime une ordonnée à l'origine (axe des $y$) et une pente est un exemple de ce problème. 
+
+On peut utiliser les intervalles de confiance pour mesurer l'incertitude de l'estimation. On réalise rapidement que les tests d'hypothèse et les intervalles de confiance sont liés: les deux utilisent un seuil $\alpha$. Ainsi, un intervalle de confiance qui inclut 0 correspond à $H_0: \beta = 0$. Nous reviendrons sur l'estimation de paramètres au cours des prochaines leçons.
+
+### Tests d'hypothèse sur la moyenne d'un seul groupe
+
+Les tests d'hypothèse effectués sur la moyenne d'un groupe permettent de déterminer si un échantillon appartient à une population donnée. Typiquement, nous utilisons le test $t$\index{test *t*!sur un groupe} pour réaliser cette analyse. En d'autres mots, on teste la probabilité d'observer une valeur de $t$ qui a la même valeur ou qui est supérieure à celle calculée à partir de notre échantillon si on refaisait l'expérience avec un grand nombre d'échantillons tirés d'une population où l'hypothèse nulle est vraie. Ce concept de "rééchantillonnage" explique d'où vient le nom de statistiques "fréquentistes". Autrement dit, on base nos conclusions sur la fréquence du phénomène d'intérêt que l'on aurait observée si on avait récolté un grand nombre d'échantillons de la même taille que notre échantillon original à partir de la population où l'hypothèse nulle est vraie. Bien sûr, on travaille avec un seul échantillon (les données que l'on a récoltées), mais on détermine la fréquence du phénomène qui nous intéresse si on avait eu plusieurs échantillons tirés d'une population en accord avec l'hypothèse nulle.
+
+#### Test bilatéral et test unilatéral
+
+Le test d'hypothèse peut être **bilatéral** (*two-sided test*) ou **unilatéral** (*one-sided test*). Dans le test bilatéral, on considère l'information contenue dans les deux queues de la distribution théorique (Figure \@ref(fig:bilateral)a). À l'opposé, un test unilatéral s'intéresse spécifiquement à l'information contenue dans l'une des deux queues de la distribution (Figure \@ref(fig:bilateral)b, c). Le choix d'exécuter un test unilatéral plutôt qu'un test bilatéral dépend des objectifs de l'analyse. Les deux prochains exemples illustrent le test unilatéral et le test bilatéral, respectivement. 
+
+```{r bilateral, echo=FALSE, fig.cap="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $\alpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues."}
+##test bilatéral
+xvs <- seq(-4, 4, 0.01)
+#qt(0.975, df = 19)
+#qt(0.95, df = 19)
+
+##plots
+par(mfrow = c(1, 3))
+
+##two-sided
+plot(xvs, dt(xvs, df = 19), type = "l", lty = 2, ylab = "Densité de probabilité", xlab = expression(paste("Valeur de ",italic(t))),
+     cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
+polygon(c(xvs[xvs < (-2.093)], -2.093), 
+        c(dt(xvs[xvs < (-2.093)], df = 19),
+          0.0008750923), col = "red") #0.0008750923 represents the lowest probability of the value farthest on the tail, dt(4, df=19) = 0.0008750923
+polygon(c(xvs[xvs > 2.093], 2.093), 
+        c(dt(xvs[xvs > 2.093], df = 19), 0.0008750923), col = "red") #0.0008750923 represents the lowest probability of the value farthest on the tail, dt(4, df=19) = 0.0008750923
+
+##add label
+text(y = 0.4, x = -4, labels = "a", cex = 1.5)
+
+##one-sided
+plot(xvs, dt(xvs, df = 19), type = "l", lty = 2, 
+     ylab = "Densité de probabilité", xlab = expression(paste("Valeur de ",italic(t))), cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
+polygon(c(xvs[xvs < (-1.729)], -1.729), 
+        c(dt(xvs[xvs < (-1.729)], df = 19), 0.0008750923), col = "red") #0.0008750923 represents the lowest probability of the value farthest on the tail, dt(4, df=19) = 0.0008750923
+
+##add label
+text(y = 0.4, x = -4, labels = "b", cex = 1.5)
+
+##one-sided
+plot(xvs,dt(xvs, df=19), type="l", lty=2, ylab="Densité de probabilité", xlab=expression(paste("Valeur de ",italic(t))), cex.lab = 1.5, cex.axis = 1.5, cex.main = 1.5)
+polygon(c(xvs[xvs>1.729],1.729),c(dt(xvs[xvs>1.729],df=19),0.0008750923),col="red") #0.0008750923 represents the lowest probability of the value farthest on the tail, dt(4, df=19) = 0.0008750923
+
+##add label
+text(y = 0.4, x = -4, labels = "c", cex = 1.5)
+```
+
+---
+
+::: {.exemple section=3}
+On effectue une étude en Montérégie afin de déterminer l'âge d'ours noirs que l'on veut comparer à la moyenne d'âge d'une autre population. On connaît l'âge moyen d'une population d'ours noirs en Abitibi, qui est de 7 ans. 
+
+On récolte un échantillon de $n = 20$ ours noirs en Montérégie et on détermine l'âge de chaque individu capturé. On peut ensuite effectuer un test d'hypothèse afin de savoir si l'âge moyen des ours qui ont été capturés en Montérégie diffère de l'âge moyen des ours noirs d'Abitibi. Ce test est bilatéral, puisqu'on s'intéresse à la fois à une différence positive ou négative entre les deux moyennes.
+
+$H_0: \: \mu = 7$ (hypothèse de nulle ou de non-différence)   
+$H_a: \: \mu \neq 7$   
+$\alpha = 0.05$
+
+Données récoltées (âges d'ours):   
+18, 13, 17, 2, 8, 14, 8, 5, 9, 2, 8, 7, 7, 3, 19, 21, 20, 11, 7, 16
+
+Si on teste sans spécifier si la moyenne des âges d'ours en Montérégie est supérieure ou inférieure à celle d'ours abitibiens, le test sera bilatéral. Nous pouvons utiliser le test $t$ de Student pour nous assister dans notre décision de rejeter ou non $H_0$ :
+
+$$
+t = \frac{\bar{x} - \mu}{SE} = \frac{10.8 - 7}{6.1/\sqrt{20}} = 2.748 
+$$
+
+On détermine ensuite la probabilité d'observer une valeur de $t$ supérieure ou égale à celle qu'on a obtenue à partir de l'échantillon. Dans notre cas, on obtient $P(\lvert t \rvert \geq 2.748) = 0.0128$ -- on a une probabilité de $\sim 0.01$ d'observer une valeur absolue de $t$ supérieure ou égale à 2.748 dans une population où $H_0$ est vraie. En d'autres mots, il est peu probable d'observer cette valeur dans une population où $H_0$ est vraie. 
+
+Puisque nous avons fixé le seuil $\alpha$ à 0.05, et que la probabilité est inférieure à ce seuil, nous rejetons donc $H_0$. Étant donné le faible appui en faveur de cette hypothèse, nous concluons qu'il est peu probable que $H_0$ soit vraie. Nous pourrons donc dire que l'âge moyen des ours en Montérégie n'est pas de 7 ans.
+:::
+
+---
+
+Dans R, on peut trouver la solution en calculant le $t$ à la main et en utilisant les fonctions telles que `qt( )` et `pt( )`. Ainsi, la solution dans R est :
+
+```{r echo=TRUE}
+##on crée un vecteur avec les observations
+age.ours <- c(18, 13, 17, 2, 8, 14, 8, 5, 9, 2, 8, 7, 7, 
+              3, 19, 21, 20, 11, 7, 16)
+
+##on calcule la moyenne
+moy.age.ours <- mean(age.ours)
+
+##on calcule l'erreur-type
+SE <- sd(age.ours)/sqrt(length(age.ours))
+
+##on calcule le t
+t.val <- (moy.age.ours - 7)/SE
+t.val
+
+##on calcule les degrés de liberté
+df.ours <- length(age.ours) - 1
+
+##on détermine P(t.val >= 2.748) - queue à droite
+p.droite <- 1 - pt(q = t.val, df = df.ours)
+
+##on détermine P(t.val <= -2.748) - queue à gauche
+p.gauche <- pt(q = -t.val, df = df.ours)
+
+##valeur du P dans les deux queues
+p.droite + p.gauche
+
+##autre façon d'obtenir le P bilatéral
+##puisque t est symétrique
+2 * p.droite 
+```
+
+Toutefois, on peut exécuter le test-$t$ à l'aide de la fonction `t.test( )` et obtenir exactement le même résultat. Cette fonction comporte un argument `x` pour spécifier les valeurs de l'échantillon, un argument `mu` pour indiquer la valeur de la moyenne de la population à laquelle nous comparons la moyenne de l'échantillon (valeur de $H_0$), ainsi qu'un argument `alternative` qui donne l'hypothèse alternative testée, ici pouvant prendre les valeurs `"two.sided"` (bilatérale), `"less"` (inférieure à $\mu$), `"greater"` (supérieure à $\mu$).
+
+```{r echo = TRUE}
+t.test(x = age.ours, mu = 7, alternative = "two.sided")
+``` 
+
+D'autres situations nous obligent à tester une hypothèse en dirigeant notre attention vers l'une des deux queues de la distribution, nous donnant ainsi un test unilatéral. C'est ce que nous montrons dans l'exemple suivant.
+
+--- 
+
+::: {.exemple section=3}
+On veut étudier l'efficacité d'un médicament sur la perte de masse. Pour ce faire, on sélectionne 12 patients chez qui on mesure la masse corporelle en kg. On administre un médicament qui stimule la perte de masse à chacun des 12 patients, à raison d'un comprimé par jour. Après un mois de la prise du médicament, on mesure la masse des mêmes individus. Les valeurs de l'échantillon montrent la différence entre la masse finale et initiale (kg). Une valeur positive indique un gain alors qu'une valeur négative est associée à une perte de masse :0.2, -0.5, -1.3, -1.6, -0.7, 0.4, -0.1, 0.0, -0.6, -1.1, -1.2, -0.8
+
+$H_0: \: \mu \geq 0$ (il n'y a pas de perte de masse)\\
+$H_a: \: \mu < 0$ (il y a perte de masse - à noter qu'un gain de masse indique que le médicament ne fonctionne pas)\\
+$\alpha = 0.05$
+
+On rejettera $H_0$ uniquement s'il est rare de rencontrer des valeurs aussi faibles ou plus faibles que celle de la statistique observée pour notre échantillon (dans la queue de gauche).
+$$
+t = \frac{\bar{x} - \mu}{SE} = \frac{-0.608 - 0}{0.633/\sqrt{12}} = -3.329
+$$
+
+```{r echo = TRUE}
+##on crée un vecteur avec les observations
+poids <- c(0.2, -0.5, -1.3, -1.6, -0.7, 0.4, 
+           -0.1, 0.0, -0.6, -1.1, -1.2, -0.8)
+
+##on calcule la moyenne
+moy.poids <- mean(poids)
+
+##on calcule l'erreur-type
+SE <- sd(poids)/sqrt(length(poids))
+
+##on calcule le t
+t.val <- (moy.poids - 0)/SE
+t.val
+
+##on calcule les degrés de liberté
+df.poids <- length(poids) - 1
+
+##on détermine P(t.val <= -3.329) - queue à gauche
+p.gauche <- pt(q = t.val, df = df.poids)
+p.gauche
+```
+
+On peut également utiliser `t.test( )` pour exécuter l'analyse de façon plus succincte:
+```{r echo = TRUE}
+t.test(x = poids, mu = 0, alternative = "less")
+``` 
+
+On conclut que la probabilité d'observer une valeur de $t$ de `r round(t.val, digits = 3)` dans un échantillon de 12 observations tiré d'une population où la moyenne est de 0 est très faible (c.-à-d., $P(t \leq -3.329) = 0.0034$). En d'autres mots, il est peu probable d'observer une valeur de $t$ aussi faible que celle de l'échantillon lorsque la moyenne de la population est de 0. Ainsi, nous rejetons $H_0$ et concluons que le médicament a stimulé la perte de masse.
+:::
+
+---
+
+#### Suppositions
+
+Chaque analyse statistique comporte des **suppositions** (*assumption*) ou conditions qu'il faut respecter afin que les résultats du test soient valides. La vérification des suppositions fait partie de toute bonne analyse statistique. Si l'expérimentateur néglige cette étape importante, il sera impossible de faire la distinction entre des résultats pertinents et ceux qui devraient être mis à la poubelle. Le test-$t$ sur un groupe suppose :
+
+ - que les données sont indépendantes, c'est-à-dire, qu'elles sont le résultat d'un échantillonnage aléatoire;
+ - que les erreurs (résidus) suivent une distribution normale;
+ - que la moyenne provient d'une distribution normale de moyennes.
+
+Ces suppositions **doivent** être vérifiées.
+
+##### Indépendance des observations
+
+L'**indépendance des observations** est une condition *sine qua non* à la réalisation des analyses classiques en statistiques. Si cette condition n'est pas respectée, la variabilité des données sera sous-estimée. De ce fait, on risque de rejeter plus facilement $H_0$ et d'arriver à des conclusions erronées. Toutes les analyses que nous voyons dans le cours, incluant celles des prochaines leçons, requièrent que l'indépendance des observations soit respectée.
+
+À noter que des observations prises sur les mêmes unités, mais à des périodes différentes, ne sont pas indépendantes. Par exemple, mesurer la hauteur des mêmes arbres sur 5 années consécutives ou calculer le pourcentage de couvert d'herbacées dans des quadrats le long du même transect ne sont pas des stratégies d'échantillonnage qui mènent à des observations indépendantes. Le meilleur moyen de s'assurer de l'indépendance des observations est d'utiliser une bonne stratégie d'échantillonnage. Certaines stratégies d'échantillonnage qui permettent d'obtenir un échantillon constitué d'observations indépendantes ont fait l'objet de la **leçon précédente**.
+
+##### La normalité des résidus et des moyennes
+
+On peut utiliser les **résidus** de l'analyse pour tester la normalité. On entend par résidus les erreurs ou la déviation des observations par rapport aux valeurs prédites par le modèle. Dans le cas du test-$t$, le modèle estime la moyenne de l'échantillon. Les résidus provenant du test-$t$ sont donc la différence entre les valeurs observées ($x_i$) et les valeurs prédites ($\bar{x}$) :
+
+$$
+\epsilon_i = x_i - \bar{x}
+$$
+
+Dans l'exemple sur la perte de masse suite à la prise d'un médicament, on caculerait ainsi les résidus :
+
+```{r echo = TRUE}
+##on crée un vecteur avec les observations
+residus <- poids - mean(poids)
+residus
+``` 
+
+La vérification de la normalité peut se faire à l'aide de méthodes formelles telles que les tests d'Anderson-Darling, de Cramér-von Mises, ou de Shapiro-Wilk\index{tests de normalité}. L'hypothèse nulle de ces tests correspond au respect de la supposition de normalité ($H_0$: la normalité est respectée). Le rejet de cette hypothèse indique que les résidus ne suivent pas la distribution normale. Plusieurs tests de normalité sont disponibles dans \texttt{R} dans le package (banque de fonctions) \texttt{nortest}. Étant donné que ce package n'est pas distribué avec l'installation de base de \texttt{R}, nous devons l'installer avant de pouvoir l'utiliser. Le document *Introduction à R - les packages* illustre toutes les étapes pour y arriver.
+
+```{r echo = TRUE}
+##on charge le package
+library(nortest)
+
+##on fait le test d'Anderson-Darling
+ad.test(residus)
+
+##on fait le test de Cramer - von Mises
+cvm.test(residus)
+
+##on fait le test de Shapiro-Wilk
+shapiro.test(residus)
+```
+
+Dans ce cas, les trois tests suggèrent que les résidus suivent une distribution normale. Toutefois, chaque test a ses particularités. Certains sont sensibles à la trop faible ou à la trop grande taille de l'échantillon ou à la présence de valeurs extrêmes. Des méthodes graphiques informelles deviennent alors utiles, particulièrement pour des analyses statistiques plus complexes comme nous verrons plus tard dans le cours. Par exemple, le graphique quantile-quantile est un outil efficace pour évaluer la normalité (Figure \@ref(fig:qqplot)). On peut l'obtenir facilement dans R :
+
+```{r echo = TRUE, keep.source = TRUE, fig = FALSE, eval = FALSE}
+##un graphique quantile-quantile
+qqnorm(residus, main = "Graphique quantile-quantile",
+       ylab = "Quantiles de l'échantillon",
+       xlab = "Quantiles théoriques")
+##on ajoute la droite théorique
+qqline(residus)
+``` 
+
+```{r qqplot, echo = FALSE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)."}
+par(mfrow = c(1, 2))
+##un graphique quantile-quantile
+qqnorm(residus, main = "Graphique quantile-quantile",
+       ylab = "Quantiles de l'échantillon",
+       xlab = "Quantiles théoriques")
+##on ajoute la droite théorique
+qqline(residus)
+text(x = -1.5, y = 1, labels = "a")
+
+##simulate non normal data
+set.seed(seed = 4)
+log.norm <- rlnorm(n = 60, meanlog = 1, sdlog = 1.2)
+qqnorm(log.norm, main = "Graphique quantile-quantile",
+       ylab = "Quantiles observées", 
+       xlab = "Quantiles théoriques")
+qqline(log.norm)
+text(x = -2, y = 29, labels = "b")
+``` 
+
+Le graphique quantile-quantile compare les quantiles de la distribution des résidus à celle d'une distribution normale. On entend par quantile, par exemple, les percentiles des observations. Les quantiles observés sont comparés aux quantiles d'une distribution normale. Lorsque les quantiles observés correspondent à une distribution normale, on devrait voir une droite de $1:1$ à 45$^\circ$. L'ajout d'une droite théorique à l'aide de `qqline( )` permet d'évaluer si les quantiles observés ont une distribution normale. Si la plupart des points sont sur la droite, on peut conclure que les résidus ont une distribution normale. D'ailleurs c'est le cas des résidus de la perte de masse de notre exemple (Figure \@ref(fig:qqplot)a). Le graphique de la figure \@ref(fig:qqplot)b présente un autre échantillon et suggère que les valeurs ne suivent pas la distribution normale. 
+
+On peut refaire l'exemple pour les résidus provenant du test-$t$ sur l'âge des ours noirs de Montérégie (Figure \@ref(fig:qqplot2):
+
+```{r qqplot2, echo=TRUE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie."}
+##on crée un vecteur avec les observations
+age.ours <- c(18, 13, 17, 2, 8, 14, 8, 5, 9, 2, 8, 7, 7, 
+              3, 19, 21, 20, 11, 7, 16)
+
+##on calcule la moyenne
+moy.age.ours <- mean(age.ours)
+
+##on calcule les résidus
+residus.ours <- age.ours - moy.age.ours
+
+##un graphique quantile-quantile
+qqnorm(residus.ours, main = "Graphique quantile-quantile",
+       ylab = "Quantiles de l'échantillon",
+       xlab = "Quantiles théoriques")
+##on ajoute la droite théorique
+qqline(residus.ours)
+```
+
+La supposition à l'effet que la moyenne provienne d'une distribution normale de moyennes ne peut être vérifiée formellement. Cette supposition découle du théorème de la limite centrale. Ce dernier indique que les moyennes d'échantillons indépendants tirés d'une même population constituent une distribution normale. 
+
+### Conclusion
+
+Dans ce texte, nous avons abordé la démarche scientifique, ainsi que l'élaboration d'hypothèses scientifiques et d'hypothèses statistiques. Nous avons ensuite présenté deux types d'erreur associées à l'exécution d'un test d'hypothèse: l'erreur de type I et l'erreur de type II. Le seuil de signification ($\alpha$) détermine la probabilité de rejeter faussement une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui est fausse est donnée par $\beta$ (erreur de type II). La puissance est la probabilité de correctement rejeter une hypothèse nulle qui est fausse et est donnée par $1 - \beta$. Le meilleur moyen d'augmenter la puissance d'un test est d'augmenter la taille d'échantillon et de minimiser la variance. Comme première application d'un test d'hypothèse statistique, nous avons présenté le test-$t$ unilatéral et bilatéral sur un groupe, les suppositions sous-jacentes à ce test, ainsi que des outils permettant de vérifier ces suppositions.
+
+## Les packages avec R
+
+Toutes les fonctions de R sont regroupées en bibliothèques de fonctions appelées **packages**. Ces bibliothèques de fonctions permettent de réaliser des tâches particulière regroupées sous un même thème (p. ex., faire des graphiques, travailler avec des données géoréférencées). Par exemple, plusieurs fonctions graphiques sont incluses dans le package `graphics`, alors que le package `base` comprend des fonctions de base permettant à R d'agir comme un langage, et que le package `stats` regroupe plusieurs fonctions pour exécuter des analyses statistiques classiques. Lors de l'installation de R, une série de packages sont installés par défaut. Quelques packages sont activés au démarrage de R, et chacun contient des fonctions de base pour manipuler des objets, importer des fichiers, exécuter des analyses classiques, et créer plusieurs types de graphiques. Dès que l'on désire effectuer des manipulations, des analyses ou des graphiques plus complexes, ou accéder à un jeu de données dans un format moins conventionnel, on doit activer le package qui contient la fonction que l'on désire utiliser. 
+
+### Activer un package  
+
+Pour activer un package, il suffit d'utiliser la fonction `library( )`, en spécifiant le nom du package entre parenthèses. Par exemple, si on veut accéder à une fonction du package `MASS`, on procéderait comme suit:
+
+```{r echo=TRUE}
+library(MASS) #pour charger le package MASS
+``` 
+
+Pour connaître les packages déja installés sur notre ordinateur, on utilise la commande `library( )`, sans spécifier quoi que ce soit entre parenthèses. Autrement, il est aussi possible d'utiliser `help.start( )` pour naviguer vers la page web des packages à l'aide d'hyperliens. En consultant la liste des packages sur cette page, on peut voir les fonctions incluses dans chacun des packages installés.
+
+### Installer un package
+
+Lorsque la fonction que nous voulons utiliser n'est pas incluse dans un des packages installés par défaut, nous devons télécharger le package contenant la fonction d'intérêt à partir du site de `CRAN` (Comprehensive R Archive Network) ou l'un de ses sites miroirs. Ce site a été décrit dans le premier document sur l'installation de R (Installation de R et choix d’un éditeur) et veuillez y référer pour de plus amples informations. %Une fois téléchargé, le package s'installe automatiquement 
+
+Le nombre de packages disponibles augmente continuellement. Ces packages contiennent des fonctions créées par des utilisateurs et sont offerts aux utilisateurs à travers la planète afin de réaliser des tâches spécifiques dans R (Figure \@ref(fig:packagebase), \@ref(fig:packagebase2)). En date du 9 septembre 2019, on en comptait plus de 14900.
+
+```{r packagebase, fig.align='center', echo=FALSE, fig.link='images/Packages_base.png', fig.cap="Section du site de R et de ses sites miroirs réservée aux packages."}
+knitr::include_graphics("Module_3/images/Packages_base.png")
+```
+
+```{r packagebase2, fig.align='center', echo=FALSE, fig.link='images/Packages_base2.png', fig.cap="Page des packages contenant des liens vers la liste complète des packages."}
+knitr::include_graphics("Module_3/images/Packages_base2.png")
+```
+
+La liste des packages par ordre alphabétique permet de visualiser rapidement tous les packages disponibles dans `CRAN` (Figure \@ref(fig:packagebase3)).      
+
+```{r packagebase3, fig.align='center', echo=FALSE, fig.link='images/Packages_base3.png', fig.cap="Liste des packages par ordre alphabétique."}
+knitr::include_graphics("Module_3/images/Packages_base3.png")
+```
+
+Lorsqu'on cherche le package qui contient une fonction particulière dont on connaît le nom, par exemple, une fonction mentionnée dans un article scientifique, dans une page web ou par un collègue, on peut faire une recherche directement à l'aide de `RSiteSearch( )`^[Rappel: il faut être connecté à l'internet pour utiliser la fonction `RSiteSearch( )`] puisque cette fonction va chercher dans les archives de R sur le web.}.  
+
+Pour trouver une fonction qui réalise une tâche quelconque, on peut également faire une recherche directement sur le site Web [http://search.r-project.org/](http://search.r-project.org/) . Disons que l'on désire importer le fichier `vers.xlsx` dans R sans avoir à convertir ce fichier `Excel` en format texte. Nous devrons chercher s'il existe une fonction pour importer des fichiers `Excel` directement dans R. Pour trouver cette fonction, on écrit `"read Excel files"` dans la fenêtre de recherche (Figure \@ref(fig:searchxl)).
+
+```{r searchxl, fig.align='center', echo=FALSE, fig.link='images/Package_excel.png', fig.cap="Résultat de RSiteSearch('read Excel files')."}
+knitr::include_graphics("Module_3/images/Package_excel.png")
+```
+
+Parmi la liste des résultats, on observe que les trois premières entrées sont des fonctions qui permettent d'importer des fichiers `Excel`. Nous devons tenir compte du \texttt{score} et de la \texttt{date} auxquels ces entrées correspondent pour choisir un package. Nous attirons votre attention sur la troisième entrée qui réfère au package `readxl` (Figure \@ref(fig:searchxl)). On peut par la suite aller voir directement dans la liste des packages de R pour le package `readxl` (Figure \@ref(fig:packagereadxl)). Cette page contient plusieurs fichiers, dont le manuel (*Reference manual*) en format `pdf`. Ce document inclut les pages d'aide de toutes les fonctions de ce package. C'est en inspectant ce document que l'on peut comprendre comment utiliser les fonctions d'un nouveau package. Les sections d'exemples (*Examples*) illustrent l'utilisation des factions et s'avèrent particulièrement utiles. 
+
+```{r packagereadxl, fig.align='center', echo=FALSE, fig.link='images/Package_readxl.png', fig.cap="Page du package readxl avec l'archive des fichiers comportant toutes les fonctions codées en R (fichier tar.gz), ainsi que le manuel en pdf"}
+knitr::include_graphics("Module_3/images/Package_readxl.png")
+```
+
+Dans notre cas, on remarquera la présence de la fonction `read_excel()` qui permet d'importer directement un jeu de données stocké dans un fichier `Excel`. À noter que le jeu de données doit tout de même respecter les conventions pour l'importation des jeux de données, telles que le nom des variables, la présence de données manquantes, le caractère spécifiant la décimale et la structure du fichier (format long). Ainsi, il faudra tout de même choisir la feuille du fichier `Excel` sur laquelle se trouvent les données.
+
+L'installation d'un package s'effectue à l'aide de la fonction `install.packages( )` en spécifiant le nom du package d'intérêt entre guillemets à l'aide de l'argument `pkgs`. Il faut donc être branché au réseau internet lorsqu'on veut télécharger et installer un package sur notre système. On peut aussi spécifier l'adresse du site miroir de R avec l'argument `repos`, sans quoi, une fenêtre s'ouvrira nous demandant de sélectionner un site afin de télécharger les fichiers du package que l'on veut installer. 
+
+```{r eval=FALSE}
+install.packages(pkgs = "readxl", repos = "http://probability.ca/cran")
+```
+
+Cette commande lance le téléchargement et l'installation du package `readxl` à partir du site de miroir de Toronto. Dans certains cas, des fonctions d'un package dépendent de fonctions provenant d'autres packages, c'est ce qu'on appelle la dépendance entre deux packages. La gestion des dépendances est faite automatiquement par R. En d'autres mots, si le package que nous désirons installer dépend d'un autre package, les deux seront installés automatiquement. Une fois installé, le package peut être utilisé à n'importe quel moment. Pour utiliser une fonction d'un package nouvellement installé, il faut tout d'abord activer le package à l'aide de la fonction `library( )`.
+
+```{r echo=TRUE}
+library(readxl)
+```
+
+Toutes les fonctions du package activé seront alors accessibles. Nous pourrons ensuite importer le fichier `vers.xlsx`:
+
+```{r eximport, keep.source = TRUE, echo = TRUE, eval = TRUE}
+##importation du fichier
+##attention au bon chemin menant vers
+##le fichier
+vers <- read_excel("Module_3/data/vers.xlsx")
+head(vers)
+``` 
+
+### Mettre à jour un package
+
+Les packages sont mis à jour de temps à autre par leurs auteurs et il est fortement conseillé de vérifier les mises à jour à l'aide de la fonction `update.packages( )`. Évidemment, il faut être branché à l'internet afin de réaliser cette opération. En utilisant cette commande sans rien spécifier entre parenthèses, R vérifiera la version des packages installés sur notre système et les comparera aux versions les plus récentes des packages dans les sites miroirs. Si les versions des packages sur notre système sont moins récentes que celles sur le site de R, chaque package sera identifié et il faudra indiquer si on désire mettre à jour chacun des packages pours lesquels il existe une mise à jour. 
+
+Les mises à jour peuvent amener des correctifs à des fonctions déjà présentes ou ajouter de nouvelles fonctions. Par conséquent, il est fortement recommandé de faire la vérification de temps à autre. Une vérification deux à trois fois par année pourrait suffire si vous utilisez des packages établis depuis plusieurs années. Si vous employez des packages développés récemment (version < 1), il est préférable de vérifier les mises à jour un peu plus souvent.
+
+### Désactiver un package
+
+Lorsque vous avez terminé d'utiliser un package que vous avez activé pendant votre session de travail, il est possible de le désactiver à l'aide de la fonction `detach( )`. Par exemple, pour désactiver le package `readxl` qui a été activé plus haut, on exécute la commande :
+
+```{r exdetach, keep.source = TRUE, echo = TRUE, eval = FALSE}
+detach(package:readxl)
+##une fois le package désactivé, read_excel n'est plus accessible
+vers <- read_excel("vers.xlsx") #donne un message d'erreur
+```
+
+Avec près de 15000 packages de R disponibles sur `CRAN`, il est fort possible de trouver des fonctions ayant des noms identiques dans des packages différents. Cela peut entraîner des conflits entre certains packages lorsqu'ils sont activés lors de la même session. Dans de tels cas, la fonction du package activé en dernier masquera la fonction du même nom du package activé plus tôt pendant la session de travail. Pour éviter des problèmes, il est préférable d'activer uniquement les packages qui sont utilisés pendant une session de R donnée, plutôt que de systématiquement activer une multitude de packages à chaque fois qu'on travaille dans R. 
+
+### Désinstaller un package 
+
+En de très rares occasions, nous aurons besoin de désinstaller un package. La fonction `remove.packages( )` permet de désinstaller un package spécifié avec l'argument `pkgs`.
+
+```{r exremove, keep.source = TRUE, echo = TRUE, eval = FALSE}
+remove.packages(pkgs = "readxl")
+``` 
+
+Une raison possible de désinstaller un package est lorsqu'une mise à jour d'un package n'a pu être réalisée avec succès. Ceci serait indiqué par un message d'erreur lors de la mise à jour. Un changement de dépendances d'un package entre deux versions peut causer une telle erreur. Dans une pareille situation, il suffit de désinstaller l'ancienne version du package à l'aide de `remove.packages( )` et d'installer la nouvelle version du package avec `install.packages( )`.
+ 
+## Exercices
+
+### Question 1
+
+**a.** Quelle est la différence entre une expérience et une étude d'observation? 
+
+<details>
+<summary> Réponse</summary>
+L'expérience implique l'assignation aléatoire des traitements aux unités expérimentales et on contrôle toutes les variables, en faisant varier uniquement les variables pour lesquelles on veut tester l'effet. Une étude d'observation implique une sélection aléatoire des unités expérimentales, mais les traitements ne sont pas appliqués aléatoirement (ils ont été appliqués par quelqu'un d'autre). 
+
+Par exemple, si on s'intéresse à la vitalité des petits commerces dans les villes où des commerces de grande surface se sont installés, on peut sélectionner aléatoirement les villes qui seront prises en compte dans l'étude. Toutefois, la présence ou non d'un commerce de grande surface n'a pas été attribuée aléatoirement. De plus, on n'a aucun contrôle sur plusieurs variables dans l'étude d'observation (p. ex., population de la ville, nombre de petits commerces, distances entre les commerces).
+
+</details>
+
+<br>
+
+**b.** Quel est le terme utilisé pour désigner la probabilité de rejeter correctement une hypothèse nulle qui devrait être rejetée lors d'une analyse statistique? 
+
+<details>
+<summary> Réponse</summary>
+C'est la puissance statistique dont il est question ici.
+</details>
+
+<br>
+
+**c.** L'erreur de type I est la probabilité de rejeter par erreur une hypothèse nulle qui est vraie. Vrai ou faux?
+
+<details>
+<summary> Réponse</summary>
+**Vrai** 
+</details>
+
+<br>
+
+**d.** Donnez trois moyens pour augmenter la puissance statistique d'une analyse.
+
+<details>
+<summary> Réponse</summary>
+Augmenter la taille d'échantillon, réduire la variabilité (en définissant mieux la population statistique d'intérêt) et augmenter le seuil $\alpha$ sont tous des moyens qui permettent d'augmenter la puissance d'une analyse statistique.
+</details>
+
+<br>
+
+**e.** Donnez deux suppositions du test $t$ sur un seul groupe. 
+
+<details>
+<summary> Réponse</summary>
+La normalité des résidus et l'indépendance des observations sont les deux principales suppositions à vérifier. La troisième supposition, c'est-à-dire que la moyenne provient d'une distribution normale de moyennes, est un produit dérivé du théorème de la limite centrale.
+</details>
+
+<br>
+
+### Question 2
+
+**a.** Importez le jeu de données `temp.csv`. Ce dernier contient les données sur la température de l'air pour différentes stations de mesures météorologiques (`Site`) dans l'Arctique. La colonne `Diff.temp` est le résultat de la différence entre la température maximale de 2010 et celle de 1950.
+
+<details>
+<summary> Réponse</summary>
+```{r echo=TRUE}
+##importer fichier
+temp <- read.table(file = "Module_3/data/temp.csv", header = TRUE)
+## ou
+temp <- read.table(file = "Module_3/data/temp.csv", header = TRUE, sep=",")
+##on regarde les premières lignes du jeu de données
+head(temp)
+```
+</details>
+
+<br>
+
+**b.** On émet l'hypothèse scientifique que le réchauffement climatique a augmenté les températures maximales dans l'Arctique. Émettez des hypothèses statistiques qui permettent de tester l'hypothèse scientifique et spécifiez un seuil de signification ($\alpha$).
+
+<details>
+<summary> Réponse</summary>
+Puisqu'on émet une hypothèse à l'effet que la température maximale était plus grande en 2010 qu'en 1950, nous nous attendrons à ce que la variable `Diff.temp` (température maximale 2010 - température maximale 1950) prenne des valeurs positives. Nous avons donc les hypothèses statistiques suivantes :
+
+$H_0$: $\mu \leq 0$ (la moyenne n'est pas supérieure à 0)  
+$H_a$: $\mu > 0$ (la moyenne est supérieure à 0)  
+On fixe le seuil de signification, au choix, $\alpha = 0.05$ 
+</details>
+
+<br>
+
+**c.** Effectuez un test d'hypothèse à l'aide du test $t$.  
+
+<details>
+<summary> Réponse</summary>
+```{r fig = FALSE, keep.source = TRUE, echo = TRUE, eval = TRUE}
+##on effectue le test t
+t.out <- t.test(x = temp$Diff.temp, mu = 0, alternative = "greater")
+``` 
+</details>
+
+<br>
+
+**d.** Vérifiez les suppositions du test. Utilisez un test formel et une méthode graphique informelle pour vérifier la normalité. 
+
+<details>
+<summary> Réponse</summary>
+```{r fig = TRUE, keep.source = TRUE, echo = TRUE, eval = TRUE}
+##on calcule les résidus
+res <- temp$Diff.temp - mean(temp$Diff.temp)
+
+
+##si ce package n'est pas installé, on l'installe
+##avec install.packages( )
+
+##une fois installé, on peut charger le package
+
+##on charge le package nortest
+library(nortest)
+ad.test(res)
+##on fait un graphique quantile-quantile
+qqnorm(res)
+##on ajoute la droite théorique
+qqline(res)
+```
+
+Le test d'Anderson-Darling indique que la supposition de normalité des résidus est respectée ($H_0$ n'est pas rejetée avec un $P = `r round(ad.test(res)$p.value, digits = 4)`$). Le graphique quantile-quantile suggère également que la supposition de normalité est respectée.
+</details>
+
+<br>
+
+**e.** Interprétez les résultats de l'analyse à la lumière de l'hypothèse scientifique. 
+
+<details>
+<summary> Réponse</summary>
+```{r fig = FALSE, keep.source = TRUE, echo = TRUE, eval = TRUE}
+##on regarde le résultat
+t.out
+```
+
+On remarque que $P < 0.0001$ et on rejette $H_0$. On peut donc conclure que la moyenne de la variable réponse est supérieure à 0 et que la température maximale en 2010 est significativement supérieure à celle de 1950. Puisque le test est unilatéral, l'intervalle de confiance est borné à l'infini du côté droit ($H_a$: $\mu > 0$, la moyenne est supérieure à 0).
+</details>
+
+<br>

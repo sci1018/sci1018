@@ -1,0 +1,638 @@
+# Analyse de fréquences et test du khi carré ($\chi^2$)
+
+Dans la leçon précédente, nous avons illustré des variantes du test $t$ de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Nous avons présenté les suppositions sous-jacentes à ces analyses ainsi que plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions. Dans tous les cas, les variables réponses étaient numériques avec des valeurs décimales, comme la hauteur, le temps et la masse. Pour ce genre de données, la décimale représente une valeur observable: une hauteur de 193.24 cm a un sens. Toutefois, les fréquences, comme celles provenant du décompte d'événements d'intérêt prennent uniquement des valeurs entières (discrètes). Par exemple, si nous étudions le nombre de personnes atteintes d'une maladie ou le nombre survivant à cette maladie, nous ne pouvons pas observer 12.23 événements. Nous en observerons plutôt 12 ou 13. Ce type de données fera l'objet de cette leçon.
+
+## Théories
+
+### Analyse de fréquences : le test du khi carré ($\chi^2$)
+
+Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d'occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu'elles proviennent d'un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré ($\chi^2$, *chi-squared test*). Ce genre de test est parfois appelé **test d'ajustement** ou **test d'adéquation** (*goodness-of-fit test*), car il compare les fréquences observées aux fréquences prédites conformes à $H_0$.
+
+---
+
+:::{.exemple section=5}
+On s'intéresse aux habitudes d'utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d'observation. On décide *a priori* d'échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu'elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme **variable catégorique** pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table \@ref(tab:modetransport)) :
+
+```{r modetransport, echo=FALSE, results='asis'}
+library(knitr)
+library(kableExtra)
+
+freqs <- matrix(data = c(139, 146, 117, 98, 500), nrow = 1, ncol = 5)
+
+df.freqs <- as.data.frame(freqs)
+colnames(df.freqs) <- c("À pied", "Transport en commun", "Vélo", "Voiture", "TOTAL")
+
+# Generate the table with custom styling for merged cells
+kable(df.freqs, 
+      row.names = FALSE, 
+      caption = "Habitudes d'utilisation de différents modes de transports dans un échantillon de 500 individus à la TÉLUQ.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+
+```
+:::
+
+---
+
+#### La distribution du khi carré ($\chi^2$)
+
+Le test du khi carré permet de comparer des fréquences observées par rapport aux fréquences prédites selon une hypothèse nulle que l'on veut tester. Ce test du khi carré porte le nom d'une distribution statistique continue, celle du khi carré ($\chi^2$). Cette distribution, tout comme la distribution normale et celle du $t$ de Student, est définie par une fonction de densité. La fonction de densité du khi carré est
+
+$$
+f(x \vert \nu) = \frac{\left(\frac{1}{2}\right)^{\frac{\nu}{2}}}{\Gamma \left(\frac{\nu}{2}\right)} x^{\left(\frac{\nu}{2} - 1\right)} e^{-\frac{1}{2}x}
+$$
+Malgré son apparence un peu intimidante, cette fonction de densité comporte un seul paramètre, $\nu$, qui correspond aux degrés de liberté. Le symbole $\Gamma$ représente la fonction gamma, qui comporte une intégrale (dans R, elle s'obtient avec `gamma( )`). La fonction de densité du khi carré est définie pour les valeurs > 0. En mots, cette fonction nous donne la densité de probabilité associée à $X = x$ pour un nombre de degrés de liberté donné. La forme de la distribution du khi carré dépend uniquement des degrés de liberté (Figure \@ref(fig:chi2)).
+
+Dans R, on peut obtenir la densité de probabilité du khi carré associée à une certaine valeur de $x$ à l'aide de `dchisq( )`. La probabilité cumulative s'obtient à l'aide de `pchisq( )` et la fonction quantile à l'aide de `qchisq( )`. Les valeurs obtenues par le test du khi carré sont comparées à cette distribution afin d'évaluer s'il est fréquent d'observer de telles valeurs avec un nombre de degrés de liberté donné lorsque $H_0$ est vraie. 
+
+```{r chi2, keep.source = FALSE, echo = FALSE, fig = TRUE, fig.align='center', fig.cap="Allure de la distribution du khi carré avec différents degrés de liberté."}
+##appearance of the distribution
+x <- seq(from=0, to=20, by=0.1)
+
+##compute density for given df
+chivals.1 <- dchisq(x=x, df=1)
+chivals.2 <- dchisq(x=x, df=2)
+chivals.3 <- dchisq(x=x, df=3)
+chivals.4 <- dchisq(x=x, df=4)
+chivals.5 <- dchisq(x=x, df=5)
+chivals.10 <- dchisq(x=x, df=10)
+
+##plot density
+plot(chivals.1 ~ x, ylab="Densité de probabilité", xlab="Valeurs de x",
+  ylim=c(0, 1), type="n", main=expression(paste("Forme de la distribution du ", chi^2)))
+
+lines(y=chivals.1, x=x, col="blue")
+lines(y=chivals.2, x=x, col="green")
+lines(y=chivals.3, x=x, col="orange")
+lines(y=chivals.4, x=x, col="magenta")
+lines(y=chivals.5, x=x, col="black")
+lines(y=chivals.10, x=x, col="brown")
+
+##add legend
+legend(x="topright", legend=c(expression(paste(italic(df), " = 1")),
+expression(paste(italic(df), " = 2")),
+expression(paste(italic(df), " = 3")),
+expression(paste(italic(df), " = 4")),
+expression(paste(italic(df), " = 5")),
+expression(paste(italic(df), " = 10"))),
+lty=1, col=c("blue", "green", "orange", "magenta", "black", "brown"))
+``` 
+
+#### Le test du khi carré ($\chi^2$)
+
+Le test du khi carré est basé sur une comparaison des fréquences observées par rapport à des fréquences attendues si l'hypothèse nulle est vraie. On calcule facilement la statistique du khi carré à l'aide de :
+
+$$
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}
+$$
+où $k$ correspond au nombre de catégories, $f_i$ donne la **fréquence observée** dans la catégorie $i$ et $\hat{f_i}$ donne la **fréquence théorique** pour la catégorie $i$ si $H_0$ est vraie. On compare la valeur obtenue du khi carré à la distribution théorique du khi carré correspondant à $k - 1$ degrés de liberté ($P(\chi^2_{\alpha, k - 1} \geq \chi^2_{observ\acute{e}})$). Si cette valeur est plus grande que ce que l'on devrait observer lorsque $H_0$ est vraie pour un seuil $\alpha$ et des degrés de liberté donnés, on rejette $H_0$. Une des propriétés de la statistique du khi carré pour un degré de liberté et un seuil $\alpha$ donné ($\chi^2_{\alpha, 1}$) est qu'il correspond au carré du $z$ bilatéral^[Rappel: le $z$ est l'écart normal de la distribution normale centrée réduite.], et au carré du $t$ bilatéral pour un même $\alpha$ et pour un degré de liberté qui tend vers l'infini:
+
+$$
+\chi^2_{\alpha, 1} = z^2_{\alpha(2)} = t^2_{\alpha(2), \infty}
+$$
+---
+
+:::{.exemple section=5}
+Reprenons notre exemple sur l'étude d'observation des personnes inscrites à la TÉLUQ. On veut maintenant déterminer si les modes de transport sont utilisés avec la même fréquence dans un ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ de $1:1:1:1$. Nous pouvons énoncer les hypothèses statistiques suivantes:  
+$H_0$: Le ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ est de $1:1:1:1$. \index{hypothèses nulles}  
+$H_a$: Le ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ n'est pas de $1:1:1:1$.   
+$\alpha = 0.05$  
+On peut appliquer le test du khi carré pour tester ces hypothèses :
+$$
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}} \\
+$$
+On connaît déjà les $f_i$ qui sont les fréquences récoltées dans chaque catégorie (tableau \@ref(tab:mode.transport)). Pour ce qui est des fréquences théoriques ($\hat{f_i}$), on doit les obtenir selon l'hypothèse nulle que l'on a spécifiée. Dans notre exemple, puisque $H_0$ s'intéresse à un ratio $1:1:1:1$, la fréquence théorique dans chaque catégorie s'obtient en divisant le total des fréquences par le nombre de catégories (c.-à-d., $\hat{f_i} = \frac{1}{4}(500) = 125$). On peut ensuite résoudre :
+
+
+$$
+\chi^2 = \frac{(`r freq.data[1]` - `r sum(freq.data)/4`)^2}{`r sum(freq.data)/4`} + \frac{(`r freq.data[2]` - `r sum(freq.data)/4`)^2}{`r sum(freq.data)/4`} + \frac{(`r freq.data[3]` - `r sum(freq.data)/4`)^2}{`r sum(freq.data)/4`} + \frac{(`r freq.data[4]` - `r sum(freq.data)/4`)^2}{`r sum(freq.data)/4`}  
+$$
+$$
+\chi^2 = `r round(chi2, digits = 3)`
+$$
+
+
+Puisque nous avons quatre catégories, le test du khi carré a $k - 1 = 4 - 1 = 3$ degrés de liberté. On observe que la valeur de $P(\chi^2_{\alpha, k - 1} \geq `r round(chi2, digits = 3)`) = 0.0096$:
+
+```{r exratio2, keep.source = TRUE, echo = TRUE}
+##on détermine la probabilité cumulative
+1 - pchisq(q = 11.44, df = 3, lower.tail = TRUE)
+##même chose avec lower.tail = FALSE
+pchisq(q = 11.44, df = 3, lower.tail = FALSE)
+```
+
+Dans R, on peut exécuter rapidement le test du khi carré avec la fonction `chisq.test( )`. On doit fournir les fréquences à l'argument `x`, suivi du type d'hypothèse nulle que l'on veut tester à l'aide de l'argument `p`. Ici, puisque $H_0$ spécifie qu'on devrait avoir autant de fréquences dans les quatre groupes, on indique `p = c(0.25, 0.25, 0.25, 0.25)` pour avoir le quart du total des fréquences dans chaque groupe. On peut écrire :
+
+```{r exratio3}
+##on crée un vecteur de fréquences
+ratio <- c(139, 146, 117, 98)
+
+##on peut ajouter les étiquettes (optionnel)
+names(ratio) <- c("À Pied", "Transport en commun", 
+                  "Vélo", "Voiture")
+ratio
+
+##on effectue le khi carré
+out <- chisq.test(x = ratio, p = c(0.25, 0.25, 0.25, 0.25))
+out
+``` 
+
+On rejette $H_0$ car $P \leq \alpha$ (0.05) et on conclut que le ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ n'est pas de $1:1:1:1$ à la TÉLUQ. On constate d'ailleurs que le mode de transport par voiture est sous représenté par rapport aux autres catégories et que les étudiants se déplacent davantage à pied et en transport en commun que ce qui est attendu selon $H_0$.
+:::
+
+---
+
+##### Trouver les différences significatives 
+<!--- section qui n'est pas dans le pdf--->
+
+L’analyse réalisée précédemment brosse un portrait général des différences entre les fréquences. Le rejet de $H_0$ ouvre la porte à une étude plus poussée des données. L’identification des différences significatives entre les fréquences observées est possible grâce aux résidus de Pearson. Le résidu de chaque fréquence observée se calcule à l’aide de l’équation suivante :
+
+$$
+r_i = \frac{f_i - \hat{f_i}}{\sqrt{\hat{f_i}}} 
+$$
+Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont considérées comme significativement différentes de leur fréquence théorique.
+
+---
+
+:::{.exemple section=5}
+Les résidus de Pearson sont calculés par la fonction `chisq.test()`. On peut  les obtenir en ajoutant l’opérateur \$ et la composante `residuals` à l’objet où sont sauvegardés les résultats.
+
+```{r exratio4}
+##on extrait les résidus de Pearson des résultats du test
+out$residuals
+```
+:::
+On remarque que seul le résidu de l’utilisation de la voiture est significatif. La valeur négative indique que cette fréquence est significativement inférieure à la fréquence théorique. 
+
+---
+
+#### Conditions d'utilisation
+
+##### Utilisation des fréquences
+
+Certaines conditions sont nécessaires à l'application correcte du test du khi carré. Ce dernier utilise des fréquences (des entiers) comme données brutes. Le test permet de déterminer si les proportions des fréquences observées sont conformes à l'hypothèse nulle. On ne doit jamais utiliser seulement que des proportions (p.ex, 0.3 et 0.7) pour réaliser l'analyse, car la taille de l'échantillon affecte aussi la valeur du khi carré et le résultat du test. 
+
+##### Indépendance des observations
+
+Le test du khi carré suppose que les données sont récoltées selon un dispositif complètement aléatoire et qu'il n'y a pas de structure dans les données telle que la non-indépendance imposée par l'échantillonnage. On peut illustrer la non-indépendance par un bref exemple où on s'intéresse à l'occurrence de vers solitaires dans des paquets de bœuf haché contaminé soumis à 2 temps de cuisson. On pourrait utiliser 2 morceaux du même paquet pour tester les 2 temps de cuisson, cependant ces morceaux ne seraient pas considérés comme indépendants. Pour une parfaite indépendance, il faudrait utiliser un seul morceau de viande pour chaque paquet choisi aléatoirement
+
+##### Faibles fréquences théoriques
+
+De faibles fréquences théoriques ($\hat{f_i}$)^[Rappel: les fréquences théoriques sont les fréquences que l'on aurait dû observer si $H_0$ est vraie. En contraste, les fréquences observées sont les données brutes utilisées dans l'analyse.] entraînent un biais du $\chi^2$. En effet, de trop faibles fréquences théoriques surestiment la valeur du $\chi^2$ et, par conséquent, augmentent l'erreur de type I. Certains statisticiens suggèrent que le test du $\chi^2$ est approprié uniquement pour les cas où aucune fréquence théorique n'est inférieure à 3 et où pas plus de 20 \% des fréquences théoriques sont inférieures à 5. D'autres sont plus stricts et recommandent de n'avoir aucune fréquence théorique inférieure à 5. Afin d'éviter des problèmes, il est préférable de viser une bonne taille d'échantillon, notamment en s'assurant d'avoir au moins 5 fois plus d'observations que de cellules dans le tableau. En d'autres mots, si on a deux cellules comme dans le tableau de l'exemple 5.2 (homme et femme), on veut au moins un total de 10 individus échantillonnés aléatoirement dans la population d'intérêt.
+
+Continuons avec un exemple sur la sélection d'habitat qui applique le $\chi^2$ en écologie animale.
+
+---
+
+:::{.exemple section=5}
+On s'intéresse à la sélection d'habitat par des orignaux (*Alces alces*). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d'étude. À l'aide d'un système d'information géoréférencé, on calcule la proportion des quatre habitats qui constituent l'aire d'étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l'aire d'étude. En d'autres mots, on détermine si certains types d'habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d'habitat. Le tableau \@ref(tab:select) présente ce jeu de données.
+
+```{r select, echo = FALSE}
+##moose data
+moose.data <- data.frame(Habitat = c("jeune coupe forestière", "vieille coupe forestière",
+                           "marais et étang", "forêt non-coupée"),
+                         Disponibilité = c(0.340, 0.101, 0.104, 0.455),
+                         Fréquence = c(25, 22, 30, 40))
+
+# Generate the table with custom styling for merged cells
+kable(moose.data, 
+      row.names = FALSE, 
+      caption = "Sélection d'habitat par des Orignaux selon la disponibilité d'habitat dans une aire d'étude.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+
+``` 
+
+L'objectif est de déterminer si certains habitats sont surutilisés ou sous-utilisés par les orignaux. On émet les hypothèses statistiques suivantes :  
+$H_0$: L'utilisation des habitats est proportionnelle à la disponibilité de chacun des habitats ($0.340 : 0.101 : 0.104 : 0.455$).   
+$H_a$: L'utilisation des habitats n'est pas proportionnelle à la disponibilité de chacun des habitats (certains habitats sont surutilisés ou sous-utilisés).  
+$\alpha = 0.05$  
+
+On obtient les fréquences théoriques ($\hat{f_i}$) à l'aide des proportions de disponibilité de chaque habitat : 
+
+$$\hat{f_1} = 0.340 \cdot 117 = 39.78$$  
+$$\hat{f_2} = 0.101 \cdot 117 = 11.82$$   
+$$\hat{f_3} = 0.104 \cdot 117 = 12.17$$   
+$$\hat{f_4} = 0.455 \cdot 117 = 53.23$$
+
+Ce qui nous permet ensuite de calculer le $\chi^2$:
+
+$$
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  
+\chi^2 = \frac{(25 - 39.78)^2}{39.78} + \frac{(22 - 11.82)^2}{11.82} + \frac{(30 - 12.17)^2}{12.17} + \frac{(40 - 53.23)^2}{53.23}   
+$$
+
+$$
+\chi^2 = 43.689
+$$
+Avec $k - 1 = 4 - 1 = 3$ degrés de liberté, on trouve que $P(\chi^2_{0.05, 3} \geq 43.689) < 0.0001$. Avec R, le tout s'obtient facilement à l'aide de :
+
+```{r exselect2, echo = TRUE, keep.source = TRUE}
+##on crée un vecteur de fréquences
+select <- c(25, 22, 30, 40)
+##on ajoute les noms des habitats
+names(select) <- c("jeune_coupe", "vieille_coupe", "marais_et_etang", "foret_non_coupee")
+##on effectue le test du khi carré
+##important de spécifier les bonnes valeurs pour H0
+out.select <- chisq.test(select, p = c(0.340, 0.101, 0.104, 0.455))
+out.select
+``` 
+:::
+
+---
+
+On conclut qu'il est peu probable d'observer une valeur de $\chi^2 \geq 43.689$ avec 3 degrés de liberté dans une population où l'utilisation de l'habitat par les orignaux est proportionnelle à la disponibilité de l'habitat. Effectivement, on rejette $H_0$. Certains types d'habitat sont sous-utilisés et d'autres surutilisés par rapport à leur disponibilité dans l'aire d'étude. De façon équivalente, on peut dire que l'utilisation de différents habitats par les Orignaux ne dépend pas seulement des disponibilités de ces habitats.
+
+Le rejet de $H_0$ permet une analyse plus poussée à l’aide des résidus de Pearson.
+
+```{r exselect3, echo = TRUE, keep.source = TRUE}
+##on extrait les résidus de Pearson des résultats du test
+out.select$residuals
+``` 
+
+<!--- Pas les mêmes conclusions que dans le pdf--->
+
+On constate que les vieilles coupes forestières ainsi que les marais et les étangs sont significativement plus utilisés que ce qui est prédit selon leur disponibilité, alors que les jeunes coupes forestières sont significativement moins fréquentées.   
+
+Le résultat obtenu pour la forêt non-coupée est plus nuancé. Le résidu associé à cet habitat est près du seuil de signification, soit -2. De plus, la différence entre la fréquence observée et théorique est similaire à ce que l’on observe chez d’autres habitats. C’est ici que les compétences de spécialistes deviennent pertinentes. On pourrait alors conclure que la sous-utilisation de cet habitat est biologiquement significative même si le résidu (-1.81295) est légèrement inférieur au seuil de signification statistique de -2.
+
+##### Correction de continuité
+
+Les calculs à partir de la formule du $\chi^2$ approximent bien la distribution théorique du khi carré, sauf dans le cas où il n'y a qu'un seul degré de liberté ($df = 1$). Dans de tels cas, on peut utiliser la correction de continuité de Yates pour réduire le biais :
+
+$$\chi^2_{corr} = \sum_{i=1}^k \frac{(\vert f_i - \hat{f_i}\vert - 0.5)^2}{\hat{f_i}}$$
+
+Le prochain exemple illustre justement l'application de la correction de continuité pour un $\chi^2$ avec 1 degré de liberté.
+
+---
+
+:::{.exemple section=5}
+Dans une expérience en génétique, on veut savoir si un échantillon constitué de 100 plantes provient d'une population où le ratio entre le nombre de fleurs jaunes et celui de fleurs vertes est de $3 : 1$. Après avoir récolté 100 plantes, on remarque que 84 plantes ont des fleurs jaunes et 16 plantes ont des fleurs vertes. On émet les hypothèses statistiques suivantes :   
+$H_0$: L'échantillon provient d'une population avec un ratio fleurs $\mathrm{jaunes : fleurs}$ vertes de $3 : 1$.  
+$H_a$: L'échantillon ne provient pas d'une population avec un ratio fleurs $\mathrm{jaunes : fleurs}$ vertes de $3 : 1$.  
+$\alpha = 0.05$   
+Puisqu'on veut tester un ratio $3 : 1$, les fréquences théoriques conformes à l'hypothèse nulle seront obtenues en multipliant le nombre total de fréquences par $0.75(3/4)$ et $0.25(1/4)$ pour les fleurs jaunes et les fleurs vertes, respectivement. On peut réaliser l'analyse dans R :
+
+```{r ex.color, echo = TRUE}
+##on crée une matrice avec les fréquences
+freq.fleurs <- matrix(data = c(84, 16), nrow = 1)
+
+##on indique H0
+H0.prop <- c(0.75, 0.25)
+
+##on effectue le test du khi carré
+khi2 <- chisq.test(x = freq.fleurs, p = H0.prop)
+khi2
+``` 
+
+On remarque que le test a un degré de liberté. Il faut donc appliquer la correction de continuité de Yates à notre valeur comme suit :
+
+```{r ex.color2, echo = TRUE}
+##khi carré original
+khi.orig <- sum(((khi2$observed - khi2$expected)^2)/
+                khi2$expected)
+khi.orig
+
+##khi carré corrigé pour continuité
+khi.corr <- sum(((abs(khi2$observed - khi2$expected) - 0.5)^2)/
+                khi2$expected)
+khi.corr
+## P-value du khi carré corrigé
+P<- pchisq(khi.corr, df = 1, lower.tail = FALSE)
+P
+``` 
+
+Avec le $\chi^2$ corrigé pour la continuité (3.853 comparé à 4.32 pour le $\chi^2$ non corrigé), on rejette tout de même $H_0$ ($P = `r round(1 - pchisq(khi.corr, df = 1), 4)`$) et on conclut que l'échantillon ne provient pas d'une population où il y a un ratio de trois fleurs jaunes pour une fleur verte ($3 : 1$). Lorsque les valeurs de $P$ se rapprochent du seuil $\alpha = 0.05$, on peut mentionner que le résultat est marginalement significatif, ce qui souligne au lecteur la moins grande fiabilité du résultat.
+:::
+
+---
+
+### Tableau de contingence
+
+Le **tableau de contingence** (*contingency table*) est un tableau à deux dimensions où on note, à la suite d'une étude d'observation ou d'une expérience, la fréquence d'occurrence d'un événement par rapport à deux variables catégoriques (p. ex., sexe, classes de taille). Le tableau de contingence se prête à un **test d'indépendance** entre les deux variables catégoriques. Autrement dit, le tableau de contingence permet de tester l'hypothèse que les fréquences d'occurrence d'un événement pour une variable sont indépendantes des fréquences pour les catégories de l'autre variable. Le test du $\chi^2$ s'applique naturellement au tableau de contingence.
+
+---
+
+:::{.exemple section=5}
+On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d'origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau \@ref(tab:haireyes). Notons ici qu'il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
+Nous reprendrons plus tard cet exemple.
+
+```{r haireyes, echo = FALSE, keep.source = FALSE}
+freq_obs <- matrix(data = c(38, 11, 14, 51), nrow = 2, ncol = 2,
+                   byrow = TRUE)
+colnames(freq_obs) <- c("Pâle", "Foncé")
+rownames(freq_obs) <- c("Bleu", "Brun")
+
+kable(freq_obs, 
+      caption = "Tableau de contingence selon la couleur des cheveux et des yeux.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+:::
+
+---
+
+#### Formulation des hypothèse nulles
+
+La formulation des hypothèses nulles à partir d'un tableau de contingence diffère légèrement de ce que nous avons vu pour le test du khi carré d'ajustement. On peut formuler l'hypothèse nulle en termes d'indépendance d'une variable catégorique par rapport à une deuxième variable catégorique. L'hypothèse nulle peut aussi être formulée en termes de proportion d'un niveau d'une variable catégorique par rapport à une deuxième variable catégorique. Les deux types de formulation sont illustrés dans le prochain exemple.
+
+---
+
+:::{.exemple section=5}
+On continue l'exemple débuté plus haut. Nous pouvons formuler les hypothèses statistiques pour les données du tableau de contingence de deux manières différentes.  
+**Formulation en termes d'indépendance :**   
+$H_0$ (indépendance): La couleur des yeux est indépendante de la couleur des cheveux.  
+$H_a$ (non-indépendance): La couleur des yeux n'est pas indépendante de la couleur des cheveux\footnote{Attention: la non-indépendance n'implique pas la dépendance ou une relation de cause à effet. Il faut être prudent dans l'interprétation de la non-indépendance.}.  
+**Formulation en termes de proportions :**  
+$H_0$: La proportion des individus avec des yeux bleus ne diffère pas selon la couleur des cheveux.   
+$H_a$: La proportion des individus avec des yeux bleus diffère selon la couleur des cheveux^[Nous verrons avec l'analyse de variance à deux critères (voir la leçon 7) que cette interprétation ressemble beaucoup au concept d'interaction.]. 
+
+:::
+
+---
+
+#### Fréquences théoriques
+
+L'obtention des fréquences théoriques est un peu plus compliquée pour les tableaux de contingence, mais suit la même logique que pour le $\chi^2$ d'ajustement qui lui n'a qu'une seule variable catégorique. L'équation suivante nous donne les $\hat{f_{ij}}$ conformes à l'hypothèse nulle:
+
+$$\hat{f_{ij}} = \frac{R_i \times C_j}{G}$$
+
+---
+
+:::{.exemple section=5}
+On applique le calcul des fréquences théoriques aux données de l'échantillon de couleur des yeux et des cheveux. Le tableau \@ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s'obtient: 
+
+$$\hat{f_{ij}} = \frac{R_i \times C_j}{G} $$
+$$\hat{f}_{bleu-p\hat{a}le} = \frac{(38 + 11) \times (38 + 14)}{(38 + 11 + 14 + 51)} $$
+$$\hat{f}_{bleu-p\hat{a}le} = \frac{49 \times 52}{114} $$
+$$\hat{f}_{bleu-p\hat{a}le} =  `r round(49*52/114, 2)` $$
+
+```{r echo = FALSE, keep.source = FALSE}
+df <- data.frame(
+  Col1 = c("", "Bleu", "Brun", "**Somme des colonnes**"),
+  Col2 = c("Pâle", "38 (22.35)", "14 (29.65)", "52"),
+  Col3 = c("Foncé", "11 (26.65)", "51 (35.35)", "62"),
+  Col4 = c("**Somme des rangées**", "49", "65", "114")
+  )
+
+# Generate the table with custom styling for merged cells
+kable(df, 
+      col.names = NULL, 
+      row.names = FALSE, 
+      caption = "Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+
+Avant d'aller plus loin, allons voir les détails du calcul du $\chi^2$ d'indépendance.
+:::
+
+---
+
+#### Calcul du $\chi^2$ d'indépendance
+
+Le calcul du $\chi^2$ pour des données d'un tableau de contingence donne la somme des valeurs partielles pour toutes les cellules du tableau :
+
+$$\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} $$
+où $r$ correspond au nombre total de rangées et $c$ au nombre total de colonnes du tableau de contingence, $f_{ij}$ correspond à la fréquence observée pour la rangée $i$ et la colonne $j$ du tableau de contingence, alors que $\hat{f_{ij}}$ représente la fréquence théorique de la rangée $i$ et colonne $j$ du tableau de contingence. On calcule des degrés de liberté avec $df = (r - 1)(c - 1)$.
+
+---
+
+:::{.exemple section=5}
+En poursuivant l'exemple de la couleur des yeux et des cheveux, on peut calculer le $\chi^2$ :  
+$$\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} $$
+$$ \chi^2 = \frac{(38 - 22.35)^2}{22.35} +  \frac{(14 - 29.65)^2}{29.65} + \frac{(11 - 26.65)^2}{26.65} + \frac{(51 - 35.35)^2}{35.35}$$
+$$\chi^2 = 35.334$$
+Avec cette valeur de $\chi^2$, nous avons $df = (r - 1)(c - 1) = (2 - 1)(2 - 1) = 1$ degré de liberté. Puisque nous avons un seul degré de liberté nous appliquons la correction de Yates pour la continuité :  
+
+$$\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(\vert f_{ij} - \hat{f}_{ij}\vert - 0.5)^2}{\hat{f}_{ij}}$$ 
+Ici, nous obtenons 33.112 avec la correction de Yates et une valeur de $P(\chi^2_{0.05, 1} \geq 33.112) < 0.0001$. On rejette $H_0$ et on conclut que la couleur des cheveux n'est pas indépendante de la couleur des yeux chez des individus d'origine septentrionale résidant au Canada. 
+
+À l'aide de R, on procède ainsi :
+
+```{r keep.source = TRUE}
+##on assemble les données dans une matrice
+freq.obs <- matrix(data = c(38, 11, 14, 51), nrow = 2, 
+                   ncol = 2, byrow = TRUE)
+
+##on ajoute des étiquettes aux colonnes et rangées 
+##ceci est facultatif
+colnames(freq.obs) <- c("Pale", "Fonce")
+rownames(freq.obs) <- c("Bleu", "Brun")
+
+##analyse sans correction pour continuité
+out.tab <- chisq.test(x = freq.obs, correct = FALSE)
+out.tab
+##analyse avec correction pour continuité
+out.tab.corr <- chisq.test(x = freq.obs, correct = TRUE)
+out.tab.corr
+```
+
+Bien que `chisq.test( )` possède un argument `correct` qui prend la valeur `TRUE` par défaut, il n'applique la correction de continuité de Yates que sur les tableaux de contingence de 2 x 2. Nous n'aurions pas pu appliquer cette correction directement avec `chisq.test( )` sur le test du $\chi^2$ d'ajustement pour les données de fleurs jaunes et vertes. 
+
+<!-- pas dans le pdf -->
+Puisque le test de khi-carré révèle une dépendance entre la couleur des cheveux et des yeux, il devient pertinent d'identifier les fréquences qui diffèrent significativement entre elles et dans quelle direction ces différences se trouvent. Les résidus de Pearson sont les suivant :
+
+```{r keep.source = TRUE}
+##on extrait les résidus de Pearson des résultats du test
+out.tab.corr$residuals
+```
+
+L’étude des résidus indique que les fréquences diffèrent significativement puisqu’elles sont inférieures à -2 ou supérieures à 2. On peut conclure que les individus au teint pâle avec des yeux bleus sont plus fréquents que la fréquence attendue (ou théorique). Il en est de même pour les individus dont le teint est foncé avec des yeux bruns. La tendance inverse est observée chez les personnes avec le teint pâle et les yeux bruns et celles au teint foncé avec les yeux bleus.
+:::
+
+---
+
+### Alternative au test du $\chi^2$
+
+Il existe des alternatives au test du khi carré, selon le type de fréquences récoltées. Les prochaines lignes mentionnent quelques tests à titre indicatif. Le test $G$ (*G-test*) s'applique dans les mêmes conditions que le test du khi carré. Le test exact de Fisher (*Fisher's exact test*, `fisher.test( )` peut s'avérer utile, lorsqu'on ne peut pas rencontrer les suppositions du test du $\chi^2$ ou du test $G$, notamment, des fréquences théoriques ($\hat{f}_{ij}$) < 5. Le test exact de Fisher est basé sur la distribution hypergéométrique et s'applique surtout sur des tableaux de contingence de 2 x 2. Le test binomial (*binomial test*) est une autre alternative au test du $\chi^2$ qui permet de tester si les proportions diffèrent dans un tableau 2 x 2 (`prop.test( )`) ou si une seule proportion diffère d'une valeur spécifique (`binom.test( )`). Si les catégories sont ordinales (p. ex., petit, moyen, grand; jeune, mature, vieux), on peut utiliser le test de Kolmogorov-Smirnov modifié pour les données discrètes. Le cas échéant, le test de Kolmogorov-Smirnov sera préférable et plus puissant que le $\chi^2$ qui ne tient pas compte de l'ordre des catégories. Toutefois, ce dernier n'était pas disponible dans R pour les données discrètes ordinales lors de l'écriture de ce document, c'est-à-dire, `ks.test( )` est un test d'ajustement uniquement pour les données continues.
+
+Dans d'autres cas, on peut modéliser les fréquences directement à l'aide de modèles log-linéaires (*log-linear models*) ou des probabilités à l'aide de régressions logistiques (*logistic regression*) en fonction d'une série de variables catégoriques ou numériques. Ces dernières approches sont des modèles linéaires généralisés que l'on peut réaliser à l'aide de `glm( )`.
+
+### Le paradoxe de Simpson
+
+Lorsqu'on analyse des fréquences, il faut être conscient du **paradoxe de Simpson** (*Simpson's paradox*), qui se traduit par une inversion des relations dues à l'effet d'une variable qui n'a pas été considérée dans l'analyse. Voici une illustration de ce paradoxe. Considérons la survie de souris exposées à un traitement (400 souris) comparé à un témoin (120 souris) (Table \@ref(tab:surv)). 
+
+```{r surv, keep.source = FALSE, echo = FALSE}
+surv <- matrix(data = c(60, 200, 60, 200), 
+               nrow = 2, ncol = 2, byrow = TRUE)
+colnames(surv) <- c("Témoin", "Traitement")
+rownames(surv) <- c("Vivant", "Mort")
+
+kable(surv, 
+      caption = "Effet d'un traitement sur la survie d'individus.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+
+D'après ce tableau, on serait porté à conclure que la survie des souris est indépendante du traitement ($60/120$ vs $200/400$ = 0.5 vs 0.5). Toutefois, en stratifiant l'analyse par sexe, on obtient un résultat différent. Le tableau des mâles suggère que le traitement augmente la survie (Table \@ref(tab:survMales), $14/60$ vs $60/70$ = 0.23 vs 0.85). 
+
+```{r survMales, keep.source = FALSE, echo = FALSE}
+surv.males <- matrix(data = c(14, 60, 46, 10), 
+               nrow = 2, ncol = 2, byrow = TRUE)
+colnames(surv.males) <- c("Témoin", "Traitement")
+rownames(surv.males) <- c("Vivant", "Mort")
+
+kable(surv.males, 
+      caption = "Effet d'un traitement sur la survie des mâles.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+
+Le tableau des femelles, quant à lui, suggère que le traitement diminue la survie (Table \@ref(tab:survFemales), $46/60$ vs $140/330$ = 0.77 vs 0.42). Dans cet exemple, les analyses réalisées séparément par sexe mènent à des conclusions différentes. Dans ce cas-ci, faire abstraction du sexe dans l'analyse mène au paradoxe de Simpson et à une conclusion erronée. Il faut songer attentivement avant de se lancer dans l'analyse de fréquences et il est important de considérer toutes les variables pouvant influencer les résultats. Un moyen de prévenir le paradoxe de Simpson est de mieux cibler la population statistique d'intérêt en échantillonnant une partie de la population bien précise (p. ex., âge, type d'habitat). Une autre approche consiste à stratifier l'analyse selon une ou plusieurs variables (p. ex., le sexe, la taille).
+
+```{r survFemales, keep.source = FALSE, echo = FALSE}
+surv.females <- matrix(data = c(46, 140, 14, 190), 
+               nrow = 2, ncol = 2, byrow = TRUE)
+colnames(surv.females) <- c("Témoin", "Traitement")
+rownames(surv.females) <- c("Vivant", "Mort")
+
+kable(surv.females, 
+      caption = "Effet d'un traitement sur la survie des femelles.",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+
+### Conclusion
+
+Cette leçon a présenté les rudiments de l'analyse de fréquences, particulièrement le test du $\chi^2$ d'ajustement et d'indépendance. Les conditions sous-jacentes à cette analyse ont été énoncées, ainsi que quelques diagnostics et mesures préventives lors de l'élaboration de la stratégie d'échantillonnage. Des approches alternatives ont aussi été brièvement présentées lorsque les conditions du test du $\chi^2$ ne peuvent être respectées. Finalement, le paradoxe de Simpson a été illustré avec un exemple afin de montrer que l'analyse de fréquences sans tenir compte d'une variable additionnelle peut influencer les conclusions.
+
+## Exercices 
+
+### Question 1
+
+**a.** Lequel des éléments suivants s'avère un problème pour le test du khi carré ($\chi^2$)?   
+
+  (a) Fréquences observées < 3.    
+  (b) Fréquences théoriques < 5.     
+  (c) Hétérogénéité de la variance. 
+
+<details>
+<summary> Réponse</summary>
+**(b) Fréquences théoriques < 5.** La restriction concerne les fréquences théoriques et non observées. L'hétérogénéité de la variance est une supposition de modèles qui dépendent de la distribution normale, tels que le test-$t$ de Student.
+</details>
+
+<br>
+
+**b.** Un tableau de contingence résume les fréquences pour chaque combinaison des niveaux de deux variables catégoriques différentes. Vrai ou faux?  
+
+<details>
+<summary> Réponse</summary>
+**Vrai**
+</details>
+
+<br>
+
+**c.** Nommez un test équivalent au $\chi^2$ qui s'applique dans les mêmes conditions que ce dernier.  
+
+<details>
+<summary> Réponse</summary>
+Le test-$G$ est un test équivalent au $\chi^2$.
+</details>
+
+<br>
+
+### Question 2
+
+Un concessionnaire automobile désire mieux cibler sa clientèle dans une ville. Il demande une étude d'observation afin de déterminer si les résidants de quatre arrondissements (A, B, C, D) d'une même ville utilisent plutôt des voitures produites par des manufacturiers domestiques (GM, Chrysler, Ford) ou produites par des compagnies étrangères (p.ex., Honda, Toyota, Subaru, Mitsubishi, Mazda, Nissan, Suzuki, Kia, Hyundai, BMW, VolksWagen, Mercedes, Mini, Volvo, SAAB, SMART). On échantillonne aléatoirement 300 voitures dans les quartiers de chacun des quatre arrondissements. On note la marque de chaque voiture. Le tableau \@ref(tab:dataCars) présente les données. 
+
+```{r dataCars, keep.source = FALSE, echo = FALSE}
+##raw data
+library(xtable) # Allows the creation and the format of the contingency table - Y. Claveau
+
+data.cars <- matrix(data = c(125, 223, 62, 180,
+                      175, 77, 238, 120), nrow = 2, ncol = 4, byrow = TRUE)
+colnames(data.cars) <- c("A", "B", "C", "D")
+rownames(data.cars) <- c("Domestique", "Importé")
+
+kable(data.cars, 
+      caption = "Tableau de données des fréquences pour chaque type de véhicule (importé ou domestique) dans les quatre arrondissements (A, B, C, D).",
+      "html", booktabs = TRUE, escape = FALSE) %>% 
+  kable_styling(full_width = F, position = "center")
+``` 
+
+**a.** Créez un objet approprié pour stocker les données de ce tableau de contingence.  
+
+<details>
+<summary> Réponse</summary>
+On peut stocker les données dans une matrice:
+```{r data1, keep.source = TRUE}
+##matrice
+autos <- matrix(data = c(125, 223, 62, 180, 
+                      175, 77, 238, 120), nrow = 2, ncol = 4, byrow = TRUE)
+##on peut ajouter les étiquettes
+colnames(autos) <- c("A", "B", "C", "D")
+rownames(autos) <- c("Domestique", "Importe")
+##visualisons le tout
+autos
+``` 
+</details>
+
+<br>
+
+**b.** Énoncez les hypothèses statistiques pour l'analyse de ces données, ainsi que le seuil de signification.  
+
+<details>
+<summary> Réponse</summary>
+On peut tester les hypothèses statistiques suivantes, soit formulées en terme d'indépendance ou encore en terme de proportions. Les deux formulations sont équivalentes.    
+
+  **Formulation en termes d'indépendance :**   
+$H_0$ (indépendance): L'origine des véhicules est indépendante de l'arrondissement de la ville.  
+$H_a$ (non-indépendance): L'origine des véhicules n'est pas indépendante de l'arrondissement de la ville.  
+$\alpha = 0.05$  
+
+  **OU**  
+  
+  **Formulation en termes de proportions :**  
+$H_0$: La proportion des véhicules d'origine domestique ne diffère pas selon l'arrondissement de la ville.  
+$H_a$: La proportion des véhicules d'origine domestique diffère selon l'arrondissement de la ville.  
+$\alpha = 0.05$  
+</details>
+
+<br>
+
+**c.** Choisissez l'analyse appropriée et justifiez votre choix.  
+
+<details>
+<summary> Réponse</summary>
+On peut analyser les données du tableau de contingence avec un test du $\chi^2$ puisque les données ont été obtenues à l'aide d'un dispositif complètement aléatoire et parce que nous avons 5 fois plus d'observations qu'il y a de cellules dans le tableau (`r 1200/4` fois plus d'observations). Par conséquent, aucune fréquence théorique n'est inférieure à 5.
+</details>
+
+<br>
+
+**d.** À l'aide de R, effectuez l'analyse que vous avez choisie précédemment et interprétez les résultats.    
+<details>
+<summary> Réponse</summary>
+Si on a choisi le $\chi^2$, on procédera comme suit :
+
+```{r data3, keep.source = TRUE, echo = TRUE}
+out.autos <- chisq.test(x=autos) 
+``` 
+
+On observe un $\chi^2$ de 194.36 avec trois degrés de liberté et $P(\chi^2_{0.05, 3} > 194.36) < 0.0001$. On rejette $H_0$ et on conclut que l'origine des véhicules n'est pas indépendante de l'arrondissement. L'interprétation alternative, en termes de proportion, indique que la proportion de véhicules d'origine domestique varie avec le quartier. En d'autres mots, la compagnie peut viser certains quartiers afin d'optimiser sa campagne de publicité.
+</details>
+
+<br>
+
+<!-- Question (e) pas dans le pdf -->
+**e.** Est-il approprié d’identifier les différences significatives entre les fréquences observées ? Dans l’affirmative, veuillez effectuer l’analyse prévue à cet effet. Que pouvez-vous conclure ?  
+
+<details>
+<summary> Réponse</summary>
+Il est pertinent d’identifier les différences entre les fréquences observées lorsqu’on rejette l’hypothèse nulle. Les résidus de Pearson sont les suivants :  
+
+```{r data4, keep.source = TRUE, echo = TRUE}
+##on extrait les résidus de Pearson des résultats du test
+out.autos$residuals
+``` 
+
+L’étude de ces résidus indique qu’un concessionnaire de voitures fabriquées par des compagnies étrangères aura tout intérêt à cibler l’arrondissement C, puisque la proportion de leurs véhicules y est significativement plus élevée. Si, à l’inverse, la concession représente des manufacturiers domestiques, les arrondissements B et D devraient être considérés.
+
+Des valeurs de résidus près des limites de signification pour l’arrondissement A mènent à s’interroger sur la pertinence de s’intéresser à cette partie du territoire. La commande ci-dessous permet de connaître les différences entre les fréquences observées et théoriques. On remarque que ces différences sont les plus faibles. Il n’y a donc pas lieu de s’intéresser formellement à cet arrondissement pour accroitre les ventes de voitures importées.
+
+```{r data5, keep.source = TRUE, echo = TRUE}
+out.autos$observed-out.autos$expected
+``` 
+</details>
+
+<br>

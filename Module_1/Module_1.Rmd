@@ -1,0 +1,900 @@
+# (PART) APPRENTISSAGE {-}
+
+# Statistiques descriptives
+
+Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+---
+
+Le contenu théorique de chaque leçon est présenté dans un document comme celui-ci et intègre souvent du code en langage de programmation R. Nous sommes conscients que la convention en français est d'utiliser la virgule pour indiquer la décimale.
+Toutefois, nous utilisons systématiquement le point pour désigner la décimale dans le texte. Ce choix vient du fait que la syntaxe de R utilise le point comme décimale - à la fois pour la saisie de valeurs numériques et pour l'affichage des sorties d'analyses. Ainsi, l'usage du point uniformisera le texte et nous sommes d'avis que cette décision facilitera sa compréhension.
+
+---
+
+
+###### À quoi servent les statistiques {-}
+
+Les statistiques constituent une partie importante de la démarche scientifque. Elles s'appliquent à des domaines aussi variés que l'écologie, le génie, la psychologie, la médecine, et les sciences sociales. Les objectifs de l'analyse statistique sont les suivants :
+
+ -	Estimer des paramètres. Par exemple, la question "Quel est le taux d'obésité au Québec ?" est un problème d'estimation. C'est-à-dire que nous cherchons à trouver la vraie valeur de cette densité.
+ -	Tester des hypothèses. Par exemple, en posant la question "Les ours des aires protégées du Québec ont-ils une plus grande masse que leurs homologues à l'extérieur des aires protégées ?" Ici, nous voulons déterminer si la différence observée dans les deux groupes est due au hasard ou à un réel effet.
+ -	Inférer les résultats dans un contexte plus général (où inférer signife "tirer des conclusions"). C'est ce que font, par exemple, régulièrement les maisons de sondage d'opinions politiques auprès de la population.
+ -	Faire des prédictions. La prédiction consiste à construire un modèle et l'utiliser pour prédire le comportement d'une variable d'intérêt. On peut utiliser la prédiction en médecine, météorologie ou en toxicologie, par exemple. 
+ 
+Définissons maintenant certains termes et concepts en statistique.
+
+## Théories
+
+### Paramètre vs statistique
+
+Le **paramètre** est un concept important. Il désigne une valeur numérique inconnue qui caractérise une population d'intérêt. Par exemple, la taille moyenne en cm des résidents de l'île de Montréal est une valeur inconnue (mais qui existe). C'est-à-dire qu'il serait possible de calculer cette valeur si on mesurait chaque individu de cette région. Un paramètre est habituellement représenté par une lettre grecque ($\mu$, $\sigma$). Si la taille moyenne des résidents était de 1.91 m, on écrirait $\mu$ = 1.91 m. 
+
+À l'opposé, une **statistique** est une quantité qui peut être calculée à partir des données d'un échantillon. Par exemple, si nous désirons calculer la taille moyenne des résidents de l'île de Montréal, nous pourrions le faire en mesurant la taille de 100 résidents de l'île. Une statistique est normalement désignée par une lettre romaine (s, sd, $\bar{x}$).
+
+La **population statistique** est l'ensemble des éléments sur lesquels on veut baser nos conclusions (taille des résidents de Montréal). On ne connaît pas la taille moyenne des gens de cette population. Il existe deux options afin d'obtenir de l'information sur cette moyenne:
+
+- mesurer la taille de chaque résident de Montréal (peu pratique et logistiquement difficile);
+- utiliser un **échantillon** construit à partir de tailles d'individus sélectionnés aléatoirement dans la population de Montréal.
+
+Pour faire une analogie, l'échantillon est à la population, ce que la statistique est au paramètre. Si nous poursuivons avec notre exemple d'échantillon de 100 résidents de Montréal (100 observations), la valeur numérique obtenue constituera une estimation de la taille moyenne ($\mu$) des résidents de Montréal. L'estimation est une valeur possible que peut prendre un paramètre. Pour récapituler, on infère sur la population à partir d'un échantillon. Si la moyenne de l'échantillon est de 1.7 m ($\bar{x}$ = 1.7 m), on peut dire que 1.7 est une estimation de la moyenne de la population $\mu$. Bref, on peut tirer des conclusions sur la population à partir d'un échantillon qui provient de cette même population.
+
+Afin de faire une bonne estimation, l'échantillon doit être aléatoire et représentatif de la population. Dans un échantillon aléatoire, chaque élément de la population a une chance égale d'être inclus dans l'échantillon. Si on sélectionne aléatoirement 100 résidents de Montréal pour estimer la taille moyenne des individus dans la population et que, par malchance, tous les résidents sélectionnés proviennent du même quartier, l'échantillon ne sera pas représentatif de la population.
+
+### Mesures de la tendance centrale
+
+Certaines mesures décrivent la valeur autour de laquelle se concentrent la plupart des observations d'un échantillon ou d'une population. On parle alors de **tendance centrale** ou de **paramètres de position**. On peut estimer ces paramètres à partir d'un échantillon. La **moyenne arithmétique** est un exemple de ce genre de mesure:
+
+$$
+\bar{x} = \frac{\sum\limits_{i=1}^nx_i}{n}
+$$
+
+où $x_i$ correspond à la valeur $i$ de la variable $x$ et $n$ correspond au nombre d'observations. À noter que $\Sigma$ (la lettre grecque *sigma*) indique la somme de toutes les observations de $i = 1$ jusqu'à $n$. De façon plus générale, on appelle **estimateur** une formule ou équation utilisée pour estimer une certaine valeur, alors que l'estimation est le résultat de l'estimateur.
+
+---
+
+::: {.exemple section="1"} 
+Lors d'une expérience sur la hauteur de semis sur un sol argileux après une saison de croissance, on obtient les valeurs suivantes en cm: 12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1. Le calcul de la moyenne arithmétique se fait comme suit:
+
+$$
+\bar{x} = \frac{\sum\limits_{i=1}^nx_i}{n} = \frac{12.3 + 4.2 + 5.9 +  \ldots + 8.0 + 6.1}{10} \\
+\bar{x} = 6.51 
+$$
+<!-- je n'arrive pas à mettre les calculs dans les équations ci-dessus comme dans le texte ci-dessous pour afficher le résultat 6.51 -->
+Ainsi, la moyenne arithmétique de cet échantillon est de `r round(mean(c(12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1)), digits = 2) ` cm.
+:::
+
+---
+
+L'estimateur de $\bar{x}$ est un estimateur non-biaisé de $\mu$ si:
+
+- les observations sont effectuées sur des individus sélectionnés aléatoirement;
+- les observations sont indépendantes;
+- les observations de la variable décrivant la population suivent une distribution normale.
+
+La **moyenne géométrique** est une autre mesure de tendance centrale, particulièrement appropriée pour décrire des processus multiplicatifs^[Dans un processus multiplicatif, une variable a un effet multiplicatif sur une variable réponse. Parexemple, si on remarque que la croissance de semis à concentration modérée d'engrais est 2.5 fois plus élevée qu'à concentration faible, la concentration a un effet multiplicatif sur la croissance.]. Un processus multiplicatif est un effet qui ou en présence de valeurs extrêmes:
+
+$$
+\bar{x}_{g\acute{e}om} = \sqrt[n]{\prod_{i=1}^n x_i} \\
+\bar{x}_{g\acute{e}om} = e^\frac{{\sum\limits_{i=1}^n \log(x_i)}}{n}
+$$
+
+---
+
+::: {.exemple section="1"}
+Disons qu'après un décompte d'insectes sur 5 quadrats^[Un quadrat est une unité spatiale de dimension donnée (1 m × 1 m, 10 m × 10 m), disposée dans un site d'étude sur laquelle on fait des mesures en écologie, ici un décompte d'insectes.] dans un champ agricole, on observe les abondances suivantes: 10, 1, 1000, 1, 10.
+
+$$
+\bar{x}_{g\acute{e}om} = \sqrt[5]{10 \cdot 1 \cdot 1000 \cdot 1 \cdot 10} \\
+\bar{x}_{g\acute{e}om} = 10
+$$
+La moyenne géométrique de ces valeurs nous donne 10, alors que la moyenne arithmétique nous donne 204.4. La valeur 1000 se démarque nettement des autres et exerce une influence démesurée sur la moyenne arithmétique, et dans ce cas, la moyenne géométrique est un meilleur estimateur de la tendance centrale.
+:::
+
+---
+
+La **moyenne harmonique** peut s'appliquer à des taux (p. ex., vitesses):
+
+$$
+\bar{x}_{harm} = \frac{n}{\sum\limits_{i=1}^n \frac{1}{x_i}}
+$$
+
+---
+
+::: {.exemple section="1"}
+Par exemple, disons que nous avons suivi un ours noir par télémétrie. L'ours a parcouru un segment de 2 km à une vitesse de 1 km/h, un deuxième segment de 2 km à une vitesse de 2 km/h, un troisième segment de 2 km à une vitesse de 4 km/h et un dernier segment de 2 km à une vitesse de 1 km/h. Quelle est la vitesse moyenne de l'ours?
+
+On pourrait utiliser la moyenne harmonique pour résoudre le problème. Sachant que $vitesse = distance/temps$, nous pouvons déterminer la distance totale parcourue: $4 * 2 \: \mathrm{km} = 8 \:\mathrm{km}$. On peut ensuite évaluer le temps mis à parcourir ces 8 km:
+
+- 1$^{\mathrm{er}}$ segment: 2 km * 1h/km = 2 h
+- 2$^{\mathrm{e}}$ segment: 2 km * 1h/2 km = 1 h
+- 3$^{\mathrm{e}}$ segment: 2 km * 1h/4 km = 0.5 h
+- 4$^{\mathrm{e}}$ segment: 2 km * 1h/1 km = 2 h
+
+Le temps total est 5.5 h. Nous pouvons calculer la vitesse moyenne:
+
+$$
+\mathrm{vitesse \:moyenne} = 8 \:\mathrm{km}/5.5 \:\mathrm{h} \\
+\mathrm{vitesse \:moyenne} = 1.45 \:\mathrm{km/h}
+$$
+C'est exactement ce que nous donne la moyenne harmonique:
+
+$$
+\bar{x}_{harm} = \frac{4}{1/1 + 1/2 + 1/4 + 1/1} \\
+\bar{x}_{harm} = 1.45
+$$
+::: 
+
+---
+
+À noter que la moyenne harmonique s'applique à des vitesses si elles sont mesurées sur une même distance. Si les distances diffèrent, nous devrons utiliser une version pondérée de la moyenne harmonique.
+
+Les trois types de moyennes sont reliées par la relation suivante:
+
+$$
+\bar{x}_{harmonique} < \bar{x}_{g\acute{e}om} < \bar{x}
+$$
+
+Si les observations sont égales ($x_1 = x_2 = x_3 \ldots = x_n$), nous obtenons:
+
+$$
+\bar{x}_{harmonique} = \bar{x}_{g\acute{e}om} = \bar{x}
+$$
+
+Il existe d'autres mesures de tendance centrale, notamment la **médiane** qui se définit comme étant la valeur qui sépare les observations en deux groupes égaux (50 \% des valeurs < médiane, 50 \% des valeurs > médiane). En présence de données normales, la médiane et la moyenne sont proches. La médiane est peu influencée par la présence de valeurs extrêmes (valeurs très grandes ou très faibles), alors que la moyenne est très sensible à la présence de valeurs extrêmes.
+
+---
+
+::: {.exemple section="1"}
+Dans une expérience sur le temps de survie d'insectes exposés à un insecticide, on obtient les valeurs (en secondes) 1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2. La moyenne arithmétique de cet échantillon est de `r round(mean(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2)), digits = 2)` secondes et la médiane est de `r round(median(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2)), digits = 2)` secondes. Si l'on ajoute une dernière observation dont la valeur extrême est 40 secondes, la moyenne arithmétique sera alors de `r round(mean(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2, 40)) , digits = 2)` secondes et la médiane de `r round(median(c(1.1, 1.2, 1.3, 1.6, 3.2, 2.4, 5.2, 40)), digits = 2)` secondes. On constate que la médiane est beaucoup moins sensible à l'ajout de la valeur extrême, ce qui n'est pas le cas de la moyenne arithmétique.
+:::
+
+---
+
+```{r histomode, echo=FALSE, fig.cap="Histogramme illustrant une distribution unimodale (a) et bimodale (b)."}
+##mode
+xmod <- c(1, 3, 4, 5, 6, 8, 8, 8, 8, 8, 8, 8, 9, 1, 3, 4, 
+          6, 8, 10, 1, 12, 13, 10)
+par(mfrow = c(1, 2), cex = 1.2)
+hist(xmod, breaks = 10, main = "Mode = 8", 
+     ylab = "Fréquences", xlab = "Valeurs de x", col = "turquoise")
+##add text
+text(x = 1, y = 7.8, labels = expression(bold(a)), 
+     cex = 1.2)
+xmod2 <- c(1, 3, 4, 5, 6, 8, 8, 8, 8, 8, 8, 8, 9, 1, 3, 4, 
+           6, 8, 10, 1, 12, 13, 10, 15, 16, 16, 11, 16, 16,
+           14, 15, 16, 16, 18)
+hist(xmod2, breaks = 18, main = "Mode = 8 et mode = 16", 
+     ylab = "Fréquences", xlab = "Valeurs de x",
+     col = "turquoise")
+text(x = 1, y = 7.8, labels = expression(bold(b)),
+     cex = 1.2)
+```
+
+Le **mode** permet aussi de caractériser la tendance centrale, car il donne la ou les valeurs qui reviennent le plus souvent dans l'échantillon (Figure \@ref(fig:histomode)). Par exemple, si, dans un échantillon, on obtient les valeurs 12, 12, 12, 12, 12, 3, 3, 3, 3, 3, 3, 1, 2, 14, 15, 16, 21, 32, on dira qu'il y a deux modes (12 et 3).
+
+### Mesures de dispersion
+
+Certaines mesures décrivent plutôt l'étendue de la variabilité des données. On parle alors de **mesures de dispersion** ou de **paramètres de variabilité**. Plus la variabilité augmente, plus l'incertitude quant à la valeur des paramètres estimés à partir de données d'un échantillon augmente. Un niveau d'incertitude plus élevé augmente la difficulté de trouver des différences et de tester des hypothèses. L'**étendue** (*range*) est la mesure  de dispersion la plus simple. Il s'agit de la différence entre la valeur minimale et la valeur maximale des observations.
+
+#### Somme des carrés des erreurs
+
+La **somme des carrés des erreurs** (*sum of squared errors, SSE*) donne le carré de la différence entre chaque observation et la moyenne de l'échantillon:
+
+$$
+SSE = \sum_{i=1}^n (x_i - \bar{x})^2
+$$
+
+Cette mesure de variabilité est l'une des plus communes, et peut prendre des valeurs ≥≥ 0 (le carré assure des valeurs positives). Plus cette valeur est grande, plus il y a de variabilité dans les données (i.e., les observations sont plus éloignées de la moyenne).
+
+---
+
+::: {.exemple section="1"}
+Un échantillon de 6 longueurs de tige d'une plante ligneuse donne 1.3 m, 4.5 m, 4.1 m, 2.1 m, 5.0 m, et 1.9 m, il s'ensuivra que $\bar{x}$ = 3.15 m et que $SSE=(1.3−3.15)2+(4.5−3.15)2+…+(1.9−3.15)2=12.24m^2$. Une propriété importante de la SSE est qu'à chaque nouvelle observation ajoutée, elle augmente (pourvu que $x_{nouvelle}\neq \bar{x}$). Si on ajoute une septième valeur de 2.6 à notre échantillon de longueurs de tige présenté ci-haut, la moyenne arithmétique devient 3.07 et la SSE s'élèvera à 12.49 $m^2$.
+:::
+
+---
+
+Une meilleure mesure de dispersion devrait tenir compte de la taille de l'échantillon. Mais avant d'aller plus loin, allons visiter le concept de degrés de liberté (*degrees of freedom, df*), un concept souvent nébuleux que nous tenterons d'éclaircir ici. On peut voir les degrés de liberté comme étant la taille de l'échantillon corrigée pour le nombre de paramètres estimés.On peut obtenir cette valeur en soustrayant le nombre de paramètres estimés p de la taille d'échantillon n (*i.e., n − p*). Clarifions avec un exemple.
+
+---
+
+::: {.exemple section="1"}
+Imaginez qu'on ait un échantillon de 5 observations dont on ne connait rien. Ces 5 observations pourraient prendre n'importe quelle valeur. Le degré de liberté est donc 5 (*df* = 5). Imaginez maintenant qu'on connaisse un paramètre de cet échantillon (p. ex., $\bar{x}$ = 7). On réduit la liberté des valeurs que peuvent prendre ces 5 observations. En effet, disons que les valeurs aient été ndéterminées pour 4 des observations et que la moyenne est connue, la dernière observation est obligée de prendre une valeur en particulier. Avec un paramètre connu, le degré de liberté est donc 4 (*df* = 5 − 1 = 4).
+:::
+
+---
+
+#### Carré moyen (variance)
+
+Comme nous l'avons mentionné plus tôt, la somme des carrés des erreurs ($SSE$) augmente avec la taille de l'échantillon. Une meilleure mesure devrait tenir compte de la taille d'échantillon. Le **carré moyen**(*mean square, mean squared error, MSE*) est une telle mesure de dispersion :
+
+$$
+MSE = \frac{SSE}{df} = \frac{\sum\limits_{i=1}^n (x_i - \bar{x})^2}{n - 1}
+$$
+À noter que le dénominateur correspond aux degrés de liberté, ici $n - 1$, puisque nous avons estimé la moyenne arithmétique $\mu$ à l'aide de $\bar{x}$ pour trouver la $SSE$. Ce carré moyen est en fait la **variance** de l'échantillon, $s^2 = MSE$. Cette relation est importante et nous reviendrons sur cette notion lors de la leçon sur l'analyse de variance. On peut donc estimer la variance de la population à partir d'un échantillon en utilisant l'équation : 
+
+$$
+s^2 = MSE = \frac{SSE}{df} \\
+s^2 = \frac{\sum\limits_{i=1}^n (x_i - \bar{x})^2}{n - 1}
+$$
+Parfois, on utilise aussi la formule alternative (mais totalement équivalente):
+
+$$
+s^2 = \frac{\sum\limits_{i=1}^n x_i^2 - \frac{\left (\sum\limits_{i=1}^n x_i\right )^2}{n}}{n - 1}
+$$
+L'**écart-type** ($s$) est simplement la racine carrée de la variance, et il indique la variabilité dans les données. La variance dépend énormément de la taille de l'échantillon. L'estimation devient difficile lorsqu'on a peu d'observations dans l'échantillon. Illustrons avec un exemple.  
+
+---
+
+::: {.exemple section="1"}
+Utilisons une petite simulation à l'aide de **R** pour générer des données provenant d'une population avec des caractéristiques connues, soit une population normale avec une moyenne de 10.1 ($\mu = 10.1$) et une variance de 4 ($\sigma^2 = 4$). Nous allons sélectionner aléatoirement trois observations provenant de cette population afin de constituer un échantillon de $n = 3$. 
+
+À partir de cet échantillon, nous pouvons calculer une variance qui sera une estimation de la vraie valeur. Nous estimerons $\sigma$ à l'aide de l'estimateur de la variance ($s$) d'un échantillon. Afin d'obtenir une meilleure idée de la performance de l'estimation de la variance, nous allons ensuite répéter l'exercice pour 29 autres échantillons de $n = 3$ tirés de la même population, et calculer la variance de chaque échantillon de taille 3. Par la suite, nous ferons de même pour 30 échantillons constitués de 4 observations, 30 échantillons de 5 observations, ..., 30 échantillons de 49 observations et 30 échantillons de 50 observations (fig. \ref{Figure:variance}). 
+
+On remarque que l'estimation de la variance est parfois très loin de la vraie valeur de 4, particulièrement pour les très petits échantillons ($n \leq 10$). On obtient de meilleures estimations pour de plus grands échantillons, particulièrement au-delà de 30. C'est une des raisons pour laquelle on considère un échantillon de 30 observations comme ayant une taille suffisante -- il permet de bien estimer la variance. On comprend rapidement que l'utilisation d'un petit échantillon peut nous amener loin de la vraie valeur de la variance. Mais pourquoi s'intéresser autant à la variance?
+
+```{r variance, echo=FALSE, fig.cap="Effet du nombre d'observations sur l'estimation de la variance. À noter que la ligne pointillée représente la vraie valeur de la population ($\\sigma^2 = 4$) à partir de laquelle les observations ont été sélectionnées aléatoirement"}
+##Sample size and variance
+plot(x = c(0, 52), y = c(0, 20), type = "n", 
+     xlab = "Taille de l'échantillon (n)", ylab = expression(paste("Variance estimée (", sigma^2, ")")))
+
+##try scenarios with sample sizes of 3 to 50 observations
+for (df in 3:50) {          
+  ##obtain 30 data sets for each scenario
+  for (i in 1:50){            
+    #obtain sample of size df with mean and sd
+    x <- rnorm(df, mean = 10.1, sd = 2) 
+    points(df, var(x))           #plot the points on graph
+  }
+}
+abline(h = 4, lty = 2, lwd = 3, col = "blue") #add line to indicate variance
+```
+:::
+
+---
+
+La variance est une quantité importante en statistiques, puisqu'elle est requise pour construire des mesures de précision (p. ex., intervalles de confiance) et pour tester des hypothèses (p. ex., test t). Un petit échantillon peut produire une estimation très loin de la vraie valeur de la variance et invalider les conclusions d'une analyse statistique. Tel qu'illustré dans l'exemple 1.7, l'estimation de la variance s'améliore avec la taille de l'échantillon. Ce qui nous mène à visiter les concepts de **précision** et d'**exactitude**.
+
+
+#### Précision vs exactitude
+
+La réalisation d'une expérience, impliquant l'échantillonnage des observations et l'estimation des quantités, s'apparente à un archer qui lance une flèche sur une cible, où la flèche correspond à une expérience et le point sur la cible correspond à une estimation. On veut que la flèche se rende le plus près du centre de la cible (c.-à-d., une bonne estimation), mais on veut que les flèches ne soient pas trop éloignées les unes des autres (c.-à-d., une bonne précision). En d'autres termes, un archer est précis si toutes ses flèches tombent très près du même point sur la cible (fig. \ref{Figure:accuracy}a, c), ou encore il peut manquer d'exactitude lorsque ses flèches sont loin du centre de la cible (fig. \ref{Figure:accuracy}c, d). Le meilleur des scénarios est un tir précis et exact (fig. \ref{Figure:accuracy}a), et le pire est un tir ni précis, ni exact (fig. \ref{Figure:accuracy}d). Le tir exact mais peu précis implique que l'estimation varie beaucoup d'un échantillon à l'autre (fig. \ref{Figure:accuracy}b), et cette variation n'est pas souhaitable. 
+
+
+```{r accuracy, fig.align='left', echo=FALSE, fig.link='images/Target3.png', fig.cap="Utilisation de cibles pour expliquer le concept de précision et d'exactitude avec quatre archers dans une compétition. Si tous les points se trouvent au centre et très près les uns des autres, l'archer est précis et exact (a), alors que si les points sont dans la région centrale mais éloignés les uns des autres, l'archer est exact mais peu précis (b). À l'opposé, si les points sont très près les uns des autres et loin du centre, l'archer est précis mais manque d'exactitude (c), tandis que dans le dernier scénario l'archer n'est ni précis ni exact (d)."}
+knitr::include_graphics("Module_1/images/Target3.png")
+```
+
+L'exactitude peut être vue comme un terme qualitatif. La valeur qui quantifie la déviation entre les estimations et la valeur réelle du paramètre s'appelle biais. Plus formellement, on appelle **biais** la différence entre la *8{valeur attendue** d'une estimation et la **valeur réelle** qu'on désire estimer :
+
+$$
+biais = E(\hat{\theta}) - \theta
+$$
+où $\theta$ est la valeur réelle du paramètre de la population, $\hat{\theta}$ correspond à l'estimation d'un paramètre obtenu avec un seul jeu de données, et $E(\hat{\theta})$ est la valeur attendue des estimations du paramètre. La valeur attendue est en fait la moyenne d'une série d'estimations $\hat{\theta}$ obtenues à partir de plusieurs échantillons de taille égale provenant de la même population. Pour poursuivre notre analogie des archers, la valeur attendue correspond à la moyenne des positions des flèches sur la cible. Le biais exprime la tendance des différences entre les valeurs estimées d'un paramètre et la vraie valeur de ce paramètre. Lorsque le biais est de 0, on dit que l'estimateur est non biaisé (p. ex., l'estimateur de la moyenne arithmétique, $\bar{x}$, sous certaines conditions).
+
+Si on développait une mesure d'imprécision ($1/pr\acute{e}cision$), on s'attendrait à ce qu'elle augmente proportionellement ($\propto$^[Le symbole $\propto$ indique la proportionnalité entre deux variables. En d'autres mots, on peut passer des valeurs d'une variable en multipliant ou divisant par une constante non nulle pour obtenir les valeurs de l'autre.]) avec la variance :
+
+$$
+impr\acute{e}cision \propto s^2
+$$
+
+Par contre, on s'attendrait à ce que l'imprécision diminue avec la taille de l'échantillon :
+
+$$
+impr\acute{e}cision \propto \frac{s^2}{n}
+$$
+Une mesure idéale s'exprimerait dans les mêmes unités que les observations :
+
+$$
+impr\acute{e}cision \propto \sqrt{\frac{s^2}{n}}
+$$
+
+Une telle mesure existe déjà, c'est l'erreur-type de la moyenne ($SE$) : 
+
+$$
+SE = s_{\bar{x}} = \sqrt{\frac{s^2}{n}}
+$$
+L'**erreur-type de la moyenne** d'un échantillon ($s_{\bar{x}}$ ou $SE$) représente l'écart-type de la distribution des moyennes calculées à partir d'échantillons de taille identique à celle de notre échantillon. Ainsi, l'erreur-type de la moyenne nous donne une indication sur la variabilité de l'estimation de ce paramètre si on répétait l'échantillonnage. Pour clarifier, l'écart-type nous informe sur la variabilité d'un échantillon alors que l'erreur-type de la moyenne nous indique la précision avec laquelle nous avons estimé ce paramètre. Nous revisiterons ce concept lors des deux dernières leçons consacrées aux modèles de régression.
+
+L'erreur-type nous permet de calculer des **intervalles de confiance** autour de la moyenne ou d'autres paramètres. L'intervalle de confiance est justement une autre mesure de précision autour d'une estimation. L'intervalle de confiance ($IC$) se définit comme étant l'intervalle à l'intérieur duquel se trouvera la moyenne de la population $\mu$ si l'on répète l'expérience un grand nombre de fois. Pour un $IC$ à 95 \%,
+
+$$
+P(\bar{x} - 1.96 \cdot SE \leq \mu \leq \bar{x} + 1.96 \cdot SE) = 0.95
+$$
+Un $IC$ à 95 \% indique que la moyenne de la population ($\mu$) devrait se trouver 95 \% du temps (c.-à-d., la probabilité est de 0.95) à l'intérieur de l'intervalle si on répète l'échantillonnage à plusieurs reprises avec le même nombre d'observations. Pour un $IC$ donné, la moyenne de la population $\mu$ est incluse ou non ^[Les gens ont souvent une interprétation bayésienne de l'intervalle de confiance en affirmant que c'est la probabilité que la moyenne soit comprise dans l'intervalle de confiance construit à partir d'un seul échantillon. Dans le cours, nous ferons uniquement appel aux statistiques classiques aussi appelées fréquentistes et nous utiliserons la définition classique de l'intervalle de confiance.]. L'$IC$ est construit à partir d'un échantillon, mais concerne la moyenne $\mu$ de la population. Nous expliquerons en détail la construction et l'interprétation d'intervalles de confiance à la prochaine leçon(voir aussi la section 7 de la présente leçon pour comprendre l'origine du facteur 1.96). Pour l'instant, il suffit de réaliser qu'on peut utiliser cette intervalle pour en indiquer la précision.
+
+<!-- La phrase "voir aussi la section 7 de la présente leçon pour comprendre l'origine du facteur 1.96" se trouve dans le PDF mais pas dans le latex -->
+
+#### Autres mesures de dispersion
+
+Le **coefficient de variation*}** (*coefficient of variation, CV*) est parfois utilisé pour représenter la variabilité:
+$$
+CV = \frac{s}{\bar{x}} \cdot 100 \: \%
+$$
+où $s$ représente l'écart-type de l'échantillon et $\bar{x}$ correspond à la moyenne arithmétique de l'échantillon. On remarque que le $CV$ est le ratio entre l'écart-type et la moyenne arithmétique. Un échantillon avec un CV de 14 \% varie moins qu'un autre avec un $CV$ de {30~\%}.
+
+Les **quantiles** peuvent également nous aider à représenter à quel point les données varient. Le mot "quantile" est un terme générique qui désigne une quantité qui divise les données en compartiments après qu'elles ont été mises en ordre croissant. Les **quartiles** divisent les données en quatre compartiments, les **déciles** en 10 compartiments, et les **percentiles** en 100 compartiments. Par exemple, un 90$^{\mathrm{e}}$ percentile de 120 g signifie que 90 \% des valeurs sont inférieures à 120 g et que 10 \% des valeurs sont supérieures à 120 g.
+
+### Variables aléatoires
+
+On désigne **variable aléatoire** une variable dont les valeurs observées sont considérées comme résultant d'un processus aléatoire (c.-à-d., expérience aléatoire). Autrement dit, les valeurs exactes d'une variable aléatoire dans un échantillon ne peuvent être anticipées avec certitude avant de recueillir l'échantillon que nous utiliserons pour tirer des conclusions à propos de la population (p. ex., estimer un paramètre). Le tout implique une composante aléatoire. Par exemple, si on mesure la pression artérielle, le niveau de cholestérol, et le niveau d'activité (trois variables aléatoires) chez un groupe de gens sélectionnés aléatoirement, on ne peut prédire la valeur de ces trois variables chez un individu avant de les avoir mesurées.
+
+Les variables aléatoires peuvent être **discrètes**ou **continues**. Par discrètes, on entend des variables binaires (p. ex., présence-absence, mort-vivant), catégoriques ordonnées ou non (p. ex., petit, moyen, grand; poisson, invertébré, mammifère) ou encore des variables apparaissant sous forme d'entiers (le nombre d'interruption de courant dans 5 municipalités depuis le dernier mois: 0, 1, 12, 4). Le cas échéant, la valeur peut uniquement prendre des valeurs entières -- on ne peut avoir dénombré 2.4 individus dans un quadrat ou avoir un individu au 3/4 mort. 
+
+Les variables continues sont celles qui peuvent prendre une infinité de valeurs sur un intervalle donné. La distance, la masse, le temps, la température, la longueur sont des variables pouvant être mesurées avec différentes résolutions, selon l'instrument utilisé pour effectuer la mesure. Par exemple, mesurons un serpent avec trois différents instruments -- un pied à coulisse au mm près, une règle graduée au cm près et un ruban à mesurer au dm près. Le serpent a une longueur finie, mais chacun de nos instruments donnera une mesure différente. Le serpent ne changera pas de longueur entre les trois mesures, mais chaque instrument exprimera un certain nombre de chiffres significatifs. 
+
+La présentation des valeurs d'une variable peut aussi varier selon le type de variable. Nous utilisons habituellement un diagramme à bâtons pour une variable discrète, alors qu'un histogramme illustre mieux les données d'une variable continue (Figure \@ref(fig:randomvar)). 
+
+```{r randomvar, echo=FALSE, fig.cap="Présentation des longueurs de 100 serpents (variable continue, a) et du nombre de pucerons dans 100 sites (variable discrète, b)"}
+
+par(cex = 1.2, mfrow = c(1, 2))
+
+##créer une variable aléatoire continue de 100 observations provenant d'une population avec moyenne de 15 et écart-type de 3
+x <- rnorm(n = 100, mean = 15, sd = 3)
+hist(x, xlim = c(5, 25), col = "turquoise", ylab = "Fréquence", xlab = "Longueur de serpents (cm)", main = "Histogramme de fréquences") #histogramme de fréquence
+text(x = 5, y = 24, labels = expression(bold(a)))
+
+##créer une variable aléatoire Poisson avec lambda=12
+x2 <- rpois(100, lambda = 12)
+data <- table(x2)
+barplot(data, axis.lty = 1, space = 1, ylim =c(0, 22), ylab = "Fréquence", 
+        xlab = "Nombre de pucerons", main = "Diagramme en bâton", col = "bisque")
+text(x = 1, y = 20, labels = expression(bold(b)))
+```
+### Loi des grands nombres et théorème de la limite centrale
+
+Deux principes importants agissent sur l'échantillonnage (et les échantillons) et nous permettent d'analyser les données. La **loi des grands nombres** stipule que la moyenne de l'échantillon ($\bar{x}$) tend vers la moyenne de la population ($\mu$) au fur et à mesure que la taille de l'échantillon augmente. D'où l'importance d'une bonne taille d'échantillon. 
+
+Le **théorème de la limite centrale**, quant à lui, indique que, si on prend plusieurs échantillons indépendants d'une même population, et que l'on calcule la moyenne (ou somme) de chacun, ces moyennes (ou sommes) auront une distribution normale (voir prochaine section). Grace à ce théorème, on peut effectuer des analyses à partir d'un échantillon, même si on ne connaît pas les propriétés de la population originale. On ne peut pas généralement déterminer la normalité d'une population sans l'avoir recensée au complet. Toutefois, on peut le faire pour un échantillon qui provient de cette même population.
+
+<!-- DANS LE LATEX MAIS PAS DANS LE PDF : %Standardiser ou centrer-réduire est une opération qui consiste à soustraire la moyenne de chaque valeurs et de diviser le résultat par l'écart-type}. -->
+
+### Distribution normale
+
+La **distribution normale** (ou loi normale) est une distribution théorique centrale en statistique à la base de nombreux traitements statistiques. Découverte initialement par le mathématicien Abraham De Moivre au 17$^{\mathrm{e}}$ siècle et redécouverte par Karl Friedrich Gauss 100 ans plus tard, elle a été longtemps désignée sous le nom de **distribution gaussienne**. 
+
+On connaît bien les propriétés de la distribution normale et plusieurs approches utilisent cette distribution :
+
+- les tests d'hypothèses ;
+- l'estimation de paramètres par maximum de vraisemblance ;
+- la construction d'intervalles de confiance.
+
+La distribution normale se définit par la **fonction de densité de probabilité** (*probability density function, pdf*) suivante:
+
+$$
+f(x \vert \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2} = \frac{\mathrm{exp}(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}} 
+
+$$
+où $x$ correspond à la valeur numérique d'intérêt, $\mu$ représente la moyenne de la population, $\sigma$ est l'écart-type de la population, $\pi$ est la constante 3.14159... et $e$ est la constante 2.71828.... Cette distribution comporte deux paramètres, $\mu$ et $\sigma$ et on représente parfois cette distribution avec la notation N($\mu$, $\sigma$).
+
+En mots, l'équation nous donne la densité de probabilité d'une variable qui prend la valeur $x$ et qui provient d'une distribution normale avec une moyenne $\mu$ et un écart-type $\sigma$. On peut interpréter la densité de probabilité comme on le ferait pour une fréquence relative d'un histogramme. La densité de probabilité de la distribution normale ne correspond pas à la probabilité d'observer $X = x$. La raison de cette interprétation plus complexe provient du fait que la probabilité d'observer une valeur spécifique (p. ex., comme la masse ou la longueur) dans une distribution continue est de 0. La valeur mesurée d'une variable continue est en réalité un intervalle qui dépend de la précision de l'instrument de mesure au mg près, au g près, ou au kg près. Pour un serpent dont la mesure obtenue est de 102.54 cm, on obtient :
+
+$$
+P(x = 102.54) = P(102.54 \leq x \leq 102.54) = \int_{102.54}^{102.54} f(x) dx = 0
+$$
+
+Si la règle utilisée pour mesurer le serpent donne une précision de $\pm$ 0.01 cm, notre mesure est en fait un intervalle défini par les bornes suivantes :
+
+$$
+\mathrm{borne \: inf\acute{e}rieure} = 102.54 \: \mathrm{cm} - 0.01 \: \mathrm{cm} = 102.53 \: \mathrm{cm}\\
+\mathrm{borne \: sup\acute{e}rieure} = 102.54 \: \mathrm{cm} + 0.01 \: \mathrm{cm} = 102.55 \: \mathrm{cm}
+$$
+La fonction de densité nous donne la densité de la distribution correspondant à la valeur $x$. On peut obtenir la courbe de distribution normale pour une moyenne et écart-type donnés en substituant une série de valeurs dans l'équation.
+
+---
+
+::: {.exemple section="1"}
+On veut connaître la densité de probabilité associée à une masse de souris de 3.4 g dans une population de souris suivant une distribution normale ayant une moyenne de 4.1 g et un écart-type de 1.5 g (c.-à-d., N(4.1, 1.5)). Nous avons donc :
+
+\[
+\begin{aligned}
+  x &= 3.4 \: \mathrm{g} & f(x = 3.4 \mid 4.1, 1.5) &= \frac{1}{1.5 \cdot \sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{3.4 - 4.1}{1.5}\right)^2} = 0.2385 \\
+  \mu &= 4.1 \: \mathrm{g} & & \\
+  \sigma &= 1.5 \: \mathrm{g} & \: .
+\end{aligned}
+\]
+
+On pourrait aussi déterminer la densité de probabilité associée à des souris de 8.9~g et de 10.2 g dans la même population : 
+Souris de 8.9 g: 
+
+$$
+f(x = 8.9 \vert 4.1, 1.5) = \frac{1}{1.5 \cdot \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{8.9 - 4.1}{1.5})^2} = 0.0016
+$$
+
+Souris de 10.2 g: 
+
+$$
+f(x = 10.2 \vert 4.1, 1.5) = \frac{1}{1.5 \cdot \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{10.2 - 4.1}{1.5})^2} = 0.00007
+$$
+On peut ensuite représenter ces valeurs sur une distribution normale avec $\mu = 4.1$ et $\sigma = 1.5$. La figure \@ref(fig:normdensity) illustre la densité de probabilité pour les trois souris. La courbe a été obtenue en utilisant l'équation de la densité pour une moyenne de 4.1 et un écart-type de 1.5 et en faisant varier $x$ dans l'intervalle de 0 à 12. On remarque que la distribution est plus "dense" dans la région de 2 à 6 g. Par conséquent, on constate que les valeurs dans cet intervalle sont plus probables que des valeurs à l'extérieur de cet intervalle. Nous avons donc plus de chance d'observer une valeur de 3.4 g dans cette population que des valeurs de 8.9 ou 10 g.
+<!-- Pas vraiment le même texte pdf et latex -->
+
+
+```{r normdensity, echo=FALSE, fig.cap="Distribution normale d'une population de masses de souris où la moyenne est de 4.1 g et l'écart-type est de 1.5 g. À noter qu'on peut tracer la courbe de la distribution en substituant une série de valeurs de $x$ dans la fonction de densité de probabilité pour un $\\mu = 4.1$ et $\\sigma = 1.5$, c.-à-d., N(4.1, 1.5)."}
+
+##calculer densité de probabilité
+mouse1 <- dnorm(x = 3.4, mean = 4.1, sd = 1.5)
+mouse2 <- dnorm(x = 8.9, mean = 4.1, sd = 1.5)
+mouse3 <- dnorm(x = 10.2, mean = 4.1, sd = 1.5)
+
+##créer vecteur de valeurs
+masses <- seq(from = 0.1, to = 11, by = 0.01)
+
+##calculer densité
+dens <- dnorm(x = masses, mean = 4.1, sd = 1.5)
+
+##présenter la courbe dans un graphique
+plot(dens ~ masses, type = "l", ylab = "Densité de probabilité",
+     xlab = "Masses (g)", main = expression(paste("Population avec N(4.1, 1.5)")))
+
+##ajouter points sur le graphique
+points(y = mouse1, x = 3.4, pch = 17, col = "red")
+points(y = mouse2, x = 8.9, pch = 17, col = "blue")
+points(y = mouse3, x = 10.2, pch = 17, col = "green")
+
+##ajouter légende
+legend(x = "topright", pch = 17, col = c("red", "blue", "green"),
+       legend = c("3.4 g", "8.9 g", "10.2 g"), title = "Souris")
+```
+:::
+
+---
+
+La distribution normale comprend deux paramètres, $\mu$ et $\sigma$, ce qui signifie que l'on peut tracer une courbe normale dès que nous connaissons ces deux valeurs. La moyenne ($\mu$) détermine la position (fig. \@ref(fig:shape)a) et la variance détermine la forme de la courbe (Figure \@ref(fig:shape)b).
+
+```{r shape, echo=FALSE, fig.cap="Position de distributions normales avec même variance, mais différentes moyennes (a) et forme de distributions normales pour des variances différentes, mais une même moyenne (b)."}
+
+par(mfrow = c(1, 2))
+##position
+x <- seq(-10, 10, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.16), xlim = c(-40, 40), 
+     xlab = expression(italic(mu)), ylab = "Densité", 
+     type = "n")
+##abline(v=2,lty=2, lwd=3)
+curve(dnorm(x, mean = 2, sd = 5),-18, 20, add = TRUE)
+text(-6, 0.075, expression(paste(mu, " = 2")))
+curve(dnorm(x, mean = 20, sd = 5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité",
+      add = TRUE, col = "blue")
+text(30, 0.075, expression(paste(mu, " = 20")))
+curve(dnorm(x, mean = -20, sd = 5),-35, -5, add = TRUE, col = "red")
+text(-30, 0.075, expression(paste(mu, " = -20")))
+
+##forme
+plot(x = 0,y = 0,ylim = c(0, 0.16), xlim = c(-40, 40),
+     xlab = expression(paste(italic(mu), " = 20")), ylab = "Densité",
+     type = "n")
+abline(v = 20, lty = 2, lwd = 3)
+curve(dnorm(x, mean = 20, sd = 5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité",
+      add = TRUE)
+text(30, 0.075, expression(paste(sigma, " = 5")))
+
+curve(dnorm(x, mean = 20, sd = 2.5), 0, 40, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité", 
+      col = "blue", add = TRUE)
+text(29, 0.15, expression(paste(sigma, " = 2.5")))
+
+curve(dnorm(x, mean = 20, sd = 10),-5, 42, ylim = c(0, 0.16),
+      xlab = expression(paste(mu, " = 20")), ylab = "Densité", 
+      col = "red", add = TRUE)
+text(33, 0.04, expression(paste(sigma, " = 10")))
+```
+
+#### Caractéristiques de la distribution normale
+
+La distribution normale est une distribution continue dans l'intervalle $[-\infty, +\infty]$. La somme de l'aire sous la courbe est 1. La distribution est symétrique autour de la moyenne $\mu$. On sait que:
+
+- 90 \% des observations se trouvent à 1.64$\sigma$ de $\mu$;
+- 95 \% des observations se trouvent à 1.96$\sigma$ de $\mu$;
+- 99 \% des observations se trouvent à 2.58$\sigma$ de $\mu$.
+
+#### Distribution normale centrée réduite
+
+La distribution normale centrée réduite (*standard normal distribution*) est un cas particulier de la distribution normale où $\mu = 0$ et $\sigma = 1$ (Figure \@ref(fig:standardnormal)). **Centrer** consiste à soustraire la moyenne de chaque observation, $x_{i \: centr\acute{e}e} = x_i - \mu$. L'opération n'influence pas la variance, mais les observations centrées ont une moyenne de 0. Centrer et **réduire**, parfois aussi connu sous le terme **standardiser**, consiste à diviser chaque observation centrée par l'écart-type de l'échantillon, $x_{i \: centr\acute{e}e \: r\acute{e}duite} = \frac{x_i - \mu}{\sigma}$. Les observations centrées réduites ont une moyenne de 0 et une écart-type de 1. L'opération de centrer réduire est aussi appelée la transformation $z$ ou l'écart normal, $z = \frac{x_i - \mu}{\sigma}$. Cette opération modifie l'échelle de la variable. La variable centrée réduite est exprimée en terme du nombre d'écart-types séparant chaque valeur de la moyenne.
+
+```{r standardnormal, echo=FALSE, fig.cap="Distribution normale centrée réduite, c.-à-d., N(0, 1)."}
+##distribution normale centrée-réduite
+x <- seq(-3, 3, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = 
+     expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1),-3, 3, add = TRUE)
+abline(v = 0, lty = 2, lwd = 3)
+```
+
+---
+
+::: {.exemple section="1"}
+On s'intéresse à la longueur d'ailes de pucerons dans une population. Après un recensement exhaustif, on détermine que la moyenne ($\mu$) des longueurs d'aile dans une population est de 14.2 mm et que l'écart-type ($\sigma$) est de 5.05 mm. On veut ensuite déterminer à combien d'écart-types de la moyenne se trouve une longueur d'aile de 22.6 mm chez un puceron de cette population. Nous avons donc, $z_i = \frac{x_i - \mu}{\sigma} = \frac{22.6 - 14.2}{5.05} = 1.66$. On conclut que $x_i = 22$ mm se trouve à $1.66 \: \sigma$ de $\mu$ (Figure \@ref(fig:zex1)).
+
+```{r zex1, echo=FALSE, fig.cap="Écart normal associé à une longueur d'ailes de puceron de 22.6 mm."}
+##exemple de longueur d'ailes de puceron
+##longueur de 22 mm observée dans population N(14, 5)
+mu <- 14.2
+sigma <- 5.05
+xi <- 22.6
+
+##compute standard normal deviate (z) statistic
+z <- (xi - mu)/sigma
+
+##plot graph
+x <- seq(-3, 3, 0.1)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+abline(v = 0, lty = 2, lwd = 3)
+abline(v = 1.66, lty = 2, lwd = 3)
+##add arrows
+arrows(x0 = 0, y0 = 0.1, x1 = 1.66, y1 = 0.1, lty = "dashed",
+       col = "blue", code = 3, angle = 45, length = 0.05)
+##add value
+text(x = 0.8, y = 0.11, labels = expression(paste("1.66 ", sigma)), 
+     col = "blue")
+```
+:::
+
+---
+
+
+#### Probabilités cumulatives
+
+Les probabilités cumulatives sont beaucoup utilisées en  statistique. Par exemple, on peut vouloir déterminer la probabilité d'observer un diamètre > 2.3 cm pour un arbre mesuré à une hauteur 1 m du sol dans une forêt avec N(4, 12), c'est-à-dire, $P(\mathrm{diam\grave{e}tre} > 2.3 \:\mathrm{cm})$, ou encore déterminer la probabilité d'observer une profondeur de litière forestière entre 3 et 10 cm dans une population de sites avec N(12.5, 3.01), $P(\mathrm{profondeur} > 2.3 \:\mathrm{cm})$. 
+
+On peut résoudre ce genre de problème à l'aide de la distribution normale ou de la distribution normale centrée réduite. La probabilité cumulative correspond à l'aire sous la courbe dans un intervalle défini par une intégrale. Par exemple, on sait que l'aire sous la courbe d'une distribution normale centrée réduite entre -1.96 et 1.96 est de 0.95 : 
+
+$$
+\int\limits_{-1.96}^{1.96} f(x \: | \: \mu = 0, \sigma = 1) dx = 0.95 
+$$
+
+À noter que les probabilités cumulatives étaient autrefois obtenues à partir de de tables situées en annexe de livres de statistiques. De nos jours, nous utiliserons typiquement un logiciel comme R pour obtenir la probabilité cumulative. Dans R, la fonction `pnorm( )` nous donne cette valeur et nous discuterons plus en détails de cette option dans les prochaines leçons.
+
+---
+
+::: {.exemple section="1"}
+On a recensé tous les individus d'un édifice à bureaux d'une ville d'Amérique du Nord. La moyenne ($\mu$) de la taille des individus dans cette population est de 170 cm avec un écart-type ($\sigma$) de 8 cm. Quelle est la probabilité qu'un individu soit plus petit ou égal à 160 cm dans cette population? Pour résoudre le problème, on peut utiliser l'écart normal :
+
+$$
+z_i = \frac{x_i - \mu}{\sigma} = \frac{160 - 170}{8} \\
+z_i = -1.25
+$$
+On peut écrire :
+
+$$
+P(x_i \leq 160 \: \mathrm{cm}) = P(z \leq -1.25) = 0.1056
+$$
+```{r zex2, echo=FALSE, fig.cap="Probabilité cumulative associée à une valeur $\\leq$ 160 cm dans une population avec N(170, 8)."}
+##avec la distribution centrée-réduite
+##exemple 1
+x <- seq(-3, 3, 0.001)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste("Distribution normale centrée réduite N(0,1)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+##ajouter polygone
+polygon(c(x[x<=(-1.25)], -1.25), c(dnorm(x[x <= (-1.25)], 0, 1), 0.004),
+        col = "red")
+z <- (160 - 170)/8
+#pnorm(-1.25, mean = 0, sd = 1)
+#pnorm(160, mean = 170, sd = 8)
+v1 <- c(x[x<=(-1.25)], -1.25)
+v2 <- c(dnorm(x[x <= (-1.25)], 0, 1), 0.004) #0.004 represents the lowest probability of the value farthest on the tail, dnorm(-3) = 0.0044
+
+```
+
+Ici, $P$ est une probabilité cumulative que l'on peut obtenir en calculant l'aire sous la courbe pour la portion de la courbe à gauche du point -1.25 (Figure \ref{fig:z.ex2}).  
+:::
+
+---
+
+---
+
+::: {.exemple section="1"}
+Si on veut connaître la probabilité qu'un individu ait une taille supérieure à 185 cm dans la même population que celle de notre exemple précédent (édifice à bureaux), on pourrait encore une fois utiliser l'écart normal. Ainsi, on peut écrire :
+
+$$
+z_i = \frac{x_i - \mu}{\sigma} = \frac{185 - 170}{8} \\
+z_i = 1.875
+$$
+La probabilité cumulative ici peut s'obtenir à l'aide de :
+
+$$
+P(x_i \leq 185 \: \mathrm{cm}) = P(z \leq 1.875) = 0.9696
+$$
+Toutefois, nous désirons $P(x_i > 185 \: \mathrm{cm})$, ce qui diffère des exemples précédents avec $P(x_i \leq X)$ (Figure \ref{fig:z.ex3}a). L'astuce ici consiste à calculer le complément de $P(x_i \leq 185 \: \mathrm{cm})$ (Figure \@ref(fig:zex3)b). Puisque l'aire sous la courbe est de 1, on peut obtenir $P(x_i > 185 \: \mathrm{cm})$ simplement avec:
+
+```{r zex3, echo=FALSE, fig.cap="Probabilité cumulative associée à une valeur > 185 cm dans une population avec N(170, 8)."}
+par(mfrow = c(1, 2), cex = 1.2)
+##exemple 2
+z <- (185 - 170)/8
+##premier graphique P(x < 185)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste(italic(P), "(", italic(x[i]), " < 185)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z)], z),c(dnorm(x[x<=(z)],0,1),0.004), col = "red")
+text(y = 0.4, x = -2.9, labels = expression(bold("a")))
+
+##deuxième graphique P(x > 185)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3),
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")),
+     ylab = "Densité", type = "n",
+     main = expression(paste(italic(P), "(", italic(x[i]), " > 185) = 1 - ", italic(P), "(", italic(x[i]), " < 185)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x>(z)], z),c(dnorm(x[x>(z)],0,1),0.004), col = "blue")
+text(y = 0.4, x = -2.9, labels = expression(bold("b")))
+```
+:::
+
+---
+
+---
+
+::: {.exemple section="1"}
+Il est possible de déterminer la probabilité d'observer une valeur entre 165 cm et 180 cm dans la même population. Pour ce faire, il faut calculer la probabilité cumulative associée à chacune des bornes, comme suit :
+
+$$
+z_1 = \frac{180 - 170}{8} = 1.25\\
+z_2 = \frac{165 - 170}{8} = -0.625
+$$
+On obtient les probabilités cumulatives de chaque $z_i$ comme d'habitude:
+
+$$
+P(x_1 \leq 180 \: \mathrm{cm}) = P(z_1 \leq 1.25) = 0.8944\\
+P(x_2 \leq 165 \: \mathrm{cm}) = P(z_2 \leq -0.625) = 0.2660
+$$
+La différence entre les deux probabilités cumulatives nous donnera la probabilité cumulative pour l'intervalle désiré (Figure \@ref(fig:zex4)):
+
+$$
+P(165 \: \mathrm{cm} \leq x_i \leq 180 \: \mathrm{cm}) = 0.8944 - 0.2660 = 0.6284
+$$
+```{r zex4, echo=FALSE, fig.cap="Probabilité cumulative associée à 165 cm $\\leq$ $\\ x_i$ $\\leq$ 180 cm dans une population avec N(170, 8)."}
+par(mfrow = c(1, 3), cex = 1.2)
+
+##exemple 3
+z1 <- (180 - 170)/8
+z2 <- (165 - 170)/8
+##P(xi < 180 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), ylab = "Densité", type = "n", main = expression(paste(italic(P), "(", italic(x[i]), " <= 180)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z1)], z1), c(dnorm(x[x<=(z1)], 0, 1), 0.0044),
+        col = "red")
+
+##P(xi < 165 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), 
+     ylab="Densité", type="n", main = expression(paste(italic(P), "(", italic(x[i]), " <= 165)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x<=(z2)], z2), c(dnorm(x[x<=(z2)], 0, 1), 0.0044),
+        col = "blue")
+#pnorm(z1, mean = 0, sd = 1)
+#pnorm(z2, mean = 0, sd = 1)
+
+##P(165 cm < xi < 180 cm)
+plot(x = 0, y = 0, ylim = c(0, 0.4), xlim = c(-3, 3), 
+     xlab = expression(paste(italic(mu), " = 0, ", italic(sigma), " = 1")), 
+     ylab="Densité", type="n", main = expression(paste(italic(P), "(165 <= ", italic(x[i]), " <= 180)")))
+curve(dnorm(x, mean = 0, sd = 1), -3, 3, add = TRUE)
+polygon(c(x[x>z2 & x<=z1],z1,z2), c(dnorm(x[x>z2 & x <= z1], 0, 1),
+                                   0.0044, 0.0044), col = "purple")
+#pnorm(z1, mean = 0, sd = 1) - pnorm(z2, mean = 0, sd = 1)
+```
+<!-- Des différences entre le pdf et le latex -->
+:::
+
+---
+
+#### Applications de la statistique z à un échantillon
+
+Comme nous venons de le voir, la statistique $z$ peut s'appliquer aux observations d'une population dont on connaît les réelles valeurs de la moyenne et de l'écart-type. On utilise la distribution normale pour trouver la probabilité d'observer $x_i$ (une valeur d'une observation) dans un intervalle donné d'une population avec une moyenne $\mu$ et un écart-type $\sigma$ connus. Toutefois, on peut aussi appliquer la même approche au niveau d'un paramètre d'une population. En d'autres mots, on peut déterminer l'écart normal ($z$) associé à la valeur de l'estimation d'un paramètre à partir d'un échantillon (p. ex., une moyenne, une médiane) d'une population avec $\mu$ et $\sigma$ connus.
+
+Ainsi, l'équation originale $z = \frac{x_i - \mu}{\sigma}$ qui dépendait de la normalité des observations devient $z = \frac{\bar{x} - \mu}{\sigma_{\bar{x}}}$ et s'intéresse à un paramètre d'une population, où $\bar{x}$ correspond à la moyenne arithmétique de l'échantillon, et $\sigma_{\bar{x}}$ est l'erreur-type de la population. Autrement dit, au lieu de s'intéresser à des valeurs individuelles dans la population, nous ciblons plutôt la moyenne d'un échantillon tiré d'une population avec $\mu$ et $\sigma_{\bar{x}}$ connus. Cette transition est possible en supposant que la moyenne provient d'une distribution normale des moyennes (grâce au théorème de la limite centrale). C'est le genre de traitement typique que nous faisons la plupart du temps avec les données d'un échantillon que nous récoltons à partir d'une population statistique.
+
+---
+
+**Exemple 1.13** Nous voulons déterminer la probabilité d'obtenir un échantillon aléatoire de 9 longueurs de becs d'oiseaux, lequel a une moyenne > 50.0 mm dans une population avec $\mu = 47.5 \: \mathrm{mm}$ et $\sigma = 12.89 \: \mathrm{mm}$. On obtient:
+
+$$
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}} = \frac{12.89}{\sqrt{9}} = 4.30 \\
+z = \frac{\bar{x} - \mu}{\sigma_{\bar{x}}} = \frac{50 - 47.5}{4.30} = 0.58 \\
+P(\bar{x} > 50 \: \mathrm{mm}) = P(z > 0.58) = 0.2803
+$$
+
+On constate qu'il est assez probable ($P(z > 0.58) = 0.2803$) de tirer un échantillon de 9 longueurs de becs d'oiseaux avec des propriétés similaires à celles de l'échantillon original de la population d'intérêt. Par convention, on considère qu'une probabilité $P \leq 0.05$ est faible, bien que ce seuil soit arbitraire et qu'il existe de nouvelles approches qui mettent de côté la subjectivité du choix d'un tel seuil. Nous discuterons plus en détail des implications du choix de tels seuils ainsi que de méthodes alternatives dans des prochaines leçons.
+
+Malheureusement, on connaît rarement $\sigma$ dans la vraie vie et on doit utiliser une estimation obtenue à partir de l'échantillon. Comme nous l'avons souligné plus tôt, l'estimation de la variance est difficile dans les échantillons de petite taille. Comme le test $z$ nécessite une estimation de la variance, ce dernier est peu utilisé pour tester des valeurs d'un échantillon de petite taille. Lorsque $\sigma$ est inconnu et doit être estimé à partir d'un échantillon, nous utiliserons plutôt la distribution du $t$ de Student. C'est ce que nous verrons dans les prochaines leçons.
+
+### Conclusion
+
+Dans cette leçon, nous avons brièvement présenté les concepts de base importants en statistique, notamment les caractéristiques d'une population et d'un échantillon, les variables aléatoires, les mesures de tendance centrale et de dispersion. La distribution normale a été présentée, ainsi que le théorème de la limite centrale et la loi des grands nombres.
+
+## Statistiques de base avec R
+
+### Fonctions statistiques de base
+
+Plusieurs fonctions de base sont disponibles pour réaliser les calculs présentés à la leçon *Statistiques descriptives*. Par exemple, on peut obtenir la moyenne arithmétique à l'aide de la fonction `mean( )`:
+
+```{r echo=TRUE}
+##On crée un vecteur
+variable <- c(1.2, 1.5, 2.3, 2.1, 0.1, 5.4, 6.1, 3.2)
+##Moyenne arithmétique
+mean(variable)
+```
+On peut calculer l'écart-type d'un échantillon à l'aide de la fonction `sd( )`, et la variance à l'aide de `var( )`:
+
+```{r echo=TRUE}
+##Écart-type
+sd(variable)
+##Écart-type
+sqrt(var(variable))
+##Carré moyen des erreurs
+MSE <- sum((variable - mean(variable))^2)/(length(variable) - 1)
+##Racine-carrée du MSE = écart-type
+sqrt(MSE)
+```
+
+La médiane s'obtient facilement à l'aide de la fonction `median( )`:
+
+```{r}
+##on calcule la médiane
+median(variable)
+```
+
+De façon plus générale, on peut obtenir les quantiles d'un échantillon (quartiles, déciles, percentiles) à l'aide de `quantile( )`:
+
+```{r}
+##Quartiles
+quantile(variable)
+##Déciles
+quantile(variable, prob = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+##2.5ième et 97.5ième percentiles
+quantile(variable, prob = c(0.025, 0.975))
+```
+Bien qu'il n'existe pas de fonctions toute prête pour calculer l'erreur-type, on peut l'obtenir facilement:
+
+```{r echo=TRUE}
+sd(variable)/sqrt(length(variable))
+```
+
+### Distribution statistiques
+
+**R** comprend plusieurs distributions statistiques, ce qui rend obsolètes les tables de distributions statistiques que l'on utilisait autrefois. Les noms des fonctions de distributions statistiques commencent typiquement par la lettre "d", telles que `dnorm( )`, `dchisq( )`, `dpois( )`, pour les fonctions de densité de la distribution normale, du khi-carré et de Poisson, respectivement. Ainsi, l'énoncé $f(x \: \vert \: \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}$ se traduit dans le langage **R** par `dnorm(x, mean, sd)`. On peut donc solutionner $f(x = 3.4 \: \vert \: 4.1, 1.5) = \frac{1}{1.5 \cdot \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{3.4 - 4.1}{1.5})^2}$ avec :
+
+```{r}
+##Calculer densité de probabilité
+dnorm(x = 3.4, mean = 4.1, sd = 1.5)
+```
+
+
+#### Probabilité cumulative
+
+On peut obtenir la probabilité cumulative associée à $P(x \leq 2.3 \:\mathrm{cm})$ dans une population avec N($\mu = 4$, $\sigma = 12$) directement à l'aide de `pnorm(q, mean, sd)`:
+
+```{r echo=TRUE}
+##Probabilité cumulative P(x <  2.3)
+pnorm(q = 2.3, mean = 4, sd = 12)
+```
+
+Il est aussi possible de calculer l'écart normal $z$ pour obtenir la probabilité cumulative :
+
+```{r}
+##Probabilité cumulative à partir du z
+z <- (2.3 - 4)/12
+pnorm(q = z, mean = 0, sd = 1)
+```
+
+On peut calculer le complément, $P(x > 2.3 \:\mathrm{cm})$:
+
+```{r}
+##P(x > 2.3)
+1 - pnorm(q = 2.3, mean = 4, sd = 12)
+##P(x > 2.3) à l'aide de l'argument lower.tail
+pnorm(q = 2.3, mean = 4, sd = 12, lower.tail = FALSE)
+```
+
+À noter que l'argument `lower.tail` permet de spécifier la partie gauche de la distribution. Par défaut, cet argument prend la valeur `TRUE`, ce qui veut dire que `pnorm()` donne la probabilité cumulative associée à $P(x \leq 2.3 \: \mathrm{cm})$. Si `lower.tail = FALSE`, c'est la probabilité cumulative pour la portion droite de la distribution qui est calculée, $P(x > 2.3 \: \mathrm{cm})$.
+
+#### Fonction de quantile
+
+Alors que `pnorm()` nous donne la probabilité cumulative pour un quantile et N($\mu, \sigma)$ donnés, `qnorm()` permet d'obtenir le quantile associé à une probabilité cumulative et N($\mu, \sigma)$ donnés. 
+
+```{r}
+##On connaît q, on veut trouver p
+pnorm(q = 1.96, mean = 0, sd = 1)
+##On connaît p, on veut trouver q
+qnorm(p = 0.975, mean = 0, sd = 1)
+```
+
+#### Nombres aléatoires
+
+On peut générer des nombres aléatoires provenant d'une distribution normale avec une moyenne et un écart-type donnés à l'aide de `rnorm()`. Par exemple, pour générer un échantillon de 30 observations provenant d'une distribution normale avec une moyenne de 5.2 ($\mu = 5.2$) et un écart-type de 9.3 ($\sigma = 9.3)$, on procède ainsi:
+
+```{r}
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+##Un autre échantillon
+rnorm(n = 30, mean = 5.2, sd = 9.3)
+```
+
+On remarque qu'à chaque fois que l'on utilise `rnorm()`, on obtient un résultat des observations (aléatoires) différentes.
+
+## Exercices
+
+Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives* pour réaliser les exercices suivants dans R. 
+
+### Question 1
+
+**a.** La somme des carrés des erreurs est une mesure de tendance centrale: Vrai ou Faux?
+
+<details>
+<summary> Réponse</summary>
+**Faux** -- C'est une mesure de dispersion.
+</details>
+
+<br>
+
+**b.** Parmi les mesures suivantes, déterminez laquelle des valeurs n'est pas un paramètre:   
+  (a) $\mu$   
+  (b) $\sigma$   
+  (c) $\bar{x}$   
+  (d) $\sigma^2$   
+
+<details>
+<summary> Réponse</summary>
+**(c)** $\bar{x}$ \indent  -- C'est une statistique.
+</details>
+
+<br>
+
+**c.** L'écart-type est une mesure de précision d'un paramètre: Vrai ou Faux?
+
+<details>
+<summary> Réponse</summary>
+**Faux** -- C'est une mesure de variabilité des données.
+</details>
+
+<br>
+
+### Question 2
+
+**a.** On mesure la profondeur de matière organique dans le sol de 100 parcelles en milieu agricole. À partir de 100 valeurs de profondeurs de sols, on obtient une moyenne de 12.3 cm et un écart-type de 4.5 cm. Calculez l'erreur-type de la moyenne. N.B. Cette question s'applique uniquement à l'approche par programmation. 
+
+<details>
+<summary> Réponse</summary>
+```{r echo=TRUE}
+##Calcul de l'erreur-type de la moyenne
+SE <- 4.5/sqrt(100)
+SE
+```
+</details>
+
+<br>
+
+**b.** Dans une étude d'observation sur le temps de démarrage de 20 ordinateurs, on note les valeurs suivantes en secondes :
+50, 45, 90, 61, 80, 120, 30, 58, 95, 40, 48, 31, 29, 51, 70, 66, 110, 97, 49, 99. Calculez la moyenne arithmétique et la variance de cet échantillon.
+
+<details>
+<summary> Réponse</summary>
+```{r echo=TRUE}
+##On assemble les valeurs dans un vecteur
+temps <- c(50, 45, 90, 61, 80, 120, 30, 
+           58, 95, 40, 48, 31, 29, 51, 
+           70, 66, 110, 97, 49, 99)
+##On calcule la moyenne arithmétique
+mean(temps)
+##La variance
+var(temps)
+sd(temps)^2
+```
+</details>
+

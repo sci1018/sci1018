@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Théories | Statistiques avec R</title>
+  <meta name="description" content="5.1 Théories | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Théories | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="5.1 Théories | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Théories | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="5.1 Théories | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2024-08-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"/>
+<link rel="next" href="exercices-3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistiques avec R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#pourquoi-suivre-ce-cours"><i class="fa fa-check"></i>Pourquoi suivre ce cours ?</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-notés"><i class="fa fa-check"></i>Travaux notés</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="1" data-path="statistiques-descriptives.html"><a href="statistiques-descriptives.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="théories.html"><a href="théories.html"><i class="fa fa-check"></i><b>1.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="théories.html"><a href="théories.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="théories.html"><a href="théories.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="théories.html"><a href="théories.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a>
+<ul>
+<li class="chapter" data-level="1.1.3.1" data-path="théories.html"><a href="théories.html#somme-des-carrés-des-erreurs"><i class="fa fa-check"></i><b>1.1.3.1</b> Somme des carrés des erreurs</a></li>
+<li class="chapter" data-level="1.1.3.2" data-path="théories.html"><a href="théories.html#carré-moyen-variance"><i class="fa fa-check"></i><b>1.1.3.2</b> Carré moyen (variance)</a></li>
+<li class="chapter" data-level="1.1.3.3" data-path="théories.html"><a href="théories.html#précision-vs-exactitude"><i class="fa fa-check"></i><b>1.1.3.3</b> Précision vs exactitude</a></li>
+<li class="chapter" data-level="1.1.3.4" data-path="théories.html"><a href="théories.html#autres-mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3.4</b> Autres mesures de dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.4" data-path="théories.html"><a href="théories.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="théories.html"><a href="théories.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="théories.html"><a href="théories.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a>
+<ul>
+<li class="chapter" data-level="1.1.6.1" data-path="théories.html"><a href="théories.html#caractéristiques-de-la-distribution-normale"><i class="fa fa-check"></i><b>1.1.6.1</b> Caractéristiques de la distribution normale</a></li>
+<li class="chapter" data-level="1.1.6.2" data-path="théories.html"><a href="théories.html#distribution-normale-centrée-réduite"><i class="fa fa-check"></i><b>1.1.6.2</b> Distribution normale centrée réduite</a></li>
+<li class="chapter" data-level="1.1.6.3" data-path="théories.html"><a href="théories.html#probabilités-cumulatives"><i class="fa fa-check"></i><b>1.1.6.3</b> Probabilités cumulatives</a></li>
+<li class="chapter" data-level="1.1.6.4" data-path="théories.html"><a href="théories.html#applications-de-la-statistique-z-à-un-échantillon"><i class="fa fa-check"></i><b>1.1.6.4</b> Applications de la statistique z à un échantillon</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.7" data-path="théories.html"><a href="théories.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a>
+<ul>
+<li class="chapter" data-level="1.2.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#probabilité-cumulative"><i class="fa fa-check"></i><b>1.2.2.1</b> Probabilité cumulative</a></li>
+<li class="chapter" data-level="1.2.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonction-de-quantile"><i class="fa fa-check"></i><b>1.2.2.2</b> Fonction de quantile</a></li>
+<li class="chapter" data-level="1.2.2.3" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#nombres-aléatoires"><i class="fa fa-check"></i><b>1.2.2.3</b> Nombres aléatoires</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i><b>1.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="exercices.html"><a href="exercices.html#question-1"><i class="fa fa-check"></i><b>1.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="1.3.2" data-path="exercices.html"><a href="exercices.html#question-2"><i class="fa fa-check"></i><b>1.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><a href="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="théories-1.html"><a href="théories-1.html"><i class="fa fa-check"></i><b>2.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="théories-1.html"><a href="théories-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.1.1" data-path="théories-1.html"><a href="théories-1.html#portion-de-la-population-non-représentée"><i class="fa fa-check"></i><b>2.1.1.1</b> Portion de la population non représentée</a></li>
+<li class="chapter" data-level="2.1.1.2" data-path="théories-1.html"><a href="théories-1.html#erreurs-de-mesure-ou-de-saisie-des-données"><i class="fa fa-check"></i><b>2.1.1.2</b> Erreurs de mesure ou de saisie des données</a></li>
+<li class="chapter" data-level="2.1.1.3" data-path="théories-1.html"><a href="théories-1.html#erreurs-liées-à-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.1.3</b> Erreurs liées à la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="théories-1.html"><a href="théories-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a>
+<ul>
+<li class="chapter" data-level="2.1.3.1" data-path="théories-1.html"><a href="théories-1.html#distribution-du-t-de-student"><i class="fa fa-check"></i><b>2.1.3.1</b> Distribution du <em>t</em> de Student</a></li>
+<li class="chapter" data-level="2.1.3.2" data-path="théories-1.html"><a href="théories-1.html#rééchantillonnage"><i class="fa fa-check"></i><b>2.1.3.2</b> Rééchantillonnage</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.4" data-path="théories-1.html"><a href="théories-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.4.1" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-stratifié"><i class="fa fa-check"></i><b>2.1.4.1</b> Échantillonnage stratifié</a></li>
+<li class="chapter" data-level="2.1.4.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-par-grappes-et-échantillonnage-systématique"><i class="fa fa-check"></i><b>2.1.4.2</b> Échantillonnage par grappes et échantillonnage systématique</a></li>
+<li class="chapter" data-level="2.1.4.3" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-multistade"><i class="fa fa-check"></i><b>2.1.4.3</b> Échantillonnage multistade</a></li>
+<li class="chapter" data-level="2.1.4.4" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-adaptatif"><i class="fa fa-check"></i><b>2.1.4.4</b> Échantillonnage adaptatif</a></li>
+<li class="chapter" data-level="2.1.4.5" data-path="théories-1.html"><a href="théories-1.html#estimation-de-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.4.5</b> Estimation de la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.5" data-path="théories-1.html"><a href="théories-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="exercices-1.html"><a href="exercices-1.html"><i class="fa fa-check"></i><b>2.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="exercices-1.html"><a href="exercices-1.html#question-1-1"><i class="fa fa-check"></i><b>2.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="exercices-1.html"><a href="exercices-1.html#question-2-1"><i class="fa fa-check"></i><b>2.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tests-dhypothèse-sur-un-seul-groupe.html"><a href="tests-dhypothèse-sur-un-seul-groupe.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="théories-2.html"><a href="théories-2.html"><i class="fa fa-check"></i><b>3.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse-scientifique"><i class="fa fa-check"></i><b>3.1.1.1</b> Hypothèse scientifique</a></li>
+<li class="chapter" data-level="3.1.1.2" data-path="théories-2.html"><a href="théories-2.html#méthode-scientifique"><i class="fa fa-check"></i><b>3.1.1.2</b> Méthode scientifique</a></li>
+<li class="chapter" data-level="3.1.1.3" data-path="théories-2.html"><a href="théories-2.html#inférence-bayésienne"><i class="fa fa-check"></i><b>3.1.1.3</b> Inférence bayésienne</a></li>
+<li class="chapter" data-level="3.1.1.4" data-path="théories-2.html"><a href="théories-2.html#méthode-hypothético-déductive"><i class="fa fa-check"></i><b>3.1.1.4</b> Méthode hypothético-déductive</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.2" data-path="théories-2.html"><a href="théories-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="théories-2.html"><a href="théories-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a>
+<ul>
+<li class="chapter" data-level="3.1.3.1" data-path="théories-2.html"><a href="théories-2.html#puissance"><i class="fa fa-check"></i><b>3.1.3.1</b> Puissance</a></li>
+<li class="chapter" data-level="3.1.3.2" data-path="théories-2.html"><a href="théories-2.html#relation-entre-les-erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3.2</b> Relation entre les erreurs de type I et II</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.4" data-path="théories-2.html"><a href="théories-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.4.1" data-path="théories-2.html"><a href="théories-2.html#conseils-sur-la-présentation-des-résultats-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4.1</b> Conseils sur la présentation des résultats de tests d’hypothèse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.5" data-path="théories-2.html"><a href="théories-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="théories-2.html"><a href="théories-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1.6.1" data-path="théories-2.html"><a href="théories-2.html#test-bilatéral-et-test-unilatéral"><i class="fa fa-check"></i><b>3.1.6.1</b> Test bilatéral et test unilatéral</a></li>
+<li class="chapter" data-level="3.1.6.2" data-path="théories-2.html"><a href="théories-2.html#suppositions"><i class="fa fa-check"></i><b>3.1.6.2</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.7" data-path="théories-2.html"><a href="théories-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="exercices-2.html"><a href="exercices-2.html"><i class="fa fa-check"></i><b>3.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="exercices-2.html"><a href="exercices-2.html#question-1-2"><i class="fa fa-check"></i><b>3.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exercices-2.html"><a href="exercices-2.html#question-2-2"><i class="fa fa-check"></i><b>3.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tests-dhypothèse-sur-deux-groupes.html"><a href="tests-dhypothèse-sur-deux-groupes.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="théories-3.html"><a href="théories-3.html"><i class="fa fa-check"></i><b>4.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a>
+<ul>
+<li class="chapter" data-level="4.1.1.1" data-path="théories-3.html"><a href="théories-3.html#suppositions-1"><i class="fa fa-check"></i><b>4.1.1.1</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.2" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="théories-3.html"><a href="théories-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a>
+<ul>
+<li class="chapter" data-level="4.1.3.1" data-path="théories-3.html"><a href="théories-3.html#transformation-logarithmique"><i class="fa fa-check"></i><b>4.1.3.1</b> Transformation logarithmique</a></li>
+<li class="chapter" data-level="4.1.3.2" data-path="théories-3.html"><a href="théories-3.html#transformation-racine-carrée"><i class="fa fa-check"></i><b>4.1.3.2</b> Transformation racine carrée</a></li>
+<li class="chapter" data-level="4.1.3.3" data-path="théories-3.html"><a href="théories-3.html#transformation-arcsinus"><i class="fa fa-check"></i><b>4.1.3.3</b> Transformation arcsinus</a></li>
+<li class="chapter" data-level="4.1.3.4" data-path="théories-3.html"><a href="théories-3.html#autres-transformations"><i class="fa fa-check"></i><b>4.1.3.4</b> Autres transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.4" data-path="théories-3.html"><a href="théories-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="laboratoire.html"><a href="laboratoire.html#question-1-3"><i class="fa fa-check"></i><b>4.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="4.2.2" data-path="laboratoire.html"><a href="laboratoire.html#question-2-3"><i class="fa fa-check"></i><b>4.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="théories-4.html"><a href="théories-4.html"><i class="fa fa-check"></i><b>5.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="théories-4.html"><a href="théories-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1.1.1" data-path="théories-4.html"><a href="théories-4.html#la-distribution-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.1</b> La distribution du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.2" data-path="théories-4.html"><a href="théories-4.html#le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.2</b> Le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.3" data-path="théories-4.html"><a href="théories-4.html#conditions-dutilisation"><i class="fa fa-check"></i><b>5.1.1.3</b> Conditions d’utilisation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.2" data-path="théories-4.html"><a href="théories-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a>
+<ul>
+<li class="chapter" data-level="5.1.2.1" data-path="théories-4.html"><a href="théories-4.html#formulation-des-hypothèse-nulles"><i class="fa fa-check"></i><b>5.1.2.1</b> Formulation des hypothèse nulles</a></li>
+<li class="chapter" data-level="5.1.2.2" data-path="théories-4.html"><a href="théories-4.html#fréquences-théoriques"><i class="fa fa-check"></i><b>5.1.2.2</b> Fréquences théoriques</a></li>
+<li class="chapter" data-level="5.1.2.3" data-path="théories-4.html"><a href="théories-4.html#calcul-du-chi2-dindépendance"><i class="fa fa-check"></i><b>5.1.2.3</b> Calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.3" data-path="théories-4.html"><a href="théories-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="théories-4.html"><a href="théories-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="théories-4.html"><a href="théories-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="exercices-3.html"><a href="exercices-3.html"><i class="fa fa-check"></i><b>5.2</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exercices-3.html"><a href="exercices-3.html#question-1-4"><i class="fa fa-check"></i><b>5.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exercices-3.html"><a href="exercices-3.html#question-2-4"><i class="fa fa-check"></i><b>5.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analyse-de-variance-à-un-critère.html"><a href="analyse-de-variance-à-un-critère.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="théories-5.html"><a href="théories-5.html"><i class="fa fa-check"></i><b>6.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="théories-5.html"><a href="théories-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="théories-5.html"><a href="théories-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="6.1.2.1" data-path="théories-5.html"><a href="théories-5.html#décomposition-de-la-variance"><i class="fa fa-check"></i><b>6.1.2.1</b> Décomposition de la variance</a></li>
+<li class="chapter" data-level="6.1.2.2" data-path="théories-5.html"><a href="théories-5.html#la-distribution-du-f"><i class="fa fa-check"></i><b>6.1.2.2</b> La distribution du <span class="math inline">\(F\)</span></a></li>
+<li class="chapter" data-level="6.1.2.3" data-path="théories-5.html"><a href="théories-5.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>6.1.2.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="6.1.2.4" data-path="théories-5.html"><a href="théories-5.html#suppositions-2"><i class="fa fa-check"></i><b>6.1.2.4</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.3" data-path="théories-5.html"><a href="théories-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a>
+<ul>
+<li class="chapter" data-level="6.1.3.1" data-path="théories-5.html"><a href="théories-5.html#erreurs-associées-aux-comparaisons-multiples"><i class="fa fa-check"></i><b>6.1.3.1</b> Erreurs associées aux comparaisons multiples</a></li>
+<li class="chapter" data-level="6.1.3.2" data-path="théories-5.html"><a href="théories-5.html#suppositions-3"><i class="fa fa-check"></i><b>6.1.3.2</b> Suppositions</a></li>
+<li class="chapter" data-level="6.1.3.3" data-path="théories-5.html"><a href="théories-5.html#structure-générale"><i class="fa fa-check"></i><b>6.1.3.3</b> Structure générale</a></li>
+<li class="chapter" data-level="6.1.3.4" data-path="théories-5.html"><a href="théories-5.html#test-de-tukey"><i class="fa fa-check"></i><b>6.1.3.4</b> Test de Tukey</a></li>
+<li class="chapter" data-level="6.1.3.5" data-path="théories-5.html"><a href="théories-5.html#présentation-des-résultats"><i class="fa fa-check"></i><b>6.1.3.5</b> Présentation des résultats</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.4" data-path="théories-5.html"><a href="théories-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.1.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#structure"><i class="fa fa-check"></i><b>6.2.1.1</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#apply-et-fonctions-apparentées"><i class="fa fa-check"></i><b>6.2.2.1</b> <code>apply( )</code> et fonctions apparentées</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="exercices-4.html"><a href="exercices-4.html"><i class="fa fa-check"></i><b>6.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="exercices-4.html"><a href="exercices-4.html#question-1-5"><i class="fa fa-check"></i><b>6.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="6.3.2" data-path="exercices-4.html"><a href="exercices-4.html#question-2-5"><i class="fa fa-check"></i><b>6.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analyse-de-variance-à-deux-critères.html"><a href="analyse-de-variance-à-deux-critères.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="théories-6.html"><a href="théories-6.html"><i class="fa fa-check"></i><b>7.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="théories-6.html"><a href="théories-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="théories-6.html"><a href="théories-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="théories-6.html"><a href="théories-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="théories-6.html"><a href="théories-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="théories-6.html"><a href="théories-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="théories-6.html"><a href="théories-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="blocs-complets-aléatoires.html"><a href="blocs-complets-aléatoires.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="théories-7.html"><a href="théories-7.html"><i class="fa fa-check"></i><b>8.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="théories-7.html"><a href="théories-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.1.1" data-path="théories-7.html"><a href="théories-7.html#anova-à-un-critère"><i class="fa fa-check"></i><b>8.1.1.1</b> ANOVA à un critère</a></li>
+<li class="chapter" data-level="8.1.1.2" data-path="théories-7.html"><a href="théories-7.html#anova-à-deux-critères-1"><i class="fa fa-check"></i><b>8.1.1.2</b> ANOVA à deux critères</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.2" data-path="théories-7.html"><a href="théories-7.html#blocs-complets-aléatoires-1"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.2.1" data-path="théories-7.html"><a href="théories-7.html#révision-de-léchantillonnage"><i class="fa fa-check"></i><b>8.1.2.1</b> Révision de l’échantillonnage</a></li>
+<li class="chapter" data-level="8.1.2.2" data-path="théories-7.html"><a href="théories-7.html#origine-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.2</b> Origine du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.3" data-path="théories-7.html"><a href="théories-7.html#particularité-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.3</b> Particularité du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.4" data-path="théories-7.html"><a href="théories-7.html#applications-moins-conventionnelles"><i class="fa fa-check"></i><b>8.1.2.4</b> Applications moins conventionnelles</a></li>
+<li class="chapter" data-level="8.1.2.5" data-path="théories-7.html"><a href="théories-7.html#conditions-dapplication"><i class="fa fa-check"></i><b>8.1.2.5</b> Conditions d’application</a></li>
+<li class="chapter" data-level="8.1.2.6" data-path="théories-7.html"><a href="théories-7.html#avantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.6</b> Avantages du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.7" data-path="théories-7.html"><a href="théories-7.html#désavantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.7</b> Désavantages du dispositif en blocs complets aléatoires</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.3" data-path="théories-7.html"><a href="théories-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="exercices-5.html"><a href="exercices-5.html"><i class="fa fa-check"></i><b>8.2</b> Exercices</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="théories-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Théories<a href="théories-4.html#théories-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analyse-de-fréquences-le-test-du-khi-carré-chi2" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="théories-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d’occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu’elles proviennent d’un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré (<span class="math inline">\(\chi^2\)</span>, <em>chi-squared test</em>). Ce genre de test est parfois appelé <strong>test d’ajustement</strong> ou <strong>test d’adéquation</strong> (<em>goodness-of-fit test</em>), car il compare les fréquences observées aux fréquences prédites conformes à <span class="math inline">\(H_0\)</span>.</p>
+<hr />
+<div class="exemple" section="5">
+<p>On s’intéresse aux habitudes d’utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d’observation. On décide <em>a priori</em> d’échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu’elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme <strong>variable catégorique</strong> pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table <a href="théories-4.html#tab:modetransport">5.1</a>) :</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:modetransport">Table 5.1: </span>Habitudes d’utilisation de différents modes de transports dans un échantillon de 500 individus à la TÉLUQ.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+À pied
+</th>
+<th style="text-align:right;">
+Transport en commun
+</th>
+<th style="text-align:right;">
+Vélo
+</th>
+<th style="text-align:right;">
+Voiture
+</th>
+<th style="text-align:right;">
+TOTAL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+500
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<div id="la-distribution-du-khi-carré-chi2" class="section level4 hasAnchor" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> La distribution du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="théories-4.html#la-distribution-du-khi-carré-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Le test du khi carré permet de comparer des fréquences observées par rapport aux fréquences prédites selon une hypothèse nulle que l’on veut tester. Ce test du khi carré porte le nom d’une distribution statistique continue, celle du khi carré (<span class="math inline">\(\chi^2\)</span>). Cette distribution, tout comme la distribution normale et celle du <span class="math inline">\(t\)</span> de Student, est définie par une fonction de densité. La fonction de densité du khi carré est</p>
+<p><span class="math display">\[
+f(x \vert \nu) = \frac{\left(\frac{1}{2}\right)^{\frac{\nu}{2}}}{\Gamma \left(\frac{\nu}{2}\right)} x^{\left(\frac{\nu}{2} - 1\right)} e^{-\frac{1}{2}x}
+\]</span>
+Malgré son apparence un peu intimidante, cette fonction de densité comporte un seul paramètre, <span class="math inline">\(\nu\)</span>, qui correspond aux degrés de liberté. Le symbole <span class="math inline">\(\Gamma\)</span> représente la fonction gamma, qui comporte une intégrale (dans R, elle s’obtient avec <code>gamma( )</code>). La fonction de densité du khi carré est définie pour les valeurs &gt; 0. En mots, cette fonction nous donne la densité de probabilité associée à <span class="math inline">\(X = x\)</span> pour un nombre de degrés de liberté donné. La forme de la distribution du khi carré dépend uniquement des degrés de liberté (Figure <a href="théories-4.html#fig:chi2">5.1</a>).</p>
+<p>Dans R, on peut obtenir la densité de probabilité du khi carré associée à une certaine valeur de <span class="math inline">\(x\)</span> à l’aide de <code>dchisq( )</code>. La probabilité cumulative s’obtient à l’aide de <code>pchisq( )</code> et la fonction quantile à l’aide de <code>qchisq( )</code>. Les valeurs obtenues par le test du khi carré sont comparées à cette distribution afin d’évaluer s’il est fréquent d’observer de telles valeurs avec un nombre de degrés de liberté donné lorsque <span class="math inline">\(H_0\)</span> est vraie.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chi2"></span>
+<img src="Cours_Stats_R_files/figure-html/chi2-1.png" alt="Allure de la distribution du khi carré avec différents degrés de liberté." width="672" />
+<p class="caption">
+Figure 5.1: Allure de la distribution du khi carré avec différents degrés de liberté.
+</p>
+</div>
+</div>
+<div id="le-test-du-khi-carré-chi2" class="section level4 hasAnchor" number="5.1.1.2">
+<h4><span class="header-section-number">5.1.1.2</span> Le test du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="théories-4.html#le-test-du-khi-carré-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Le test du khi carré est basé sur une comparaison des fréquences observées par rapport à des fréquences attendues si l’hypothèse nulle est vraie. On calcule facilement la statistique du khi carré à l’aide de :</p>
+<p><span class="math display">\[
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}
+\]</span>
+où <span class="math inline">\(k\)</span> correspond au nombre de catégories, <span class="math inline">\(f_i\)</span> donne la <strong>fréquence observée</strong> dans la catégorie <span class="math inline">\(i\)</span> et <span class="math inline">\(\hat{f_i}\)</span> donne la <strong>fréquence théorique</strong> pour la catégorie <span class="math inline">\(i\)</span> si <span class="math inline">\(H_0\)</span> est vraie. On compare la valeur obtenue du khi carré à la distribution théorique du khi carré correspondant à <span class="math inline">\(k - 1\)</span> degrés de liberté (<span class="math inline">\(P(\chi^2_{\alpha, k - 1} \geq \chi^2_{observ\acute{e}})\)</span>). Si cette valeur est plus grande que ce que l’on devrait observer lorsque <span class="math inline">\(H_0\)</span> est vraie pour un seuil <span class="math inline">\(\alpha\)</span> et des degrés de liberté donnés, on rejette <span class="math inline">\(H_0\)</span>. Une des propriétés de la statistique du khi carré pour un degré de liberté et un seuil <span class="math inline">\(\alpha\)</span> donné (<span class="math inline">\(\chi^2_{\alpha, 1}\)</span>) est qu’il correspond au carré du <span class="math inline">\(z\)</span> bilatéral<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>, et au carré du <span class="math inline">\(t\)</span> bilatéral pour un même <span class="math inline">\(\alpha\)</span> et pour un degré de liberté qui tend vers l’infini:</p>
+<p><span class="math display">\[
+\chi^2_{\alpha, 1} = z^2_{\alpha(2)} = t^2_{\alpha(2), \infty}
+\]</span>
+—</p>
+<div class="exemple" section="5">
+<p>Reprenons notre exemple sur l’étude d’observation des personnes inscrites à la TÉLUQ. On veut maintenant déterminer si les modes de transport sont utilisés avec la même fréquence dans un ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> de <span class="math inline">\(1:1:1:1\)</span>. Nous pouvons énoncer les hypothèses statistiques suivantes:<br />
+<span class="math inline">\(H_0\)</span>: Le ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> est de <span class="math inline">\(1:1:1:1\)</span>. <br />
+<span class="math inline">\(H_a\)</span>: Le ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> n’est pas de <span class="math inline">\(1:1:1:1\)</span>.<br />
+<span class="math inline">\(\alpha = 0.05\)</span><br />
+On peut appliquer le test du khi carré pour tester ces hypothèses :
+<span class="math display">\[
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}} \\
+\]</span>
+On connaît déjà les <span class="math inline">\(f_i\)</span> qui sont les fréquences récoltées dans chaque catégorie (tableau @ref(tab:mode.transport)). Pour ce qui est des fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>), on doit les obtenir selon l’hypothèse nulle que l’on a spécifiée. Dans notre exemple, puisque <span class="math inline">\(H_0\)</span> s’intéresse à un ratio <span class="math inline">\(1:1:1:1\)</span>, la fréquence théorique dans chaque catégorie s’obtient en divisant le total des fréquences par le nombre de catégories (c.-à-d., <span class="math inline">\(\hat{f_i} = \frac{1}{4}(500) = 125\)</span>). On peut ensuite résoudre :</p>
+<p><span class="math display">\[
+\chi^2 = \frac{(139 - 125)^2}{125} + \frac{(146 - 125)^2}{125} + \frac{(117 - 125)^2}{125} + \frac{(98 - 125)^2}{125}  
+\]</span>
+<span class="math display">\[
+\chi^2 = 11.44
+\]</span></p>
+<p>Puisque nous avons quatre catégories, le test du khi carré a <span class="math inline">\(k - 1 = 4 - 1 = 3\)</span> degrés de liberté. On observe que la valeur de <span class="math inline">\(P(\chi^2_{\alpha, k - 1} \geq 11.44) = 0.0096\)</span>:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="théories-4.html#cb198-1" tabindex="-1"></a><span class="do">##on détermine la probabilité cumulative</span></span>
+<span id="cb198-2"><a href="théories-4.html#cb198-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="at">q =</span> <span class="fl">11.44</span>, <span class="at">df =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.009569722</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="théories-4.html#cb200-1" tabindex="-1"></a><span class="do">##même chose avec lower.tail = FALSE</span></span>
+<span id="cb200-2"><a href="théories-4.html#cb200-2" tabindex="-1"></a><span class="fu">pchisq</span>(<span class="at">q =</span> <span class="fl">11.44</span>, <span class="at">df =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.009569722</code></pre>
+<p>Dans R, on peut exécuter rapidement le test du khi carré avec la fonction <code>chisq.test( )</code>. On doit fournir les fréquences à l’argument <code>x</code>, suivi du type d’hypothèse nulle que l’on veut tester à l’aide de l’argument <code>p</code>. Ici, puisque <span class="math inline">\(H_0\)</span> spécifie qu’on devrait avoir autant de fréquences dans les quatre groupes, on indique <code>p = c(0.25, 0.25, 0.25, 0.25)</code> pour avoir le quart du total des fréquences dans chaque groupe. On peut écrire :</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="théories-4.html#cb202-1" tabindex="-1"></a><span class="do">##on crée un vecteur de fréquences</span></span>
+<span id="cb202-2"><a href="théories-4.html#cb202-2" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">139</span>, <span class="dv">146</span>, <span class="dv">117</span>, <span class="dv">98</span>)</span>
+<span id="cb202-3"><a href="théories-4.html#cb202-3" tabindex="-1"></a></span>
+<span id="cb202-4"><a href="théories-4.html#cb202-4" tabindex="-1"></a><span class="do">##on peut ajouter les étiquettes (optionnel)</span></span>
+<span id="cb202-5"><a href="théories-4.html#cb202-5" tabindex="-1"></a><span class="fu">names</span>(ratio) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;À Pied&quot;</span>, <span class="st">&quot;Transport en commun&quot;</span>, </span>
+<span id="cb202-6"><a href="théories-4.html#cb202-6" tabindex="-1"></a>                  <span class="st">&quot;Vélo&quot;</span>, <span class="st">&quot;Voiture&quot;</span>)</span>
+<span id="cb202-7"><a href="théories-4.html#cb202-7" tabindex="-1"></a>ratio</span></code></pre></div>
+<pre><code>##              À Pied Transport en commun                Vélo             Voiture 
+##                 139                 146                 117                  98</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="théories-4.html#cb204-1" tabindex="-1"></a><span class="do">##on effectue le khi carré</span></span>
+<span id="cb204-2"><a href="théories-4.html#cb204-2" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> ratio, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>, <span class="fl">0.25</span>))</span>
+<span id="cb204-3"><a href="théories-4.html#cb204-3" tabindex="-1"></a>out</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  ratio
+## X-squared = 11.44, df = 3, p-value = 0.00957</code></pre>
+<p>On rejette <span class="math inline">\(H_0\)</span> car <span class="math inline">\(P \leq \alpha\)</span> (0.05) et on conclut que le ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> n’est pas de <span class="math inline">\(1:1:1:1\)</span> à la TÉLUQ. On constate d’ailleurs que le mode de transport par voiture est sous représenté par rapport aux autres catégories et que les étudiants se déplacent davantage à pied et en transport en commun que ce qui est attendu selon <span class="math inline">\(H_0\)</span>.</p>
+</div>
+<hr />
+<div id="trouver-les-différences-significatives" class="section level5 hasAnchor" number="5.1.1.2.1">
+<h5><span class="header-section-number">5.1.1.2.1</span> Trouver les différences significatives<a href="théories-4.html#trouver-les-différences-significatives" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<!--- section qui n'est pas dans le pdf--->
+<p>L’analyse réalisée précédemment brosse un portrait général des différences entre les fréquences. Le rejet de <span class="math inline">\(H_0\)</span> ouvre la porte à une étude plus poussée des données. L’identification des différences significatives entre les fréquences observées est possible grâce aux résidus de Pearson. Le résidu de chaque fréquence observée se calcule à l’aide de l’équation suivante :</p>
+<p><span class="math display">\[
+r_i = \frac{f_i - \hat{f_i}}{\sqrt{\hat{f_i}}}
+\]</span>
+Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont considérées comme significativement différentes de leur fréquence théorique.</p>
+<hr />
+<div class="exemple" section="5">
+<p>Les résidus de Pearson sont calculés par la fonction <code>chisq.test()</code>. On peut les obtenir en ajoutant l’opérateur $ et la composante <code>residuals</code> à l’objet où sont sauvegardés les résultats.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="théories-4.html#cb206-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
+<span id="cb206-2"><a href="théories-4.html#cb206-2" tabindex="-1"></a>out<span class="sc">$</span>residuals</span></code></pre></div>
+<pre><code>##              À Pied Transport en commun                Vélo             Voiture 
+##           1.2521981           1.8782971          -0.7155418          -2.4149534</code></pre>
+</div>
+<p>On remarque que seul le résidu de l’utilisation de la voiture est significatif. La valeur négative indique que cette fréquence est significativement inférieure à la fréquence théorique.</p>
+<hr />
+</div>
+</div>
+<div id="conditions-dutilisation" class="section level4 hasAnchor" number="5.1.1.3">
+<h4><span class="header-section-number">5.1.1.3</span> Conditions d’utilisation<a href="théories-4.html#conditions-dutilisation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="utilisation-des-fréquences" class="section level5 hasAnchor" number="5.1.1.3.1">
+<h5><span class="header-section-number">5.1.1.3.1</span> Utilisation des fréquences<a href="théories-4.html#utilisation-des-fréquences" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Certaines conditions sont nécessaires à l’application correcte du test du khi carré. Ce dernier utilise des fréquences (des entiers) comme données brutes. Le test permet de déterminer si les proportions des fréquences observées sont conformes à l’hypothèse nulle. On ne doit jamais utiliser seulement que des proportions (p.ex, 0.3 et 0.7) pour réaliser l’analyse, car la taille de l’échantillon affecte aussi la valeur du khi carré et le résultat du test.</p>
+</div>
+<div id="indépendance-des-observations-2" class="section level5 hasAnchor" number="5.1.1.3.2">
+<h5><span class="header-section-number">5.1.1.3.2</span> Indépendance des observations<a href="théories-4.html#indépendance-des-observations-2" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le test du khi carré suppose que les données sont récoltées selon un dispositif complètement aléatoire et qu’il n’y a pas de structure dans les données telle que la non-indépendance imposée par l’échantillonnage. On peut illustrer la non-indépendance par un bref exemple où on s’intéresse à l’occurrence de vers solitaires dans des paquets de bœuf haché contaminé soumis à 2 temps de cuisson. On pourrait utiliser 2 morceaux du même paquet pour tester les 2 temps de cuisson, cependant ces morceaux ne seraient pas considérés comme indépendants. Pour une parfaite indépendance, il faudrait utiliser un seul morceau de viande pour chaque paquet choisi aléatoirement</p>
+</div>
+<div id="faibles-fréquences-théoriques" class="section level5 hasAnchor" number="5.1.1.3.3">
+<h5><span class="header-section-number">5.1.1.3.3</span> Faibles fréquences théoriques<a href="théories-4.html#faibles-fréquences-théoriques" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>De faibles fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>)<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> entraînent un biais du <span class="math inline">\(\chi^2\)</span>. En effet, de trop faibles fréquences théoriques surestiment la valeur du <span class="math inline">\(\chi^2\)</span> et, par conséquent, augmentent l’erreur de type I. Certains statisticiens suggèrent que le test du <span class="math inline">\(\chi^2\)</span> est approprié uniquement pour les cas où aucune fréquence théorique n’est inférieure à 3 et où pas plus de 20 % des fréquences théoriques sont inférieures à 5. D’autres sont plus stricts et recommandent de n’avoir aucune fréquence théorique inférieure à 5. Afin d’éviter des problèmes, il est préférable de viser une bonne taille d’échantillon, notamment en s’assurant d’avoir au moins 5 fois plus d’observations que de cellules dans le tableau. En d’autres mots, si on a deux cellules comme dans le tableau de l’exemple 5.2 (homme et femme), on veut au moins un total de 10 individus échantillonnés aléatoirement dans la population d’intérêt.</p>
+<p>Continuons avec un exemple sur la sélection d’habitat qui applique le <span class="math inline">\(\chi^2\)</span> en écologie animale.</p>
+<hr />
+<div class="exemple" section="5">
+<p>On s’intéresse à la sélection d’habitat par des orignaux (<em>Alces alces</em>). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d’étude. À l’aide d’un système d’information géoréférencé, on calcule la proportion des quatre habitats qui constituent l’aire d’étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l’aire d’étude. En d’autres mots, on détermine si certains types d’habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d’habitat. Le tableau <a href="théories-4.html#tab:select">5.2</a> présente ce jeu de données.</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:select">Table 5.2: </span>Sélection d’habitat par des Orignaux selon la disponibilité d’habitat dans une aire d’étude.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:right;">
+Disponibilité
+</th>
+<th style="text-align:right;">
+Fréquence
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+jeune coupe forestière
+</td>
+<td style="text-align:right;">
+0.340
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vieille coupe forestière
+</td>
+<td style="text-align:right;">
+0.101
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+marais et étang
+</td>
+<td style="text-align:right;">
+0.104
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+forêt non-coupée
+</td>
+<td style="text-align:right;">
+0.455
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+</tbody>
+</table>
+<p>L’objectif est de déterminer si certains habitats sont surutilisés ou sous-utilisés par les orignaux. On émet les hypothèses statistiques suivantes :<br />
+<span class="math inline">\(H_0\)</span>: L’utilisation des habitats est proportionnelle à la disponibilité de chacun des habitats (<span class="math inline">\(0.340 : 0.101 : 0.104 : 0.455\)</span>).<br />
+<span class="math inline">\(H_a\)</span>: L’utilisation des habitats n’est pas proportionnelle à la disponibilité de chacun des habitats (certains habitats sont surutilisés ou sous-utilisés).<br />
+<span class="math inline">\(\alpha = 0.05\)</span></p>
+<p>On obtient les fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>) à l’aide des proportions de disponibilité de chaque habitat :</p>
+<p><span class="math display">\[\hat{f_1} = 0.340 \cdot 117 = 39.78\]</span><br />
+<span class="math display">\[\hat{f_2} = 0.101 \cdot 117 = 11.82\]</span><br />
+<span class="math display">\[\hat{f_3} = 0.104 \cdot 117 = 12.17\]</span><br />
+<span class="math display">\[\hat{f_4} = 0.455 \cdot 117 = 53.23\]</span></p>
+<p>Ce qui nous permet ensuite de calculer le <span class="math inline">\(\chi^2\)</span>:</p>
+<p><span class="math display">\[
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  
+\chi^2 = \frac{(25 - 39.78)^2}{39.78} + \frac{(22 - 11.82)^2}{11.82} + \frac{(30 - 12.17)^2}{12.17} + \frac{(40 - 53.23)^2}{53.23}   
+\]</span></p>
+<p><span class="math display">\[
+\chi^2 = 43.689
+\]</span>
+Avec <span class="math inline">\(k - 1 = 4 - 1 = 3\)</span> degrés de liberté, on trouve que <span class="math inline">\(P(\chi^2_{0.05, 3} \geq 43.689) &lt; 0.0001\)</span>. Avec R, le tout s’obtient facilement à l’aide de :</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="théories-4.html#cb208-1" tabindex="-1"></a><span class="do">##on crée un vecteur de fréquences</span></span>
+<span id="cb208-2"><a href="théories-4.html#cb208-2" tabindex="-1"></a>select <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb208-3"><a href="théories-4.html#cb208-3" tabindex="-1"></a><span class="do">##on ajoute les noms des habitats</span></span>
+<span id="cb208-4"><a href="théories-4.html#cb208-4" tabindex="-1"></a><span class="fu">names</span>(select) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;jeune_coupe&quot;</span>, <span class="st">&quot;vieille_coupe&quot;</span>, <span class="st">&quot;marais_et_etang&quot;</span>, <span class="st">&quot;foret_non_coupee&quot;</span>)</span>
+<span id="cb208-5"><a href="théories-4.html#cb208-5" tabindex="-1"></a><span class="do">##on effectue le test du khi carré</span></span>
+<span id="cb208-6"><a href="théories-4.html#cb208-6" tabindex="-1"></a><span class="do">##important de spécifier les bonnes valeurs pour H0</span></span>
+<span id="cb208-7"><a href="théories-4.html#cb208-7" tabindex="-1"></a>out.select <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(select, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.340</span>, <span class="fl">0.101</span>, <span class="fl">0.104</span>, <span class="fl">0.455</span>))</span>
+<span id="cb208-8"><a href="théories-4.html#cb208-8" tabindex="-1"></a>out.select</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  select
+## X-squared = 43.689, df = 3, p-value = 1.757e-09</code></pre>
+</div>
+<hr />
+<p>On conclut qu’il est peu probable d’observer une valeur de <span class="math inline">\(\chi^2 \geq 43.689\)</span> avec 3 degrés de liberté dans une population où l’utilisation de l’habitat par les orignaux est proportionnelle à la disponibilité de l’habitat. Effectivement, on rejette <span class="math inline">\(H_0\)</span>. Certains types d’habitat sont sous-utilisés et d’autres surutilisés par rapport à leur disponibilité dans l’aire d’étude. De façon équivalente, on peut dire que l’utilisation de différents habitats par les Orignaux ne dépend pas seulement des disponibilités de ces habitats.</p>
+<p>Le rejet de <span class="math inline">\(H_0\)</span> permet une analyse plus poussée à l’aide des résidus de Pearson.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="théories-4.html#cb210-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
+<span id="cb210-2"><a href="théories-4.html#cb210-2" tabindex="-1"></a>out.select<span class="sc">$</span>residuals</span></code></pre></div>
+<pre><code>##      jeune_coupe    vieille_coupe  marais_et_etang foret_non_coupee 
+##        -2.343376         2.962253         5.111995        -1.813950</code></pre>
+<!--- Pas les mêmes conclusions que dans le pdf--->
+<p>On constate que les vieilles coupes forestières ainsi que les marais et les étangs sont significativement plus utilisés que ce qui est prédit selon leur disponibilité, alors que les jeunes coupes forestières sont significativement moins fréquentées.</p>
+<p>Le résultat obtenu pour la forêt non-coupée est plus nuancé. Le résidu associé à cet habitat est près du seuil de signification, soit -2. De plus, la différence entre la fréquence observée et théorique est similaire à ce que l’on observe chez d’autres habitats. C’est ici que les compétences de spécialistes deviennent pertinentes. On pourrait alors conclure que la sous-utilisation de cet habitat est biologiquement significative même si le résidu (-1.81295) est légèrement inférieur au seuil de signification statistique de -2.</p>
+</div>
+<div id="correction-de-continuité" class="section level5 hasAnchor" number="5.1.1.3.4">
+<h5><span class="header-section-number">5.1.1.3.4</span> Correction de continuité<a href="théories-4.html#correction-de-continuité" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Les calculs à partir de la formule du <span class="math inline">\(\chi^2\)</span> approximent bien la distribution théorique du khi carré, sauf dans le cas où il n’y a qu’un seul degré de liberté (<span class="math inline">\(df = 1\)</span>). Dans de tels cas, on peut utiliser la correction de continuité de Yates pour réduire le biais :</p>
+<p><span class="math display">\[\chi^2_{corr} = \sum_{i=1}^k \frac{(\vert f_i - \hat{f_i}\vert - 0.5)^2}{\hat{f_i}}\]</span></p>
+<p>Le prochain exemple illustre justement l’application de la correction de continuité pour un <span class="math inline">\(\chi^2\)</span> avec 1 degré de liberté.</p>
+<hr />
+<div class="exemple" section="5">
+<p>Dans une expérience en génétique, on veut savoir si un échantillon constitué de 100 plantes provient d’une population où le ratio entre le nombre de fleurs jaunes et celui de fleurs vertes est de <span class="math inline">\(3 : 1\)</span>. Après avoir récolté 100 plantes, on remarque que 84 plantes ont des fleurs jaunes et 16 plantes ont des fleurs vertes. On émet les hypothèses statistiques suivantes :<br />
+<span class="math inline">\(H_0\)</span>: L’échantillon provient d’une population avec un ratio fleurs <span class="math inline">\(\mathrm{jaunes : fleurs}\)</span> vertes de <span class="math inline">\(3 : 1\)</span>.<br />
+<span class="math inline">\(H_a\)</span>: L’échantillon ne provient pas d’une population avec un ratio fleurs <span class="math inline">\(\mathrm{jaunes : fleurs}\)</span> vertes de <span class="math inline">\(3 : 1\)</span>.<br />
+<span class="math inline">\(\alpha = 0.05\)</span><br />
+Puisqu’on veut tester un ratio <span class="math inline">\(3 : 1\)</span>, les fréquences théoriques conformes à l’hypothèse nulle seront obtenues en multipliant le nombre total de fréquences par <span class="math inline">\(0.75(3/4)\)</span> et <span class="math inline">\(0.25(1/4)\)</span> pour les fleurs jaunes et les fleurs vertes, respectivement. On peut réaliser l’analyse dans R :</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="théories-4.html#cb212-1" tabindex="-1"></a><span class="do">##on crée une matrice avec les fréquences</span></span>
+<span id="cb212-2"><a href="théories-4.html#cb212-2" tabindex="-1"></a>freq.fleurs <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">84</span>, <span class="dv">16</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb212-3"><a href="théories-4.html#cb212-3" tabindex="-1"></a></span>
+<span id="cb212-4"><a href="théories-4.html#cb212-4" tabindex="-1"></a><span class="do">##on indique H0</span></span>
+<span id="cb212-5"><a href="théories-4.html#cb212-5" tabindex="-1"></a>H0.prop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="fl">0.25</span>)</span>
+<span id="cb212-6"><a href="théories-4.html#cb212-6" tabindex="-1"></a></span>
+<span id="cb212-7"><a href="théories-4.html#cb212-7" tabindex="-1"></a><span class="do">##on effectue le test du khi carré</span></span>
+<span id="cb212-8"><a href="théories-4.html#cb212-8" tabindex="-1"></a>khi2 <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> freq.fleurs, <span class="at">p =</span> H0.prop)</span>
+<span id="cb212-9"><a href="théories-4.html#cb212-9" tabindex="-1"></a>khi2</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  freq.fleurs
+## X-squared = 4.32, df = 1, p-value = 0.03767</code></pre>
+<p>On remarque que le test a un degré de liberté. Il faut donc appliquer la correction de continuité de Yates à notre valeur comme suit :</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="théories-4.html#cb214-1" tabindex="-1"></a><span class="do">##khi carré original</span></span>
+<span id="cb214-2"><a href="théories-4.html#cb214-2" tabindex="-1"></a>khi.orig <span class="ot">&lt;-</span> <span class="fu">sum</span>(((khi2<span class="sc">$</span>observed <span class="sc">-</span> khi2<span class="sc">$</span>expected)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span></span>
+<span id="cb214-3"><a href="théories-4.html#cb214-3" tabindex="-1"></a>                khi2<span class="sc">$</span>expected)</span>
+<span id="cb214-4"><a href="théories-4.html#cb214-4" tabindex="-1"></a>khi.orig</span></code></pre></div>
+<pre><code>## [1] 4.32</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="théories-4.html#cb216-1" tabindex="-1"></a><span class="do">##khi carré corrigé pour continuité</span></span>
+<span id="cb216-2"><a href="théories-4.html#cb216-2" tabindex="-1"></a>khi.corr <span class="ot">&lt;-</span> <span class="fu">sum</span>(((<span class="fu">abs</span>(khi2<span class="sc">$</span>observed <span class="sc">-</span> khi2<span class="sc">$</span>expected) <span class="sc">-</span> <span class="fl">0.5</span>)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span></span>
+<span id="cb216-3"><a href="théories-4.html#cb216-3" tabindex="-1"></a>                khi2<span class="sc">$</span>expected)</span>
+<span id="cb216-4"><a href="théories-4.html#cb216-4" tabindex="-1"></a>khi.corr</span></code></pre></div>
+<pre><code>## [1] 3.853333</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="théories-4.html#cb218-1" tabindex="-1"></a><span class="do">## P-value du khi carré corrigé</span></span>
+<span id="cb218-2"><a href="théories-4.html#cb218-2" tabindex="-1"></a>P<span class="ot">&lt;-</span> <span class="fu">pchisq</span>(khi.corr, <span class="at">df =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb218-3"><a href="théories-4.html#cb218-3" tabindex="-1"></a>P</span></code></pre></div>
+<pre><code>## [1] 0.04964723</code></pre>
+<p>Avec le <span class="math inline">\(\chi^2\)</span> corrigé pour la continuité (3.853 comparé à 4.32 pour le <span class="math inline">\(\chi^2\)</span> non corrigé), on rejette tout de même <span class="math inline">\(H_0\)</span> (<span class="math inline">\(P = 0.0496\)</span>) et on conclut que l’échantillon ne provient pas d’une population où il y a un ratio de trois fleurs jaunes pour une fleur verte (<span class="math inline">\(3 : 1\)</span>). Lorsque les valeurs de <span class="math inline">\(P\)</span> se rapprochent du seuil <span class="math inline">\(\alpha = 0.05\)</span>, on peut mentionner que le résultat est marginalement significatif, ce qui souligne au lecteur la moins grande fiabilité du résultat.</p>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="tableau-de-contingence" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Tableau de contingence<a href="théories-4.html#tableau-de-contingence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Le <strong>tableau de contingence</strong> (<em>contingency table</em>) est un tableau à deux dimensions où on note, à la suite d’une étude d’observation ou d’une expérience, la fréquence d’occurrence d’un événement par rapport à deux variables catégoriques (p. ex., sexe, classes de taille). Le tableau de contingence se prête à un <strong>test d’indépendance</strong> entre les deux variables catégoriques. Autrement dit, le tableau de contingence permet de tester l’hypothèse que les fréquences d’occurrence d’un événement pour une variable sont indépendantes des fréquences pour les catégories de l’autre variable. Le test du <span class="math inline">\(\chi^2\)</span> s’applique naturellement au tableau de contingence.</p>
+<hr />
+<div class="exemple" section="5">
+<p>On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d’origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau <a href="théories-4.html#tab:haireyes">5.3</a>. Notons ici qu’il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
+Nous reprendrons plus tard cet exemple.</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:haireyes">Table 5.3: </span>Tableau de contingence selon la couleur des cheveux et des yeux.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Pâle
+</th>
+<th style="text-align:right;">
+Foncé
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Bleu
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brun
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<div id="formulation-des-hypothèse-nulles" class="section level4 hasAnchor" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Formulation des hypothèse nulles<a href="théories-4.html#formulation-des-hypothèse-nulles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La formulation des hypothèses nulles à partir d’un tableau de contingence diffère légèrement de ce que nous avons vu pour le test du khi carré d’ajustement. On peut formuler l’hypothèse nulle en termes d’indépendance d’une variable catégorique par rapport à une deuxième variable catégorique. L’hypothèse nulle peut aussi être formulée en termes de proportion d’un niveau d’une variable catégorique par rapport à une deuxième variable catégorique. Les deux types de formulation sont illustrés dans le prochain exemple.</p>
+<hr />
+<div class="exemple" section="5">
+<p>On continue l’exemple débuté plus haut. Nous pouvons formuler les hypothèses statistiques pour les données du tableau de contingence de deux manières différentes.<br />
+<strong>Formulation en termes d’indépendance :</strong><br />
+<span class="math inline">\(H_0\)</span> (indépendance): La couleur des yeux est indépendante de la couleur des cheveux.<br />
+<span class="math inline">\(H_a\)</span> (non-indépendance): La couleur des yeux n’est pas indépendante de la couleur des cheveux.<br />
+<strong>Formulation en termes de proportions :</strong><br />
+<span class="math inline">\(H_0\)</span>: La proportion des individus avec des yeux bleus ne diffère pas selon la couleur des cheveux.<br />
+<span class="math inline">\(H_a\)</span>: La proportion des individus avec des yeux bleus diffère selon la couleur des cheveux<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>.</p>
+</div>
+<hr />
+</div>
+<div id="fréquences-théoriques" class="section level4 hasAnchor" number="5.1.2.2">
+<h4><span class="header-section-number">5.1.2.2</span> Fréquences théoriques<a href="théories-4.html#fréquences-théoriques" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>L’obtention des fréquences théoriques est un peu plus compliquée pour les tableaux de contingence, mais suit la même logique que pour le <span class="math inline">\(\chi^2\)</span> d’ajustement qui lui n’a qu’une seule variable catégorique. L’équation suivante nous donne les <span class="math inline">\(\hat{f_{ij}}\)</span> conformes à l’hypothèse nulle:</p>
+<p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G}\]</span></p>
+<hr />
+<div class="exemple" section="5">
+<p>On applique le calcul des fréquences théoriques aux données de l’échantillon de couleur des yeux et des cheveux. Le tableau @ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s’obtient:</p>
+<p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G} \]</span>
+<span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{(38 + 11) \times (38 + 14)}{(38 + 11 + 14 + 51)} \]</span>
+<span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{49 \times 52}{114} \]</span>
+<span class="math display">\[\hat{f}_{bleu-p\hat{a}le} =  22.35 \]</span></p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-48">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
+</caption>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Pâle
+</td>
+<td style="text-align:left;">
+Foncé
+</td>
+<td style="text-align:left;">
+<strong>Somme des rangées</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bleu
+</td>
+<td style="text-align:left;">
+38 (22.35)
+</td>
+<td style="text-align:left;">
+11 (26.65)
+</td>
+<td style="text-align:left;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brun
+</td>
+<td style="text-align:left;">
+14 (29.65)
+</td>
+<td style="text-align:left;">
+51 (35.35)
+</td>
+<td style="text-align:left;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<strong>Somme des colonnes</strong>
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:left;">
+114
+</td>
+</tr>
+</tbody>
+</table>
+<p>Avant d’aller plus loin, allons voir les détails du calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance.</p>
+</div>
+<hr />
+</div>
+<div id="calcul-du-chi2-dindépendance" class="section level4 hasAnchor" number="5.1.2.3">
+<h4><span class="header-section-number">5.1.2.3</span> Calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance<a href="théories-4.html#calcul-du-chi2-dindépendance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Le calcul du <span class="math inline">\(\chi^2\)</span> pour des données d’un tableau de contingence donne la somme des valeurs partielles pour toutes les cellules du tableau :</p>
+<p><span class="math display">\[\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} \]</span>
+où <span class="math inline">\(r\)</span> correspond au nombre total de rangées et <span class="math inline">\(c\)</span> au nombre total de colonnes du tableau de contingence, <span class="math inline">\(f_{ij}\)</span> correspond à la fréquence observée pour la rangée <span class="math inline">\(i\)</span> et la colonne <span class="math inline">\(j\)</span> du tableau de contingence, alors que <span class="math inline">\(\hat{f_{ij}}\)</span> représente la fréquence théorique de la rangée <span class="math inline">\(i\)</span> et colonne <span class="math inline">\(j\)</span> du tableau de contingence. On calcule des degrés de liberté avec <span class="math inline">\(df = (r - 1)(c - 1)\)</span>.</p>
+<hr />
+<div class="exemple" section="5">
+<p>En poursuivant l’exemple de la couleur des yeux et des cheveux, on peut calculer le <span class="math inline">\(\chi^2\)</span> :<br />
+<span class="math display">\[\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} \]</span>
+<span class="math display">\[ \chi^2 = \frac{(38 - 22.35)^2}{22.35} +  \frac{(14 - 29.65)^2}{29.65} + \frac{(11 - 26.65)^2}{26.65} + \frac{(51 - 35.35)^2}{35.35}\]</span>
+<span class="math display">\[\chi^2 = 35.334\]</span>
+Avec cette valeur de <span class="math inline">\(\chi^2\)</span>, nous avons <span class="math inline">\(df = (r - 1)(c - 1) = (2 - 1)(2 - 1) = 1\)</span> degré de liberté. Puisque nous avons un seul degré de liberté nous appliquons la correction de Yates pour la continuité :</p>
+<p><span class="math display">\[\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(\vert f_{ij} - \hat{f}_{ij}\vert - 0.5)^2}{\hat{f}_{ij}}\]</span>
+Ici, nous obtenons 33.112 avec la correction de Yates et une valeur de <span class="math inline">\(P(\chi^2_{0.05, 1} \geq 33.112) &lt; 0.0001\)</span>. On rejette <span class="math inline">\(H_0\)</span> et on conclut que la couleur des cheveux n’est pas indépendante de la couleur des yeux chez des individus d’origine septentrionale résidant au Canada.</p>
+<p>À l’aide de R, on procède ainsi :</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="théories-4.html#cb220-1" tabindex="-1"></a><span class="do">##on assemble les données dans une matrice</span></span>
+<span id="cb220-2"><a href="théories-4.html#cb220-2" tabindex="-1"></a>freq.obs <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">51</span>), <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb220-3"><a href="théories-4.html#cb220-3" tabindex="-1"></a>                   <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb220-4"><a href="théories-4.html#cb220-4" tabindex="-1"></a></span>
+<span id="cb220-5"><a href="théories-4.html#cb220-5" tabindex="-1"></a><span class="do">##on ajoute des étiquettes aux colonnes et rangées </span></span>
+<span id="cb220-6"><a href="théories-4.html#cb220-6" tabindex="-1"></a><span class="do">##ceci est facultatif</span></span>
+<span id="cb220-7"><a href="théories-4.html#cb220-7" tabindex="-1"></a><span class="fu">colnames</span>(freq.obs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pale&quot;</span>, <span class="st">&quot;Fonce&quot;</span>)</span>
+<span id="cb220-8"><a href="théories-4.html#cb220-8" tabindex="-1"></a><span class="fu">rownames</span>(freq.obs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Bleu&quot;</span>, <span class="st">&quot;Brun&quot;</span>)</span>
+<span id="cb220-9"><a href="théories-4.html#cb220-9" tabindex="-1"></a></span>
+<span id="cb220-10"><a href="théories-4.html#cb220-10" tabindex="-1"></a><span class="do">##analyse sans correction pour continuité</span></span>
+<span id="cb220-11"><a href="théories-4.html#cb220-11" tabindex="-1"></a>out.tab <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> freq.obs, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb220-12"><a href="théories-4.html#cb220-12" tabindex="-1"></a>out.tab</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  freq.obs
+## X-squared = 35.334, df = 1, p-value = 2.778e-09</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="théories-4.html#cb222-1" tabindex="-1"></a><span class="do">##analyse avec correction pour continuité</span></span>
+<span id="cb222-2"><a href="théories-4.html#cb222-2" tabindex="-1"></a>out.tab.corr <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> freq.obs, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb222-3"><a href="théories-4.html#cb222-3" tabindex="-1"></a>out.tab.corr</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  freq.obs
+## X-squared = 33.112, df = 1, p-value = 8.7e-09</code></pre>
+<p>Bien que <code>chisq.test( )</code> possède un argument <code>correct</code> qui prend la valeur <code>TRUE</code> par défaut, il n’applique la correction de continuité de Yates que sur les tableaux de contingence de 2 x 2. Nous n’aurions pas pu appliquer cette correction directement avec <code>chisq.test( )</code> sur le test du <span class="math inline">\(\chi^2\)</span> d’ajustement pour les données de fleurs jaunes et vertes.</p>
+<!-- pas dans le pdf -->
+<p>Puisque le test de khi-carré révèle une dépendance entre la couleur des cheveux et des yeux, il devient pertinent d’identifier les fréquences qui diffèrent significativement entre elles et dans quelle direction ces différences se trouvent. Les résidus de Pearson sont les suivant :</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="théories-4.html#cb224-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
+<span id="cb224-2"><a href="théories-4.html#cb224-2" tabindex="-1"></a>out.tab.corr<span class="sc">$</span>residuals</span></code></pre></div>
+<pre><code>##           Pale     Fonce
+## Bleu  3.310112 -3.031437
+## Brun -2.873982  2.632024</code></pre>
+<p>L’étude des résidus indique que les fréquences diffèrent significativement puisqu’elles sont inférieures à -2 ou supérieures à 2. On peut conclure que les individus au teint pâle avec des yeux bleus sont plus fréquents que la fréquence attendue (ou théorique). Il en est de même pour les individus dont le teint est foncé avec des yeux bruns. La tendance inverse est observée chez les personnes avec le teint pâle et les yeux bruns et celles au teint foncé avec les yeux bleus.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="alternative-au-test-du-chi2" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Alternative au test du <span class="math inline">\(\chi^2\)</span><a href="théories-4.html#alternative-au-test-du-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il existe des alternatives au test du khi carré, selon le type de fréquences récoltées. Les prochaines lignes mentionnent quelques tests à titre indicatif. Le test <span class="math inline">\(G\)</span> (<em>G-test</em>) s’applique dans les mêmes conditions que le test du khi carré. Le test exact de Fisher (<em>Fisher’s exact test</em>, <code>fisher.test( )</code> peut s’avérer utile, lorsqu’on ne peut pas rencontrer les suppositions du test du <span class="math inline">\(\chi^2\)</span> ou du test <span class="math inline">\(G\)</span>, notamment, des fréquences théoriques (<span class="math inline">\(\hat{f}_{ij}\)</span>) &lt; 5. Le test exact de Fisher est basé sur la distribution hypergéométrique et s’applique surtout sur des tableaux de contingence de 2 x 2. Le test binomial (<em>binomial test</em>) est une autre alternative au test du <span class="math inline">\(\chi^2\)</span> qui permet de tester si les proportions diffèrent dans un tableau 2 x 2 (<code>prop.test( )</code>) ou si une seule proportion diffère d’une valeur spécifique (<code>binom.test( )</code>). Si les catégories sont ordinales (p. ex., petit, moyen, grand; jeune, mature, vieux), on peut utiliser le test de Kolmogorov-Smirnov modifié pour les données discrètes. Le cas échéant, le test de Kolmogorov-Smirnov sera préférable et plus puissant que le <span class="math inline">\(\chi^2\)</span> qui ne tient pas compte de l’ordre des catégories. Toutefois, ce dernier n’était pas disponible dans R pour les données discrètes ordinales lors de l’écriture de ce document, c’est-à-dire, <code>ks.test( )</code> est un test d’ajustement uniquement pour les données continues.</p>
+<p>Dans d’autres cas, on peut modéliser les fréquences directement à l’aide de modèles log-linéaires (<em>log-linear models</em>) ou des probabilités à l’aide de régressions logistiques (<em>logistic regression</em>) en fonction d’une série de variables catégoriques ou numériques. Ces dernières approches sont des modèles linéaires généralisés que l’on peut réaliser à l’aide de <code>glm( )</code>.</p>
+</div>
+<div id="le-paradoxe-de-simpson" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Le paradoxe de Simpson<a href="théories-4.html#le-paradoxe-de-simpson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lorsqu’on analyse des fréquences, il faut être conscient du <strong>paradoxe de Simpson</strong> (<em>Simpson’s paradox</em>), qui se traduit par une inversion des relations dues à l’effet d’une variable qui n’a pas été considérée dans l’analyse. Voici une illustration de ce paradoxe. Considérons la survie de souris exposées à un traitement (400 souris) comparé à un témoin (120 souris) (Table <a href="théories-4.html#tab:surv">5.5</a>).</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:surv">Table 5.5: </span>Effet d’un traitement sur la survie d’individus.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Témoin
+</th>
+<th style="text-align:right;">
+Traitement
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Vivant
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mort
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+</tbody>
+</table>
+<p>D’après ce tableau, on serait porté à conclure que la survie des souris est indépendante du traitement (<span class="math inline">\(60/120\)</span> vs <span class="math inline">\(200/400\)</span> = 0.5 vs 0.5). Toutefois, en stratifiant l’analyse par sexe, on obtient un résultat différent. Le tableau des mâles suggère que le traitement augmente la survie (Table <a href="théories-4.html#tab:survMales">5.6</a>, <span class="math inline">\(14/60\)</span> vs <span class="math inline">\(60/70\)</span> = 0.23 vs 0.85).</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:survMales">Table 5.6: </span>Effet d’un traitement sur la survie des mâles.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Témoin
+</th>
+<th style="text-align:right;">
+Traitement
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Vivant
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mort
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+</tbody>
+</table>
+<p>Le tableau des femelles, quant à lui, suggère que le traitement diminue la survie (Table <a href="théories-4.html#tab:survFemales">5.7</a>, <span class="math inline">\(46/60\)</span> vs <span class="math inline">\(140/330\)</span> = 0.77 vs 0.42). Dans cet exemple, les analyses réalisées séparément par sexe mènent à des conclusions différentes. Dans ce cas-ci, faire abstraction du sexe dans l’analyse mène au paradoxe de Simpson et à une conclusion erronée. Il faut songer attentivement avant de se lancer dans l’analyse de fréquences et il est important de considérer toutes les variables pouvant influencer les résultats. Un moyen de prévenir le paradoxe de Simpson est de mieux cibler la population statistique d’intérêt en échantillonnant une partie de la population bien précise (p. ex., âge, type d’habitat). Une autre approche consiste à stratifier l’analyse selon une ou plusieurs variables (p. ex., le sexe, la taille).</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:survFemales">Table 5.7: </span>Effet d’un traitement sur la survie des femelles.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Témoin
+</th>
+<th style="text-align:right;">
+Traitement
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Vivant
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+140
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mort
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+190
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="conclusion-4" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Conclusion<a href="théories-4.html#conclusion-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cette leçon a présenté les rudiments de l’analyse de fréquences, particulièrement le test du <span class="math inline">\(\chi^2\)</span> d’ajustement et d’indépendance. Les conditions sous-jacentes à cette analyse ont été énoncées, ainsi que quelques diagnostics et mesures préventives lors de l’élaboration de la stratégie d’échantillonnage. Des approches alternatives ont aussi été brièvement présentées lorsque les conditions du test du <span class="math inline">\(\chi^2\)</span> ne peuvent être respectées. Finalement, le paradoxe de Simpson a été illustré avec un exemple afin de montrer que l’analyse de fréquences sans tenir compte d’une variable additionnelle peut influencer les conclusions.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="12">
+<li id="fn12"><p>Rappel: le <span class="math inline">\(z\)</span> est l’écart normal de la distribution normale centrée réduite.<a href="théories-4.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Rappel: les fréquences théoriques sont les fréquences que l’on aurait dû observer si <span class="math inline">\(H_0\)</span> est vraie. En contraste, les fréquences observées sont les données brutes utilisées dans l’analyse.<a href="théories-4.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Nous verrons avec l’analyse de variance à deux critères (voir la leçon 7) que cette interprétation ressemble beaucoup au concept d’interaction.<a href="théories-4.html#fnref14" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercices-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Module_5/Module_5.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Cours_Stats_R.pdf", "Cours_Stats_R.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+--- 
+title: "Statistiques avec R"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+description: Statistiques avec R
+link-citations: yes
+github-repo: sci1018/sci1018
+---
+
+# {-}
+
+---
+
+Bienvenue sur le site du cours SCI 1018! L'entièreté du contenu du cours est disponible en accès libre sur ce site. 
+Les évaluations sont disponibles sur le [site web](https://m2.teluq.ca/course/view.php?id=2164) de la TÉLUQ aux étudiantes et aux étudiants inscrits dans ce cours. 
+
+<br>
+
+Avant de débuter le cours, familiarisez-vous avec la structure de ce site en utilisant le menu vertical à gauche. 
+Lisez attentivement la section **Présentation** avant de vous plonger dans les apprentissages. 
+
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
