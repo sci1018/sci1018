@@ -1,0 +1,17 @@
+                Masse Prix
+Dark.Bounty     50.0  0.88
+Bounty          50.0  0.88
+Milo.Bar        40.0  1.15
+Viking          80.0  1.54
+KitKat.White    45.0  1.15
+KitKat.Chunky   78.0  1.40
+Cherry.Ripe     55.0  1.28
+Snickers        60.0  0.97
+Mars            60.0  0.97
+Crunchie        50.0  1.28
+Tim.Tam         40.0  1.10
+Turkish.Delight 55.0  1.28
+Mars.Lite       44.5  0.97
+Dairy.Milk.King 75.0  1.58
+Maltesers       60.0  1.55
+MandMs          42.5  1.18

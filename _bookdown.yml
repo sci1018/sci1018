@@ -8,6 +8,7 @@ rmd_files:
   - index.Rmd
   - Presentation/Presentation.Rmd
   - Presentation/Ressources.Rmd
+  - Guide_R/Guide_R.Rmd
   - Module_1/Module_1.Rmd
   - Module_2/Module_2.Rmd
   - Module_3/Module_3.Rmd
@@ -17,6 +18,7 @@ rmd_files:
   - Module_7/Module_7.Rmd
   - Module_8/Module_8.Rmd
   - Module_9/Module_9.Rmd
+  - Module_10/Module_10.Rmd
 rmd_subdir: 
   - Presentation/
   - Module_1/
@@ -28,3 +30,5 @@ rmd_subdir:
   - Module_7/
   - Module_8/
   - Module_9/
+  - Module_10/
+  - Guide_R/

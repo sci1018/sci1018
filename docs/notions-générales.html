@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Notions générales | Statistiques avec R</title>
+  <meta name="description" content="Notions générales | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Notions générales | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Notions générales | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Notions générales | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="Notions générales | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="programmation-avec-r.html"/>
+<link rel="next" href="exercices.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistiques avec R</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#pourquoi-suivre-ce-cours"><i class="fa fa-check"></i>Pourquoi suivre ce cours ?</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#objectifs"><i class="fa fa-check"></i>Objectifs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-notés"><i class="fa fa-check"></i>Travaux notés</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#installation-de-r-sous-ms-windows"><i class="fa fa-check"></i>Installation de R sous MS-Windows</a></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#installation-de-r-sous-mac"><i class="fa fa-check"></i>Installation de R sous Mac</a></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#installation-de-r-sous-gnulinux"><i class="fa fa-check"></i>Installation de R sous GNU/Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a>
+<ul>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html#optimiser-son-éditeur"><i class="fa fa-check"></i>Optimiser son éditeur</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html#divers-éditeurs-disponibles"><i class="fa fa-check"></i>Divers éditeurs disponibles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#le-projet-r"><i class="fa fa-check"></i>Le projet R</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#la-syntaxe"><i class="fa fa-check"></i>La syntaxe</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#à-laide"><i class="fa fa-check"></i>À l’aide</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#vecteurs-et-oprérations-de-base"><i class="fa fa-check"></i>Vecteurs et oprérations de base</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#opérateurs-mathématiques"><i class="fa fa-check"></i>Opérateurs mathématiques</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#tests-logiques"><i class="fa fa-check"></i>Tests logiques</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#matrices-et-calculs-matriciels"><i class="fa fa-check"></i>Matrices et calculs matriciels</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#jeux-de-données"><i class="fa fa-check"></i>Jeux de données</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="1" data-path="statistiques-descriptives.html"><a href="statistiques-descriptives.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="théories.html"><a href="théories.html"><i class="fa fa-check"></i><b>1.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="théories.html"><a href="théories.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="théories.html"><a href="théories.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="théories.html"><a href="théories.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a>
+<ul>
+<li class="chapter" data-level="1.1.3.1" data-path="théories.html"><a href="théories.html#somme-des-carrés-des-erreurs"><i class="fa fa-check"></i><b>1.1.3.1</b> Somme des carrés des erreurs</a></li>
+<li class="chapter" data-level="1.1.3.2" data-path="théories.html"><a href="théories.html#carré-moyen-variance"><i class="fa fa-check"></i><b>1.1.3.2</b> Carré moyen (variance)</a></li>
+<li class="chapter" data-level="1.1.3.3" data-path="théories.html"><a href="théories.html#précision-vs-exactitude"><i class="fa fa-check"></i><b>1.1.3.3</b> Précision vs exactitude</a></li>
+<li class="chapter" data-level="1.1.3.4" data-path="théories.html"><a href="théories.html#autres-mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3.4</b> Autres mesures de dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.4" data-path="théories.html"><a href="théories.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="théories.html"><a href="théories.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="théories.html"><a href="théories.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a>
+<ul>
+<li class="chapter" data-level="1.1.6.1" data-path="théories.html"><a href="théories.html#caractéristiques-de-la-distribution-normale"><i class="fa fa-check"></i><b>1.1.6.1</b> Caractéristiques de la distribution normale</a></li>
+<li class="chapter" data-level="1.1.6.2" data-path="théories.html"><a href="théories.html#distribution-normale-centrée-réduite"><i class="fa fa-check"></i><b>1.1.6.2</b> Distribution normale centrée réduite</a></li>
+<li class="chapter" data-level="1.1.6.3" data-path="théories.html"><a href="théories.html#probabilités-cumulatives"><i class="fa fa-check"></i><b>1.1.6.3</b> Probabilités cumulatives</a></li>
+<li class="chapter" data-level="1.1.6.4" data-path="théories.html"><a href="théories.html#applications-de-la-statistique-z-à-un-échantillon"><i class="fa fa-check"></i><b>1.1.6.4</b> Applications de la statistique z à un échantillon</a></li>
+</ul></li>
+<li class="chapter" data-level="1.1.7" data-path="théories.html"><a href="théories.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a>
+<ul>
+<li class="chapter" data-level="1.2.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#probabilité-cumulative"><i class="fa fa-check"></i><b>1.2.2.1</b> Probabilité cumulative</a></li>
+<li class="chapter" data-level="1.2.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonction-de-quantile"><i class="fa fa-check"></i><b>1.2.2.2</b> Fonction de quantile</a></li>
+<li class="chapter" data-level="1.2.2.3" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#nombres-aléatoires"><i class="fa fa-check"></i><b>1.2.2.3</b> Nombres aléatoires</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="exercices-1.html"><a href="exercices-1.html"><i class="fa fa-check"></i><b>1.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="exercices-1.html"><a href="exercices-1.html#question-1-1"><i class="fa fa-check"></i><b>1.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="1.3.2" data-path="exercices-1.html"><a href="exercices-1.html#question-2-1"><i class="fa fa-check"></i><b>1.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><a href="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="théories-1.html"><a href="théories-1.html"><i class="fa fa-check"></i><b>2.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="théories-1.html"><a href="théories-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.1.1" data-path="théories-1.html"><a href="théories-1.html#portion-de-la-population-non-représentée"><i class="fa fa-check"></i><b>2.1.1.1</b> Portion de la population non représentée</a></li>
+<li class="chapter" data-level="2.1.1.2" data-path="théories-1.html"><a href="théories-1.html#erreurs-de-mesure-ou-de-saisie-des-données"><i class="fa fa-check"></i><b>2.1.1.2</b> Erreurs de mesure ou de saisie des données</a></li>
+<li class="chapter" data-level="2.1.1.3" data-path="théories-1.html"><a href="théories-1.html#erreurs-liées-à-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.1.3</b> Erreurs liées à la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="théories-1.html"><a href="théories-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a>
+<ul>
+<li class="chapter" data-level="2.1.3.1" data-path="théories-1.html"><a href="théories-1.html#distribution-du-t-de-student"><i class="fa fa-check"></i><b>2.1.3.1</b> Distribution du <em>t</em> de Student</a></li>
+<li class="chapter" data-level="2.1.3.2" data-path="théories-1.html"><a href="théories-1.html#rééchantillonnage"><i class="fa fa-check"></i><b>2.1.3.2</b> Rééchantillonnage</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.4" data-path="théories-1.html"><a href="théories-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1.4.1" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-stratifié"><i class="fa fa-check"></i><b>2.1.4.1</b> Échantillonnage stratifié</a></li>
+<li class="chapter" data-level="2.1.4.2" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-par-grappes-et-échantillonnage-systématique"><i class="fa fa-check"></i><b>2.1.4.2</b> Échantillonnage par grappes et échantillonnage systématique</a></li>
+<li class="chapter" data-level="2.1.4.3" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-multistade"><i class="fa fa-check"></i><b>2.1.4.3</b> Échantillonnage multistade</a></li>
+<li class="chapter" data-level="2.1.4.4" data-path="théories-1.html"><a href="théories-1.html#échantillonnage-adaptatif"><i class="fa fa-check"></i><b>2.1.4.4</b> Échantillonnage adaptatif</a></li>
+<li class="chapter" data-level="2.1.4.5" data-path="théories-1.html"><a href="théories-1.html#estimation-de-la-probabilité-de-détection"><i class="fa fa-check"></i><b>2.1.4.5</b> Estimation de la probabilité de détection</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.5" data-path="théories-1.html"><a href="théories-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="exercices-2.html"><a href="exercices-2.html"><i class="fa fa-check"></i><b>2.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="exercices-2.html"><a href="exercices-2.html#question-1-2"><i class="fa fa-check"></i><b>2.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="exercices-2.html"><a href="exercices-2.html#question-2-2"><i class="fa fa-check"></i><b>2.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tests-dhypothèse-sur-un-seul-groupe.html"><a href="tests-dhypothèse-sur-un-seul-groupe.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="théories-2.html"><a href="théories-2.html"><i class="fa fa-check"></i><b>3.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.1.1" data-path="théories-2.html"><a href="théories-2.html#hypothèse-scientifique"><i class="fa fa-check"></i><b>3.1.1.1</b> Hypothèse scientifique</a></li>
+<li class="chapter" data-level="3.1.1.2" data-path="théories-2.html"><a href="théories-2.html#méthode-scientifique"><i class="fa fa-check"></i><b>3.1.1.2</b> Méthode scientifique</a></li>
+<li class="chapter" data-level="3.1.1.3" data-path="théories-2.html"><a href="théories-2.html#inférence-bayésienne"><i class="fa fa-check"></i><b>3.1.1.3</b> Inférence bayésienne</a></li>
+<li class="chapter" data-level="3.1.1.4" data-path="théories-2.html"><a href="théories-2.html#méthode-hypothético-déductive"><i class="fa fa-check"></i><b>3.1.1.4</b> Méthode hypothético-déductive</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.2" data-path="théories-2.html"><a href="théories-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="théories-2.html"><a href="théories-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a>
+<ul>
+<li class="chapter" data-level="3.1.3.1" data-path="théories-2.html"><a href="théories-2.html#puissance"><i class="fa fa-check"></i><b>3.1.3.1</b> Puissance</a></li>
+<li class="chapter" data-level="3.1.3.2" data-path="théories-2.html"><a href="théories-2.html#relation-entre-les-erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3.2</b> Relation entre les erreurs de type I et II</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.4" data-path="théories-2.html"><a href="théories-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a>
+<ul>
+<li class="chapter" data-level="3.1.4.1" data-path="théories-2.html"><a href="théories-2.html#conseils-sur-la-présentation-des-résultats-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4.1</b> Conseils sur la présentation des résultats de tests d’hypothèse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.5" data-path="théories-2.html"><a href="théories-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="théories-2.html"><a href="théories-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1.6.1" data-path="théories-2.html"><a href="théories-2.html#test-bilatéral-et-test-unilatéral"><i class="fa fa-check"></i><b>3.1.6.1</b> Test bilatéral et test unilatéral</a></li>
+<li class="chapter" data-level="3.1.6.2" data-path="théories-2.html"><a href="théories-2.html#suppositions"><i class="fa fa-check"></i><b>3.1.6.2</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1.7" data-path="théories-2.html"><a href="théories-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="exercices-3.html"><a href="exercices-3.html"><i class="fa fa-check"></i><b>3.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="exercices-3.html"><a href="exercices-3.html#question-1-3"><i class="fa fa-check"></i><b>3.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exercices-3.html"><a href="exercices-3.html#question-2-3"><i class="fa fa-check"></i><b>3.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tests-dhypothèse-sur-deux-groupes.html"><a href="tests-dhypothèse-sur-deux-groupes.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="théories-3.html"><a href="théories-3.html"><i class="fa fa-check"></i><b>4.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a>
+<ul>
+<li class="chapter" data-level="4.1.1.1" data-path="théories-3.html"><a href="théories-3.html#suppositions-1"><i class="fa fa-check"></i><b>4.1.1.1</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.2" data-path="théories-3.html"><a href="théories-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="théories-3.html"><a href="théories-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a>
+<ul>
+<li class="chapter" data-level="4.1.3.1" data-path="théories-3.html"><a href="théories-3.html#transformation-logarithmique"><i class="fa fa-check"></i><b>4.1.3.1</b> Transformation logarithmique</a></li>
+<li class="chapter" data-level="4.1.3.2" data-path="théories-3.html"><a href="théories-3.html#transformation-racine-carrée"><i class="fa fa-check"></i><b>4.1.3.2</b> Transformation racine carrée</a></li>
+<li class="chapter" data-level="4.1.3.3" data-path="théories-3.html"><a href="théories-3.html#transformation-arcsinus"><i class="fa fa-check"></i><b>4.1.3.3</b> Transformation arcsinus</a></li>
+<li class="chapter" data-level="4.1.3.4" data-path="théories-3.html"><a href="théories-3.html#autres-transformations"><i class="fa fa-check"></i><b>4.1.3.4</b> Autres transformations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.1.4" data-path="théories-3.html"><a href="théories-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i><b>4.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="4.2.2" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i><b>4.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="théories-4.html"><a href="théories-4.html"><i class="fa fa-check"></i><b>5.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="théories-4.html"><a href="théories-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1.1.1" data-path="théories-4.html"><a href="théories-4.html#la-distribution-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.1</b> La distribution du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.2" data-path="théories-4.html"><a href="théories-4.html#le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1.2</b> Le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.1.3" data-path="théories-4.html"><a href="théories-4.html#conditions-dutilisation"><i class="fa fa-check"></i><b>5.1.1.3</b> Conditions d’utilisation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.2" data-path="théories-4.html"><a href="théories-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a>
+<ul>
+<li class="chapter" data-level="5.1.2.1" data-path="théories-4.html"><a href="théories-4.html#formulation-des-hypothèse-nulles"><i class="fa fa-check"></i><b>5.1.2.1</b> Formulation des hypothèse nulles</a></li>
+<li class="chapter" data-level="5.1.2.2" data-path="théories-4.html"><a href="théories-4.html#fréquences-théoriques"><i class="fa fa-check"></i><b>5.1.2.2</b> Fréquences théoriques</a></li>
+<li class="chapter" data-level="5.1.2.3" data-path="théories-4.html"><a href="théories-4.html#calcul-du-chi2-dindépendance"><i class="fa fa-check"></i><b>5.1.2.3</b> Calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.3" data-path="théories-4.html"><a href="théories-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="théories-4.html"><a href="théories-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="théories-4.html"><a href="théories-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="exercices-4.html"><a href="exercices-4.html"><i class="fa fa-check"></i><b>5.2</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exercices-4.html"><a href="exercices-4.html#question-1-5"><i class="fa fa-check"></i><b>5.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exercices-4.html"><a href="exercices-4.html#question-2-5"><i class="fa fa-check"></i><b>5.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analyse-de-variance-à-un-critère.html"><a href="analyse-de-variance-à-un-critère.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="théories-5.html"><a href="théories-5.html"><i class="fa fa-check"></i><b>6.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="théories-5.html"><a href="théories-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="théories-5.html"><a href="théories-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="6.1.2.1" data-path="théories-5.html"><a href="théories-5.html#décomposition-de-la-variance"><i class="fa fa-check"></i><b>6.1.2.1</b> Décomposition de la variance</a></li>
+<li class="chapter" data-level="6.1.2.2" data-path="théories-5.html"><a href="théories-5.html#la-distribution-du-f"><i class="fa fa-check"></i><b>6.1.2.2</b> La distribution du <span class="math inline">\(F\)</span></a></li>
+<li class="chapter" data-level="6.1.2.3" data-path="théories-5.html"><a href="théories-5.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>6.1.2.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="6.1.2.4" data-path="théories-5.html"><a href="théories-5.html#suppositions-2"><i class="fa fa-check"></i><b>6.1.2.4</b> Suppositions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.3" data-path="théories-5.html"><a href="théories-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a>
+<ul>
+<li class="chapter" data-level="6.1.3.1" data-path="théories-5.html"><a href="théories-5.html#erreurs-associées-aux-comparaisons-multiples"><i class="fa fa-check"></i><b>6.1.3.1</b> Erreurs associées aux comparaisons multiples</a></li>
+<li class="chapter" data-level="6.1.3.2" data-path="théories-5.html"><a href="théories-5.html#suppositions-3"><i class="fa fa-check"></i><b>6.1.3.2</b> Suppositions</a></li>
+<li class="chapter" data-level="6.1.3.3" data-path="théories-5.html"><a href="théories-5.html#structure-générale"><i class="fa fa-check"></i><b>6.1.3.3</b> Structure générale</a></li>
+<li class="chapter" data-level="6.1.3.4" data-path="théories-5.html"><a href="théories-5.html#test-de-tukey"><i class="fa fa-check"></i><b>6.1.3.4</b> Test de Tukey</a></li>
+<li class="chapter" data-level="6.1.3.5" data-path="théories-5.html"><a href="théories-5.html#présentation-des-résultats"><i class="fa fa-check"></i><b>6.1.3.5</b> Présentation des résultats</a></li>
+</ul></li>
+<li class="chapter" data-level="6.1.4" data-path="théories-5.html"><a href="théories-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.1.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#structure"><i class="fa fa-check"></i><b>6.2.1.1</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a>
+<ul>
+<li class="chapter" data-level="6.2.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#apply-et-fonctions-apparentées"><i class="fa fa-check"></i><b>6.2.2.1</b> <code>apply( )</code> et fonctions apparentées</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="exercices-5.html"><a href="exercices-5.html"><i class="fa fa-check"></i><b>6.3</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="exercices-5.html"><a href="exercices-5.html#question-1-6"><i class="fa fa-check"></i><b>6.3.1</b> Question 1</a></li>
+<li class="chapter" data-level="6.3.2" data-path="exercices-5.html"><a href="exercices-5.html#question-2-6"><i class="fa fa-check"></i><b>6.3.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analyse-de-variance-à-deux-critères.html"><a href="analyse-de-variance-à-deux-critères.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="théories-6.html"><a href="théories-6.html"><i class="fa fa-check"></i><b>7.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="théories-6.html"><a href="théories-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="théories-6.html"><a href="théories-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="théories-6.html"><a href="théories-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="théories-6.html"><a href="théories-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="théories-6.html"><a href="théories-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="théories-6.html"><a href="théories-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i><b>7.2.1</b> Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="blocs-complets-aléatoires.html"><a href="blocs-complets-aléatoires.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="théories-7.html"><a href="théories-7.html"><i class="fa fa-check"></i><b>8.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="théories-7.html"><a href="théories-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.1.1" data-path="théories-7.html"><a href="théories-7.html#anova-à-un-critère"><i class="fa fa-check"></i><b>8.1.1.1</b> ANOVA à un critère</a></li>
+<li class="chapter" data-level="8.1.1.2" data-path="théories-7.html"><a href="théories-7.html#anova-à-deux-critères-1"><i class="fa fa-check"></i><b>8.1.1.2</b> ANOVA à deux critères</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.2" data-path="théories-7.html"><a href="théories-7.html#blocs-complets-aléatoires-1"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1.2.1" data-path="théories-7.html"><a href="théories-7.html#révision-de-léchantillonnage"><i class="fa fa-check"></i><b>8.1.2.1</b> Révision de l’échantillonnage</a></li>
+<li class="chapter" data-level="8.1.2.2" data-path="théories-7.html"><a href="théories-7.html#origine-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.2</b> Origine du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.3" data-path="théories-7.html"><a href="théories-7.html#particularité-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.3</b> Particularité du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.4" data-path="théories-7.html"><a href="théories-7.html#applications-moins-conventionnelles"><i class="fa fa-check"></i><b>8.1.2.4</b> Applications moins conventionnelles</a></li>
+<li class="chapter" data-level="8.1.2.5" data-path="théories-7.html"><a href="théories-7.html#conditions-dapplication"><i class="fa fa-check"></i><b>8.1.2.5</b> Conditions d’application</a></li>
+<li class="chapter" data-level="8.1.2.6" data-path="théories-7.html"><a href="théories-7.html#avantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.6</b> Avantages du dispositif en blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2.7" data-path="théories-7.html"><a href="théories-7.html#désavantages-du-dispositif-en-blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2.7</b> Désavantages du dispositif en blocs complets aléatoires</a></li>
+</ul></li>
+<li class="chapter" data-level="8.1.3" data-path="théories-7.html"><a href="théories-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="exercices-6.html"><a href="exercices-6.html"><i class="fa fa-check"></i><b>8.2</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="exercices-6.html"><a href="exercices-6.html#question-1-8"><i class="fa fa-check"></i><b>8.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="8.2.2" data-path="exercices-6.html"><a href="exercices-6.html#question-2-7"><i class="fa fa-check"></i><b>8.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="élaboration-et-optimisation-de-plans-déchantillonnage.html"><a href="élaboration-et-optimisation-de-plans-déchantillonnage.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="théories-8.html"><a href="théories-8.html"><i class="fa fa-check"></i><b>9.1</b> Théories</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="théories-8.html"><a href="théories-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1.1.1" data-path="théories-8.html"><a href="théories-8.html#expérience-vs-étude-dobservation"><i class="fa fa-check"></i><b>9.1.1.1</b> Expérience vs étude d’observation</a></li>
+<li class="chapter" data-level="9.1.1.2" data-path="théories-8.html"><a href="théories-8.html#témoin"><i class="fa fa-check"></i><b>9.1.1.2</b> Témoin</a></li>
+<li class="chapter" data-level="9.1.1.3" data-path="théories-8.html"><a href="théories-8.html#placébo"><i class="fa fa-check"></i><b>9.1.1.3</b> Placébo</a></li>
+<li class="chapter" data-level="9.1.1.4" data-path="théories-8.html"><a href="théories-8.html#prise-de-données-en-aveugle"><i class="fa fa-check"></i><b>9.1.1.4</b> Prise de données en aveugle</a></li>
+<li class="chapter" data-level="9.1.1.5" data-path="théories-8.html"><a href="théories-8.html#répétition-randomisation-et-répartition-spatiale"><i class="fa fa-check"></i><b>9.1.1.5</b> Répétition, randomisation et répartition spatiale</a></li>
+</ul></li>
+<li class="chapter" data-level="9.1.2" data-path="théories-8.html"><a href="théories-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="théories-8.html"><a href="théories-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1.3.1" data-path="théories-8.html"><a href="théories-8.html#labsence-de-réelles-répétitions-la-pseudoréplication"><i class="fa fa-check"></i><b>9.1.3.1</b> L’absence de réelles répétitions : la pseudoréplication</a></li>
+<li class="chapter" data-level="9.1.3.2" data-path="théories-8.html"><a href="théories-8.html#contrôler-la-variabilité-temporelle"><i class="fa fa-check"></i><b>9.1.3.2</b> Contrôler la variabilité temporelle</a></li>
+<li class="chapter" data-level="9.1.3.3" data-path="théories-8.html"><a href="théories-8.html#sources-de-confusion"><i class="fa fa-check"></i><b>9.1.3.3</b> Sources de confusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.1.4" data-path="théories-8.html"><a href="théories-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i><b>9.2.1</b> Instructions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i><b>9.2.2</b> Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="régression-linéaire-simple-et-corrélation.html"><a href="régression-linéaire-simple-et-corrélation.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="théorie.html"><a href="théorie.html"><i class="fa fa-check"></i><b>10.1</b> Théorie</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="théorie.html"><a href="théorie.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a>
+<ul>
+<li class="chapter" data-level="10.1.1.1" data-path="théorie.html"><a href="théorie.html#équation-de-régression"><i class="fa fa-check"></i><b>10.1.1.1</b> Équation de régression</a></li>
+<li class="chapter" data-level="10.1.1.2" data-path="théorie.html"><a href="théorie.html#estimation"><i class="fa fa-check"></i><b>10.1.1.2</b> Estimation</a></li>
+<li class="chapter" data-level="10.1.1.3" data-path="théorie.html"><a href="théorie.html#suppositions-4"><i class="fa fa-check"></i><b>10.1.1.3</b> Suppositions</a></li>
+<li class="chapter" data-level="10.1.1.4" data-path="théorie.html"><a href="théorie.html#valeurs-extrêmes"><i class="fa fa-check"></i><b>10.1.1.4</b> Valeurs extrêmes</a></li>
+<li class="chapter" data-level="10.1.1.5" data-path="théorie.html"><a href="théorie.html#tests-dhypothèses"><i class="fa fa-check"></i><b>10.1.1.5</b> Tests d’hypothèses</a></li>
+<li class="chapter" data-level="10.1.1.6" data-path="théorie.html"><a href="théorie.html#évaluer-le-pouvoir-prédictif"><i class="fa fa-check"></i><b>10.1.1.6</b> Évaluer le pouvoir prédictif</a></li>
+<li class="chapter" data-level="10.1.1.7" data-path="théorie.html"><a href="théorie.html#prédiction"><i class="fa fa-check"></i><b>10.1.1.7</b> Prédiction</a></li>
+</ul></li>
+<li class="chapter" data-level="10.1.2" data-path="théorie.html"><a href="théorie.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1.2.1" data-path="théorie.html"><a href="théorie.html#corrélation-de-pearson"><i class="fa fa-check"></i><b>10.1.2.1</b> Corrélation de Pearson</a></li>
+</ul></li>
+<li class="chapter" data-level="10.1.3" data-path="théorie.html"><a href="théorie.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="théorie.html"><a href="théorie.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="exercices-7.html"><a href="exercices-7.html"><i class="fa fa-check"></i><b>10.2</b> Exercices</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="exercices-7.html"><a href="exercices-7.html#question-1-9"><i class="fa fa-check"></i><b>10.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercices-7.html"><a href="exercices-7.html#question-2-8"><i class="fa fa-check"></i><b>10.2.2</b> Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="notions-générales" class="section level2 unnumbered hasAnchor">
+<h2>Notions générales<a href="notions-générales.html#notions-générales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ce document a pour but d’illustrer les bases nécessaires afin de se familiariser avec <code>R</code>. Pour les personnes qui n’ont jamais rencontré cet environnement, nous recommandons très fortement de répéter les exemples afin de bien comprendre la syntaxe et les subtilités de la programmation en ce qui est devenu la <em>lingua franca</em> des statistiques. Dans ce document, le code <code>R</code> est distingué du reste du texte en utilisant une <code>police monospace comme celle-ci</code>. Aussi, vous remarquerez que le symbole <code>&gt;</code> précède toujours les commandes illustrées dans les exemples du document. Ce symbole indique que les commandes pourraient être saisies dans la console <code>R</code> ou dans l’éditeur.</p>
+<div id="le-projet-r" class="section level4 unnumbered hasAnchor">
+<h4>Le projet R<a href="notions-générales.html#le-projet-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>R</code> est un langage de programmation ainsi qu’un logiciel développés spécifiquement pour les analyses statistiques et les graphiques. Il est le résultat des travaux de deux statisticiens-programmeurs de la Nouvelle-Zélande, Ross Ihaka et Robert Gentleman qui se sont inspirés des langages <code>S</code> et <code>Scheme</code> (<a href="http://fr.wikipedia.org/wiki/Scheme" class="uri">http://fr.wikipedia.org/wiki/Scheme</a>). D’ailleurs, ils ont nommé le langage <code>R</code> en référence à leur prénom (<code>R</code>oss et <code>R</code>obert), mais aussi en guise de clin d’oeil à son prédecesseur <code>S</code> (<a href="http://fr.wikipedia.org/wiki/S_(langage_de_programmation)" class="uri">http://fr.wikipedia.org/wiki/S_(langage_de_programmation)</a>).</p>
+<p>Dès les débuts, Ihaka et Gentleman ont rendu le code source de leur langage disponible gratuitement à tous, mettant en pratique la philosophie que la qualité des graphiques et des analyses executés ne doivent pas être une fonction de l’épaisseur du portefeuille. Quiconque peut ainsi faire des analyses de très haut niveau peu importe sa situation financière. Le code source du langage étant ouvert, quiconque peut aller voir, s’il le désire, comment les fonctions ont été codées, les modifier pour son propre usage ou en créer de nouvelles pour des applications spécifiques, puis les rendre disponibles à tous par l’intermédiaire de banques de fonctions. Cette transparence et cet esprit de partage expliquent en partie le succès fulgurant de ce langage et la formation d’une large communauté d’utilisateurs dans le monde.</p>
+<p>L’initiative des deux Néo-Zélandais a pris la forme d’un projet global auquel s’est greffée une équipe de programmeurs et de statisticiens qui mettent à jour régulièrement le logiciel, y apportent des améliorations et rendent le tout disponible gratuitement à partir de plus de 75 sites répartis sur les cinq continents. Un aspect important de <code>R</code> est qu’il est disponible sous différents systèmes d’exploitation, incluant MS-Windows, Mac, et GNU/Linux.</p>
+</div>
+<div id="la-syntaxe" class="section level4 unnumbered hasAnchor">
+<h4>La syntaxe<a href="notions-générales.html#la-syntaxe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>R</code> est un langage de programmation orienté objet et interprété, ce qui signifie que toute information est gardée en mémoire sous forme d’objet pendant une session <code>R</code> tant que ce dernier n’est pas modifié ou éliminé (“orienté objet”) et qu’on n’a pas à compiler le programme avant de l’exécuter (“interprété”). On peut créer un objet en lui assignant un nom et de l’information. Une fois créé, cet objet existe dans la mémoire de <code>R</code> et peut prendre différentes formes comme une valeur numérique, du texte, un vecteur, une matrice, une fonction, un jeu de données ou le résultat d’une analyse .</p>
+<p>Contrairement à d’autres logiciels, lorsqu’on crée un élément, il demeure accessible durant toute la session. Par exemple, après avoir réalisé une analyse et stocké les résultats dans un objet, on peut décider d’extraire les résidus du modèle, des valeurs prédites, un <span class="math inline">\(R^2\)</span> ou une autre valeur sans avoir à faire rouler à nouveau l’analyse. En effet, <code>R</code> garde en mémoire le résultat de l’analyse pour extraire les valeurs nécessaires. Conceptuellement, un objet est l’équivalent d’un contenant utilisé pour conserver des aliments dans un réfrigérateur dans votre milieu de travail – on peut mettre des étiquettes avec le nom du propriétaire sur le contenant afin de distinguer les différents contenants dans le réfrigérateur. C’est le même principe utilisé par <code>R</code>: on stocke de l’information dans un objet (le contenant) et le nom de cet objet (l’étiquette) permet à <code>R</code> de gérer l’information qu’on lui soumet.</p>
+<p>Toutes les commandes ou les fonctions en <code>R</code> suivent la même stratégie: un nom suivi de parenthèses. Par exemple, la fonction <code>mean( )</code>, étonnamment, permet de calculer la moyenne arithmétique. La plupart des fonctions possèdent des arguments séparés par des virgules. Dans notre exemple, la fonction <code>mean( )</code> possède un argument <code>'x = '</code> que nous utilisons pour spécifier la variable sur laquelle nous voulons calculer la moyenne. Toutefois, avant de continuer avec des exemples, voyons comment accéder à l’aide disponible dans <code>R</code>.</p>
+</div>
+<div id="à-laide" class="section level4 unnumbered hasAnchor">
+<h4>À l’aide<a href="notions-générales.html#à-laide" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Il existe plusieurs ressources pour assister les utilisateurs de <code>R</code>. Par exemple, la commande <code>help.start( )</code> génère une page <code>html</code> à partir de laquelle nous pouvons naviguer vers différents thèmes au moyen d’hyperliens (Figure <a href="notions-générales.html#fig:helpstart">0.7</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:helpstart"></span>
+<a href="images/Capture_help1.png" target="_blank"><img src="Guide_R/images/Capture_help1.png" alt="Aide dans R avec `r help.start( )`." width="546" /></a>
+<p class="caption">
+Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
+</p>
+</div>
+<p>La commande <code>help.search( )</code> permet de faire une recherche spécifique dans les fichiers d’aide de <code>R</code>. L’argument <code>apropos</code> permet de spécifier le sujet de la recherche. Par exemple, la commande :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="notions-générales.html#cb3-1" tabindex="-1"></a><span class="fu">help.search</span>(<span class="at">apropos =</span> <span class="st">&quot;generalized linear models&quot;</span>)</span></code></pre></div>
+<p>retournera l’ensemble des fonctions qui traitent des modèles linéaires généralisés parmi les fonctions de <code>R</code>.</p>
+<p>Afin d’accéder directement à l’aide d’une fonction, on peut utiliser la commande <code>?</code> suivie du nom de la fonction. Toute la documentation des fonctions est fondée sur la même structure: la présentation de la syntaxe, des arguments, et des détails sur l’usage et le résultat de l’opération, de l’auteur de la fonction et des références. La plupart des fonctions finissent par des exemples qu’on peut reproduire soi-même: il suffit de copier-coller le code dans la console. C’est un excellent moyen de se familiariser avec une fonction et son utilisation.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="notions-générales.html#cb4-1" tabindex="-1"></a>?mean <span class="co">#retourne l&#39;aide de la fonction mean( )</span></span></code></pre></div>
+<p>Un autre outil pratique est la fonction <code>RSiteSearch( )</code> avec l’objet de la recherche entre guillements. Cette fonction cherche dans les pages d’aide de toutes les fonctions de <code>R</code> du site de <code>R</code> et n’est pas limité aux fonctions installées sur votre ordinateur. Après avoir exécuté la commande, une fenêtre de votre fureteur internet préféré s’ouvrira pour accéder aux résultats. Bien sûr, il est nécessaire d’avoir une connexion internet lors de l’exécution de cette fonction. Par exemple,</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="notions-générales.html#cb5-1" tabindex="-1"></a><span class="fu">RSiteSearch</span>(<span class="st">&quot;error bars&quot;</span>)</span></code></pre></div>
+<p>présentera comme résultat les pages de fonctions faisant mention de barres d’erreurs sur des graphiques. On peut ensuite modifier la recherche ou l’étendre à partir du moteur de recherche directement sur la page web.</p>
+<p>Plusieurs ressources électroniques sont également disponibles sur une multitude de sites internet de chercheurs ou d’utilisateurs de <code>R</code>. Le site (<a href="http://www.rseek.org" class="uri">http://www.rseek.org</a>) peut faciliter cette recherche.</p>
+</div>
+<div id="vecteurs-et-oprérations-de-base" class="section level4 unnumbered hasAnchor">
+<h4>Vecteurs et oprérations de base<a href="notions-générales.html#vecteurs-et-oprérations-de-base" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>R</code> stocke l’information sous forme d’objets et ces derniers peuvent prendre différentes formes. Le premier type d’objet que nous verrons est le vecteur[^1]. Les éléments contenus dans un vecteur sont d’un seul type ou mode. Parmi les modes les plus courants, on compte, le mode numérique (<code>numeric</code>), entier (<code>integer</code>), caractère (<code>character</code>), facteur (<code>factor</code>) ou logique (<code>logical</code>).</p>
+<div id="créer-un-vecteur" class="section level5 unnumbered hasAnchor">
+<h5>Créer un vecteur<a href="notions-générales.html#créer-un-vecteur" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le plus simple vecteur dans <code>R</code> consiste en une seule valeur (un scalaire). Comme premier exemple, créons un objet pour stocker le nombre de pistes (10) sur l’album <em>Folklore</em> du groupe 16 Horsepower<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Créons un vecteur que nous nommerons <code>Nbre.pistes</code> et qui prendra la valeur 10.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="notions-générales.html#cb6-1" tabindex="-1"></a>Nbre.pistes <span class="ot">&lt;-</span> <span class="dv">10</span></span></code></pre></div>
+<p>Notons le symbole <code>&lt;-</code> (symbole inférieur suivi d’un tiret) qui est un opérateur d’assignation. En d’autres mots, la valeur de 10 est envoyée dans l’objet dénommé <code>Nbre.pistes</code>. Le symbole <code>=</code> peut aussi être utilisé pour assigner des valeurs, mais cela n’a pas toujours été le cas. Dans ce cours, nous utilisons le symbole classique d’assignation <code>&lt;-</code>.</p>
+<p>Rappelons aussi que l’on créé simplement en lui donnant un nom. Ce nom doit commencer par une lettre, laquelle peut être suivie de chiffres ou d’autres lettres. Par ailleurs, le nom de l’objet ne peut contenir d’espace; on peut le remplacer au besoin par un point ou un trait souligné. C’est une bonne pratique de garder le nom des objets court et informatif (éviter toto1, toto2) et d’éviter d’attribuer des noms déjà utilisés par des fonctions<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Pour reprendre à l’analogie des contenants dans un réfrigérateur, nous avons créé un contenant qui stocke la valeur <code>10</code>, et avons placé l’étiquette <code>Nbre.pistes</code> sur ce contenant afin de pouvoir facilement l’identifier par la suite.</p>
+<p>Pour visualiser le contenu de l’objet, nous pouvons simplement saisir son nom dans la console (ou, préférablement, l’envoyer à <code>R</code> à partir de notre éditeur).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="notions-générales.html#cb7-1" tabindex="-1"></a>Nbre.pistes</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>Remarquons aussi que <code>R</code> fait la distinction entre les minuscules et les majuscules. Si nous interrogeons <code>R</code> à propos de l’objet <code>nbre.Pistes</code> :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="notions-générales.html#cb9-1" tabindex="-1"></a>nbre.Pistes</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;nbre.Pistes&#39; not found</code></pre>
+<p>Il ne reconnaît pas l’objet. À noter aussi qu’on peut créer un objet en lui assignant les valeurs d’un autre objet. Par exemple, si nous désirons créer un nouvel objet qui prendra la même valeur que <code>Nbre.pistes</code>, nous pouvons écrire :</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="notions-générales.html#cb11-1" tabindex="-1"></a>le.nombre.de.pistes <span class="ot">&lt;-</span> Nbre.pistes</span>
+<span id="cb11-2"><a href="notions-générales.html#cb11-2" tabindex="-1"></a>Nbre.pistes <span class="co">#l&#39;objet original</span></span>
+<span id="cb11-3"><a href="notions-générales.html#cb11-3" tabindex="-1"></a>le.nombre.de.pistes <span class="co">#le nouvel objet créé</span></span></code></pre></div>
+<p>Si au lieu d’assigner une seule valeur à l’objet, nous désirons stocker le nombre de pistes de toute la discographie du groupe 16 Horsepower<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, nous pouvons procéder ainsi :</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="notions-générales.html#cb12-1" tabindex="-1"></a>Nbre.pistes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">14</span>, <span class="dv">14</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
+<p>L’opérateur d’assignation <code>&lt;-</code> indique que nous créons un objet, ici une variable numérique constituée des 7 valeurs à droite de l’opérateur. La fonction <code>c()</code>[^1] est une fonction qui combine les valeurs en un vecteur. Ces valeurs doivent être séparées par des virgules. La fonction <code>c()</code>[^1] est très souvent utilisée dans <code>R</code> pour combiner des éléments.</p>
+<p>Maintenant, observons ce que <code>R</code> retourne avec la commande <code>Nbre.pistes</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="notions-générales.html#cb13-1" tabindex="-1"></a>Nbre.pistes</span></code></pre></div>
+<pre><code>## [1]  6 14 14 11 11 10 20</code></pre>
+<p>Nous voyons le nombre de pistes de chaque album: le vecteur initial a été remplacé par les nouvelles valeurs que nous avons spécifiées. On remarque que les valeurs sont précédées par <code>[1]</code>. Le chiffre entre <code>[ ]</code> donne l’indice de l’observation qui la succède (la valeur 6 est la première). Pour des vecteurs beaucoup plus longs, <code>R</code> retournera l’indice à chaque nouvelle ligne.</p>
+<p>Le même principe s’applique pour créer une chaîne de caractères. Dans le même ordre d’idées, nous pourrions créer un objet pour stocker les noms des albums de 16 Horsepower auxquels nous faisions référence dans <code>Nbre.pistes</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="notions-générales.html#cb15-1" tabindex="-1"></a>Albums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;16 Horsepower&quot;</span>, <span class="st">&quot;Sackcloth &#39;n&#39; Ashes&quot;</span>, <span class="st">&quot;Low Estate&quot;</span>, </span>
+<span id="cb15-2"><a href="notions-générales.html#cb15-2" tabindex="-1"></a>            <span class="st">&quot;Secret South&quot;</span>, <span class="st">&quot;Hoarse&quot;</span>, <span class="st">&quot;Folklore&quot;</span>, <span class="st">&quot;Olden&quot;</span>)</span>
+<span id="cb15-3"><a href="notions-générales.html#cb15-3" tabindex="-1"></a>Albums</span></code></pre></div>
+<pre><code>## [1] &quot;16 Horsepower&quot;       &quot;Sackcloth &#39;n&#39; Ashes&quot; &quot;Low Estate&quot;          &quot;Secret South&quot;       
+## [5] &quot;Hoarse&quot;              &quot;Folklore&quot;            &quot;Olden&quot;</code></pre>
+</div>
+<div id="sélectionner-des-valeurs" class="section level5 unnumbered hasAnchor">
+<h5>Sélectionner des valeurs<a href="notions-générales.html#sélectionner-des-valeurs" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>On peut sélectionner certaines valeurs à partir d’un vecteur à l’aide de <code>[]</code>[^1]. Par exemple, pour choisir la deuxième valeur du vecteur <code>Nbre.pistes</code>, on peut écrire :</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="notions-générales.html#cb17-1" tabindex="-1"></a>Nbre.pistes[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<p>Pour extraire les trois premières valeurs du vecteur, on peut utiliser :</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="notions-générales.html#cb19-1" tabindex="-1"></a>Nbre.pistes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1]  6 14 14</code></pre>
+<p>L’opérateur <code>:</code> crée une séquence, ici de 1 à 3. On peut aussi sélectionner des valeurs non-consécutives en utilisant la fonction <code>c()</code> :</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="notions-générales.html#cb21-1" tabindex="-1"></a>Nbre.pistes[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>## [1]  6 14 11</code></pre>
+<p>Dans l’exemple ci-dessus, on a extrait les première, troisième et cinquième valeurs du vecteur. Il est aussi possible d’exclure des valeurs en précédant les indices du symbole <code>-</code> à l’intérieur des <code>[]</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="notions-générales.html#cb23-1" tabindex="-1"></a>Nbre.pistes[<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 14 14 11 11 10 20</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="notions-générales.html#cb25-1" tabindex="-1"></a>Nbre.pistes[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## [1] 14 11 11 20</code></pre>
+</div>
+<div id="répéter-des-valeurs" class="section level5 unnumbered hasAnchor">
+<h5>Répéter des valeurs<a href="notions-générales.html#répéter-des-valeurs" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La fonction <code>rep()</code> permet de répéter une ou plusieurs valeurs. Par exemple, pour répéter la valeur 5 vingt fois :</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="notions-générales.html#cb27-1" tabindex="-1"></a>y20 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="dv">5</span>, <span class="at">times =</span> <span class="dv">20</span>)</span>
+<span id="cb27-2"><a href="notions-générales.html#cb27-2" tabindex="-1"></a>y20</span></code></pre></div>
+<pre><code>##  [1] 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5</code></pre>
+<p>La fonction <code>rep()</code> inclut deux arguments : <code>x</code> spécifie la valeur à répéter, tandis que <code>times</code> indique le nombre de répétitions. On peut aussi répéter des caractères.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="notions-générales.html#cb29-1" tabindex="-1"></a>y20.caracteres <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;vieux&quot;</span>), <span class="at">times =</span> <span class="dv">20</span>)</span>
+<span id="cb29-2"><a href="notions-générales.html#cb29-2" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<p>Plusieurs fonctions de base peuvent être appliquées à une multitude de scénarios, et c’est l’un des attraits de la programmation en <code>R</code>. Ici, nous avons utilisé à nouveau la fonction <code>c()</code> pour créer un vecteur à 2 valeurs, <code>neuf</code> et <code>vieux</code>, et nous avons répété ce vecteur 20 fois. Il est donc important d’apprendre quelques fonctions de base qui reviendront souvent dans le cours.</p>
+</div>
+<div id="créer-une-série" class="section level5 unnumbered hasAnchor">
+<h5>Créer une série<a href="notions-générales.html#créer-une-série" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La création d’une série ou séquence de valeurs avec un pas spécifique est réalisée avec la fonction <code>seq()</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="notions-générales.html#cb31-1" tabindex="-1"></a>y.seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb31-2"><a href="notions-générales.html#cb31-2" tabindex="-1"></a>y.seq</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>Les arguments de la fonction sont assez explicites : <code>from</code> indique le départ de la série, <code>to</code> indique la fin, et <code>by</code> spécifie le pas. On peut facilement créer une séquence qui décline.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="notions-générales.html#cb33-1" tabindex="-1"></a>y.seq.decl <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p>La valeur de l’argument <code>by</code> n’est pas limitée aux entiers.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="notions-générales.html#cb34-1" tabindex="-1"></a>y.seq<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb34-2"><a href="notions-générales.html#cb34-2" tabindex="-1"></a>y.seq<span class="fl">.01</span></span></code></pre></div>
+<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4
+## [26] 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
+<p>La fonction <code>seq()</code> possède également un argument <code>length.out</code> qui permet d’obtenir le nombre de valeurs sans indiquer le pas.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="notions-générales.html#cb36-1" tabindex="-1"></a>y.seq.length <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb36-2"><a href="notions-générales.html#cb36-2" tabindex="-1"></a>y.seq.length</span></code></pre></div>
+<pre><code>##  [1]   1  10  19  28  37  46  55  64  73  82  91 100</code></pre>
+</div>
+<div id="connaître-les-caractéristiques-dun-vecteur" class="section level5 unnumbered hasAnchor">
+<h5>Connaître les caractéristiques d’un vecteur<a href="notions-générales.html#connaître-les-caractéristiques-dun-vecteur" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Afin de s’informer sur la nature d’un objet, on peut utiliser la fonction <code>class()</code>.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="notions-générales.html#cb38-1" tabindex="-1"></a><span class="fu">class</span>(Nbre.pistes)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="notions-générales.html#cb40-1" tabindex="-1"></a><span class="fu">class</span>(Albums)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>On remarque que <code>R</code> identifie <code>Nbre.pistes</code> comme un vecteur numérique alors que <code>Albums</code> est identifié comme un vecteur de caractères. <code>R</code> possède aussi plusieurs fonctions logiques nous dévoilant les caractéristiques d’un vecteur.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="notions-générales.html#cb42-1" tabindex="-1"></a><span class="fu">is.numeric</span>(Nbre.pistes)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="notions-générales.html#cb44-1" tabindex="-1"></a><span class="fu">is.character</span>(Albums)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>La fonction <code>length()</code> est particulièrement utile pour déterminer le nombre d’observations .</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="notions-générales.html#cb46-1" tabindex="-1"></a><span class="fu">length</span>(Nbre.pistes)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="notions-générales.html#cb48-1" tabindex="-1"></a><span class="fu">length</span>(y.seq<span class="fl">.01</span>)</span></code></pre></div>
+<pre><code>## [1] 41</code></pre>
+</div>
+</div>
+<div id="opérateurs-mathématiques" class="section level4 unnumbered hasAnchor">
+<h4>Opérateurs mathématiques<a href="notions-générales.html#opérateurs-mathématiques" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>R</code> utilise les opérateurs mathématiques conventionnels tels que l’addition (<code>+</code>) , la soustraction (<code>-</code>), la multiplication (<code>*</code>) et la division (<code>/</code>), et respecte les conventions de priorité des opérations. Ainsi, dans une équation, la multiplication et la division ont priorité sur l’addition et la soustraction.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="notions-générales.html#cb50-1" tabindex="-1"></a><span class="dv">30</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 34</code></pre>
+<p>Ceci étant dit, c’est une bonne idée de regrouper certains termes lorsque les calculs sont particulièrement longs pour éviter les problèmes. Lors d’opérations mathématiques impliquant deux vecteurs de différentes tailles, les valeurs du vecteur le plus court sont recyclées ou réutilisées. Ce comportement est un aspect important de la programmation en <code>R</code>.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="notions-générales.html#cb52-1" tabindex="-1"></a>Nbre.pistes <span class="sc">+</span> Nbre.pistes</span></code></pre></div>
+<pre><code>## [1] 12 28 28 22 22 20 40</code></pre>
+<p>Les deux vecteurs ci-dessus sont de la même taille et l’opération s’effectue un élément à la fois. Toutefois, dans l’exemple suivant, on calcule la différence entre <code>Nbre.pistes</code> (7 valeurs) et 24 (1 valeur).</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="notions-générales.html#cb54-1" tabindex="-1"></a>Nbre.pistes <span class="sc">-</span> <span class="dv">24</span></span></code></pre></div>
+<pre><code>## [1] -18 -10 -10 -13 -13 -14  -4</code></pre>
+<p>Ici, la valeur 24 est recyclée et est soustraite de chaque valeur du vecteur <code>Nbre.pistes</code>. On observe le même comportement pour la multiplication de <code>Nbre.pistes</code> et <code>y.seq</code> créé plus tôt.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="notions-générales.html#cb56-1" tabindex="-1"></a>Nbre.pistes <span class="sc">*</span> y.seq</span></code></pre></div>
+<pre><code>## Warning in Nbre.pistes * y.seq: longer object length is not a multiple of shorter object length</code></pre>
+<pre><code>##  [1]   6  28  42  44  55  60 140  48 126 140</code></pre>
+<p>Puisque <code>Nbre.pistes</code> comporte 7 valeurs et que <code>y.seq</code> en compte 10, les premières valeurs de <code>Nbre.pistes</code> seront réutilisées avec les dernières valeurs de <code>y.seq</code> pour compléter le calcul. On remarque le message d’avertissement de <code>R</code> à propos de l’objet le plus long qui n’est pas un multiple de l’objet le plus court (10 n’est pas un multiple de 7, mais est un multiple de 5 et de 2).</p>
+<p>Le tableau <a href="notions-générales.html#tab:math">0.1</a> montre plusieurs fonctions mathématiques de base. Les fonctions trigonométriques sont également disponibles en <code>R</code> (Tableau <a href="notions-générales.html#tab:trig">0.2</a>).</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:math">Table 0.1: </span>Fonctions mathématiques de base courantes en R.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Fonction
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>min(x)</code>
+</td>
+<td style="text-align:left;">
+valeur minimale parmi les éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>max(x)</code>
+</td>
+<td style="text-align:left;">
+valeur maximale parmi les éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>range(x)</code>
+</td>
+<td style="text-align:left;">
+étendue des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rank(x)</code>
+</td>
+<td style="text-align:left;">
+le rang des éléments de x (ième observation en ordre croissant)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>round(x, digits)</code>
+</td>
+<td style="text-align:left;">
+arrondit les éléments de x à digits décimales
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sum(x)</code>
+</td>
+<td style="text-align:left;">
+somme des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>cumsum(x)</code>
+</td>
+<td style="text-align:left;">
+renvoie le vecteur dont le ième élément est la somme de x[1] à x[i]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>prod(x)</code>
+</td>
+<td style="text-align:left;">
+produit des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>cumprod(x)</code>
+</td>
+<td style="text-align:left;">
+renvoie le vecteur dont le ième élément est le produit de x[1] à x[i]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>abs(x)</code>
+</td>
+<td style="text-align:left;">
+valeur absolue des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sqrt(x)</code>
+</td>
+<td style="text-align:left;">
+racine carrée des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>log2(x)</code>
+</td>
+<td style="text-align:left;">
+logarithme en base 2 des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>log10(x)</code>
+</td>
+<td style="text-align:left;">
+logarithme en base 10 des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>log(x, base)</code>
+</td>
+<td style="text-align:left;">
+logarithme en base base des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>log(x)</code>
+</td>
+<td style="text-align:left;">
+logarithme naturel des éléments de x équivaut à log(x, base = exp(1))
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>exp(x)</code>
+</td>
+<td style="text-align:left;">
+renvoie la valeur de e élevée à la puissance x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>x^y</code>
+</td>
+<td style="text-align:left;">
+la valeur de x élevée à la puissance y
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:trig">Table 0.2: </span>Fonctions trigonométriques courantes en R.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Fonction
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>cos(x)</code>
+</td>
+<td style="text-align:left;">
+cosinus en radians des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sin(x)</code>
+</td>
+<td style="text-align:left;">
+sinus en radians des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tan(x)</code>
+</td>
+<td style="text-align:left;">
+tangente en radians des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>acos(x)</code>
+</td>
+<td style="text-align:left;">
+arc-cosinus en radians des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>asin(x)</code>
+</td>
+<td style="text-align:left;">
+arc-sinus en radians des éléments de x
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>atan(x)</code>
+</td>
+<td style="text-align:left;">
+arc-tangente en radians des éléments de x
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tests-logiques" class="section level4 unnumbered hasAnchor">
+<h4>Tests logiques<a href="notions-générales.html#tests-logiques" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Une série d’opérateurs logiques sont disponibles en <code>R</code>, le résultat étant <code>TRUE</code> ou <code>FALSE</code>. Les opérateurs logiques les plus intuitifs sont <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, et <code>&gt;=</code>. L’opérateur <code>==</code> teste si deux éléments sont exactement égaux, alors que <code>!=</code> teste si deux éléments sont différents.</p>
+<p>Pour comparer deux vecteurs de valeurs logiques, on peut utiliser l’opérateur <code>&amp;</code> qui déterminera l’intersection des deux vecteurs, c’est-à-dire les cas où les tests sont vrais pour les deux simultanément. L’opérateur <code>|</code> (ou logique) permet de déterminer l’union des deux vecteurs (les cas où les tests sont vrais pour l’un ou l’autre).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="notions-générales.html#cb59-1" tabindex="-1"></a>Nbre.pistes</span></code></pre></div>
+<pre><code>## [1]  6 14 14 11 11 10 20</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="notions-générales.html#cb61-1" tabindex="-1"></a>Nbre.pistes <span class="sc">&gt;=</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="notions-générales.html#cb63-1" tabindex="-1"></a>Nbre.pistes <span class="sc">!=</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="notions-générales.html#cb65-1" tabindex="-1"></a>Albums <span class="sc">==</span> <span class="st">&quot;Olden&quot;</span> <span class="co">#spécifier les caractères entre &quot; &quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="notions-générales.html#cb67-1" tabindex="-1"></a>vec.log1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb67-2"><a href="notions-générales.html#cb67-2" tabindex="-1"></a>vec.log2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb67-3"><a href="notions-générales.html#cb67-3" tabindex="-1"></a>vec.log1 <span class="sc">&amp;</span> vec.log2 <span class="co">#deux tests vrais pour la valeur 1</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="notions-générales.html#cb69-1" tabindex="-1"></a>vec.log1 <span class="sc">|</span> vec.log2 <span class="co">#test vrai pour valeurs 1, 2, 3, 4</span></span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE</code></pre>
+<p>Les fonctions <code>all()</code> et <code>any()</code> déterminent si toutes ou au moins l’une des valeurs répondent au test logique, respectivement. Pour comparer deux vecteurs entre eux, on utilisera plutôt les fonctions <code>all.equal()</code> ou <code>identical()</code>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="notions-générales.html#cb71-1" tabindex="-1"></a><span class="fu">any</span>(Nbre.pistes <span class="sc">&gt;</span> <span class="dv">11</span>) </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="notions-générales.html#cb73-1" tabindex="-1"></a><span class="fu">all</span>(Nbre.pistes <span class="sc">==</span> <span class="dv">11</span>) </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="notions-générales.html#cb75-1" tabindex="-1"></a><span class="fu">all.equal</span>(Nbre.pistes, Nbre.pistes) </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="notions-générales.html#cb77-1" tabindex="-1"></a>Nbre <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">7</span>) <span class="co">#on crée un autre vecteur</span></span>
+<span id="cb77-2"><a href="notions-générales.html#cb77-2" tabindex="-1"></a>Nbre</span></code></pre></div>
+<pre><code>## [1] 10 10 10 10 10 10 10</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="notions-générales.html#cb79-1" tabindex="-1"></a><span class="fu">all.equal</span>(Nbre.pistes, Nbre) </span></code></pre></div>
+<pre><code>## [1] &quot;Mean relative difference: 0.3157895&quot;</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="notions-générales.html#cb81-1" tabindex="-1"></a><span class="fu">identical</span>(Nbre.pistes, Nbre)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Le dernier appel à <code>all.equal()</code> nous indique que les deux vecteurs ne sont pas identiques puisqu’il y a une différence moyenne entre les deux de 0.31579. La fonction <code>which()</code> est aussi apparentée aux tests logiques. Elle permet de déterminer lesquelles des valeurs répondent à une certaine condition énoncée par un test logique. Les variantes <code>which.min()</code> et <code>which.max()</code> permettent d’identifier les valeurs minimales et maximales, respectivement.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="notions-générales.html#cb83-1" tabindex="-1"></a><span class="fu">which</span>(Nbre.pistes <span class="sc">&gt;</span> <span class="dv">11</span>) <span class="co">#retourne les indices</span></span></code></pre></div>
+<pre><code>## [1] 2 3 7</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="notions-générales.html#cb85-1" tabindex="-1"></a>Nbre.pistes[<span class="fu">which</span>(Nbre.pistes <span class="sc">&gt;</span> <span class="dv">11</span>)] <span class="co">#retourne les valeurs</span></span></code></pre></div>
+<pre><code>## [1] 14 14 20</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="notions-générales.html#cb87-1" tabindex="-1"></a><span class="fu">which</span>(Albums <span class="sc">==</span> <span class="st">&quot;Folklore&quot;</span>) <span class="co">#retourne les indices</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="notions-générales.html#cb89-1" tabindex="-1"></a><span class="fu">which.max</span>(Nbre.pistes) <span class="co">#indice de l&#39;observation maximale</span></span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="notions-générales.html#cb91-1" tabindex="-1"></a><span class="fu">which.min</span>(Nbre.pistes) <span class="co">#indice de l&#39;observation minimale</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>La fonction <code>ifelse()</code> permet de faire un test conditionnel sur un vecteur. Par exemple, pour créer une variable binaire à partir de la variable <code>Nbre.pistes</code> (c.-à-d., <code>&lt;= 10</code> ou <code>&gt; 10</code>), on procéderait ainsi :</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="notions-générales.html#cb93-1" tabindex="-1"></a>Bin10 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Nbre.pistes <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb93-2"><a href="notions-générales.html#cb93-2" tabindex="-1"></a>Bin10</span></code></pre></div>
+<pre><code>## [1] 0 1 1 1 1 0 1</code></pre>
+<p>On procède de la même façon si le vecteur contient des caractères :</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="notions-générales.html#cb95-1" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="notions-générales.html#cb97-1" tabindex="-1"></a>bin.y20 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y20.caracteres <span class="sc">==</span> <span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;nouveau&quot;</span>, <span class="st">&quot;ancien&quot;</span>)</span>
+<span id="cb97-2"><a href="notions-générales.html#cb97-2" tabindex="-1"></a>bin.y20[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot;</code></pre>
+<p>La fonction <code>ifelse( )</code> est aussi pratique pour créer des classes (i.e., une variable catégorique) en imbriquant plusieurs tests sur le vecteur :</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="notions-générales.html#cb99-1" tabindex="-1"></a>Classe.pistes <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Nbre.pistes <span class="sc">&lt;</span> <span class="dv">10</span>, <span class="st">&quot;&lt; 10&quot;</span>, </span>
+<span id="cb99-2"><a href="notions-générales.html#cb99-2" tabindex="-1"></a>                        <span class="fu">ifelse</span>(Nbre.pistes <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> Nbre.pistes <span class="sc">&lt;</span> <span class="dv">15</span>, </span>
+<span id="cb99-3"><a href="notions-générales.html#cb99-3" tabindex="-1"></a>                               <span class="st">&quot;10 - 15&quot;</span>, <span class="st">&quot;&gt; 15&quot;</span>))</span></code></pre></div>
+<p>Le code ci-dessus est réparti sur plusieurs lignes pour en améliorer la lisibilité, mais nous aurions obtenu exactement le même résultat si tout le code s’était trouvé sur une même ligne. Lorsqu’on saisit une commande sur plusieurs lignes, <code>R</code> attend la parenthèse de fermeture avant de réaliser l’opération. On débute en déterminant si <code>Nbre.pistes &lt; 10</code>, et on attribue la valeur <code>"&lt; 10"</code> le cas échéant. Sinon, on teste si <code>Nbre.pistes &gt;= 10</code> mais <code>&lt; 15</code>, et, si c’est le cas, on donne la valeur de <code>"10-15"</code> au vecteur. Si ce test est faux, on attribue une valeur de <code>"&gt; 15"</code> au vecteur.</p>
+<p>On peut utiliser plusieurs des opérateurs logiques pour faire des tests de conditions pour décider de l’exécution d’autres opérations. Par exemple, si le test est vrai, on effectue une opération particulière, et, si le test est faux, on effectue une opération différente. L’énoncé <code>if</code> appelle un test de condition spécifié entre parenthèses. L’opération à exécuter le cas échéant sera indiquée entre <code>{}</code>.</p>
+<p>Dans l’exemple ci-dessous, on teste si l’objet contient une valeur numérique ou une chaîne de caractères. Si la valeur est une chaîne de caractères, on imprime à l’écran <code>"des caractères"</code> à l’aide de la fonction <code>paste()</code>. Pour une valeur numérique, le test imprimera <code>"pas des caractères"</code> à l’écran.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="notions-générales.html#cb100-1" tabindex="-1"></a>valeur <span class="ot">&lt;-</span> <span class="dv">200</span> <span class="co">#une valeur numérique</span></span>
+<span id="cb100-2"><a href="notions-générales.html#cb100-2" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(valeur)) {<span class="fu">paste</span>(<span class="st">&quot;des caractères&quot;</span>)</span>
+<span id="cb100-3"><a href="notions-générales.html#cb100-3" tabindex="-1"></a>} <span class="cf">else</span> {<span class="fu">paste</span>(<span class="st">&quot;pas des caractères&quot;</span>)}</span></code></pre></div>
+<pre><code>## [1] &quot;pas des caractères&quot;</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="notions-générales.html#cb102-1" tabindex="-1"></a>valeur <span class="ot">&lt;-</span> <span class="st">&quot;du texte&quot;</span> <span class="co">#une chaîne de caractères</span></span>
+<span id="cb102-2"><a href="notions-générales.html#cb102-2" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(valeur)) {<span class="fu">paste</span>(<span class="st">&quot;des caractères&quot;</span>)</span>
+<span id="cb102-3"><a href="notions-générales.html#cb102-3" tabindex="-1"></a>} <span class="cf">else</span> {<span class="fu">paste</span>(<span class="st">&quot;pas des caractères&quot;</span>)}</span></code></pre></div>
+<pre><code>## [1] &quot;des caractères&quot;</code></pre>
+<p>On remarque que, si le test est faux, l’opération à effectuer doit être spécifiée après l’énoncé <code>else</code> et doit être insérée entre <code>{}</code>. Il est possible d’imbriquer les tests de conditions. Pour les vecteurs plus haut, nous avons utilisé <code>&amp;</code> et <code>|</code> et le comportement était similaire à des opérateurs mathématiques : le calcul était exécuté pour chaque paire d’éléments des deux vecteurs comparés.</p>
+<p>Les homologues <code>&amp;&amp;</code> et <code>||</code> ont un usage légèrement différent. En effet, lorsqu’on utilise <code>&amp;&amp;</code>, le test à droite s’effectue sur le premier élément de l’objet seulement si le test sur le premier élément de gauche est vrai. Avec <code>||</code>, le test à droite de l’opérateur sera évalué sur le premier élément seulement si le test de gauche sur le premier élément est faux.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="notions-générales.html#cb104-1" tabindex="-1"></a>des.valeurs <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb104-2"><a href="notions-générales.html#cb104-2" tabindex="-1"></a>des.valeurs</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="notions-générales.html#cb106-1" tabindex="-1"></a>des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span></span></code></pre></div>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="notions-générales.html#cb108-1" tabindex="-1"></a>des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span></span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="notions-générales.html#cb110-1" tabindex="-1"></a>des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span></span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="notions-générales.html#cb112-1" tabindex="-1"></a>des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span></span></code></pre></div>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="notions-générales.html#cb114-1" tabindex="-1"></a>des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># CODE ORIGINAL NE MARCHE PAS</span></span></code></pre></div>
+<pre><code>## Error in des.valeurs &gt; 0 &amp;&amp; des.valeurs &lt; 0: &#39;length = 10&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="notions-générales.html#cb116-1" tabindex="-1"></a>des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">||</span> des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span> <span class="co"># CODE ORIGINAL NE MARCHE PAS</span></span></code></pre></div>
+<pre><code>## Error in des.valeurs &gt; 0 || des.valeurs &lt; 0: &#39;length = 10&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="notions-générales.html#cb118-1" tabindex="-1"></a><span class="co"># NOUVEAU CODE</span></span>
+<span id="cb118-2"><a href="notions-générales.html#cb118-2" tabindex="-1"></a>all_positive <span class="ot">&lt;-</span> <span class="fu">all</span>(des.valeurs <span class="sc">&gt;</span> <span class="dv">0</span>) </span>
+<span id="cb118-3"><a href="notions-générales.html#cb118-3" tabindex="-1"></a>all_negative <span class="ot">&lt;-</span> <span class="fu">all</span>(des.valeurs <span class="sc">&lt;</span> <span class="dv">0</span>) </span>
+<span id="cb118-4"><a href="notions-générales.html#cb118-4" tabindex="-1"></a></span>
+<span id="cb118-5"><a href="notions-générales.html#cb118-5" tabindex="-1"></a>all_positive <span class="sc">&amp;&amp;</span> all_negative</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="notions-générales.html#cb120-1" tabindex="-1"></a>all_positive <span class="sc">||</span> all_negative</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Nous revisiterons les tests logiques à la section <em>Créer des sous-ensembles</em> pour créer des sous-ensembles de jeux de données.</p>
+</div>
+<div id="matrices-et-calculs-matriciels" class="section level4 unnumbered hasAnchor">
+<h4>Matrices et calculs matriciels<a href="notions-générales.html#matrices-et-calculs-matriciels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="créer-une-matrice" class="section level5 unnumbered hasAnchor">
+<h5>Créer une matrice<a href="notions-générales.html#créer-une-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La création et la manipulation de matrices sont simples dans <code>R</code>. La matrice est un autre type d’objet. Elle contient des éléments qui sont soit numériques ou des caractères, mais pas un mélange des deux. Par exemple, si la matrice contient au moins un seul caractère, tous les éléments seront convertis en caractères. Créons une matrice simple à l’aide de <code>matrix()</code> constituée d’une séquence de 1 à 9 avec un pas de 1 :</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="notions-générales.html#cb122-1" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb122-2"><a href="notions-générales.html#cb122-2" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<p>Les arguments <code>nrow</code> et <code>ncol</code> indiquent les dimensions de la matrice que nous désirons obtenir (une matrice de 3 rangées et de 4 colonnes). On remarque que les éléments sont insérés dans la matrice par colonnes : la première colonne est remplie, ensuite la deuxième et la troisième. L’argument <code>byrow</code> permet de changer la manière d’insérer les éléments dans la matrice.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="notions-générales.html#cb124-1" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb124-2"><a href="notions-générales.html#cb124-2" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12</code></pre>
+<p>On obtient une nouvelle matrice dans laquelle les valeurs ont été insérées une rangée à la fois. Par défaut, l’argument <code>byrow</code> prend la valeur <code>FALSE</code>.</p>
+</div>
+<div id="sélectionner-des-valeurs-1" class="section level5 unnumbered hasAnchor">
+<h5>Sélectionner des valeurs<a href="notions-générales.html#sélectionner-des-valeurs-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Tout comme pour le vecteur, on utilise <code>[]</code> pour extraire des éléments d’une matrice. Toutefois, on devra spécifier les deux dimensions <code>[rangée, colonne]</code>. Par exemple,</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="notions-générales.html#cb126-1" tabindex="-1"></a>mat[<span class="dv">1</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="notions-générales.html#cb128-1" tabindex="-1"></a>mat[<span class="dv">1</span>, ]</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="notions-générales.html#cb130-1" tabindex="-1"></a>mat[, <span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1]  2  6 10</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="notions-générales.html#cb132-1" tabindex="-1"></a>mat[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 1 5</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="notions-générales.html#cb134-1" tabindex="-1"></a>mat[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1]  3 11</code></pre>
+<p>À noter que si on spécifie seulement l’indice de la rangée, toute la rangée sera extraite. De la même façon, si seul l’indice de la colonne est spécifié, toute la colonne sera extraite.</p>
+</div>
+<div id="connaître-les-caractéristiques-dune-matrice" class="section level5 unnumbered hasAnchor">
+<h5>Connaître les caractéristiques d’une matrice<a href="notions-générales.html#connaître-les-caractéristiques-dune-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>On peut vérifier les caractéristiques de la matrice à l’aide de la fonction <code>class</code> ou de tests logiques.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="notions-générales.html#cb136-1" tabindex="-1"></a><span class="fu">class</span>(mat)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="notions-générales.html#cb138-1" tabindex="-1"></a><span class="fu">is.numeric</span>(mat)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="notions-générales.html#cb140-1" tabindex="-1"></a><span class="fu">is.vector</span>(mat)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>La fonction <code>length()</code> permet de déterminer le nombre d’éléments de la matrice. On peut utiliser <code>dim()</code>, <code>nrow()</code> ou <code>ncol()</code> pour connaître les dimensions de la matrice (rangées, colonnes).</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="notions-générales.html#cb142-1" tabindex="-1"></a><span class="fu">length</span>(mat)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="notions-générales.html#cb144-1" tabindex="-1"></a><span class="fu">dim</span>(mat)</span></code></pre></div>
+<pre><code>## [1] 3 4</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="notions-générales.html#cb146-1" tabindex="-1"></a><span class="fu">nrow</span>(mat)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="notions-générales.html#cb148-1" tabindex="-1"></a><span class="fu">ncol</span>(mat)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Il est possible d’ajouter des étiquettes aux colonnes et aux rangées à l’aide de <code>colnames()</code> et <code>rownames()</code>, respectivement.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="notions-générales.html#cb150-1" tabindex="-1"></a><span class="fu">colnames</span>(mat)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="notions-générales.html#cb152-1" tabindex="-1"></a><span class="fu">colnames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>, <span class="st">&quot;C4&quot;</span>)</span>
+<span id="cb152-2"><a href="notions-générales.html#cb152-2" tabindex="-1"></a><span class="fu">colnames</span>(mat)</span></code></pre></div>
+<pre><code>## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot; &quot;C4&quot;</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="notions-générales.html#cb154-1" tabindex="-1"></a><span class="fu">rownames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;R1&quot;</span>, <span class="st">&quot;R2&quot;</span>, <span class="st">&quot;R3&quot;</span>)</span>
+<span id="cb154-2"><a href="notions-générales.html#cb154-2" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##    C1 C2 C3 C4
+## R1  1  2  3  4
+## R2  5  6  7  8
+## R3  9 10 11 12</code></pre>
+</div>
+<div id="opérations-et-manipulation-de-matrices" class="section level5 unnumbered hasAnchor">
+<h5>Opérations et manipulation de matrices<a href="notions-générales.html#opérations-et-manipulation-de-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Plusieurs fonctions agissent sur les matrices. Par exemple, <code>diag(</code> permet d’extraire la diagonale de la matrice.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="notions-générales.html#cb156-1" tabindex="-1"></a><span class="fu">diag</span>(mat)</span></code></pre></div>
+<pre><code>## [1]  1  6 11</code></pre>
+<p>On peut facilement transposer une matrice.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="notions-générales.html#cb158-1" tabindex="-1"></a><span class="fu">t</span>(mat)</span></code></pre></div>
+<pre><code>##    R1 R2 R3
+## C1  1  5  9
+## C2  2  6 10
+## C3  3  7 11
+## C4  4  8 12</code></pre>
+<p>Afin d’obtenir la somme ou la moyenne des colonnes d’une matrice, on peut utiliser les fonctions <code>colSums()</code> et <code>colMeans()</code>, respectivement. Il existe des fonctions similaires pour les rangées d’une matrice.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="notions-générales.html#cb160-1" tabindex="-1"></a><span class="fu">colSums</span>(mat)</span></code></pre></div>
+<pre><code>## C1 C2 C3 C4 
+## 15 18 21 24</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="notions-générales.html#cb162-1" tabindex="-1"></a><span class="fu">colMeans</span>(mat)</span></code></pre></div>
+<pre><code>## C1 C2 C3 C4 
+##  5  6  7  8</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="notions-générales.html#cb164-1" tabindex="-1"></a><span class="fu">rowSums</span>(mat)</span></code></pre></div>
+<pre><code>## R1 R2 R3 
+## 10 26 42</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="notions-générales.html#cb166-1" tabindex="-1"></a><span class="fu">rowMeans</span>(mat)</span></code></pre></div>
+<pre><code>##   R1   R2   R3 
+##  2.5  6.5 10.5</code></pre>
+<p>Pour multiplier des matrices, il faut mettre l’opérateur de multiplication entre des signes de pourcentage :</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="notions-générales.html#cb168-1" tabindex="-1"></a>vecteur <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb168-2"><a href="notions-générales.html#cb168-2" tabindex="-1"></a>vecteur<span class="sc">%*%</span>mat</span></code></pre></div>
+<pre><code>##      C1 C2 C3  C4
+## [1,] 67 78 89 100</code></pre>
+</div>
+</div>
+<div id="jeux-de-données" class="section level4 unnumbered hasAnchor">
+<h4>Jeux de données<a href="notions-générales.html#jeux-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Un des types d’objet les plus utilisés dans <code>R</code> est le jeu de données ou <code>data.frame</code>. L’objet <code>data.frame</code> a deux dimensions et peut être constitué de colonnes de différents types. On peut retrouver des colonnes de valeurs numériques, de valeurs logiques, d’entiers, de caractères ou de facteurs (<code>factor</code>).</p>
+<div id="créer-un-jeu-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Créer un jeu de données<a href="notions-générales.html#créer-un-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La fonction <code>data.frame()</code> permet de créer un jeu de données. On peut combiner une série de vecteurs en un <code>data.frame</code>.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="notions-générales.html#cb170-1" tabindex="-1"></a>Temps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">3.4</span>, <span class="fl">2.1</span>, <span class="fl">5.5</span>) <span class="co">#vecteur de temps</span></span>
+<span id="cb170-2"><a href="notions-générales.html#cb170-2" tabindex="-1"></a>Masse <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.2</span>, <span class="fl">5.6</span>, <span class="fl">3.4</span>) <span class="co">#vecteur de masse</span></span>
+<span id="cb170-3"><a href="notions-générales.html#cb170-3" tabindex="-1"></a>Sexe <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;mâle&quot;</span>, <span class="st">&quot;femelle&quot;</span>, <span class="st">&quot;mâle&quot;</span>, <span class="st">&quot;femelle&quot;</span>) <span class="co">#vecteur de caractères</span></span>
+<span id="cb170-4"><a href="notions-générales.html#cb170-4" tabindex="-1"></a>jeu <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Temps, Masse, Sexe) <span class="co">#création du data.frame</span></span>
+<span id="cb170-5"><a href="notions-générales.html#cb170-5" tabindex="-1"></a>jeu</span></code></pre></div>
+<pre><code>##   Temps Masse    Sexe
+## 1   1.2   2.5    mâle
+## 2   3.4   4.2 femelle
+## 3   2.1   5.6    mâle
+## 4   5.5   3.4 femelle</code></pre>
+<p>On peut bien sûr créer un jeu de données en une seule étape :</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="notions-générales.html#cb172-1" tabindex="-1"></a>autos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Vitesse =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">100</span>),</span>
+<span id="cb172-2"><a href="notions-générales.html#cb172-2" tabindex="-1"></a>                   <span class="at">Type =</span> <span class="fu">c</span>(<span class="st">&quot;auto&quot;</span>, <span class="st">&quot;camion&quot;</span>, <span class="st">&quot;auto&quot;</span>, <span class="st">&quot;camion&quot;</span>))</span>
+<span id="cb172-3"><a href="notions-générales.html#cb172-3" tabindex="-1"></a>autos                     </span></code></pre></div>
+<pre><code>##   Vitesse   Type
+## 1      25   auto
+## 2      40 camion
+## 3      70   auto
+## 4     100 camion</code></pre>
+</div>
+<div id="connaître-les-caractéristiques-de-jeu-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Connaître les caractéristiques de jeu de données<a href="notions-générales.html#connaître-les-caractéristiques-de-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Plusieurs des fonctions que nous avons déjà présentées permettent de décrire un jeu de données. Notons les fonctions <code>class()</code>, <code>length()</code>, <code>dim()</code>, <code>nrow()</code>, <code>ncol()</code>, <code>names()</code>, <code>rownames()</code>, et <code>colnames()</code>. Nous pouvons aussi utiliser la fonction <code>str()</code> pour connaître la structure du jeu de données, incluant l’identification de chacune des variables, son type, ainsi que les premières observations.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="notions-générales.html#cb174-1" tabindex="-1"></a><span class="fu">str</span>(jeu)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4 obs. of  3 variables:
+##  $ Temps: num  1.2 3.4 2.1 5.5
+##  $ Masse: num  2.5 4.2 5.6 3.4
+##  $ Sexe : chr  &quot;mâle&quot; &quot;femelle&quot; &quot;mâle&quot; &quot;femelle&quot;</code></pre>
+<p>Remarquons que la variable <code>Sexe</code> a été créée comme vecteur de caractères et est maintenant reconnue comme facteur (<code>factor</code>) une fois ajoutée à l’objet de type <code>data.frame</code>. Plusieurs fonctions sont disponibles pour transformer un objet d’un type à un autre. Mentionnons ici <code>as.factor(~)</code> qui permet de convertir un vecteur en variable catégorique. La fonction <code>summary()</code> quant à elle, nous informe sur les statistiques descriptives des variables du jeu de données.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="notions-générales.html#cb176-1" tabindex="-1"></a><span class="fu">summary</span>(jeu)</span></code></pre></div>
+<pre><code>##      Temps           Masse           Sexe          
+##  Min.   :1.200   Min.   :2.500   Length:4          
+##  1st Qu.:1.875   1st Qu.:3.175   Class :character  
+##  Median :2.750   Median :3.800   Mode  :character  
+##  Mean   :3.050   Mean   :3.925                     
+##  3rd Qu.:3.925   3rd Qu.:4.550                     
+##  Max.   :5.500   Max.   :5.600</code></pre>
+<p>D’autres fonctions, comme <code>head()</code> ou <code>tail()</code>, permettent d’afficher les six premières ou six dernières lignes du jeu de données. Utilisons ces fonctions sur un jeu de données déjà dans <code>R</code>, lequel traite de données de diamètre, de hauteur et du volume de cerisiers. Afin de déterminer les jeux de données disponibles dans <code>R</code>, il suffit d’utiliser la commande <code>data()</code> sans valeurs entre les parenthèses. Afin de charger le jeu de données de notre choix, il suffit d’exécuter la commande <code>data()</code>, cette fois-ci en spécifiant le nom du jeu de données entre parenthèses.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="notions-générales.html#cb178-1" tabindex="-1"></a><span class="fu">data</span>(trees) <span class="co">#jeu de données déja dans R</span></span>
+<span id="cb178-2"><a href="notions-générales.html#cb178-2" tabindex="-1"></a><span class="fu">str</span>(trees)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    31 obs. of  3 variables:
+##  $ Girth : num  8.3 8.6 8.8 10.5 10.7 10.8 11 11 11.1 11.2 ...
+##  $ Height: num  70 65 63 72 81 83 66 75 80 75 ...
+##  $ Volume: num  10.3 10.3 10.2 16.4 18.8 19.7 15.6 18.2 22.6 19.9 ...</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="notions-générales.html#cb180-1" tabindex="-1"></a><span class="fu">head</span>(trees) <span class="co">#comparer à trees[1:6, ]</span></span></code></pre></div>
+<pre><code>##   Girth Height Volume
+## 1   8.3     70   10.3
+## 2   8.6     65   10.3
+## 3   8.8     63   10.2
+## 4  10.5     72   16.4
+## 5  10.7     81   18.8
+## 6  10.8     83   19.7</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="notions-générales.html#cb182-1" tabindex="-1"></a><span class="fu">tail</span>(trees) <span class="co">#comparer à trees[(nrow(trees)-5):nrow(trees), ]</span></span></code></pre></div>
+<pre><code>##    Girth Height Volume
+## 26  17.3     81   55.4
+## 27  17.5     82   55.7
+## 28  17.9     80   58.3
+## 29  18.0     80   51.5
+## 30  18.0     80   51.0
+## 31  20.6     87   77.0</code></pre>
+</div>
+<div id="accéder-aux-variables-dun-jeu-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Accéder aux variables d’un jeu de données<a href="notions-générales.html#accéder-aux-variables-dun-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>On remarque rapidement qu’il n’est pas possible d’aller chercher une variable d’un jeu de données simplement en tapant son nom. Par exemple, la variable <code>Vitesse</code> se trouve dans le jeu de données <code>autos</code> créé plus haut.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="notions-générales.html#cb184-1" tabindex="-1"></a>autos</span></code></pre></div>
+<pre><code>##   Vitesse   Type
+## 1      25   auto
+## 2      40 camion
+## 3      70   auto
+## 4     100 camion</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="notions-générales.html#cb186-1" tabindex="-1"></a><span class="fu">names</span>(autos)</span></code></pre></div>
+<pre><code>## [1] &quot;Vitesse&quot; &quot;Type&quot;</code></pre>
+<p>Pourtant, on obtient un message d’erreur si on spécifie <code>Vitesse</code>. L’objet <code>autos</code> est un jeu de données et les variables en sont des éléments. Il existe différentes stratégies pour extraire des éléments d’un jeu de données. La première, et celle qui est la plus polyvalente, consiste à utiliser l’opérateur <code>$</code>.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="notions-générales.html#cb188-1" tabindex="-1"></a>Vitesse</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="notions-générales.html#cb189-1" tabindex="-1"></a>autos<span class="sc">$</span>Vitesse</span></code></pre></div>
+<pre><code>## [1]  25  40  70 100</code></pre>
+<p>Nous spécifions le jeu de données suivi de l’opérateur <code>$</code>, lui-même suivi du nom de la variable d’intérêt : <code>Vitesse</code> est un élément de <code>autos</code>. Nous utiliserons la même stratégie pour extraire certains éléments d’objets plus complexes, tels que la sortie (output) d’une analyse statistique.</p>
+<p>Comme seconde stratégie, on peut utiliser <code>[ , ]</code> pour extraire les éléments du jeu de données, puisqu’il a deux dimensions comme la matrice.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="notions-générales.html#cb191-1" tabindex="-1"></a>autos[, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1]  25  40  70 100</code></pre>
+<p>Une variante de l’utilisation de <code>[ , ]</code> consiste à spécifier le nom de la variable.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="notions-générales.html#cb193-1" tabindex="-1"></a>autos[, <span class="st">&quot;Vitesse&quot;</span>]</span></code></pre></div>
+<pre><code>## [1]  25  40  70 100</code></pre>
+</div>
+<div id="importer-des-fichiers-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Importer des fichiers de données<a href="notions-générales.html#importer-des-fichiers-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Au lieu d’entrer à la main les données dans <code>R</code>, nous allons généralement importer les données sauvegardées dans un fichier. Il est facile d’importer des fichiers au format texte brut en <code>R</code> en suivant quelques lignes directrices. Il existe une multitude de moyens pour importer des fichiers dans <code>R</code>, mais nous n’en présenterons que quelques-uns.</p>
+<p>Bien que le fichier doive être en format texte, l’extension peut être celle de votre choix. Pour faciliter l’analyse de jeux de données, nous recommandons de structurer vos fichiers en format « long ». Dans ce format, toutes les valeurs d’une même variable se trouvent sous une même colonne. Par exemple, dans une expérience agricole, on pourrait présenter les données dans un tableau en format « large » (Table <a href="notions-générales.html#tab:agri">0.3</a>).</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:agri">Table 0.3: </span>Données récoltées lors d’une expérience agricole en format « large ».
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Témoin
+</th>
+<th style="text-align:right;">
+Engrais.A
+</th>
+<th style="text-align:right;">
+Engrais.B
+</th>
+<th style="text-align:right;">
+Engrais.C
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+7.1
+</td>
+<td style="text-align:right;">
+8.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:right;">
+6.2
+</td>
+<td style="text-align:right;">
+8.2
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+7.3
+</td>
+<td style="text-align:right;">
+7.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+</tr>
+</tbody>
+</table>
+<p>Bien que le format « large » permette de visualiser rapidement les données, il n’est pas celui qui est généralement utilisable par plusieurs fonctions d’analyses statistiques. En effet, le format le plus souvent requis est le format « long ». Le tableau <a href="notions-générales.html#tab:agri2">0.4</a> présente le même jeu de données en ce format.</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:agri2">Table 0.4: </span>Données récoltées lors d’une expérience agricole en format “long”.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Réponse
+</th>
+<th style="text-align:left;">
+Traitement
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:left;">
+Témoin
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:left;">
+Témoin
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:left;">
+Témoin
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:left;">
+Témoin
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:left;">
+EngraisA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6.2
+</td>
+<td style="text-align:left;">
+EngraisA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:left;">
+EngraisA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6.3
+</td>
+<td style="text-align:left;">
+EngraisA
+</td>
+</tr>
+</tbody>
+</table>
+<p>Une fois le fichier en format « long », on peut sauvegarder en texte avec des séparateurs tabulations ou espace à partir du chiffrier de notre choix. Afin de rendre l’importation plus agréable et plus facile, il est important de respecter les points suivants :</p>
+<ul>
+<li>Réserver la première ligne de chaque colonne pour le nom de la colonne.</li>
+<li>Éviter les espaces dans le nom d’une colonne donnée (par exemple, ne pas écrire hauteur moyenne, mais plutôt hauteur_moyenne, hauteur.moyenne, hauteurmoyenne).</li>
+<li>Utiliser NA pour indiquer les valeurs manquantes à l’intérieur du jeu de données : aucune cellule ne peut être vide.</li>
+<li>Éviter les accents dans les noms des variables ou dans les données.</li>
+</ul>
+<p>La fonction principale d’importation de jeux de données est <code>read.table()</code>. Cette fonction comporte un argument <code>file =</code>, avec lequel on doit spécifier le chemin complet du fichier. L’argument logique <code>header</code> doit prendre la valeur <code>TRUE</code>. Pour réussir l’importation, il faut :</p>
+<ul>
+<li>Spécifier le bon chemin en se souciant des majuscules et des minuscules.</li>
+<li>Utiliser <code>/</code> ou <code>\\</code> mais pas le <code>\</code> de MS-Windows.</li>
+<li>Terminer le chemin complet par le nom du fichier et mettre le tout entre <code>""</code>.</li>
+<li>Stocker le jeu de données dans un objet, sinon il ne sera imprimé qu’à l’écran.</li>
+<li>Remplacer les virgules par des points pour indiquer la décimale des valeurs numériques avant d’importer le fichier dans <code>R</code> ou spécifier l’argument <code>dec = ","</code> de la fonction <code>read.table()</code>. Cette démarche est nécessaire puisque <code>R</code> utilise le point pour indiquer les décimales.</li>
+</ul>
+<p>Bien que <code>R</code> reconnaisse généralement sans difficulté les caractères accentués (par exemple, é, à, ê), il peut y avoir un problème lorsque le fichier est créé dans un système d’exploitation et importé dans <code>R</code> dans un autre. Dans de tels cas, les caractères accentués ne seront pas reconnus par défaut. Par exemple, si vous travaillez sous Windows et que vous désirez qu’un collègue opérant sous Mac importe un de vos fichiers de données dans <code>R</code>, il peut survenir des problèmes d’importation en présence d’accents dans le fichier. Certains arguments de <code>read.table()</code> permettent de modifier ceci (<code>encoding =</code>), mais c’est plus simple d’éviter les accents.</p>
+<p>Illustrons avec le jeu de données <code>vers</code> qui traite de l’abondance de vers de terre dans différents types de parcs publics. Voici trois stratégies équivalentes pour importer un fichier en format texte et qui respecte les consignes mentionnées plus haut :</p>
+<ul>
+<li>Pour la première, on spécifie le chemin complet sur l’ordinateur où se trouve le fichier. Par exemple, pour importer un jeu de données stocké dans le fichier , on pourrait envoyer la commande</li>
+</ul>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="notions-générales.html#cb195-1" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;C:/chemin_complet/vers.txt&quot;</span>, </span>
+<span id="cb195-2"><a href="notions-générales.html#cb195-2" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ul>
+<li>La deuxième variation consiste à spécifier le répertoire où se trouve le fichier à l’aide de la fonction <code>setwd( )</code>.</li>
+</ul>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="notions-générales.html#cb196-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/chemin_complet/&quot;</span>)</span>
+<span id="cb196-2"><a href="notions-générales.html#cb196-2" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;vers.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ul>
+<li>Une troisième stratégie s’avère l’utilisation de la fonction <code>file.choose( )</code>. Cette dernière permet de sélectionner le fichier à l’aide d’une fenêtre graphique. Il faut toutefois savoir où se trouve le fichier …</li>
+</ul>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="notions-générales.html#cb197-1" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="fu">file.choose</span>( ), <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Si vous ne respectez pas ces consignes, vous risquez de générer un message d’erreur. Vous devrez retracer l’erreur ou alors décortiquer plus en détail les pages d’aide des fonctions d’importation afin de modifier les arguments qui reflètent votre situation. Les fonctions <code>read.delim()</code>, <code>read.delim2()</code>, <code>read.csv()</code>, <code>read.csv2()</code> sont des versions de <code>read.table()</code> avec différentes valeurs par défaut. Il est aussi possible d’importer directement des fichiers en format MS-Excel ou MS-Access à l’aide de banques de fonctions téléchargeables. Il suffit d’utiliser <code>RSiteSearch(" ")</code> avec le sujet de votre requête entre <code>""</code> pour obtenir plus d’informations.</p>
+</div>
+<div id="ajouter-une-variable" class="section level5 unnumbered hasAnchor">
+<h5>Ajouter une variable<a href="notions-générales.html#ajouter-une-variable" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Il est facile d’ajouter une variable à un jeu de données. Pour ce faire, on peut utiliser l’opérateur <code>$</code> afin d’indiquer à <code>R</code> l’objet qui stocke le jeu de données et le nom de la nouvelle variable que l’on veut créer :</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="notions-générales.html#cb198-1" tabindex="-1"></a><span class="fu">head</span>(vers) <span class="co">#affiche les 6 premières observations</span></span>
+<span id="cb198-2"><a href="notions-générales.html#cb198-2" tabindex="-1"></a>vers<span class="sc">$</span>log.Superficie <span class="ot">&lt;-</span> <span class="fu">log</span>(vers<span class="sc">$</span>Superficie) <span class="co">#créer une nouvelle variable</span></span>
+<span id="cb198-3"><a href="notions-générales.html#cb198-3" tabindex="-1"></a><span class="fu">head</span>(vers) <span class="co">#inclut maintenant la nouvelle variable</span></span></code></pre></div>
+<p>La nouvelle variable sera ajoutée dans une colonne à la suite des autres variables du jeu de données.</p>
+</div>
+<div id="créer-des-sous-ensembles" class="section level5 unnumbered hasAnchor">
+<h5>Créer des sous-ensembles<a href="notions-générales.html#créer-des-sous-ensembles" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Nous pouvons utiliser différentes approches afin de sélectionner des sous-ensembles d’un jeu de données. Nous avons déjà vu l’extraction à l’aide de <code>[ , ]</code>. Par exemple, dans le jeu de données <code>trees</code>, on peut extraire les 15 premières observations des variables <code>Girth</code> et <code>Height</code>.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="notions-générales.html#cb199-1" tabindex="-1"></a>trees[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="st">&quot;Girth&quot;</span>, <span class="st">&quot;Height&quot;</span>)]</span></code></pre></div>
+<pre><code>##    Girth Height
+## 1    8.3     70
+## 2    8.6     65
+## 3    8.8     63
+## 4   10.5     72
+## 5   10.7     81
+## 6   10.8     83
+## 7   11.0     66
+## 8   11.0     75
+## 9   11.1     80
+## 10  11.2     75
+## 11  11.3     79
+## 12  11.4     76
+## 13  11.4     76
+## 14  11.7     69
+## 15  12.0     75</code></pre>
+<p>Les tests logiques s’avèrent aussi d’excellents outils pour créer des sous-ensembles de jeux de données. Par exemple, on peut créer un sous-ensemble de <code>trees</code> pour lequel <code>Girth</code> &gt; 12 ou de <code>vers</code> pour le type <code>Vegetation</code> correspondant à <code>Prairie</code>.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="notions-générales.html#cb201-1" tabindex="-1"></a>trees22 <span class="ot">&lt;-</span> trees[trees<span class="sc">$</span>Girth <span class="sc">&gt;=</span> <span class="dv">12</span>, ] </span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="notions-générales.html#cb202-1" tabindex="-1"></a>vers.prairie <span class="ot">&lt;-</span> vers[vers<span class="sc">$</span>Vegetation <span class="sc">==</span> <span class="st">&quot;Prairie&quot;</span>, ]</span></code></pre></div>
+<p>Il est aussi possible de combiner des tests logiques. Créons, par exemple, un jeu de données à partir de <code>vers</code> pour lequel <code>Vegetation</code> correspond à <code>Prairie</code> et <code>Pente</code> &gt; 5 en utilisant l’opérateur <code>&amp;</code> (intersection).</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="notions-générales.html#cb203-1" tabindex="-1"></a>versb <span class="ot">&lt;-</span> vers[vers<span class="sc">$</span>Vegetation <span class="sc">==</span> <span class="st">&quot;Prairie&quot;</span> <span class="sc">&amp;</span> vers<span class="sc">$</span>Pente <span class="sc">&gt;</span> <span class="dv">5</span>, ]</span></code></pre></div>
+<p>Comparons le résultat de l’union des deux conditions avec l’opérateur <code>|</code>.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="notions-générales.html#cb204-1" tabindex="-1"></a>versc <span class="ot">&lt;-</span> vers[vers<span class="sc">$</span>Vegetation <span class="sc">==</span> <span class="st">&quot;Prairie&quot;</span> <span class="sc">|</span> vers<span class="sc">$</span>Pente <span class="sc">&gt;</span> <span class="dv">5</span>, ]</span></code></pre></div>
+<p>La fonction <code>subset( )</code> utilise les tests logiques pour créer un sous-ensemble d’un jeu de données. Cette fonction est une alternative à la sélection avec <code>[, ]</code> combinée à un test logique et donnera exactement le même résultat que dans l’exemple précédent.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="notions-générales.html#cb205-1" tabindex="-1"></a>vers.les.prairie <span class="ot">&lt;-</span> <span class="fu">subset</span>(<span class="at">x =</span> vers, </span>
+<span id="cb205-2"><a href="notions-générales.html#cb205-2" tabindex="-1"></a>                      <span class="at">subset =</span> vers<span class="sc">$</span>Vegetation <span class="sc">==</span> <span class="st">&quot;Prairie&quot;</span>)</span>
+<span id="cb205-3"><a href="notions-générales.html#cb205-3" tabindex="-1"></a><span class="fu">identical</span>(vers.les.prairie, vers.prairie)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="notions-générales.html#cb207-1" tabindex="-1"></a>versbb <span class="ot">&lt;-</span> <span class="fu">subset</span>(<span class="at">x =</span> vers, </span>
+<span id="cb207-2"><a href="notions-générales.html#cb207-2" tabindex="-1"></a>                  <span class="at">subset =</span> vers<span class="sc">$</span>Vegetation <span class="sc">==</span> <span class="st">&quot;Prairie&quot;</span> <span class="sc">&amp;</span> vers<span class="sc">$</span>Pente <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb207-3"><a href="notions-générales.html#cb207-3" tabindex="-1"></a><span class="fu">identical</span>(versb, versbb)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="effectuer-un-tri" class="section level5 unnumbered hasAnchor">
+<h5>Effectuer un tri<a href="notions-générales.html#effectuer-un-tri" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Les tris dans <code>R</code> comportent quelques subtilités : la fonction à utiliser dépend de ce que l’on veut trier. Pour faire le tri en ordre croissant d’une seule variable ou vecteur, on peut utiliser <code>sort()</code>. Cette fonction comporte un argument <code>decreasing = FALSE</code> qui peut prendre la valeur <code>FALSE</code> pour un tri en ordre décroissant. Comme alternative à l’argument <code>decreasing = TRUE</code>, la fonction <code>rev()</code> permet de faire un tri en ordre décroissant.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="notions-générales.html#cb209-1" tabindex="-1"></a><span class="fu">sort</span>(vers<span class="sc">$</span>Superficie) <span class="co">#en ordre croissant</span></span></code></pre></div>
+<pre><code>##  [1] 0.8 1.5 1.8 1.9 2.1 2.2 2.4 2.8 2.9 2.9 3.1 3.3 3.5 3.6 3.7 3.8 3.9 4.1 4.4 5.1</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="notions-générales.html#cb211-1" tabindex="-1"></a><span class="fu">sort</span>(vers<span class="sc">$</span>Superficie, <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="co">#en ordre décroissant</span></span></code></pre></div>
+<pre><code>##  [1] 5.1 4.4 4.1 3.9 3.8 3.7 3.6 3.5 3.3 3.1 2.9 2.9 2.8 2.4 2.2 2.1 1.9 1.8 1.5 0.8</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="notions-générales.html#cb213-1" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">sort</span>(vers<span class="sc">$</span>Superficie)) <span class="co">#en ordre décroissant</span></span></code></pre></div>
+<pre><code>##  [1] 5.1 4.4 4.1 3.9 3.8 3.7 3.6 3.5 3.3 3.1 2.9 2.9 2.8 2.4 2.2 2.1 1.9 1.8 1.5 0.8</code></pre>
+<p>Comme toute autre manipulation dans <code>R</code>, si on veut que le tri prenne effet, il faut assigner ce tri à un objet. Autrement, le résultat s’affichera à l’écran et disparaîtra à tout jamais sans être disponible plus tard dans la session de travail.</p>
+<p>Afin de trier un jeu de données, on doit plutôt utiliser <code>order()</code>. Par exemple, pour trier le jeu de données <code>vers</code> en ordre croissant selon la variable <code>Pente</code>, on procède ainsi :</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="notions-générales.html#cb215-1" tabindex="-1"></a><span class="do">##tri en ordre croissant selon Pente</span></span>
+<span id="cb215-2"><a href="notions-générales.html#cb215-2" tabindex="-1"></a>vers.ord <span class="ot">&lt;-</span> vers[<span class="fu">order</span>(vers<span class="sc">$</span>Pente), ]</span>
+<span id="cb215-3"><a href="notions-générales.html#cb215-3" tabindex="-1"></a><span class="do">##tri en ordre décroissant selon Pente</span></span>
+<span id="cb215-4"><a href="notions-générales.html#cb215-4" tabindex="-1"></a>vers.ord.dec <span class="ot">&lt;-</span> vers[<span class="fu">order</span>(vers<span class="sc">$</span>Pente, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb215-5"><a href="notions-générales.html#cb215-5" tabindex="-1"></a><span class="do">##autre moyen d&#39;obtenir un tri décroissant avec sort( )</span></span>
+<span id="cb215-6"><a href="notions-générales.html#cb215-6" tabindex="-1"></a>vers.ord.dec2 <span class="ot">&lt;-</span> vers[<span class="fu">rev</span>(<span class="fu">order</span>(vers<span class="sc">$</span>Pente)), ]</span></code></pre></div>
+<p>Il est facile d’effectuer un tri pour seulement une partie du jeu de données en spécifiant les colonnes désirées. Une autre option est de faire un tri selon plusieurs variables.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="notions-générales.html#cb216-1" tabindex="-1"></a><span class="do">##tri des variables 1, 2 et 4 selon Pente</span></span>
+<span id="cb216-2"><a href="notions-générales.html#cb216-2" tabindex="-1"></a>vers.ordb <span class="ot">&lt;-</span> vers[<span class="fu">order</span>(vers<span class="sc">$</span>Pente), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)] </span>
+<span id="cb216-3"><a href="notions-générales.html#cb216-3" tabindex="-1"></a><span class="do">##tri du jeu de données selon Pente ET Superficie</span></span>
+<span id="cb216-4"><a href="notions-générales.html#cb216-4" tabindex="-1"></a>vers.ord2 <span class="ot">&lt;-</span> vers[<span class="fu">order</span>(vers<span class="sc">$</span>Pente, vers<span class="sc">$</span>Superficie) , ]</span></code></pre></div>
+</div>
+<div id="créer-des-tableaux-récapitulatifs-des-fréquences" class="section level5 unnumbered hasAnchor">
+<h5>Créer des tableaux récapitulatifs des fréquences<a href="notions-générales.html#créer-des-tableaux-récapitulatifs-des-fréquences" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Quelques fonctions sont très pratiques pour réaliser des résumés d’un jeu de données selon quelques variables. Notamment, pour obtenir l’équivalent du <em>tableau croisé dynamique</em> de <code>MS EXCEL</code> ou du <em>pilote de données</em> de <code>Calc</code> de <code>OpenOffice</code>, la fonction <code>table()</code> s’avère fort utile. Cette fonction résume la fréquence à laquelle chaque valeur d’une variable apparaît dans un jeu de données dans un tableau, lequel est un autre type d’objet en <code>R</code>.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="notions-générales.html#cb217-1" tabindex="-1"></a><span class="fu">table</span>(vers<span class="sc">$</span>Vegetation) <span class="co">#la fréquence de chaque type de végétation</span></span></code></pre></div>
+<pre><code>## 
+##    Arable Chaparral   Prairie       Pre    Verger 
+##         3         4         9         3         1</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="notions-générales.html#cb219-1" tabindex="-1"></a><span class="fu">table</span>(vers<span class="sc">$</span>Superficie) <span class="co">#la fréquence de chaque observation numérique</span></span></code></pre></div>
+<pre><code>## 
+## 0.8 1.5 1.8 1.9 2.1 2.2 2.4 2.8 2.9 3.1 3.3 3.5 3.6 3.7 3.8 3.9 4.1 4.4 5.1 
+##   1   1   1   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1   1</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="notions-générales.html#cb221-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">table</span>(vers<span class="sc">$</span>Superficie))</span></code></pre></div>
+<pre><code>## [1] &quot;table&quot;</code></pre>
+<p>On peut également construire un tableau à deux dimensions ou de dimensions supérieures selon des variables généralement catégoriques. L’argument <code>deparse.level</code> permet d’ajouter le nom des variables aux rangées ou aux colonnes.</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="notions-générales.html#cb223-1" tabindex="-1"></a><span class="do">##tableau à deux dimensions</span></span>
+<span id="cb223-2"><a href="notions-générales.html#cb223-2" tabindex="-1"></a><span class="fu">table</span>(vers<span class="sc">$</span>Vegetation, vers<span class="sc">$</span>Pente) </span></code></pre></div>
+<pre><code>##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    1 0 2 0 0 0 0 0  0  0
+##   Chaparral 1 0 0 0 0 0 0 1  2  0
+##   Prairie   0 2 2 2 1 0 1 0  0  1
+##   Pre       2 0 0 0 0 1 0 0  0  0
+##   Verger    1 0 0 0 0 0 0 0  0  0</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="notions-générales.html#cb225-1" tabindex="-1"></a><span class="do">##tableau à deux dimensions avec les noms</span></span>
+<span id="cb225-2"><a href="notions-générales.html#cb225-2" tabindex="-1"></a><span class="fu">table</span>(vers<span class="sc">$</span>Vegetation, vers<span class="sc">$</span>Pente, <span class="at">deparse.level =</span> <span class="dv">2</span>) </span></code></pre></div>
+<pre><code>##                vers$Pente
+## vers$Vegetation 0 1 2 3 4 5 6 8 10 11
+##       Arable    1 0 2 0 0 0 0 0  0  0
+##       Chaparral 1 0 0 0 0 0 0 1  2  0
+##       Prairie   0 2 2 2 1 0 1 0  0  1
+##       Pre       2 0 0 0 0 1 0 0  0  0
+##       Verger    1 0 0 0 0 0 0 0  0  0</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="notions-générales.html#cb227-1" tabindex="-1"></a><span class="do">##tableau à trois dimensions</span></span>
+<span id="cb227-2"><a href="notions-générales.html#cb227-2" tabindex="-1"></a><span class="fu">table</span>(vers<span class="sc">$</span>Vegetation, vers<span class="sc">$</span>Pente, vers<span class="sc">$</span>Humide) </span></code></pre></div>
+<pre><code>## , ,  = FALSE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    1 0 2 0 0 0 0 0  0  0
+##   Chaparral 1 0 0 0 0 0 0 0  1  0
+##   Prairie   0 2 2 2 0 0 1 0  0  1
+##   Pre       0 0 0 0 0 0 0 0  0  0
+##   Verger    1 0 0 0 0 0 0 0  0  0
+## 
+## , ,  = TRUE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    0 0 0 0 0 0 0 0  0  0
+##   Chaparral 0 0 0 0 0 0 0 1  1  0
+##   Prairie   0 0 0 0 1 0 0 0  0  0
+##   Pre       2 0 0 0 0 1 0 0  0  0
+##   Verger    0 0 0 0 0 0 0 0  0  0</code></pre>
+<p>La dernière commande présentée ci-dessus crée une série de tableaux à deux dimensions pour chaque valeur de la variable <code>Humide</code> (i.e., <code>TRUE</code>, <code>FALSE</code>).</p>
+<p>La fonction <code>xtabs()</code> offre la possibilité de résumer une variable de fréquence qui apparaît dans un jeu de données selon une série de variables en utilisant une formule du genre <code>freq ~ var1 + var2</code> où la variable de fréquence apparaît à la gauche de l’équation et les variables de classification à la droite.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="notions-générales.html#cb229-1" tabindex="-1"></a><span class="do">##on crée un jeu de données</span></span>
+<span id="cb229-2"><a href="notions-générales.html#cb229-2" tabindex="-1"></a>jeu.freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Freq =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>),</span>
+<span id="cb229-3"><a href="notions-générales.html#cb229-3" tabindex="-1"></a>                    <span class="at">Trait =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dv">4</span>),</span>
+<span id="cb229-4"><a href="notions-générales.html#cb229-4" tabindex="-1"></a>                    <span class="at">Sexe =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>), <span class="dv">4</span>))</span>
+<span id="cb229-5"><a href="notions-générales.html#cb229-5" tabindex="-1"></a>jeu.freq</span></code></pre></div>
+<pre><code>##   Freq Trait Sexe
+## 1    0     A    F
+## 2    1     B    M
+## 3    0     A    F
+## 4   10     B    M
+## 5    2     A    F
+## 6    3     B    M
+## 7    5     A    F
+## 8    0     B    M</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="notions-générales.html#cb231-1" tabindex="-1"></a><span class="fu">xtabs</span>(Freq <span class="sc">~</span> Trait <span class="sc">+</span> Sexe, <span class="at">data =</span> jeu.freq)</span></code></pre></div>
+<pre><code>##      Sexe
+## Trait  F  M
+##     A  7  0
+##     B  0 14</code></pre>
+<p>Cette fonction possède un argument <code>data</code> qui permet de spécifier où se trouvent les variables pour lesquelles on désire un tableau. La plupart des fonctions de modélisation, comme <code>lm()</code> pour effectuer des modèles de régression, comportent ce même argument pour faciliter la syntaxe. Si aucune variable de fréquence n’apparaît dans le jeu de données, <code>xtabs()</code> aura le même effet que <code>table()</code>.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="notions-générales.html#cb233-1" tabindex="-1"></a><span class="fu">table</span>(jeu.freq<span class="sc">$</span>Trait)</span></code></pre></div>
+<pre><code>## 
+## A B 
+## 4 4</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="notions-générales.html#cb235-1" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> Trait, <span class="at">data =</span> jeu.freq)</span></code></pre></div>
+<pre><code>## Trait
+## A B 
+## 4 4</code></pre>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="notions-générales.html#cb237-1" tabindex="-1"></a><span class="fu">table</span>(jeu.freq<span class="sc">$</span>Trait, jeu.freq<span class="sc">$</span>Sexe) </span></code></pre></div>
+<pre><code>##    
+##     F M
+##   A 4 0
+##   B 0 4</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="notions-générales.html#cb239-1" tabindex="-1"></a><span class="co">#comparer avec l&#39;exemple plus haut avec Freq ~ Trait + Sexe</span></span>
+<span id="cb239-2"><a href="notions-générales.html#cb239-2" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> Trait <span class="sc">+</span> Sexe, <span class="at">data =</span> jeu.freq)</span></code></pre></div>
+<pre><code>##      Sexe
+## Trait F M
+##     A 4 0
+##     B 0 4</code></pre>
+</div>
+<div id="modifier-la-structure-dun-jeu-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Modifier la structure d’un jeu de données<a href="notions-générales.html#modifier-la-structure-dun-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>On peut convertir un jeu de données du format “long” au format “large”. En présence de mesures répétées, la fonction <code>reshape( )</code> permet de passer d’un format à l’autre. Considérons, par exemple, un jeu de données qui traite de la concentration en indométhacine (un anti-inflammatoire) dans le plasma sanguin de patients. Le jeu de données original est en format “long”. On peut le convertir en format “large” comme suit:</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="notions-générales.html#cb241-1" tabindex="-1"></a><span class="fu">head</span>(Indometh, <span class="dv">15</span>) <span class="co">#15 premières observations - format long</span></span></code></pre></div>
+<pre><code>##    Subject time conc
+## 1        1 0.25 1.50
+## 2        1 0.50 0.94
+## 3        1 0.75 0.78
+## 4        1 1.00 0.48
+## 5        1 1.25 0.37
+## 6        1 2.00 0.19
+## 7        1 3.00 0.12
+## 8        1 4.00 0.11
+## 9        1 5.00 0.08
+## 10       1 6.00 0.07
+## 11       1 8.00 0.05
+## 12       2 0.25 2.03
+## 13       2 0.50 1.63
+## 14       2 0.75 0.71
+## 15       2 1.00 0.70</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="notions-générales.html#cb243-1" tabindex="-1"></a>large <span class="ot">&lt;-</span> <span class="fu">reshape</span>(<span class="at">data =</span> Indometh, <span class="at">idvar =</span> <span class="st">&quot;Subject&quot;</span>,</span>
+<span id="cb243-2"><a href="notions-générales.html#cb243-2" tabindex="-1"></a>                 <span class="at">timevar =</span> <span class="st">&quot;time&quot;</span>, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>) <span class="co">#mettre en format large</span></span>
+<span id="cb243-3"><a href="notions-générales.html#cb243-3" tabindex="-1"></a>large</span></code></pre></div>
+<pre><code>##    Subject conc.0.25 conc.0.5 conc.0.75 conc.1 conc.1.25 conc.2 conc.3 conc.4 conc.5 conc.6 conc.8
+## 1        1      1.50     0.94      0.78   0.48      0.37   0.19   0.12   0.11   0.08   0.07   0.05
+## 12       2      2.03     1.63      0.71   0.70      0.64   0.36   0.32   0.20   0.25   0.12   0.08
+## 23       3      2.72     1.49      1.16   0.80      0.80   0.39   0.22   0.12   0.11   0.08   0.08
+## 34       4      1.85     1.39      1.02   0.89      0.59   0.40   0.16   0.11   0.10   0.07   0.07
+## 45       5      2.05     1.04      0.81   0.39      0.30   0.23   0.13   0.11   0.08   0.10   0.06
+## 56       6      2.31     1.44      1.03   0.84      0.64   0.42   0.24   0.17   0.13   0.10   0.09</code></pre>
+<p>Il est possible de passer du format “large” au format “long” avec la même fonction:<br />
+</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="notions-générales.html#cb245-1" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="fu">reshape</span>(<span class="at">data =</span> large, <span class="at">idvar =</span> <span class="st">&quot;Subject&quot;</span>, </span>
+<span id="cb245-2"><a href="notions-générales.html#cb245-2" tabindex="-1"></a>                <span class="at">timevar =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">v.names =</span> <span class="st">&quot;Concentration&quot;</span>, </span>
+<span id="cb245-3"><a href="notions-générales.html#cb245-3" tabindex="-1"></a>                <span class="at">varying =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, </span>
+<span id="cb245-4"><a href="notions-générales.html#cb245-4" tabindex="-1"></a>                <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>) <span class="co">#mettre en format long</span></span>
+<span id="cb245-5"><a href="notions-générales.html#cb245-5" tabindex="-1"></a>long.ord <span class="ot">&lt;-</span> long[<span class="fu">order</span>(long<span class="sc">$</span>Subject), ] <span class="co">#tri selon Subject</span></span></code></pre></div>
+<p>Dans certains cas, les valeurs d’une variable sont entrées dans différentes colonnes selon les traitements, comme dans le tableau <a href="notions-générales.html#tab:agri">0.3</a>. La plupart des analyses en <code>R</code> ne pouvant utiliser ce format, il faut convertir le jeu de données en format long afin d’insérer les valeurs de la variable réponse dans une seule colonne. Les fonctions <code>stack()</code> et <code>unstack()</code> permettent de telles manipulations.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="notions-générales.html#cb246-1" tabindex="-1"></a>fert <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Temoin =</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">6.3</span>, <span class="fl">7.1</span>, <span class="fl">8.1</span>),</span>
+<span id="cb246-2"><a href="notions-générales.html#cb246-2" tabindex="-1"></a>                   <span class="at">EngraisA =</span> <span class="fu">c</span>(<span class="fl">5.9</span>, <span class="fl">6.2</span>, <span class="fl">8.2</span>, <span class="fl">8.5</span>),</span>
+<span id="cb246-3"><a href="notions-générales.html#cb246-3" tabindex="-1"></a>                   <span class="at">EngraisB =</span> <span class="fu">c</span>(<span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">7.3</span>, <span class="fl">7.6</span>),</span>
+<span id="cb246-4"><a href="notions-générales.html#cb246-4" tabindex="-1"></a>                   <span class="at">EngraisC =</span> <span class="fu">c</span>(<span class="fl">5.4</span>, <span class="fl">6.3</span>, <span class="fl">6.9</span>, <span class="fl">7.8</span>))</span>
+<span id="cb246-5"><a href="notions-générales.html#cb246-5" tabindex="-1"></a>fert <span class="co">#format large</span></span></code></pre></div>
+<pre><code>##   Temoin EngraisA EngraisB EngraisC
+## 1    6.1      5.9      5.8      5.4
+## 2    6.3      6.2      5.8      6.3
+## 3    7.1      8.2      7.3      6.9
+## 4    8.1      8.5      7.6      7.8</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="notions-générales.html#cb248-1" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="fu">stack</span>(fert) <span class="co">#format long - 1 colonne par variable</span></span>
+<span id="cb248-2"><a href="notions-générales.html#cb248-2" tabindex="-1"></a>long</span></code></pre></div>
+<pre><code>##    values      ind
+## 1     6.1   Temoin
+## 2     6.3   Temoin
+## 3     7.1   Temoin
+## 4     8.1   Temoin
+## 5     5.9 EngraisA
+## 6     6.2 EngraisA
+## 7     8.2 EngraisA
+## 8     8.5 EngraisA
+## 9     5.8 EngraisB
+## 10    5.8 EngraisB
+## 11    7.3 EngraisB
+## 12    7.6 EngraisB
+## 13    5.4 EngraisC
+## 14    6.3 EngraisC
+## 15    6.9 EngraisC
+## 16    7.8 EngraisC</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="notions-générales.html#cb250-1" tabindex="-1"></a><span class="fu">unstack</span>(long) <span class="co">#remettre en format large</span></span></code></pre></div>
+<pre><code>##   Temoin EngraisA EngraisB EngraisC
+## 1    6.1      5.9      5.8      5.4
+## 2    6.3      6.2      5.8      6.3
+## 3    7.1      8.2      7.3      6.9
+## 4    8.1      8.5      7.6      7.8</code></pre>
+</div>
+<div id="exporter-un-jeu-de-données" class="section level5 unnumbered hasAnchor">
+<h5>Exporter un jeu de données<a href="notions-générales.html#exporter-un-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Alors que <code>read.table()</code> permet d’importer un jeu de données à partir d’un fichier, <code>write.table()</code> permet de sauvegarder un jeu de données (un objet <code>R</code>) dans un fichier. Tout comme son homologue <code>read.table()</code>, elle comporte des arguments pour spécifier le chemin et le nom du fichier, le type de séparateur, l’option d’inclure ou non les en-têtes des colonnes ou les étiquettes des rangées. Illustrons avec le jeu de données <code>fert</code> créé plus haut.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="notions-générales.html#cb252-1" tabindex="-1"></a><span class="do">##exporter à un fichier avec séparateur espace</span></span>
+<span id="cb252-2"><a href="notions-générales.html#cb252-2" tabindex="-1"></a><span class="fu">write.table</span>(<span class="at">x =</span> fert, <span class="at">file =</span> <span class="st">&quot;/chemin_sur_ordi/fert.txt&quot;</span>, </span>
+<span id="cb252-3"><a href="notions-générales.html#cb252-3" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<p>L’argument <code>sep</code> spécifie le type de séparateur entre les valeurs du jeu de données du fichier. Les plus communes sont <code>sep = " "</code> pour un espace, <code>sep = ","</code> pour la virgule, <code>sep = "\t"</code> pour la tabulation, et <code>sep = ";"</code> pour le point-virgule. Lors de l’exportation avec <code>write.table()</code>, <code>R</code> met le nom des en-têtes de colonnes, les étiquettes des rangées ainsi que les valeurs de variables catégoriques ou de caractères entre <code>" "</code>. L’argument <code>quote</code> prend la valeur <code>TRUE</code> par défaut (garde les <code>" "</code> dans le fichier). L’importation d’un fichier avec <code>" "</code> dans <code>R</code> se fait sans difficulté, mais peut causer des problèmes dans d’autres logiciels. On peut simplement spécifier <code>quote = FALSE</code> afin de remédier à la situation.</p>
+<p>Une autre option possible est de stocker un objet avec la fonction <code>save()</code>. Alors que <code>write.table()</code> permet d’exporter des fichiers de données (un objet à 2 dimensions), la fonction <code>save()</code> sauvegarde des objets beaucoup plus complexes tout en gardant leur structure intacte.</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="notions-générales.html#cb253-1" tabindex="-1"></a><span class="do">##on crée un tableau</span></span>
+<span id="cb253-2"><a href="notions-générales.html#cb253-2" tabindex="-1"></a>tableau <span class="ot">&lt;-</span> <span class="fu">table</span>(vers<span class="sc">$</span>Vegetation, vers<span class="sc">$</span>Pente, vers<span class="sc">$</span>Humide)</span>
+<span id="cb253-3"><a href="notions-générales.html#cb253-3" tabindex="-1"></a>tableau</span></code></pre></div>
+<pre><code>## , ,  = FALSE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    1 0 2 0 0 0 0 0  0  0
+##   Chaparral 1 0 0 0 0 0 0 0  1  0
+##   Prairie   0 2 2 2 0 0 1 0  0  1
+##   Pre       0 0 0 0 0 0 0 0  0  0
+##   Verger    1 0 0 0 0 0 0 0  0  0
+## 
+## , ,  = TRUE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    0 0 0 0 0 0 0 0  0  0
+##   Chaparral 0 0 0 0 0 0 0 1  1  0
+##   Prairie   0 0 0 0 1 0 0 0  0  0
+##   Pre       2 0 0 0 0 1 0 0  0  0
+##   Verger    0 0 0 0 0 0 0 0  0  0</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="notions-générales.html#cb255-1" tabindex="-1"></a><span class="fu">save</span>(tableau, <span class="at">file =</span> <span class="st">&quot;un.tableau.rdata&quot;</span>)</span></code></pre></div>
+<p>Par exemple, après avoir stocké le résultat d’une analyse dans un objet, il est possible de sauvegarder les résultats dans un fichier. Ce fichier peut-être importé dans <code>R</code> à un moment ultérieur en invoquant la fonction <code>load( )</code>. Chacune de ces deux fonctions nécessite le chemin menant au fichier.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="notions-générales.html#cb256-1" tabindex="-1"></a><span class="do">##dans une session ultérieure, on importe l&#39;objet directement</span></span>
+<span id="cb256-2"><a href="notions-générales.html#cb256-2" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;un.tableau.rdata&quot;</span>)</span>
+<span id="cb256-3"><a href="notions-générales.html#cb256-3" tabindex="-1"></a>tableau</span></code></pre></div>
+<pre><code>## , ,  = FALSE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    1 0 2 0 0 0 0 0  0  0
+##   Chaparral 1 0 0 0 0 0 0 0  1  0
+##   Prairie   0 2 2 2 0 0 1 0  0  1
+##   Pre       0 0 0 0 0 0 0 0  0  0
+##   Verger    1 0 0 0 0 0 0 0  0  0
+## 
+## , ,  = TRUE
+## 
+##            
+##             0 1 2 3 4 5 6 8 10 11
+##   Arable    0 0 0 0 0 0 0 0  0  0
+##   Chaparral 0 0 0 0 0 0 0 1  1  0
+##   Prairie   0 0 0 0 1 0 0 0  0  0
+##   Pre       2 0 0 0 0 1 0 0  0  0
+##   Verger    0 0 0 0 0 0 0 0  0  0</code></pre>
+<p>Nous venons de faire un survol des fonctions de base de <code>R</code>. Nous continuerons à explorer d’autres fonctionnalités de <code>R</code> lors des leçons subséquentes.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Un groupe folk alternatif apprécié par l’auteur. Pour plus d’informations, voir (<a href="http://fr.wikipedia.org/wiki/16_Horsepower" class="uri">http://fr.wikipedia.org/wiki/16_Horsepower</a>).<a href="notions-générales.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Généralement, choisir un nom qui est déjà utilisé par une fonction de <code>R</code> ne causera pas de problèmes, mais c’est préférable d’éviter cette situation.<a href="notions-générales.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Pour les albums lancés en Amérique du Nord avant la désintégration du groupe en 2005.<a href="notions-générales.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="programmation-avec-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

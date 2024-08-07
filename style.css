@@ -13,6 +13,7 @@ pre code {
   white-space: inherit;
 }
 
+/* ------------------------------------------------- */
 /* TWO COLUMNS FOR PRESENTATION PHOTO */
 .column {
   float: left;
@@ -27,13 +28,13 @@ pre code {
   width: 75%;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
+/* ------------------------------------------------- */
 /* EXAMPLE NUMBER*/
 
 body {
@@ -50,8 +51,13 @@ body {
   font-weight: bold;
 }
 
-
+/* ------------------------------------------------- */
 /* INSERT COVER PHOTO */
+
+.body-inner {
+  top: 0px !important;
+}
+
 .book .book-body .page-wrapper .page-inner section.normal pre {
   overflow: auto;
   word-wrap: normal;
@@ -76,6 +82,6 @@ body {
   }
 }
 
-.body-inner {
-  top: 0px !important;
-}
+.book .book-body.fixed {
+    top: 0px !important;
+  }
