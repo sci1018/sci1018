@@ -560,8 +560,9 @@ f(10.1 \vert 0, 10) = 0
 <span id="cb49-3"><a href="théories-1.html#cb49-3" tabindex="-1"></a></span>
 <span id="cb49-4"><a href="théories-1.html#cb49-4" tabindex="-1"></a><span class="do">##on utilise la distribution uniforme</span></span>
 <span id="cb49-5"><a href="théories-1.html#cb49-5" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">400</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
-<pre><code>##  [1] 222 306  49 391 338 285 365 391 357   9 207 163  35 131 239 290  13 190 177 103 385 267   9  15 120 329 140 226 105 246 387  23 284
-## [34] 118 138 221  37 231 114 121  27  42 299 236 205  81 170 301 336 367 332 247 359 313 107 283 299 132  85 235</code></pre>
+<pre><code>##  [1] 222 306  49 391 338 285 365 391 357   9 207 163  35 131 239 290  13 190 177 103 385 267
+## [23]   9  15 120 329 140 226 105 246 387  23 284 118 138 221  37 231 114 121  27  42 299 236
+## [45] 205  81 170 301 336 367 332 247 359 313 107 283 299 132  85 235</code></pre>
 <p>On note ici que nous avons demandé 60 valeurs aléatoires d’une distribution uniforme continue alors que nous en voulons 40, au cas où il y aurait des doublons dans les 40 premières valeurs. De plus, l’utilisation de la fonction <code>round( )</code> permet d’arrondir les valeurs à l’entier le plus près.</p>
 <p>Encore plus simple, nous pourrions utiliser la fonction <code>sample( )</code> qui permet de sélectionner aléatoirement avec ou sans remise. La sélection sans remise consiste à retirer les observations qui ont déja été tirées afin de ne pouvoir les sélectionner à nouveau. La sélection avec remise implique de pouvoir sélectionner la même observation à plusieurs reprises pour constituer l’échantillon. Autrement dit, la même observation peut apparaître plusieurs fois dans l’échantillon.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="théories-1.html#cb51-1" tabindex="-1"></a><span class="do">##on crée une série de 10 observations</span></span>
@@ -850,8 +851,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Module_2/Module_2.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -861,14 +862,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Cours_Stats_R.pdf", "Cours_Stats_R.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"info": false
 });
 });
 </script>

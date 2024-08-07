@@ -548,24 +548,31 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">1.2.2.3</span> Nombres aléatoires<a href="statistiques-de-base-avec-r.html#nombres-aléatoires" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>On peut générer des nombres aléatoires provenant d’une distribution normale avec une moyenne et un écart-type donnés à l’aide de <code>rnorm()</code>. Par exemple, pour générer un échantillon de 30 observations provenant d’une distribution normale avec une moyenne de 5.2 (<span class="math inline">\(\mu = 5.2\)</span>) et un écart-type de 9.3 (<span class="math inline">\(\sigma = 9.3)\)</span>, on procède ainsi:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="statistiques-de-base-avec-r.html#cb33-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1] 12.04284068 13.26850195  8.77995402 -0.55202517  7.98403769 24.85121529 -7.36576314 -4.72836364 -5.18071716  5.18498911 10.94536496
-## [12] -0.10986217  7.00669524 18.53808149 -3.70707714  1.13675770  4.35263018 10.45525387  0.30468606  2.11161829 12.24791376  1.68050363
-## [23] -2.64125851 -4.10369475 11.15992718 17.41030781  1.95330813 -9.87476102 -0.09448393 -1.74151189</code></pre>
+<pre><code>##  [1] 12.04284068 13.26850195  8.77995402 -0.55202517  7.98403769 24.85121529 -7.36576314
+##  [8] -4.72836364 -5.18071716  5.18498911 10.94536496 -0.10986217  7.00669524 18.53808149
+## [15] -3.70707714  1.13675770  4.35263018 10.45525387  0.30468606  2.11161829 12.24791376
+## [22]  1.68050363 -2.64125851 -4.10369475 11.15992718 17.41030781  1.95330813 -9.87476102
+## [29] -0.09448393 -1.74151189</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="statistiques-de-base-avec-r.html#cb35-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb35-2"><a href="statistiques-de-base-avec-r.html#cb35-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]   9.1494799  10.7076459 -14.8222200   7.1264234  -4.8913453  10.7028373  -0.1990781  19.2208851   8.8520433  21.1283704   7.2008167
-## [12]   8.5380873  19.9034475  15.8724201  10.6506585  11.1845811   5.6463851  12.9698363  20.7271897   7.1312676   8.0881254  -7.1491311
-## [23]   9.9087066  27.2799213  12.0459714   1.1704782 -16.4022373   2.2198406  17.9272807  -3.6379224</code></pre>
+<pre><code>##  [1]   9.1494799  10.7076459 -14.8222200   7.1264234  -4.8913453  10.7028373  -0.1990781
+##  [8]  19.2208851   8.8520433  21.1283704   7.2008167   8.5380873  19.9034475  15.8724201
+## [15]  10.6506585  11.1845811   5.6463851  12.9698363  20.7271897   7.1312676   8.0881254
+## [22]  -7.1491311   9.9087066  27.2799213  12.0459714   1.1704782 -16.4022373   2.2198406
+## [29]  17.9272807  -3.6379224</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="statistiques-de-base-avec-r.html#cb37-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb37-2"><a href="statistiques-de-base-avec-r.html#cb37-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]   5.150791  15.116015  20.449486  10.124747   2.037223  13.903319  -1.243738  -1.772488  12.604223  12.712995  -7.985668   2.235736
-## [13]   8.584553   5.544809  10.292515  11.728252  -1.039350   3.603185   5.982318 -10.377938   4.345916  11.399267   6.929838  -7.785228
+<pre><code>##  [1]   5.150791  15.116015  20.449486  10.124747   2.037223  13.903319  -1.243738  -1.772488
+##  [9]  12.604223  12.712995  -7.985668   2.235736   8.584553   5.544809  10.292515  11.728252
+## [17]  -1.039350   3.603185   5.982318 -10.377938   4.345916  11.399267   6.929838  -7.785228
 ## [25]  25.378075  14.087520   5.253238   2.475367  30.433107  -1.761671</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="statistiques-de-base-avec-r.html#cb39-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb39-2"><a href="statistiques-de-base-avec-r.html#cb39-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]   9.3540385  13.4759905  10.9364476  10.1382347  -6.3031085  -2.0516500   7.9410436  17.7288045   7.6679381  -1.0931928   4.0233838
-## [12]   0.7575659   3.8944054  13.9465001  21.0500847  12.5216029   2.0105085  10.4421350   8.4433782   3.3343236  22.4298106 -22.9640789
-## [23]  12.5450496   1.0970054  -4.7385747   1.0216318   8.3868426   6.9447019  19.5061095 -10.1050296</code></pre>
+<pre><code>##  [1]   9.3540385  13.4759905  10.9364476  10.1382347  -6.3031085  -2.0516500   7.9410436
+##  [8]  17.7288045   7.6679381  -1.0931928   4.0233838   0.7575659   3.8944054  13.9465001
+## [15]  21.0500847  12.5216029   2.0105085  10.4421350   8.4433782   3.3343236  22.4298106
+## [22] -22.9640789  12.5450496   1.0970054  -4.7385747   1.0216318   8.3868426   6.9447019
+## [29]  19.5061095 -10.1050296</code></pre>
 <p>On remarque qu’à chaque fois que l’on utilise <code>rnorm()</code>, on obtient un résultat des observations (aléatoires) différentes.</p>
 </div>
 </div>
@@ -607,8 +614,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Module_1/Module_1.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -618,14 +625,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Cours_Stats_R.pdf", "Cours_Stats_R.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"info": false
 });
 });
 </script>

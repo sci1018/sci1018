@@ -831,8 +831,8 @@ t = \frac{\bar{x} - \mu}{SE} = \frac{-0.608 - 0}{0.633/\sqrt{12}} = -3.329
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="théories-2.html#cb120-1" tabindex="-1"></a><span class="do">##on crée un vecteur avec les observations</span></span>
 <span id="cb120-2"><a href="théories-2.html#cb120-2" tabindex="-1"></a>residus <span class="ot">&lt;-</span> poids <span class="sc">-</span> <span class="fu">mean</span>(poids)</span>
 <span id="cb120-3"><a href="théories-2.html#cb120-3" tabindex="-1"></a>residus</span></code></pre></div>
-<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333  0.508333333  0.608333333  0.008333333 -0.491666667
-## [11] -0.591666667 -0.191666667</code></pre>
+<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333
+##  [7]  0.508333333  0.608333333  0.008333333 -0.491666667 -0.591666667 -0.191666667</code></pre>
 <p>La vérification de la normalité peut se faire à l’aide de méthodes formelles telles que les tests d’Anderson-Darling, de Cramér-von Mises, ou de Shapiro-Wilk. L’hypothèse nulle de ces tests correspond au respect de la supposition de normalité (<span class="math inline">\(H_0\)</span>: la normalité est respectée). Le rejet de cette hypothèse indique que les résidus ne suivent pas la distribution normale. Plusieurs tests de normalité sont disponibles dans dans le package (banque de fonctions) . Étant donné que ce package n’est pas distribué avec l’installation de base de , nous devons l’installer avant de pouvoir l’utiliser. Le document <em>Introduction à R - les packages</em> illustre toutes les étapes pour y arriver.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="théories-2.html#cb122-1" tabindex="-1"></a><span class="do">##on charge le package</span></span>
 <span id="cb122-2"><a href="théories-2.html#cb122-2" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
@@ -947,8 +947,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/Module_3/Module_3.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -958,14 +958,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Cours_Stats_R.pdf", "Cours_Stats_R.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"info": false
 });
 });
 </script>

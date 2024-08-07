@@ -4,14 +4,13 @@ bookdown::gitbook:
   split_by: section
   highlight: tango
   config:
+    info: false
     toc:
       collapse: subsection
       before: |
         <li><a href="./">Statistiques avec R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-    download: ["pdf", "epub"]
     sharing:
       github: yes
       facebook: no

@@ -13,7 +13,7 @@ pre code {
   white-space: inherit;
 }
 
-/* Two unequal columns for presentation section */
+/* TWO COLUMNS FOR PRESENTATION PHOTO */
 .column {
   float: left;
   padding: 10px;
@@ -34,17 +34,48 @@ pre code {
   clear: both;
 }
 
+/* EXAMPLE NUMBER*/
+
 body {
-  counter-reset: exemple; /* Initialize the example counter */
+  counter-reset: exemple;
 }
 
 .exemple {
-  counter-increment: exemple; /* Increment the example counter for each .exemple block */
+  counter-increment: exemple; 
   margin-bottom: 1em;
 }
 
 .exemple::before {
-  content: "Exemple " attr(section) "." counter(exemple) ": "; /* Display the hierarchical example number */
+  content: "Exemple " attr(section) "." counter(exemple) ": "; 
   font-weight: bold;
 }
 
+
+/* INSERT COVER PHOTO */
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  overflow: auto;
+  word-wrap: normal;
+   margin: 0 0 0 0;
+  padding: .85em 1em;
+}
+
+.book .book-header {
+  position: initial !important;
+  height: 200px !important;
+  background-image: url(images/cover.png) !important;
+  background-size: cover !important;
+  background-position: bottom !important;
+}
+
+@media only screen and (max-width: 968px) {
+  .book .book-header {
+    position: initial !important;
+    height: 250px !important;
+    background-size: cover !important;
+    background-position: bottom !important;
+  }
+}
+
+.body-inner {
+  top: 0px !important;
+}
