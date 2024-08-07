@@ -16,6 +16,7 @@ rmd_files:
   - Module_6/Module_6.Rmd
   - Module_7/Module_7.Rmd
   - Module_8/Module_8.Rmd
+  - Module_9/Module_9.Rmd
 rmd_subdir: 
   - Presentation/
   - Module_1/
@@ -26,3 +27,4 @@ rmd_subdir:
   - Module_6/
   - Module_7/
   - Module_8/
+  - Module_9/

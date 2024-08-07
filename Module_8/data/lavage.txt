@@ -1,0 +1,16 @@
+Blancheur Detergent Bloc
+1 4.59 Controle 1
+2 8.15 Type1 1
+3 8.06 Type2 1
+4 7.38 Type1 2
+5 4.88 Controle 2
+6 5.85 Type2 2
+7 5.89 Type1 3
+8 3.29 Controle 3
+9 2.74 Type2 3
+10 5.46 Controle 4
+11 8.16 Type2 4
+12 8.15 Type1 4
+13 4.08 Type1 5
+14 0.00 Controle 5
+15 4.46 Type2 5

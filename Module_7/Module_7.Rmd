@@ -1205,3 +1205,21 @@ On remarque qu'il y a une inversion des différences entre les groupes "sec" et 
 Dans ce texte, vous vous êtes familiarisés avec l'ANOVA à deux critères avec plusieurs répétitions par groupe aux traitements combinés, et particulièrement avec les concepts d'interaction et d'additivité. Trois exemples ont été présentés afin d'illustrer les différentes étapes de l'analyse, de la vérification des suppositions, de l'interprétation et de la présentation graphique des résultats. Nous avons vu qu'en présence d'une interaction entre deux facteurs, on ne peut pas interpréter les effets principaux, car l'effet d'un facteur sur la variable réponse dépend du niveau de l'autre. On dit dans ce cas que les effets ne sont pas additifs. C'est justement ce qu'illustre le dernier exemple sur l'activité bactérienne: l'augmentation de la concentration d'antibiotique n'avait pas le même effet selon le niveau d'humidité du milieu. Le concept d'interaction est important et il est souvent associé à des hypothèses intéressantes en sciences. Nous vous encourageons à revoir les exemples afin de bien saisir la notion d'interaction, car nous l'étudierons à nouveau dans les leçons à venir.
 
 ## Laboratoire
+
+### Question 1
+
+On effectue une expérience pour déterminer si la longueur en cm chez une espèce de poisson varie selon le sexe ou le pH de l'eau. Importez le fichier `Longueur_poisson.xls` pour voir les données^[Si `MS Excel` n'est pas installé sur votre ordinateur, il est possible d'importer le fichier à l'aide des suites bureautiques libres `OpenOffice` [http://www.openoffice.org/fr/Produits/](http://www.openoffice.org/fr/Produits/) ou `LibreOffice` [http://fr.libreoffice.org/](http://fr.libreoffice.org/).].
+
+**a.** Déterminez le nombre de répétitions (*replicates*) pour chaque combinaison des deux facteurs. Veuillez interpréter les résultats obtenus avec `RStudio` ou `R Commander`.  
+
+ 
+**b.** Réalisez une ANOVA à deux critères (fournir le tableau de l’ANOVA) et effectuez tous les diagnostics permettant d'évaluer la pertinence de votre analyse. Que pouvez-vous conclure?  
+
+  
+**c.** Lorsqu'il est approprié de le faire, utilisez un test de Tukey (fournir l’*output*) afin d'identifier les différences entre les moyennes. Que pouvez-vous conclure?  
+
+ 
+**d.** Illustrez vos conclusions de l'étude à l'aide d'un graphique.  
+
+ 
+**e.** Les effets sont-ils additifs?  

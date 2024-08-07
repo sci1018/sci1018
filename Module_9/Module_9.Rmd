@@ -1,0 +1,202 @@
+# Élaboration et optimisation de plans d'échantillonnage
+
+La leçon précédente a illustré les concepts d'effets fixes et d'effets aléatoires ainsi que de modèle mixte. L'ANOVA en blocs complets aléatoires a été présentée comme étant le cas le plus simple de modèle mixte et comme l'extension du test $t$ pour les données appariées. Le dispositif en blocs complets aléatoires comporte des avantages importants, notamment sur le plan logistique comparé aux dispositifs complètement aléatoires (p. ex., ANOVA à un critère avec répétitions, ANOVA à deux critères avec répétitions). Dans la présente leçon, nous discuterons de façon plus générale de l'élaboration de dispositifs expérimentaux. Nous fournirons plusieurs conseils afin d'arriver à des conclusions solides.
+
+## Théories
+
+### Plans d'échantillonnage 
+
+Dans ce texte, nous parcourrons différents éléments qui sont importants dans l'élaboration de **plans d'échantillonnage** aussi appelés **plans d'expérience** ou **dispositifs expérimentaux** (*experimental design*, *sampling design*) afin de tirer le maximum d'information de votre expérience et d'arriver à des conclusions solides. Avant d'aller plus loin, nous allons définir quelques termes qui reviendront au cours de la leçon. Certains de ces termes ont été présentés dans des leçons antérieures, mais nous tenons à les rappeler ici.
+
+#### Expérience vs étude d'observation
+
+Une **étude d'observation** consiste à prendre des mesures sur des unités d'échantillonnage sélectionnées aléatoirement, mais où les traitements n'ont pas nécessairement été attribués aléatoirement. Par exemple, dans une étude sur les impacts de la pauvreté et des inégalités sociales sur la santé des populations on cherche à déterminer l’effet de la classe socio-économique sur les risques d’avoir une certaine maladie. Bien qu’on puisse sélectionner aléatoirement des personnes appartenant à chacune des classes qui nous intéressent, nous ne pouvons pas assigner aléatoirement une classe aux personnes participant à l'étude. Les résultats ne sont pas aussi clairs que ceux d'une vraie **expérience** aussi appelée **expérience contrôlée**. En effet, il est difficile de contrôler plusieurs facteurs dans une étude d'observation. 
+
+À l'opposé, l'expérience consiste à prendre des mesures sur des unités expérimentales sélectionnées aléatoirement, auxquelles on a assigné aléatoirement un certain traitement. Ce genre de dispositif expérimental est celui que nous avons considéré dans le cas de l'ANOVA à un et à deux critères, par exemple. Dans l'expérience, nous contrôlons tous les facteurs et nous ne faisons varier que ceux qui sont d'intérêt, ce qui nous permet d'arriver à des conclusions solides. Bien que l'expérience soit souvent l'approche idéale, elle manque parfois de réalisme, et l'étude d'observation peut procurer des informations supplémentaires à propos de l'effet potentiel de certaines variables sur le système d'intérêt.
+
+#### Témoin
+
+Le **témoin** ou **contrôle** (*control*) d'une expérience est un traitement qui consiste en une absence de traitement. Autrement dit, c'est un traitement qui présente des conditions de référence. Par exemple, dans une expérience qui compare l'effet de deux médicaments sur des patients, on pourrait considérer un troisième groupe de patients auxquels on n'administre pas de médicament. C'est le goupe témoin ou le témoin. L'utilisation d'un témoin est primordiale afin d'obtenir une moyenne de référence que l'on peut comparer aux moyennes de groupes avec traitements. Le témoin contrôle les changements temporaux ou les effets associés à des procédures ou à des manipulations liées à certains traitements.  
+
+#### Placébo 
+
+Le **placébo** (*placebo*) est un traitement témoin qui consiste à administrer une substance neutre à des individus afin de contrôler l'effet de la manipulation. Par exemple, imaginons une expérience visant à déterminer l'effet d'un nouveau médicament. On administre le médicament sous forme de comprimé à un premier groupe tandis que le deuxième groupe reçoit un comprimé de sucre (placébo) et un troisième groupe ne subit aucun traitement (témoin). Comme autre exemple, dans une expérience qui vise à étudier l'activité d'animaux en présence de prédateurs, on soumet un premier groupe d'animaux à la présence d'un prédateur vivant maintenu dans un enclos. On soumet un deuxième groupe à la présence d'un prédateur empaillé (placébo), tandis qu'un troisième groupe n'est exposé à aucun prédateur (témoin). 
+
+Le placébo est important lorsqu'il existe un effet de manipulation (p. ex., administrer un comprimé, la présence d'un prédateur immobile dans l'enclos). La comparaison d'un groupe placébo (avec manipulation) à un groupe témoin (sans manipulation) permet de quantifier l'effet de la manipulation sur les individus utilisés dans l'expérience. La comparaison d'un groupe placébo à un groupe qui a reçu un traitement permet de conclure qu'il y a bel et bien un effet du traitement en tenant compte de l'effet de manipulation.
+
+#### Prise de données en aveugle
+
+Un moyen parfois utilisé afin d'éviter les biais associé à la prise de données est la **prise de données en aveugle** aussi appelée **prise de données à l'insu** (*blinding*). Pour ce faire, les personnes qui récoltent les données ou les sujets de l'expérience ignorent le traitement qui a été appliqué. Ceci permet d'éviter le cas où un technicien trop zélé introduit consciemment ou inconsciemment un biais dans les données en favorisant un des traitements. Le même phénomène peut survenir lorsqu'un patient sachant qu'il reçoit un certain traitement influence sa réponse. Autrement dit, un patient à qui on annonce qu'il reçoit le médicament peut avoir une réponse plus forte au traitement qu'un patient qui ne connaît pas la nature du traitement. La prise de données en aveugle peut régler ce problème. La **prise de données en double aveugle** ou **prise de données à double insu** (*double blinding*) implique que les personnes récoltant les données ainsi que les participants à l'expérience ignorent les traitements qui ont été administrés.
+
+#### Répétition, randomisation et répartition spatiale
+
+La **répétition** des traitements ou des combinaisons des traitements contrôle la variabilité due au hasard aussi appelée **stochasticité** lors d'une expérience. En d'autres mots, la présence de répétitions peut protéger contre la présence d'éléments perturbateurs qui agissent sur les unités expérimentales (p. ex., un arbre tombe sur un des bassins contenant des têtards dans une expérience sur la compétition, un prédateur se nourrit des animaux dans un des enclos d'une expérience sur la sélection d'habitat, un patient testant un nouveau médicament contracte la grippe, une voiture a un bris mécanique affectant sa consommation d'essence alors qu'on testait sa performance en fonction de différents types d'essence, etc.): si certaines des unités sont contaminées, celles qui restent pourront tout de même être utilisées pour mener à bien l'expérience. 
+
+La **randomisation** consiste en l'application d'un processus aléatoire sur l'attribution d'une condition aux unités d'échantillonnage (voir la leçon 2). Elle contrôle le biais potentiel de la sélection, de l'emplacement, et de l'attribution des traitements aux unités expérimentales. La randomisation aide à assurer l'indépendance des observations (ou des erreurs), une condition essentielle à l'utilisation de plusieurs analyses statistiques. 
+
+La **répartition spatiale** ou **temporelle** (selon le cas) contrôle la variation spatiale ou temporelle des propriétés des unités expérimentales. Autrement dit, les conditions de l'emplacement où se trouve une unité expérimentale peuvent être très différentes des conditions à un autre emplacement. En disposant les parcelles à différents endroits sur le site d'étude, on obtient une meilleure estimation de la variabilité naturelle des unités expérimentales. Ceci permet de tirer des conclusions plus générales. De plus, établir les unités expérimentales à une distance suffisante les unes des autres assure aussi l'indépendance des observations. Le prochain exemple illustre certains problèmes liés à la répétition, la randomisation et la répartition spatiale qui peuvent survenir lors de l'élaboration d'un plan d'échantillonnage.
+
+
+---
+
+:::{.exemple section=9}
+On s’intéresse à l'effet des arbres sur les îlots de chaleurs en ville lors des périodes de canicule. On émet l’hypothèse scientifique que la température est plus basse dans les zones boisées que dans les zones adjacentes. Pour tester notre hypothèse, on attend une canicule et on mesure la température moyenne de l'air au milieu d'une zone boisée et à 50 m à l'extérieur de cette même zone. Si chaque thermomètre fournit une seule mesure de température, le nombre de répétitions sera insuffisant et on ne pourra pas tester d’hypothèse. On devra donc modifier le plan d’échantillonnage afin d’incorporer plus de répétitions.  
+ 
+On reprend l’expérience, cette fois-ci en augmentant la répétition et en disposant 10 thermomètres dans la même zone boisée et 10 à l'extérieur de cette zone au même endroit. Malgré la présence de répétitions dans la zone boisée et son extérieur, un problème est toujours évident : le dispositif modifié permettra uniquement de déterminer s’il y a des différences entre l'intérieur et l'extérieur de la zone boisée à cet endroit précis de la ville. On ne pourra pas tirer de conclusion sur la ville en entier. En effet, les conditions (p. ex., couloir de vent, zone très bétonnée) à un point donné de la ville peuvent être différentes de celles à d’autres endroits de la même ville. Afin de pouvoir décrire l'effet des arbres sur les îlots de chaleur pour l'ensemble de la ville, il est nécessaire de répartir les thermomètres à différents endroits de la ville (c.-à-d., répartition spatiale) de façon aléatoire afin d’obtenir une meilleure estimation de la variabilité de cet effet.  
+
+Dans le but d’améliorer la répartition spatiale, on reprend (encore) l’expérience en disposant 10 thermomètres au milieu d'une zone boisée et 10 thermomètres à l'extérieur d'une seconde zone boisée. Avec un tel dispositif, il sera impossible de distinguer l’effet des arbres de celui de l’effet de l’emplacement des thermomètres dans la ville. En d’autres mots, l’emplacement dans la ville et « intérieur vs. extérieur de la zone boisée » seront deux variables confondues l’une avec l’autre. Il se peut que les conditions ne soient pas homogènes entre les deux emplacements, ce qui rendra difficile la comparaison. Si on trouve une différence, il n’y aucun moyen de prouver que cela est dû uniquement à la présence d'arbres, l’emplacement dans la ville pourrait aussi expliquer cette différence. La solution ultime (et le meilleur plan d’échantillonnage) consistera à disposer chaque thermomètre à un endroit de la ville différent (déterminé aléatoirement) à l'intérieur ou l'extérieur d'une zone boisée, afin d’obtenir 20 thermomètres à 20 endroits différents de la ville (10 thermomètre à l'intérieur de 10 zones boisées et 10 thermomètres à l'extérieur de 10 autres zones boisées), ce qui correspondrait à un dispositif complètement aléatoire. Contrairement aux plans d’échantillonnage présentés plus haut, cette dernière approche permettra d’obtenir une mesure de la température à l'intérieur ou à l'extérieur des zones boisées sans ambiguïté.  
+
+Dans cet exemple, aucun témoin n’a été présenté. L’inclusion d’un témoin améliorerait potentiellement le dispositif. Un témoin dans le contexte de cette expérience pourrait s’avérer être un groupe de thermomètre à la limite de la ville où les îlots de chaleurs sont moins importants, ou très en hauteur où il n'y a pas d'effet des arbres, ni du béton accumulant la chaleur. Le cas échéant, les thermomètres témoins devraient être répartis aléatoirement aux limites de la ville ou dans les hauteurs. Ceci permettrait de tester efficacement l’effet des arbres sur la température de l'air en ville en contrôlant la variabilité des endroits dans cette ville (répartition spatiale), et en intégrant la randomisation et la répétition. Un dispositif alternatif consisterait à utiliser des blocs complets aléatoires en sélectionnant aléatoirement 10 endroits dans la ville et en disposant un trio de thermomètres à chaque endroit (1 thermomètre à l'intérieur de la zone boisée, 1 thermomètre à l'extérieur et 1 thermomètre très en hauteur).
+:::
+
+---
+
+### Nos meilleurs alliés dans l'élaboration d'un plan d'échantillonnage
+
+Lors de l'élaboration d'un plan d'échantillonnage, nos meilleurs alliés sont :  
+
+-  une hypothèse scientifique claire et bien définie;
+-  l'échantillonnage aléatoire des observations parmi la population statistique d'intérêt;
+-  l'assignation aléatoire des traitements aux unités expérimentales;
+-  l'utilisation de témoins;
+-  l'utilisation de blocs (complets aléatoires) lorsque le milieu est hétérogène;
+-  la stratification lorsque des conditions différentes sont présentes dans la population (p. ex., différents habitats, différentes régions géographiques, différentes conditions économiques, différents accès à des services publics, différents historiques médicaux);
+-  l'utilisation de variables additionnelles (p. ex., pH et type de sol dans des études environnementales, âge du patient dans une étude médicale, revenu familiale dans une étude sociologique) si les conditions hétérogènes sont susceptibles d'influencer la variable réponse et qu'on veut quantifier cet effet;
+-  la répétition, la répétition et la répétition (une bonne taille d'échantillon peut pallier plusieurs problèmes);
+-  l'équilibre du nombre d'unités expérimentales par traitement (dispositif équilibré).
+
+Avant de réaliser une expérience et de récolter les données, il est très important de répondre à certaines questions, notamment :
+
+-  Quelle est l'hypothèse scientifique à tester?
+-  Quel est le meilleur dispositif qui permettra de tester simplement et efficacement l'hypothèse?
+-  Est-ce une expérience (avec manipulations) ou une étude d'observation (sans manipulations)?
+-  Quelle est la variable réponse et quelles sont les variables explicatives?
+-  Le dispositif que j'ai choisi est-il un dispositif complètement aléatoire ou y a-t-il des unités expérimentales avec une structure particulière (p. ex., observations groupées entre elles)?
+-  Y a-t-il de l'hétérogénéité environnementale ou temporelle? Le cas échéant, comment cette hétérogénéité a-t-elle été prise en compte ou mesurée?
+-  Les traitements ont-ils été attribués aléatoirement aux unités expérimentales?
+-  Mon dispositif est-il balancé (équilibré) et ai-je suffisamment de répétitions?
+-  Quelle analyse statistique permettra de tester le plus simplement et efficacement l'hypothèse scientifique?
+-  Pour l'analyse statistique choisie, quelles sont les suppositions à respecter afin que les conclusions soient valides?
+-  Mes observations sont-elles réellement indépendantes? Si elles ne le sont pas, comment l'analyse tient-elle compte de la non-indépendance des données?
+-  Y a-t-il des variables confondantes (*counfounding variable*, *counfounding effect*) qui rendront potentiellement difficile l'interprétation des résultats? On entend par variable confondante, une variable qui est intimement liée à une autre et qui rend difficile voire impossible de distinguer l'effet des deux variables sur la variable réponse. Par exemple, considérons une expérience où l'on a trois sites auxquels on assigne un traitement différent à chacun. Si on trouve une différence entre les traitements au stade de l'analyse, cette différence peut aussi bien être due à l'effet du traitement ou à l'effet du site car chaque site a reçu un traitement différent. On dira donc que l'effet du traitement et du site sont confondus. Sans plus d'information (répétitions des sites) ou l'utilisation de blocs (p. ex., l'application de tous les traitements à chaque site), on ne peut rien conclure et on aura dépensé inutilement du temps et de l'argent.
+
+
+### Problèmes associés à certains plan d'échantillonnage
+
+#### L'absence de réelles répétitions : la pseudoréplication
+
+Au milieu des années 1980, un terme est apparu pour désigner des problèmes liés à la répétition de traitements d'une expérience. Hurlbert (1984^[Hurlbert, S. H. 1984. Pseudoreplication and the design of ecological field experiments. Ecological Monographs 54:187-211.]) a introduit le terme **pseudoréplication** dans un article qui a été énormément cité en écologie. En gros, la pseudoréplication désigne une expérience mal élaborée qui ne possède pas de réelles répétitions. Trois différents types de pseudoréplication ont été présentés dans l'article original, soit la pseudoréplication simple, la pseudoréplication sacrificielle et la pseudoréplication temporelle. Nous décrivons chaque type dans les prochaines lignes.
+
+##### Pseudoréplication simple
+
+La **pseudoréplication simple** (*simple pseudoreplication*) est le cas où on a plusieurs observations, mais seulement une vraie unité expérimentale par traitement (absence de réelles répétitions). On peut avoir plusieurs mesures dans deux parcelles, mais les observations ne sont pas indépendantes. Par exemple, si on s’intéresse à l’effet d'interventions par une (ou un) orthopédagogue pour la réussite d'élèves ayant des difficultés d'apprentissage, on pourrait engager une (ou un) orthopédagogue pour aider les élèves en difficulté dans une école et comparer avec les élèves dans une école sans orthopédagogue. On pourrait sélectionner aléatoirement des élèves en difficulté dans chaque école et comparer leur réussite scolaire. Même avec 50 élèves choisis aléatoirement dans chaque école, on a seulement deux réelles unités expérimentales : les deux écoles. Effectivement, les élèves dans la même école ne sont pas indépendants. Si on détecte une différence entre les deux écoles, il se peut que ce soit dû à une différence des caractéristiques de ces deux écoles (quartier riche ou défavorisé, autre aide à l'apprentissage, meilleurs enseignants) ou à l'aide amenée par l'orthopédagogue : les deux effets sont confondus.
+
+Dans cet exemple, il est nécessaire d’augmenter le nombre d’unités expérimentales plutôt que les observations sur une même unité. Pour ce faire, il faut sélectionner aléatoirement les élèves en difficulté d'apprentissage dans différentes écoles et assigner aléatoirement le traitement (interventions d'un orthopédagogue ou non) à chacun pour obtenir un dispositif complètement aléatoire (1 élève dans 1 école = 1 unité expérimentale). Si ceci est logistiquement impossible, on pourrait sélectionner aléatoirement 8 écoles assez près les unes des autres pour permettre les interventions du même orthopédagogue, en choisissant aléatoirement quelles écoles auraient droit à ses services et en suivant plusieurs élèves dans chaque école. Le cas échéant, on aurait 8 unités expérimentales puisque les élèves provenant de la même école ne seraient pas considérés comme indépendants. Toutefois, avec cette structure, il faudrait utiliser les moyennes de chaque école dans les analyses ou utiliser une analyse qui peut tenir compte de structures plus complexes\footnote{Les analyses de dispositifs plus complexes ne feront pas l'objet de ce cours.}.
+
+##### Pseudoréplication sacrificielle
+
+La **pseudoréplication sacrificielle** (*sacrificial pseudoreplication*) survient lorsqu'on a plusieurs observations sur les mêmes unités expérimentales et que l'on combine ces observations dans la même analyse sans tenir compte de leur origine. Ici, nous avons une répétition des traitements (plusieurs unités par traitement), mais on considère à tort que chaque observation est une vraie unité expérimentale. Cette erreur est souvent justifiée par des énoncés tels que "Les sites ne différaient pas entre eux et nous avons combiné les données de chacun dans la même analyse ..." La réalité, en milieu naturel et dans d'autres systèmes complexes, est qu'il est pratiquement impossible d'observer deux sites identiques et il est incorrect de simplement regrouper toutes les observations ensembles. Généralement, les observations qui proviennent d'une même unité expérimentale (p. ex., phénomènes observés sur un même site ou un même quadrat, mesures prises sur un même arbre, les personnes d'une même famille, ou les élèves d'une même école) sont plus similaires entre elles que deux observations provenant de deux unités expérimentales différentes. Comme solution, on peut appliquer les mêmes remèdes utilisés pour faire face à la pseudoréplication simple, soit augmenter le nombre de réelles unités expérimentales, travailler sur les moyennes des unités expérimentales (qui elles sont indépendantes les unes des autres), ou encore utiliser une analyse statistique qui permet d'incorporer les observations répétées dans chaque unité expérimentale.
+
+##### Pseudoréplication temporelle
+
+La **pseudoréplication temporelle** (*temporal pseudoreplication*) se produit lorsqu'on prend des mesures successives sur les mêmes unités expérimentales étalées dans le temps, et que l'on considère ces mesures à différentes périodes comme des observations indépendantes. Les observations qui proviennent d'une même unité expérimentale à différentes périodes ne sont pas indépendantes. Par exemple, des mesures de l'état de santé du même patient à travers le temps ou des mesures de l'abondance d'une espèce à un site, mais à différentes périodes, ne constituent pas des observations indépendantes. Une solution à ce problème consiste à analyser chaque période séparément ou à utiliser une analyse qui tient compte des mesures répétées (p. ex., ANOVA pour mesures répétées, modèles mixtes).
+
+#### Contrôler la variabilité temporelle
+
+Un type particulier de dispositif expérimental concerne l'application de traitements dans le temps, et la prise de mesure typiquement **avant et après** le traitement (*before and after controlled impact design (BACI)*). Par exemple, dans une expérience sur l'effet des tentes à faible taux d'oxygène sur la performance d'athlète de haut niveau (simulation d'altitude), on sélectionne aléatoirement 12 athlètes et on mesure leurs taux sanguins en globules rouges. On applique ensuite l'un des deux traitements suivants : un mois à dormir dans une tente avec une concentration d'oxygène X et un mois avec une concentration Y. Bien que chaque athlète puisse agir comme son propre témoin (conditions avant *vs* après), l'application d'un traitement dans le temps présente un problème: il est impossible de distinguer l'effet du traitement d'un effet temporel si toutes les unités reçoivent un traitement. 
+
+Toute expérience ou étude d'observation s'échelonnant sur le temps nécessite un témoin temporel. En d'autres mots, on a besoin d'unités expérimentales qui n'ont reçu aucun traitement dans le temps afin de procurer une mesure de référence temporelle (c.-à-d., ce qui se passe en l'absence de traitement entre les périodes de mesures). 
+Dans l'exemple ci-haut sur la performance des athlètes, il serait important d'inclure un traitement témoin (tente avec une concentration normale d'oxygène), afin d'obtenir quatre répétitions de chaque traitement. Cette modification du dispositif expérimental permettrait de distinguer les différences avant et après l'application de chaque traitement, en tenant compte des différences dues uniquement au temps écoulé entre deux mesures (le témoin avant et après).
+
+#### Sources de confusion
+
+Lorsqu'on effectue une expérience ou une étude d'observation, certains éléments peuvent influencer la qualité des conclusions, ce que Hurlbert (1984) désigna comme des **sources de confusion**. Parmi celles-ci, on note les changements temporels\index{sources de confusion!changements temporels} qui surviennent pendant l'expérience modifiant les propriétés des unités expérimentales. L'utilisation de témoins permet de pallier ce problème. Les **effets liés aux procédures**\index{sources de confusion!effets liés aux procédures}, comme la manipulation d'animaux ou la perturbation du sol lors de la prise d'une mesure, sont d'autres sources de confusion. Ici encore, l'utilisation de témoins atténue ce problème. Le **biais associé à l'expérimentateur**\index{sources de confusion!biais associé à l'expérimentateur} est une autre source de confusion qui peut se manifester, par exemple, lorsqu'on est plus minutieux dans la prise de mesure de certains traitements.  Cette dernière source de confusion peut être minimisée en assignant aléatoirement les traitements aux unités expérimentales, en randomisant la séquence de prise de mesure, ou en prenant les mesures en aveugle (p. ex., le traitement est inconnu de la personne prenant la mesure). 
+
+La **variabilité de l'expérimentateur** (erreur aléatoire) est une source de confusion associée naturellement à la prise de mesure en tant que telle. On peut réduire cette source de confusion en augmentant le nombre de répétitions. La **variabilité des unités expérimentales** est une autre source de confusion découlant du fait que chaque unité expérimentale a des caractéristiques qui lui sont propres et que cette variabilité reflète la variabilité à l'intérieur de la population. La répétition des traitements, une bonne répartition spatiale des unités expérimentales, ainsi que la récolte de variables secondaires (p. ex., pH, humidité) pour décrire plus directement les caractéristiques de chaque unité expérimentale peuvent prévenir les problèmes associés à cette source de confusion. 
+
+Certaines sources de confusion sont difficiles ou impossibles à contrôler, notamment l'effet d'**événements aléatoires** sur l'expérience. Par exemple, lors d'une expérience sur le terrain, le passage d'un ouragan sur les sites d'études peut modifier la variable réponse que l'on mesurera plus tard. Il en va de même avec les pannes électriques qui mettent hors service les systèmes de filtration ou d'éclairage dans des chambres de croissance ou des aquariums. Si l'événement influence toutes les unités expérimentales, le problème est moins grave. Toutefois, si seulement quelques unités expérimentales sont touchées, les observations provenant des unités affectées seront difficiles à interpréter et à comparer au reste des observations: à la limite, certaines données devront être écartées de l'analyse. Le meilleur moyen de réduire cette source de confusion est d'augmenter le nombre de répétitions et de maintenir une bonne répartition spatiale des unités expérimentales. 
+
+Malgré toutes ces précautions, certaines sources de confusion demeurent problématiques, comme le cas d'un **agent extérieur qui intervient délibérément** sur les unités expérimentales d'un traitement particulier et épargne celles des autres traitements. Pour illustrer, considérons le cas d'un site d'étude sur lequel on a disposé des enclos d'animaux où l'on estime la survie de petits mammifères selon différentes densités (nombre d'individus/m$^2$). Ce site est fréquenté par un prédateur qui vise spécifiquement les enclos d'animaux avec les plus grandes densités. Si cette prédation passe inaperçue, on arrivera à des conclusions erronées. Un mauvais plan d'échantillonnage, comme la présence d'effets confondants ou un gradient qui n'a pas été mesuré, correspond aussi à une source de confusion qui ne permet pas de tester de façon efficace une hypothèse scientifique. Dans de tels cas, le facteur qui agit délibérément sur les unités expérimentales, c'est l'expérimentateur. Il faut donc rester vigilant dans l'élaboration des plans d'échantillonnage.
+
+### Conclusion
+
+Dans ce texte, nous avons vu plusieurs éléments importants à considérer lors de l'élaboration de plans d'échantillonnage, certains problèmes incluant la pseudoréplication et des sources de confusion atténuant ou invalidant les conclusions, ainsi que des solutions. La planification du plan d'échantillonnage est la partie la plus importante de votre projet et requiert une bonne réflexion. Cette étape détermine si l'analyse sera simple ou plus complexe. Un bon dispositif permet de tester l'hypothèse scientifique simplement et facilite énormément l'analyse. On peut pallier certains problèmes de dispositif expérimental avec des analyses sophistiquées, mais, dans certains cas, l'analyse des données s'avère impossible. Avec une analyse inappropriée réalisée à partir d'un plan d'échantillonnage solide, on peut toujours réanalyser les données, mais avec un mauvais dispositif, il faut refaire l'expérience.
+
+## Laboratoire
+
+### Instructions
+
+Ce laboratoire est obligatoire et s'échelonne sur deux leçons.  Ce laboratoire devra être remis selon les échéanciers de votre feuille de route. Le but de ce laboratoire est d'élaborer un plan d'échantillonnage afin de tester une hypothèse scientifique développée à partir de l'un des thèmes que vous trouverez ci-dessous. Vous devrez choisir un thème, formuler une hypothèse à tester, élaborer un plan d'échantillonnage pour la collecte de données réelles, choisir l'analyse statistique appropriée à partir de celles présentées dans le cours et réaliser cette analyse statistique sur les données. 
+
+**Prenez note que vous devez vous-même collecter ces données. Elles ne peuvent donc pas être simulées ou provenir de données ayant déjà fait l'objet d'analyses statistiques.**
+
+Votre laboratoire devra obligatoirement inclure les éléments suivants :
+
+1. Introduction: quelques lignes sur l'hypothèse scientifique que vous désirez tester et l'hypothèse statistique que vous utiliserez.
+2. Méthodes: une description détaillée de votre plan d'échantillonnage permettant de répéter l'expérience exactement comme vous l'avez exécutée (matériel utilisé, identification des unités expérimentales, nombre de répétitions, identification de la variable réponse et de son unité de mesure, le ou les facteurs de l'expérience).
+3. Analyse: une justification du ou des tests statistiques que vous avez choisis pour analyser les données et une énumération des suppositions de cette analyse.
+4. Un tableau présentant les données brutes que vous avez récoltées.
+5. Le jeu de données en format texte sauvegardé dans un fichier séparé, tel que vous avez importé dans R pour réaliser votre analyse.
+6. Résultats: l'exécution de l'analyse, la vérification des suppositions, le `summary( )` de votre analyse si pertinent.
+7. Graphiques: un ou deux graphiques illustrant les conclusions de votre étude.
+8. Discussion: quelques lignes sur l'interprétation des résultats en relation avec votre hypothèse scientifique de départ.
+
+  Votre laboratoire doit comprendre **tous** les éléments identifiés plus haut, ainsi que le code R utilisé pour importer les données, exécuter l'analyse, vérifier les hypothèse, et réaliser les graphiques tels qu'ils apparaissent dans votre laboratoire. Afin de bien distinguer le code R et les sorties (*output*) du reste du texte, vous devez utiliser `une police monospace comme celle-ci` qui attribue le même espace à tous les caractères (p. ex., police de type `Courier New`) -- ceci préserve l'alignement des éléments des sorties. La structure du laboratoire à remettre doit s'inspirer de la forme des solutions des autoévaluations.
+
+### Suggestions de thèmes à étudier
+
+1. La germination de graines (quelques possibilités ou d'autres si vous êtes inspirés)^[Le temps de germination de certaines espèces peut être relativement long. Assurez-vous que le calendrier du cours vous permet de réaliser votre expérience dans les délais prescrits.] :
+  -  le temps de germination de trois espèces (p. ex., haricots, lentilles, luzerne, oignons, radis);
+  -  le succès de germination d'une espèce à pH neutre (eau distillée) et à pH acide (gouttes de jus de citron);
+  -  le succès de germination à différentes températures ($4\,^{\circ}\mathrm{C}$) et température de la pièce ($20\,^{\circ}\mathrm{C}$);
+  -  le succès de germination dans différents substrats (p. ex., terre noire, papier absorbant, aucun substrat);
+  -  la longueur des racines de graines germées dans différents substrats. 
+  \end{itemize}
+
+2. La moisissure (parmi les exemples suivants)^[Le temps d'apparition de moisissures peut être relativement long pour certains substrats. Assurez-vous que le calendrier du cours vous permet de réaliser votre expérience dans les délais prescrits.] :
+  -  la présence de moisissure sur des carrés de pain de trois types (pain biologique, pain blanc générique, pain blé entier);
+  -  le temps qu'il faut pour qu'apparaissent des moisissures sur des carrés de pain de trois types (pain biologique, pain blanc générique, pain blé entier);
+  -  le temps qu'il faut pour qu'apparaissent des moisissures sur des carrés de pain d'un type de pain à différentes températures;
+  -  le temps qu'il faut pour qu'apparaissent des moisissures sur des pêches soumises à différentes températures.
+  \end{itemize}
+
+3. La vitesse de frappe au clavier:
+  -  la vitesse d'écriture entre hommes et femmes pour le même texte;
+  -  la vitesse d'écriture entre hommes et femmes selon le type de texte (nouvelle du sport *vs* nouvelle des arts et spectacles).
+  \end{itemize}
+
+4. L'occurrence de la pratique de jeux vidéos chez les hommes et les femmes de différentes classes d'âge (15 -- 20 ans, 21 -- 25 ans, > 25 ans).
+
+5. Le nombre de minutes passées à écouter des émissions en baladodiffusion par semaine chez les hommes et les femmes de différentes classes d'âge.
+
+6. Le nombre de minutes passées sur internet par semaine entre les hommes et les femmes de différentes classes d'âge.
+
+7. La fréquence d'utilisation de sacs réutilisables par les clients de différents types de commerces (épicerie, SAQ, quincaillerie, boutique de vêtements).
+
+8. La proportion de véhicules domestiques (GM, Chrysler, Ford) par rapport aux véhicules d'origine étrangère dans deux quartiers de votre ville.
+
+9. La capacité à distinguer des bananes biologiques *vs* non biologiques en dégustation en aveugle chez un groupe de gens.
+
+10. La préférence entre le vin et la bière selon le sexe et la classe d'âge.
+
+11. La fréquence de certaines couleurs de bonbons dans des sacs de bonbons (p. ex., jujubes, fèves en gelée) selon différentes compagnies (Dare, Choix du Président, Nos Compliments, etc.).
+
+12. La différence entre le volume moyen de raisins secs de différentes compagnie (Sun-Maid, Choix du Président, Nos Compliments, Sans 
+
+13. Le nombre moyen de pépins dans les poivrons verts biologiques et les poivrons verts non biologiques.
+
+14. La préférence de chats pour trois types de nourriture (e.g., croquettes sèches, nourriture en boîte de conserve, nourriture de table).
+
+15. Le nombre d'hommes et de femmes qui accompagnent leur chien au parc.  
+
+16. Le temps que mettent différents types de boissons gazeuses dans un verre (avec ou sans glace) à perdre tout leur CO$_2$ à la température de la pièce.
+
+17. La longueur du texte de nouvelles internationales, d'environnement et de chroniques culinaires dans différents journaux.
+
+18. La fréquence d’un mot ou d’un groupe de mots dans différents journaux selon le sujet abordé ou depuis l’avènement d’un événement important (p. ex., nomination d’un nouveau premier ministre)^[La fréquence d’un mot ou d’un groupe de mots peut être évaluée grâce à des logiciels d'analyse de texte, tels que `TextSTAT` ((http://neon.niederlandistik.fu-berlin.de/en/textstat/)) et `Textalyser` [http://textalyser.net/](http://textalyser.net/).].
+
+19. Le nombre de publicités dans différents types de quotidiens en semaine *vs* en fin de semaine.
+
+20. Le prix de l'essence à différentes stations-service au Québec, en Ontario et au Manitoba ((http://www.gasbuddy.com)).
+
+21. La fréquence de personnes portant des écouteurs dans différents types de transport en commun (autobus, métro, train de banlieue).
