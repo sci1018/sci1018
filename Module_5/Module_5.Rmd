@@ -22,6 +22,10 @@ freqs <- matrix(data = c(139, 146, 117, 98, 500), nrow = 1, ncol = 5)
 df.freqs <- as.data.frame(freqs)
 colnames(df.freqs) <- c("À pied", "Transport en commun", "Vélo", "Voiture", "TOTAL")
 
+freq.data <- freqs[,1:4]
+f.hat <- sum(freq.data)/4
+chi2 <- ((freq.data[1] - f.hat)^2)/f.hat + ((freq.data[2] - f.hat)^2)/f.hat + ((freq.data[3] - f.hat)^2)/f.hat + ((freq.data[4] - f.hat)^2)/f.hat
+
 # Generate the table with custom styling for merged cells
 kable(df.freqs, 
       row.names = FALSE, 

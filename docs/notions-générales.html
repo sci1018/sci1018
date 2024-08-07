@@ -183,7 +183,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#le-projet-r"><i class="fa fa-check"></i>Le projet R</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#la-syntaxe"><i class="fa fa-check"></i>La syntaxe</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#à-laide"><i class="fa fa-check"></i>À l’aide</a></li>
-<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#vecteurs-et-oprérations-de-base"><i class="fa fa-check"></i>Vecteurs et oprérations de base</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#vecteurs-et-opérations-de-base"><i class="fa fa-check"></i>Vecteurs et opérations de base</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#opérateurs-mathématiques"><i class="fa fa-check"></i>Opérateurs mathématiques</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#tests-logiques"><i class="fa fa-check"></i>Tests logiques</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#matrices-et-calculs-matriciels"><i class="fa fa-check"></i>Matrices et calculs matriciels</a></li>
@@ -560,8 +560,8 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>présentera comme résultat les pages de fonctions faisant mention de barres d’erreurs sur des graphiques. On peut ensuite modifier la recherche ou l’étendre à partir du moteur de recherche directement sur la page web.</p>
 <p>Plusieurs ressources électroniques sont également disponibles sur une multitude de sites internet de chercheurs ou d’utilisateurs de <code>R</code>. Le site (<a href="http://www.rseek.org" class="uri">http://www.rseek.org</a>) peut faciliter cette recherche.</p>
 </div>
-<div id="vecteurs-et-oprérations-de-base" class="section level4 unnumbered hasAnchor">
-<h4>Vecteurs et oprérations de base<a href="notions-générales.html#vecteurs-et-oprérations-de-base" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="vecteurs-et-opérations-de-base" class="section level4 unnumbered hasAnchor">
+<h4>Vecteurs et opérations de base<a href="notions-générales.html#vecteurs-et-opérations-de-base" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>R</code> stocke l’information sous forme d’objets et ces derniers peuvent prendre différentes formes. Le premier type d’objet que nous verrons est le vecteur[^1]. Les éléments contenus dans un vecteur sont d’un seul type ou mode. Parmi les modes les plus courants, on compte, le mode numérique (<code>numeric</code>), entier (<code>integer</code>), caractère (<code>character</code>), facteur (<code>factor</code>) ou logique (<code>logical</code>).</p>
 <div id="créer-un-vecteur" class="section level5 unnumbered hasAnchor">
 <h5>Créer un vecteur<a href="notions-générales.html#créer-un-vecteur" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -619,10 +619,10 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La fonction <code>rep()</code> inclut deux arguments : <code>x</code> spécifie la valeur à répéter, tandis que <code>times</code> indique le nombre de répétitions. On peut aussi répéter des caractères.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="notions-générales.html#cb29-1" tabindex="-1"></a>y20.caracteres <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;vieux&quot;</span>), <span class="at">times =</span> <span class="dv">20</span>)</span>
 <span id="cb29-2"><a href="notions-générales.html#cb29-2" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
+## [14] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [27] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
+## [40] &quot;vieux&quot;</code></pre>
 <p>Plusieurs fonctions de base peuvent être appliquées à une multitude de scénarios, et c’est l’un des attraits de la programmation en <code>R</code>. Ici, nous avons utilisé à nouveau la fonction <code>c()</code> pour créer un vecteur à 2 valeurs, <code>neuf</code> et <code>vieux</code>, et nous avons répété ce vecteur 20 fois. Il est donc important d’apprendre quelques fonctions de base qui reviendront souvent dans le cours.</p>
 </div>
 <div id="créer-une-série" class="section level5 unnumbered hasAnchor">
@@ -636,8 +636,8 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La valeur de l’argument <code>by</code> n’est pas limitée aux entiers.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="notions-générales.html#cb34-1" tabindex="-1"></a>y.seq<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb34-2"><a href="notions-générales.html#cb34-2" tabindex="-1"></a>y.seq<span class="fl">.01</span></span></code></pre></div>
-<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4
-## [26] 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
+<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5
+## [27] 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
 <p>La fonction <code>seq()</code> possède également un argument <code>length.out</code> qui permet d’obtenir le nombre de valeurs sans indiquer le pas.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="notions-générales.html#cb36-1" tabindex="-1"></a>y.seq.length <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
 <span id="cb36-2"><a href="notions-générales.html#cb36-2" tabindex="-1"></a>y.seq.length</span></code></pre></div>
@@ -948,10 +948,10 @@ arc-tangente en radians des éléments de x
 <pre><code>## [1] 0 1 1 1 1 0 1</code></pre>
 <p>On procède de la même façon si le vecteur contient des caractères :</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="notions-générales.html#cb95-1" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
+## [14] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [27] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
+## [40] &quot;vieux&quot;</code></pre>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="notions-générales.html#cb97-1" tabindex="-1"></a>bin.y20 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y20.caracteres <span class="sc">==</span> <span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;nouveau&quot;</span>, <span class="st">&quot;ancien&quot;</span>)</span>
 <span id="cb97-2"><a href="notions-générales.html#cb97-2" tabindex="-1"></a>bin.y20[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot;</code></pre>
@@ -1370,12 +1370,12 @@ EngraisA
 <ul>
 <li>Pour la première, on spécifie le chemin complet sur l’ordinateur où se trouve le fichier. Par exemple, pour importer un jeu de données stocké dans le fichier , on pourrait envoyer la commande</li>
 </ul>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="notions-générales.html#cb195-1" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;C:/chemin_complet/vers.txt&quot;</span>, </span>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="notions-générales.html#cb195-1" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Guide_R/data/vers.txt&quot;</span>, </span>
 <span id="cb195-2"><a href="notions-générales.html#cb195-2" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li>La deuxième variation consiste à spécifier le répertoire où se trouve le fichier à l’aide de la fonction <code>setwd( )</code>.</li>
 </ul>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="notions-générales.html#cb196-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/chemin_complet/&quot;</span>)</span>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="notions-générales.html#cb196-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;Guide_R/data/&quot;</span>)</span>
 <span id="cb196-2"><a href="notions-générales.html#cb196-2" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;vers.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li>Une troisième stratégie s’avère l’utilisation de la fonction <code>file.choose( )</code>. Cette dernière permet de sélectionner le fichier à l’aide d’une fenêtre graphique. Il faut toutefois savoir où se trouve le fichier …</li>

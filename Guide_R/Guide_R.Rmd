@@ -176,7 +176,7 @@ présentera comme résultat les pages de fonctions faisant mention de barres d'e
 
 Plusieurs ressources électroniques sont également disponibles sur une multitude de sites internet de chercheurs ou d'utilisateurs de `R`. Le site (http://www.rseek.org) peut faciliter cette recherche.
 
-#### Vecteurs et oprérations de base {-}
+#### Vecteurs et opérations de base {-}
 
 `R` stocke l'information sous forme d'objets et ces derniers peuvent prendre différentes formes. Le premier type d'objet que nous verrons est le vecteur[^1]. Les éléments contenus dans un vecteur sont d'un seul type ou mode. Parmi les modes les plus courants, on compte, le mode numérique (`numeric`), entier (`integer`), caractère (`character`), facteur (`factor`) ou logique (`logical`).
 
@@ -784,15 +784,15 @@ Illustrons avec le jeu de données `vers` qui traite de l'abondance de vers de t
 
   -  Pour la première, on spécifie le chemin complet sur l'ordinateur où se trouve le fichier. Par exemple, pour importer un jeu de données stocké dans le fichier \texttt{vers.txt}, on pourrait envoyer la commande
   
-```{r exA1.62,eval=FALSE}
-vers <- read.table(file = "C:/chemin_complet/vers.txt", 
+```{r exA1.62}
+vers <- read.table(file = "Guide_R/data/vers.txt", 
                     header = TRUE)
 ``` 
 
 -  La deuxième variation consiste à spécifier le répertoire où se trouve le fichier à l'aide de la fonction `setwd( )`.
 
 ```{r exA1.63,eval=FALSE}
-setwd("C:/chemin_complet/")
+setwd("Guide_R/data/")
 vers <- read.table(file = "vers.txt", header = TRUE)
 ``` 
 
@@ -1002,7 +1002,7 @@ Nous venons de faire un survol des fonctions de base de `R`. Nous continuerons �
 
 #### Question 1 {-}
 
-**a.** Créez une variable à partir des valeurs suivantes (voir **Créer un vecteur**) :   
+**a.** Créez une variable à partir des valeurs suivantes (voir *Créer un vecteur*) :   
   2.1  
   3.2  
   1.9  
@@ -1024,7 +1024,7 @@ variable <- c(2.1, 3.2, 1.9, 5.3, 4.5, 6.5, 4.3, 0.7, 1.1, 4.6)
 
 <br>
 
-**b.** À partir de la variable que vous venez de créer, utilisez la fonction appropriée pour déterminer le nombre d'observations (voir **Connaître les caractéristiques d'un vecteur**).  
+**b.** À partir de la variable que vous venez de créer, utilisez la fonction appropriée pour déterminer le nombre d'observations (voir *Connaître les caractéristiques d'un vecteur*).  
 
 <details>
 <summary> Réponse</summary>
@@ -1035,7 +1035,7 @@ length(variable)
 
 <br>
 
-**c.** Sélectionnez les observations 1, 5, 8 et stockez-les dans un nouvel objet (voir **Sélectionner des valeurs**).  
+**c.** Sélectionnez les observations 1, 5, 8 et stockez-les dans un nouvel objet (voir *Sélectionner des valeurs*).  
 
 <details>
 <summary> Réponse</summary>
@@ -1046,7 +1046,7 @@ nouvel.objet <- variable[c(1, 5, 8)]
 
 <br>
 
-**d.** Créez une matrice de 2 rangées et de 5 colonnes. Insérez dans cette matrice les valeurs de la variable créée en **a** (voir **Créer une matrice**) en insérant les données de façon à remplir une colonne à la fois, de telle sorte que les deux premières observations se retrouvent dans la première colonne, les deux suivantes dans la deuxième colonne, et ainsi de suite \ldots).
+**d.** Créez une matrice de 2 rangées et de 5 colonnes. Insérez dans cette matrice les valeurs de la variable créée en **a** (voir *Créer une matrice*) en insérant les données de façon à remplir une colonne à la fois, de telle sorte que les deux premières observations se retrouvent dans la première colonne, les deux suivantes dans la deuxième colonne, et ainsi de suite \ldots).
 
 <details>
 <summary> Réponse</summary>
@@ -1058,7 +1058,7 @@ la.matrice
 
 <br>
 
-**e.** Calculez la somme de chaque colonne de la matrice avec la fonction la plus appropriée (voir **Opérations et manipulation de matrices**).
+**e.** Calculez la somme de chaque colonne de la matrice avec la fonction la plus appropriée (voir *Opérations et manipulation de matrices*).
 
 <details>
 <summary> Réponse</summary>
@@ -1071,7 +1071,7 @@ colSums(la.matrice)
 
 #### Question 2 {-}
 
-**a.** Importez le jeu de données contenu dans le fichier `richesse.txt` (voir ** Importer des fichiers de données**).
+**a.** Importez le jeu de données contenu dans le fichier `richesse.txt` (voir *Importer des fichiers de données*).
 
 <details>
 <summary> Réponse</summary>
@@ -1085,7 +1085,7 @@ rich <- read.table("Guide_R/data/richesse.txt", header = TRUE)
 
 <br>
 
-**b.** Créez une nouvelle variable à partir du log naturel (à base $e$) de la variable `Profondeur` et ajoutez-la au jeu de données (voir **Ajouter une variable**). 
+**b.** Créez une nouvelle variable à partir du log naturel (à base $e$) de la variable `Profondeur` et ajoutez-la au jeu de données (voir *Ajouter une variable*). 
 
 <details>
 <summary> Réponse</summary>
@@ -1097,7 +1097,7 @@ rich$log.Profondeur <- log(rich$Profondeur)
 
 <br>
 
-**c.** Modifiez le nom de la variable `Profondeur` à `la.profondeur` directement dans le jeu de données (voir **Accéder aux variables d'un jeu de données**). Indice: vous aurez besoin de sélectionner le nom de la variable que vous voulez remplacer avec `[ ]`.
+**c.** Modifiez le nom de la variable `Profondeur` à `la.profondeur` directement dans le jeu de données (voir *Accéder aux variables d'un jeu de données*). Indice: vous aurez besoin de sélectionner le nom de la variable que vous voulez remplacer avec `[ ]`.
 
 <details>
 <summary> Réponse</summary>
@@ -1110,7 +1110,7 @@ names(rich)
 
 <br>
 
-**d.** Créez une variable binaire à partir de la variable `Nombre.espece` en assignant la valeur `pauvre` lorsque la variable a des valeurs $\leq 3$ et `riche` lorsque la variable prend des valeurs > 3 (voir **Tests logiques**).  
+**d.** Créez une variable binaire à partir de la variable `Nombre.espece` en assignant la valeur `pauvre` lorsque la variable a des valeurs $\leq 3$ et `riche` lorsque la variable prend des valeurs > 3 (voir *Tests logiques*).  
 
 <details>
 <summary> Réponse</summary>
@@ -1122,7 +1122,7 @@ head(rich)
 
 <br>
 
-**e.** Créez un sous-jeu de données pour la partie correspondant aux sites de type `champ` et stockez-le dans un objet (voir **Créer des sous-ensembles**).  
+**e.** Créez un sous-jeu de données pour la partie correspondant aux sites de type `champ` et stockez-le dans un objet (voir *Créer des sous-ensembles*).  
 
 <details>
 <summary> Réponse</summary>
@@ -1137,7 +1137,7 @@ head(champ)
 
 <br>
 
-**f.** Exportez le sous-jeu de données créé en **e** dans un fichier (voir **Exporter un jeu de données**).
+**f.** Exportez le sous-jeu de données créé en **e** dans un fichier (voir *Exporter un jeu de données*).
 
 <details>
 <summary> Réponse</summary>

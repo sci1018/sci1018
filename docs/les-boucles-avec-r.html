@@ -183,7 +183,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#le-projet-r"><i class="fa fa-check"></i>Le projet R</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#la-syntaxe"><i class="fa fa-check"></i>La syntaxe</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#à-laide"><i class="fa fa-check"></i>À l’aide</a></li>
-<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#vecteurs-et-oprérations-de-base"><i class="fa fa-check"></i>Vecteurs et oprérations de base</a></li>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#vecteurs-et-opérations-de-base"><i class="fa fa-check"></i>Vecteurs et opérations de base</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#opérateurs-mathématiques"><i class="fa fa-check"></i>Opérateurs mathématiques</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#tests-logiques"><i class="fa fa-check"></i>Tests logiques</a></li>
 <li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html#matrices-et-calculs-matriciels"><i class="fa fa-check"></i>Matrices et calculs matriciels</a></li>
@@ -538,10 +538,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="les-boucles-avec-r.html#cb564-1" tabindex="-1"></a><span class="do">##objet pour stocker résultats</span></span>
 <span id="cb564-2"><a href="les-boucles-avec-r.html#cb564-2" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="cn">NA</span>, <span class="at">times =</span> <span class="dv">100</span>)</span>
 <span id="cb564-3"><a href="les-boucles-avec-r.html#cb564-3" tabindex="-1"></a>output</span></code></pre></div>
-<pre><code>##   [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [34] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [67] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [100] NA</code></pre>
+<pre><code>##   [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [35] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [69] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 <p>La boucle comme telle sera initiée par la commande :</p>
 <div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="les-boucles-avec-r.html#cb566-1" tabindex="-1"></a><span class="do">##on crée la boucle</span></span>
 <span id="cb566-2"><a href="les-boucles-avec-r.html#cb566-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
@@ -560,18 +559,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Dans notre cas, la boucle a donné le résultat, qui sera différent sur votre machine puisque nous n’avons pas spécifié <code>set.seed( )</code> :</p>
 <div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="les-boucles-avec-r.html#cb567-1" tabindex="-1"></a>output</span></code></pre></div>
-<pre><code>##   [1]  9.843143  9.843070  9.905685 10.194206  9.792114  9.897694  9.962324  9.898893 10.186835
-##  [10]  9.955964  9.932570 10.047830  9.575321  9.712321 10.054829 10.092733  9.989643  9.982827
-##  [19] 10.043200 10.228745 10.197045 10.086565 10.249376 10.177044 10.298926  9.943895 10.046831
-##  [28]  9.395522  9.990081  9.933483  9.918902 10.033769 10.107036 10.085682 10.126150 10.112908
-##  [37]  9.953102  9.725974 10.070861 10.270107 10.063887 10.098440 10.061172 10.437588 10.166183
-##  [46] 10.194932  9.820259 10.192904  9.777376 10.090552  9.763093  9.824848 10.127299 10.249598
-##  [55]  9.790525 10.253496  9.876486  9.753068  9.975168  9.916710  9.890595  9.959431 10.028949
-##  [64] 10.053114  9.968057 10.011333 10.006457  9.764378 10.126387 10.181128 10.020601  9.862828
-##  [73] 10.048828  9.955702  9.872555 10.035752 10.225581  9.989991 10.107747 10.055392 10.146808
-##  [82]  9.739223  9.797985  9.995382 10.134123 10.402918  9.991563  9.951723  9.947842 10.018451
-##  [91]  9.989671  9.820996 10.023143 10.155746 10.350405 10.155261  9.895186  9.974955  9.903979
-## [100]  9.901210</code></pre>
+<pre><code>##   [1]  9.843143  9.843070  9.905685 10.194206  9.792114  9.897694  9.962324  9.898893 10.186835  9.955964
+##  [11]  9.932570 10.047830  9.575321  9.712321 10.054829 10.092733  9.989643  9.982827 10.043200 10.228745
+##  [21] 10.197045 10.086565 10.249376 10.177044 10.298926  9.943895 10.046831  9.395522  9.990081  9.933483
+##  [31]  9.918902 10.033769 10.107036 10.085682 10.126150 10.112908  9.953102  9.725974 10.070861 10.270107
+##  [41] 10.063887 10.098440 10.061172 10.437588 10.166183 10.194932  9.820259 10.192904  9.777376 10.090552
+##  [51]  9.763093  9.824848 10.127299 10.249598  9.790525 10.253496  9.876486  9.753068  9.975168  9.916710
+##  [61]  9.890595  9.959431 10.028949 10.053114  9.968057 10.011333 10.006457  9.764378 10.126387 10.181128
+##  [71] 10.020601  9.862828 10.048828  9.955702  9.872555 10.035752 10.225581  9.989991 10.107747 10.055392
+##  [81] 10.146808  9.739223  9.797985  9.995382 10.134123 10.402918  9.991563  9.951723  9.947842 10.018451
+##  [91]  9.989671  9.820996 10.023143 10.155746 10.350405 10.155261  9.895186  9.974955  9.903979  9.901210</code></pre>
 <p>Nous avons 100 moyennes calculées à partir de 100 échantillons de 30 observations provenant d’une population N(<span class="math inline">\(\mu = 10\)</span>, <span class="math inline">\(\sigma = 1\)</span>).</p>
 <p>On peut utiliser les boucles pour effectuer des manipulations plus complexes. D’ailleurs, les boucles sont utiles pour effectuer des tests de randomisation ou des simulations. Comme deuxième exemple, illustrons comment estimer la probabilité de commettre une erreur au niveau de l’expérience et au niveau des comparaisons telles que discutées dans le texte <em>Analyse de variance à un critère</em>. Dans l’exemple en question, nous avons considéré les probabilités de commettre des erreurs au niveau de l’expérience et au niveau des comparaisons avec trois groupes.</p>
 <div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="les-boucles-avec-r.html#cb569-1" tabindex="-1"></a><span class="do">##illustration des erreurs au niveau de l&#39;expérience et </span></span>

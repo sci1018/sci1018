@@ -67,7 +67,7 @@ body {
 
 .book .book-header {
   position: initial !important;
-  height: 200px !important;
+  height: 200px !important; /* height à changer selon la taille de l'image */
   background-image: url(images/cover.png) !important;
   background-size: cover !important;
   background-position: bottom !important;
@@ -85,3 +85,30 @@ body {
 .book .book-body.fixed {
     top: 0px !important;
   }
+  
+/* ------------------------------------------------- */
+/* EXEMPLE SECTION : le trait en haut et en bas de chaque exemple */
+
+.book .book-body .page-wrapper .page-inner section.normal hr {
+  height: 4px;
+  padding: 0;
+  margin: 1.7em 0;
+  overflow: hidden;
+  background-color: #d58043; /* white mode*/
+  border: none;
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal hr {
+  background-color: #d58043; /* sepia mode*/
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal hr {
+  background-color: #68cdff; /* night mode */
+}
+
+.exemple { 
+  counter-increment: exemple;
+  margin-bottom: 1em;
+  padding: 15px 15px 15px 15px;
+  background-color: #fffdfa; /* color of example box on white mode */
+}
