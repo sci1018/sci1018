@@ -193,7 +193,7 @@ Votre laboratoire devra obligatoirement inclure les éléments suivants :
 
 17. La longueur du texte de nouvelles internationales, d'environnement et de chroniques culinaires dans différents journaux.
 
-18. La fréquence d’un mot ou d’un groupe de mots dans différents journaux selon le sujet abordé ou depuis l’avènement d’un événement important (p. ex., nomination d’un nouveau premier ministre)^[La fréquence d’un mot ou d’un groupe de mots peut être évaluée grâce à des logiciels d'analyse de texte, tels que `TextSTAT` ((http://neon.niederlandistik.fu-berlin.de/en/textstat/)) et `Textalyser` [http://textalyser.net/](http://textalyser.net/).].
+18. La fréquence d’un mot ou d’un groupe de mots dans différents journaux selon le sujet abordé ou depuis l’avènement d’un événement important (p. ex., nomination d’un nouveau premier ministre)^[La fréquence d’un mot ou d’un groupe de mots peut être évaluée grâce à des logiciels d'analyse de texte, tels que `TextSTAT` [http://neon.niederlandistik.fu-berlin.de/en/textstat/](http://neon.niederlandistik.fu-berlin.de/en/textstat/) et `Textalyser` [http://textalyser.net/](http://textalyser.net/).].
 
 19. Le nombre de publicités dans différents types de quotidiens en semaine *vs* en fin de semaine.
 
