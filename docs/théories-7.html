@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -531,23 +531,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="effets-fixes-et-effets-aléatoires" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Effets fixes et effets aléatoires<a href="théories-7.html#effets-fixes-et-effets-aléatoires" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dans les leçons précédentes, nous avons vu l’ANOVA à un critère et l’ANOVA à deux critères. Dans tous les exemples que nous avons présentés, les effets étudiés étaient fixés par l’expérimentateur. Par exemple, on s’intéressait à l’effet du sexe ou d’un traitement hormonal sur la concentration en calcium dans le plasma sanguin . Lorsque les niveaux du facteur sont spécifiquement choisis par l’expérimentateur, nous dirons que c’est un <strong>effet fixe</strong>. Ce genre d’effet est le plus commun.</p>
-<hr />
 <div class="exemple" section="8">
 <p>Dans une expérience sur l’effet de la zoothérapie sur des personnes atteintes d’un stress chronique, on sélectionne aléatoirement 30 personnes atteintes. L’expérimentateur s’intéresse à la différence entre les traitements suivants : thérapie accompagnée d’un chat, thérapie accompagnée d’un chien et thérapie conventionnelle. On attribue aléatoirement l’un des traitements à chaque personne atteinte, de façon à avoir 10 répétitions pour chaque traitement. Puisque l’expérimentateur s’intéresse spécifiquement à ces trois traitements, l’effet de la zoothérapie est un effet fixe.</p>
 </div>
-<hr />
 <p>En contrepartie, lorsque les niveaux d’un facteur sont déterminés aléatoirement, nous dirons que c’est un <strong>effet aléatoire</strong>. Autrement dit, l’expérimentateur choisit aléatoirement les niveaux qui seront inclus dans l’expérience parmi tous les niveaux disponibles. L’effet aléatoire permet d’étudier l’effet global d’un facteur sur la variable réponse en considérant tous les traitements possibles plutôt que les différences entre des traitements spécifiques.</p>
-<hr />
 <div class="exemple" section="8">
 <p>On veut connaître s’il y a un effet du fournisseur de batteries de téléphone portable sur leur durée de vie. Dans un catalogue de fournisseurs de batteries, on sélectionne aléatoirement 3 fournisseurs de batteries. On commande 10 batteries de chacun des 3 fournisseurs. Puisque les trois niveaux du facteur <code>fournisseur de batteries</code> ont été sélectionnés aléatoirement, nous dirons que c’est un effet aléatoire.</p>
 </div>
-<hr />
 <p>La différence entre l’effet fixe et l’effet aléatoire est au niveau de l’interprétation des résultats. Avec un effet fixe, on s’intéresse à la différence entre les niveaux spécifiques du facteur et notre conclusion se rapporte directement à ces niveaux. Pour l’effet aléatoire, la conclusion est pertinente à l’effet global du facteur et à tous les niveaux possibles du facteur. Dans le dernier cas, il peut exister une multitude de niveaux qui n’ont pas nécessairement été inclus dans l’analyse. L’exemple suivant distingue les deux types d’effets.</p>
-<hr />
 <div class="exemple" section="8">
 <p>On veut déterminer la variabilité géographique de la concentration en cadmium dans le sol au Québec. Si l’expérimentateur identifie différentes régions du Québec et qu’il sélectionne aléatoirement trois régions, on considérera l’effet comme aléatoire. À l’opposé, si l’expérimentateur s’intéresse spécifiquement aux régions de l’Abitibi, du Lac St-Jean et de la Côte-Nord, on considérera l’effet comme fixe.</p>
 </div>
-<hr />
 <div id="anova-à-un-critère" class="section level4 hasAnchor" number="8.1.1.1">
 <h4><span class="header-section-number">8.1.1.1</span> ANOVA à un critère<a href="théories-7.html#anova-à-un-critère" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lorsqu’on effectue une ANOVA à un critère, le calcul de la somme des carrés, des carrés moyens et du <span class="math inline">\(F\)</span> demeure le même, peu importe que l’effet soit fixe ou aléatoire. Seule l’interprétation va changer.</p>
@@ -686,7 +680,6 @@ Figure 8.6: Les blocs sont perpendiculaires au gradient (ici, le gradient va de 
 <p>Dans tous ces exemples, il y donc toujours un facteur dont l’effet nous intéresse (effet des prédateurs sur les têtards, effet des types d’essence sur l’économie) et un facteur qui ne nous intéresse pas ou peu (effet des différents aquariums, effet des différents modèles de voitures). Le premier facteur représente l’effet fixe et le second représente l’effet aléatoire.</p>
 <p>L’ANOVA en blocs complets aléatoires est en fait une ANOVA à deux critères sans répétitions: il n’y a qu’une observation pour chaque combinaison de traitement et de bloc. Le facteur d’intérêt est un facteur fixe, alors que le bloc peut être considéré comme un facteur aléatoire. On suppose que les blocs sont différents entre eux. Afin d’optimiser ce dispositif, il faut s’assurer que les conditions soient homogènes à l’intérieur d’un bloc donné, et que les blocs diffèrent entre eux. Ceci a pour effet de minimiser la variabilité à l’intérieur d’un bloc et de maximiser la variabilité entre les blocs (<span class="math inline">\(\sigma^2_{\mathrm{intra-bloc}} &lt; \sigma^2_{\mathrm{inter-bloc}}\)</span>). Puiqu’il n’y aucune répétition à l’intérieur d’un même bloc (p.ex., une observation par traitement), il est impossible de tester le terme d’interaction bloc <span class="math inline">\(\times\)</span> traitement.</p>
 <p>À l’instar de l’ANOVA à deux critères, le rejet de l’hypothèse nulle pour le facteur d’intérêt peut être suivi de comparaisons multiples pour déterminer où se trouvent les différences. Toutefois, si le facteur bloc explique une bonne partie de la variance et l’hypothèse nulle est rejetée pour le bloc (c.-à-d., <span class="math inline">\(P &lt; \alpha\)</span>), nous ne testons pas les différences entre blocs. Le facteur bloc n’est pas directement d’intérêt et il reflète simplement le dispositif qui a été utilisé. Le prochain exemple illustre l’application de l’ANOVA à ce dispositif expérimental.</p>
-<hr />
 <div class="exemple" section="8">
 <p>On veut déterminer l’effet de quatre diètes différentes sur le gain de masse en grammes de cochons d’Inde. Chaque individu est placé dans une cage individuelle située dans un grand entrepôt. Étant donné qu’il n’y a qu’une source de chaleur à une extrémité de l’entrepôt, on pourrait s’attendre à avoir un gradient de température. On dispose les cages en blocs complets aléatoires de façon à avoir des groupes de quatre cages à différentes distances de la source de chaleur. On trouve ces données dans le fichier <code>cochons.txt</code>.</p>
 <div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="théories-7.html#cb703-1" tabindex="-1"></a><span class="do">##importation</span></span>
@@ -930,7 +923,6 @@ Figure 8.11: Effet de la diète sur le gain de masse. Les lettres différentes i
 </div>
 <p>Sur la figure <a href="théories-7.html#fig:plotresorig">8.11</a>, on constate la présence de deux groupes de diètes. Le premier groupe est composé des diètes 4 et 1, et le deuxième est constitué des groupes 3 et 2. De plus, on peut conclure que les diètes 4 et 1 augmentent moins le gain de masse que les diètes 3 et 2.</p>
 </div>
-<hr />
 </div>
 <div id="applications-moins-conventionnelles" class="section level4 hasAnchor" number="8.1.2.4">
 <h4><span class="header-section-number">8.1.2.4</span> Applications moins conventionnelles<a href="théories-7.html#applications-moins-conventionnelles" class="anchor-section" aria-label="Anchor link to header"></a></h4>

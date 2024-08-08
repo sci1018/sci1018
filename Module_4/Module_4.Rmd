@@ -9,7 +9,7 @@ Dans la leçon précédente, nous avons discuté de la démarche scientifique et
 
 Comme nous l'avons vu précédemment, le but du test d'hypothèse sur un groupe est de déterminer si la moyenne d'une population diffère d'une valeur d'intérêt (test bilatéral) ou si la moyenne est inférieure ou supérieure à une valeur d'intérêt (test unilatéral). Ce même concept s'étend naturellement en présence de deux échantillons ou deux groupes, comme l'illustre l'exemple qui suit.
 
----
+
 
 ::: {.exemple section=4}
 On veut déterminer si les notes des élèves d’une école primaire sont différentes lorsqu'ils ont eu de l'aide aux devoirs pendant l'année comparativement à d'autres élèves n'ayant pas eu cette aide. Pour ce faire, on sélectionne aléatoirement 30 élèves qui recevront l'aide et 30 autres qui ne recevront pas l'aide. Les élèves auront le même enseignant et leurs capacités seront mesurées dans un examen ministériel uniforme valant 40 $\%$ (Table \@ref(tab:notes)).
@@ -93,7 +93,7 @@ On peut utiliser un test $t$ pour déterminer s'il y a une différence entre les
 
 :::
 
----
+
 
 Dans le cas du test $t$ sur un seul groupe, nous avons l'équation
 
@@ -126,7 +126,7 @@ $$
 
 Maintenant, reprenons notre exemple sur le succès scolaire des élèves en considérant la variance combinée.
 
----
+
 
 ::: {.exemple section=4}
 On peut effectuer un test $t$ pour comparer les deux groupes d'élèves de l'exemple 4.1. Commençons par calculer la variance combinée qui sera nécessaire pour obtenir le dénominateur du test $t$ sur deux groupes :
@@ -139,7 +139,7 @@ $$
 s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot 0.96 + (30 - 1) \cdot 0.98}{30 + 30 - 2}
 $$
 
-<!--- 
+<! 
 This line is not centered
 $s^2_{\mathrm{combin\acute{e}e}}$ = `r round((29*var(df.aides) + 29*var(df.temoins))/(30 + 30 - 2), 2)` 
 -->
@@ -171,7 +171,7 @@ Nous déterminons la probabilité d'observer une valeur $t = `r round(t.out$stat
 
 :::
 
----
+
 
 Dans R, il est bien sûr possible de réaliser le tout plus succinctement. Le jeu de données est stocké dans le fichier `eleves.txt`. Il faudra importer ce fichier avant de pouvoir accéder aux données :
 
@@ -283,7 +283,7 @@ boxplot(res.g1g2 ~ c(rep("groupe 1", 30), rep("groupe 2", 30)),
 
 Le test $t$ est robuste aux déviations, particulièrement si les deux groupes sont de tailles identiques et si on teste des hypothèses bilatérales. La robustesse du test augmente avec la taille de l'échantillon. Lorsque la supposition d'homogénéité de la variance ne peut être respectée, une version modifiée du test $t$ peut être utilisée, le test $t$ de Welch (*Welch's $t$-test*). C'est d'ailleurs ce test $t$ qui est exécuté par défaut, avec `t.test( )` (c.-à-d., l'argument `var.equal` prend la valeur `FALSE` par défaut). L'exemple suivant illustre ce qu'on obtient avec cette modification du test $t$.
 
----
+
 
 :::{.exemple section=4}
 Le test $t$ de Welch est une version modifiée du test $t$ classique et est adapté aux situations de variances hétérogènes. Alors que le test $t$ utilise un terme de variance combinée, le test $t$ de Welch inclut les variances des deux groupes dans le calcul de l'erreur-type sur la différence des moyennes :
@@ -308,10 +308,10 @@ t.test(Note ~ Type, data = eleves, var.equal = FALSE)
 On constate que les résultats des tests sont pratiquement les mêmes puisque la supposition d'homogénéité de la variance est respectée. Seuls les degrés de libertés diffèrent légèrement.
 :::
 
----
 
 
----
+
+
 
 :::{.exemple section=4}
 On effectue une expérience sur le temps passé à regarder son téléphone portable pour des étudiants de 19 à 23 ans dans deux situations distinctes : dîner avec des étudiants du même département et dîner avec des étudiants de départements différents. On recrute 30 volontaires que l'on assigne aléatoirement aux deux situations, à raison de 15 individus dînant avec des compères et 15 individus dînant avec des étudiants inconnus d'une autre discipline. Le temps que chaque volontaire passe à regarder son téléphone pendant le dîner de 1h30 est noté. À la fin de l'expérience, on obtient les résultats du tableau \@ref(tab:temps).
@@ -459,7 +459,7 @@ arrows(x0 = c(0.3, 0.75), x1 = c(0.3, 0.75),
 ```     
 :::
 
----
+
 
 
 ### Tests d'hypothèse pour deux groupes appariés 
@@ -474,7 +474,7 @@ Dans chaque exemple ci-dessus, on a des données sous forme de paires. Un dispos
 
 On ne peut pas considérer des mesures appariées comme indépendantes les unes des autres et cette structure doit être prise en compte lors de l'analyse. En d'autres mots, il est inapprorié de considérer ces données comme provenant de deux groupes indépendants. Par conséquent, on ne peut pas faire abstraction de cette structure et utiliser le test $t$ sur deux groupes qui sont indépendants. En présence de données appariées, nous utilisons plutôt le **test $t$ pour données appariées** (*paired $t$-test*). Ce test est réalisé sur les différences entre les groupes et il correspond à un test $t$ sur un groupe. Illustrons avec un exemple.
 
----
+
 
 :::{.exemple section=4}
 Dans une étude d'impact environnementale, on vise à évaluer l'effet des eaux usées sur le nombre d'espèces de poissons dans différents cours d'eau. Pour ce faire, on sélectionne 16 cours d'eau dans lesquels se déversent des eaux usées. On échantillonne les poissons en amont (avant la décharge) et en aval (après la décharge) des sources d'eaux usées. Tous les cours d'eau sont visités à la même période de l'année. Les données se trouvent dans le fichier `poissons.txt`.
@@ -565,7 +565,7 @@ segments(x0 = 0.5, x1 = 0.5,
 Dans ce cas particulier, on remarque que la figure n'amène pas beaucoup plus d'information que de présenter la moyennne et l'intervalle de confiance directement dans le texte: $\bar{x}_{\mathrm{Diff}} = `r round(mean.diff, 2)`$, $IC$ à 95\%: (`r round(sup95, 2)`, `r round(inf95, 2)`).
 :::
 
----
+
 
 ### Transformations
 

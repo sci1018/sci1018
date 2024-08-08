@@ -24,7 +24,7 @@ Toutefois, si les comparaisons ne sont pas indépendantes, la probabilité réel
 
 Une alternative à ce problème consiste à corriger le seuil $\alpha$ par le nombre de comparaisons que l'on veut effectuer. C'est ce qu'on appelle l'**ajustement de Bonferroni** (*Bonferroni adjustment*).
 
----
+
 
 :::{.exemple section=6}
 Dans une expérience où on étudie 5 traitements différents, nous avons cinq moyennes arithmétiques (5 groupes: A, B, C, D, E) et les comparaisons suivantes :
@@ -36,7 +36,7 @@ $$A \: vs \: E \qquad B \: vs \: E \qquad C \: vs \: E \qquad D \: vs \: E \: .$
 Puisqu'il y a 10 comparaisons, on devrait diviser le seuil $\alpha$ par 10 pour exécuter l'ajustement de Bonferroni. Si on utilise un seuil de 0.05, il faudra observer $P \leq 0.005$ pour déclarer une différence significative entre deux groupes ($\alpha/10 = 0.05/10 = 0.005$).
 :::
 
----
+
 
 On constate que l'ajustement de Bonferroni est une stratégie souvent trop conservatrice, qui augmente la probabilité de commettre une erreur de type II (un faux négatif). Une meilleure stratégie consiste à comparer tous les groupes simultanément. C'est d'ailleurs ce que permet de faire l'analyse de variance -- on compare tous les groupes en une seule étape.
 
@@ -74,7 +74,7 @@ On calcule la somme des carrés du facteur $A$ (le traitement qui définit les d
 $$SSA = \sum_{j=1}^k \sum_{i=1}^n (\bar{y}_{j} - \bar{y})^2 = n \sum_{j=1}^k (\bar{y}_{j} - \bar{y})^2$$
 où $\bar{y}_{j}$ correspond à la moyenne du groupe $j$, $\bar{y}$ est la moyenne globale et $n$ correspond au nombre d'observations dans chacun des groupes. On peut aussi la calculer par soustraction à l'aide de $SSA = SST - SSE$. La somme des carrés du traitement compare la moyenne de chaque groupe à la moyenne globale. Les degrés de liberté s'obtiennent avec $df = k - 1$ où $k$ est le nombre de groupes dans le facteur $A$.
 
----
+
 
 :::{.exemple section=6}
 On veut déterminer si la concentration d'ozone en parties par million (ppm) diffère entre trois jardins d'une ville industrielle. Le jeu de données `jardins.txt` contient les observations suivantes :
@@ -87,7 +87,7 @@ ozone
 
 On peut visualiser les données à l'aide d'un diagramme de boîtes et moustaches (Figure \@ref(fig:ozone)).
 
-```{r ozone, echo = TRUE, keep.source = TRUE, fig = TRUE, fig.cap="Diagramme de boîtes et moustaches de la concentration d'ozone dans les trois jardins."}
+```{r ozone, echo = TRUE, keep.source = TRUE, fig.align='center', fig = TRUE, fig.cap="Diagramme de boîtes et moustaches de la concentration d'ozone dans les trois jardins."}
 ##diagramme de boîtes et moustaches
 boxplot(Ozone ~ Jardin, data = ozone,
         ylab = "Concentration d'ozone (ppm)",
@@ -152,7 +152,7 @@ df.trait
 ```
 :::
 
----
+
 
 ##### Tableau de l'ANOVA 
 
@@ -236,7 +236,7 @@ En ce qui a trait à l'ANOVA, l'hypothèse nulle a la même forme. Par exemple, 
 $H_0$: $\mu_{\mathrm{A}} = \mu_{\mathrm{B}}$ = $\mu_{\mathrm{C}} = \mu_{\mathrm{D}}$ (non-différence)  
 $H_a$: au moins une moyenne diffère des autres moyennes
 
----
+
 
 :::{.exemple section=6}
 Reprenons notre exemple sur la concentration d'ozone dans les trois jardins d'une ville industrielle. Nous pouvons émettre les hypothèses statistiques suivantes :  
@@ -290,7 +290,7 @@ summary(aov1)
 ```
 :::
 
----
+
 
 #### Suppositions 
 
@@ -300,7 +300,7 @@ L'analyse de variance est une extension du test $t$ de Student lorsqu'on souhait
 
 À l'instar du test $t$, nous utilisons les résidus pour diagnostiquer des problèmes liés à la normalité et à l'homogénéité des variances. Les résidus sont obtenus en calculant la différence entre les valeurs observées $y_i$ et les valeurs qui sont prédites $\hat{y}_i$ par notre modèle d'ANOVA. Dans le cas de l'ANOVA à un critère, les valeurs prédites ($\hat{y}_i$) correspondent à la moyenne arithmétique de chaque groupe. Nous obtenons les résidus à l'aide de $y_i - \hat{y}_i$. Les fonctions `residuals( )` et `fitted( )` dans R permettent d'extraire les résidus et les valeurs prédites de plusieurs types d'analyses statistiques. Le prochain exemple illustre l'application directe de ces fonctions à l'objet qui contient le résultat de l'ANOVA.
 
----
+
 
 :::{.exemple section=6}
 On peut vérifier les suppositions de l'ANOVA que nous avons exécutée dans l'exemple précédent. On obtient les résidus en calculant la différence entre les valeurs observées et les valeurs prédites, $y_i - \hat{y}_i$. On commence par extraire les valeurs observées et les valeurs prédites :
@@ -330,7 +330,7 @@ res[1:10] #valeurs identiques au calcul obs - pred
 ```
 :::
 
----
+
 
 ##### Normalité des résidus et homogénéité de la variance 
 
@@ -369,7 +369,7 @@ plot(residuals(aov3) ~ fitted(aov3), ylab = "Résidus",
 text(x = 12.5, y = 30, labels = "b")
 ```
 
----
+
 
 :::{.exemple section=6}
 Nous poursuivons l'exemple 6.4 en vérifiant si la condition de normalité est respectée. Pour vérifier la normalité, on extrait les résidus de l'ANOVA et on examine le graphique quantile-quantile. On constate que la condition de normalité est assez bien respectée, quoiqu'il y ait quelques valeurs aux extrémités des queues qui dévient de la normalité (Figure \@ref(fig:qqplot6)a). Le graphique des résidus en fonction des valeurs prédites suggère que les variances sont plutôt homogènes, bien que le groupe avec la plus grande moyenne ait une variabilité légèrement plus faible que les autres (Figure \@ref(fig:qqplot6)b).
@@ -412,11 +412,11 @@ text(y = 15, x = 16.5, labels = "b")
 ```
 :::
 
----
+
 
 Nous avons maintenant toutes les notions en main afin de réaliser l'ANOVA et de vérifier le respect des conditions. C'est ce que nous ferons dans le prochain exemple.
 
----
+
 
 :::{.exemple section=6}
 On fait une étude de santé publique sur la consommation de boissons sucrées par les jeunes de 19 à 25 ans dans cinq régions de l'Est du Québec. Pour ce faire, on fait un sondage détaillé auprès de six jeunes par région et on estime pour chacun sa consommation annuelle en litres. Les cinq régions sont:
@@ -488,7 +488,7 @@ summary(m1)
 On note dans `summary(m1)` que la dernière ligne du tableau `Signif. codes` donne les symboles qui décrivent le seuil de signification statistique du facteur `Region`. Ces caractères ne sont affichés qu'en présence de termes significatifs dans l'analyse. Ici, `Region` a les caractères $\mathtt{\ast\ast}$ sur sa ligne, indiquant que $P \leq 0.01$. Ces symboles n'ont d'autre fonction que d'attirer l'attention de l'analyste sur les termes significatifs dans l'analyse. Il est peu probable d'observer une valeur de $F$ de 4.3 dans une expérience avec des échantillons (groupes) qui ont la même taille que le jeu de données original tirés d'une population où $H_0$ est vraie. La valeur exacte du $P$ est de 0.0088 ($P(F_{4, 25} \geq 4.3015) = 0.0088$). On rejette l'hypothèse nulle et on conclut qu'il y a un effet de la région : au moins une moyenne d'une région diffère d'une autre. Toutefois, l'ANOVA ne nous permet pas d'identifier quelles régions diffèrent entre elles. Pour ce faire, on doit utiliser un autre type de test qui sera présenté dans la prochaine section.
 :::
 
----
+
 
 ### Comparaison multiples
 
@@ -500,7 +500,7 @@ Comme nous l'avons mentionné au début de ce texte, effectuer des comparaisons 
 
 On peut commettre des erreurs à deux niveaux lorsqu'on fait des comparaisons multiples : une **erreur au niveau de la comparaison** (*comparison-wise error*) et une **erreur au niveau de l'expérience** (*experiment-wise error*). L'erreur au niveau de la comparaison se traduit par la déclaration d'un faux positif lors d'une comparaison spécifique entre deux groupes. La probabilité de commettre cette erreur pour une comparaison donnée est déterminée par $\alpha$. L'erreur au niveau de l'expérience, quant à elle, correspond à déclarer au moins un faux positif parmi toutes les comparaisons effectuées. Plus on a de groupes (et de comparaisons), plus notre erreur au niveau de l'expérience augmente. Le prochain exemple illustre les différences entre les deux niveaux d'erreur.
 
----
+
 
 :::{.exemple section=6} 
 Pour faciliter la compréhension de l'erreur liée à  la comparaison entre les groupes  et l'erreur liée à l'expérimentation, nous vous proposons l'exercice de simulation suivant. Nous simulons des données où l'hypothèse nulle est vraie, c'est-à-dire qu'il n'y a aucune différence entre les moyennes des groupes. On crée trois groupes de $n = 50$ tirés d'une population suivant une distribution normale avec $\mu = 5$ et $\sigma = 3$ (c.-à-d., N(5, 3)). En d'autres mots, nous simulons les données de trois groupes et ces données sont toutes tirées de la même population pour satisfaire $H_0$. Il y a trois comparaisons possibles: groupe 1 *vs* groupe 3, groupe 2 *vs* groupe 3 et groupe 1 *vs* groupe 2. Nous voulons savoir quelle est la probabilité de commettre une erreur liée à la comparaison et une erreur liée à l'expérience. On peut décrire l'algorithme de la simulation comme suit :
@@ -568,7 +568,7 @@ $$\frac{`r sum(ifelse(out[,4]=="1", 1, 0))` \: \mathrm{erreurs \: li\acute{e}es 
 
 Bien que nous ayons fixé le seuil $\alpha$ à 0.05, la probabilité de commettre une erreur au niveau de l'expérience est supérieure à ce seuil (`r Error_exp`). Ce problème a motivé le développement de plusieurs types de comparaisons multiples afin de contrôler l'erreur au niveau de l'expérience.
 
----
+
 
 #### Suppositions
 
@@ -601,7 +601,7 @@ $$ q_{obs} = \frac{\bar{x}_{groupe \: 1} - \bar{x}_{groupe \: 2}}{SE}$$
 
 où $\bar{x}_{groupe \: 1}$ correspond à la moyenne du groupe 1, $\bar{x}_{groupe \: 2}$ à la moyenne du groupe 2 et $SE$ est l'erreur-type du test de Tukey. Cette dernière est donnée par $SE = \sqrt{\frac{MSE}{n}}$, où $MSE$ est le carré moyen des erreurs et $n$ est le nombre d'observations dans chaque groupe. Nous appliquons le test de Tukey dans le prochain exemple.
 
----
+
 
 :::{.exemple section=6}
 Dans l'exemple 6.6, nous avons rejeté l'hypothèse nulle à l'aide de l'ANOVA réalisée sur des données de consommation annuelle de boissons sucrées par des jeunes de 5 régions différentes. On peut appliquer le test de Tukey pour trouver où se trouvent les différences entre les moyennes des groupes. On peut commencer par calculer les moyennes des groupes et les ordonner :
@@ -731,7 +731,7 @@ TukeyHSD(m1, which = "Region")
 D'après la sortie R, on observe seulement deux différences significatives ($\alpha= 0.05$) : la consommation moyenne pour la région BSL est plus petite que celles des régions SLSJ et GIM. En conséquence, on ne peut pas conclure que les moyennes pour les régions CA et CN diffèrent avec celles des autres régions, ni que la moyenne pour la région SLSJ diffère de celle de la région GIM.
 :::
 
----
+
 
 #### Présentation des résultats
 
@@ -739,7 +739,7 @@ Il est possible de présenter les résultats des comparaisons multiples de diff�
 
 Les tests de comparaisons multiples ne peuvent parfois trouver de groupes qui diffèrent entre eux, alors que l'ANOVA avait rejeté $H_0$. L'ANOVA est plus puissante que les tests de comparaisons multiples, ce qui explique, à l'occasion, l'absence d'une différence entre les paires de groupes. Puisque l'ANOVA est plus puissante que les comparaisons multiples, nous recommandons de ne pas procéder à des comparaisons multiples si l'ANOVA n'a pas réussi à rejeter $H_0$.
 
----
+
 
 :::{.exemple section=6}
 On peut représenter succinctement le résultat des comparaisons multiples sur les données de consommation de boissons sucrées selon la région :
@@ -799,7 +799,7 @@ text(x = 5, y = 69.1, labels = "b")
 ```
 :::
 
----
+
 
 ### Conclusion
 

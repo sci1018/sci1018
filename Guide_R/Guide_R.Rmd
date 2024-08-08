@@ -362,6 +362,11 @@ Puisque `Nbre.pistes` comporte 7 valeurs et que `y.seq` en compte 10, les premi�
 
 Le tableau \@ref(tab:math) montre plusieurs fonctions mathématiques de base. Les fonctions trigonométriques sont également disponibles en `R` (Tableau \@ref(tab:trig)).
 
+```{r include=FALSE}
+library(knitr)
+library(kableExtra)
+```
+
 ```{r math, echo=FALSE}
 math_functions <- data.frame(
   Function = c(

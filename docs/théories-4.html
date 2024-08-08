@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -531,7 +531,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="analyse-de-fréquences-le-test-du-khi-carré-chi2" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="théories-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d’occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu’elles proviennent d’un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré (<span class="math inline">\(\chi^2\)</span>, <em>chi-squared test</em>). Ce genre de test est parfois appelé <strong>test d’ajustement</strong> ou <strong>test d’adéquation</strong> (<em>goodness-of-fit test</em>), car il compare les fréquences observées aux fréquences prédites conformes à <span class="math inline">\(H_0\)</span>.</p>
-<hr />
 <div class="exemple" section="5">
 <p>On s’intéresse aux habitudes d’utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d’observation. On décide <em>a priori</em> d’échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu’elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme <strong>variable catégorique</strong> pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table <a href="théories-4.html#tab:modetransport">5.1</a>) :</p>
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -578,7 +577,6 @@ TOTAL
 </tbody>
 </table>
 </div>
-<hr />
 <div id="la-distribution-du-khi-carré-chi2" class="section level4 hasAnchor" number="5.1.1.1">
 <h4><span class="header-section-number">5.1.1.1</span> La distribution du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="théories-4.html#la-distribution-du-khi-carré-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Le test du khi carré permet de comparer des fréquences observées par rapport aux fréquences prédites selon une hypothèse nulle que l’on veut tester. Ce test du khi carré porte le nom d’une distribution statistique continue, celle du khi carré (<span class="math inline">\(\chi^2\)</span>). Cette distribution, tout comme la distribution normale et celle du <span class="math inline">\(t\)</span> de Student, est définie par une fonction de densité. La fonction de densité du khi carré est</p>
@@ -603,8 +601,7 @@ Figure 5.1: Allure de la distribution du khi carré avec différents degrés de 
 où <span class="math inline">\(k\)</span> correspond au nombre de catégories, <span class="math inline">\(f_i\)</span> donne la <strong>fréquence observée</strong> dans la catégorie <span class="math inline">\(i\)</span> et <span class="math inline">\(\hat{f_i}\)</span> donne la <strong>fréquence théorique</strong> pour la catégorie <span class="math inline">\(i\)</span> si <span class="math inline">\(H_0\)</span> est vraie. On compare la valeur obtenue du khi carré à la distribution théorique du khi carré correspondant à <span class="math inline">\(k - 1\)</span> degrés de liberté (<span class="math inline">\(P(\chi^2_{\alpha, k - 1} \geq \chi^2_{observ\acute{e}})\)</span>). Si cette valeur est plus grande que ce que l’on devrait observer lorsque <span class="math inline">\(H_0\)</span> est vraie pour un seuil <span class="math inline">\(\alpha\)</span> et des degrés de liberté donnés, on rejette <span class="math inline">\(H_0\)</span>. Une des propriétés de la statistique du khi carré pour un degré de liberté et un seuil <span class="math inline">\(\alpha\)</span> donné (<span class="math inline">\(\chi^2_{\alpha, 1}\)</span>) est qu’il correspond au carré du <span class="math inline">\(z\)</span> bilatéral<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>, et au carré du <span class="math inline">\(t\)</span> bilatéral pour un même <span class="math inline">\(\alpha\)</span> et pour un degré de liberté qui tend vers l’infini:</p>
 <p><span class="math display">\[
 \chi^2_{\alpha, 1} = z^2_{\alpha(2)} = t^2_{\alpha(2), \infty}
-\]</span>
-—</p>
+\]</span></p>
 <div class="exemple" section="5">
 <p>Reprenons notre exemple sur l’étude d’observation des personnes inscrites à la TÉLUQ. On veut maintenant déterminer si les modes de transport sont utilisés avec la même fréquence dans un ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> de <span class="math inline">\(1:1:1:1\)</span>. Nous pouvons énoncer les hypothèses statistiques suivantes:<br />
 <span class="math inline">\(H_0\)</span>: Le ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> est de <span class="math inline">\(1:1:1:1\)</span>. <br />
@@ -648,16 +645,14 @@ On connaît déjà les <span class="math inline">\(f_i\)</span> qui sont les fr�
 ## X-squared = 11.44, df = 3, p-value = 0.00957</code></pre>
 <p>On rejette <span class="math inline">\(H_0\)</span> car <span class="math inline">\(P \leq \alpha\)</span> (0.05) et on conclut que le ratio <span class="math inline">\(\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}\)</span> n’est pas de <span class="math inline">\(1:1:1:1\)</span> à la TÉLUQ. On constate d’ailleurs que le mode de transport par voiture est sous représenté par rapport aux autres catégories et que les étudiants se déplacent davantage à pied et en transport en commun que ce qui est attendu selon <span class="math inline">\(H_0\)</span>.</p>
 </div>
-<hr />
 <div id="trouver-les-différences-significatives" class="section level5 hasAnchor" number="5.1.1.2.1">
 <h5><span class="header-section-number">5.1.1.2.1</span> Trouver les différences significatives<a href="théories-4.html#trouver-les-différences-significatives" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<!--- section qui n'est pas dans le pdf--->
+<p>&lt;! section qui n’est pas dans le pdf&gt;</p>
 <p>L’analyse réalisée précédemment brosse un portrait général des différences entre les fréquences. Le rejet de <span class="math inline">\(H_0\)</span> ouvre la porte à une étude plus poussée des données. L’identification des différences significatives entre les fréquences observées est possible grâce aux résidus de Pearson. Le résidu de chaque fréquence observée se calcule à l’aide de l’équation suivante :</p>
 <p><span class="math display">\[
 r_i = \frac{f_i - \hat{f_i}}{\sqrt{\hat{f_i}}}
 \]</span>
 Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont considérées comme significativement différentes de leur fréquence théorique.</p>
-<hr />
 <div class="exemple" section="5">
 <p>Les résidus de Pearson sont calculés par la fonction <code>chisq.test()</code>. On peut les obtenir en ajoutant l’opérateur $ et la composante <code>residuals</code> à l’objet où sont sauvegardés les résultats.</p>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="théories-4.html#cb482-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
@@ -666,7 +661,6 @@ Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont consid
 ##           1.2521981           1.8782971          -0.7155418          -2.4149534</code></pre>
 </div>
 <p>On remarque que seul le résidu de l’utilisation de la voiture est significatif. La valeur négative indique que cette fréquence est significativement inférieure à la fréquence théorique.</p>
-<hr />
 </div>
 </div>
 <div id="conditions-dutilisation" class="section level4 hasAnchor" number="5.1.1.3">
@@ -683,7 +677,6 @@ Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont consid
 <h5><span class="header-section-number">5.1.1.3.3</span> Faibles fréquences théoriques<a href="théories-4.html#faibles-fréquences-théoriques" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>De faibles fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>)<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> entraînent un biais du <span class="math inline">\(\chi^2\)</span>. En effet, de trop faibles fréquences théoriques surestiment la valeur du <span class="math inline">\(\chi^2\)</span> et, par conséquent, augmentent l’erreur de type I. Certains statisticiens suggèrent que le test du <span class="math inline">\(\chi^2\)</span> est approprié uniquement pour les cas où aucune fréquence théorique n’est inférieure à 3 et où pas plus de 20 % des fréquences théoriques sont inférieures à 5. D’autres sont plus stricts et recommandent de n’avoir aucune fréquence théorique inférieure à 5. Afin d’éviter des problèmes, il est préférable de viser une bonne taille d’échantillon, notamment en s’assurant d’avoir au moins 5 fois plus d’observations que de cellules dans le tableau. En d’autres mots, si on a deux cellules comme dans le tableau de l’exemple 5.2 (homme et femme), on veut au moins un total de 10 individus échantillonnés aléatoirement dans la population d’intérêt.</p>
 <p>Continuons avec un exemple sur la sélection d’habitat qui applique le <span class="math inline">\(\chi^2\)</span> en écologie animale.</p>
-<hr />
 <div class="exemple" section="5">
 <p>On s’intéresse à la sélection d’habitat par des orignaux (<em>Alces alces</em>). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d’étude. À l’aide d’un système d’information géoréférencé, on calcule la proportion des quatre habitats qui constituent l’aire d’étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l’aire d’étude. En d’autres mots, on détermine si certains types d’habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d’habitat. Le tableau <a href="théories-4.html#tab:select">5.2</a> présente ce jeu de données.</p>
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -782,14 +775,13 @@ Avec <span class="math inline">\(k - 1 = 4 - 1 = 3\)</span> degrés de liberté,
 ## data:  select
 ## X-squared = 43.689, df = 3, p-value = 1.757e-09</code></pre>
 </div>
-<hr />
 <p>On conclut qu’il est peu probable d’observer une valeur de <span class="math inline">\(\chi^2 \geq 43.689\)</span> avec 3 degrés de liberté dans une population où l’utilisation de l’habitat par les orignaux est proportionnelle à la disponibilité de l’habitat. Effectivement, on rejette <span class="math inline">\(H_0\)</span>. Certains types d’habitat sont sous-utilisés et d’autres surutilisés par rapport à leur disponibilité dans l’aire d’étude. De façon équivalente, on peut dire que l’utilisation de différents habitats par les Orignaux ne dépend pas seulement des disponibilités de ces habitats.</p>
 <p>Le rejet de <span class="math inline">\(H_0\)</span> permet une analyse plus poussée à l’aide des résidus de Pearson.</p>
 <div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="théories-4.html#cb486-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
 <span id="cb486-2"><a href="théories-4.html#cb486-2" tabindex="-1"></a>out.select<span class="sc">$</span>residuals</span></code></pre></div>
 <pre><code>##      jeune_coupe    vieille_coupe  marais_et_etang foret_non_coupee 
 ##        -2.343376         2.962253         5.111995        -1.813950</code></pre>
-<!--- Pas les mêmes conclusions que dans le pdf--->
+<p>&lt;! Pas les mêmes conclusions que dans le pdf&gt;</p>
 <p>On constate que les vieilles coupes forestières ainsi que les marais et les étangs sont significativement plus utilisés que ce qui est prédit selon leur disponibilité, alors que les jeunes coupes forestières sont significativement moins fréquentées.</p>
 <p>Le résultat obtenu pour la forêt non-coupée est plus nuancé. Le résidu associé à cet habitat est près du seuil de signification, soit -2. De plus, la différence entre la fréquence observée et théorique est similaire à ce que l’on observe chez d’autres habitats. C’est ici que les compétences de spécialistes deviennent pertinentes. On pourrait alors conclure que la sous-utilisation de cet habitat est biologiquement significative même si le résidu (-1.81295) est légèrement inférieur au seuil de signification statistique de -2.</p>
 </div>
@@ -798,7 +790,6 @@ Avec <span class="math inline">\(k - 1 = 4 - 1 = 3\)</span> degrés de liberté,
 <p>Les calculs à partir de la formule du <span class="math inline">\(\chi^2\)</span> approximent bien la distribution théorique du khi carré, sauf dans le cas où il n’y a qu’un seul degré de liberté (<span class="math inline">\(df = 1\)</span>). Dans de tels cas, on peut utiliser la correction de continuité de Yates pour réduire le biais :</p>
 <p><span class="math display">\[\chi^2_{corr} = \sum_{i=1}^k \frac{(\vert f_i - \hat{f_i}\vert - 0.5)^2}{\hat{f_i}}\]</span></p>
 <p>Le prochain exemple illustre justement l’application de la correction de continuité pour un <span class="math inline">\(\chi^2\)</span> avec 1 degré de liberté.</p>
-<hr />
 <div class="exemple" section="5">
 <p>Dans une expérience en génétique, on veut savoir si un échantillon constitué de 100 plantes provient d’une population où le ratio entre le nombre de fleurs jaunes et celui de fleurs vertes est de <span class="math inline">\(3 : 1\)</span>. Après avoir récolté 100 plantes, on remarque que 84 plantes ont des fleurs jaunes et 16 plantes ont des fleurs vertes. On émet les hypothèses statistiques suivantes :<br />
 <span class="math inline">\(H_0\)</span>: L’échantillon provient d’une population avec un ratio fleurs <span class="math inline">\(\mathrm{jaunes : fleurs}\)</span> vertes de <span class="math inline">\(3 : 1\)</span>.<br />
@@ -836,14 +827,12 @@ Puisqu’on veut tester un ratio <span class="math inline">\(3 : 1\)</span>, les
 <pre><code>## [1] 0.04964723</code></pre>
 <p>Avec le <span class="math inline">\(\chi^2\)</span> corrigé pour la continuité (3.853 comparé à 4.32 pour le <span class="math inline">\(\chi^2\)</span> non corrigé), on rejette tout de même <span class="math inline">\(H_0\)</span> (<span class="math inline">\(P = 0.0496\)</span>) et on conclut que l’échantillon ne provient pas d’une population où il y a un ratio de trois fleurs jaunes pour une fleur verte (<span class="math inline">\(3 : 1\)</span>). Lorsque les valeurs de <span class="math inline">\(P\)</span> se rapprochent du seuil <span class="math inline">\(\alpha = 0.05\)</span>, on peut mentionner que le résultat est marginalement significatif, ce qui souligne au lecteur la moins grande fiabilité du résultat.</p>
 </div>
-<hr />
 </div>
 </div>
 </div>
 <div id="tableau-de-contingence" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Tableau de contingence<a href="théories-4.html#tableau-de-contingence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Le <strong>tableau de contingence</strong> (<em>contingency table</em>) est un tableau à deux dimensions où on note, à la suite d’une étude d’observation ou d’une expérience, la fréquence d’occurrence d’un événement par rapport à deux variables catégoriques (p. ex., sexe, classes de taille). Le tableau de contingence se prête à un <strong>test d’indépendance</strong> entre les deux variables catégoriques. Autrement dit, le tableau de contingence permet de tester l’hypothèse que les fréquences d’occurrence d’un événement pour une variable sont indépendantes des fréquences pour les catégories de l’autre variable. Le test du <span class="math inline">\(\chi^2\)</span> s’applique naturellement au tableau de contingence.</p>
-<hr />
 <div class="exemple" section="5">
 <p>On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d’origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau <a href="théories-4.html#tab:haireyes">5.3</a>. Notons ici qu’il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
 Nous reprendrons plus tard cet exemple.</p>
@@ -889,11 +878,9 @@ Brun
 </tbody>
 </table>
 </div>
-<hr />
 <div id="formulation-des-hypothèse-nulles" class="section level4 hasAnchor" number="5.1.2.1">
 <h4><span class="header-section-number">5.1.2.1</span> Formulation des hypothèse nulles<a href="théories-4.html#formulation-des-hypothèse-nulles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>La formulation des hypothèses nulles à partir d’un tableau de contingence diffère légèrement de ce que nous avons vu pour le test du khi carré d’ajustement. On peut formuler l’hypothèse nulle en termes d’indépendance d’une variable catégorique par rapport à une deuxième variable catégorique. L’hypothèse nulle peut aussi être formulée en termes de proportion d’un niveau d’une variable catégorique par rapport à une deuxième variable catégorique. Les deux types de formulation sont illustrés dans le prochain exemple.</p>
-<hr />
 <div class="exemple" section="5">
 <p>On continue l’exemple débuté plus haut. Nous pouvons formuler les hypothèses statistiques pour les données du tableau de contingence de deux manières différentes.<br />
 <strong>Formulation en termes d’indépendance :</strong><br />
@@ -903,13 +890,11 @@ Brun
 <span class="math inline">\(H_0\)</span>: La proportion des individus avec des yeux bleus ne diffère pas selon la couleur des cheveux.<br />
 <span class="math inline">\(H_a\)</span>: La proportion des individus avec des yeux bleus diffère selon la couleur des cheveux<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>.</p>
 </div>
-<hr />
 </div>
 <div id="fréquences-théoriques" class="section level4 hasAnchor" number="5.1.2.2">
 <h4><span class="header-section-number">5.1.2.2</span> Fréquences théoriques<a href="théories-4.html#fréquences-théoriques" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>L’obtention des fréquences théoriques est un peu plus compliquée pour les tableaux de contingence, mais suit la même logique que pour le <span class="math inline">\(\chi^2\)</span> d’ajustement qui lui n’a qu’une seule variable catégorique. L’équation suivante nous donne les <span class="math inline">\(\hat{f_{ij}}\)</span> conformes à l’hypothèse nulle:</p>
 <p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G}\]</span></p>
-<hr />
 <div class="exemple" section="5">
 <p>On applique le calcul des fréquences théoriques aux données de l’échantillon de couleur des yeux et des cheveux. Le tableau @ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s’obtient:</p>
 <p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G} \]</span>
@@ -918,7 +903,7 @@ Brun
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} =  22.35 \]</span></p>
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-48">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
+<span id="tab:unnamed-chunk-49">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
 </caption>
 <tbody>
 <tr>
@@ -980,14 +965,12 @@ Brun
 </table>
 <p>Avant d’aller plus loin, allons voir les détails du calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance.</p>
 </div>
-<hr />
 </div>
 <div id="calcul-du-chi2-dindépendance" class="section level4 hasAnchor" number="5.1.2.3">
 <h4><span class="header-section-number">5.1.2.3</span> Calcul du <span class="math inline">\(\chi^2\)</span> d’indépendance<a href="théories-4.html#calcul-du-chi2-dindépendance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Le calcul du <span class="math inline">\(\chi^2\)</span> pour des données d’un tableau de contingence donne la somme des valeurs partielles pour toutes les cellules du tableau :</p>
 <p><span class="math display">\[\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} \]</span>
 où <span class="math inline">\(r\)</span> correspond au nombre total de rangées et <span class="math inline">\(c\)</span> au nombre total de colonnes du tableau de contingence, <span class="math inline">\(f_{ij}\)</span> correspond à la fréquence observée pour la rangée <span class="math inline">\(i\)</span> et la colonne <span class="math inline">\(j\)</span> du tableau de contingence, alors que <span class="math inline">\(\hat{f_{ij}}\)</span> représente la fréquence théorique de la rangée <span class="math inline">\(i\)</span> et colonne <span class="math inline">\(j\)</span> du tableau de contingence. On calcule des degrés de liberté avec <span class="math inline">\(df = (r - 1)(c - 1)\)</span>.</p>
-<hr />
 <div class="exemple" section="5">
 <p>En poursuivant l’exemple de la couleur des yeux et des cheveux, on peut calculer le <span class="math inline">\(\chi^2\)</span> :<br />
 <span class="math display">\[\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} \]</span>
@@ -1032,7 +1015,6 @@ Ici, nous obtenons 33.112 avec la correction de Yates et une valeur de <span cla
 ## Brun -2.873982  2.632024</code></pre>
 <p>L’étude des résidus indique que les fréquences diffèrent significativement puisqu’elles sont inférieures à -2 ou supérieures à 2. On peut conclure que les individus au teint pâle avec des yeux bleus sont plus fréquents que la fréquence attendue (ou théorique). Il en est de même pour les individus dont le teint est foncé avec des yeux bruns. La tendance inverse est observée chez les personnes avec le teint pâle et les yeux bruns et celles au teint foncé avec les yeux bleus.</p>
 </div>
-<hr />
 </div>
 </div>
 <div id="alternative-au-test-du-chi2" class="section level3 hasAnchor" number="5.1.3">

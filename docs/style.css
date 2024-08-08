@@ -67,7 +67,7 @@ body {
 
 .book .book-header {
   position: initial !important;
-  height: 200px !important; /* height à changer selon la taille de l'image */
+  height: 300px !important; /* height à changer selon la taille de l'image */
   background-image: url(images/cover.png) !important;
   background-size: cover !important;
   background-position: bottom !important;
@@ -106,9 +106,40 @@ body {
   background-color: #68cdff; /* night mode */
 }
 
+.color-theme-1 .exemple { 
+  counter-increment: exemple;
+  margin-bottom: 1em;
+  padding: 15px 15px 15px 15px;
+  background-color: #cfb996; /* color of example box on sepia mode */
+}
+
+.color-theme-2 .exemple { 
+  counter-increment: exemple;
+  margin-bottom: 1em;
+  padding: 15px 15px 15px 15px;
+  background-color: #16537e; /* color of example box on night mode */
+}
+
 .exemple { 
   counter-increment: exemple;
   margin-bottom: 1em;
   padding: 15px 15px 15px 15px;
-  background-color: #fffdfa; /* color of example box on white mode */
+  background-color: #fbf3eb; /* color of example box on white mode */
+}
+
+/* ------------------------------------------------- */
+/* TOP BUTTONS COLOR*/
+.book .book-header .btn {
+  color: #fff; /* color of buttons on white mode */
+  text-transform: uppercase;
+  line-height: 50px;
+  font-size: 14px;
+}
+
+.book.color-theme-1 .book-header .btn {
+  color: #111;  /* color of buttons on sepia mode */
+}
+
+.section h3 {
+  color: #A64907;
 }

@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -601,7 +601,7 @@ Réponse
 <span id="cb610-4"><a href="exercices-5.html#cb610-4" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées. </span></span>
 <span id="cb610-5"><a href="exercices-5.html#cb610-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb610-6"><a href="exercices-5.html#cb610-6" tabindex="-1"></a><span class="fu">plot</span>(m1)</span></code></pre></div>
-<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>On constate que les variances ne sont pas homogènes, puisque le graphique des résidus en fonction des valeurs prédites montre qu’un groupe varie moins que les autres.</p>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="exercices-5.html#cb611-1" tabindex="-1"></a><span class="do">##on essaie une transformation log</span></span>
 <span id="cb611-2"><a href="exercices-5.html#cb611-2" tabindex="-1"></a>poison<span class="sc">$</span>log.Temps <span class="ot">&lt;-</span> <span class="fu">log</span>(poison<span class="sc">$</span>Temps)</span>
@@ -611,7 +611,7 @@ Réponse
 <span id="cb611-6"><a href="exercices-5.html#cb611-6" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées suite à cette transformation:</span></span>
 <span id="cb611-7"><a href="exercices-5.html#cb611-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb611-8"><a href="exercices-5.html#cb611-8" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
-<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>Les variances sont maintenant homogènes après cette transformation. Les résidus respectent aussi la condition de normalité. De plus, nous assumons que le dispositif expérimental assure la supposition d’indépendance des erreurs. Nous pouvons donc procéder avec l’interprétation de l’ANOVA.</p>
 </details>
 <p><br></p>

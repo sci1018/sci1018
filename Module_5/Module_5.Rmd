@@ -8,7 +8,7 @@ Dans la leçon précédente, nous avons illustré des variantes du test $t$ de S
 
 Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d'occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu'elles proviennent d'un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré ($\chi^2$, *chi-squared test*). Ce genre de test est parfois appelé **test d'ajustement** ou **test d'adéquation** (*goodness-of-fit test*), car il compare les fréquences observées aux fréquences prédites conformes à $H_0$.
 
----
+
 
 :::{.exemple section=5}
 On s'intéresse aux habitudes d'utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d'observation. On décide *a priori* d'échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu'elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme **variable catégorique** pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table \@ref(tab:modetransport)) :
@@ -36,7 +36,7 @@ kable(df.freqs,
 ```
 :::
 
----
+
 
 #### La distribution du khi carré ($\chi^2$)
 
@@ -94,7 +94,7 @@ où $k$ correspond au nombre de catégories, $f_i$ donne la **fréquence observ�
 $$
 \chi^2_{\alpha, 1} = z^2_{\alpha(2)} = t^2_{\alpha(2), \infty}
 $$
----
+
 
 :::{.exemple section=5}
 Reprenons notre exemple sur l'étude d'observation des personnes inscrites à la TÉLUQ. On veut maintenant déterminer si les modes de transport sont utilisés avec la même fréquence dans un ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ de $1:1:1:1$. Nous pouvons énoncer les hypothèses statistiques suivantes:  
@@ -144,10 +144,10 @@ out
 On rejette $H_0$ car $P \leq \alpha$ (0.05) et on conclut que le ratio $\mathrm{\grave{a}\:pied}:\mathrm{transport\:en\:commun}:\mathrm{v\acute{e}lo}:\mathrm{voiture}$ n'est pas de $1:1:1:1$ à la TÉLUQ. On constate d'ailleurs que le mode de transport par voiture est sous représenté par rapport aux autres catégories et que les étudiants se déplacent davantage à pied et en transport en commun que ce qui est attendu selon $H_0$.
 :::
 
----
+
 
 ##### Trouver les différences significatives 
-<!--- section qui n'est pas dans le pdf--->
+<! section qui n'est pas dans le pdf>
 
 L’analyse réalisée précédemment brosse un portrait général des différences entre les fréquences. Le rejet de $H_0$ ouvre la porte à une étude plus poussée des données. L’identification des différences significatives entre les fréquences observées est possible grâce aux résidus de Pearson. Le résidu de chaque fréquence observée se calcule à l’aide de l’équation suivante :
 
@@ -156,7 +156,7 @@ r_i = \frac{f_i - \hat{f_i}}{\sqrt{\hat{f_i}}}
 $$
 Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont considérées comme significativement différentes de leur fréquence théorique.
 
----
+
 
 :::{.exemple section=5}
 Les résidus de Pearson sont calculés par la fonction `chisq.test()`. On peut  les obtenir en ajoutant l’opérateur \$ et la composante `residuals` à l’objet où sont sauvegardés les résultats.
@@ -168,7 +168,7 @@ out$residuals
 :::
 On remarque que seul le résidu de l’utilisation de la voiture est significatif. La valeur négative indique que cette fréquence est significativement inférieure à la fréquence théorique. 
 
----
+
 
 #### Conditions d'utilisation
 
@@ -186,7 +186,7 @@ De faibles fréquences théoriques ($\hat{f_i}$)^[Rappel: les fréquences théor
 
 Continuons avec un exemple sur la sélection d'habitat qui applique le $\chi^2$ en écologie animale.
 
----
+
 
 :::{.exemple section=5}
 On s'intéresse à la sélection d'habitat par des orignaux (*Alces alces*). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d'étude. À l'aide d'un système d'information géoréférencé, on calcule la proportion des quatre habitats qui constituent l'aire d'étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l'aire d'étude. En d'autres mots, on détermine si certains types d'habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d'habitat. Le tableau \@ref(tab:select) présente ce jeu de données.
@@ -243,7 +243,7 @@ out.select
 ``` 
 :::
 
----
+
 
 On conclut qu'il est peu probable d'observer une valeur de $\chi^2 \geq 43.689$ avec 3 degrés de liberté dans une population où l'utilisation de l'habitat par les orignaux est proportionnelle à la disponibilité de l'habitat. Effectivement, on rejette $H_0$. Certains types d'habitat sont sous-utilisés et d'autres surutilisés par rapport à leur disponibilité dans l'aire d'étude. De façon équivalente, on peut dire que l'utilisation de différents habitats par les Orignaux ne dépend pas seulement des disponibilités de ces habitats.
 
@@ -254,7 +254,7 @@ Le rejet de $H_0$ permet une analyse plus poussée à l’aide des résidus de P
 out.select$residuals
 ``` 
 
-<!--- Pas les mêmes conclusions que dans le pdf--->
+<! Pas les mêmes conclusions que dans le pdf>
 
 On constate que les vieilles coupes forestières ainsi que les marais et les étangs sont significativement plus utilisés que ce qui est prédit selon leur disponibilité, alors que les jeunes coupes forestières sont significativement moins fréquentées.   
 
@@ -268,7 +268,7 @@ $$\chi^2_{corr} = \sum_{i=1}^k \frac{(\vert f_i - \hat{f_i}\vert - 0.5)^2}{\hat{
 
 Le prochain exemple illustre justement l'application de la correction de continuité pour un $\chi^2$ avec 1 degré de liberté.
 
----
+
 
 :::{.exemple section=5}
 Dans une expérience en génétique, on veut savoir si un échantillon constitué de 100 plantes provient d'une population où le ratio entre le nombre de fleurs jaunes et celui de fleurs vertes est de $3 : 1$. Après avoir récolté 100 plantes, on remarque que 84 plantes ont des fleurs jaunes et 16 plantes ont des fleurs vertes. On émet les hypothèses statistiques suivantes :   
@@ -309,13 +309,13 @@ P
 Avec le $\chi^2$ corrigé pour la continuité (3.853 comparé à 4.32 pour le $\chi^2$ non corrigé), on rejette tout de même $H_0$ ($P = `r round(1 - pchisq(khi.corr, df = 1), 4)`$) et on conclut que l'échantillon ne provient pas d'une population où il y a un ratio de trois fleurs jaunes pour une fleur verte ($3 : 1$). Lorsque les valeurs de $P$ se rapprochent du seuil $\alpha = 0.05$, on peut mentionner que le résultat est marginalement significatif, ce qui souligne au lecteur la moins grande fiabilité du résultat.
 :::
 
----
+
 
 ### Tableau de contingence
 
 Le **tableau de contingence** (*contingency table*) est un tableau à deux dimensions où on note, à la suite d'une étude d'observation ou d'une expérience, la fréquence d'occurrence d'un événement par rapport à deux variables catégoriques (p. ex., sexe, classes de taille). Le tableau de contingence se prête à un **test d'indépendance** entre les deux variables catégoriques. Autrement dit, le tableau de contingence permet de tester l'hypothèse que les fréquences d'occurrence d'un événement pour une variable sont indépendantes des fréquences pour les catégories de l'autre variable. Le test du $\chi^2$ s'applique naturellement au tableau de contingence.
 
----
+
 
 :::{.exemple section=5}
 On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d'origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau \@ref(tab:haireyes). Notons ici qu'il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
@@ -334,13 +334,13 @@ kable(freq_obs,
 ``` 
 :::
 
----
+
 
 #### Formulation des hypothèse nulles
 
 La formulation des hypothèses nulles à partir d'un tableau de contingence diffère légèrement de ce que nous avons vu pour le test du khi carré d'ajustement. On peut formuler l'hypothèse nulle en termes d'indépendance d'une variable catégorique par rapport à une deuxième variable catégorique. L'hypothèse nulle peut aussi être formulée en termes de proportion d'un niveau d'une variable catégorique par rapport à une deuxième variable catégorique. Les deux types de formulation sont illustrés dans le prochain exemple.
 
----
+
 
 :::{.exemple section=5}
 On continue l'exemple débuté plus haut. Nous pouvons formuler les hypothèses statistiques pour les données du tableau de contingence de deux manières différentes.  
@@ -353,7 +353,7 @@ $H_a$: La proportion des individus avec des yeux bleus diffère selon la couleur
 
 :::
 
----
+
 
 #### Fréquences théoriques
 
@@ -361,7 +361,7 @@ L'obtention des fréquences théoriques est un peu plus compliquée pour les tab
 
 $$\hat{f_{ij}} = \frac{R_i \times C_j}{G}$$
 
----
+
 
 :::{.exemple section=5}
 On applique le calcul des fréquences théoriques aux données de l'échantillon de couleur des yeux et des cheveux. Le tableau \@ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s'obtient: 
@@ -391,7 +391,7 @@ kable(df,
 Avant d'aller plus loin, allons voir les détails du calcul du $\chi^2$ d'indépendance.
 :::
 
----
+
 
 #### Calcul du $\chi^2$ d'indépendance
 
@@ -400,7 +400,7 @@ Le calcul du $\chi^2$ pour des données d'un tableau de contingence donne la som
 $$\chi^2 = \sum_{i=1}^r \sum_{j=1}^c \frac{(f_{ij} - \hat{f}_{ij})^2}{\hat{f}_{ij}} $$
 où $r$ correspond au nombre total de rangées et $c$ au nombre total de colonnes du tableau de contingence, $f_{ij}$ correspond à la fréquence observée pour la rangée $i$ et la colonne $j$ du tableau de contingence, alors que $\hat{f_{ij}}$ représente la fréquence théorique de la rangée $i$ et colonne $j$ du tableau de contingence. On calcule des degrés de liberté avec $df = (r - 1)(c - 1)$.
 
----
+
 
 :::{.exemple section=5}
 En poursuivant l'exemple de la couleur des yeux et des cheveux, on peut calculer le $\chi^2$ :  
@@ -445,7 +445,7 @@ out.tab.corr$residuals
 L’étude des résidus indique que les fréquences diffèrent significativement puisqu’elles sont inférieures à -2 ou supérieures à 2. On peut conclure que les individus au teint pâle avec des yeux bleus sont plus fréquents que la fréquence attendue (ou théorique). Il en est de même pour les individus dont le teint est foncé avec des yeux bruns. La tendance inverse est observée chez les personnes avec le teint pâle et les yeux bruns et celles au teint foncé avec les yeux bleus.
 :::
 
----
+
 
 ### Alternative au test du $\chi^2$
 

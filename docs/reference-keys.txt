@@ -60,7 +60,7 @@ tab:modetransport
 fig:chi2
 tab:select
 tab:haireyes
-tab:unnamed-chunk-48
+tab:unnamed-chunk-49
 tab:surv
 tab:survMales
 tab:survFemales

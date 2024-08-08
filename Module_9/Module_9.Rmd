@@ -37,7 +37,7 @@ La **randomisation** consiste en l'application d'un processus aléatoire sur l'a
 La **répartition spatiale** ou **temporelle** (selon le cas) contrôle la variation spatiale ou temporelle des propriétés des unités expérimentales. Autrement dit, les conditions de l'emplacement où se trouve une unité expérimentale peuvent être très différentes des conditions à un autre emplacement. En disposant les parcelles à différents endroits sur le site d'étude, on obtient une meilleure estimation de la variabilité naturelle des unités expérimentales. Ceci permet de tirer des conclusions plus générales. De plus, établir les unités expérimentales à une distance suffisante les unes des autres assure aussi l'indépendance des observations. Le prochain exemple illustre certains problèmes liés à la répétition, la randomisation et la répartition spatiale qui peuvent survenir lors de l'élaboration d'un plan d'échantillonnage.
 
 
----
+
 
 :::{.exemple section=9}
 On s’intéresse à l'effet des arbres sur les îlots de chaleurs en ville lors des périodes de canicule. On émet l’hypothèse scientifique que la température est plus basse dans les zones boisées que dans les zones adjacentes. Pour tester notre hypothèse, on attend une canicule et on mesure la température moyenne de l'air au milieu d'une zone boisée et à 50 m à l'extérieur de cette même zone. Si chaque thermomètre fournit une seule mesure de température, le nombre de répétitions sera insuffisant et on ne pourra pas tester d’hypothèse. On devra donc modifier le plan d’échantillonnage afin d’incorporer plus de répétitions.  
@@ -49,7 +49,7 @@ Dans le but d’améliorer la répartition spatiale, on reprend (encore) l’exp
 Dans cet exemple, aucun témoin n’a été présenté. L’inclusion d’un témoin améliorerait potentiellement le dispositif. Un témoin dans le contexte de cette expérience pourrait s’avérer être un groupe de thermomètre à la limite de la ville où les îlots de chaleurs sont moins importants, ou très en hauteur où il n'y a pas d'effet des arbres, ni du béton accumulant la chaleur. Le cas échéant, les thermomètres témoins devraient être répartis aléatoirement aux limites de la ville ou dans les hauteurs. Ceci permettrait de tester efficacement l’effet des arbres sur la température de l'air en ville en contrôlant la variabilité des endroits dans cette ville (répartition spatiale), et en intégrant la randomisation et la répétition. Un dispositif alternatif consisterait à utiliser des blocs complets aléatoires en sélectionnant aléatoirement 10 endroits dans la ville et en disposant un trio de thermomètres à chaque endroit (1 thermomètre à l'intérieur de la zone boisée, 1 thermomètre à l'extérieur et 1 thermomètre très en hauteur).
 :::
 
----
+
 
 ### Nos meilleurs alliés dans l'élaboration d'un plan d'échantillonnage
 

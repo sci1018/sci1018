@@ -12,7 +12,7 @@ Les données utilisées pour tester les hypothèses peuvent provenir d'**expéri
 
 On peut faire davantage confiance à des conclusions qui reposent sur des manipulations plutôt que sur des observations où on ne contrôle peu ou pas de variables. Les deux types d'approches expérimentales sont importantes et complémentaires. L'expérience contrôlée peut parfois manquer de réalisme en simplifiant trop le système à l'étude, alors que l'étude d'observation mesure la variation en conditions plus naturelles, mais non contrôlées. Une étude d'observation peut révéler des patrons bruts et suggérer une expérience contrôlée afin de raffiner notre enquête.
 
----
+
 
 ::: {.exemple section=3}
 On réalise une expérience visant l'effet de différents types de fourrage sur le goût du lait de vache. Pour ce faire, on sélectionne 30 vaches de la même race et on leur attribue aléatoirement l'un de trois types de fourrage (millet, trèfle, et luzerne), afin d'avoir 10 vaches pour chaque traitement. On soumet les vaches aux mêmes conditions de séjour (photopériode, température ambiante, disponibilité d'eau, "bonne" musique). 
@@ -20,9 +20,9 @@ On réalise une expérience visant l'effet de différents types de fourrage sur 
 À la fin d'une période donnée pendant laquelle les vaches ont été nourries avec le type de fourrage prescrit (p. ex., une semaine, un mois), nous pourrons ensuite échantillonner le lait de chaque vache. Après avoir soumis les échantillons de lait à notre goûteur, le résultat de l'expérience permettra de déterminer la différence de goût du lait selon le type de fourrage perceptible par un goûteur. 
 :::
 
----
 
----
+
+
 
 ::: {.exemple section=3}
 On réalise une étude d'observation afin d'étudier le nombre de grenouilles présentant des malformations dans des étangs en milieux agricoles. On sélectionne aléatoirement 20 étangs dans des milieux à faible intensité agricole et 20 étangs additionnels dans des milieux à forte intensité agricole. Dans chaque étang, on effectue des inventaires afin d'estimer le nombre de grenouilles qui ont des malformations à l'aide de méthodes qui tiennent compte de la probabilité de détection. On mesure également d'autres variables, telles que la taille de l'étang, la distance de chaque étang par rapport au champ agricole le plus près, et la concentration d'une substance toxique dans l'eau de chaque étang. 
@@ -32,7 +32,7 @@ Une analyse statistique permet de déterminer comment le nombre de malformations
 En fait, il se peut que certaines substances toxiques différentes de celles qu'on a mesurées, provenant des champs agricoles situés à proximité, soient amenées par ruissellement dans les étangs. Ainsi, la cause des malformations n'est pas nécessairement la proximité des champs agricoles, mais plutôt les produits toxiques qui y sont appliqués. Après avoir détecté un effet de la proximité, il serait approprié d'effectuer une expérience contrôlée en faisant varier certaines variables pour quantifier directement leurs effets.
 :::
 
----
+
 
 #### Hypothèse scientifique
 
@@ -60,7 +60,7 @@ Pour chacune des hypothèses ci-dessus, on pourrait développer un protocole afi
 
 La **méthode scientifique** est une approche utilisée pour élaborer des hypothèses selon des observations et des prédictions. Différents types de raisonnements peuvent être utilisés selon la méthode scientifique, notamment la **déduction** (exemple 3.3) et l'**induction** (exemple 3.4). Le raisonnement déductif consiste à tirer des conclusions (inférer) à partir de données ou modèles partant du **général pour arriver au spécifique**. Par opposition, le raisonnement inductif consiste à tirer des conclusions à partir de données ou modèles partant du **spécifique au général**.
 
---- 
+ 
 
 ::: {.exemple section=3}
 Voici un exemple de déduction :  
@@ -70,9 +70,9 @@ Voici un exemple de déduction :
 Les éléments 1 et 2 sont des **prémisses** et le troisième est la conclusion. Ensemble, ces trois éléments forment un **syllogisme**. 
 :::
 
----
 
---- 
+
+ 
 
 ::: {.exemple section=3}
 Voici un exemple d'induction :   
@@ -81,7 +81,7 @@ Voici un exemple d'induction :
 3. Tous les mélèzes d'Abitibi sont des *Larix laricina*.  
 :::
 
----
+
 
 Avec la déduction, si les prémisses sont vraies, la conclusion a de très bonnes chances d'être correcte, alors qu'avec l'induction, si les prémisses sont vraies, la conclusion est probablement vraie, mais elle peut aussi être fausse. On utilise l'un ou l'autre de ces raisonnements pour construire des hypothèses, mais on peut aussi les utiliser de façon concomitante. La statistique est une approche inductive, puisqu'on tire des conclusions en partant du spécifique (l'échantillon) pour l'appliquer au plus général (la population). La figure \@ref(fig:induction) montre l'utilisation de l'induction dans la démarche scientifique.
 
@@ -118,7 +118,7 @@ Alors que l'hypothèse scientifique est l'élément qui devrait avoir motivé l'
 
 L'hypothèse alternative ($H_a$), quant à elle, est l'hypothèse statistique qui correspond à un effet ou une différence. C'est cette hypothèse qui indique qu'il se passe quelque chose. Le test d'hypothèse statistique consiste à essayer de rejeter $H_0$. Si l'hypothèse nulle ($H_0$) est fausse, on la rejette et on se tourne vers l'hypothèse alternative ($H_a$). On parle toujours en termes de $H_0$: on rejette $H_0$ ou non. On ne peut pas accepter $H_0$, seulement échouer de la rejeter faute de preuves. C'est ce système binaire d'hypothèses que les chercheurs utilisent depuis près d'un siècle. Toutefois, des méthodes alternatives ont été développées récemment qui permettent de comparer plusieurs hypothèses (> 2) simultanément, à l'aide de la sélection de modèles.
 
---- 
+ 
 
 ::: {.exemple section=3}
 On réalise une expérience pour tester l'hypothèse scientifique suivante: la lumière abondante dans les coupes forestières favorise les espèces végétales intolérantes à l'ombre. 
@@ -130,7 +130,7 @@ $H_a$ (hypothèse alternative): $\mu_{coupes} \neq \mu_{t\acute{e}moins}$
 Si le test statistique indique que la différence observée entre les parcelle coupées et témoins est peu probable pour un échantillon de même taille tiré à partir de la même population lorsque $H_0$ est vraie, nous allons rejeter $H_0$. En d'autres mots, on se base sur une distribution statistique qui reflète $H_0$ pour situer la valeur observée de la statistique du test obtenue à partir de l'échantillon. Si cette valeur se trouve dans les extrémités de la distribution (c.-à-d., dans les queues), on va considérer cette valeur comme peu plausible lorsque $H_0$ est vraie. On conclura alors qu'il y a une différence de croissance des espèces intolérantes à l'ombre dans les coupes et dans les témoins, ce qui confirmera notre hypothèse scientifique de départ.
 :::
 
----
+
 
 Pour déterminer si une différence est **statistiquement significative** (*statistically significant*) entre deux groupes ou deux échantillons, on doit procéder à un test statistique. Le test statistique est le processus par lequel on évalue la probabilité d'observer la valeur d'une statistique lorsque $H_0$ est vraie pour une taille d'échantillon donnée dans une population. Par le fait même, nous effectuons un test d'hypothèse. 
 
@@ -138,7 +138,7 @@ Lorsqu'on compare les moyennes de deux groupes, il est peu probable d'observer e
 
 Le **seuil de signification** ($\alpha$, *significance level*) est justement un critère qui est utilisé depuis longtemps pour distinguer entre le résultat du hasard et d'un effet réel. Par convention, on utilise $\alpha = 0.01, 0.05$ ou $0.10$. Si la probabilité cumulative de la statistique du test utilisé est inférieure ou égale au seuil de signification ($P \leq \alpha$), on rejette $H_0$. Ainsi, avec $P \leq 0.05$, on devrait observer une différence comme celle de l'échantillon lorsque $H_0$ est vraie dans moins de 5 \% des cas, si on répétait l'expérience. Autrement dit, si pour les caractéristiques des données le phénomène ($H_0$) est rare (c.-à-d., $P \leq \alpha$), on rejette $H_0$. Par conséquent, on ne rejette pas $H_0$ si le phénomène ($H_0$) est fréquent pour les caractéristiques des données de notre échantillon.
 
---- 
+ 
 
 ::: {.exemple section=3}
 On poursuit l'exemple précédent sur la croissance d'espèces végétales intolérantes à l'ombre dans des coupes et des parcelles témoins. Comme mentionné plus tôt, nous considérons les deux hypothèses suivantes et un seul de signification de $0.05$:
@@ -151,7 +151,7 @@ On effectue un test statistique qui détermine la probabilité que l'échantillo
 
 :::
 
----
+
 
 La déclaration que le résultat du test est statistiquement significatif apporte peu d'information. Il est préférable d'ajouter l'estimation du paramètre pour chaque groupe, comme la la moyenne $\bar{x}$ ainsi qu'une mesure de précision. Toutefois, le choix d'un seuil de signification (0.05, 0.01, 0.10) n'est pas sans conséquence -- il influence notre probabilité de commettre des erreurs dans nos conclusions.
 
@@ -273,7 +273,7 @@ polygon(c(xvs[xvs>1.729],1.729),c(dt(xvs[xvs>1.729],df=19),0.0008750923),col="re
 text(y = 0.4, x = -4, labels = "c", cex = 1.5)
 ```
 
----
+
 
 ::: {.exemple section=3}
 On effectue une étude en Montérégie afin de déterminer l'âge d'ours noirs que l'on veut comparer à la moyenne d'âge d'une autre population. On connaît l'âge moyen d'une population d'ours noirs en Abitibi, qui est de 7 ans. 
@@ -298,7 +298,7 @@ On détermine ensuite la probabilité d'observer une valeur de $t$ supérieure o
 Puisque nous avons fixé le seuil $\alpha$ à 0.05, et que la probabilité est inférieure à ce seuil, nous rejetons donc $H_0$. Étant donné le faible appui en faveur de cette hypothèse, nous concluons qu'il est peu probable que $H_0$ soit vraie. Nous pourrons donc dire que l'âge moyen des ours en Montérégie n'est pas de 7 ans.
 :::
 
----
+
 
 Dans R, on peut trouver la solution en calculant le $t$ à la main et en utilisant les fonctions telles que `qt( )` et `pt( )`. Ainsi, la solution dans R est :
 
@@ -342,7 +342,7 @@ t.test(x = age.ours, mu = 7, alternative = "two.sided")
 
 D'autres situations nous obligent à tester une hypothèse en dirigeant notre attention vers l'une des deux queues de la distribution, nous donnant ainsi un test unilatéral. C'est ce que nous montrons dans l'exemple suivant.
 
---- 
+ 
 
 ::: {.exemple section=3}
 On veut étudier l'efficacité d'un médicament sur la perte de masse. Pour ce faire, on sélectionne 12 patients chez qui on mesure la masse corporelle en kg. On administre un médicament qui stimule la perte de masse à chacun des 12 patients, à raison d'un comprimé par jour. Après un mois de la prise du médicament, on mesure la masse des mêmes individus. Les valeurs de l'échantillon montrent la différence entre la masse finale et initiale (kg). Une valeur positive indique un gain alors qu'une valeur négative est associée à une perte de masse :0.2, -0.5, -1.3, -1.6, -0.7, 0.4, -0.1, 0.0, -0.6, -1.1, -1.2, -0.8
@@ -387,7 +387,7 @@ t.test(x = poids, mu = 0, alternative = "less")
 On conclut que la probabilité d'observer une valeur de $t$ de `r round(t.val, digits = 3)` dans un échantillon de 12 observations tiré d'une population où la moyenne est de 0 est très faible (c.-à-d., $P(t \leq -3.329) = 0.0034$). En d'autres mots, il est peu probable d'observer une valeur de $t$ aussi faible que celle de l'échantillon lorsque la moyenne de la population est de 0. Ainsi, nous rejetons $H_0$ et concluons que le médicament a stimulé la perte de masse.
 :::
 
----
+
 
 #### Suppositions
 

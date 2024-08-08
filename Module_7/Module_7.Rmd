@@ -69,7 +69,7 @@ $$ SSinter = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n (\bar{y}_{ij} - \bar{y}_i - 
 
 L'exemple qui suit illustre le calcul de ces différentes valeurs nécessaires à l'ANOVA à deux critères. Les degrés de liberté associés au terme $SSInter$ sont donnés par $df = (a - 1)(b - 1)$, où $a$ et $b$ correspondent aux nombre de groupes du facteur $A$ et $B$, respectivement.
 
----
+
 
 :::{.exemple section=7}
 On s'intéresse à l'effet d'un traitement hormonal sur la concentration de calcium dans le plasma sanguin chez des oiseaux mâles et femelles. La variable réponse est la concentration du calcium dans le plasma sanguin. Nos deux facteurs sont le traitement hormonal (avec traitement, sans traitement) et le sexe (mâle, femelle). Les données sont contenues dans le fichier `calcium.txt`.
@@ -751,13 +751,13 @@ En l'absence d'une interaction statistiquement significative (comme dans cet exe
 ``` 
 :::
 
----
+
 
 ### Effets additifs
 
 Dans l'exemple précédent, on remarque que l'effet du premier facteur est indépendant de l'effet du deuxième facteur. En d'autres mots, la différence entre les mâles et les femelles est constante, peu importe le traitement hormonal. En l'absence d'une interaction statistiquement significative entre les deux facteurs, nous dirons que les effets des facteurs sont **additifs**. C'est ce qu'on entend par l'**additivité** des facteurs. En contrepartie, la présence d'une interaction significative entre les facteurs complique l'interprétation des résultats de l'expérimentation. Effectivement, la présence d'une interaction permet d'identifier des phénomènes souvent plus intéressants scientifiquement que s'il n'y avait pas d'interaction entre les facteurs. C'est ce que nous constaterons dans certains des exemples suivants.
 
----
+
 
 :::{.exemple section=7}
  Nous désirons déterminer l'effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (*agrimore*, *control*, *supergain* et *supersupp*) sur le gain en masse en kg de bétail après 6 semaines. Les données sont stockées dans le fichier `croissance.csv`^[Le fichier `csv` est un type de fichier de texte standard où chaque élément est séparé le plus souvent par une virgule, un espace ou une point-virgule. Ce format s'importe dans R à l'aide de `read.table( )` puisque c'est un fichier de texte, en modifiant la valeur de l'argument `delim`.].
@@ -993,9 +993,9 @@ text(x = 3, y = 22.8, labels = "c", cex = 1.2)
 ``` 
 :::
 
----
 
----
+<br>
+
 
 :::{.exemple section=7}
 Comme dernier exemple, nous analyserons l'effet de la concentration d'un antibiotique et de l'humidité sur la croissance d'une espèce de bactéries que l'on peut cultiver en laboratoire dans des plats de Pétri contenant un substrat de sucres appelé agar-agar. La variable réponse ici est la surface du substrat couverte par les colonies de bactérie mesurée en mm$^2$. Le fichier `antibio.txt` contient les données. 
@@ -1198,7 +1198,7 @@ La Figure \@ref(fig:antibioRes) montre qu'il y a bien une interaction entre les 
 On remarque qu'il y a une inversion des différences entre les groupes "sec" et les groupes "humide" : la surface couverte moyenne du groupe "humide" est supérieure à celle du groupe "sec" aux concentrations faible et modérée d'antibitioque. Toutefois, le groupe "sec" a une plus grande surface couverte moyenne que le groupe "humide" à la concentration élevée d'antibiotique. On conclut que l'augmentation de la concentration de l'antibiotique réduit l'activité bactérienne sous des conditions humides, mais augmente l'activité bactérienne en conditions plus sèches. 
 :::
 
----
+
 
 ### Conclusion 
 

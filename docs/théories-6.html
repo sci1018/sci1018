@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -571,7 +571,6 @@ où on compare la moyenne de chaque groupe <span class="math inline">\(i\)</span
 <p>où le premier terme, <span class="math inline">\((\bar{y}_{ij} -\bar{y})\)</span>, est la différence observée de la moyenne des groupes combinés <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> avec la moyenne globale, et les deux autres termes représentent la différence que devrait avoir cette moyenne des groupes combinés avec la moyenne globale s’il n’y avait pas d’interaction, c-à-d, la somme des différences entre la moyenne du groupe <span class="math inline">\(i\)</span> et la moyenne globale, <span class="math inline">\((\bar{y}_{i} -\bar{y})\)</span>, et entre la moyenne du groupe <span class="math inline">\(j\)</span> et la moyenne globale, <span class="math inline">\((\bar{y}_{j} -\bar{y})\)</span>. Nous pouvons simplifier l’équation pour <span class="math inline">\(SSinter\)</span>:</p>
 <p><span class="math display">\[ SSinter = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2\]</span></p>
 <p>L’exemple qui suit illustre le calcul de ces différentes valeurs nécessaires à l’ANOVA à deux critères. Les degrés de liberté associés au terme <span class="math inline">\(SSInter\)</span> sont donnés par <span class="math inline">\(df = (a - 1)(b - 1)\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> correspondent aux nombre de groupes du facteur <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span>, respectivement.</p>
-<hr />
 <div class="exemple" section="7">
 <p>On s’intéresse à l’effet d’un traitement hormonal sur la concentration de calcium dans le plasma sanguin chez des oiseaux mâles et femelles. La variable réponse est la concentration du calcium dans le plasma sanguin. Nos deux facteurs sont le traitement hormonal (avec traitement, sans traitement) et le sexe (mâle, femelle). Les données sont contenues dans le fichier <code>calcium.txt</code>.</p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="théories-6.html#cb618-1" tabindex="-1"></a><span class="do">## On importe le jeu de données</span></span>
@@ -1008,12 +1007,10 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 </p>
 </div>
 </div>
-<hr />
 </div>
 <div id="effets-additifs" class="section level3 hasAnchor" number="7.1.5">
 <h3><span class="header-section-number">7.1.5</span> Effets additifs<a href="théories-6.html#effets-additifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dans l’exemple précédent, on remarque que l’effet du premier facteur est indépendant de l’effet du deuxième facteur. En d’autres mots, la différence entre les mâles et les femelles est constante, peu importe le traitement hormonal. En l’absence d’une interaction statistiquement significative entre les deux facteurs, nous dirons que les effets des facteurs sont <strong>additifs</strong>. C’est ce qu’on entend par l’<strong>additivité</strong> des facteurs. En contrepartie, la présence d’une interaction significative entre les facteurs complique l’interprétation des résultats de l’expérimentation. Effectivement, la présence d’une interaction permet d’identifier des phénomènes souvent plus intéressants scientifiquement que s’il n’y avait pas d’interaction entre les facteurs. C’est ce que nous constaterons dans certains des exemples suivants.</p>
-<hr />
 <div class="exemple" section="7">
 <p>Nous désirons déterminer l’effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (<em>agrimore</em>, <em>control</em>, <em>supergain</em> et <em>supersupp</em>) sur le gain en masse en kg de bétail après 6 semaines. Les données sont stockées dans le fichier <code>croissance.csv</code><a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>.</p>
 <div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="théories-6.html#cb667-1" tabindex="-1"></a><span class="do">## importation avec séparateur virgule car ici les champs sont séparés par des virgules</span></span>
@@ -1290,8 +1287,7 @@ Figure 7.8: Graphique des effets du type de supplément alimentaire ( exttt{Supp
 </p>
 </div>
 </div>
-<hr />
-<hr />
+<p><br></p>
 <div class="exemple" section="7">
 <p>Comme dernier exemple, nous analyserons l’effet de la concentration d’un antibiotique et de l’humidité sur la croissance d’une espèce de bactéries que l’on peut cultiver en laboratoire dans des plats de Pétri contenant un substrat de sucres appelé agar-agar. La variable réponse ici est la surface du substrat couverte par les colonies de bactérie mesurée en mm<span class="math inline">\(^2\)</span>. Le fichier <code>antibio.txt</code> contient les données.</p>
 <div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="théories-6.html#cb691-1" tabindex="-1"></a>antibio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/antibio.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
@@ -1521,7 +1517,6 @@ Figure 7.11: Interaction significative entre l’humidité et la concentration d
 <p>La Figure <a href="théories-6.html#fig:antibioRes">7.11</a> montre qu’il y a bien une interaction entre les deux facteurs. Nous voyons clairement que la différence entre la moyenne du groupe “sec” et celle du groupe “humide” varie énormément avec la concentration d’antibiotique, et que cette différence est la plus faible quand la concentration d’antibiotique est élevée.</p>
 <p>On remarque qu’il y a une inversion des différences entre les groupes “sec” et les groupes “humide” : la surface couverte moyenne du groupe “humide” est supérieure à celle du groupe “sec” aux concentrations faible et modérée d’antibitioque. Toutefois, le groupe “sec” a une plus grande surface couverte moyenne que le groupe “humide” à la concentration élevée d’antibiotique. On conclut que l’augmentation de la concentration de l’antibiotique réduit l’activité bactérienne sous des conditions humides, mais augmente l’activité bactérienne en conditions plus sèches.</p>
 </div>
-<hr />
 </div>
 <div id="conclusion-6" class="section level3 hasAnchor" number="7.1.6">
 <h3><span class="header-section-number">7.1.6</span> Conclusion<a href="théories-6.html#conclusion-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>

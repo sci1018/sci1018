@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -619,10 +619,10 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La fonction <code>rep()</code> inclut deux arguments : <code>x</code> spécifie la valeur à répéter, tandis que <code>times</code> indique le nombre de répétitions. On peut aussi répéter des caractères.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="notions-générales.html#cb29-1" tabindex="-1"></a>y20.caracteres <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;vieux&quot;</span>), <span class="at">times =</span> <span class="dv">20</span>)</span>
 <span id="cb29-2"><a href="notions-générales.html#cb29-2" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [14] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [27] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [40] &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
 <p>Plusieurs fonctions de base peuvent être appliquées à une multitude de scénarios, et c’est l’un des attraits de la programmation en <code>R</code>. Ici, nous avons utilisé à nouveau la fonction <code>c()</code> pour créer un vecteur à 2 valeurs, <code>neuf</code> et <code>vieux</code>, et nous avons répété ce vecteur 20 fois. Il est donc important d’apprendre quelques fonctions de base qui reviendront souvent dans le cours.</p>
 </div>
 <div id="créer-une-série" class="section level5 unnumbered hasAnchor">
@@ -636,8 +636,8 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La valeur de l’argument <code>by</code> n’est pas limitée aux entiers.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="notions-générales.html#cb34-1" tabindex="-1"></a>y.seq<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb34-2"><a href="notions-générales.html#cb34-2" tabindex="-1"></a>y.seq<span class="fl">.01</span></span></code></pre></div>
-<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5
-## [27] 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
+<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4
+## [26] 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
 <p>La fonction <code>seq()</code> possède également un argument <code>length.out</code> qui permet d’obtenir le nombre de valeurs sans indiquer le pas.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="notions-générales.html#cb36-1" tabindex="-1"></a>y.seq.length <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
 <span id="cb36-2"><a href="notions-générales.html#cb36-2" tabindex="-1"></a>y.seq.length</span></code></pre></div>
@@ -948,10 +948,10 @@ arc-tangente en radians des éléments de x
 <pre><code>## [1] 0 1 1 1 1 0 1</code></pre>
 <p>On procède de la même façon si le vecteur contient des caractères :</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="notions-générales.html#cb95-1" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [14] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
-## [27] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [40] &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [13] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [25] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [37] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="notions-générales.html#cb97-1" tabindex="-1"></a>bin.y20 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y20.caracteres <span class="sc">==</span> <span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;nouveau&quot;</span>, <span class="st">&quot;ancien&quot;</span>)</span>
 <span id="cb97-2"><a href="notions-générales.html#cb97-2" tabindex="-1"></a>bin.y20[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot;</code></pre>

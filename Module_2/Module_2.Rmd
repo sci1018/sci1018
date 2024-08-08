@@ -14,13 +14,13 @@ Il est peu pratique voire souvent impossible d'étudier la population au complet
  - Quelle partie de la population canadienne appuie la plus récente décision du gouvernement?
  
 
----
+
 
 ::: {.exemple section=2}
-On veut faire un sondage téléphonique pour déterminer le nombre d'heures passées par les téléspectateurs devant leur téléviseur par jour. Un bon nombre de décisions peuvent influencer le résultat --- la région, le choix des répondants, la classe d'âge, la classe socio-économique, l'heure de l'appel. Que faire des biais potentiels associés à l'échantillonnage, comme les personnes sans téléphone, les personnes avec un numéro non affiché, les personnes ne voulant pas participer et les personnes possédant un afficheur?
+On veut faire un sondage téléphonique pour déterminer le nombre d'heures passées par les téléspectateurs devant leur téléviseur par jour. Un bon nombre de décisions peuvent influencer le résultat  la région, le choix des répondants, la classe d'âge, la classe socio-économique, l'heure de l'appel. Que faire des biais potentiels associés à l'échantillonnage, comme les personnes sans téléphone, les personnes avec un numéro non affiché, les personnes ne voulant pas participer et les personnes possédant un afficheur?
 :::
 
----
+
 
 Plusieurs stratégies d'échantillonnage sont disponibles afin d'assembler un échantillon. Le choix de la stratégie d'échantillonnage dépend des caractéristiques de la population et des problèmes potentiels associés aux unités d'échantillonnage. Nous verrons plusieurs stratégies d'échantillonnage classiques dans les prochaines sections. 
 
@@ -84,7 +84,7 @@ abline(h=0.1)
 ```
 
 
----
+
 
 ::: {.exemple section=2}
 On veut déterminer la densité de probabilité associée à la valeur 3.46 dans un intervalle de 0 à 10 d'une distribution uniforme.
@@ -110,7 +110,7 @@ f(10.1 \vert 0, 10) = 0
 $$
 :::
 
----
+
 
 Puisqu'elle assigne à tous les éléments une probabilité égale d'être sélectionnés, la distribution uniforme est souvent utilisée pour exécuter des sélections aléatoires. Si nous avons une population de 400 éléments (par exemple des arbres), et que nous voulons choisir un échantillon de 40 unités, nous pourrions procéder en assignant un numéro à chaque élément et en utilisant la distribution uniforme pour sélectionner aléatoirement les observations:
 
@@ -238,7 +238,7 @@ $$
 P(\bar{x} - t_{0.05/2, (n - 1)} \cdot SE \leq \mu \leq \bar{x} + t_{0.05/2, (n - 1)} \cdot SE) = (1 - \alpha)
 $$
 
----
+
 
 ::: {.exemple section=2}
 Une inspectrice municipale mesure l'épaisseur de l'asphalte à 32 endroits où une compagnie privée a fait la chaussée dans Montréal. L'épaisseur moyenne de l'asphalte est de 20.1 cm et l'écart-type estimé à partir de l'échantillon est de 3.39 cm. Quel est l'intervalle de confiance à 95 \% autour de la moyenne? On peut obtenir les quantiles nécessaires à la solution du problème comme suit:
@@ -291,7 +291,7 @@ IC \: \text{à} \: 99\%: (18.45, 21.75) \: .
 $$
 :::
 
----
+
 
 On remarque rapidement que la largeur de l'intervalle de confiance augmente avec le seuil de confiance. Dans notre exemple, il est le plus étroit à 90 \% et le plus large à 99 \%. Comme nous l'avons mentionné plus haut, la moyenne de population ($\mu$) sera incluse dans l'intervalle de confiance ($1 - \alpha$)\% du temps lorsqu'on répète l'expérience un grand nombre de fois. L'intervalle de confiance implique le concept de rééchantillonnage (*resampling*), c'est-à-dire, la construction de plusieurs échantillons à partir de la même population, et c'est ce que nous verrons dans la prochaine section.
 
@@ -299,7 +299,7 @@ On remarque rapidement que la largeur de l'intervalle de confiance augmente avec
 
 Les statistiques classiques impliquent souvent un échantillonnage répété dans leur interprétation. Tout comme l'intervalle de confiance, la probabilité d'un test statistique représente ce que l'on devrait observer en moyenne lorsqu'il n'y a pas d'effet dans la population. Ici, "en moyenne" indique ce qu'on obtiendrait si on répétait l'expérience un grand nombre de fois avec une série d'échantillons de taille égale à celle de notre échantillon original, tous provenant de la même population. L'exemple suivant illustre ce principe à l'aide d'une population de 200 000 semis dans une plantation.
 
----
+
 
 ::: {.exemple section=2}
 Imaginons qu'une compagnie d'exploitation forestière coupe la forêt sur un site de 20 hectares (ha). La compagnie  a replanté le site à raison d'un semis d'épinette noire par m$^2$, ce qui équivaut à un total de 200 000 semis. Deux ans après avoir planté les semis, on veut connaître la croissance moyenne des semis sur le site. Le total de 200 000 semis du site de 20 ha constitue la population d'intérêt. 
@@ -352,7 +352,7 @@ L'intervalle de confiance obtenu à partir de l'échantillon de 25 observations 
 On pourrait demander à 19 autres techniciens de sélectionner aléatoirement 25 semis, de les mesurer, puis de construire un intervalle de confiance à 95 \% à partir de leur échantillon. On devrait s'attendre à ce que 19 des 20 intervalles de confiance ($19/20 = 0.95$) ainsi construits incluent réellement la moyenne de la population ($\mu$).
 ::: 
 
----
+
 
 On peut aussi utiliser le concept de rééchantillonnage pour illustrer l'erreur-type de la moyenne. Dans la leçon 1, nous avons indiqué que la moyenne d'un échantillon provenait d'une distribution de moyennes d'échantillons. On pourrait demander à 1000 techniciens d'obtenir un échantillon aléatoire de 25 semis et de mesurer la hauteur de chaque arbre. Si chaque technicien calcule la moyenne de son échantillon, nous obtiendrons une distribution de moyennes d'échantillons (Figure \@ref(fig:SE). Rappelons-nous que l'erreur-type de la moyenne est une estimation de la variation entre les moyennes d'échantillons de même taille provenant de la même population. L'écart-type calculé à partir des valeurs des moyennes nous donnera l'erreur-type de la moyenne.
 
@@ -626,9 +626,9 @@ str(croissance)
 
 **b** Calculez l'intervalle de confiance à 95 \% autour de la moyenne de chacun des trois groupes définis par le type de moulée.
 
----
+
 Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explications sur le script du calcul de l'intervalle de confiance".
----
+
 
 <details>
 <summary> Réponse</summary>
@@ -692,9 +692,9 @@ out
   3. Ajoutez les points avec `points( )`.
   4. Ajoutez les barres d'erreur avec `arrows( )`. Cette dernière fonction nécessite un point de départ (`x0, y0`) et un point d'arrivée (`x1, y1`). Bien qu'elle puisse créer des flèches, on peut obtenir des barres d'erreur en utilisant `angle = 90`. L'argument `code = 3` spécifie que l'on veut une flèche au point d'arrivée et au point de départ.
 
----
+
 Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explications sur le script du graphique de la moyenne et des barres d'erreur". 
----
+
 
 <details>
 <summary> Réponse</summary>

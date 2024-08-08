@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -537,11 +537,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Combien d’heures un portable d’une certaine compagnie dure-t-il avant de tomber en panne?</li>
 <li>Quelle partie de la population canadienne appuie la plus récente décision du gouvernement?</li>
 </ul>
-<hr />
 <div class="exemple" section="2">
-<p>On veut faire un sondage téléphonique pour déterminer le nombre d’heures passées par les téléspectateurs devant leur téléviseur par jour. Un bon nombre de décisions peuvent influencer le résultat — la région, le choix des répondants, la classe d’âge, la classe socio-économique, l’heure de l’appel. Que faire des biais potentiels associés à l’échantillonnage, comme les personnes sans téléphone, les personnes avec un numéro non affiché, les personnes ne voulant pas participer et les personnes possédant un afficheur?</p>
+<p>On veut faire un sondage téléphonique pour déterminer le nombre d’heures passées par les téléspectateurs devant leur téléviseur par jour. Un bon nombre de décisions peuvent influencer le résultat la région, le choix des répondants, la classe d’âge, la classe socio-économique, l’heure de l’appel. Que faire des biais potentiels associés à l’échantillonnage, comme les personnes sans téléphone, les personnes avec un numéro non affiché, les personnes ne voulant pas participer et les personnes possédant un afficheur?</p>
 </div>
-<hr />
 <p>Plusieurs stratégies d’échantillonnage sont disponibles afin d’assembler un échantillon. Le choix de la stratégie d’échantillonnage dépend des caractéristiques de la population et des problèmes potentiels associés aux unités d’échantillonnage. Nous verrons plusieurs stratégies d’échantillonnage classiques dans les prochaines sections.</p>
 <p>Peu importe la stratégie d’échantillonnage utilisée, l’échantillon doit être représentatif de la population afin de permettre une bonne estimation des paramètres qui nous intéressent. On fait face à un problème de représentativité si un groupe particulier d’unités d’échantillonnage parmi la population d’intérêt n’apparaît pas dans l’échantillon. Le paramètre estimé à partir d’un échantillon qui n’est pas représentatif de la population risque d’être biaisé.</p>
 </div>
@@ -595,7 +593,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 Figure 2.1: Distribution uniforme pour l’intervalle 0 et 10.
 </p>
 </div>
-<hr />
 <div class="exemple" section="2">
 <p>On veut déterminer la densité de probabilité associée à la valeur 3.46 dans un intervalle de 0 à 10 d’une distribution uniforme.</p>
 <p><span class="math display">\[
@@ -614,16 +611,15 @@ f(-1.4 \vert 0, 10) = 0 \\
 f(10.1 \vert 0, 10) = 0
 \]</span></p>
 </div>
-<hr />
 <p>Puisqu’elle assigne à tous les éléments une probabilité égale d’être sélectionnés, la distribution uniforme est souvent utilisée pour exécuter des sélections aléatoires. Si nous avons une population de 400 éléments (par exemple des arbres), et que nous voulons choisir un échantillon de 40 unités, nous pourrions procéder en assignant un numéro à chaque élément et en utilisant la distribution uniforme pour sélectionner aléatoirement les observations:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="théories-1.html#cb325-1" tabindex="-1"></a><span class="do">##on &quot;numérote&quot; 400 éléments</span></span>
 <span id="cb325-2"><a href="théories-1.html#cb325-2" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">400</span></span>
 <span id="cb325-3"><a href="théories-1.html#cb325-3" tabindex="-1"></a></span>
 <span id="cb325-4"><a href="théories-1.html#cb325-4" tabindex="-1"></a><span class="do">##on utilise la distribution uniforme</span></span>
 <span id="cb325-5"><a href="théories-1.html#cb325-5" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">400</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
-<pre><code>##  [1] 229 187 384 388  37 188 268  49  91 290 134  67 190  12 208 178 385   3 270  34 124 378 307 177  59 330
-## [27]  24 344   0 112 361 190 198  93 220 321 348 246  73  46 374 241 242 285  23 298 389  16 200 283   0 186
-## [53] 166 286 364 204 158 110 269 130</code></pre>
+<pre><code>##  [1] 229 187 384 388  37 188 268  49  91 290 134  67 190  12 208 178 385   3 270  34 124 378 307 177  59
+## [26] 330  24 344   0 112 361 190 198  93 220 321 348 246  73  46 374 241 242 285  23 298 389  16 200 283
+## [51]   0 186 166 286 364 204 158 110 269 130</code></pre>
 <p>On note ici que nous avons demandé 60 valeurs aléatoires d’une distribution uniforme continue alors que nous en voulons 40, au cas où il y aurait des doublons dans les 40 premières valeurs. De plus, l’utilisation de la fonction <code>round( )</code> permet d’arrondir les valeurs à l’entier le plus près.</p>
 <p>Encore plus simple, nous pourrions utiliser la fonction <code>sample( )</code> qui permet de sélectionner aléatoirement avec ou sans remise. La sélection sans remise consiste à retirer les observations qui ont déja été tirées afin de ne pouvoir les sélectionner à nouveau. La sélection avec remise implique de pouvoir sélectionner la même observation à plusieurs reprises pour constituer l’échantillon. Autrement dit, la même observation peut apparaître plusieurs fois dans l’échantillon.</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="théories-1.html#cb327-1" tabindex="-1"></a><span class="do">##on crée une série de 10 observations</span></span>
@@ -703,7 +699,6 @@ Pour un intervalle de confiance à 95 <span class="math inline">\(\%\)</span>, <
 <p><span class="math display">\[
 P(\bar{x} - t_{0.05/2, (n - 1)} \cdot SE \leq \mu \leq \bar{x} + t_{0.05/2, (n - 1)} \cdot SE) = (1 - \alpha)
 \]</span></p>
-<hr />
 <div class="exemple" section="2">
 <p>Une inspectrice municipale mesure l’épaisseur de l’asphalte à 32 endroits où une compagnie privée a fait la chaussée dans Montréal. L’épaisseur moyenne de l’asphalte est de 20.1 cm et l’écart-type estimé à partir de l’échantillon est de 3.39 cm. Quel est l’intervalle de confiance à 95 % autour de la moyenne? On peut obtenir les quantiles nécessaires à la solution du problème comme suit:</p>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="théories-1.html#cb345-1" tabindex="-1"></a><span class="do">##détermination du quantile du t à alpha/2</span></span>
@@ -749,13 +744,11 @@ IC \: \text{à} \: 95\%: (18.88, 21.32) \\
 IC \: \text{à} \: 99\%: (18.45, 21.75) \: .
 \]</span></p>
 </div>
-<hr />
 <p>On remarque rapidement que la largeur de l’intervalle de confiance augmente avec le seuil de confiance. Dans notre exemple, il est le plus étroit à 90 % et le plus large à 99 %. Comme nous l’avons mentionné plus haut, la moyenne de population (<span class="math inline">\(\mu\)</span>) sera incluse dans l’intervalle de confiance (<span class="math inline">\(1 - \alpha\)</span>)% du temps lorsqu’on répète l’expérience un grand nombre de fois. L’intervalle de confiance implique le concept de rééchantillonnage (<em>resampling</em>), c’est-à-dire, la construction de plusieurs échantillons à partir de la même population, et c’est ce que nous verrons dans la prochaine section.</p>
 </div>
 <div id="rééchantillonnage" class="section level4 hasAnchor" number="2.1.3.2">
 <h4><span class="header-section-number">2.1.3.2</span> Rééchantillonnage<a href="théories-1.html#rééchantillonnage" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Les statistiques classiques impliquent souvent un échantillonnage répété dans leur interprétation. Tout comme l’intervalle de confiance, la probabilité d’un test statistique représente ce que l’on devrait observer en moyenne lorsqu’il n’y a pas d’effet dans la population. Ici, “en moyenne” indique ce qu’on obtiendrait si on répétait l’expérience un grand nombre de fois avec une série d’échantillons de taille égale à celle de notre échantillon original, tous provenant de la même population. L’exemple suivant illustre ce principe à l’aide d’une population de 200 000 semis dans une plantation.</p>
-<hr />
 <div class="exemple" section="2">
 <p>Imaginons qu’une compagnie d’exploitation forestière coupe la forêt sur un site de 20 hectares (ha). La compagnie a replanté le site à raison d’un semis d’épinette noire par m<span class="math inline">\(^2\)</span>, ce qui équivaut à un total de 200 000 semis. Deux ans après avoir planté les semis, on veut connaître la croissance moyenne des semis sur le site. Le total de 200 000 semis du site de 20 ha constitue la population d’intérêt.</p>
 <p>Chacun des semis de la population croît à sa propre vitesse (Figure <a href="théories-1.html#fig:semis">2.4</a>a), mais on ne peut connaître sa croissance sans la mesurer. On embauche un technicien pour sélectionner aléatoirement 25 semis à mesurer afin d’estimer la hauteur moyenne des semis dans cette même population (Figure <a href="théories-1.html#fig:semis">2.4</a>b).</p>
@@ -780,7 +773,6 @@ IC \: \text{à} \: 95\%: (72.5, 84.39)
 L’intervalle de confiance obtenu à partir de l’échantillon de 25 observations est <span class="math inline">\((72.5, 84.39)\)</span>. À noter que <code>qt( )</code> permet d’obtenir le quantile du <span class="math inline">\(t\)</span> associé à la probabilité cumulative correspondant à <span class="math inline">\(\alpha/2\)</span>. On constate que la vraie moyenne de la population (<span class="math inline">\(\mu = 74.99\)</span>) est contenue dans l’intervalle que l’on a construit. En d’autres mots, l’intervalle de confiance inclut ou n’inclut pas la vraie moyenne.</p>
 <p>On pourrait demander à 19 autres techniciens de sélectionner aléatoirement 25 semis, de les mesurer, puis de construire un intervalle de confiance à 95 % à partir de leur échantillon. On devrait s’attendre à ce que 19 des 20 intervalles de confiance (<span class="math inline">\(19/20 = 0.95\)</span>) ainsi construits incluent réellement la moyenne de la population (<span class="math inline">\(\mu\)</span>).</p>
 </div>
-<hr />
 <p>On peut aussi utiliser le concept de rééchantillonnage pour illustrer l’erreur-type de la moyenne. Dans la leçon 1, nous avons indiqué que la moyenne d’un échantillon provenait d’une distribution de moyennes d’échantillons. On pourrait demander à 1000 techniciens d’obtenir un échantillon aléatoire de 25 semis et de mesurer la hauteur de chaque arbre. Si chaque technicien calcule la moyenne de son échantillon, nous obtiendrons une distribution de moyennes d’échantillons (Figure <a href="théories-1.html#fig:SE">2.5</a>. Rappelons-nous que l’erreur-type de la moyenne est une estimation de la variation entre les moyennes d’échantillons de même taille provenant de la même population. L’écart-type calculé à partir des valeurs des moyennes nous donnera l’erreur-type de la moyenne.</p>
 <div class="figure"><span style="display:block;" id="fig:SE"></span>
 <img src="Cours_Stats_R_files/figure-html/SE-1.png" alt="Distribution des 1000 moyennes d'échantillons de 25 semis tirés de la population de 200 000 semis." width="672" />

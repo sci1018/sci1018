@@ -137,7 +137,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Statistiques avec R</a></li>
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
 
 <li class="divider"></li>
 <li><a href="index.html#section" id="toc-section"></a></li>
@@ -538,7 +538,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>où <span class="math inline">\(y_i\)</span> correspond à l’observation <span class="math inline">\(i\)</span> de la variable réponse <span class="math inline">\(y\)</span>, <span class="math inline">\(a\)</span> correspond à l’<strong>ordonnée à l’origine</strong> (<em>intercept</em>). L’ordonnée à l’origine représente le point sur l’axe des y’s qui est croisé par la droite de régression. Le terme <span class="math inline">\(b\)</span> correspond à l’estimation de la pente, qui indique le taux d’accroissement de <span class="math inline">\(y\)</span> avec une augmentation d’une unité de la variable explicative <span class="math inline">\(x\)</span>. Le terme <span class="math inline">\(x_i\)</span> correspond à l’observation <span class="math inline">\(i\)</span> de la variable explicative <span class="math inline">\(x\)</span>, et <span class="math inline">\(\epsilon_i\)</span> correspond au terme d’erreur associé à l’estimation de l’observation <span class="math inline">\(y_i\)</span>. Une notation équivalente utilise des termes <span class="math inline">\(\beta\)</span>, tels que :</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_{x} x_i + \epsilon_i\]</span></p>
 <p>où <span class="math inline">\(\beta_0\)</span> représente l’ordonnée à l’origine et <span class="math inline">\(\beta_{x}\)</span> indique la pente de la variable explicative <span class="math inline">\(x\)</span>. C’est cette dernière notation que nous utiliserons dans cette leçon. De manière générale, on emploie le terme générique <strong>coefficient</strong> pour désigner <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_{x}\)</span>, <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span>. Ces coefficients représentent l’estimation de paramètres de la population (<em>parameter estimate</em>) pour désigner la valeur numérique de l’ordonnée à l’origine et de la pente. Le prochain exemple présente un jeu de données typique sur lequel on peut réaliser une régression linéaire.</p>
-<hr />
 <div class="exemple" section="10">
 <p>Nous nous intéressons au pouvoir des campagnes publicitaires lorsqu’elles utilisent principalement des “influenceurs” ou “influenceuses” du web, c.-à-d. des personnes très influentes sur les réseaux sociaux qui font du placement de produit à travers leurs vidéos ou leurs photos. Plus spécifiquement, nous voulons décrire le facteur d’augmentation des ventes de divers produits cosmétiques suite à une campagne publicitaire faisant appel à un nombre plus ou moins grands d’influenceurs ayant chacun au moins 20 000 abonnés sur ses plateformes. Le jeu de données est contenu dans le fichier <code>influenceurs.csv</code>.</p>
 <div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="théorie.html#cb746-1" tabindex="-1"></a><span class="do">##on importe les données</span></span>
@@ -560,7 +559,6 @@ Figure 10.1: Augmentation des ventes de divers produits cosmétiques en fonction
 </p>
 </div>
 </div>
-<hr />
 </div>
 <div id="estimation" class="section level4 hasAnchor" number="10.1.1.2">
 <h4><span class="header-section-number">10.1.1.2</span> Estimation<a href="théorie.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -587,7 +585,6 @@ Puisque la droite de régression passe par le point <span class="math inline">\(
 <p>Tout comme avec l’ANOVA, on peut estimer la variance résiduelle (<span class="math inline">\(\sigma^2\)</span>) à l’aide du carré moyen des erreurs (<span class="math inline">\(MSE\)</span>), où la variance résiduelle correspond à la partie de la variance des observations de <span class="math inline">\(y\)</span> qui n’est pas expliquée par <span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[MSE = \frac{SSE}{n - 2}\]</span></p>
 <p>Appliquons maintenant ces calculs à l’exemple du placement de produits par des influenceurs.</p>
-<hr />
 <div class="exemple" section="10">
 <p>Nous allons estimer le facteur d’augmentation des ventes à partir des équations vues dans la section précédente.</p>
 <p>La somme des carrés de <span class="math inline">\(Y\)</span>:
@@ -710,7 +707,6 @@ Figure 10.2: Droite de régression linéaire du facteur d’augmentation des ven
 <span class="math display">\[\epsilon_i = y_i - \hat{y_i}\]</span></p>
 <p>La droite de régression minimise la somme des carrés des erreurs qui dépend directement de la distance (verticale) entre chaque <span class="math inline">\(y_i\)</span> et sa valeur prédite <span class="math inline">\(\hat{y_i}\)</span> correspondante (Figure <a href="théorie.html#fig:lineinf">10.2</a>b). Dans R, on peut extraire les résidus du modèle de régression à l’aide de la fonction <code>residuals( )</code> en fournissant comme argument l’objet qui contient le résultat du modèle (c.-à-d., m1 dans notre exemple), alors que la fonction <code>fitted( )</code> extrait les valeurs prédites du modèle. Nous utiliserons ces deux éléments pour vérifier les suppositions de la régression linéaire.</p>
 </div>
-<hr />
 </div>
 <div id="suppositions-4" class="section level4 hasAnchor" number="10.1.1.3">
 <h4><span class="header-section-number">10.1.1.3</span> Suppositions<a href="théorie.html#suppositions-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -723,7 +719,6 @@ Figure 10.2: Droite de régression linéaire du facteur d’augmentation des ven
 <li><strong>linéarité:</strong> la relation entre <span class="math inline">\(y\)</span> et <span class="math inline">\(x\)</span> est linéaire. La régression linéaire implique une relation linéaire: un graphique des valeurs observées (<span class="math inline">\(y\)</span>) en fonction de la variable explicative (<span class="math inline">\(x\)</span>) permet de vérifier la plausibilité de cette supposition. Si la relation n’a pas une forme linéaire (une relation exponentielle par exemple), on peut considérer une transformation afin de linéariser la relation<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>.</li>
 <li><strong>mesure de <span class="math inline">\(x\)</span> sans erreur:</strong> les valeurs de <span class="math inline">\(x\)</span> sont mesurées sans erreur. Un assouplissement de cette supposition consiste à supposer que l’erreur sur <span class="math inline">\(x\)</span> est très faible par rapport à l’erreur de mesure de <span class="math inline">\(y\)</span>. La prévention et la rigueur dans la prise de mesure permet de satisfaire à cette condition.</li>
 </ol>
-<hr />
 <div class="exemple" section="10">
 <p>Poursuivons le développement de l’exemple sur l’augmentation des ventes suite à une campagne publicitaire avec des influenceurs du web en vérifiant les suppositions pour la régression linéaire. Nous pouvons vérifier l’homogénéité des variances et la normalité à l’aide des mêmes outils que pour l’ANOVA.</p>
 <div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="théorie.html#cb769-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
@@ -746,7 +741,6 @@ Figure 10.3: Homogénéité des variances (a) et normalité des résidus (b) obt
 </div>
 <p>La figure <a href="théorie.html#fig:plotdiaginf">10.3</a>a montre que les variances sont homogènes. Comme pour l’ANOVA, la suppositon d’homogénéité des variances doit être respectée. Bien que quelques résidus dévient de la normalité (<a href="théorie.html#fig:plotdiaginf">10.3</a>b), la régression linéaire est appropriée. Nous pouvons procéder à l’interprétation de la régression.</p>
 </div>
-<hr />
 </div>
 <div id="valeurs-extrêmes" class="section level4 hasAnchor" number="10.1.1.4">
 <h4><span class="header-section-number">10.1.1.4</span> Valeurs extrêmes<a href="théorie.html#valeurs-extrêmes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -904,7 +898,6 @@ Figure 10.6: Droite de régression avec limites de confiance à 95 % en pointill
 </p>
 </div>
 <p>Dans le reste du document, nous développons un autre exemple complet de régression linéaire afin d’appliquer les notions que nous avons apprises.</p>
-<hr />
 <div class="exemple" section="10">
 <p>Nous voulons déterminer si le prix de tablettes de chocolat (en dollars australiens) dépend de la masse en grammes de la tablette de chocolat. Une série de différentes tablettes de chocolat, toutes de différentes marques, ont été sélectionnées. Le fichier <code>chocolats.txt</code> contient ces données.</p>
 <div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="théorie.html#cb784-1" tabindex="-1"></a><span class="do">##importation</span></span>
@@ -1021,7 +1014,6 @@ Figure 10.9: Droite de régression et limites de confiance à 95 % (pointillés)
 </p>
 </div>
 </div>
-<hr />
 </div>
 </div>
 <div id="corrélation" class="section level3 hasAnchor" number="10.1.2">
@@ -1045,7 +1037,6 @@ Figure 10.11: Différents degrés de corrélation négative (<span class="math i
 </p>
 </div>
 <p>Dans R, on peut obtenir la corrélation de Pearson entre deux variables à l’aide de la fonction <code>cor( )</code>. Nous pouvons aussi effectuer un test d’hypothèse sur le coefficient de corrélation, à savoir s’il diffère de 0 (<span class="math inline">\(H_0: \rho = 0\)</span>) avec la fonction <code>cor.test( )</code>. Néanmoins, il faut demeurer vigilant car une valeur de <span class="math inline">\(P\)</span> faible n’est pas une garantie que la corrélation est forte. Une meilleure mesure s’avère le <span class="math inline">\(r^2\)</span> (c.-à-d., le coefficient de Pearson au carré) et est en fait le coefficient de détermination. Dans le cas d’une corrélation, il indique le pourcentage de la variation d’une variable qui est associée à la deuxième variable.</p>
-<hr />
 <div class="exemple" section="10">
 <p>Dans ce petit exemple, nous montrons le coefficient de corrélation entre deux variables aléatoires ainsi que le test d’hypothèse sur ce coefficient.</p>
 <div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="théorie.html#cb795-1" tabindex="-1"></a><span class="do">##on crée deux variables aléatoires</span></span>
@@ -1074,7 +1065,6 @@ Figure 10.11: Différents degrés de corrélation négative (<span class="math i
 <pre><code>## [1] 0.005051357</code></pre>
 <p>Chaque variable comporte 1000 valeurs et la corrélation de Pearson donne -0.071. Malgré cette faible corrélation, le test d’hypothèse rejette l’hypothèse nulle principalement en raison de l’énorme taille d’échantillon. Le <span class="math inline">\(r^2\)</span> est aussi très faible (0.005), indiquant que seulement 0.5% de la variabilité de <span class="math inline">\(x1\)</span> est associée à <span class="math inline">\(x2\)</span>. Nous conclurons que la corrélation est très faible et qu’à toute fin pratique, il n’y a pas d’association entre les deux variables (pas d’effet pratique).</p>
 </div>
-<hr />
 </div>
 </div>
 <div id="corrélation-vs-régression" class="section level3 hasAnchor" number="10.1.3">

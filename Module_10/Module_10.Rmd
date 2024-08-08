@@ -22,7 +22,7 @@ $$y_i = \beta_0 + \beta_{x} x_i + \epsilon_i$$
 
 où $\beta_0$ représente l'ordonnée à l'origine et $\beta_{x}$ indique la pente de la variable explicative $x$. C'est cette dernière notation que nous utiliserons dans cette leçon. De manière générale, on emploie le terme générique **coefficient** pour désigner $\beta_0$, $\beta_{x}$, $a$ et $b$. Ces coefficients représentent l'estimation de paramètres de la  population (*parameter estimate*) pour désigner la valeur numérique de l'ordonnée à l'origine et de la pente. Le prochain exemple présente un jeu de données typique sur lequel on peut réaliser une régression linéaire.
 
----
+
 
 :::{.exemple section=10}
 Nous nous intéressons au pouvoir des campagnes publicitaires lorsqu'elles utilisent principalement des "influenceurs" ou "influenceuses" du web, c.-à-d. des personnes très influentes sur les réseaux sociaux qui font du placement de produit à travers leurs vidéos ou leurs photos. Plus spécifiquement, nous voulons décrire le facteur d'augmentation des ventes de divers produits cosmétiques suite à une campagne publicitaire faisant appel à un nombre plus ou moins grands d'influenceurs ayant chacun au moins 20 000 abonnés sur ses plateformes. Le jeu de données est contenu dans le fichier `influenceurs.csv`.
@@ -44,7 +44,7 @@ plot(influenceurs$Facteur ~ influenceurs$Nombre,
 ``` 
 :::
 
----
+
 
 #### Estimation
 
@@ -90,7 +90,7 @@ $$MSE = \frac{SSE}{n - 2}$$
 
 Appliquons maintenant ces calculs à l'exemple du placement de produits par des influenceurs.
 
----
+
 
 :::{.exemple section=10}
 Nous allons estimer le facteur d'augmentation des ventes à partir des équations vues dans la section précédente.
@@ -227,7 +227,7 @@ $$\epsilon_i = y_i - \hat{y_i}$$
 La droite de régression minimise la somme des carrés des erreurs qui dépend directement de la distance (verticale) entre chaque $y_i$ et sa valeur prédite $\hat{y_i}$ correspondante (Figure \@ref(fig:lineinf)b). Dans R, on peut extraire les résidus du modèle de régression à l'aide de la fonction `residuals( )` en fournissant comme argument l'objet qui contient le résultat du modèle (c.-à-d., m1 dans notre exemple), alors que la fonction `fitted( )` extrait les valeurs prédites du modèle. Nous utiliserons ces deux éléments pour vérifier les suppositions de la régression linéaire.
 :::
 
----
+
 
 #### Suppositions
 
@@ -240,7 +240,7 @@ La régression linéaire comporte les suppositions suivantes :
 5. **linéarité:** la relation entre $y$ et $x$ est linéaire. La régression linéaire implique une relation linéaire: un graphique des valeurs observées ($y$) en fonction de la variable explicative ($x$) permet de vérifier la plausibilité de cette supposition. Si la relation n'a pas une forme linéaire (une relation exponentielle par exemple), on peut considérer une transformation afin de linéariser la relation^[Dans le cas de certaines relations comme une relation exponentielle, transformer la variable réponse à l'échelle log peut linéariser la relation. Si le patron est plutôt quadratique (p. ex., une courbe avec un optimum), on peut aussi considérer un terme quadratique dans l'équation, c'est-à-dire, utiliser une régression polynomiale avec variable $x + x^2$].
 6. **mesure de $x$ sans erreur:** les valeurs de $x$ sont mesurées sans erreur. Un assouplissement de cette supposition consiste à supposer que l'erreur sur $x$ est très faible par rapport à l'erreur de mesure de $y$. La prévention et la rigueur dans la prise de mesure permet de satisfaire à cette condition.
 
----
+
 
 :::{.exemple section=10}
 Poursuivons le développement de l'exemple sur l'augmentation des ventes suite à une campagne publicitaire avec des influenceurs du web en vérifiant les suppositions pour la régression linéaire. Nous pouvons vérifier l'homogénéité des variances et la normalité à l'aide des mêmes outils que pour l'ANOVA.
@@ -264,7 +264,7 @@ La figure \@ref(fig:plotdiaginf)a montre que les variances sont homogènes. Comm
 
 :::
 
----
+
 
 #### Valeurs extrêmes
 
@@ -446,7 +446,7 @@ lines(y = jeu.pred$sup95, x = jeu.pred$Nombre, lty = "dotted")
 Dans le reste du document, nous développons un autre exemple complet de régression linéaire afin d'appliquer les notions que nous avons apprises.
 
 
----
+
 
 :::{.exemple section=10}
 Nous voulons déterminer si le prix de tablettes de chocolat (en dollars australiens) dépend de la masse en grammes de la tablette de chocolat. Une série de différentes tablettes de chocolat, toutes de différentes marques, ont été sélectionnées. Le fichier `chocolats.txt` contient ces données. 
@@ -549,7 +549,7 @@ lines(y = jeu.pred$sup95, x = jeu.pred$Masse, lty = "dotted")
 ``` 
 :::
 
----
+
 
 ### Corrélation
 
@@ -608,7 +608,7 @@ plot(X, out8$y, ylab = "X8", main = paste("r",
 
 Dans R, on peut obtenir la corrélation de Pearson entre deux variables à l'aide de la fonction `cor( )`. Nous pouvons aussi effectuer un test d'hypothèse sur le coefficient de corrélation, à savoir s'il diffère de 0 ($H_0: \rho = 0$) avec la fonction `cor.test( )`. Néanmoins, il faut demeurer vigilant car une valeur de $P$ faible n'est pas une garantie que la corrélation est forte. Une meilleure mesure s'avère le $r^2$ (c.-à-d., le coefficient de Pearson au carré) et est en fait le coefficient de détermination. Dans le cas d'une corrélation, il indique le pourcentage de la variation d'une variable qui est associée à la deuxième variable. 
 
----
+
 
 :::{.exemple section=10}
 Dans ce petit exemple, nous montrons le coefficient de corrélation entre deux variables aléatoires ainsi que le test d'hypothèse sur ce coefficient.
@@ -631,7 +631,7 @@ Chaque variable comporte 1000 valeurs et la corrélation de Pearson donne `r rou
 
 :::
 
----
+
 
 ### Corrélation vs régression 
 
