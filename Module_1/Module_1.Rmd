@@ -1,5 +1,3 @@
-# (PART) APPRENTISSAGE {-}
-
 # Statistiques descriptives
 
 ---
@@ -21,7 +19,7 @@ Les statistiques constituent une partie importante de la démarche scientifque. 
  
 Définissons maintenant certains termes et concepts en statistique.
 
-## Théories
+## Leçon
 
 ### Paramètre vs statistique
 
@@ -836,11 +834,11 @@ rnorm(n = 30, mean = 5.2, sd = 9.3)
 
 On remarque qu'à chaque fois que l'on utilise `rnorm()`, on obtient un résultat des observations (aléatoires) différentes.
 
-## Exercices
+## Autoévaluation
 
 Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives* pour réaliser les exercices suivants dans R. 
 
-### Question 1
+### Question 1 {-}
 
 **a.** La somme des carrés des erreurs est une mesure de tendance centrale: Vrai ou Faux?
 
@@ -873,7 +871,7 @@ Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a.** On mesure la profondeur de matière organique dans le sol de 100 parcelles en milieu agricole. À partir de 100 valeurs de profondeurs de sols, on obtient une moyenne de 12.3 cm et un écart-type de 4.5 cm. Calculez l'erreur-type de la moyenne. N.B. Cette question s'applique uniquement à l'approche par programmation. 
 

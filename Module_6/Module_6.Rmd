@@ -2,7 +2,7 @@
 
 Dans la leçon précédente, nous avons vu l'analyse de fréquences, particulièrement le test du $\chi^2$ d'ajustement et d'indépendance. Nous continuons ici avec l'analyse de données numériques continues, du même type que pour le test $t$. Dans la présente leçon, nous verrons un outil pour comparer plus de deux groupes, l'analyse de la variance.
 
-## Théories
+## Leçon
 
 ### Comparaison de plusieurs groupes
 
@@ -1001,9 +1001,9 @@ apply(X = mat.sim, MARGIN = 2, FUN = prod)
 
 On comprend que lorsque l'argument `MARGIN` prend la valeur de 1, les calculs sont effectués sur chacune des rangées. Si `MARGIN` a la valeur de 2, les calculs se réalisent sur chaque colonne.
 
-## Exercices
+## Autoévaluation
 
-### Question 1
+### Question 1 {-}
 
 **a.** Donnez un avantage d’effectuer une ANOVA au lieu de plusieurs tests $t$ pour comparer les moyennes des groupes entre elles? 
 
@@ -1023,7 +1023,7 @@ L'erreur au niveau de la comparaison se produit lorsqu'on rejette faussement $H_
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a.** Importez le fichier `Survie.txt` qui présente le temps de survie en heures d’animaux exposés à trois doses de poison (`faible`, `moyenne`, `elevee`). On désire savoir s'il existe des différences entre les moyennes des groupes définis par les doses de poison.
 

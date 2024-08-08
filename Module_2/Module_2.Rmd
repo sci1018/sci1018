@@ -2,7 +2,7 @@
 
 Dans la leçon précédente, nous avons vu des concepts de base importants en statistique, notamment les caractéristiques d'une population et d'un échantillon, les variables aléatoires, les mesures de tendance centrale et de dispersion. Nous avons également présenté le théorème de la limite centrale et la loi des grands nombres. Dans la présente leçon, nous poursuivons avec le concept de l'échantillonnage ainsi que différentes stratégies afin de récolter un échantillon.
 
-## Théories
+## Leçon
 
 ###### Échantillonnage {-}
 
@@ -544,9 +544,9 @@ dev.off( )
 
 Le graphique sera sauvegardé en format jpeg à l'endroit spécifié avec une taille de 1200 x 1200 pixels et une qualité de 100 \% (avec peu de compression). Nous continuerons à explorer d'autres fonctionnalités graphiques lors des leçons subséquentes.
 
-## Exercices
+## Autoévaluation
 
-### Question 1
+### Question 1 {-}
 
 **a.** Parmi les stratégies d'échantillonnage suivantes, laquelle est la plus appropriée pour comparer la densité de pins gris dans cinq différents types d'habitats? 
 
@@ -607,7 +607,7 @@ La méthode d'analyse d'occupation de sites serait la plus appropriée, mais, à
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a** Importez le jeu de données `croissance.csv`, qui présente la croissance en kg de bovins auxquels on a donné l'une des trois types de moulées. 
 

@@ -1,0 +1,122 @@
+# (PART) GUIDE R {-}
+
+# Installation de R {-}
+
+```{r rsite, fig.align='center', echo=FALSE, fig.link='images/Capture_rsite.png', fig.cap="L'allure du site web de R."}
+knitr::include_graphics("Guide_R_1/images/Capture_rsite.png")
+```
+
+### Où se procurer ? {-}
+
+Vous trouverez le site web principal du projet `R` se trouve à l'adresse (http://cran.r-project.org/) (Figure \@ref(fig:rsite)). Afin d'accélérer la vitesse de téléchargement et d'éviter de surcharger le site principal, accédez au site miroir situé le plus près de chez-vous (Figure \@ref(fig:rmirrors)). Les sites miroirs sont répartis à travers la planète et sont simplement des copies exactes du site principal.
+
+```{r rmirrors, fig.align='center', echo=FALSE, fig.link='images/Capture_rmirrors.png', fig.cap="Certains des sites miroirs de R."}
+knitr::include_graphics("Guide_R_1/images/Capture_rmirrors.png")
+```
+
+Sur le site miroir choisi, sélectionnez le système d'exploitation sur lequel vous désirez une version de `R` et suivez les instructions du téléchargement. L'installation de `R` diffère légèrement d'un système d'exploitation à un autre. 
+
+#### Installation de R sous MS-Windows {-}
+
+À partir de la page principale, cliquez sur le lien pour accéder à la page de téléchargement de la distribution pour MS-Windows, puis cliquez sur le lien pour initier le téléchargement. Le fichier à télécharger pour les systèmes MS-Windows est typiquement du genre `R-version.exe` (Figure \@ref(fig:baseWin)). Le téléchargement inclut la version 64 bits et la version 32 bits. La version 32 bits convient à la plupart des utilisateurs de systèmes MS-Windows.
+
+```{r baseWin, fig.align='center', echo=FALSE, fig.link='images/Capture_baseWin.png', fig.cap="Installation pour systèmes MS-Windows."}
+knitr::include_graphics("Guide_R_1/images/Capture_baseWin.png")
+```
+
+Après avoir téléchargé le fichier, exécutez-le en double-cliquant sur son icône. L'assistant d'installation du logiciel s'affichera à l'écran et vous guidera étape par étape jusqu'à la fin de l'installation. À noter qu'on peut choisir la langue de l'assistant d'installation de `R`. De plus, certains des menus et messages d'erreurs de `R` seront dans la même langue que celle du système d'exploitation. 
+
+Pour les novices, il suffit d'accepter les options d'installation par défaut à une exception près. Avec les dernières moutures de MS-Windows, telles que MS-Windows 7, il est préférable d'installer le logiciel dans un répertoire autre que `Programmes` ou `Program files` car la sécurité accrue de MS-Windows ne permet pas la mise à jour ou l'installation d'extensions de `R` plus tard. Ainsi, l'installation de `R` dans un répertoire tel que `C:\Utilisateurs\votre.nom\R` (où `votre.nom` correspond à votre nom d'utilisateur lorsque vous démarrez MS-Windows) convient parfaitement.
+
+#### Installation de R sous Mac {-}
+
+Pour les utilisateurs de Mac OS X ($> 10.6$), il suffit de cliquer sur le lien pour accéder à la page de la distribution de `R` pour systèmes Mac. Initiez le téléchargement en cliquant sur le lien approprié (Figure \@ref(fig:baseMac)). Le fichier à télécharger pour les systèmes Mac est typiquement du genre `R-version.pkg`. 
+
+```{r baseMac, fig.align='center', echo=FALSE, fig.link='images/Capture_baseMac.png', fig.cap="Installation pour systèmes Mac."}
+knitr::include_graphics("Guide_R_1/images/Capture_baseMac.png")
+```
+
+Après avoir téléchargé le fichier, double-cliquez sur son icône pour installer le logiciel et suivez les instructions à l'écran.
+
+#### Installation de R sous GNU/Linux {-}
+
+L'installation de `R` sur les plate-formes GNU/Linux est légèrement plus complexe, mais procure beaucoup plus de flexibilité. Cliquez sur le lien vers les systèmes GNU/Linux et sélectionnez la distribution de GNU/Linux (appelée communément *distro*) de votre choix (Figure \@ref(fig:baseLinux)). Les quatre principales distributions de GNU/Linux sont soutenues: Debian, Red Hat, Suse, et Ubuntu. À noter que `R` est également compatible avec d'autres distributions qui découlent des quatre distributions de GNU/Linux mentionnées précédemment (p. ex., OpenSUSE, Fedora, Linux Mint). Pour Ubuntu et Debian, par exemple, on peut ajouter l'adresse d'un site miroir de `R` dans le fichier `/etc/apt/sources.list`.
+
+```{r baseLinux, fig.align='center', echo=FALSE, fig.link='images/Capture_baseLinux.png', fig.cap="Installation pour systèmes GNU/Linux."}
+knitr::include_graphics("Guide_R_1/images/Capture_baseLinux.png")
+```
+
+Pour la page d'installation, vous trouverez également les informations nécessaires afin d'ajouter la clé d'authentification du site (un des avantages de la sécurité GNU/Linux). Ainsi, à chaque fois qu'une mise à jour de `R` apparaîtra, elle sera automatiquement installée. 
+
+Il en va de même pour certaines banques de fonctions appelées communément *packages*. Afin de compiler les packages, il est aussi recommandé d'installer les outils de compilation de `R` à l'aide de la commande `sudo apt-get install r-base-dev` dans le terminal `BASH` ou celui de votre choix. 
+
+## Pour débuter avec R {-}
+
+Une des particularités de `R` est qu'il ne contient qu'une interface graphique minimale, aussi connue sous le nom de *GUI* (*Graphical User Interface*, Figure \@ref(fig:termWin)). Pour GNU/Linux, il n'y a aucune interface graphique avec l'installation de base. On doit communiquer avec `R` sous forme de commandes. 
+
+Plusieurs utilisateurs sont déconcertés à la vue d'un curseur clignotant dans un terminal en cette ère des fenêtres graphiques élaborées dans la plupart des logiciels grand public. On peut taper des commandes directement au terminal, mais cette pratique est peu utile si on veut reproduire l'analyse plus tard. Nous suggérons plutôt d'écrire les commandes dans un éditeur afin de pouvoir les sauvegarder, les annoter abondamment de commentaires et de les modifier au besoin. Un fichier de code rédigé dans certains langages informatiques est appelé communément *script* . Ainsi, nous appellerons script le fichier de code `R`. 
+
+```{r termWin, fig.align='center', echo=FALSE, fig.link='images/Capture_termWin.png', fig.cap="Interface graphique minimale sous MS-Windows."}
+knitr::include_graphics("Guide_R_1/images/Capture_termWin.png")
+```
+
+Pour un projet donné, on peut créer un script `R` contenant le code qui va de l'importation des données jusqu'aux graphiques qui illustrent les résultats. L'avantage de rédiger un script est non négligeable: on peut reproduire exactement et rapidement l'importation d'un jeu de données, les manipulations, les analyses statistiques et les graphiques tels qu'ils ont été exécutés à l'origine. Les mêmes étapes sont plus laborieuses et enclines à l'erreur avec un logiciel statistique où il faut répéter exactement une séquence de clics de souris. 
+
+Bien qu'il existe quelques interfaces graphiques pour exécuter des analyses classiques en `R` telles que `R Commander` (http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/), nous ne recommandons pas leur utilisation si vous désirez adopter `R` à long terme. De plus, les interfaces graphiques ne peuvent couvrir qu'un éventail très restreint des analyses possibles avec `R`. 
+
+Un script de code `R` est une feuille de route des progrès réalisés dans un projet d'analyse que l'on peut partager avec des collaborateurs ou recycler au besoin pour des projets ultérieurs. La flexibilité et la transparence qu'apporte l'usage de scripts justifient amplement l'apprentissage du langage `R`.
+
+## Choisir son éditeur {-}
+
+Plusieurs éditeurs sont disponibles sous toutes les déclinaisons, du plus complexe au plus simple. Sous sa forme la plus simple, l'éditeur est un logiciel permettant d'écrire du code et de le sauvegarder. D'autres éditeurs, plus sophistiqués, reconnaissent plusieurs langages de programmation comme `C`, `C++`, `Java`, `html`, `R`, surlignent certaines commandes du langage et identifient les paires de parenthèses d'ouverture et de fermeture. Les meilleurs éditeurs permettent d'envoyer le code directement à `R`. 
+
+Certains éditeurs fonctionnent sur plusieurs plate-formes alors que d'autres sont spécifiques à certains systèmes d'exploitation. À noter que nous recommandons l'utilisation de l'éditeur `RStudio`, puisqu'il s'intègre parfaitement avec `R`, est disponible sur plusieurs systèmes d’exploitation (MS-Windows, Mac et Linux) et s'installe facilement. 
+
+`RStudio` est un nouveau venu sur la scène des éditeurs intelligents développés spécifiquement pour `R`. Son allure attrayante plaira à certains utilisateurs. Il reconnaît la syntaxe de `R`, permet d'envoyer le code à `R`, divise la fenêtre en différentes sections, notamment une section pour écrire les scripts, une deuxième pour le terminal `R`, une troisième pour la gestion des jeux de données et des packages, et une dernière pour les graphiques. On peut se procurer cet éditeur à l'adresse suivante: (http://www.rstudio.org). Si `RStudio` ne vous convient pas, vous trouverez en annexe une liste d'éditeurs intelligents (*Intelligent Development Editor, IDE*) disponibles gratuitement pour différents systèmes d'exploitation.
+
+#### Optimiser son éditeur {-}
+
+Prenez le temps d'explorer quelques unes des fonctionnalités de votre éditeur. Certains éditeurs permettent d'afficher la numérotation des lignes et des colonnes, de modifier la taille des caractères affichés, de créer des touches rapides (*hot keys*), et d'utiliser des options de recherche et de remplacement. 
+
+La plupart des éditeurs intelligents reconnaîtront la syntaxe de `R` si le fichier à ouvrir possède une extension `.r` ou `.R`, activant ainsi une multitude d'options spécifiques de `R`. Si vous créez un nouveau fichier à partir de l'éditeur, il est préférable de lui donner les extensions mentionnées précédemment afin que votre éditeur l'associe à `R` automatiquement.
+
+Il est toujours utile d'ajouter des commentaires aux scripts. En langage `R`, le symbole `#` est réservé aux commentaires: dès qu'il est rencontré, `R` passe à la prochaine ligne. Bien qu'un seul `#` suffise, par convention, on utilise `##` au début d'une ligne, alors qu'on utilise `#` à la fin d'une ligne. C'est d'ailleurs la convention que nous utiliserons tout au long de la session.
+
+```{r exA1.1,keep.source=TRUE}
+##un commentaire en début de phrase
+1 + 1 #c'est un commentaire en fin de ligne
+``` 
+
+Vous trouverez des exemples détaillés de la syntaxe de `R` pour réaliser plusieurs tâches communes, telles que la création de variables, l'importation de fichiers de données, la sélection de sous-ensembles, et le tri d'un jeu de données, dans le document *Programmation avec R -- notions générales*.
+
+#### Divers éditeurs disponibles {-}
+
+À titre indicatif, nous présentons ci-dessous divers éditeurs que nous avons essayés pour rédiger du code `R`. Toutefois, veuillez noter qu'en cas de difficultés avec les éditeurs autres que `Rstudio`, il sera de votre responsabilité de résoudre les problèmes rencontrés.
+
+##### Éditeurs fonctionnant sous plusieurs systèmes d'exploitation {-}
+
+- `Rstudio` est un nouveau venu sur la scène des éditeurs intelligents développés spécifiquement pour `R`. Son allure attrayante plaira à certains utilisateurs. Il reconnaît la syntaxe de `R`, permet d'envoyer le code à `R`, divise la fenêtre en différentes sections, notamment une section pour écrire les scripts, une deuxième pour le terminal `R`, une troisième pour la gestion des jeux de données et packages, et une dernière pour les graphiques. On peut se procurer cet éditeur à l'adresse suivante: (http://www.rstudio.org).
+  
+- `Emacs` est un logiciel à multiples usages. Entre autres, c'est un éditeur pour GNU/Linux et MS-Windows qui reconnaît la syntaxe de plusieurs langages. En téléchargeant et en installant le package `ESS` (*Emacs Speaks Statistics*), `Emacs` reconnaît la syntaxe de `R` et permet d'envoyer le code à `R`. Vous pouvez vous procurer cet éditeur au (http://www.gnu.org/software/emacs/). Nous recommandons cet éditeur aux utilisateurs de GNU/Linux ou aux programmeurs avertis.
+
+- `JGR` est un éditeur créé par les utilisateurs de `R` pour les utilisateurs de `R`. Il reconnaît la syntaxe de `R` et interagit avec `R`. On peut le télécharger au (http://www.rforge.net/JGR).
+  
+##### Éditeurs spécifiques à MS-Windows {-}
+
+- `Tinn-R`reconnaît la syntaxe de `R` et interagit avec `R`. Nous recommandons ce logiciel aux utilisateurs de MS-Windows. À noter qu'il fonctionne très bien sous XP, mais, sous Vista, certains problèmes d'interactivité avec `R` peuvent survenir. On peut se procurer cet éditeur au (https://sourceforge.net/projects/tinn-r/).
+
+- `WinEdt` reconnaît la syntaxe de `R` et peut être téléchargé au (http://www.winedt.com/). Il peut communiquer avec `R` avec l'aide du package `R` `RWinEdt`.
+
+
+##### Éditeurs spécifiques à Mac {-}
+
+- `Aquamacs` est en fait la version de `Emacs` pour Mac. Tout comme `Emacs`, il reconnaît la syntaxe de `R` et permet d'interagir avec `R`. Nous recommandons cet éditeur aux utilisateurs de Mac. Vous pouvez vous le procurer au (http://aquamacs.org/).
+
+- `TextWrangler` reconnaît la syntaxe de `R` et, à l'aide d'un script, interagit directement avec `R`. Il est disponible au (http://www.barebones.com/products/textwrangler/).
+
+##### Éditeurs spécifiques à GNU/Linux {-}
+
+- `Kate` reconnaît la syntaxe de `R` et interagit avec `R`. Il se trouve dans les dépôts de plusieurs distributions de GNU/Linux ou au (http://kate-editor.org/).
+
+- `gedit` est un petit éditeur qui reconnaît la syntaxe de R et qui vient souvent par défaut avec les installations de GNU/Linux. On peut le trouver dans les dépôts de plusieurs distributions de GNU/Linux ou au (http://projects.gnome.org/gedit/).
+

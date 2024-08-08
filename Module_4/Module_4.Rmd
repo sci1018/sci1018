@@ -3,7 +3,7 @@
 Dans la leçon précédente, nous avons discuté de la démarche scientifique et de l'élaboration d'hypothèses scientifiques et statistiques. Deux types d'erreurs associées à la réalisation d'un test d'hypothèse ont été présentées: l'erreur de type I et l'erreur de type II. Le seuil de signification ($\alpha$) correspond à la probabilité de rejeter une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui aurait dû être rejetée est donnée par $\beta$ (erreur de type II). Nous avons vu le concept de la puissance statistique. Nous avons réalisé un exemple de test d'hypothèse statistique sur un échantillon (groupe) concernant la moyenne à l'aide du test $t$. Ce test peut être unilatéral ou bilatéral. Le test unilatéral cible une seule des deux queues de la distribution alors que le test bilatérale cible les deux queues de la distribution. 
 
 
-## Théories
+## Leçon
 
 ### Tests d'hypothèses sur la moyenne de deux groupes indépendants
 
@@ -700,7 +700,7 @@ Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour c
 
 ## Laboratoire 
 
-### Question 1
+### Question 1 {-}
 
 **a.** Lequel des éléments suivants n'est pas associé à une supposition du test $t$ sur deux groupes indépendants?      
 
@@ -716,7 +716,7 @@ Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour c
 **c.** Le test $t$ de Welch est le plus approprié lorsqu'on ne peut respecter la supposition de normalité des résidus. Vrai ou faux?  
 
 
-### Question 2
+### Question 2 {-}
 
 On effectue une expérience sur l'efficacité d'un médicament qui améliore le temps de récupération après un effort physique. On sélectionne aléatoirement 50 étudiants à la TÉLUQ. On prépare deux séries de comprimés. La première série de comprimés contient uniquement du sucre (placebo), alors que la deuxième série contient le médicament. Pendant l'expérience, chaque individu reçoit deux comprimés, l'un de sucre, et l'autre contenant le médicament. On détermine aléatoirement l'ordre dans lequel chaque individu reçoit les comprimés.  On administre ensuite un des deux comprimés à chaque individu et on mesure son temps de récupération en minutes après qu'il a couru sur un tapis roulant pendant 10 minutes à une vitesse de 10 km/h. Le jour suivant, on administre l'autre comprimé en suivant le même protocole. 
 

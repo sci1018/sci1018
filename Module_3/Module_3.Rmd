@@ -2,7 +2,7 @@
 
 Lors de la leçon précédente, nous avons illustré le concept d'intervalle de confiance en nous appuyant sur le rééchantillonnage. Afin de construire des intervalles de confiance, nous avons utilisé la distribution normale ou la distribution du *t* de Student selon la taille de l'échantillon. Différentes stratégies d'échantillonnage ont été présentées, bien que l'échantillonnage complètement aléatoire et l'échantillonnage stratifié aléatoire soient les approches les plus fréquemment utilisées dans le cours.
 
-## Théories
+## Leçon
 
 ### Hypothèse
 
@@ -597,9 +597,9 @@ remove.packages(pkgs = "readxl")
 
 Une raison possible de désinstaller un package est lorsqu'une mise à jour d'un package n'a pu être réalisée avec succès. Ceci serait indiqué par un message d'erreur lors de la mise à jour. Un changement de dépendances d'un package entre deux versions peut causer une telle erreur. Dans une pareille situation, il suffit de désinstaller l'ancienne version du package à l'aide de `remove.packages( )` et d'installer la nouvelle version du package avec `install.packages( )`.
  
-## Exercices
+## Autoévaluation
 
-### Question 1
+### Question 1 {-}
 
 **a.** Quelle est la différence entre une expérience et une étude d'observation? 
 
@@ -649,7 +649,7 @@ La normalité des résidus et l'indépendance des observations sont les deux pri
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a.** Importez le jeu de données `temp.csv`. Ce dernier contient les données sur la température de l'air pour différentes stations de mesures météorologiques (`Site`) dans l'Arctique. La colonne `Diff.temp` est le résultat de la différence entre la température maximale de 2010 et celle de 1950.
 

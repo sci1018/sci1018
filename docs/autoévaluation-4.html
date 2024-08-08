@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.3 Autoévaluation | Statistiques avec R</title>
+  <meta name="description" content="6.3 Autoévaluation | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.3 Autoévaluation | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="6.3 Autoévaluation | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.3 Autoévaluation | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="6.3 Autoévaluation | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="les-boucles-avec-r.html"/>
+<link rel="next" href="analyse-de-variance-à-deux-critères.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-notés"><i class="fa fa-check"></i>Travaux notés</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="statistiques-descriptives.html"><a href="statistiques-descriptives.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="leçon.html"><a href="leçon.html"><i class="fa fa-check"></i><b>1.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="leçon.html"><a href="leçon.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="leçon.html"><a href="leçon.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="leçon.html"><a href="leçon.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a></li>
+<li class="chapter" data-level="1.1.4" data-path="leçon.html"><a href="leçon.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="leçon.html"><a href="leçon.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="leçon.html"><a href="leçon.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a></li>
+<li class="chapter" data-level="1.1.7" data-path="leçon.html"><a href="leçon.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="autoévaluation.html"><a href="autoévaluation.html"><i class="fa fa-check"></i><b>1.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><a href="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="leçon-1.html"><a href="leçon-1.html"><i class="fa fa-check"></i><b>2.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="leçon-1.html"><a href="leçon-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.2" data-path="leçon-1.html"><a href="leçon-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="leçon-1.html"><a href="leçon-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="2.1.4" data-path="leçon-1.html"><a href="leçon-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="leçon-1.html"><a href="leçon-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html"><i class="fa fa-check"></i><b>2.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tests-dhypothèse-sur-un-seul-groupe.html"><a href="tests-dhypothèse-sur-un-seul-groupe.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
+<li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="leçon-2.html"><a href="leçon-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a></li>
+<li class="chapter" data-level="3.1.7" data-path="leçon-2.html"><a href="leçon-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html"><i class="fa fa-check"></i><b>3.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-1-3"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-2-3"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tests-dhypothèse-sur-deux-groupes.html"><a href="tests-dhypothèse-sur-deux-groupes.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="leçon-3.html"><a href="leçon-3.html"><i class="fa fa-check"></i><b>4.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a></li>
+<li class="chapter" data-level="4.1.2" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="leçon-3.html"><a href="leçon-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a></li>
+<li class="chapter" data-level="4.1.4" data-path="leçon-3.html"><a href="leçon-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="leçon-4.html"><a href="leçon-4.html"><i class="fa fa-check"></i><b>5.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="leçon-4.html"><a href="leçon-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="leçon-4.html"><a href="leçon-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="5.1.3" data-path="leçon-4.html"><a href="leçon-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="leçon-4.html"><a href="leçon-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="leçon-4.html"><a href="leçon-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html"><i class="fa fa-check"></i><b>5.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-1-5"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-2-5"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analyse-de-variance-à-un-critère.html"><a href="analyse-de-variance-à-un-critère.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leçon-5.html"><a href="leçon-5.html"><i class="fa fa-check"></i><b>6.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="leçon-5.html"><a href="leçon-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a></li>
+<li class="chapter" data-level="6.1.4" data-path="leçon-5.html"><a href="leçon-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html"><i class="fa fa-check"></i><b>6.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-1-6"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-2-6"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analyse-de-variance-à-deux-critères.html"><a href="analyse-de-variance-à-deux-critères.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="leçon-6.html"><a href="leçon-6.html"><i class="fa fa-check"></i><b>7.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="leçon-6.html"><a href="leçon-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="leçon-6.html"><a href="leçon-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="leçon-6.html"><a href="leçon-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="leçon-6.html"><a href="leçon-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="leçon-6.html"><a href="leçon-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="leçon-6.html"><a href="leçon-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i>Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="blocs-complets-aléatoires.html"><a href="blocs-complets-aléatoires.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="leçon-7.html"><a href="leçon-7.html"><i class="fa fa-check"></i><b>8.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="leçon-7.html"><a href="leçon-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2" data-path="leçon-7.html"><a href="leçon-7.html#blocs-complets-aléatoires-1"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.3" data-path="leçon-7.html"><a href="leçon-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html"><i class="fa fa-check"></i><b>8.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-1-8"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-2-7"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="élaboration-et-optimisation-de-plans-déchantillonnage.html"><a href="élaboration-et-optimisation-de-plans-déchantillonnage.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="leçon-8.html"><a href="leçon-8.html"><i class="fa fa-check"></i><b>9.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="leçon-8.html"><a href="leçon-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.2" data-path="leçon-8.html"><a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="leçon-8.html"><a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.4" data-path="leçon-8.html"><a href="leçon-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i>Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="régression-linéaire-simple-et-corrélation.html"><a href="régression-linéaire-simple-et-corrélation.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="leçon-9.html"><a href="leçon-9.html"><i class="fa fa-check"></i><b>10.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="leçon-9.html"><a href="leçon-9.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a></li>
+<li class="chapter" data-level="10.1.2" data-path="leçon-9.html"><a href="leçon-9.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="leçon-9.html"><a href="leçon-9.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="leçon-9.html"><a href="leçon-9.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html"><i class="fa fa-check"></i><b>10.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-1-9"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-2-8"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="autoévaluation-4" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Autoévaluation<a href="autoévaluation-4.html#autoévaluation-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-1-6" class="section level3 unnumbered hasAnchor">
+<h3>Question 1<a href="autoévaluation-4.html#question-1-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>a.</strong> Donnez un avantage d’effectuer une ANOVA au lieu de plusieurs tests <span class="math inline">\(t\)</span> pour comparer les moyennes des groupes entre elles?</p>
+<details>
+<summary>
+Réponse
+</summary>
+L’avantage principal est de réduire l’erreur de type I, puisqu’on teste tous les groupes simultanément.
+</details>
+<p><br></p>
+<p><strong>b.</strong> Distinguez entre “erreur au niveau de la comparaison” et “erreur au niveau de l’expérience”.</p>
+<details>
+<summary>
+Réponse
+</summary>
+L’erreur au niveau de la comparaison se produit lorsqu’on rejette faussement <span class="math inline">\(H_0\)</span> alors qu’elle est vraie pendant une comparaison entre deux groupes. L’erreur au niveau de l’expérience se produit lorsqu’au moins une comparaison a rejeté faussement <span class="math inline">\(H_0\)</span> alors qu’elle était vraie. Le test de Tukey maintient l’erreur liée à l’expérience au seuil <span class="math inline">\(\alpha\)</span> que nous avons fixé.
+</details>
+<p><br></p>
+</div>
+<div id="question-2-6" class="section level3 unnumbered hasAnchor">
+<h3>Question 2<a href="autoévaluation-4.html#question-2-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>a.</strong> Importez le fichier <code>Survie.txt</code> qui présente le temps de survie en heures d’animaux exposés à trois doses de poison (<code>faible</code>, <code>moyenne</code>, <code>elevee</code>). On désire savoir s’il existe des différences entre les moyennes des groupes définis par les doses de poison.</p>
+<details>
+<summary>
+Réponse
+</summary>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="autoévaluation-4.html#cb603-1" tabindex="-1"></a><span class="do">##on importe le jeu de données</span></span>
+<span id="cb603-2"><a href="autoévaluation-4.html#cb603-2" tabindex="-1"></a>poison <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/Survie.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb603-3"><a href="autoévaluation-4.html#cb603-3" tabindex="-1"></a><span class="fu">head</span>(poison)</span></code></pre></div>
+<pre><code>##       Temps   Dose
+## 1 15.998507 faible
+## 2 12.539667 faible
+## 3  3.017424 faible
+## 4  7.621695 faible
+## 5 22.274759 faible
+## 6 24.971949 faible</code></pre>
+</details>
+<p><br></p>
+<p><strong>b.</strong> Spécifiez l’hypothèse nulle que vous pourriez tester avec ces données.</p>
+<details>
+<summary>
+Réponse
+</summary>
+Les hypothèses statistiques testées sont :<br />
+<span class="math inline">\(H_0: \mu_\mathtt{faible} = \mu_\mathtt{moyenne} = \mu_\mathtt{elevee}\)</span><br />
+<span class="math inline">\(H_a\)</span>: au moins une moyenne diffère des autres<br />
+<span class="math inline">\(\alpha = 0.05\)</span>
+</details>
+<p><br></p>
+<p><strong>c.</strong> À l’aide d’une ANOVA, déterminez si le temps de survie dépend de la dose de poison. Vérifiez toutes les suppositions de l’ANOVA et effectuez des transformations si nécessaire.</p>
+<details>
+<summary>
+Réponse
+</summary>
+<p>Avant de faire l’ANOVA, observons la structure interne des données :</p>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="autoévaluation-4.html#cb605-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
+##  $ Temps: num  16 12.54 3.02 7.62 22.27 ...
+##  $ Dose : chr  &quot;faible&quot; &quot;faible&quot; &quot;faible&quot; &quot;faible&quot; ...</code></pre>
+<p>On observe que la variable <code>Dose</code> est une variable caractère (<code>chr</code>). Or elle doit être un <code>facteur</code> (<code>factor</code>) pour être utilisée dans l’analyse. Nous devons donc la transformer :</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="autoévaluation-4.html#cb607-1" tabindex="-1"></a>poison<span class="sc">$</span>Dose <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(poison<span class="sc">$</span>Dose)</span></code></pre></div>
+<p>Remarquer que le changement a bel et bien été réalisé dans la structure des données :</p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="autoévaluation-4.html#cb608-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
+##  $ Temps: num  16 12.54 3.02 7.62 22.27 ...
+##  $ Dose : Factor w/ 3 levels &quot;elevee&quot;,&quot;faible&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<p>Nous pouvons maintenant réaliser l’ANOVA.</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="autoévaluation-4.html#cb610-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
+<span id="cb610-2"><a href="autoévaluation-4.html#cb610-2" tabindex="-1"></a></span>
+<span id="cb610-3"><a href="autoévaluation-4.html#cb610-3" tabindex="-1"></a></span>
+<span id="cb610-4"><a href="autoévaluation-4.html#cb610-4" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées. </span></span>
+<span id="cb610-5"><a href="autoévaluation-4.html#cb610-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb610-6"><a href="autoévaluation-4.html#cb610-6" tabindex="-1"></a><span class="fu">plot</span>(m1)</span></code></pre></div>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p>On constate que les variances ne sont pas homogènes, puisque le graphique des résidus en fonction des valeurs prédites montre qu’un groupe varie moins que les autres.</p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="autoévaluation-4.html#cb611-1" tabindex="-1"></a><span class="do">##on essaie une transformation log</span></span>
+<span id="cb611-2"><a href="autoévaluation-4.html#cb611-2" tabindex="-1"></a>poison<span class="sc">$</span>log.Temps <span class="ot">&lt;-</span> <span class="fu">log</span>(poison<span class="sc">$</span>Temps)</span>
+<span id="cb611-3"><a href="autoévaluation-4.html#cb611-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(log.Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
+<span id="cb611-4"><a href="autoévaluation-4.html#cb611-4" tabindex="-1"></a></span>
+<span id="cb611-5"><a href="autoévaluation-4.html#cb611-5" tabindex="-1"></a></span>
+<span id="cb611-6"><a href="autoévaluation-4.html#cb611-6" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées suite à cette transformation:</span></span>
+<span id="cb611-7"><a href="autoévaluation-4.html#cb611-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb611-8"><a href="autoévaluation-4.html#cb611-8" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<p>Les variances sont maintenant homogènes après cette transformation. Les résidus respectent aussi la condition de normalité. De plus, nous assumons que le dispositif expérimental assure la supposition d’indépendance des erreurs. Nous pouvons donc procéder avec l’interprétation de l’ANOVA.</p>
+</details>
+<p><br></p>
+<p><strong>d.</strong> Que pouvez-vous conclure de l’analyse? Incluez le tableau d’ANOVA dans votre présentation des résultats.</p>
+<details>
+<summary>
+Réponse
+</summary>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="autoévaluation-4.html#cb612-1" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Dose         2  26.27  13.136   12.49 4.85e-05 ***
+## Residuals   45  47.33   1.052                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+On conclut qu’il y a au moins une moyenne d’un groupe soumis à une dose de poison qui diffère des autres groupes.
+</details>
+<p><br></p>
+<p><strong>e.</strong> Si vous avez rejeté l’hypothèse nulle de l’ANOVA, effectuez des comparaisons multiples. Présentez les résultats des comparaisons multiples à l’aide d’un graphique.</p>
+<details>
+<summary>
+Réponse
+</summary>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="autoévaluation-4.html#cb614-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(m2)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = log.Temps ~ Dose, data = poison)
+## 
+## $Dose
+##                      diff        lwr       upr     p adj
+## faible-elevee   1.7976010  0.9188352 2.6763667 0.0000311
+## moyenne-elevee  1.0975613  0.2187956 1.9763271 0.0111516
+## moyenne-faible -0.7000397 -1.5788054 0.1787261 0.1418379</code></pre>
+<p>Le test de Tukey indique que les groupes de dose <code>moyenne</code> et <code>faible</code> ne diffèrent pas l’un de l’autre, mais que le groupe à dose <code>elevee</code> diffère des deux autres groupes. On peut représenter le tout dans un graphique en suivant les étapes suivantes :</p>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="autoévaluation-4.html#cb616-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
+<span id="cb616-2"><a href="autoévaluation-4.html#cb616-2" tabindex="-1"></a>moy.orig <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> poison<span class="sc">$</span>log.Temps, <span class="at">INDEX =</span> poison<span class="sc">$</span>Dose, <span class="at">FUN =</span> mean)</span>
+<span id="cb616-3"><a href="autoévaluation-4.html#cb616-3" tabindex="-1"></a></span>
+<span id="cb616-4"><a href="autoévaluation-4.html#cb616-4" tabindex="-1"></a><span class="do">##on met les moyenne en ordre croissant</span></span>
+<span id="cb616-5"><a href="autoévaluation-4.html#cb616-5" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">sort</span>(moy.orig)</span>
+<span id="cb616-6"><a href="autoévaluation-4.html#cb616-6" tabindex="-1"></a></span>
+<span id="cb616-7"><a href="autoévaluation-4.html#cb616-7" tabindex="-1"></a><span class="do">##extraire MSE</span></span>
+<span id="cb616-8"><a href="autoévaluation-4.html#cb616-8" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">1.0527</span></span>
+<span id="cb616-9"><a href="autoévaluation-4.html#cb616-9" tabindex="-1"></a><span class="do">##aussi possible d&#39;extraire à partir du summary</span></span>
+<span id="cb616-10"><a href="autoévaluation-4.html#cb616-10" tabindex="-1"></a><span class="co">#MSE &lt;- summary(m2)[[1]][2, &quot;Mean Sq&quot;]</span></span>
+<span id="cb616-11"><a href="autoévaluation-4.html#cb616-11" tabindex="-1"></a></span>
+<span id="cb616-12"><a href="autoévaluation-4.html#cb616-12" tabindex="-1"></a><span class="do">##calculer racine carrée de MSE</span></span>
+<span id="cb616-13"><a href="autoévaluation-4.html#cb616-13" tabindex="-1"></a>sqrt.MSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb616-14"><a href="autoévaluation-4.html#cb616-14" tabindex="-1"></a></span>
+<span id="cb616-15"><a href="autoévaluation-4.html#cb616-15" tabindex="-1"></a><span class="do">##calculer les limites des barres d&#39;erreur</span></span>
+<span id="cb616-16"><a href="autoévaluation-4.html#cb616-16" tabindex="-1"></a>lim.sup <span class="ot">&lt;-</span> moy <span class="sc">+</span> sqrt.MSE</span>
+<span id="cb616-17"><a href="autoévaluation-4.html#cb616-17" tabindex="-1"></a>lim.inf <span class="ot">&lt;-</span> moy <span class="sc">-</span> sqrt.MSE</span>
+<span id="cb616-18"><a href="autoévaluation-4.html#cb616-18" tabindex="-1"></a></span>
+<span id="cb616-19"><a href="autoévaluation-4.html#cb616-19" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
+<span id="cb616-20"><a href="autoévaluation-4.html#cb616-20" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb616-21"><a href="autoévaluation-4.html#cb616-21" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(lim.inf), <span class="fu">max</span>(lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
+<span id="cb616-22"><a href="autoévaluation-4.html#cb616-22" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
+<span id="cb616-23"><a href="autoévaluation-4.html#cb616-23" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Log du temps de survie&quot;</span>, </span>
+<span id="cb616-24"><a href="autoévaluation-4.html#cb616-24" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
+<span id="cb616-25"><a href="autoévaluation-4.html#cb616-25" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-26"><a href="autoévaluation-4.html#cb616-26" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
+<span id="cb616-27"><a href="autoévaluation-4.html#cb616-27" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-28"><a href="autoévaluation-4.html#cb616-28" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(moy))</span>
+<span id="cb616-29"><a href="autoévaluation-4.html#cb616-29" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
+<span id="cb616-30"><a href="autoévaluation-4.html#cb616-30" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb616-31"><a href="autoévaluation-4.html#cb616-31" tabindex="-1"></a>       <span class="at">y =</span> moy)</span>
+<span id="cb616-32"><a href="autoévaluation-4.html#cb616-32" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
+<span id="cb616-33"><a href="autoévaluation-4.html#cb616-33" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-34"><a href="autoévaluation-4.html#cb616-34" tabindex="-1"></a>       <span class="at">y0 =</span> lim.inf,</span>
+<span id="cb616-35"><a href="autoévaluation-4.html#cb616-35" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-36"><a href="autoévaluation-4.html#cb616-36" tabindex="-1"></a>       <span class="at">y1 =</span> lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
+<span id="cb616-37"><a href="autoévaluation-4.html#cb616-37" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb616-38"><a href="autoévaluation-4.html#cb616-38" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.05</span></span>
+<span id="cb616-39"><a href="autoévaluation-4.html#cb616-39" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb616-40"><a href="autoévaluation-4.html#cb616-40" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb616-41"><a href="autoévaluation-4.html#cb616-41" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
+<p><img src="Cours_Stats_R_files/figure-html/tukey-1.png" width="672" /></p>
+<p>Il est aussi approprié de présenter les résultats sur l’échelle originale de la variable. Ici, puisque nous avons utilisé la transformation logarithmique à base <span class="math inline">\(e\)</span> pour effectuer l’ANOVA, on peut faire la transformation inverse pour ramener les données à l’échelle originale (l’inverse de <code>log( )</code> est <code>exp( )</code>).</p>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="autoévaluation-4.html#cb617-1" tabindex="-1"></a><span class="do">##on transforme les moyennes </span></span>
+<span id="cb617-2"><a href="autoévaluation-4.html#cb617-2" tabindex="-1"></a>orig.moy <span class="ot">&lt;-</span> <span class="fu">exp</span>(moy)</span>
+<span id="cb617-3"><a href="autoévaluation-4.html#cb617-3" tabindex="-1"></a></span>
+<span id="cb617-4"><a href="autoévaluation-4.html#cb617-4" tabindex="-1"></a><span class="do">##on transforme les bornes des barres d&#39;erreurs</span></span>
+<span id="cb617-5"><a href="autoévaluation-4.html#cb617-5" tabindex="-1"></a>orig.lim.inf <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.inf)</span>
+<span id="cb617-6"><a href="autoévaluation-4.html#cb617-6" tabindex="-1"></a>orig.lim.sup <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.sup)</span>
+<span id="cb617-7"><a href="autoévaluation-4.html#cb617-7" tabindex="-1"></a></span>
+<span id="cb617-8"><a href="autoévaluation-4.html#cb617-8" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
+<span id="cb617-9"><a href="autoévaluation-4.html#cb617-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb617-10"><a href="autoévaluation-4.html#cb617-10" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(orig.lim.inf), <span class="fu">max</span>(orig.lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
+<span id="cb617-11"><a href="autoévaluation-4.html#cb617-11" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
+<span id="cb617-12"><a href="autoévaluation-4.html#cb617-12" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Temps de survie (h)&quot;</span>, </span>
+<span id="cb617-13"><a href="autoévaluation-4.html#cb617-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
+<span id="cb617-14"><a href="autoévaluation-4.html#cb617-14" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb617-15"><a href="autoévaluation-4.html#cb617-15" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
+<span id="cb617-16"><a href="autoévaluation-4.html#cb617-16" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-17"><a href="autoévaluation-4.html#cb617-17" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(orig.moy))</span>
+<span id="cb617-18"><a href="autoévaluation-4.html#cb617-18" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
+<span id="cb617-19"><a href="autoévaluation-4.html#cb617-19" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb617-20"><a href="autoévaluation-4.html#cb617-20" tabindex="-1"></a>       <span class="at">y =</span> orig.moy)</span>
+<span id="cb617-21"><a href="autoévaluation-4.html#cb617-21" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
+<span id="cb617-22"><a href="autoévaluation-4.html#cb617-22" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-23"><a href="autoévaluation-4.html#cb617-23" tabindex="-1"></a>       <span class="at">y0 =</span> orig.lim.inf,</span>
+<span id="cb617-24"><a href="autoévaluation-4.html#cb617-24" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-25"><a href="autoévaluation-4.html#cb617-25" tabindex="-1"></a>       <span class="at">y1 =</span> orig.lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
+<span id="cb617-26"><a href="autoévaluation-4.html#cb617-26" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb617-27"><a href="autoévaluation-4.html#cb617-27" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.40</span></span>
+<span id="cb617-28"><a href="autoévaluation-4.html#cb617-28" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb617-29"><a href="autoévaluation-4.html#cb617-29" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb617-30"><a href="autoévaluation-4.html#cb617-30" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
+<img src="Cours_Stats_R_files/figure-html/backtransform-1.png" width="672" />
+</details>
+<p><br></p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="les-boucles-avec-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analyse-de-variance-à-deux-critères.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

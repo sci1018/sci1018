@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9.1 Leçon | Statistiques avec R</title>
+  <meta name="description" content="9.1 Leçon | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9.1 Leçon | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="9.1 Leçon | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9.1 Leçon | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="9.1 Leçon | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="élaboration-et-optimisation-de-plans-déchantillonnage.html"/>
+<link rel="next" href="laboratoire-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-notés"><i class="fa fa-check"></i>Travaux notés</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="statistiques-descriptives.html"><a href="statistiques-descriptives.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="leçon.html"><a href="leçon.html"><i class="fa fa-check"></i><b>1.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="leçon.html"><a href="leçon.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="leçon.html"><a href="leçon.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="leçon.html"><a href="leçon.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a></li>
+<li class="chapter" data-level="1.1.4" data-path="leçon.html"><a href="leçon.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="leçon.html"><a href="leçon.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="leçon.html"><a href="leçon.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a></li>
+<li class="chapter" data-level="1.1.7" data-path="leçon.html"><a href="leçon.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="autoévaluation.html"><a href="autoévaluation.html"><i class="fa fa-check"></i><b>1.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><a href="intervalles-de-confiance-et-stratégies-déchantillonnage.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="leçon-1.html"><a href="leçon-1.html"><i class="fa fa-check"></i><b>2.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="leçon-1.html"><a href="leçon-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.2" data-path="leçon-1.html"><a href="leçon-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="leçon-1.html"><a href="leçon-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="2.1.4" data-path="leçon-1.html"><a href="leçon-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="leçon-1.html"><a href="leçon-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html"><i class="fa fa-check"></i><b>2.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tests-dhypothèse-sur-un-seul-groupe.html"><a href="tests-dhypothèse-sur-un-seul-groupe.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
+<li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="leçon-2.html"><a href="leçon-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a></li>
+<li class="chapter" data-level="3.1.7" data-path="leçon-2.html"><a href="leçon-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html"><i class="fa fa-check"></i><b>3.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-1-3"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-2-3"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tests-dhypothèse-sur-deux-groupes.html"><a href="tests-dhypothèse-sur-deux-groupes.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="leçon-3.html"><a href="leçon-3.html"><i class="fa fa-check"></i><b>4.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a></li>
+<li class="chapter" data-level="4.1.2" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="leçon-3.html"><a href="leçon-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a></li>
+<li class="chapter" data-level="4.1.4" data-path="leçon-3.html"><a href="leçon-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><a href="analyse-de-fréquences-et-test-du-khi-carré-chi2.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="leçon-4.html"><a href="leçon-4.html"><i class="fa fa-check"></i><b>5.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="leçon-4.html"><a href="leçon-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="leçon-4.html"><a href="leçon-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="5.1.3" data-path="leçon-4.html"><a href="leçon-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="leçon-4.html"><a href="leçon-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="leçon-4.html"><a href="leçon-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html"><i class="fa fa-check"></i><b>5.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-1-5"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-2-5"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="analyse-de-variance-à-un-critère.html"><a href="analyse-de-variance-à-un-critère.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leçon-5.html"><a href="leçon-5.html"><i class="fa fa-check"></i><b>6.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="leçon-5.html"><a href="leçon-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a></li>
+<li class="chapter" data-level="6.1.4" data-path="leçon-5.html"><a href="leçon-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html"><i class="fa fa-check"></i><b>6.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-1-6"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-2-6"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analyse-de-variance-à-deux-critères.html"><a href="analyse-de-variance-à-deux-critères.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="leçon-6.html"><a href="leçon-6.html"><i class="fa fa-check"></i><b>7.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="leçon-6.html"><a href="leçon-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="leçon-6.html"><a href="leçon-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="leçon-6.html"><a href="leçon-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="leçon-6.html"><a href="leçon-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="leçon-6.html"><a href="leçon-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="leçon-6.html"><a href="leçon-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i>Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="blocs-complets-aléatoires.html"><a href="blocs-complets-aléatoires.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="leçon-7.html"><a href="leçon-7.html"><i class="fa fa-check"></i><b>8.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="leçon-7.html"><a href="leçon-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2" data-path="leçon-7.html"><a href="leçon-7.html#blocs-complets-aléatoires-1"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.3" data-path="leçon-7.html"><a href="leçon-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html"><i class="fa fa-check"></i><b>8.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-1-8"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-2-7"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="élaboration-et-optimisation-de-plans-déchantillonnage.html"><a href="élaboration-et-optimisation-de-plans-déchantillonnage.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="leçon-8.html"><a href="leçon-8.html"><i class="fa fa-check"></i><b>9.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="leçon-8.html"><a href="leçon-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.2" data-path="leçon-8.html"><a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="leçon-8.html"><a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.4" data-path="leçon-8.html"><a href="leçon-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i>Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="régression-linéaire-simple-et-corrélation.html"><a href="régression-linéaire-simple-et-corrélation.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="leçon-9.html"><a href="leçon-9.html"><i class="fa fa-check"></i><b>10.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="leçon-9.html"><a href="leçon-9.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a></li>
+<li class="chapter" data-level="10.1.2" data-path="leçon-9.html"><a href="leçon-9.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="leçon-9.html"><a href="leçon-9.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="leçon-9.html"><a href="leçon-9.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html"><i class="fa fa-check"></i><b>10.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-1-9"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-2-8"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="leçon-8" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Leçon<a href="leçon-8.html#leçon-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="plans-déchantillonnage" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Plans d’échantillonnage<a href="leçon-8.html#plans-déchantillonnage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans ce texte, nous parcourrons différents éléments qui sont importants dans l’élaboration de <strong>plans d’échantillonnage</strong> aussi appelés <strong>plans d’expérience</strong> ou <strong>dispositifs expérimentaux</strong> (<em>experimental design</em>, <em>sampling design</em>) afin de tirer le maximum d’information de votre expérience et d’arriver à des conclusions solides. Avant d’aller plus loin, nous allons définir quelques termes qui reviendront au cours de la leçon. Certains de ces termes ont été présentés dans des leçons antérieures, mais nous tenons à les rappeler ici.</p>
+<div id="expérience-vs-étude-dobservation" class="section level4 hasAnchor" number="9.1.1.1">
+<h4><span class="header-section-number">9.1.1.1</span> Expérience vs étude d’observation<a href="leçon-8.html#expérience-vs-étude-dobservation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Une <strong>étude d’observation</strong> consiste à prendre des mesures sur des unités d’échantillonnage sélectionnées aléatoirement, mais où les traitements n’ont pas nécessairement été attribués aléatoirement. Par exemple, dans une étude sur les impacts de la pauvreté et des inégalités sociales sur la santé des populations on cherche à déterminer l’effet de la classe socio-économique sur les risques d’avoir une certaine maladie. Bien qu’on puisse sélectionner aléatoirement des personnes appartenant à chacune des classes qui nous intéressent, nous ne pouvons pas assigner aléatoirement une classe aux personnes participant à l’étude. Les résultats ne sont pas aussi clairs que ceux d’une vraie <strong>expérience</strong> aussi appelée <strong>expérience contrôlée</strong>. En effet, il est difficile de contrôler plusieurs facteurs dans une étude d’observation.</p>
+<p>À l’opposé, l’expérience consiste à prendre des mesures sur des unités expérimentales sélectionnées aléatoirement, auxquelles on a assigné aléatoirement un certain traitement. Ce genre de dispositif expérimental est celui que nous avons considéré dans le cas de l’ANOVA à un et à deux critères, par exemple. Dans l’expérience, nous contrôlons tous les facteurs et nous ne faisons varier que ceux qui sont d’intérêt, ce qui nous permet d’arriver à des conclusions solides. Bien que l’expérience soit souvent l’approche idéale, elle manque parfois de réalisme, et l’étude d’observation peut procurer des informations supplémentaires à propos de l’effet potentiel de certaines variables sur le système d’intérêt.</p>
+</div>
+<div id="témoin" class="section level4 hasAnchor" number="9.1.1.2">
+<h4><span class="header-section-number">9.1.1.2</span> Témoin<a href="leçon-8.html#témoin" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Le <strong>témoin</strong> ou <strong>contrôle</strong> (<em>control</em>) d’une expérience est un traitement qui consiste en une absence de traitement. Autrement dit, c’est un traitement qui présente des conditions de référence. Par exemple, dans une expérience qui compare l’effet de deux médicaments sur des patients, on pourrait considérer un troisième groupe de patients auxquels on n’administre pas de médicament. C’est le goupe témoin ou le témoin. L’utilisation d’un témoin est primordiale afin d’obtenir une moyenne de référence que l’on peut comparer aux moyennes de groupes avec traitements. Le témoin contrôle les changements temporaux ou les effets associés à des procédures ou à des manipulations liées à certains traitements.</p>
+</div>
+<div id="placébo" class="section level4 hasAnchor" number="9.1.1.3">
+<h4><span class="header-section-number">9.1.1.3</span> Placébo<a href="leçon-8.html#placébo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Le <strong>placébo</strong> (<em>placebo</em>) est un traitement témoin qui consiste à administrer une substance neutre à des individus afin de contrôler l’effet de la manipulation. Par exemple, imaginons une expérience visant à déterminer l’effet d’un nouveau médicament. On administre le médicament sous forme de comprimé à un premier groupe tandis que le deuxième groupe reçoit un comprimé de sucre (placébo) et un troisième groupe ne subit aucun traitement (témoin). Comme autre exemple, dans une expérience qui vise à étudier l’activité d’animaux en présence de prédateurs, on soumet un premier groupe d’animaux à la présence d’un prédateur vivant maintenu dans un enclos. On soumet un deuxième groupe à la présence d’un prédateur empaillé (placébo), tandis qu’un troisième groupe n’est exposé à aucun prédateur (témoin).</p>
+<p>Le placébo est important lorsqu’il existe un effet de manipulation (p. ex., administrer un comprimé, la présence d’un prédateur immobile dans l’enclos). La comparaison d’un groupe placébo (avec manipulation) à un groupe témoin (sans manipulation) permet de quantifier l’effet de la manipulation sur les individus utilisés dans l’expérience. La comparaison d’un groupe placébo à un groupe qui a reçu un traitement permet de conclure qu’il y a bel et bien un effet du traitement en tenant compte de l’effet de manipulation.</p>
+</div>
+<div id="prise-de-données-en-aveugle" class="section level4 hasAnchor" number="9.1.1.4">
+<h4><span class="header-section-number">9.1.1.4</span> Prise de données en aveugle<a href="leçon-8.html#prise-de-données-en-aveugle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Un moyen parfois utilisé afin d’éviter les biais associé à la prise de données est la <strong>prise de données en aveugle</strong> aussi appelée <strong>prise de données à l’insu</strong> (<em>blinding</em>). Pour ce faire, les personnes qui récoltent les données ou les sujets de l’expérience ignorent le traitement qui a été appliqué. Ceci permet d’éviter le cas où un technicien trop zélé introduit consciemment ou inconsciemment un biais dans les données en favorisant un des traitements. Le même phénomène peut survenir lorsqu’un patient sachant qu’il reçoit un certain traitement influence sa réponse. Autrement dit, un patient à qui on annonce qu’il reçoit le médicament peut avoir une réponse plus forte au traitement qu’un patient qui ne connaît pas la nature du traitement. La prise de données en aveugle peut régler ce problème. La <strong>prise de données en double aveugle</strong> ou <strong>prise de données à double insu</strong> (<em>double blinding</em>) implique que les personnes récoltant les données ainsi que les participants à l’expérience ignorent les traitements qui ont été administrés.</p>
+</div>
+<div id="répétition-randomisation-et-répartition-spatiale" class="section level4 hasAnchor" number="9.1.1.5">
+<h4><span class="header-section-number">9.1.1.5</span> Répétition, randomisation et répartition spatiale<a href="leçon-8.html#répétition-randomisation-et-répartition-spatiale" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La <strong>répétition</strong> des traitements ou des combinaisons des traitements contrôle la variabilité due au hasard aussi appelée <strong>stochasticité</strong> lors d’une expérience. En d’autres mots, la présence de répétitions peut protéger contre la présence d’éléments perturbateurs qui agissent sur les unités expérimentales (p. ex., un arbre tombe sur un des bassins contenant des têtards dans une expérience sur la compétition, un prédateur se nourrit des animaux dans un des enclos d’une expérience sur la sélection d’habitat, un patient testant un nouveau médicament contracte la grippe, une voiture a un bris mécanique affectant sa consommation d’essence alors qu’on testait sa performance en fonction de différents types d’essence, etc.): si certaines des unités sont contaminées, celles qui restent pourront tout de même être utilisées pour mener à bien l’expérience.</p>
+<p>La <strong>randomisation</strong> consiste en l’application d’un processus aléatoire sur l’attribution d’une condition aux unités d’échantillonnage (voir la leçon 2). Elle contrôle le biais potentiel de la sélection, de l’emplacement, et de l’attribution des traitements aux unités expérimentales. La randomisation aide à assurer l’indépendance des observations (ou des erreurs), une condition essentielle à l’utilisation de plusieurs analyses statistiques.</p>
+<p>La <strong>répartition spatiale</strong> ou <strong>temporelle</strong> (selon le cas) contrôle la variation spatiale ou temporelle des propriétés des unités expérimentales. Autrement dit, les conditions de l’emplacement où se trouve une unité expérimentale peuvent être très différentes des conditions à un autre emplacement. En disposant les parcelles à différents endroits sur le site d’étude, on obtient une meilleure estimation de la variabilité naturelle des unités expérimentales. Ceci permet de tirer des conclusions plus générales. De plus, établir les unités expérimentales à une distance suffisante les unes des autres assure aussi l’indépendance des observations. Le prochain exemple illustre certains problèmes liés à la répétition, la randomisation et la répartition spatiale qui peuvent survenir lors de l’élaboration d’un plan d’échantillonnage.</p>
+<div class="exemple" section="9">
+<p>On s’intéresse à l’effet des arbres sur les îlots de chaleurs en ville lors des périodes de canicule. On émet l’hypothèse scientifique que la température est plus basse dans les zones boisées que dans les zones adjacentes. Pour tester notre hypothèse, on attend une canicule et on mesure la température moyenne de l’air au milieu d’une zone boisée et à 50 m à l’extérieur de cette même zone. Si chaque thermomètre fournit une seule mesure de température, le nombre de répétitions sera insuffisant et on ne pourra pas tester d’hypothèse. On devra donc modifier le plan d’échantillonnage afin d’incorporer plus de répétitions.</p>
+<p>On reprend l’expérience, cette fois-ci en augmentant la répétition et en disposant 10 thermomètres dans la même zone boisée et 10 à l’extérieur de cette zone au même endroit. Malgré la présence de répétitions dans la zone boisée et son extérieur, un problème est toujours évident : le dispositif modifié permettra uniquement de déterminer s’il y a des différences entre l’intérieur et l’extérieur de la zone boisée à cet endroit précis de la ville. On ne pourra pas tirer de conclusion sur la ville en entier. En effet, les conditions (p. ex., couloir de vent, zone très bétonnée) à un point donné de la ville peuvent être différentes de celles à d’autres endroits de la même ville. Afin de pouvoir décrire l’effet des arbres sur les îlots de chaleur pour l’ensemble de la ville, il est nécessaire de répartir les thermomètres à différents endroits de la ville (c.-à-d., répartition spatiale) de façon aléatoire afin d’obtenir une meilleure estimation de la variabilité de cet effet.</p>
+<p>Dans le but d’améliorer la répartition spatiale, on reprend (encore) l’expérience en disposant 10 thermomètres au milieu d’une zone boisée et 10 thermomètres à l’extérieur d’une seconde zone boisée. Avec un tel dispositif, il sera impossible de distinguer l’effet des arbres de celui de l’effet de l’emplacement des thermomètres dans la ville. En d’autres mots, l’emplacement dans la ville et « intérieur vs. extérieur de la zone boisée » seront deux variables confondues l’une avec l’autre. Il se peut que les conditions ne soient pas homogènes entre les deux emplacements, ce qui rendra difficile la comparaison. Si on trouve une différence, il n’y aucun moyen de prouver que cela est dû uniquement à la présence d’arbres, l’emplacement dans la ville pourrait aussi expliquer cette différence. La solution ultime (et le meilleur plan d’échantillonnage) consistera à disposer chaque thermomètre à un endroit de la ville différent (déterminé aléatoirement) à l’intérieur ou l’extérieur d’une zone boisée, afin d’obtenir 20 thermomètres à 20 endroits différents de la ville (10 thermomètre à l’intérieur de 10 zones boisées et 10 thermomètres à l’extérieur de 10 autres zones boisées), ce qui correspondrait à un dispositif complètement aléatoire. Contrairement aux plans d’échantillonnage présentés plus haut, cette dernière approche permettra d’obtenir une mesure de la température à l’intérieur ou à l’extérieur des zones boisées sans ambiguïté.</p>
+<p>Dans cet exemple, aucun témoin n’a été présenté. L’inclusion d’un témoin améliorerait potentiellement le dispositif. Un témoin dans le contexte de cette expérience pourrait s’avérer être un groupe de thermomètre à la limite de la ville où les îlots de chaleurs sont moins importants, ou très en hauteur où il n’y a pas d’effet des arbres, ni du béton accumulant la chaleur. Le cas échéant, les thermomètres témoins devraient être répartis aléatoirement aux limites de la ville ou dans les hauteurs. Ceci permettrait de tester efficacement l’effet des arbres sur la température de l’air en ville en contrôlant la variabilité des endroits dans cette ville (répartition spatiale), et en intégrant la randomisation et la répétition. Un dispositif alternatif consisterait à utiliser des blocs complets aléatoires en sélectionnant aléatoirement 10 endroits dans la ville et en disposant un trio de thermomètres à chaque endroit (1 thermomètre à l’intérieur de la zone boisée, 1 thermomètre à l’extérieur et 1 thermomètre très en hauteur).</p>
+</div>
+</div>
+</div>
+<div id="nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage<a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lors de l’élaboration d’un plan d’échantillonnage, nos meilleurs alliés sont :</p>
+<ul>
+<li>une hypothèse scientifique claire et bien définie;</li>
+<li>l’échantillonnage aléatoire des observations parmi la population statistique d’intérêt;</li>
+<li>l’assignation aléatoire des traitements aux unités expérimentales;</li>
+<li>l’utilisation de témoins;</li>
+<li>l’utilisation de blocs (complets aléatoires) lorsque le milieu est hétérogène;</li>
+<li>la stratification lorsque des conditions différentes sont présentes dans la population (p. ex., différents habitats, différentes régions géographiques, différentes conditions économiques, différents accès à des services publics, différents historiques médicaux);</li>
+<li>l’utilisation de variables additionnelles (p. ex., pH et type de sol dans des études environnementales, âge du patient dans une étude médicale, revenu familiale dans une étude sociologique) si les conditions hétérogènes sont susceptibles d’influencer la variable réponse et qu’on veut quantifier cet effet;</li>
+<li>la répétition, la répétition et la répétition (une bonne taille d’échantillon peut pallier plusieurs problèmes);</li>
+<li>l’équilibre du nombre d’unités expérimentales par traitement (dispositif équilibré).</li>
+</ul>
+<p>Avant de réaliser une expérience et de récolter les données, il est très important de répondre à certaines questions, notamment :</p>
+<ul>
+<li>Quelle est l’hypothèse scientifique à tester?</li>
+<li>Quel est le meilleur dispositif qui permettra de tester simplement et efficacement l’hypothèse?</li>
+<li>Est-ce une expérience (avec manipulations) ou une étude d’observation (sans manipulations)?</li>
+<li>Quelle est la variable réponse et quelles sont les variables explicatives?</li>
+<li>Le dispositif que j’ai choisi est-il un dispositif complètement aléatoire ou y a-t-il des unités expérimentales avec une structure particulière (p. ex., observations groupées entre elles)?</li>
+<li>Y a-t-il de l’hétérogénéité environnementale ou temporelle? Le cas échéant, comment cette hétérogénéité a-t-elle été prise en compte ou mesurée?</li>
+<li>Les traitements ont-ils été attribués aléatoirement aux unités expérimentales?</li>
+<li>Mon dispositif est-il balancé (équilibré) et ai-je suffisamment de répétitions?</li>
+<li>Quelle analyse statistique permettra de tester le plus simplement et efficacement l’hypothèse scientifique?</li>
+<li>Pour l’analyse statistique choisie, quelles sont les suppositions à respecter afin que les conclusions soient valides?</li>
+<li>Mes observations sont-elles réellement indépendantes? Si elles ne le sont pas, comment l’analyse tient-elle compte de la non-indépendance des données?</li>
+<li>Y a-t-il des variables confondantes (<em>counfounding variable</em>, <em>counfounding effect</em>) qui rendront potentiellement difficile l’interprétation des résultats? On entend par variable confondante, une variable qui est intimement liée à une autre et qui rend difficile voire impossible de distinguer l’effet des deux variables sur la variable réponse. Par exemple, considérons une expérience où l’on a trois sites auxquels on assigne un traitement différent à chacun. Si on trouve une différence entre les traitements au stade de l’analyse, cette différence peut aussi bien être due à l’effet du traitement ou à l’effet du site car chaque site a reçu un traitement différent. On dira donc que l’effet du traitement et du site sont confondus. Sans plus d’information (répétitions des sites) ou l’utilisation de blocs (p. ex., l’application de tous les traitements à chaque site), on ne peut rien conclure et on aura dépensé inutilement du temps et de l’argent.</li>
+</ul>
+</div>
+<div id="problèmes-associés-à-certains-plan-déchantillonnage" class="section level3 hasAnchor" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Problèmes associés à certains plan d’échantillonnage<a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="labsence-de-réelles-répétitions-la-pseudoréplication" class="section level4 hasAnchor" number="9.1.3.1">
+<h4><span class="header-section-number">9.1.3.1</span> L’absence de réelles répétitions : la pseudoréplication<a href="leçon-8.html#labsence-de-réelles-répétitions-la-pseudoréplication" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Au milieu des années 1980, un terme est apparu pour désigner des problèmes liés à la répétition de traitements d’une expérience. Hurlbert (1984<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>) a introduit le terme <strong>pseudoréplication</strong> dans un article qui a été énormément cité en écologie. En gros, la pseudoréplication désigne une expérience mal élaborée qui ne possède pas de réelles répétitions. Trois différents types de pseudoréplication ont été présentés dans l’article original, soit la pseudoréplication simple, la pseudoréplication sacrificielle et la pseudoréplication temporelle. Nous décrivons chaque type dans les prochaines lignes.</p>
+<div id="pseudoréplication-simple" class="section level5 hasAnchor" number="9.1.3.1.1">
+<h5><span class="header-section-number">9.1.3.1.1</span> Pseudoréplication simple<a href="leçon-8.html#pseudoréplication-simple" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La <strong>pseudoréplication simple</strong> (<em>simple pseudoreplication</em>) est le cas où on a plusieurs observations, mais seulement une vraie unité expérimentale par traitement (absence de réelles répétitions). On peut avoir plusieurs mesures dans deux parcelles, mais les observations ne sont pas indépendantes. Par exemple, si on s’intéresse à l’effet d’interventions par une (ou un) orthopédagogue pour la réussite d’élèves ayant des difficultés d’apprentissage, on pourrait engager une (ou un) orthopédagogue pour aider les élèves en difficulté dans une école et comparer avec les élèves dans une école sans orthopédagogue. On pourrait sélectionner aléatoirement des élèves en difficulté dans chaque école et comparer leur réussite scolaire. Même avec 50 élèves choisis aléatoirement dans chaque école, on a seulement deux réelles unités expérimentales : les deux écoles. Effectivement, les élèves dans la même école ne sont pas indépendants. Si on détecte une différence entre les deux écoles, il se peut que ce soit dû à une différence des caractéristiques de ces deux écoles (quartier riche ou défavorisé, autre aide à l’apprentissage, meilleurs enseignants) ou à l’aide amenée par l’orthopédagogue : les deux effets sont confondus.</p>
+<p>Dans cet exemple, il est nécessaire d’augmenter le nombre d’unités expérimentales plutôt que les observations sur une même unité. Pour ce faire, il faut sélectionner aléatoirement les élèves en difficulté d’apprentissage dans différentes écoles et assigner aléatoirement le traitement (interventions d’un orthopédagogue ou non) à chacun pour obtenir un dispositif complètement aléatoire (1 élève dans 1 école = 1 unité expérimentale). Si ceci est logistiquement impossible, on pourrait sélectionner aléatoirement 8 écoles assez près les unes des autres pour permettre les interventions du même orthopédagogue, en choisissant aléatoirement quelles écoles auraient droit à ses services et en suivant plusieurs élèves dans chaque école. Le cas échéant, on aurait 8 unités expérimentales puisque les élèves provenant de la même école ne seraient pas considérés comme indépendants. Toutefois, avec cette structure, il faudrait utiliser les moyennes de chaque école dans les analyses ou utiliser une analyse qui peut tenir compte de structures plus complexes.</p>
+</div>
+<div id="pseudoréplication-sacrificielle" class="section level5 hasAnchor" number="9.1.3.1.2">
+<h5><span class="header-section-number">9.1.3.1.2</span> Pseudoréplication sacrificielle<a href="leçon-8.html#pseudoréplication-sacrificielle" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La <strong>pseudoréplication sacrificielle</strong> (<em>sacrificial pseudoreplication</em>) survient lorsqu’on a plusieurs observations sur les mêmes unités expérimentales et que l’on combine ces observations dans la même analyse sans tenir compte de leur origine. Ici, nous avons une répétition des traitements (plusieurs unités par traitement), mais on considère à tort que chaque observation est une vraie unité expérimentale. Cette erreur est souvent justifiée par des énoncés tels que “Les sites ne différaient pas entre eux et nous avons combiné les données de chacun dans la même analyse …” La réalité, en milieu naturel et dans d’autres systèmes complexes, est qu’il est pratiquement impossible d’observer deux sites identiques et il est incorrect de simplement regrouper toutes les observations ensembles. Généralement, les observations qui proviennent d’une même unité expérimentale (p. ex., phénomènes observés sur un même site ou un même quadrat, mesures prises sur un même arbre, les personnes d’une même famille, ou les élèves d’une même école) sont plus similaires entre elles que deux observations provenant de deux unités expérimentales différentes. Comme solution, on peut appliquer les mêmes remèdes utilisés pour faire face à la pseudoréplication simple, soit augmenter le nombre de réelles unités expérimentales, travailler sur les moyennes des unités expérimentales (qui elles sont indépendantes les unes des autres), ou encore utiliser une analyse statistique qui permet d’incorporer les observations répétées dans chaque unité expérimentale.</p>
+</div>
+<div id="pseudoréplication-temporelle" class="section level5 hasAnchor" number="9.1.3.1.3">
+<h5><span class="header-section-number">9.1.3.1.3</span> Pseudoréplication temporelle<a href="leçon-8.html#pseudoréplication-temporelle" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La <strong>pseudoréplication temporelle</strong> (<em>temporal pseudoreplication</em>) se produit lorsqu’on prend des mesures successives sur les mêmes unités expérimentales étalées dans le temps, et que l’on considère ces mesures à différentes périodes comme des observations indépendantes. Les observations qui proviennent d’une même unité expérimentale à différentes périodes ne sont pas indépendantes. Par exemple, des mesures de l’état de santé du même patient à travers le temps ou des mesures de l’abondance d’une espèce à un site, mais à différentes périodes, ne constituent pas des observations indépendantes. Une solution à ce problème consiste à analyser chaque période séparément ou à utiliser une analyse qui tient compte des mesures répétées (p. ex., ANOVA pour mesures répétées, modèles mixtes).</p>
+</div>
+</div>
+<div id="contrôler-la-variabilité-temporelle" class="section level4 hasAnchor" number="9.1.3.2">
+<h4><span class="header-section-number">9.1.3.2</span> Contrôler la variabilité temporelle<a href="leçon-8.html#contrôler-la-variabilité-temporelle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Un type particulier de dispositif expérimental concerne l’application de traitements dans le temps, et la prise de mesure typiquement <strong>avant et après</strong> le traitement (<em>before and after controlled impact design (BACI)</em>). Par exemple, dans une expérience sur l’effet des tentes à faible taux d’oxygène sur la performance d’athlète de haut niveau (simulation d’altitude), on sélectionne aléatoirement 12 athlètes et on mesure leurs taux sanguins en globules rouges. On applique ensuite l’un des deux traitements suivants : un mois à dormir dans une tente avec une concentration d’oxygène X et un mois avec une concentration Y. Bien que chaque athlète puisse agir comme son propre témoin (conditions avant <em>vs</em> après), l’application d’un traitement dans le temps présente un problème: il est impossible de distinguer l’effet du traitement d’un effet temporel si toutes les unités reçoivent un traitement.</p>
+<p>Toute expérience ou étude d’observation s’échelonnant sur le temps nécessite un témoin temporel. En d’autres mots, on a besoin d’unités expérimentales qui n’ont reçu aucun traitement dans le temps afin de procurer une mesure de référence temporelle (c.-à-d., ce qui se passe en l’absence de traitement entre les périodes de mesures).
+Dans l’exemple ci-haut sur la performance des athlètes, il serait important d’inclure un traitement témoin (tente avec une concentration normale d’oxygène), afin d’obtenir quatre répétitions de chaque traitement. Cette modification du dispositif expérimental permettrait de distinguer les différences avant et après l’application de chaque traitement, en tenant compte des différences dues uniquement au temps écoulé entre deux mesures (le témoin avant et après).</p>
+</div>
+<div id="sources-de-confusion" class="section level4 hasAnchor" number="9.1.3.3">
+<h4><span class="header-section-number">9.1.3.3</span> Sources de confusion<a href="leçon-8.html#sources-de-confusion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Lorsqu’on effectue une expérience ou une étude d’observation, certains éléments peuvent influencer la qualité des conclusions, ce que Hurlbert (1984) désigna comme des <strong>sources de confusion</strong>. Parmi celles-ci, on note les changements temporels qui surviennent pendant l’expérience modifiant les propriétés des unités expérimentales. L’utilisation de témoins permet de pallier ce problème. Les <strong>effets liés aux procédures</strong>, comme la manipulation d’animaux ou la perturbation du sol lors de la prise d’une mesure, sont d’autres sources de confusion. Ici encore, l’utilisation de témoins atténue ce problème. Le <strong>biais associé à l’expérimentateur</strong> est une autre source de confusion qui peut se manifester, par exemple, lorsqu’on est plus minutieux dans la prise de mesure de certains traitements. Cette dernière source de confusion peut être minimisée en assignant aléatoirement les traitements aux unités expérimentales, en randomisant la séquence de prise de mesure, ou en prenant les mesures en aveugle (p. ex., le traitement est inconnu de la personne prenant la mesure).</p>
+<p>La <strong>variabilité de l’expérimentateur</strong> (erreur aléatoire) est une source de confusion associée naturellement à la prise de mesure en tant que telle. On peut réduire cette source de confusion en augmentant le nombre de répétitions. La <strong>variabilité des unités expérimentales</strong> est une autre source de confusion découlant du fait que chaque unité expérimentale a des caractéristiques qui lui sont propres et que cette variabilité reflète la variabilité à l’intérieur de la population. La répétition des traitements, une bonne répartition spatiale des unités expérimentales, ainsi que la récolte de variables secondaires (p. ex., pH, humidité) pour décrire plus directement les caractéristiques de chaque unité expérimentale peuvent prévenir les problèmes associés à cette source de confusion.</p>
+<p>Certaines sources de confusion sont difficiles ou impossibles à contrôler, notamment l’effet d’<strong>événements aléatoires</strong> sur l’expérience. Par exemple, lors d’une expérience sur le terrain, le passage d’un ouragan sur les sites d’études peut modifier la variable réponse que l’on mesurera plus tard. Il en va de même avec les pannes électriques qui mettent hors service les systèmes de filtration ou d’éclairage dans des chambres de croissance ou des aquariums. Si l’événement influence toutes les unités expérimentales, le problème est moins grave. Toutefois, si seulement quelques unités expérimentales sont touchées, les observations provenant des unités affectées seront difficiles à interpréter et à comparer au reste des observations: à la limite, certaines données devront être écartées de l’analyse. Le meilleur moyen de réduire cette source de confusion est d’augmenter le nombre de répétitions et de maintenir une bonne répartition spatiale des unités expérimentales.</p>
+<p>Malgré toutes ces précautions, certaines sources de confusion demeurent problématiques, comme le cas d’un <strong>agent extérieur qui intervient délibérément</strong> sur les unités expérimentales d’un traitement particulier et épargne celles des autres traitements. Pour illustrer, considérons le cas d’un site d’étude sur lequel on a disposé des enclos d’animaux où l’on estime la survie de petits mammifères selon différentes densités (nombre d’individus/m<span class="math inline">\(^2\)</span>). Ce site est fréquenté par un prédateur qui vise spécifiquement les enclos d’animaux avec les plus grandes densités. Si cette prédation passe inaperçue, on arrivera à des conclusions erronées. Un mauvais plan d’échantillonnage, comme la présence d’effets confondants ou un gradient qui n’a pas été mesuré, correspond aussi à une source de confusion qui ne permet pas de tester de façon efficace une hypothèse scientifique. Dans de tels cas, le facteur qui agit délibérément sur les unités expérimentales, c’est l’expérimentateur. Il faut donc rester vigilant dans l’élaboration des plans d’échantillonnage.</p>
+</div>
+</div>
+<div id="conclusion-8" class="section level3 hasAnchor" number="9.1.4">
+<h3><span class="header-section-number">9.1.4</span> Conclusion<a href="leçon-8.html#conclusion-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans ce texte, nous avons vu plusieurs éléments importants à considérer lors de l’élaboration de plans d’échantillonnage, certains problèmes incluant la pseudoréplication et des sources de confusion atténuant ou invalidant les conclusions, ainsi que des solutions. La planification du plan d’échantillonnage est la partie la plus importante de votre projet et requiert une bonne réflexion. Cette étape détermine si l’analyse sera simple ou plus complexe. Un bon dispositif permet de tester l’hypothèse scientifique simplement et facilite énormément l’analyse. On peut pallier certains problèmes de dispositif expérimental avec des analyses sophistiquées, mais, dans certains cas, l’analyse des données s’avère impossible. Avec une analyse inappropriée réalisée à partir d’un plan d’échantillonnage solide, on peut toujours réanalyser les données, mais avec un mauvais dispositif, il faut refaire l’expérience.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="29">
+<li id="fn29"><p>Hurlbert, S. H. 1984. Pseudoreplication and the design of ecological field experiments. Ecological Monographs 54:187-211.<a href="leçon-8.html#fnref29" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="élaboration-et-optimisation-de-plans-déchantillonnage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="laboratoire-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

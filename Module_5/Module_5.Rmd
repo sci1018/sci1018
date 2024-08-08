@@ -2,7 +2,7 @@
 
 Dans la leçon précédente, nous avons illustré des variantes du test $t$ de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Nous avons présenté les suppositions sous-jacentes à ces analyses ainsi que plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions. Dans tous les cas, les variables réponses étaient numériques avec des valeurs décimales, comme la hauteur, le temps et la masse. Pour ce genre de données, la décimale représente une valeur observable: une hauteur de 193.24 cm a un sens. Toutefois, les fréquences, comme celles provenant du décompte d'événements d'intérêt prennent uniquement des valeurs entières (discrètes). Par exemple, si nous étudions le nombre de personnes atteintes d'une maladie ou le nombre survivant à cette maladie, nous ne pouvons pas observer 12.23 événements. Nous en observerons plutôt 12 ou 13. Ce type de données fera l'objet de cette leçon.
 
-## Théories
+## Leçon
 
 ### Analyse de fréquences : le test du khi carré ($\chi^2$)
 
@@ -501,9 +501,9 @@ kable(surv.females,
 
 Cette leçon a présenté les rudiments de l'analyse de fréquences, particulièrement le test du $\chi^2$ d'ajustement et d'indépendance. Les conditions sous-jacentes à cette analyse ont été énoncées, ainsi que quelques diagnostics et mesures préventives lors de l'élaboration de la stratégie d'échantillonnage. Des approches alternatives ont aussi été brièvement présentées lorsque les conditions du test du $\chi^2$ ne peuvent être respectées. Finalement, le paradoxe de Simpson a été illustré avec un exemple afin de montrer que l'analyse de fréquences sans tenir compte d'une variable additionnelle peut influencer les conclusions.
 
-## Exercices 
+## Autoévaluation 
 
-### Question 1
+### Question 1 {-}
 
 **a.** Lequel des éléments suivants s'avère un problème pour le test du khi carré ($\chi^2$)?   
 
@@ -536,7 +536,7 @@ Le test-$G$ est un test équivalent au $\chi^2$.
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 Un concessionnaire automobile désire mieux cibler sa clientèle dans une ville. Il demande une étude d'observation afin de déterminer si les résidants de quatre arrondissements (A, B, C, D) d'une même ville utilisent plutôt des voitures produites par des manufacturiers domestiques (GM, Chrysler, Ford) ou produites par des compagnies étrangères (p.ex., Honda, Toyota, Subaru, Mitsubishi, Mazda, Nissan, Suzuki, Kia, Hyundai, BMW, VolksWagen, Mercedes, Mini, Volvo, SAAB, SMART). On échantillonne aléatoirement 300 voitures dans les quartiers de chacun des quatre arrondissements. On note la marque de chaque voiture. Le tableau \@ref(tab:dataCars) présente les données. 
 
