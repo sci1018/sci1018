@@ -235,7 +235,7 @@ Les tests d'hypothèse effectués sur la moyenne d'un groupe permettent de déte
 
 Le test d'hypothèse peut être **bilatéral** (*two-sided test*) ou **unilatéral** (*one-sided test*). Dans le test bilatéral, on considère l'information contenue dans les deux queues de la distribution théorique (Figure \@ref(fig:bilateral)a). À l'opposé, un test unilatéral s'intéresse spécifiquement à l'information contenue dans l'une des deux queues de la distribution (Figure \@ref(fig:bilateral)b, c). Le choix d'exécuter un test unilatéral plutôt qu'un test bilatéral dépend des objectifs de l'analyse. Les deux prochains exemples illustrent le test unilatéral et le test bilatéral, respectivement. 
 
-```{r bilateral, echo=FALSE, fig.cap="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $\alpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues."}
+```{r bilateral, echo=FALSE, fig.align='center',fig.cap="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $\alpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues."}
 ##test bilatéral
 xvs <- seq(-4, 4, 0.01)
 #qt(0.975, df = 19)
@@ -448,7 +448,7 @@ qqnorm(residus, main = "Graphique quantile-quantile",
 qqline(residus)
 ``` 
 
-```{r qqplot, echo = FALSE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)."}
+```{r qqplot, echo = FALSE, fig.align='center', fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)."}
 par(mfrow = c(1, 2))
 ##un graphique quantile-quantile
 qqnorm(residus, main = "Graphique quantile-quantile",
@@ -472,7 +472,7 @@ Le graphique quantile-quantile compare les quantiles de la distribution des rés
 
 On peut refaire l'exemple pour les résidus provenant du test-$t$ sur l'âge des ours noirs de Montérégie (Figure \@ref(fig:qqplot2):
 
-```{r qqplot2, echo=TRUE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie."}
+```{r qqplot2, echo=TRUE, fig.align='center', fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie."}
 ##on crée un vecteur avec les observations
 age.ours <- c(18, 13, 17, 2, 8, 14, 8, 5, 9, 2, 8, 7, 7, 
               3, 19, 21, 20, 11, 7, 16)

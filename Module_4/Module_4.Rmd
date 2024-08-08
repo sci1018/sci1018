@@ -97,7 +97,7 @@ On peut utiliser un test $t$ pour déterminer s'il y a une différence entre les
 
 Dans le cas du test $t$ sur un seul groupe, nous avons l'équation
 
-$t = \frac{\bar{x} - \mu}{SE}  $
+$t = \frac{\bar{x} - \mu}{SE}$
 
 où $\bar{x}$ correspond à la moyenne du groupe et $\mu$ représente la valeur à laquelle on désire comparer la moyenne. Comme nous l'avons vu à la leçon précédente, le test $t$ sur un groupe suppose la normalité des résidus et l'indépendance des observations. En présence de deux groupes, le test $t$ se calcule comme suit :
 
@@ -209,7 +209,7 @@ Le meilleur moyen de respecter cette condition est d'utiliser un design complèt
 
 Afin de vérifier la normalité des résidus, nous pouvons utiliser les mêmes diagnostics que ceux présentés pour le test $t$ à un groupe. Les tests formels ou les méthodes graphiques peuvent nous aider à détecter des déviations de cette condition. Dans notre exemple sur le succès scolaire des élèves, nous pourrions procéder comme suit :
 
-```{r normality, fig.align='left', fig.cap="Graphique quantile-quantile à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
+```{r normality, fig.align='center', fig.cap="Graphique quantile-quantile à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
 ##on crée un sous-jeu de données pour les élèves ayant eu l'aide aux devoirs
 eleves.aide <- eleves[eleves$Type == "aide", "Note"]
 eleves.aide
@@ -246,7 +246,7 @@ Le test $t$ sur deux groupes indépendants suppose que les deux groupes comparé
 
 La méthode graphique la plus simple consiste à observer le patron de la variance à l'aide des résidus. Puisque nous n'avons que deux groupes, nous pouvons utiliser un diagramme de boîtes et moustaches (*boxplot*). Si la condition d'homogénéité de la variance est respectée, nous observerons deux boîtes de même hauteur sur le graphique.
 
-```{r homog2, fig.align='left', fig.cap="Diagramme de boîtes et moustaches à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
+```{r homog2, fig.align='center', fig.cap="Diagramme de boîtes et moustaches à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
 ##on met les résidus dans le jeu de données
 eleves$res.combo <- res.combo
 ##on crée le graphique
@@ -255,7 +255,7 @@ boxplot(res.combo ~ Type, data = eleves)
 
 On voit que les boîtes des deux groupes sont très semblables (la distance interquartile est similaire). On peut donc procéder avec le test $t$ (Figure \@ref(fig:homog2)). Dans d'autres cas, les variances des deux groupes sont différentes et la supposition d'homogénéité de la variance n'est pas respectée (Figure \@ref(fig:hetero)). Lorsqu'il y a un doute sur l'interprétation du diagramme, il vaut mieux utiliser des tests qui ne nécessitent pas l'homogénéité de la variance (voir la prochaine section).
 
-```{r hetero, echo = FALSE, keep.source = FALSE, include = TRUE, fig.align='left', fig.cap="Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2."}
+```{r hetero, echo = FALSE, keep.source = FALSE, include = TRUE, fig.align='center', fig.cap="Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2."}
 ##generate one group, low variance
 g1 <- rnorm(30, mean = 3, sd = 1)
 g2 <- rnorm(30, mean = 0, sd = 10)
@@ -378,7 +378,7 @@ t.out
 
 Toutefois, avant de se lancer dans l'interprétation de l'analyse, il faut vérifier les suppositions. 
 
-```{r norm2, echo = TRUE, eval = TRUE, keep.source = TRUE, fig.align='left', fig.cap="Graphique quantile-quantile sur les résidus du test $t$ sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d'homogénéité de la variance à partir des résidus du test $t$ sur deux groupes indépendants avec avec les mêmes données (b)."}
+```{r norm2, echo = TRUE, eval = TRUE, keep.source = TRUE, fig.align='center', fig.cap="Graphique quantile-quantile sur les résidus du test $t$ sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d'homogénéité de la variance à partir des résidus du test $t$ sur deux groupes indépendants avec avec les mêmes données (b)."}
 
 ##calculer les résidus - groupe inconnus
 inconnus.res <- inconnus - mean(inconnus)
@@ -409,7 +409,7 @@ text(x = 0.5, y = 14.5, labels = "b", cex = 1.2)
 
 Le test de normalité d'Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure \@ref(fig:norm2)a). La figure \@ref(fig:norm2)b ne montre pas de signes d'hétérogénéité de la variance. On peut procéder à l'inteprétation des résultats. Puisque $P(t_{df = 28}$ `r round(t.out$statistic, digits = 3)`) = `r round(t.out$p.value, 5)`, on rejette $H_0$ et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu'avec des inconnus. Autrement dit, la valeur de $t$ observée est beaucoup plus extrême que ce qui est attendu selon $H_0$. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure \@ref(fig:two)).
 
-```{r two, echo = TRUE, eval = TRUE, keep.source = TRUE, fig = TRUE, fig.align='left', fig.cap="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%."}
+```{r two, echo = TRUE, eval = TRUE, keep.source = TRUE, fig = TRUE, fig.align='center', fig.cap="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%."}
 ##moyenne des groupes
 moy.inconnus <- mean(inconnus)
 moy.comperes <- mean(comperes)
@@ -529,7 +529,7 @@ t.test(poissons$Aval, poissons$Amont, paired = TRUE,
        alternative = "less")
 ``` 
 
-```{r norm6, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align='left', fig.cap="Vérification de la normalité à partir des résidus des données appariées sur le nombre d'espèces de poissons."}
+```{r norm6, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align='center', fig.cap="Vérification de la normalité à partir des résidus des données appariées sur le nombre d'espèces de poissons."}
 ##calcul des résidus
 res.diff <- poissons$Diff - mean(poissons$Diff)
 ##graphique quantile-quantile
@@ -541,7 +541,7 @@ qqline(res.diff)
 
 La vérification de la normalité indique que les résidus ont une distribution normale (Figure \@ref(fig:norm6)). On conclut qu'il est peu probable d'observer une valeur $t$ de `r round(t.poissons$statistic, 3)` ou plus extrême (ici, plus faible étant donné notre hypothèse alternative) avec \mbox{15 degrés} de liberté lorsque $H_0$ est vraie. Effectivement, $P(t_{`r t.poissons$parameter`} \leq `r round(t.poissons$statistic, 3)`) = `r round(t.poissons$p.value, 4)`$. On rejette $H_0$ et on déclare dans notre rapport que le nombre espèces de poissons est significativement plus faible en aval qu'en amont d'une décharge d'eaux usées. On peut également formuler la conclusion en déclarant que le nombre d'espèces de poissons est significativement plus élevée en amont qu'en aval d'une décharge d'eaux usées dans notre aire d'étude. Finalement, on peut créer un graphique pour illustrer les résultats. Puisque les deux groupes sont appariés et que le test $t$ pour deux groupes appariés est en fait un test $t$ réalisé sur la différence entre les paires, on peut présenter la moyenne de la différence entre les paires et son intervalle de confiance à 95\% (Figure \@ref(fig:pairedci)). 
 
-```{r pairedci, fig = TRUE, fig = TRUE, fig.align='left', fig.cap="Moyenne de la différence du nombre d'espèces de poissons (aval - amont) et intervalle de confiance à 95%."}
+```{r pairedci, fig = TRUE, fig = TRUE, fig.align='center', fig.cap="Moyenne de la différence du nombre d'espèces de poissons (aval - amont) et intervalle de confiance à 95%."}
 ##degrés de liberté résiduels
 res.df <- nrow(poissons) - 1
 
@@ -582,7 +582,7 @@ X^\prime = \log(X + 1) \:,
 $$
 où $X$ correspond à la variable originale et $X^\prime$ représente la nouvelle variable résultant de cette transformation sur chacune des valeurs originales. On ajoute une constante à cette transformation lorsque certaines des valeurs de la variable originale sont 0, puisque le logarithme n'est pas défini pour de telles valeurs. Bien qu'il soit possible d'utiliser n'importe quelle base pour le logarithme, la base $e$ (log népérien, naturel) et la base 10 sont les plus fréquemment utilisées. En présence d'hétéroscédasticité, cette transformation peut rendre les variances homogènes (Figure \@ref(fig:hetlog)). Cette transformation influence à la fois l'homogénéité de la variance et la normalité des résidus. Si les résidus ont déja une distribution normale, mais que les variances ne sont pas homogènes, il se peut que la transformation rétablisse l'homogénéité de la variance mais que la normalité des résidus ne soit plus rencontrée.
 
-```{r hetlog, eval = TRUE, fig = TRUE, keep.source = FALSE, echo = FALSE, fig.align='left', fig.cap="Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L'application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable."}
+```{r hetlog, eval = TRUE, fig = TRUE, keep.source = FALSE, echo = FALSE, fig.align='center', fig.cap="Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L'application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable."}
 set.seed(seed = 122)
 g1 <- rnorm(50, mean = 50.5, sd = 12)
 g2 <- rnorm(50, mean = 190, sd = 40)
@@ -663,9 +663,9 @@ hist(props.transf)
 La **transformation réciproque ou inverse** (*reciprocal transformation*) peut être utilisée lorsque les variances des groupes sont proportionnelles au carré des moyennes :
 
 $$
-X^\prime &=& \frac{1}{X} \\
+X^\prime = \frac{1}{X} \\
 \mathrm{ou} \\
-X^\prime &=& \frac{1}{X + 1} \: .
+X^\prime = \frac{1}{X + 1} \: 
 $$
 
 Toutefois, il faut rester vigilant dans l'interprétation des résultats lorsqu'on a appliqué la transformation inverse. Le signe sera inversé. Par exemple, si on obtient après la transformation inverse que la différence du groupe 1 est plus grande que celle du groupe 2, cela implique que pour les données brutes, c'est en effet le contraire qui se produit. La transformation inverse s'obtient de la manière suivante dans R :
@@ -680,7 +680,6 @@ La **transformation au carré**\index{transformations!carré} est parfois utile 
 
 $$
 X^\prime = X^2
-\end{equation*}
 $$
 On exécute la transformation au carré ainsi:
 

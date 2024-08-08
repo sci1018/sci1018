@@ -457,24 +457,24 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">1.2.2.3</span> Nombres aléatoires<a href="statistiques-de-base-avec-r.html#nombres-aléatoires" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>On peut générer des nombres aléatoires provenant d’une distribution normale avec une moyenne et un écart-type donnés à l’aide de <code>rnorm()</code>. Par exemple, pour générer un échantillon de 30 observations provenant d’une distribution normale avec une moyenne de 5.2 (<span class="math inline">\(\mu = 5.2\)</span>) et un écart-type de 9.3 (<span class="math inline">\(\sigma = 9.3)\)</span>, on procède ainsi:</p>
 <div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="statistiques-de-base-avec-r.html#cb309-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]  12.6978321   1.6390934   5.4578038   1.0876202  10.1004237   8.2613070   2.5934418   3.5655503  11.4103738 -10.3228485   1.9533736  -3.7012357   5.2924761
-## [14]  -3.0487688   7.3169951   2.1063566  14.0842490  -2.8359576  -8.9677587  14.7462099   6.3977311  15.6713156  18.7726325  -1.2709818  17.2832757   4.6677937
-## [27]   0.8458515   9.2720342   9.4976998   7.0172392</code></pre>
+<pre><code>##  [1]  -4.3951087   7.8898196   0.2250582  29.3903581  10.7250124  17.7119075   6.5561938  -1.7225757  -4.0520715  12.6040999   3.6182839  -4.3700236  -6.6067398
+## [14]  -8.4457707  -9.8937376 -12.1725664  -2.1715611  16.4217596  -2.2239964   9.6001311  12.2900626   2.9762024   5.9800030   1.1457161  11.1669090  23.0159337
+## [27]  13.4014657  -1.7503535  -9.3385387   0.2877657</code></pre>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="statistiques-de-base-avec-r.html#cb311-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb311-2"><a href="statistiques-de-base-avec-r.html#cb311-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]  7.1695745  4.6845098 20.3300678 15.3918291 -9.9512550  2.3620292 17.2197112  8.4640227  5.2836160  7.9085075 -1.2207264  6.1358534 11.5328911 14.5369922
-## [15]  1.2029669  0.8288895 16.0297550  2.9171064  0.5257051  7.1321985 14.9666498  5.4665569  1.8162525 10.4467047 10.2392021  2.1990647  4.4588858  3.6562870
-## [29] -6.4996760 28.2701572</code></pre>
+<pre><code>##  [1]   0.6496233  12.2534370  -2.3618651  -1.8927474  12.1666026   7.8883412   3.0299682  14.0384580   3.2718960  13.4654298   3.8155744  -1.5557017   3.1884658
+## [14]   9.7712782   1.8820474  -9.3195274  18.2084750  33.4222329   7.3478570  -1.1805086   5.9144207   7.0327101   2.5600103   6.1937861   3.2461888   7.0336211
+## [27]  12.9336343   8.3385628 -15.6795589  15.7888257</code></pre>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="statistiques-de-base-avec-r.html#cb313-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb313-2"><a href="statistiques-de-base-avec-r.html#cb313-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1] -10.11237463  15.21150863  -6.61408658   6.60596890  25.66738210  21.27257829   8.24325822  -4.65788245   6.56056510   1.85175871  21.68730986  -6.45506093
-## [13]  -6.05648204   6.50506863  15.20468145   6.58730975  -7.53069523  -0.07414296   9.61951654   4.62134343   3.28125223  19.82229535  -1.86117644   3.92205245
-## [25]  12.65344365  13.77844070   4.09319742   9.86602104   2.01855867  13.82091039</code></pre>
+<pre><code>##  [1]  -2.9843163  -0.6406069  -1.6935806  13.3283183   3.2262779  -1.7192929  11.7316861   4.3627358  -0.2834619   6.2862303  19.7203588  -3.4162357   2.2014585
+## [14]  16.1116374   8.7722081   1.8972844  22.7104023 -11.4624176  -0.4345860  -0.2244623  -3.9647755   6.7010222   3.0530001  -6.7809141 -14.2788948  -8.6900204
+## [27]   2.7561748  -5.1263979   0.8028180  21.0690370</code></pre>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="statistiques-de-base-avec-r.html#cb315-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb315-2"><a href="statistiques-de-base-avec-r.html#cb315-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]  10.72610915  13.35811735   7.37523292  17.72526227  15.11848116  13.87776023   9.50573485  -9.89301656   3.50738234  -0.02880290  23.53130011  12.51767631
-## [13]   3.95910485   6.80765484  -2.26716088   9.11243123   3.67480516  23.15768223   5.38333376 -24.99103817   2.00861466 -12.19722069  20.15509825  11.59057572
-## [25]  15.83787834   1.24082008   1.98794461  -3.21214518   0.08730644   5.64157763</code></pre>
+<pre><code>##  [1]  15.2970136  17.4966003   4.5023081  13.4797082  -3.4825890  12.4148296  -0.1514865  12.6720088  12.6440490  16.8343434  -2.0810794  16.8985184  -6.0607043
+## [14]   6.0754226  15.5520187  -7.1797532   1.7598710  -1.0247237  16.8158740 -14.7963729  14.8408582  15.9166547   3.1544561   5.5026621   1.0599122  15.1848067
+## [27]  11.7014313  12.5636373  -5.7608258   1.2860845</code></pre>
 <p>On remarque qu’à chaque fois que l’on utilise <code>rnorm()</code>, on obtient un résultat des observations (aléatoires) différentes.</p>
 </div>
 </div>

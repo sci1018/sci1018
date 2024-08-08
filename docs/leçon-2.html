@@ -588,7 +588,7 @@ décision correcte <br> (puissance = 1 - <span class="math inline">\(\beta\)</sp
 <div id="test-bilatéral-et-test-unilatéral" class="section level4 hasAnchor" number="3.1.6.1">
 <h4><span class="header-section-number">3.1.6.1</span> Test bilatéral et test unilatéral<a href="leçon-2.html#test-bilatéral-et-test-unilatéral" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Le test d’hypothèse peut être <strong>bilatéral</strong> (<em>two-sided test</em>) ou <strong>unilatéral</strong> (<em>one-sided test</em>). Dans le test bilatéral, on considère l’information contenue dans les deux queues de la distribution théorique (Figure <a href="leçon-2.html#fig:bilateral">3.3</a>a). À l’opposé, un test unilatéral s’intéresse spécifiquement à l’information contenue dans l’une des deux queues de la distribution (Figure <a href="leçon-2.html#fig:bilateral">3.3</a>b, c). Le choix d’exécuter un test unilatéral plutôt qu’un test bilatéral dépend des objectifs de l’analyse. Les deux prochains exemples illustrent le test unilatéral et le test bilatéral, respectivement.</p>
-<div class="figure"><span style="display:block;" id="fig:bilateral"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bilateral"></span>
 <img src="Cours_Stats_R_files/figure-html/bilateral-1.png" alt="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $lpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues." width="672" />
 <p class="caption">
 Figure 3.3: Tests d’hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du <span class="math inline">\(t\)</span> de Student avec 19 degrés de liberté (<span class="math inline">\(df = 19\)</span>). On note qu’avec un seuil <span class="math inline">\(lpha = 0.05\)</span>, on détermine si la valeur observée est dans le 2.5 <span class="math inline">\(%\)</span> des queues de la distribution (0.025 à gauche + 0.025 à droite <span class="math inline">\(= 0.05\)</span>). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 <span class="math inline">\(%\)</span> d’une des deux queues.
@@ -757,7 +757,7 @@ t = \frac{\bar{x} - \mu}{SE} = \frac{-0.608 - 0}{0.633/\sqrt{12}} = -3.329
 <span id="cb404-4"><a href="leçon-2.html#cb404-4" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>)</span>
 <span id="cb404-5"><a href="leçon-2.html#cb404-5" tabindex="-1"></a><span class="do">##on ajoute la droite théorique</span></span>
 <span id="cb404-6"><a href="leçon-2.html#cb404-6" tabindex="-1"></a><span class="fu">qqline</span>(residus)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qqplot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:qqplot"></span>
 <img src="Cours_Stats_R_files/figure-html/qqplot-1.png" alt="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)." width="672" />
 <p class="caption">
 Figure 3.4: Graphique quantile-quantile pour évaluer la normalité des résidus du test-<span class="math inline">\(t\)</span> sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b).
@@ -781,7 +781,7 @@ Figure 3.4: Graphique quantile-quantile pour évaluer la normalité des résidus
 <span id="cb405-14"><a href="leçon-2.html#cb405-14" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>)</span>
 <span id="cb405-15"><a href="leçon-2.html#cb405-15" tabindex="-1"></a><span class="do">##on ajoute la droite théorique</span></span>
 <span id="cb405-16"><a href="leçon-2.html#cb405-16" tabindex="-1"></a><span class="fu">qqline</span>(residus.ours)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qqplot2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:qqplot2"></span>
 <img src="Cours_Stats_R_files/figure-html/qqplot2-1.png" alt="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie." width="672" />
 <p class="caption">
 Figure 3.5: Graphique quantile-quantile pour évaluer la normalité des résidus du test-<span class="math inline">\(t\)</span> de l’âge d’ours de Montérégie.

@@ -85,9 +85,9 @@ head(calcium)
 ## de caractères `Trait` et `Sexe`
 calcium$Trait <- as.factor(calcium$Trait)
 calcium$Sexe <- as.factor(calcium$Sexe)
-```
+```  
 
-La Figure \@ref(fig:boxplotcalcium illustre les données selon les différentes combinaisons des deux facteurs.
+La Figure \@ref(fig:boxplotcalcium) illustre les données selon les différentes combinaisons des deux facteurs.
 
 ```{r boxplotcalcium, echo = TRUE, keep.source = TRUE, fig = TRUE, fig.align='center', fig.cap="Diagramme de boîtes et moustaches avec les données de concentration en calcium en fonction du traitement hormonal et du sexe."}
 ## On crée un boxplot pour chaque
@@ -194,14 +194,14 @@ df.SSE <- length(levels(calcium$Sexe)) *
 df.SSE
 ``` 
 
-Finalement, on obtient la somme des carrés du terme d'interaction entre les deux facteurs. Notez que l'équation pour $SSinter$ peut se décomposer de la façon suivante:
+Finalement, on obtient la somme des carrés du terme d'interaction entre les deux facteurs. Notez que l'équation pour $SSinter$ peut se décomposer de la façon suivante :
 
 $$SSinter = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2  $$
-$$= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)$$  
-$$= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2$$   
-$$+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 $$  
-$$+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2  $$ 
-$$+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2)) $$
+$$= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)$$
+$$= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2$$
+$$+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 $$
+$$+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2$$
+$$+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2))$$
 Ansi, nous calculons $SSinter$ de la façon suivante :
 
 ```{r SSInter, echo = TRUE, keep.source = TRUE}
