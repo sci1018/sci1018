@@ -63,6 +63,7 @@ Le contenu du cours vous permettra d'acquérir les connaissances suivantes:
 - Stratégies d’échantillonnage.
 - Distribution du $t$ de Student.
 
+<br>
 
 **Tests d’hypothèse**
 
@@ -75,6 +76,8 @@ Le contenu du cours vous permettra d'acquérir les connaissances suivantes:
 - Tests d’hypothèse sur deux groupes indépendants, test $t$, analogues nonparamétriques et test de randomisation.
 - Tableaux de contingence, distribution du $\chi2$.
 
+<br>
+
 **Comparaisons de plusieurs groupes**
 
 > 
@@ -84,11 +87,15 @@ Le contenu du cours vous permettra d'acquérir les connaissances suivantes:
 - ANOVA en blocs complets aléatoires.
 - Design expérimental.
 
+<br>
+
 **Régression et corrélation**
 
 > 
 - Régression linéaire simple.
 - Corrélation.
+
+<br>
 
 **Logiciel R et R Commander**
 
@@ -102,6 +109,7 @@ Le contenu du cours vous permettra d'acquérir les connaissances suivantes:
 - Réalisation des analyses statistiques étudiées dans le cours.
 - Extraction des résultats à partir d’un objet R.
 
+<br>
 
 #### Démarche pédagogique {-}
 
