@@ -1,6 +1,6 @@
 # (PART) APPRENTISSAGE {-}
 
-# Statistiques descriptives
+# Statistiques descriptives {#lecon1}
 
 ---
 

@@ -1,4 +1,4 @@
-# Régression linéaire simple et corrélation
+# Régression linéaire simple et corrélation {#lecon10}
 
 Dans le texte de la leçon prédécédente, nous avons vu illustré de nombreux éléments importants à considérer lors de l'élaboration de plans d'échantillonnage. Certains problèmes liés à l'échantillonnage ont été présentés, notamment la pseudoréplication et des sources de confusion. Ces conseils s'appliquent aussi à d'autres types d'analyses. Dans la présente leçon, nous introduirons la régression linéaire simple et la corrélation. Les conditions d'utilisation et les tests d'hypothèses qui y sont associés seront présentés.
 

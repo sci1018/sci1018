@@ -1,4 +1,4 @@
-# Blocs complets aléatoires
+# Blocs complets aléatoires {#lecon8}
 
 Dans la leçon précédente, nous avons présenté l'ANOVA à deux critères avec répétitions. Nous avons vue en détail les concepts d'interaction et d'additivité. Rappelons qu'en présence d'une interaction entre deux facteurs, on ne peut pas interpréter les effets principaux séparément. En effet, une interaction implique que l'effet d'un facteur sur la variable réponse dépend du niveau de l'autre. On dit dans ce cas que les effets ne sont pas additifs.
 

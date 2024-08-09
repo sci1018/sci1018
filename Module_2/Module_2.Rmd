@@ -1,4 +1,4 @@
-# Intervalles de confiance et stratégies d'échantillonnage
+# Intervalles de confiance et stratégies d'échantillonnage {#lecon2}
 
 Dans la leçon précédente, nous avons vu des concepts de base importants en statistique, notamment les caractéristiques d'une population et d'un échantillon, les variables aléatoires, les mesures de tendance centrale et de dispersion. Nous avons également présenté le théorème de la limite centrale et la loi des grands nombres. Dans la présente leçon, nous poursuivons avec le concept de l'échantillonnage ainsi que différentes stratégies afin de récolter un échantillon.
 

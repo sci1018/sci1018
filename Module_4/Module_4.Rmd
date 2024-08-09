@@ -1,4 +1,4 @@
-# Tests d'hypothèse sur deux groupes
+# Tests d'hypothèse sur deux groupes {#lecon4}
 
 Dans la leçon précédente, nous avons discuté de la démarche scientifique et de l'élaboration d'hypothèses scientifiques et statistiques. Deux types d'erreurs associées à la réalisation d'un test d'hypothèse ont été présentées: l'erreur de type I et l'erreur de type II. Le seuil de signification ($\alpha$) correspond à la probabilité de rejeter une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui aurait dû être rejetée est donnée par $\beta$ (erreur de type II). Nous avons vu le concept de la puissance statistique. Nous avons réalisé un exemple de test d'hypothèse statistique sur un échantillon (groupe) concernant la moyenne à l'aide du test $t$. Ce test peut être unilatéral ou bilatéral. Le test unilatéral cible une seule des deux queues de la distribution alors que le test bilatérale cible les deux queues de la distribution. 
 

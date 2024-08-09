@@ -25,10 +25,15 @@ Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquan
 library(kableExtra)
 
 titre <- "Leçon"
+titreweb <- "lecon"
 no <- as.character(1:10)
 G <- expand.grid(titre, no)
 names(G) <- c("titre","no")
 G$lecon <- paste(G$titre, G$no)
+G$titreweb <- rep(titreweb,10)
+G$lien <- paste(G$titreweb, G$no,sep="")
+
+G$leconlien <- paste("[",G$lecon,"]","(#",G$lien,")",sep ="" )
 sujets <- c("Statistiques descriptives",
             "Intervalles de confiance et stratégies d’échantillonnage",
             "Tests d’hypothèse sur un seul groupe",
@@ -39,9 +44,9 @@ sujets <- c("Statistiques descriptives",
             "Blocs complets aléatoires",
             "Élaboration et optimisation de plans d’expérience",
             "Régression linéaire simple et corrélation")
-row.names <- c(rbind(G$lecon, sujets))
+row.names <- c(rbind(G$leconlien, sujets))
 row.names <- c(row.names[1:8], "LABO 1: 15 %", row.names[9:14], "LABO 2: 15 %", row.names[15:18], "LABO 3: 30 %", row.names[19:20])
-row.names <- c("Introduction", row.names, "EXAMEN: 40 %")
+row.names <- c("[Introduction](#intro)", row.names, "EXAMEN: 40 %")
 
 
 D <- matrix(data = rep(NA, 25*15), nrow = 25, ncol = 15)

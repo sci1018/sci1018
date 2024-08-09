@@ -1,4 +1,4 @@
-# Analyse de fréquences et test du khi carré ($\chi^2$)
+# Analyse de fréquences et test du khi carré ($\chi^2$) {#lecon5}
 
 Dans la leçon précédente, nous avons illustré des variantes du test $t$ de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Nous avons présenté les suppositions sous-jacentes à ces analyses ainsi que plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions. Dans tous les cas, les variables réponses étaient numériques avec des valeurs décimales, comme la hauteur, le temps et la masse. Pour ce genre de données, la décimale représente une valeur observable: une hauteur de 193.24 cm a un sens. Toutefois, les fréquences, comme celles provenant du décompte d'événements d'intérêt prennent uniquement des valeurs entières (discrètes). Par exemple, si nous étudions le nombre de personnes atteintes d'une maladie ou le nombre survivant à cette maladie, nous ne pouvons pas observer 12.23 événements. Nous en observerons plutôt 12 ou 13. Ce type de données fera l'objet de cette leçon.
 

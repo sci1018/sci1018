@@ -1,4 +1,4 @@
-# Analyse de variance à un critère
+# Analyse de variance à un critère {#lecon6}
 
 Dans la leçon précédente, nous avons vu l'analyse de fréquences, particulièrement le test du $\chi^2$ d'ajustement et d'indépendance. Nous continuons ici avec l'analyse de données numériques continues, du même type que pour le test $t$. Dans la présente leçon, nous verrons un outil pour comparer plus de deux groupes, l'analyse de la variance.
 
