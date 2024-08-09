@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="7.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -871,8 +871,9 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 ## 4  supergain   ble 15.78175
 ## 5    control   ble 17.70656
 ## 6    control   ble 18.22717</code></pre>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="leçon-6.html#cb669-1" tabindex="-1"></a><span class="do">## la fonction str() affiche la structure interne du tableau C’est une fonction alternative à summary()</span></span>
-<span id="cb669-2"><a href="leçon-6.html#cb669-2" tabindex="-1"></a><span class="fu">str</span>(croissance)</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="leçon-6.html#cb669-1" tabindex="-1"></a><span class="do">## la fonction str() affiche la structure interne du tableau C’est une fonction</span></span>
+<span id="cb669-2"><a href="leçon-6.html#cb669-2" tabindex="-1"></a><span class="do">## alternative à summary()</span></span>
+<span id="cb669-3"><a href="leçon-6.html#cb669-3" tabindex="-1"></a><span class="fu">str</span>(croissance)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  3 variables:
 ##  $ Supplement: chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
 ##  $ Diete     : chr  &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; ...
@@ -887,8 +888,9 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 ## 4  supergain ,&quot;ble&quot;,15.78174829
 ## 5    control ,&quot;ble&quot;,17.70656456
 ## 6    control ,&quot;ble&quot;,18.22716932</code></pre>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="leçon-6.html#cb673-1" tabindex="-1"></a><span class="do">## on remarque un problème à l&#39;importation les étiquettes des variables et les valeurs sont erronées</span></span>
-<span id="cb673-2"><a href="leçon-6.html#cb673-2" tabindex="-1"></a><span class="fu">str</span>(crois2)</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="leçon-6.html#cb673-1" tabindex="-1"></a><span class="do">## on remarque un problème à l&#39;importation les étiquettes des variables et les valeurs</span></span>
+<span id="cb673-2"><a href="leçon-6.html#cb673-2" tabindex="-1"></a><span class="do">## sont erronées</span></span>
+<span id="cb673-3"><a href="leçon-6.html#cb673-3" tabindex="-1"></a><span class="fu">str</span>(crois2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
 ##  $ Supplement      : chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
 ##  $ X..Diete...Gain.: chr  &quot;,\&quot;ble\&quot;,17.37125111&quot; &quot;,\&quot;ble\&quot;,16.81488903&quot; &quot;,\&quot;ble\&quot;,18.0818374&quot; &quot;,\&quot;ble\&quot;,15.78174829&quot; ...</code></pre>
@@ -979,7 +981,7 @@ Figure 7.7: Vérification des suppositions de l’ANOVA à deux critères.
 ## orge-avoine  3.092817  1.959715  4.225918 2.634600e-07
 ## orge-ble     5.990298  4.857196  7.123399 0.000000e+00</code></pre>
 <p>On peut représenter les résultats des comparaisons multiples comme suit pour le type de supplément :</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -1014,7 +1016,7 @@ agrimore
 </tbody>
 </table>
 <p>On peut représenter les résultats des comparaisons multiples comme suit pour le type de moulée (<code>Diete</code>) :</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">

@@ -870,20 +870,22 @@ Une autre option possible est de stocker un objet avec la fonction `save()`. Alo
 ##on crée un tableau
 tableau <- table(vers$Vegetation, vers$Pente, vers$Humide)
 tableau
-save(tableau, file = "un.tableau.rdata")
+save(tableau, file = "Guide_R_2/un.tableau.rdata")
 ``` 
 
 Par exemple, après avoir stocké le résultat d'une analyse dans un objet, il est possible de sauvegarder les résultats dans un fichier. Ce fichier peut-être importé dans `R` à un moment ultérieur en invoquant la fonction `load( )`. Chacune de ces deux fonctions nécessite le chemin menant au fichier.
 
 ```{r exA1.82c,keep.source=TRUE,eval=TRUE}
 ##dans une session ultérieure, on importe l'objet directement
-load(file = "un.tableau.rdata")
+load(file = "Guide_R_2/un.tableau.rdata")
 tableau
 ``` 
 
 Nous venons de faire un survol des fonctions de base de `R`. Nous continuerons à explorer d'autres fonctionnalités de `R` lors des leçons subséquentes.
 
 ## Exercices {-}
+
+Les données peuvent être retrouvées dans le dossier [Programmation avec R](https://github.com/sci1018/sci1018_data/raw/main/Guide_R_2.zip).  
 
 #### Question 1 {-}
 

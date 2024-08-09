@@ -1206,6 +1206,8 @@ Dans ce texte, vous vous êtes familiarisés avec l'ANOVA à deux critères avec
 
 ## Laboratoire
 
+Les données peuvent être retrouvées dans le dossier [Module 7](https://github.com/sci1018/sci1018_data/raw/main/Module_7.zip).
+
 ### Question 1 {-}
 
 On effectue une expérience pour déterminer si la longueur en cm chez une espèce de poisson varie selon le sexe ou le pH de l'eau. Importez le fichier `Longueur_poisson.xls` pour voir les données^[Si `MS Excel` n'est pas installé sur votre ordinateur, il est possible d'importer le fichier à l'aide des suites bureautiques libres `OpenOffice` [http://www.openoffice.org/fr/Produits/](http://www.openoffice.org/fr/Produits/) ou `LibreOffice` [http://fr.libreoffice.org/](http://fr.libreoffice.org/).].

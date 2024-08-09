@@ -363,6 +363,8 @@ Dans cette leçon, nous avons revisité différents types de dispositifs associ�
 
 ## Autoévaluation
 
+Les données peuvent être retrouvées dans le dossier [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip).
+
 ### Question 1 {-}
 
 Donnez un avantage et un inconvénient associés à l'utilisation du dispositif en blocs complets aléatoires.

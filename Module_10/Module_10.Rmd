@@ -643,6 +643,8 @@ Cette leçon a présenté la régression linéaire simple, les suppositions et c
 
 ## Autoévaluation
 
+Les données peuvent être retrouvées dans le dossier [Module 10](https://github.com/sci1018/sci1018_data/raw/main/Module_10.zip).
+
 ### Question 1 {-}
 
 Importez le fichier `Pression_sanguine.txt` qui présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.

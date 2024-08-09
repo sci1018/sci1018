@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="5.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -381,7 +381,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d’occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu’elles proviennent d’un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré (<span class="math inline">\(\chi^2\)</span>, <em>chi-squared test</em>). Ce genre de test est parfois appelé <strong>test d’ajustement</strong> ou <strong>test d’adéquation</strong> (<em>goodness-of-fit test</em>), car il compare les fréquences observées aux fréquences prédites conformes à <span class="math inline">\(H_0\)</span>.</p>
 <div class="exemple" section="5">
 <p>On s’intéresse aux habitudes d’utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d’observation. On décide <em>a priori</em> d’échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu’elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme <strong>variable catégorique</strong> pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table <a href="leçon-4.html#tab:modetransport">5.1</a>) :</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:modetransport">Table 5.1: </span>Habitudes d’utilisation de différents modes de transports dans un échantillon de 500 individus à la TÉLUQ.
 </caption>
@@ -459,7 +459,7 @@ On peut appliquer le test du khi carré pour tester ces hypothèses :
 <span class="math display">\[
 \chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}} \\
 \]</span>
-On connaît déjà les <span class="math inline">\(f_i\)</span> qui sont les fréquences récoltées dans chaque catégorie (tableau @ref(tab:mode.transport)). Pour ce qui est des fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>), on doit les obtenir selon l’hypothèse nulle que l’on a spécifiée. Dans notre exemple, puisque <span class="math inline">\(H_0\)</span> s’intéresse à un ratio <span class="math inline">\(1:1:1:1\)</span>, la fréquence théorique dans chaque catégorie s’obtient en divisant le total des fréquences par le nombre de catégories (c.-à-d., <span class="math inline">\(\hat{f_i} = \frac{1}{4}(500) = 125\)</span>). On peut ensuite résoudre :</p>
+On connaît déjà les <span class="math inline">\(f_i\)</span> qui sont les fréquences récoltées dans chaque catégorie (tableau <a href="leçon-4.html#tab:modetransport">5.1</a>). Pour ce qui est des fréquences théoriques (<span class="math inline">\(\hat{f_i}\)</span>), on doit les obtenir selon l’hypothèse nulle que l’on a spécifiée. Dans notre exemple, puisque <span class="math inline">\(H_0\)</span> s’intéresse à un ratio <span class="math inline">\(1:1:1:1\)</span>, la fréquence théorique dans chaque catégorie s’obtient en divisant le total des fréquences par le nombre de catégories (c.-à-d., <span class="math inline">\(\hat{f_i} = \frac{1}{4}(500) = 125\)</span>). On peut ensuite résoudre :</p>
 <p><span class="math display">\[
 \chi^2 = \frac{(139 - 125)^2}{125} + \frac{(146 - 125)^2}{125} + \frac{(117 - 125)^2}{125} + \frac{(98 - 125)^2}{125}  
 \]</span>
@@ -495,14 +495,14 @@ On connaît déjà les <span class="math inline">\(f_i\)</span> qui sont les fr�
 </div>
 <div id="trouver-les-différences-significatives" class="section level5 hasAnchor" number="5.1.1.2.1">
 <h5><span class="header-section-number">5.1.1.2.1</span> Trouver les différences significatives<a href="leçon-4.html#trouver-les-différences-significatives" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>&lt;! section qui n’est pas dans le pdf&gt;</p>
+<!-- section qui n'est pas dans le pdf-->
 <p>L’analyse réalisée précédemment brosse un portrait général des différences entre les fréquences. Le rejet de <span class="math inline">\(H_0\)</span> ouvre la porte à une étude plus poussée des données. L’identification des différences significatives entre les fréquences observées est possible grâce aux résidus de Pearson. Le résidu de chaque fréquence observée se calcule à l’aide de l’équation suivante :</p>
 <p><span class="math display">\[
 r_i = \frac{f_i - \hat{f_i}}{\sqrt{\hat{f_i}}}
 \]</span>
 Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont considérées comme significativement différentes de leur fréquence théorique.</p>
 <div class="exemple" section="5">
-<p>Les résidus de Pearson sont calculés par la fonction <code>chisq.test()</code>. On peut les obtenir en ajoutant l’opérateur $ et la composante <code>residuals</code> à l’objet où sont sauvegardés les résultats.</p>
+<p>Les résidus de Pearson sont calculés par la fonction <code>chisq.test()</code>. On peut les obtenir en ajoutant l’opérateur <code>$</code> et la composante <code>residuals</code> à l’objet où sont sauvegardés les résultats.</p>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="leçon-4.html#cb482-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
 <span id="cb482-2"><a href="leçon-4.html#cb482-2" tabindex="-1"></a>out<span class="sc">$</span>residuals</span></code></pre></div>
 <pre><code>##              À Pied Transport en commun                Vélo             Voiture 
@@ -527,7 +527,7 @@ Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont consid
 <p>Continuons avec un exemple sur la sélection d’habitat qui applique le <span class="math inline">\(\chi^2\)</span> en écologie animale.</p>
 <div class="exemple" section="5">
 <p>On s’intéresse à la sélection d’habitat par des orignaux (<em>Alces alces</em>). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d’étude. À l’aide d’un système d’information géoréférencé, on calcule la proportion des quatre habitats qui constituent l’aire d’étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l’aire d’étude. En d’autres mots, on détermine si certains types d’habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d’habitat. Le tableau <a href="leçon-4.html#tab:select">5.2</a> présente ce jeu de données.</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:select">Table 5.2: </span>Sélection d’habitat par des Orignaux selon la disponibilité d’habitat dans une aire d’étude.
 </caption>
@@ -684,7 +684,7 @@ Puisqu’on veut tester un ratio <span class="math inline">\(3 : 1\)</span>, les
 <div class="exemple" section="5">
 <p>On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d’origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau <a href="leçon-4.html#tab:haireyes">5.3</a>. Notons ici qu’il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
 Nous reprendrons plus tard cet exemple.</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:haireyes">Table 5.3: </span>Tableau de contingence selon la couleur des cheveux et des yeux.
 </caption>
@@ -749,7 +749,7 @@ Brun
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{(38 + 11) \times (38 + 14)}{(38 + 11 + 14 + 51)} \]</span>
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{49 \times 52}{114} \]</span>
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} =  22.35 \]</span></p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-49">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
 </caption>
@@ -873,7 +873,7 @@ Ici, nous obtenons 33.112 avec la correction de Yates et une valeur de <span cla
 <div id="le-paradoxe-de-simpson" class="section level3 hasAnchor" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Le paradoxe de Simpson<a href="leçon-4.html#le-paradoxe-de-simpson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lorsqu’on analyse des fréquences, il faut être conscient du <strong>paradoxe de Simpson</strong> (<em>Simpson’s paradox</em>), qui se traduit par une inversion des relations dues à l’effet d’une variable qui n’a pas été considérée dans l’analyse. Voici une illustration de ce paradoxe. Considérons la survie de souris exposées à un traitement (400 souris) comparé à un témoin (120 souris) (Table <a href="leçon-4.html#tab:surv">5.5</a>).</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:surv">Table 5.5: </span>Effet d’un traitement sur la survie d’individus.
 </caption>
@@ -915,7 +915,7 @@ Mort
 </tbody>
 </table>
 <p>D’après ce tableau, on serait porté à conclure que la survie des souris est indépendante du traitement (<span class="math inline">\(60/120\)</span> vs <span class="math inline">\(200/400\)</span> = 0.5 vs 0.5). Toutefois, en stratifiant l’analyse par sexe, on obtient un résultat différent. Le tableau des mâles suggère que le traitement augmente la survie (Table <a href="leçon-4.html#tab:survMales">5.6</a>, <span class="math inline">\(14/60\)</span> vs <span class="math inline">\(60/70\)</span> = 0.23 vs 0.85).</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:survMales">Table 5.6: </span>Effet d’un traitement sur la survie des mâles.
 </caption>
@@ -957,7 +957,7 @@ Mort
 </tbody>
 </table>
 <p>Le tableau des femelles, quant à lui, suggère que le traitement diminue la survie (Table <a href="leçon-4.html#tab:survFemales">5.7</a>, <span class="math inline">\(46/60\)</span> vs <span class="math inline">\(140/330\)</span> = 0.77 vs 0.42). Dans cet exemple, les analyses réalisées séparément par sexe mènent à des conclusions différentes. Dans ce cas-ci, faire abstraction du sexe dans l’analyse mène au paradoxe de Simpson et à une conclusion erronée. Il faut songer attentivement avant de se lancer dans l’analyse de fréquences et il est important de considérer toutes les variables pouvant influencer les résultats. Un moyen de prévenir le paradoxe de Simpson est de mieux cibler la population statistique d’intérêt en échantillonnant une partie de la population bien précise (p. ex., âge, type d’habitat). Une autre approche consiste à stratifier l’analyse selon une ou plusieurs variables (p. ex., le sexe, la taille).</p>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:survFemales">Table 5.7: </span>Effet d’un traitement sur la survie des femelles.
 </caption>

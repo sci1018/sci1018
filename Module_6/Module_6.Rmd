@@ -1003,6 +1003,9 @@ On comprend que lorsque l'argument `MARGIN` prend la valeur de 1, les calculs so
 
 ## Autoévaluation
 
+Les données peuvent être retrouvées dans le dossier [Module 6](https://github.com/sci1018/sci1018_data/raw/main/Module_6.zip).
+
+
 ### Question 1 {-}
 
 **a.** Donnez un avantage d’effectuer une ANOVA au lieu de plusieurs tests $t$ pour comparer les moyennes des groupes entre elles? 

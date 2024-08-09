@@ -699,6 +699,9 @@ Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour c
 
 ## Laboratoire 
 
+Les données peuvent être retrouvées dans le dossier [Module 4](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip).
+
+
 ### Question 1 {-}
 
 **a.** Lequel des éléments suivants n'est pas associé à une supposition du test $t$ sur deux groupes indépendants?      

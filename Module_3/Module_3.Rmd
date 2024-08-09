@@ -599,6 +599,8 @@ Une raison possible de désinstaller un package est lorsqu'une mise à jour d'un
  
 ## Autoévaluation
 
+Les données peuvent être retrouvées dans le dossier [Module 3](https://github.com/sci1018/sci1018_data/raw/main/Module_3.zip).    
+
 ### Question 1 {-}
 
 **a.** Quelle est la différence entre une expérience et une étude d'observation? 
