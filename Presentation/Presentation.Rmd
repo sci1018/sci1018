@@ -18,7 +18,90 @@ Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquan
 
 ### Feuille de route {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+
+
+```{r route, echo = FALSE, warning = FALSE, out.width = '100%'}
+library(kableExtra)
+
+titre <- "Leçon"
+no <- as.character(1:10)
+G <- expand.grid(titre, no)
+names(G) <- c("titre","no")
+G$lecon <- paste(G$titre, G$no)
+sujets <- c("Statistiques descriptives",
+            "Intervalles de confiance et stratégies d’échantillonnage",
+            "Tests d’hypothèse sur un seul groupe",
+            "Tests d’hypothèse sur deux groupes",
+            "Analyse de fréquences et test du khi carré",
+            "Analyse de variance à un critère",
+            "Analyse de variance à deux critères",
+            "Blocs complets aléatoires",
+            "Élaboration et optimisation de plans d’expérience",
+            "Régression linéaire simple et corrélation")
+row.names <- c(rbind(G$lecon, sujets))
+row.names <- c(row.names[1:8], "LABO 1: 15 %", row.names[9:14], "LABO 2: 15 %", row.names[15:18], "LABO 3: 30 %", row.names[19:20])
+row.names <- c("Introduction", row.names, "EXAMEN: 40 %")
+
+
+D <- matrix(data = rep(NA, 25*15), nrow = 25, ncol = 15)
+D <- data.frame(D)
+
+colnames(D) <- as.character(1:15)
+rownames(D) <- row.names
+
+
+# D[10,6] <- "15 %"
+# D[17,11] <- "15 %"
+# D[22, 13] <- "30 %"
+# D[25, 15] <- "40 %"
+
+opts <- options(knitr.kable.NA = "", knitr.table.format = "simple")
+kbl(D,"html", align = c("l",rep("c",15)), booktabs = TRUE, linesep = "") %>% 
+  kable_classic(full_width = F)  %>% 
+  kable_styling(font_size = 14) %>%
+  
+  
+  add_header_above(c("Leçons" = 1, "Semaines" = 15)) %>% 
+  column_spec(1:16, background = "white", border_right = "1px solid black") %>%
+  #column_spec(1:16, border_right = "1px solid black") %>%
+  column_spec(1, border_left = "1px solid black") %>%
+  #column_spec(2:16, width = c(rep("0.2cm",15)))  %>%
+  
+  column_spec(2:16, width_max = "0.2cm", width_min = "0.2cm")  %>%
+  column_spec(1, width = "6cm")  %>%
+  
+  column_spec(2, background = c("lightgrey", rep("white",24 ) ))%>%
+  column_spec(c(3), background = c("white","lightgrey" ,"lightgrey",rep("white",22 ) ))%>%
+  column_spec(c(4), background = c("white","white","white","lightgrey", "lightgrey",rep("white",20 ) ))%>%
+  column_spec(c(5), background = c(rep("white",5),"lightgrey", "lightgrey",rep("white",18 ) ))%>%
+  column_spec(c(6,7), background = c(rep("white",7),"lightgrey", "lightgrey", "red",rep("white",15 ) ))%>%
+  column_spec(c(8), background = c(rep("white",10),"lightgrey", "lightgrey", rep("white",13 ) ))%>%
+  column_spec(c(9), background = c(rep("white",12),"lightgrey", "lightgrey", rep("white",11 ) ))%>%
+  column_spec(c(10,11), background = c(rep("white",14),"lightgrey", "lightgrey", "red",rep("white",8) ))%>%
+  column_spec(c(12), background = c(rep("white",17),"lightgrey", "lightgrey", rep("white",6 ) ))%>%
+  column_spec(c(13,14), background = c(rep("white",19),"lightgrey", "lightgrey", "red",rep("white",3) ))%>%
+  column_spec(c(15), background = c(rep("white",22),"lightgrey", "lightgrey", rep("white",2 ) ))%>%
+  column_spec(c(16), background = c(rep("white",24), "red"))%>%
+
+
+  
+  row_spec(c(1,2,4,6,8,11,13,15,18,20,23), bold = T, font_size = 14, extra_css = "line-height: normal")%>%
+  row_spec(c(3,5,7,9,10,12,14,16,17,19,21,22,24), font_size = 12)%>%
+  row_spec(c(10,17,22,25), bold = T, font_size = 14, color = "red")%>%
+  #row_spec(1:25,extra_css = "line-height: 90%")%>%
+  row_spec(c(1,3,5,7,10,12,14,17,19,22,24), extra_css = "border-bottom: 1px solid black")
+
+ 
+  #row_spec(c(2,4,6,8,9,11,13,15,16,18,20,21,23), hline_after = FALSE)
+
+
+ 
+```
+
+
+
+
 
 ### Crédits {-}
 
