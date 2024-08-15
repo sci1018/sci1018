@@ -4,7 +4,7 @@ Dans le texte de la leçon prédécédente, nous avons vu illustré de nombreux 
 
 Dans les dernières leçons, la variable réponse était numérique et l'objectif était de déterminer comment cette variable changeait selon les niveaux d'un ou de plusieurs facteurs (p. ex., test $t$, ANOVA). Les facteurs définissaient des groupes et les moyennes des groupes étaient comparées entre elles. Nous allons maintenant voir des applications où on veut déterminer la relation entre une variable réponse et une variable explicative numérique (au lieu d'un facteur). Ici, la variable explicative est mesurée sur une échelle numérique (p. ex., âge) au lieu d'être exprimée en niveaux (p. ex., classes d'âge). 
 
-## Théorie
+## Leçon
 
 ### La régression linéaire
 
@@ -641,9 +641,11 @@ La régression est souvent utilisée pour des études d'observation. Dans de tel
 
 Cette leçon a présenté la régression linéaire simple, les suppositions et conditions nécessaires à son application, l'interprétation et la présentation des résultats. Nous avons vu les tests d'hypothèses associés aux coefficients de la régression ainsi que l'utilisation d'intervalles de confiance comme mesure de précision autour des coefficients et des valeurs prédites. Nous avons également présenté la corrélation linéaire et nous l'avons comparé à la régression linéaire simple.
 
-## Exercices
+## Autoévaluation
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 10](https://github.com/sci1018/sci1018_data/raw/main/Module_10.zip).
+
+### Question 1 {-}
 
 Importez le fichier `Pression_sanguine.txt` qui présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.
 
@@ -785,7 +787,7 @@ lines(y = jeu.pred$sup95, x = jeu.pred$Age, lty = "dotted")
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 Dans une étude d'observation, on s'intéresse au aux taux annuels de noyade dans les grandes villes nord-américaines. Pour ce faire, nous sélectionnons aléatoirement 50 villes dans notre aire d’étude et récoltons les données auprès des autorités de ces villes. Lors de cette même étude d’observation, nous avons également récolté les taux d'homicide dans ces différentes villes. 
 

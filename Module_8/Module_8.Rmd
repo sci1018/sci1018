@@ -2,7 +2,7 @@
 
 Dans la leçon précédente, nous avons présenté l'ANOVA à deux critères avec répétitions. Nous avons vue en détail les concepts d'interaction et d'additivité. Rappelons qu'en présence d'une interaction entre deux facteurs, on ne peut pas interpréter les effets principaux séparément. En effet, une interaction implique que l'effet d'un facteur sur la variable réponse dépend du niveau de l'autre. On dit dans ce cas que les effets ne sont pas additifs.
 
-## Théories
+## Leçon
 
 ### Effets fixes et effets aléatoires 
 
@@ -361,9 +361,11 @@ Le dispositif en blocs complets aléatoires comporte certains désavantages, not
 
 Dans cette leçon, nous avons revisité différents types de dispositifs associés aux analyses vues jusqu'à présent dans le cours. Nous avons présenté les concepts d'effets fixes et d'effets aléatoires ainsi que de modèle mixte. Nous avons présenté l'ANOVA en blocs complets aléatoires comme étant le cas le plus simple de modèle mixte et comme l'extension du test $t$ pour les données appariées. Le dispositif en blocs complets aléatoires se caractérise par la disposition de blocs perpendiculaires à un gradient. Ce gradient n'est pas mesuré directement, mais les blocs sont une mesure indirecte de la variabilité associée à ce gradient. Ce dispositif comporte des avantages importants, notamment sur le plan logistique comparé aux dispositifs complètement aléatoires (p.ex., ANOVA à un critère avec répétitions, ANOVA à deux critères avec répétitions). Bien qu'à l'origine le dispositif en blocs complets aléatoires ait été développé en agronomie, il est maintenant utilisé dans des disciplines variées incluant les sciences environnementales, la médecine, la chimie et le marketing. La prochaine leçon traitera de façon plus générale de l'élaboration de dispositifs expérimentaux et de recommandations afin d'arriver à des conclusions solides.
 
-## Exercices
+## Autoévaluation
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip).
+
+### Question 1 {-}
 
 Donnez un avantage et un inconvénient associés à l'utilisation du dispositif en blocs complets aléatoires.
 
@@ -386,7 +388,7 @@ Les désavantages sont les suivants :
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 Voici le jeu de données `lavage.txt` d'un design en blocs complets aléatoires destiné à évaluer la blancheur des vêtements (indice de 0 à 10) après avoir laver ces vêtements avec trois détergents différents (le conventionnel pour le contrôle et deux nouveaux types) ; et après qu'on ait appliqué sur ces vêtements des produits plus ou moins tachants (pouvoir tachant non-mesuré). Chaque bloc sera donc un produit tachant choisi au hasard (p. ex., boue, vin, ketchup) sur lequel on utilisera les trois détergents.
 

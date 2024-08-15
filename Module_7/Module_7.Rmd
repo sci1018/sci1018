@@ -2,7 +2,7 @@
 
 Dans la leçon précédente, nous avons vu l'application de l'analyse de la variance (ANOVA) dans des expériences où il n'y avait qu'un seul critère de classification (ou facteur). Les observations étaient classées selon un seul facteur en un nombre donné de groupes. Nous pouvions ainsi tester l'influence de ce facteur (p. ex., le sexe) sur la variable réponse. Dans d'autres cas, les données peuvent être réparties selon deux facteurs ou critères de classification. Par exemple, nous pourrions avoir une expérience qui étudie la concentration de calcium dans le plasma sanguin (la variable réponse) selon le traitement hormonal (avec traitement *vs* sans traitement) pour des individus selon leur sexe (mâle *vs* femelle). Nous pouvons généraliser l'ANOVA en présence de plusieurs facteurs. En présence de deux facteurs, nous réaliserons l'ANOVA à deux critères de classification (c.-à-d., facteurs). 
 
-## Théories
+## Leçon
 
 ### ANOVA à deux critères
 
@@ -85,9 +85,9 @@ head(calcium)
 ## de caractères `Trait` et `Sexe`
 calcium$Trait <- as.factor(calcium$Trait)
 calcium$Sexe <- as.factor(calcium$Sexe)
-```
+```  
 
-La Figure \@ref(fig:boxplotcalcium illustre les données selon les différentes combinaisons des deux facteurs.
+La Figure \@ref(fig:boxplotcalcium) illustre les données selon les différentes combinaisons des deux facteurs.
 
 ```{r boxplotcalcium, echo = TRUE, keep.source = TRUE, fig = TRUE, fig.align='center', fig.cap="Diagramme de boîtes et moustaches avec les données de concentration en calcium en fonction du traitement hormonal et du sexe."}
 ## On crée un boxplot pour chaque
@@ -194,14 +194,14 @@ df.SSE <- length(levels(calcium$Sexe)) *
 df.SSE
 ``` 
 
-Finalement, on obtient la somme des carrés du terme d'interaction entre les deux facteurs. Notez que l'équation pour $SSinter$ peut se décomposer de la façon suivante:
+Finalement, on obtient la somme des carrés du terme d'interaction entre les deux facteurs. Notez que l'équation pour $SSinter$ peut se décomposer de la façon suivante :
 
 $$SSinter = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2  $$
-$$= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)$$  
-$$= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2$$   
-$$+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 $$  
-$$+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2  $$ 
-$$+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2)) $$
+$$= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)$$
+$$= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2$$
+$$+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 $$
+$$+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2$$
+$$+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2))$$
 Ansi, nous calculons $SSinter$ de la façon suivante :
 
 ```{r SSInter, echo = TRUE, keep.source = TRUE}
@@ -1206,7 +1206,9 @@ Dans ce texte, vous vous êtes familiarisés avec l'ANOVA à deux critères avec
 
 ## Laboratoire
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 7](https://github.com/sci1018/sci1018_data/raw/main/Module_7.zip).
+
+### Question 1 {-}
 
 On effectue une expérience pour déterminer si la longueur en cm chez une espèce de poisson varie selon le sexe ou le pH de l'eau. Importez le fichier `Longueur_poisson.xls` pour voir les données^[Si `MS Excel` n'est pas installé sur votre ordinateur, il est possible d'importer le fichier à l'aide des suites bureautiques libres `OpenOffice` [http://www.openoffice.org/fr/Produits/](http://www.openoffice.org/fr/Produits/) ou `LibreOffice` [http://fr.libreoffice.org/](http://fr.libreoffice.org/).].
 
