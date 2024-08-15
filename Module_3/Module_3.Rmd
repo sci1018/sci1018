@@ -1,4 +1,4 @@
-# Tests d'hypothèse sur un seul groupe
+# Tests d'hypothèse sur un seul groupe {#lecon3}
 
 Lors de la leçon précédente, nous avons illustré le concept d'intervalle de confiance en nous appuyant sur le rééchantillonnage. Afin de construire des intervalles de confiance, nous avons utilisé la distribution normale ou la distribution du *t* de Student selon la taille de l'échantillon. Différentes stratégies d'échantillonnage ont été présentées, bien que l'échantillonnage complètement aléatoire et l'échantillonnage stratifié aléatoire soient les approches les plus fréquemment utilisées dans le cours.
 

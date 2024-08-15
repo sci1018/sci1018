@@ -13,6 +13,8 @@ pre code {
   white-space: inherit;
 }
 
+
+
 /* ------------------------------------------------- */
 /* TWO COLUMNS FOR PRESENTATION PHOTO */
 .column {
@@ -143,3 +145,96 @@ body {
 .section h3 {
   color: #A64907;
 }
+
+
+/* ------------------------------------------------- */
+/* Pris du CSS de SCI 1031*/
+
+blockquote {
+  color: black !important;
+  font-weight: 600 !important;
+  border-left: 4px solid #486864 !important;
+  font-size: 15px;
+}
+
+.section h5 {
+  font-size: 18px !important;
+  line-height: 24px;
+  font-weight: bold;
+  color: #0E5967;
+}
+
+/* BOITE */
+.boite.emphase {
+  padding: 25px;
+  padding-bottom: 15px;
+  background-color: #C7D1D0;
+  margin-bottom: 20px;
+}
+.boite.ico img[src*=".svg"] {
+  width: 60px;
+  height: 50px;
+  margin-top: 50px;
+}
+.boite.photo img[src*=".jpg"] {
+  width: 200px;
+  height:200px;
+  margin-top: 200px;
+}
+.boite.photo.gauche {
+  width: auto;
+  height: auto;
+  background-repeat: no-repeat;
+  padding-top:200px;
+}
+.boite.ico.gauche, .boite.ico.droite {
+  width: auto;
+  height: auto;
+  background-repeat: no-repeat;
+  padding-top: 70px;
+}
+@media only screen and (min-width: 768px) {
+  .boite.ico.gauche {
+    background-size: 60px;
+    padding-left: 85px;
+    padding-top: 15px;
+  }
+  .boite.ico.droite {
+    background-size: 60px;
+    padding-right: 85px;
+    padding-top: 15px;
+    background-position: top right;
+    text-align: right;
+  }
+  .boite.ico.droite ul {
+   display: inline-block;
+  }
+  .boite.photo.gauche {
+    background-size: 160px;
+    padding-left: 200px;
+    padding-top: 10px;
+    background-position: top left;
+    text-align: left;
+    display: inline-block;
+    float: left;
+  }
+}
+.boite.ico.gauche h1, .boite.ico.gauche h2, .boite.ico.gauche h3, .boite.ico.gauche h4, .boite.ico.gauche h5, .boite.ico.gauche h6,  .boite.ico.gauche h7, .boite.ico.droite h1, .boite.ico.droite h2, .boite.ico.droite h3, .boite.ico.droite h4, .boite.ico.droite h5, .boite.ico.droite h6, .boite.ico.droite h7, .boite.photo.gauche h5 {
+  margin-top: 0px !important;
+}
+.boite.ico.librairie {
+  background-image: url('../Images/Icones_Bibliotheques.svg');
+}
+.boite.ico.fonctions {
+  background-image: url('../Images/Icones_Fonctions.svg');
+}
+.boite.ico.donnees {
+  background-image: url('../Images/Icones_Donnees.svg');
+}
+.boite.ico.important {
+  background-image: url('../Images/Icone_Remarque-Importante.svg');
+}
+.boite.photo.elise {
+  background-image: url('../Images/Photo_moi.jpg');
+}
+

@@ -1,4 +1,4 @@
-# Analyse de variance à deux critères
+# Analyse de variance à deux critères {#lecon7}
 
 Dans la leçon précédente, nous avons vu l'application de l'analyse de la variance (ANOVA) dans des expériences où il n'y avait qu'un seul critère de classification (ou facteur). Les observations étaient classées selon un seul facteur en un nombre donné de groupes. Nous pouvions ainsi tester l'influence de ce facteur (p. ex., le sexe) sur la variable réponse. Dans d'autres cas, les données peuvent être réparties selon deux facteurs ou critères de classification. Par exemple, nous pourrions avoir une expérience qui étudie la concentration de calcium dans le plasma sanguin (la variable réponse) selon le traitement hormonal (avec traitement *vs* sans traitement) pour des individus selon leur sexe (mâle *vs* femelle). Nous pouvons généraliser l'ANOVA en présence de plusieurs facteurs. En présence de deux facteurs, nous réaliserons l'ANOVA à deux critères de classification (c.-à-d., facteurs). 
 

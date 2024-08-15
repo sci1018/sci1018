@@ -6,24 +6,273 @@
 
 ### Présentation {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+Le cours SCI 1018 Statistiques avec R vise une appropriation, d’une part, des analyses statistiques de base utilisées en sciences et, d’autre part, du logiciel statistique libre R pour réaliser ces analyses.
 
-#### Pourquoi suivre ce cours ? {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+#### Pourquoi s'intéresser aux statistiques ? {-}
+
+Ce cours est une introduction au domaine de la statistique appliquée aux sciences. La méthode hypothético-déductive est l’une des approches principales menant aux avancements et aux découvertes en sciences. L’élaboration d’un plan d’expérience (ou communément appelé dispositif expérimental), la récolte des données, l’analyse et l’interprétation des résultats sont des éléments essentiels de la démarche scientifique.
+
+Sans une bonne maîtrise des concepts et des techniques statistiques, tels que l’échantillonnage et l’analyse des données, il peut être difficile d’arriver à des conclusions solides à la fin d’une expérience ou d’une étude d’observation. Les statistiques apportent une rigueur aux travaux en sciences et nous aident à faire des choix importants. Par exemple, en sciences environnementales, nous désirons souvent évaluer l’impact d’une certaine activité sur la structure d’une communauté (par exemple, la toxicité d’un produit déversé vis-à-vis de la probabilité de survie d’une espèce indicatrice) ou encore arriver à des décisions d’aménagement qui assureront la pérennité d’une espèce ou d’une population à risque. Dans de telles situations, une bonne connaissance des principes de base de statistiques devient un outil indispensable.
+
+Les statistiques fréquentistes classiques sont encore beaucoup utilisées en sciences environnementales. En plus de présenter des approches classiques, ce cours couvre des méthodes plus récentes, notamment en ce qui concerne la présentation des résultats et la sélection de modèles. Une bonne maîtrise des analyses classiques ouvre la porte à un arsenal de méthodes statistiques qui prend continuellement de l’expansion. Effectivement, nous assistons à la démocratisation d’analyses autrefois trop complexes à réaliser à la main ou avec une calculatrice. On peut attribuer ce vent de changement à l’arrivée des ordinateurs personnels puissants et abordables sur nos tablettes ainsi qu’au développement de logiciels permettant des analyses de haut niveau.
+
+
+#### Pourquoi R ? {-}
+
+Il existe un vaste éventail de logiciels disponibles pour réaliser des analyses statistiques. Parmi les plus notoires, il y a SAS qui est un logiciel propriétaire développé au début des années 1970. Pendant plus de vingt-cinq ans, SAS a rendu possible l’analyse d’immenses bases de données et d’un vaste éventail d’analyses sans réel compétiteur. Toutefois, le coût prohibitif des licences annuelles fait en sorte que le logiciel est destiné aux utilisateurs bien nantis financièrement ou pour lesquels l’institution d’attache peut absorber les coûts. Le choix limité des analyses, les options imposées par les programmeurs de SAS, les habiletés graphiques modestes de SAS, son manque de transparence (code fermé), et surtout son coût, ont motivé certains statisticiens et programmeurs à développer des alternatives.
+
+Après plusieurs années d’effort, c’est en 1996 que Ross Ihaka et Robert Gentleman ont lancé R, un logiciel et langage de programmation libre (open source), disponible gratuitement. R est aujourd’hui devenu le plus gros projet collaboratif en statistiques et le compétiteur principal de SAS. Créé pour réaliser des analyses statistiques et des graphiques de haut niveau, R offre une grande flexibilité puisqu’on peut l’utiliser comme langage de programmation. Le logiciel s’installe sur des plateformes variées (Windows, Mac, Unix/Linux) et plusieurs ressources sont disponibles aux utilisateurs sous forme de fichiers d’aide intégrés directement dans R, de sites web, de forums de discussion, et d’une multitude de livres et de publications.
+
+Le logiciel R est très stable, son interface graphique ne change pas d’une version à l’autre, et les changements concernent surtout les fonctions additionnelles ajoutées à l’environnement. Les mises à jour sont fréquentes et une nouvelle version du logiciel est développée chaque année. De plus, étant un projet collaboratif international, un grand nombre de fonctions sont rendues disponibles par les utilisateurs pour réaliser un grand nombre d’analyses ou pour faciliter son utilisation. D’ailleurs plusieurs statisticiens développent de nouvelles approches statistiques directement dans R. D’autres quant à eux ont développé une interface graphique simplifiée afin de réaliser les tests statistiques les plus courants, comme celle de R Commander.
+
+Une fois qu’il aura appris à travailler avec R ou R Commander, l’étudiant peut continuer à utiliser ce logiciel après le cours dans ses activités professionnelles ou dans ses études sans avoir à débourser des coûts d’installation, d’activation ou de mise à jour de logiciel.
+
 
 #### Objectifs {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+Voici ce que vous serez en mesure de faire à la fin du cours SCI 1018:
+
+---
+
+- Expliquer les concepts et les techniques de base en statistique.
+
+- Choisir l’analyse statistique appropriée aux traitements de données provenant de plans d’expérience classiques et réaliser l’analyse.
+
+- Identifier les conditions nécessaires pour réaliser certaines analyses statistiques et évaluer le respect de ces conditions à l’aide de différents outils.
+
+- Importer des jeux de données dans le logiciel R, identifier les fonctions de R nécessaires pour des analyses spécifiques, réaliser les analyses, extraire les résultats et les interpréter.
+
+- Élaborer et optimiser des plans d’expérience et réaliser les expériences.
+
+---
+
+
+#### Contenu du cours {-}
+
+Le contenu du cours vous permettra d'acquérir les connaissances suivantes:
+
+**Estimateurs, paramètres et échantillonnage**
+
+>
+- Estimateurs, paramètres et variables aléatoires.
+- Identification des populations statistiques et statistiques descriptives.
+- Précision, exactitude, écart-type et erreur-type.
+- Distribution normale.
+- Intervalles de confiance.
+- Stratégies d’échantillonnage.
+- Distribution du $t$ de Student.
+
+<br>
+
+**Tests d’hypothèse**
+
+> 
+- Tests d’hypothèse sur un seul groupe.
+- Hypothèse scientifique vs hypothèse statistique.
+- Hypothèse nulle vs hypothèse alternative.
+- Erreurs de type I et II.
+- Test $t$ sur la moyenne d’un échantillon.
+- Tests d’hypothèse sur deux groupes indépendants, test $t$, analogues nonparamétriques et test de randomisation.
+- Tableaux de contingence, distribution du $\chi2$.
+
+<br>
+
+**Comparaisons de plusieurs groupes**
+
+> 
+- Analyse de variance (ANOVA) à un critère.
+- Comparaisons multiples.
+- ANOVA à deux critères.
+- ANOVA en blocs complets aléatoires.
+- Design expérimental.
+
+<br>
+
+**Régression et corrélation**
+
+> 
+- Régression linéaire simple.
+- Corrélation.
+
+<br>
+
+**Logiciel R et R Commander**
+
+> 
+- Installation, mise à jour, téléchargement, installation et chargement de banques de fonctions.
+- Importation et exportation de fichiers.
+- Manipulation de jeux de données (tri, sélection de sous-ensembles, transformations).
+- Statistiques descriptives.
+- Création de graphiques.
+- Création de fonctions simples.
+- Réalisation des analyses statistiques étudiées dans le cours.
+- Extraction des résultats à partir d’un objet R.
+
+<br>
+
+#### Démarche pédagogique {-}
+
+
+##### Les leçons {-}
+
+Le cours est constitué de douze activités, soit une activité d’introduction, dix leçons et la passation d’un examen à domicile.
+
+Pendant une leçon, l’étudiant est amené dans un premier temps à s’approprier un ensemble de concepts, de principes et de techniques par l’étude active d’un texte de référence. Dans un second temps, il réalise une activité pratique (laboratoire noté ou autoévaluation) qui lui permet de consolider ses apprentissages et de développer sa maîtrise du logiciel R.
+
+La prise en mains du logiciel R et de R Commander est progressive. Les activités pratiques croient en complexité au fil des semaines. Une activité offre l’occasion à l’étudiant de réutiliser ou de transférer des apprentissages réalisés au cours des leçons précédentes.
+
+
+##### Les travaux notés {-}
+
+Les deux premiers laboratoires comptent pour 15 % de l’évaluation globale alors que le troisième compte pour 30 %. L’examen final, réalisé à domicile lors de la dernière semaine compte pour 40 % de l’évaluation.
+
+
+##### L'encadrement {-}
+
+L’encadrement est assuré par la personne tutrice qui vous sera assignée ou par la professeure responsable du cours. Vos interactions avec la personne qui vous encadre se font par messagerie électronique (de préférence), par visioconférence ou téléphone ainsi que dans un forum de discussion.
+
+La personne responsable de l’encadrement communique avec l’étudiant, au besoin, pour fournir des conseils ou pour transmettre des commentaires sur les travaux.
+
+L’étudiant peut communiquer avec la personne responsable de son encadrement par messagerie électronique pour traiter de questions qui le concernent personnellement, et qui n’ont pas d’intérêt pour les autres étudiants. Si les questions ne sont pas personnelles, l’étudiant est invité à utiliser le forum de discussion.
+
+
+##### Préalable {-}
+
+Cours de statistiques de niveau collégial, sans quoi, cours de mathématiques de niveau collégial (par exemple, mathématiques discrètes, algèbre, calculs différentiel et intégral) ou le cours [MAT 1000 Outils mathématiques](http://www.teluq.uquebec.ca/siteweb/etudes/offre/cours/TELUQ/MAT%201000/?p_herit=etu) offert à la TÉLUQ.
+
+
+#### Le matériel du cours {-}
+
+Le matériel de cours réside sur ce site web.
+
+Dans la section *À propos du cours* visible dans le menu de gauche, on trouve la feuille de route du cours. Celle-ci sert de guide pour bien cheminer dans le cours et planifier votre charge de travail. 
+
+Dans la section *Ressources*, on trouve les consignes, les gabarits et les données pour la réalisation des travaux notés, les données qui sont utilisées pour reproduire les exemples et accomplir les autoévaluations, les guides pour la prise en mains du logiciel R, l'accès au Forum et les références. 
+
+Dans la section *Apprentissage*, on trouve le contenu de chaque leçon, les consignes des auto-évaluations et leurs solutions.
+
+<!-- Quelques sites web dédiés aux statistiques et manuels complémentaires sont également suggérés.
+
+Pour les échanges entre étudiants et une partie des communications avec la personne qui vous encadre, Google Groupes est utilisé. L’étudiant sera invité début de session à rejoindre l’espace dédié au cours.-->
+
+
+
+#### Informations importantes {-}
+
+
+**Apprentissage et utilisation de R**
+
+> Il est fortement recommandé d’utiliser R par programmation dans l’interface R Studio. Le cours vous guide dans cet apprentissage. Le cours a été créé dans cette perspective et les exemples fournis utilisent l’approche par programmation.
+Si, par ailleurs, vous êtes vraiment intimidé par cette approche et qu’elle nuit à votre apprentissage des statistiques, vous pouvez utiliser l’approche par menu (R commander). 
+Les étudiants inscrits dans un programme en informatique ou en science des données ne devraient **pas** utiliser R Commander.
+
+
+
+**Difficulté du cours**
+
+> Plusieurs étudiants qualifient le cours SCI 1018 de «difficile». Il est donc important de consacrer le temps nécessaire pour la réalisation des leçons et des auto-évaluations. Il est fortement suggéré de:
+1) reproduire les exercices qui sont détaillées dans chaque leçon plutôt que simplement lire le texte passivement;
+2) faire par soi-même les auto-évaluations avant de regarder les solutions. 
+
+<br>
 
 ### Feuille de route {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+
+```{r route, echo = FALSE, warning = FALSE, out.width = '100%'}
+library(kableExtra)
+
+titre <- "Leçon"
+titreweb <- "lecon"
+no <- as.character(1:10)
+G <- expand.grid(titre, no)
+names(G) <- c("titre","no")
+G$lecon <- paste(G$titre, G$no)
+G$titreweb <- rep(titreweb,10)
+G$lien <- paste(G$titreweb, G$no,sep="")
+
+G$leconlien <- paste("[",G$lecon,"]","(#",G$lien,")",sep ="" )
+sujets <- c("Statistiques descriptives",
+            "Intervalles de confiance et stratégies d’échantillonnage",
+            "Tests d’hypothèse sur un seul groupe",
+            "Tests d’hypothèse sur deux groupes",
+            "Analyse de fréquences et test du khi carré",
+            "Analyse de variance à un critère",
+            "Analyse de variance à deux critères",
+            "Blocs complets aléatoires",
+            "Élaboration et optimisation de plans d’expérience",
+            "Régression linéaire simple et corrélation")
+row.names <- c(rbind(G$leconlien, sujets))
+row.names <- c(row.names[1:8], "LABO 1: 15 %", row.names[9:14], "LABO 2: 15 %", row.names[15:18], "LABO 3: 30 %", row.names[19:20])
+row.names <- c("[Introduction](#intro)", row.names, "EXAMEN: 40 %")
+
+
+D <- matrix(data = rep(NA, 25*15), nrow = 25, ncol = 15)
+D <- data.frame(D)
+
+colnames(D) <- as.character(1:15)
+rownames(D) <- row.names
+
+
+# D[10,6] <- "15 %"
+# D[17,11] <- "15 %"
+# D[22, 13] <- "30 %"
+# D[25, 15] <- "40 %"
+
+opts <- options(knitr.kable.NA = "", knitr.table.format = "simple")
+kbl(D,"html", align = c("l",rep("c",15)), booktabs = TRUE, linesep = "") %>% 
+  kable_classic(full_width = F)  %>% 
+  kable_styling(font_size = 14) %>%
+  
+  
+  add_header_above(c("Leçons" = 1, "Semaines" = 15)) %>% 
+  column_spec(1:16, background = "white", border_right = "1px solid black") %>%
+  #column_spec(1:16, border_right = "1px solid black") %>%
+  column_spec(1, border_left = "1px solid black") %>%
+  #column_spec(2:16, width = c(rep("0.2cm",15)))  %>%
+  
+  column_spec(2:16, width_max = "0.2cm", width_min = "0.2cm")  %>%
+  column_spec(1, width = "6cm")  %>%
+  
+  column_spec(2, background = c("lightgrey", rep("white",24 ) ))%>%
+  column_spec(c(3), background = c("white","lightgrey" ,"lightgrey",rep("white",22 ) ))%>%
+  column_spec(c(4), background = c("white","white","white","lightgrey", "lightgrey",rep("white",20 ) ))%>%
+  column_spec(c(5), background = c(rep("white",5),"lightgrey", "lightgrey",rep("white",18 ) ))%>%
+  column_spec(c(6,7), background = c(rep("white",7),"lightgrey", "lightgrey", "red",rep("white",15 ) ))%>%
+  column_spec(c(8), background = c(rep("white",10),"lightgrey", "lightgrey", rep("white",13 ) ))%>%
+  column_spec(c(9), background = c(rep("white",12),"lightgrey", "lightgrey", rep("white",11 ) ))%>%
+  column_spec(c(10,11), background = c(rep("white",14),"lightgrey", "lightgrey", "red",rep("white",8) ))%>%
+  column_spec(c(12), background = c(rep("white",17),"lightgrey", "lightgrey", rep("white",6 ) ))%>%
+  column_spec(c(13,14), background = c(rep("white",19),"lightgrey", "lightgrey", "red",rep("white",3) ))%>%
+  column_spec(c(15), background = c(rep("white",22),"lightgrey", "lightgrey", rep("white",2 ) ))%>%
+  column_spec(c(16), background = c(rep("white",24), "red"))%>%
+
+
+  
+  row_spec(c(1,2,4,6,8,11,13,15,18,20,23), bold = T, font_size = 14, extra_css = "line-height: normal")%>%
+  row_spec(c(3,5,7,9,10,12,14,16,17,19,21,22,24), font_size = 12)%>%
+  row_spec(c(10,17,22,25), bold = T, font_size = 14, color = "red")%>%
+  #row_spec(1:25,extra_css = "line-height: 90%")%>%
+  row_spec(c(1,3,5,7,10,12,14,17,19,22,24), extra_css = "border-bottom: 1px solid black")
+
+ 
+  #row_spec(c(2,4,6,8,9,11,13,15,16,18,20,21,23), hline_after = FALSE)
+
+
+ 
+```
+
+
+
+
 
 ### Crédits {-}
 
 Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
 
+
+<!--  
 ### Contact {-}
 
 <div class="row">
@@ -41,5 +290,5 @@ Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquan
   </div>
   
 </div> 
-
+-->
 

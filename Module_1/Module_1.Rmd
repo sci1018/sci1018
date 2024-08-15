@@ -1,4 +1,6 @@
-# Statistiques descriptives
+
+# Statistiques descriptives {#lecon1}
+
 
 ---
 
