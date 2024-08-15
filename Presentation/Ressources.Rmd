@@ -3,19 +3,6 @@
 
 # Ressources {-}
 
-### Travaux notés {-}
-
-Le cours comprend trois (03) laboratoires notés (**%labo1**, **%labo2**, 30%) et un examen final (40%). 
-<!--notes dans les gabarits pour l'examen 40pts et le labo3 30pts-->
-
-La date de remise des travaux notés, telle que suggérée dans la feuille de route est flexible: vous ne serez pas pénalisé si vous remettez votre travail après cette date. Toutefois, il est préférable d’espacer la remise des travaux pour pouvoir bénéficier d’une rétroaction de la part de la personne qui corrige.
-
-Noter que vous devez faire l’examen au plus tard au cours de la dernière semaine. Il s’agit d’un examen à faire chez soi. L’examen dure 3 heures mais vous avez 3 jours (72 heures) pour remettre vos réponses à partir du moment où vous l’entamez.
-
-Les consignes, les données à utiliser, et les gabarits de réponses pour les travaux notés et l’examen sont disponibles sur la page web du cours sur le site de la TÉLUQ<!--lien du site à ajouter-->. Seuls les étudiants inscrits à la TÉLUQ ont accès aux évaluations.
-
-
-
 ### Données {-}
 
 Les liens suivants vous dirigerons directement vers les données utilisées pour chaque module :

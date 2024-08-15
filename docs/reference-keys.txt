@@ -115,7 +115,7 @@ fig:corr1
 fig:corr2
 fig:diagspsang
 fig:figresultpsang
-statistiques-descriptives
+lecon1
 leçon
 paramètre-vs-statistique
 mesures-de-la-tendance-centrale
@@ -139,7 +139,7 @@ probabilité-cumulative
 fonction-de-quantile
 nombres-aléatoires
 autoévaluation
-intervalles-de-confiance-et-stratégies-déchantillonnage
+lecon2
 leçon-1
 problèmes-déchantillonnage
 portion-de-la-population-non-représentée
@@ -167,7 +167,7 @@ diagramme-de-boîtes-et-moustaches
 graphiques-génériques
 sauvegarder-des-graphiques
 autoévaluation-1
-tests-dhypothèse-sur-un-seul-groupe
+lecon3
 leçon-2
 hypothèse
 hypothèse-scientifique
@@ -194,7 +194,7 @@ mettre-à-jour-un-package
 désactiver-un-package
 désinstaller-un-package
 autoévaluation-2
-tests-dhypothèse-sur-deux-groupes
+lecon4
 leçon-3
 tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants
 suppositions-1
@@ -210,7 +210,7 @@ transformation-arcsinus
 autres-transformations
 conclusion-3
 laboratoire
-analyse-de-fréquences-et-test-du-khi-carré-chi2
+lecon5
 leçon-4
 analyse-de-fréquences-le-test-du-khi-carré-chi2
 la-distribution-du-khi-carré-chi2
@@ -229,7 +229,7 @@ alternative-au-test-du-chi2
 le-paradoxe-de-simpson
 conclusion-4
 autoévaluation-3
-analyse-de-variance-à-un-critère
+lecon6
 leçon-5
 comparaison-de-plusieurs-groupes
 analyse-de-variance-anova
@@ -254,7 +254,7 @@ structure
 alternatives-aux-boucles
 apply-et-fonctions-apparentées
 autoévaluation-4
-analyse-de-variance-à-deux-critères
+lecon7
 leçon-6
 anova-à-deux-critères
 suppositions-et-dispositif-expérimental
@@ -263,12 +263,12 @@ sommes-des-carrés-1
 effets-additifs
 conclusion-6
 laboratoire-1
-blocs-complets-aléatoires
+lecon8
 leçon-7
 effets-fixes-et-effets-aléatoires
 anova-à-un-critère
 anova-à-deux-critères-1
-blocs-complets-aléatoires-1
+blocs-complets-aléatoires
 révision-de-léchantillonnage
 origine-du-dispositif-en-blocs-complets-aléatoires
 particularité-du-dispositif-en-blocs-complets-aléatoires
@@ -278,7 +278,7 @@ avantages-du-dispositif-en-blocs-complets-aléatoires
 désavantages-du-dispositif-en-blocs-complets-aléatoires
 conclusion-7
 autoévaluation-5
-élaboration-et-optimisation-de-plans-déchantillonnage
+lecon9
 leçon-8
 plans-déchantillonnage
 expérience-vs-étude-dobservation
@@ -296,7 +296,7 @@ contrôler-la-variabilité-temporelle
 sources-de-confusion
 conclusion-8
 laboratoire-2
-régression-linéaire-simple-et-corrélation
+lecon10
 leçon-9
 la-régression-linéaire
 équation-de-régression
