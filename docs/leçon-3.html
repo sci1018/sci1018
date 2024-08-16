@@ -710,13 +710,13 @@ Nous déterminons la probabilité d’observer une valeur <span class="math inli
 <div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="leçon-3.html#cb425-1" tabindex="-1"></a><span class="do">##on crée un sous-jeu de données pour les élèves ayant eu l&#39;aide aux devoirs</span></span>
 <span id="cb425-2"><a href="leçon-3.html#cb425-2" tabindex="-1"></a>eleves.aide <span class="ot">&lt;-</span> eleves[eleves<span class="sc">$</span>Type <span class="sc">==</span> <span class="st">&quot;aide&quot;</span>, <span class="st">&quot;Note&quot;</span>]</span>
 <span id="cb425-3"><a href="leçon-3.html#cb425-3" tabindex="-1"></a>eleves.aide</span></code></pre></div>
-<pre><code>##  [1] 36.36 37.70 35.75 35.92 36.24 36.04 37.17 35.65 37.57 36.49 36.10 37.22 36.32 37.55 36.90 37.86 36.52 36.03
-## [19] 34.66 36.22 34.97 39.05 35.42 35.08 36.92 37.28 35.60 36.00 36.26 37.67</code></pre>
+<pre><code>##  [1] 36.36 37.70 35.75 35.92 36.24 36.04 37.17 35.65 37.57 36.49 36.10 37.22 36.32 37.55 36.90 37.86 36.52 36.03 34.66 36.22 34.97 39.05 35.42 35.08 36.92 37.28 35.60 36.00
+## [29] 36.26 37.67</code></pre>
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="leçon-3.html#cb427-1" tabindex="-1"></a><span class="do">##on crée un sous-jeu de données les élèves témoins</span></span>
 <span id="cb427-2"><a href="leçon-3.html#cb427-2" tabindex="-1"></a>eleves.temoins <span class="ot">&lt;-</span> eleves[eleves<span class="sc">$</span>Type <span class="sc">==</span> <span class="st">&quot;temoins&quot;</span>, <span class="st">&quot;Note&quot;</span>]</span>
 <span id="cb427-3"><a href="leçon-3.html#cb427-3" tabindex="-1"></a>eleves.temoins</span></code></pre></div>
-<pre><code>##  [1] 19.20 21.21 18.78 20.00 20.73 19.50 20.18 20.06 20.12 19.98 19.31 19.41 17.66 18.21 19.88 20.88 20.15 21.88
-## [19] 19.21 20.76 21.06 18.89 19.24 19.92 18.97 20.96 18.97 21.26 19.99 21.23</code></pre>
+<pre><code>##  [1] 19.20 21.21 18.78 20.00 20.73 19.50 20.18 20.06 20.12 19.98 19.31 19.41 17.66 18.21 19.88 20.88 20.15 21.88 19.21 20.76 21.06 18.89 19.24 19.92 18.97 20.96 18.97 21.26
+## [29] 19.99 21.23</code></pre>
 <div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="leçon-3.html#cb429-1" tabindex="-1"></a><span class="do">##résidus du groupe avec aide aux devoir</span></span>
 <span id="cb429-2"><a href="leçon-3.html#cb429-2" tabindex="-1"></a>res.aide <span class="ot">&lt;-</span> eleves.aide <span class="sc">-</span> <span class="fu">mean</span>(eleves.aide)</span>
 <span id="cb429-3"><a href="leçon-3.html#cb429-3" tabindex="-1"></a></span>

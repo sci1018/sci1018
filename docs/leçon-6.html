@@ -859,11 +859,9 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 <p>Dans l’exemple précédent, on remarque que l’effet du premier facteur est indépendant de l’effet du deuxième facteur. En d’autres mots, la différence entre les mâles et les femelles est constante, peu importe le traitement hormonal. En l’absence d’une interaction statistiquement significative entre les deux facteurs, nous dirons que les effets des facteurs sont <strong>additifs</strong>. C’est ce qu’on entend par l’<strong>additivité</strong> des facteurs. En contrepartie, la présence d’une interaction significative entre les facteurs complique l’interprétation des résultats de l’expérimentation. Effectivement, la présence d’une interaction permet d’identifier des phénomènes souvent plus intéressants scientifiquement que s’il n’y avait pas d’interaction entre les facteurs. C’est ce que nous constaterons dans certains des exemples suivants.</p>
 <div class="exemple" section="7">
 <p>Nous désirons déterminer l’effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (<em>agrimore</em>, <em>control</em>, <em>supergain</em> et <em>supersupp</em>) sur le gain en masse en kg de bétail après 6 semaines. Les données sont stockées dans le fichier <code>croissance.csv</code><a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="leçon-6.html#cb667-1" tabindex="-1"></a><span class="do">##importation avec séparateur virgule car ici</span></span>
-<span id="cb667-2"><a href="leçon-6.html#cb667-2" tabindex="-1"></a><span class="do">##les champs sont séparés par des virgules</span></span>
-<span id="cb667-3"><a href="leçon-6.html#cb667-3" tabindex="-1"></a>croissance <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/croissance.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb667-4"><a href="leçon-6.html#cb667-4" tabindex="-1"></a>                         <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb667-5"><a href="leçon-6.html#cb667-5" tabindex="-1"></a><span class="fu">head</span>(croissance)</span></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="leçon-6.html#cb667-1" tabindex="-1"></a><span class="do">## importation avec séparateur virgule car ici les champs sont séparés par des virgules</span></span>
+<span id="cb667-2"><a href="leçon-6.html#cb667-2" tabindex="-1"></a>croissance <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/croissance.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb667-3"><a href="leçon-6.html#cb667-3" tabindex="-1"></a><span class="fu">head</span>(croissance)</span></code></pre></div>
 <pre><code>##   Supplement Diete     Gain
 ## 1  supergain   ble 17.37125
 ## 2  supergain   ble 16.81489
@@ -871,14 +869,13 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 ## 4  supergain   ble 15.78175
 ## 5    control   ble 17.70656
 ## 6    control   ble 18.22717</code></pre>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="leçon-6.html#cb669-1" tabindex="-1"></a><span class="do">##la fonction str() affiche la structure interne du tableau</span></span>
-<span id="cb669-2"><a href="leçon-6.html#cb669-2" tabindex="-1"></a><span class="do">##C’est une fonction alternative à summary()</span></span>
-<span id="cb669-3"><a href="leçon-6.html#cb669-3" tabindex="-1"></a><span class="fu">str</span>(croissance)</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="leçon-6.html#cb669-1" tabindex="-1"></a><span class="do">## la fonction str() affiche la structure interne du tableau C’est une fonction alternative à summary()</span></span>
+<span id="cb669-2"><a href="leçon-6.html#cb669-2" tabindex="-1"></a><span class="fu">str</span>(croissance)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  3 variables:
 ##  $ Supplement: chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
 ##  $ Diete     : chr  &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; ...
 ##  $ Gain      : num  17.4 16.8 18.1 15.8 17.7 ...</code></pre>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="leçon-6.html#cb671-1" tabindex="-1"></a><span class="do">##comparer avec importation sans sep = &quot;,&quot;</span></span>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="leçon-6.html#cb671-1" tabindex="-1"></a><span class="do">## comparer avec importation sans sep = &#39;,&#39;</span></span>
 <span id="cb671-2"><a href="leçon-6.html#cb671-2" tabindex="-1"></a>crois2 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/croissance.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb671-3"><a href="leçon-6.html#cb671-3" tabindex="-1"></a><span class="fu">head</span>(crois2)</span></code></pre></div>
 <pre><code>##   Supplement   X..Diete...Gain.
@@ -888,16 +885,14 @@ Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA
 ## 4  supergain ,&quot;ble&quot;,15.78174829
 ## 5    control ,&quot;ble&quot;,17.70656456
 ## 6    control ,&quot;ble&quot;,18.22716932</code></pre>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="leçon-6.html#cb673-1" tabindex="-1"></a><span class="do">##on remarque un problème à l&#39;importation</span></span>
-<span id="cb673-2"><a href="leçon-6.html#cb673-2" tabindex="-1"></a><span class="do">##les étiquettes des variables et les valeurs sont</span></span>
-<span id="cb673-3"><a href="leçon-6.html#cb673-3" tabindex="-1"></a><span class="do">##erronées</span></span>
-<span id="cb673-4"><a href="leçon-6.html#cb673-4" tabindex="-1"></a><span class="fu">str</span>(crois2)</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="leçon-6.html#cb673-1" tabindex="-1"></a><span class="do">## on remarque un problème à l&#39;importation les étiquettes des variables et les valeurs sont erronées</span></span>
+<span id="cb673-2"><a href="leçon-6.html#cb673-2" tabindex="-1"></a><span class="fu">str</span>(crois2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
 ##  $ Supplement      : chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
 ##  $ X..Diete...Gain.: chr  &quot;,\&quot;ble\&quot;,17.37125111&quot; &quot;,\&quot;ble\&quot;,16.81488903&quot; &quot;,\&quot;ble\&quot;,18.0818374&quot; &quot;,\&quot;ble\&quot;,15.78174829&quot; ...</code></pre>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="leçon-6.html#cb675-1" tabindex="-1"></a><span class="do">##transformer en facteurs les variables en caracteres</span></span>
-<span id="cb675-2"><a href="leçon-6.html#cb675-2" tabindex="-1"></a>croissance<span class="sc">$</span>Supplement<span class="ot">&lt;-</span><span class="fu">as.factor</span>(croissance<span class="sc">$</span>Supplement)</span>
-<span id="cb675-3"><a href="leçon-6.html#cb675-3" tabindex="-1"></a>croissance<span class="sc">$</span>Diete<span class="ot">&lt;-</span><span class="fu">as.factor</span>(croissance<span class="sc">$</span>Diete)</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="leçon-6.html#cb675-1" tabindex="-1"></a><span class="do">## transformer en facteurs les variables en caracteres</span></span>
+<span id="cb675-2"><a href="leçon-6.html#cb675-2" tabindex="-1"></a>croissance<span class="sc">$</span>Supplement <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(croissance<span class="sc">$</span>Supplement)</span>
+<span id="cb675-3"><a href="leçon-6.html#cb675-3" tabindex="-1"></a>croissance<span class="sc">$</span>Diete <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(croissance<span class="sc">$</span>Diete)</span></code></pre></div>
 <p>On vérifie le nombre de répétitions pour chaque combinaison des deux facteurs :</p>
 <div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="leçon-6.html#cb676-1" tabindex="-1"></a><span class="fu">table</span>(croissance<span class="sc">$</span>Supplement, croissance<span class="sc">$</span>Diete)</span></code></pre></div>
 <pre><code>##            

@@ -2,11 +2,63 @@
 
 # Programmation avec R {-}
 
-*Le contenu théorique de chaque leçon est présenté dans un document comme celui-ci et intègre souvent du code en langage de programmation `R`. Nous sommes conscient que la convention en français est d'utiliser la virgule pour indiquer la décimale. Toutefois, nous utilisons systématiquement le point pour désigner la décimale dans le texte. Ce choix vient du fait que la syntaxe de `R` utilise le point comme décimale -- à la fois pour la saisie de valeurs numériques et pour l'affichage des sorties d'analyses. Ainsi, l'usage du point uniformisera le texte et nous sommes d'avis que cette décision facilitera sa compréhension.* 
-
-## Notions générales {-}
+---
 
 Ce document a pour but d'illustrer les bases nécessaires afin de se familiariser avec `R`. Pour les personnes qui n'ont jamais rencontré cet environnement, nous recommandons très fortement de répéter les exemples afin de bien comprendre la syntaxe et les subtilités de la programmation en ce qui est devenu la *lingua franca* des statistiques. Dans ce document, le code `R` est distingué du reste du texte en utilisant une `police monospace comme celle-ci`. Aussi, vous remarquerez que le symbole `>` précède toujours les commandes illustrées dans les exemples du document. Ce symbole indique que les commandes pourraient être saisies dans la console `R` ou dans l'éditeur.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `RSiteSearch( )`
+  - `c( )`
+  - `rep( )`
+  - `seq( )`
+  - `class( )`
+  - `length( )`
+  - `all( )`, `any( )`, `all.equal( )`, `identical( )`
+  - `which( )`, `which.min( )`, `which.max( )`
+  - `ifelse( )`
+  - `paste( )`
+  - `matrix( )`
+  - `diag( )`
+  - `colSums( )`, `colMeans( )`
+  - `data.frame( )`
+  - `str( )`, `dim( )`, `nrow( )`, `ncol( )`, `names( )`, `rownames( )`, `colnames( )`
+  - `summary( )`, `head( )`, `tail( )`
+  - `read.table( )`
+  - `setwd( )`
+  - `subset( )`
+  - `sort( )`
+  - `table( )`
+  - `xtabs( )`
+  - `reshape( )`
+  - `save( )`, `write.table( )`, `load( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le fichier `vers.txt` dans la partie théorique qui contient des données sur l'abondance des vers de terre dans différents types de parcs publics et le fichier `richesse.txt` dans la partie exercices. 
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Guide_R_2.zip).
+  </div>
+  
+</div> 
+
+## Notions générales {-}
 
 #### Le projet R  {-}
 

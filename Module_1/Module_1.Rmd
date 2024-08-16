@@ -1,16 +1,9 @@
 
 # Statistiques descriptives {#lecon1}
 
-
----
-
-Le contenu théorique de chaque leçon est présenté dans un document comme celui-ci et intègre souvent du code en langage de programmation R. Nous sommes conscients que la convention en français est d'utiliser la virgule pour indiquer la décimale.
-Toutefois, nous utilisons systématiquement le point pour désigner la décimale dans le texte. Ce choix vient du fait que la syntaxe de R utilise le point comme décimale - à la fois pour la saisie de valeurs numériques et pour l'affichage des sorties d'analyses. Ainsi, l'usage du point uniformisera le texte et nous sommes d'avis que cette décision facilitera sa compréhension.
-
----
-
-
 ###### À quoi servent les statistiques {-}
+
+--- 
 
 Les statistiques constituent une partie importante de la démarche scientifque. Elles s'appliquent à des domaines aussi variés que l'écologie, le génie, la psychologie, la médecine, et les sciences sociales. Les objectifs de l'analyse statistique sont les suivants :
 
@@ -20,6 +13,9 @@ Les statistiques constituent une partie importante de la démarche scientifque. 
  -	Faire des prédictions. La prédiction consiste à construire un modèle et l'utiliser pour prédire le comportement d'une variable d'intérêt. On peut utiliser la prédiction en médecine, météorologie ou en toxicologie, par exemple. 
  
 Définissons maintenant certains termes et concepts en statistique.
+
+---
+
 
 ## Leçon
 
@@ -837,8 +833,6 @@ rnorm(n = 30, mean = 5.2, sd = 9.3)
 On remarque qu'à chaque fois que l'on utilise `rnorm()`, on obtient un résultat des observations (aléatoires) différentes.
 
 ## Autoévaluation
-
-Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives* pour réaliser les exercices suivants dans R. 
 
 ### Question 1 {-}
 

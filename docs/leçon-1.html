@@ -463,9 +463,8 @@ f(10.1 \vert 0, 10) = 0
 <span id="cb325-3"><a href="leçon-1.html#cb325-3" tabindex="-1"></a></span>
 <span id="cb325-4"><a href="leçon-1.html#cb325-4" tabindex="-1"></a><span class="do">##on utilise la distribution uniforme</span></span>
 <span id="cb325-5"><a href="leçon-1.html#cb325-5" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">400</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
-<pre><code>##  [1] 229 187 384 388  37 188 268  49  91 290 134  67 190  12 208 178 385   3 270  34 124 378 307 177  59 330  24
-## [28] 344   0 112 361 190 198  93 220 321 348 246  73  46 374 241 242 285  23 298 389  16 200 283   0 186 166 286
-## [55] 364 204 158 110 269 130</code></pre>
+<pre><code>##  [1] 229 187 384 388  37 188 268  49  91 290 134  67 190  12 208 178 385   3 270  34 124 378 307 177  59 330  24 344   0 112 361 190 198  93 220 321 348 246  73  46 374 241
+## [43] 242 285  23 298 389  16 200 283   0 186 166 286 364 204 158 110 269 130</code></pre>
 <p>On note ici que nous avons demandé 60 valeurs aléatoires d’une distribution uniforme continue alors que nous en voulons 40, au cas où il y aurait des doublons dans les 40 premières valeurs. De plus, l’utilisation de la fonction <code>round( )</code> permet d’arrondir les valeurs à l’entier le plus près.</p>
 <p>Encore plus simple, nous pourrions utiliser la fonction <code>sample( )</code> qui permet de sélectionner aléatoirement avec ou sans remise. La sélection sans remise consiste à retirer les observations qui ont déja été tirées afin de ne pouvoir les sélectionner à nouveau. La sélection avec remise implique de pouvoir sélectionner la même observation à plusieurs reprises pour constituer l’échantillon. Autrement dit, la même observation peut apparaître plusieurs fois dans l’échantillon.</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="leçon-1.html#cb327-1" tabindex="-1"></a><span class="do">##on crée une série de 10 observations</span></span>
