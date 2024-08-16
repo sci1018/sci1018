@@ -39,11 +39,12 @@ pre code {
 /* ------------------------------------------------- */
 /* TWO COLUMNS FOR ICONS */
 .lefticon {
-  width: 15%;
+  width: 10%;
 }
 
 .righttext {
-  width: 85%;
+  width: 90%;
+  padding-top: 0px;
 }
 
 /* ------------------------------------------------- */
