@@ -543,76 +543,76 @@ On calcule la somme des carrés des traitements avec l’équation complète ou 
 <div id="tableau-de-lanova" class="section level5 hasAnchor" number="6.1.2.1.2">
 <h5><span class="header-section-number">6.1.2.1.2</span> Tableau de l’ANOVA<a href="leçon-5.html#tableau-de-lanova" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Après avoir calculé les sommes des carrés des différents termes ainsi que leurs degrés de liberté respectifs, on peut les assembler dans un tableau d’ANOVA (Table <a href="leçon-5.html#tab:aov">6.1</a>). Ce tableau constitue une partie importante des résultats de l’analyse et doit figurer dans les rapports ou au moins y être résumé par écrit.</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:aov">Table 6.1: </span>Calcul des différents éléments du tableau d’ANOVA.
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Source
 </th>
-<th style="text-align:left;">
-Somme des carrés <br> (<span class="math inline">\(SS\)</span>)
+<th style="text-align:center;">
+Somme des carrés (<span class="math inline">\(SS\)</span>)
 </th>
-<th style="text-align:left;">
-Degrés de liberté <br> (<span class="math inline">\(df\)</span>)
+<th style="text-align:center;">
+Degrés de liberté (<span class="math inline">\(df\)</span>)
 </th>
-<th style="text-align:left;">
-Carré moyen <br> (<span class="math inline">\(CM\)</span>)
+<th style="text-align:center;">
+Carré moyen (<span class="math inline">\(CM\)</span>)
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 ratio <span class="math inline">\(F\)</span>
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Traitement
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(SSA\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(k-1\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(SSA/df_A\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(MSA/MSE\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Erreur
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(SSE\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(k(n-1)\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(SSE/df_{erreur}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Total
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(SST\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(N-1\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
 </tr>
 </tbody>
@@ -745,7 +745,6 @@ Residuals
 <span id="cb27-2"><a href="leçon-5.html#cb27-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        A        B        C 
 ## 16.34200 18.20133 18.07800</code></pre>
-<p>On remarque que les valeurs prédites par l’ANOVA à un critère correspondent à la moyenne arithmétique de chaque groupe, comme l’indique par la fonction <code>tapply( )</code><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> applique une fonction donnée (ici, <code>mean</code>) aux valeurs d’une variable <code>X</code> (<code>ozone\$Ozone</code>) regroupées selon les différentes catégories de <code>INDEX</code> (<code>ozone\$Jardin</code>).]. Les résidus s’obtiennent facilement à l’aide du calcul <span class="math inline">\(y_i - \hat{y}_i\)</span> ou avec la fonction <code>residuals( )</code> :</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="leçon-5.html#cb29-1" tabindex="-1"></a><span class="do">##résidus</span></span>
 <span id="cb29-2"><a href="leçon-5.html#cb29-2" tabindex="-1"></a>obs[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">-</span> pred[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##       1       2       3       4       5       6       7       8       9      10 
@@ -871,7 +870,7 @@ Figure 6.6: Diagnostics de l’ANOVA.
 </div>
 <div id="comparaison-multiples" class="section level3 hasAnchor" number="6.1.3">
 <h3><span class="header-section-number">6.1.3</span> Comparaison multiples<a href="leçon-5.html#comparaison-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>L’ANOVA permet de déterminer si la variance expliquée par le facteur à l’étude est supérieure à la variance résiduelle (c.-à-d., la variance inexpliquée). Ainsi, le tableau d’ANOVA nous permet de rejeter ou non <span class="math inline">\(H_0\)</span>. Lorsqu’on rejette l’hypothèse nulle après avoir effectué un test <span class="math inline">\(t\)</span> pour comparer deux groupes indépendants, on sait qu’il existe une différence entre ces deux groupes. Dans une ANOVA qui a plus de deux groupes, le rejet de <span class="math inline">\(H_0\)</span> ne nous révèle pas où se trouvent les différences<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Les comparaisons multiples permettent d’identifier les différences entre les moyennes des groupes.</p>
+<p>L’ANOVA permet de déterminer si la variance expliquée par le facteur à l’étude est supérieure à la variance résiduelle (c.-à-d., la variance inexpliquée). Ainsi, le tableau d’ANOVA nous permet de rejeter ou non <span class="math inline">\(H_0\)</span>. Lorsqu’on rejette l’hypothèse nulle après avoir effectué un test <span class="math inline">\(t\)</span> pour comparer deux groupes indépendants, on sait qu’il existe une différence entre ces deux groupes. Dans une ANOVA qui a plus de deux groupes, le rejet de <span class="math inline">\(H_0\)</span> ne nous révèle pas où se trouvent les différences<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Les comparaisons multiples permettent d’identifier les différences entre les moyennes des groupes.</p>
 <p>Comme nous l’avons mentionné au début de ce texte, effectuer des comparaisons multiples augmente la probabilité de commettre une erreur de type I. L’ANOVA est conçue pour comparer tous les groupes simultanément afin d’évaluer l’effet global du traitement. Lorsque l’ANOVA entraîne le rejet de l’hypothèse nulle, il s’avère nécessaire d’exécuter des comparaisons multiples entre les groupes afin de trouver quelles sont les différences. Ces comparaisons effectuées après l’ANOVA augmentent aussi la probabilité de commettre une erreur de type I – la probabilité de commettre ce type d’erreur est supérieure au seuil <span class="math inline">\(\alpha\)</span> que nous avons fixé. Puisque les comparaisons multiples sont effectués après l’ANOVA, on parle souvent de tests <em>a posteriori</em> ou <em>post hoc</em> (post hoc <em>tests</em>, a posteriori <em>tests</em>).</p>
 <div id="erreurs-associées-aux-comparaisons-multiples" class="section level4 hasAnchor" number="6.1.3.1">
 <h4><span class="header-section-number">6.1.3.1</span> Erreurs associées aux comparaisons multiples<a href="leçon-5.html#erreurs-associées-aux-comparaisons-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1509,8 +1508,7 @@ Figure 6.7: Présentation graphique des résultats des comparaisons multiples av
 <ol start="1">
 <li id="fn1"><p>Rappel: Ici, la valeur de <span class="math inline">\(P\)</span> correspond à la probabilité d’obtenir une valeur de <span class="math inline">\(F\)</span> supérieure ou égale à celle qu’on a observée (dans les données originales) lorsqu’on répète l’échantillonnage avec la même taille d’échantillon dans la même population et que l’hypothèse nulle est vraie. On peut écrire plus succinctement: <span class="math inline">\(P = 0.7588\)</span>.<a href="leçon-5.html#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Dans les cas où le nombre d’observations varie d’un groupe à l’autre, il est préférable d’utiliser la fonction plus générale, <code>lm( )</code> qui permet de réaliser plusieurs types de modèles linéaires.<a href="leçon-5.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>La fonction <code>tapply( )</code><a href="leçon-5.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Le tableau d’ANOVA classique ne permet pas de décortiquer où se trouvent les différences entre les groupes. Néanmoins, il est possible d’utiliser des contrastes orthogonaux pour décomposer la somme des carrés du facteur à l’intérieur du tableau d’ANOVA. Ce concept est plus avancé et ne sera pas couvert dans le cours.<a href="leçon-5.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Le tableau d’ANOVA classique ne permet pas de décortiquer où se trouvent les différences entre les groupes. Néanmoins, il est possible d’utiliser des contrastes orthogonaux pour décomposer la somme des carrés du facteur à l’intérieur du tableau d’ANOVA. Ce concept est plus avancé et ne sera pas couvert dans le cours.<a href="leçon-5.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

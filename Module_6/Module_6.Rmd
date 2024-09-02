@@ -227,14 +227,14 @@ df <- data.frame(
   Col5 = c("$MSA/MSE$", " ", " ")
   )
 
-colnames(df) <- c("Source", "Somme des carrés <br> ($SS$)", "Degrés de liberté <br> ($df$)", "Carré moyen <br> ($CM$)", "ratio $F$")
+colnames(df) <- c("Source", "Somme des carrés ($SS$)", "Degrés de liberté ($df$)", "Carré moyen ($CM$)", "ratio $F$")
 
 # Generate the table with custom styling for merged cells
 kable(df,  
       row.names = FALSE, 
       caption = "Calcul des différents éléments du tableau d'ANOVA.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = T, position = "center")
 ``` 
 
 Le carré moyen du traitement ($SSA/df_A$) estime la variance due au traitement, alors que le carré moyen des erreurs ($SSE/df_{erreur}$) estime la variance inexpliquée aussi appelée **variance résiduelle** (*residual variance*). La variance résiduelle est la meilleure estimation de la variance ($\sigma^2$) commune à tous les $k$ groupes comparés. C'est une des raisons pour lesquelles la méthode est appelée "analyse de variance" : on estime en même temps la variance commune à tous les groupes.
@@ -378,7 +378,6 @@ pred[1:10]
 tapply(X = ozone$Ozone, INDEX = ozone$Jardin, FUN = mean)
 ```
 
-On remarque que les valeurs prédites par l'ANOVA à un critère correspondent à la moyenne arithmétique de chaque groupe, comme l'indique par la fonction `tapply( )`^[La fonction `tapply( )`] applique une fonction donnée (ici, `mean`) aux valeurs d'une variable `X` (`ozone\$Ozone`) regroupées selon les différentes catégories de `INDEX` (`ozone\$Jardin`).]. Les résidus s'obtiennent facilement à l'aide du calcul  $y_i - \hat{y}_i$ ou avec la fonction `residuals( )` :
 
 ```{r diag, echo = TRUE, keep.source = TRUE}
 ##résidus
