@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 5 Analyse de fréquences et test du khi carré (\(\chi^2\)) | Statistiques avec R</title>
   <meta name="description" content="Module 5 Analyse de fréquences et test du khi carré (\(\chi^2\)) | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 5 Analyse de fréquences et test du khi carré (\(\chi^2\)) | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -374,7 +374,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon5" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Module 5</span> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)<a href="lecon5.html#lecon5" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Dans la leçon précédente, nous avons illustré des variantes du test <span class="math inline">\(t\)</span> de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Nous avons présenté les suppositions sous-jacentes à ces analyses ainsi que plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions. Dans tous les cas, les variables réponses étaient numériques avec des valeurs décimales, comme la hauteur, le temps et la masse. Pour ce genre de données, la décimale représente une valeur observable: une hauteur de 193.24 cm a un sens. Toutefois, les fréquences, comme celles provenant du décompte d’événements d’intérêt prennent uniquement des valeurs entières (discrètes). Par exemple, si nous étudions le nombre de personnes atteintes d’une maladie ou le nombre survivant à cette maladie, nous ne pouvons pas observer 12.23 événements. Nous en observerons plutôt 12 ou 13. Ce type de données fera l’objet de cette leçon.</p>
+<hr />
+<div class="row">
+
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-5" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon5.html#vous-utiliserez-les-fonctions-suivantes-5" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>pchisq( )</code></li>
+<li><code>names( )</code></li>
+<li><code>c( )</code></li>
+<li><code>chisq.test( )</code></li>
+<li><code>matrix( )</code></li>
+<li><code>sum( )</code></li>
+<li><code>abs( )</code></li>
+<li><code>colnames( )</code><br />
+</li>
+<li><code>rownames( )</code>
+</div></li>
+</ul>
+</div>
+</div>
 </div>
             </section>
 

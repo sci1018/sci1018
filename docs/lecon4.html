@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 4 Tests d’hypothèse sur deux groupes | Statistiques avec R</title>
   <meta name="description" content="Module 4 Tests d’hypothèse sur deux groupes | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 4 Tests d’hypothèse sur deux groupes | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -374,7 +374,75 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon4" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Module 4</span> Tests d’hypothèse sur deux groupes<a href="lecon4.html#lecon4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Dans la leçon précédente, nous avons discuté de la démarche scientifique et de l’élaboration d’hypothèses scientifiques et statistiques. Deux types d’erreurs associées à la réalisation d’un test d’hypothèse ont été présentées: l’erreur de type I et l’erreur de type II. Le seuil de signification (<span class="math inline">\(\alpha\)</span>) correspond à la probabilité de rejeter une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui aurait dû être rejetée est donnée par <span class="math inline">\(\beta\)</span> (erreur de type II). Nous avons vu le concept de la puissance statistique. Nous avons réalisé un exemple de test d’hypothèse statistique sur un échantillon (groupe) concernant la moyenne à l’aide du test <span class="math inline">\(t\)</span>. Ce test peut être unilatéral ou bilatéral. Le test unilatéral cible une seule des deux queues de la distribution alors que le test bilatérale cible les deux queues de la distribution.</p>
+<hr />
+<div class="row">
+
+<div class="column lefticon">
+<img src="images/Icones_Bibliotheques.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-packages-r-suivants-1" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les packages <code>R</code> suivants :<a href="lecon4.html#vous-utiliserez-les-packages-r-suivants-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>nortest</code>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="row">
+
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-4" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon4.html#vous-utiliserez-les-fonctions-suivantes-4" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>read.table( )</code>, <code>head( )</code>, <code>tail( )</code></li>
+<li><code>t.test( )</code></li>
+<li><code>mean( )</code></li>
+<li><code>sd( )</code></li>
+<li><code>sqrt( )</code></li>
+<li><code>c( )</code></li>
+<li><code>qt( )</code></li>
+<li><code>library( )</code></li>
+<li><code>ad.test( )</code></li>
+<li><code>t.test( )</code></li>
+<li><code>qqnorm( )</code></li>
+<li><code>qqline( )</code></li>
+<li><code>boxplot( )</code></li>
+<li><code>hist( )</code><br />
+</li>
+<li><code>par( )</code></li>
+<li><code>text( )</code></li>
+<li><code>plot( )</code></li>
+<li><code>axis( )</code></li>
+<li><code>points( )</code></li>
+<li><code>arrows( )</code></li>
+<li><code>nrow( )</code></li>
+<li><code>segments( )</code></li>
+<li><code>log( )</code></li>
+<li><code>rpois( )</code></li>
+<li><code>rbeta( )</code>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Donnees.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-données-suivantes-3" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les données suivantes :<a href="lecon4.html#vous-utiliserez-les-données-suivantes-3" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le fichier <code>eleves.txt</code> est utilise dans la partie théorique et contient des données sur les notes des élèves d’une école primaire avec et sans aides aux devoirs pendant l’année. Le fichier <code>poissons.txt</code> est également utilisés et concerne l’effet des eaux usées sur le nombre d’espèces de poissons dans différents cours d’eau.</p>
+<p>Le fichier <code>recup.txt</code> est utilisé dans la partie Laboratoire. Il contient des données sur l’efficacité d’un médicament qui améliore le temps de récupération après un effort physique.</p>
+Les données peuvent être téléchargées <a href="https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip">ici</a>.
+</div>
+</div>
+</div>
 </div>
             </section>
 

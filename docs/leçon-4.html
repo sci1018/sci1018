@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="5.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -379,44 +379,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Les entiers constituent un type de données qui mène à des analyses particulières. Dans certains cas, on récolte des données de fréquences (ou nombre d’occurrences) dans différentes catégories (p. ex., le sexe) et on désire savoir si la proportion des fréquences diffère selon les catégories. Lorsqu’elles proviennent d’un dispositif complètement aléatoire, les fréquences peuvent être analysées avec le test du khi carré (<span class="math inline">\(\chi^2\)</span>, <em>chi-squared test</em>). Ce genre de test est parfois appelé <strong>test d’ajustement</strong> ou <strong>test d’adéquation</strong> (<em>goodness-of-fit test</em>), car il compare les fréquences observées aux fréquences prédites conformes à <span class="math inline">\(H_0\)</span>.</p>
 <div class="exemple" section="5">
 <p>On s’intéresse aux habitudes d’utilisation de différents modes de transport chez les étudiants de la TÉLUQ. Pour ce faire, on réalise une étude d’observation. On décide <em>a priori</em> d’échantillonner aléatoirement 500 personnes sur la liste des étudiants inscrits à la TÉLUQ. Chaque personne sélectionnée indique le mode de transport qu’elle utilise pour parcourir les plus longues distances dans ses déplacements du lundi au vendredi, parmi les quatre choix suivants: 1) à pied, 2) en transport en commun (autobus, métro, train), 3) à vélo, ou 4) en voiture (véhicule personnel, taxi, autopartage). La variable mode de transport définit les quatre catégories. On utilise souvent le terme <strong>variable catégorique</strong> pour désigner ce type de variable. Nous dressons un tableau avec les résultats suivants (Table <a href="leçon-4.html#tab:modetransport">5.1</a>) :</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:modetransport">Table 5.1: </span>Habitudes d’utilisation de différents modes de transports dans un échantillon de 500 individus à la TÉLUQ.
 </caption>
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:center;">
 À pied
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Transport en commun
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Vélo
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Voiture
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 TOTAL
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;">
 139
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 146
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 117
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 98
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 500
 </td>
 </tr>
@@ -525,65 +525,65 @@ Les fréquences ayant un résidu inférieur à -2 ou supérieur à 2 sont consid
 <p>Continuons avec un exemple sur la sélection d’habitat qui applique le <span class="math inline">\(\chi^2\)</span> en écologie animale.</p>
 <div class="exemple" section="5">
 <p>On s’intéresse à la sélection d’habitat par des orignaux (<em>Alces alces</em>). Pendant deux années, on suit 117 individus munis de colliers émetteurs et on note leur utilisation de différents habitats dans une aire d’étude. À l’aide d’un système d’information géoréférencé, on calcule la proportion des quatre habitats qui constituent l’aire d’étude. On veut savoir si les orignaux sélectionnent un habitat en particulier par rapport à la disponibilité de chaque habitat dans l’aire d’étude. En d’autres mots, on détermine si certains types d’habitats rares sont plus utilisés que des habitats plus communs, ce qui indiquera une réelle préférence d’habitat. Le tableau <a href="leçon-4.html#tab:select">5.2</a> présente ce jeu de données.</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:select">Table 5.2: </span>Sélection d’habitat par des Orignaux selon la disponibilité d’habitat dans une aire d’étude.
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Habitat
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Disponibilité
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Fréquence
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 jeune coupe forestière
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 0.340
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 25
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 vieille coupe forestière
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 0.101
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 22
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 marais et étang
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 0.104
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 30
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 forêt non-coupée
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 0.455
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 40
 </td>
 </tr>
@@ -600,7 +600,7 @@ forêt non-coupée
 <span class="math display">\[\hat{f_4} = 0.455 \cdot 117 = 53.23\]</span></p>
 <p>Ce qui nous permet ensuite de calculer le <span class="math inline">\(\chi^2\)</span>:</p>
 <p><span class="math display">\[
-\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  \\
 \chi^2 = \frac{(25 - 39.78)^2}{39.78} + \frac{(22 - 11.82)^2}{11.82} + \frac{(30 - 12.17)^2}{12.17} + \frac{(40 - 53.23)^2}{53.23}   
 \]</span></p>
 <p><span class="math display">\[
@@ -682,7 +682,7 @@ Puisqu’on veut tester un ratio <span class="math inline">\(3 : 1\)</span>, les
 <div class="exemple" section="5">
 <p>On veut savoir si la couleur des yeux est indépendante de la couleur des cheveux chez des humains d’origine septentrionale. On sélectionne aléatoirement 114 individus au Canada et, pour chacun, on note la couleur des yeux et la couleur des cheveux. Les données sont illustrées dans le tableau <a href="leçon-4.html#tab:haireyes">5.3</a>. Notons ici qu’il y a deux variables catégoriques: la couleur des cheveux (deux niveaux: pâle, foncé) et la couleur des yeux (deux niveaux: bleu, brun).
 Nous reprendrons plus tard cet exemple.</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:haireyes">Table 5.3: </span>Tableau de contingence selon la couleur des cheveux et des yeux.
 </caption>
@@ -690,10 +690,10 @@ Nous reprendrons plus tard cet exemple.</p>
 <tr>
 <th style="text-align:left;">
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Pâle
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Foncé
 </th>
 </tr>
@@ -703,10 +703,10 @@ Foncé
 <td style="text-align:left;">
 Bleu
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 38
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 11
 </td>
 </tr>
@@ -714,10 +714,10 @@ Bleu
 <td style="text-align:left;">
 Brun
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 14
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;">
 51
 </td>
 </tr>
@@ -742,68 +742,68 @@ Brun
 <p>L’obtention des fréquences théoriques est un peu plus compliquée pour les tableaux de contingence, mais suit la même logique que pour le <span class="math inline">\(\chi^2\)</span> d’ajustement qui lui n’a qu’une seule variable catégorique. L’équation suivante nous donne les <span class="math inline">\(\hat{f_{ij}}\)</span> conformes à l’hypothèse nulle:</p>
 <p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G}\]</span></p>
 <div class="exemple" section="5">
-<p>On applique le calcul des fréquences théoriques aux données de l’échantillon de couleur des yeux et des cheveux. Le tableau @ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s’obtient:</p>
+<p>On applique le calcul des fréquences théoriques aux données de l’échantillon de couleur des yeux et des cheveux. Le tableau <a href="leçon-4.html#tab:fihat">5.4</a> montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s’obtient:</p>
 <p><span class="math display">\[\hat{f_{ij}} = \frac{R_i \times C_j}{G} \]</span>
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{(38 + 11) \times (38 + 14)}{(38 + 11 + 14 + 51)} \]</span>
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} = \frac{49 \times 52}{114} \]</span>
 <span class="math display">\[\hat{f}_{bleu-p\hat{a}le} =  22.35 \]</span></p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-49">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
+<span id="tab:fihat">Table 5.4: </span>Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.
 </caption>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Pâle
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Foncé
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <strong>Somme des rangées</strong>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Bleu
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 38 (22.35)
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 11 (26.65)
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 49
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Brun
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 14 (29.65)
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 51 (35.35)
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 65
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <strong>Somme des colonnes</strong>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 52
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 62
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 114
 </td>
 </tr>
@@ -879,34 +879,34 @@ Ici, nous obtenons 33.112 avec la correction de Yates et une valeur de <span cla
 <tr>
 <th style="text-align:left;">
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Témoin
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Traitement
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Vivant
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 5em; ">
 60
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 5em; ">
 200
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Mort
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 5em; ">
 60
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 5em; ">
 200
 </td>
 </tr>
@@ -931,24 +931,24 @@ Traitement
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Vivant
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 14
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 60
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Mort
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 46
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 10
 </td>
 </tr>
@@ -973,24 +973,24 @@ Traitement
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Vivant
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 46
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 140
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 5em; ">
 Mort
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 14
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;width: 5em; ">
 190
 </td>
 </tr>

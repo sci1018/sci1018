@@ -1,6 +1,54 @@
 # Intervalles de confiance et stratégies d'échantillonnage {#lecon2}
 
+---
+
 Dans la leçon précédente, nous avons vu des concepts de base importants en statistique, notamment les caractéristiques d'une population et d'un échantillon, les variables aléatoires, les mesures de tendance centrale et de dispersion. Nous avons également présenté le théorème de la limite centrale et la loi des grands nombres. Dans la présente leçon, nous poursuivons avec le concept de l'échantillonnage ainsi que différentes stratégies afin de récolter un échantillon.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `round( )`
+  - `sample( )`
+  - `runif( )`
+  - `dnorm( )`, `qnorm( )`, `pnorm( )`
+  - `qt( )`
+  - `read.table( )`
+  - `table( )`
+  - `hist( )`
+  - `barplot( )`
+  - `boxplot( )`
+  - `plot( )`
+  - `axis( )`
+  - `points( )`
+  - `arrows( )`
+  - `par( )`
+  - `pdf( )`
+  - `jpeg( )`
+  - `dev.off( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le jeu de données `croissance.csv` sur la croissance en kg de bovins auxquels on a donné l'une des trois types de moulées. 
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_2.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -202,7 +250,7 @@ La **distribution du $t$ de Student** vient du statisticien et maître brasseur 
 
 Avec R, nous pouvons déterminer la densité de probabilité, le quantile et la probabilité cumulative pour un degré de liberté donné avec les fonctions `dt( )`, `qt( )` et `pt( )`, respectivement. Bien que de forme très semblable à la distribution normale, la distribution du $t$ de Student a un plus grand nombre d'observations dans les extrémités que la distribution normale (Figure \@ref(fig:t). Pour un $n$ et une probabilité cumulative donnés, les quantiles de la distribution du $t$ de Student sont plus grands que celui de la distribution normale centrée-réduite (Figure \@ref{fig:qt}). Par conséquent, l'intervalle de confiance obtenu avec le $t$ est plus large qu'avec $z$ lorsque $n < 50$.
 
-```{r t, echo=FALSE, fig.cap="Comparaison de la distribution normale centrée réduite et de la distribution du $t$ de Student. On note qu'il y a un plus grand nombre de valeurs dans les extrémités de la distribution du $t$ que dans la distribution normale centrée réduite dès que $n < 50$."}
+```{r t, echo=FALSE, fig.align = 'center', fig.cap="Comparaison de la distribution normale centrée réduite et de la distribution du $t$ de Student. On note qu'il y a un plus grand nombre de valeurs dans les extrémités de la distribution du $t$ que dans la distribution normale centrée réduite dès que $n < 50$."}
 xvs <- seq(-4, 4, 0.01)
 plot(xvs, dnorm(xvs), type = "l", lty = 2, ylab = "Densité de probabilité", 
      xlab = expression(paste("Quantile (", z, " ou ", t,")")))
@@ -217,7 +265,7 @@ lines(xvs, dt(xvs, df = 11), lwd = 1)
 lines(xvs, dt(xvs, df = 51), col = "purple", lwd = 1)
 ```
 
-```{r qt, echo=FALSE, fig.cap="Valeurs des quantiles de la distribution du $t$ de Student en fonction de la taille d'échantillon ($df = n - 1$) pour une probabilité cumulative de 0.95. La ligne horizontale pointillée correspond à l'écart-normal de la distribution normale centrée réduite pour la même probabilité cumulative."}
+```{r qt, echo=FALSE, fig.align = 'center', fig.cap="Valeurs des quantiles de la distribution du $t$ de Student en fonction de la taille d'échantillon ($df = n - 1$) pour une probabilité cumulative de 0.95. La ligne horizontale pointillée correspond à l'écart-normal de la distribution normale centrée réduite pour la même probabilité cumulative."}
 ##standard normal distribution vs t distribution
 plot(0, 0, xlim = c(0, 50), ylim = c(0, 15), type = "n", 
      xlab = "Degrés de liberté", ylab = "", cex.lab = 1.2)
@@ -264,6 +312,8 @@ SE
 20.1 + t.stat * SE
 ```
 
+<br>
+
 Nous pouvons donc écrire:
 
 $$
@@ -306,7 +356,7 @@ Imaginons qu'une compagnie d'exploitation forestière coupe la forêt sur un sit
 
 Chacun des semis de la population croît à sa propre vitesse (Figure \@ref(fig:semis)a), mais on ne peut connaître sa croissance sans la mesurer. On embauche un technicien pour sélectionner aléatoirement 25 semis à mesurer afin d'estimer la hauteur moyenne des semis dans cette même population (Figure \@ref(fig:semis)b).
 
-```{r semis, echo=FALSE, fig.cap="Distribution de la population complète de semis dans une plantation où $\\mu = 74.99$ et $\\sigma = 14.99$ (a) et d'un échantillon aléatoire de 25 observations tiré de cette population (b)."}
+```{r semis, echo=FALSE, fig.align = 'center', fig.cap="Distribution de la population complète de semis dans une plantation où $\\mu = 74.99$ et $\\sigma = 14.99$ (a) et d'un échantillon aléatoire de 25 observations tiré de cette population (b)."}
 par(mfrow = c(1, 2), cex = 1.2)
 
 ##on génère 200 000 observations provenant d'une population avec mu=75, sigma=15
@@ -328,24 +378,24 @@ hist(echantillon.1, xlab = "Hauteur en cm", ylab = "Nombre de semis",
      main = "")
 #expression(paste("Histogramme de fréquence ", italic(n), " = 25")
 text(y = 10, x = 55, labels = expression(bold(b)), cex = 1.2) 
-moy.1 <- mean(echantillon.1)
-ecartype.1 <- sd(echantillon.1)
+moy1 <- mean(echantillon.1)
+ecartype1 <- sd(echantillon.1)
 SE <- ecartype.1/sqrt(25)
 lci <- moy.1 + qt(p = 0.025, df = 24)*SE
 uci <- moy.1 - qt(p = 0.025, df = 24)*SE
 ```
 
-On peut calculer l'intervalle de confiance à 95 \% à partir de notre échantillon, ce qui donne:
+On peut calculer l'intervalle de confiance à 95 \% à partir de notre échantillon, ce qui donne :
 $$
-\bar{x} = 78.45 \: \text{cm} \\
-s = 14.4 \: \text{cm} \\
+\bar{x} = `r round(moy.1, 2)` \: \text{cm} \\
+s = `r round(ecartype.1, 2)` \: \text{cm} \\
 n = 25 \\
-SE = \frac{14.44}{\sqrt{25}} =  2.88 \: \text{cm} \\
+SE = \frac{`r round(ecartype.1, 2)`}{\sqrt{25}} =  `r round(SE, 2)` \: \text{cm} \\
   \\ 
 IC \: \text{à} \: 95\:\%: \\
 P(\bar{x} - t_{0.05/2, (25 - 1)} \cdot SE \leq \mu \leq \bar{x} + t_{0.05/2, (25 - 1)} \cdot SE) = 0.95\\
-P(78.45 - 2.06 \cdot 2.88 \leq \mu \leq 78.45 + 2.06 \cdot 2.88 = 0.95\\
-IC \: \text{à} \: 95\%: (72.5, 84.39)
+P(`r round(moy.1, 2)` - `r round(qt(p = 0.025, df = 24, lower.tail = FALSE), 2)` \cdot `r round(SE, 2)`) \leq \mu \leq `r round(moy.1, 2)` + `r round(qt(p = 0.025, df = 24, lower.tail = FALSE), 2)` \cdot `r round(SE, 2)`) = 0.95\\
+IC \: \text{à} \: 95\%: (`r round(lci, 2)`, `r round(uci, 2)`)
 $$
 L'intervalle de confiance obtenu à partir de l'échantillon de 25 observations est $(72.5, 84.39)$. À noter que `qt( )` permet d'obtenir le quantile du $t$ associé à la probabilité cumulative correspondant à $\alpha/2$. On constate que la vraie moyenne de la population ($\mu = 74.99$) est contenue dans l'intervalle que l'on a construit. En d'autres mots, l'intervalle de confiance inclut ou n'inclut pas la vraie moyenne. 
 
@@ -356,7 +406,7 @@ On pourrait demander à 19 autres techniciens de sélectionner aléatoirement 25
 
 On peut aussi utiliser le concept de rééchantillonnage pour illustrer l'erreur-type de la moyenne. Dans la leçon 1, nous avons indiqué que la moyenne d'un échantillon provenait d'une distribution de moyennes d'échantillons. On pourrait demander à 1000 techniciens d'obtenir un échantillon aléatoire de 25 semis et de mesurer la hauteur de chaque arbre. Si chaque technicien calcule la moyenne de son échantillon, nous obtiendrons une distribution de moyennes d'échantillons (Figure \@ref(fig:SE). Rappelons-nous que l'erreur-type de la moyenne est une estimation de la variation entre les moyennes d'échantillons de même taille provenant de la même population. L'écart-type calculé à partir des valeurs des moyennes nous donnera l'erreur-type de la moyenne.
 
-```{r SE, echo=FALSE, fig.cap="Distribution des 1000 moyennes d'échantillons de 25 semis tirés de la population de 200 000 semis."}
+```{r SE, echo=FALSE, fig.align = 'center', fig.cap="Distribution des 1000 moyennes d'échantillons de 25 semis tirés de la population de 200 000 semis."}
 ##pour faciliter la compréhension du concept: intervalle à l'intérieur duquel se trouvera la moyenne de la population (mu) si on répète l'échantillonnage avec la même taille d'échantillon un grand nombre de fois
 ##notre population complète est contenue dans l'objet semis
 ##on veut calculer l'intervalle de confiance dans chaque échantillon de 25 semis
@@ -399,14 +449,14 @@ Afin d'optimiser l'effort et les coûts, on peut répartir l'effort d'échantill
 
 Dans l'**échantillonnage par grappes**, la population est divisée en groupes (grappes) d'unités secondaires près les unes des autres et les grappes sont sélectionnées aléatoirement. Par grappes, on entend un groupe composés d'unités spatiales adjacentes, comme des quadrats ou des transects contigus. La figure \@ref(fig:cluster) montre cinq grappes de quatre quadrat. Ces grappes sont sélectionnées aléatoirement dans l'aire d'étude, mais les unités qui composent la grappe ne le sont pas. Ce genre de dispositif ne peut pas être analysé comme si les données étaient complètement indépendantes les unes des autres. Par conséquent, des analyses moins conventionnelles sont nécessaires pour estimer les paramètres d'intérêt.
 
-```{r cluster, fig.align='left', echo=FALSE, fig.link='images/Target3.png', fig.cap="Exemple de grappes de quadrats pour l'échantillonnage par grappes."}
+```{r cluster, fig.align='center', echo=FALSE, fig.link='images/Target3.png', fig.cap="Exemple de grappes de quadrats pour l'échantillonnage par grappes."}
 knitr::include_graphics("Module_2/images/grappes2.png")
 ```
 
 L'**échantillonnage systématique** est une variation de l'échantillonnage par grappe où on dispose systématiquement les unités d'échantillonnage parmi la population. Le point de départ de la grille est sélectionné aléatoirement, mais les unités d'échantillonnage ne le sont pas (Figure \@ref(fig:systematic)). 
 
 
-```{r systematic, fig.align='left', echo=FALSE, fig.link='images/Target3.png', fig.cap="Exemple d'échantillonnage systématique avec deux grappes (grilles) de quadrats."}
+```{r systematic, fig.align='center', echo=FALSE, fig.link='images/Target3.png', fig.cap="Exemple d'échantillonnage systématique avec deux grappes (grilles) de quadrats."}
 knitr::include_graphics("Module_2/images/systematic.png")
 ```
 
@@ -462,11 +512,11 @@ R a été conçu pour faire des analyses statistiques et des graphiques. Ce n'es
 La fonction `hist()` permet de construire un histogramme de fréquence à partir d'une variable numérique (Figure \@ref(fig:hist)). On remarque que les étiquettes de l'axe des x's (abscisses) et des y's (ordonnées) ainsi que le titre principal laissent un peu à désirer: par défaut, `hist()` affiche le nom de la variable tel qu'il a été spécifié. On peut changer les étiquettes à l'aide des arguments `xlab`, `ylab` et `main` (Figure \@ref(fig:nicehist)).
 
 
-```{r hist, echo=TRUE, fig.align='left', fig.cap="Histogramme des valeurs de superficie dans le jeu de données de vers de terre."}
+```{r hist, echo=TRUE, fig.align='center', fig.cap="Histogramme des valeurs de superficie dans le jeu de données de vers de terre."}
 vers <- read.table(file = "Module_2/data/vers.txt", header = TRUE) 
 hist(vers$Superficie) 
 ```
-```{r nicehist, echo=TRUE, fig.align='left', fig.cap="Histogramme plus élaboré à partir des valeurs de superficie dans le jeu de données de vers de terre."}
+```{r nicehist, echo=TRUE, fig.align='center', fig.cap="Histogramme plus élaboré à partir des valeurs de superficie dans le jeu de données de vers de terre."}
 hist(vers$Superficie, ylab = "Fréquences", xlab = "Superficie",
      main = "Histogramme de fréquences pour les valeurs de superficie")
 ```
@@ -477,12 +527,12 @@ Pour tracer un diagramme à bâtons, typiquement nécessaire pour illustrer des 
 
 On remarque qu'une légende a été ajoutée à l'aide de l'argument `legend.text = TRUE` (Figure \@ref(fig:barplotb)). Nous verrons plus tard que la fonction `legend()` est beaucoup plus flexible. Il est à noter également que l'ajout de couleur peut se faire directement avec l'argument `col`.
 
-```{r barplot, echo=TRUE, fig.align='left', fig.cap="Diagramme à bâtons des fréquences de différentes classes de végétation dans le jeu de données de vers de terre."}
+```{r barplot, echo=TRUE, fig.align='center', fig.cap="Diagramme à bâtons des fréquences de différentes classes de végétation dans le jeu de données de vers de terre."}
 table(vers$Vegetation) #fréquences de chaque type de végétation
 barplot(height = table(vers$Vegetation), ylab = "Fréquences",
         xlab = "Type de végétation", col = "bisque") #diagramme en bâton
 ```
-```{r barplotb, echo=TRUE, fig.align='left', fig.cap="Diagramme à bâtons avec différentes structures et couleurs à partir des fréquences de chaque classe de végétation."}
+```{r barplotb, echo=TRUE, fig.align='center', fig.cap="Diagramme à bâtons avec différentes structures et couleurs à partir des fréquences de chaque classe de végétation."}
 tab.freq <- table(vers$Humide, vers$Vegetation)
 tab.freq
 par(mfrow = c(2, 2)) #organiser 4 graphiques dans une matrice de 2 x 2
@@ -500,7 +550,7 @@ barplot(tab.freq, beside = TRUE, legend.text = TRUE,
 
 On peut obtenir un diagramme de boîtes et moustaches (*boxplot* ou *box-and-whisker plot*) à l'aide de la fonction `boxplot()` (Figure \@ref(fig:boxplot)). Cette fonction permet d'illustrer une seule variable ou de visualiser plusieurs groupes simultanément. Ce graphique illustre la médiane (et non la moyenne arithmétique) par un trait gras à l'intérieur de la boîte. La limite inférieure de la boîte correspond au $25^{\mathrm{e}}$ percentile tandis que la limite supérieure indique le $75^{\mathrm{e}}$ percentile. La différence entre ces deux limites se nomme l'écart interquartile. Le graphique de boîtes et moustaches montre où se situent 50\% des observations et s'avère un bon moyen de visualiser rapidement les données. Par défaut, les moustaches représentent 1.5 fois l'écart interquartile ou la valeur la plus extrême: la moustache présente la plus petite de ces deux valeurs. Ceci peut-être modifié à l'aide de l'argument `range`. Par exemple, si `range = 0`, les moustaches s'étendront jusqu'aux valeurs extrêmes.
 
-```{r boxplot, echo=TRUE, fig.align='left', fig.cap="boxplot"}
+```{r boxplot, echo=TRUE, fig.align='center', fig.cap="boxplot"}
 boxplot(Densite.vers ~ Vegetation, data = vers)
 ```
 
@@ -509,7 +559,7 @@ boxplot(Densite.vers ~ Vegetation, data = vers)
 La fonction `plot()` permet de créer des nuages de points (`type = "p"`), des lignes (`type = "l"`), une combinaison de lignes et de points (`type = "b"`), et quelques autres graphiques inusités (Figure \@ref(fig:plot)). Cette fonction comporte un grand nombre d'arguments. On peut modifier plusieurs paramètres graphiques généraux de R à l'aide de `par()`. Par exemple, on peut ajouter plusieurs graphiques dans une même fenêtre, à l'aide des arguments `mfrow` ou `mfcol`. La première remplit la fenêtre une rangée à la fois, alors que la deuxième remplit la fenêtre une colonne à la fois.
 Un point important pour créer des lignes:  il faut ordonner les données selon la variable indépendante (i.e., l'axe des x's), sinon on obtient des zigzags qui n'ont aucun sens (Figure \@ref(fig:plot)).
 
-```{r plot, echo=TRUE, fig.align='left', fig.cap="Différents types de graphiques obtenus avec la fonction \texttt{plot( )}."}
+```{r plot, echo=TRUE, fig.align='center', fig.cap="Différents types de graphiques obtenus avec la fonction \texttt{plot( )}."}
 vers.ord <- vers[order(vers$Superficie), ] #ordonner selon Superficie
 par(mfrow = c(2, 2)) #combiner graphiques sur c(2 rangées, 2 colonnes)
 plot(Densite.vers ~ Superficie, type = "p", data = vers) #points

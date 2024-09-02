@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 10 Régression linéaire simple et corrélation | Statistiques avec R</title>
   <meta name="description" content="Module 10 Régression linéaire simple et corrélation | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 10 Régression linéaire simple et corrélation | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -374,8 +374,55 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon10" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">Module 10</span> Régression linéaire simple et corrélation<a href="lecon10.html#lecon10" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Dans le texte de la leçon prédécédente, nous avons vu illustré de nombreux éléments importants à considérer lors de l’élaboration de plans d’échantillonnage. Certains problèmes liés à l’échantillonnage ont été présentés, notamment la pseudoréplication et des sources de confusion. Ces conseils s’appliquent aussi à d’autres types d’analyses. Dans la présente leçon, nous introduirons la régression linéaire simple et la corrélation. Les conditions d’utilisation et les tests d’hypothèses qui y sont associés seront présentés.</p>
 <p>Dans les dernières leçons, la variable réponse était numérique et l’objectif était de déterminer comment cette variable changeait selon les niveaux d’un ou de plusieurs facteurs (p. ex., test <span class="math inline">\(t\)</span>, ANOVA). Les facteurs définissaient des groupes et les moyennes des groupes étaient comparées entre elles. Nous allons maintenant voir des applications où on veut déterminer la relation entre une variable réponse et une variable explicative numérique (au lieu d’un facteur). Ici, la variable explicative est mesurée sur une échelle numérique (p. ex., âge) au lieu d’être exprimée en niveaux (p. ex., classes d’âge).</p>
+<hr />
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-9" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon10.html#vous-utiliserez-les-fonctions-suivantes-9" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>read.table( )</code>, <code>head( )</code>, <code>summary( )</code></li>
+<li><code>lm( )</code></li>
+<li><code>fitted( )</code></li>
+<li><code>plot( )</code>, <code>par( )</code>, <code>abline( )</code>, <code>text( )</code>, <code>segments( )</code>, <code>lines( )</code></li>
+<li><code>qqnorm( )</code>, <code>qqline( )</code></li>
+<li><code>residuals( )</code></li>
+<li><code>ifelse( )</code></li>
+<li><code>rownames( )</code></li>
+<li><code>rstudent( )</code></li>
+<li><code>coef( )</code></li>
+<li><code>data.frame( )</code></li>
+<li><code>predict( )</code></li>
+<li><code>qt( )</code></li>
+<li><code>cor( )</code></li>
+<li><code>cor.test( )</code></li>
+<li><code>function( )</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Donnees.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-données-suivantes-7" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les données suivantes :<a href="lecon10.html#vous-utiliserez-les-données-suivantes-7" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Dans la partie Lecon, les fichiers suivantes sont utilisés :</p>
+<ul>
+<li>Le fichier <code>influencers.csv</code> sur le pouvoir des campagnes publicitaires lorsqu’elles utilisent principalement des “influenceurs” ou “influenceuses” du web.</li>
+<li>Le fichier <code>chocolats.txt</code> sur le prix de tablettes de chocolat.</li>
+</ul>
+<p>Dans la partie Autoévaluation, le fichier <code>Pression_sanguine.txt</code> est utilisé. Il présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.</p>
+Les données peuvent être téléchargées <a href="https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip">ici</a>.
+</div>
+</div>
+</div>
 </div>
             </section>
 

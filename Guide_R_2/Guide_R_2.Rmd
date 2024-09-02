@@ -347,7 +347,7 @@ kable(math_functions,
       col.names = c("Fonction", "Description"),
       caption = "Fonctions mathématiques de base courantes en R.",
       booktabs = TRUE,
-      escape = FALSE, "html") %>%
+      escape = FALSE, "html", align = "c") %>%
   kable_styling(latex_options = c("hold_position"))
 ```
 
@@ -379,7 +379,7 @@ kable(trig_functions,
       col.names = c("Fonction", "Description"),
       caption = "Fonctions trigonométriques courantes en R.",
       booktabs = TRUE,
-      escape = FALSE, "html") %>%
+      escape = FALSE, "html", align = "c") %>%
   kable_styling(latex_options = c("hold_position"))
 ```
 
@@ -681,8 +681,12 @@ agricultural_data <- data.frame(
 
 kable(agricultural_data, 
       caption = "Données récoltées lors d'une expérience agricole en format « large ».",
-      "html") %>%
-  kable_styling(latex_options = c("hold_position"))
+      "html", align = "c") %>%
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '8em') %>% 
+  column_spec(2, width = '8em') %>% 
+  column_spec(3, width = '8em') %>% 
+  column_spec(4, width = '8em')
 ```
 
 Bien que le format « large » permette de visualiser rapidement les données, il n'est pas celui qui est généralement utilisable par plusieurs fonctions d'analyses statistiques. En effet, le format le plus souvent requis est le format « long ». Le tableau \@ref(tab:agri2) présente le même jeu de données en ce format.
@@ -695,9 +699,11 @@ long_data <- data.frame(
 )
 
 kable(long_data, 
-      caption = "Données récoltées lors d'une expérience agricole en format \"long\".",
-      "html") %>%
-  kable_styling(latex_options = c("hold_position"))
+      caption = "Données récoltées lors d'une expérience agricole en format « long ».",
+      "html", align = "c") %>%
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '12em') %>% 
+  column_spec(2, width = '12em') 
 ```
 
 Une fois le fichier en format « long », on peut sauvegarder en texte avec des séparateurs tabulations ou espace à partir du chiffrier de notre choix. Afin de rendre l'importation plus agréable et plus facile, il est important de respecter les points suivants :

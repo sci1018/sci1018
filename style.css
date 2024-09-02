@@ -17,6 +17,12 @@ pre code {
 
 /* ------------------------------------------------- */
 /* TWO COLUMNS FOR PRESENTATION PHOTO */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .column {
   float: left;
   padding: 10px;
@@ -28,12 +34,6 @@ pre code {
 
 .right {
   width: 75%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /* ------------------------------------------------- */
@@ -81,7 +81,7 @@ body {
 .book .book-header {
   position: initial !important;
   height: 350px !important; /* height à changer selon la taille de l'image */
-  background-image: url(images/cover.jpg) !important;
+  background-image: url(images/cover.png) !important; /* extension à changer selon le format de l'image */
   background-size: cover !important;
   background-position: bottom !important;
 }
@@ -130,7 +130,7 @@ body {
   counter-increment: exemple;
   margin-bottom: 1em;
   padding: 15px 15px 15px 15px;
-  background-color: #16537e; /* color of example box on night mode */
+  background-color: #023253; /* color of example box on night mode */
 }
 
 .exemple { 
@@ -157,6 +157,71 @@ body {
   color: #A64907;
 }
 
+/* ------------------------------------------------- */
+/* CAPTION  COLOR*/
+
+.book.color-theme-1 p.caption {
+  color: #685722 !important; /* sepia mode for figure caption*/
+}
+
+.book.color-theme-1 caption {
+  color: #685722 !important; /* sepia mode for table caption*/
+}
+
+.book.color-theme-2 p.caption {
+  color: #d8defd !important; /* night mode for figure caption*/
+}
+
+.book.color-theme-2 caption {
+  color: #d8defd !important; /* night mode for table caption*/
+}
+
+/* ------------------------------------------------- */
+/* TABLES WITH HTML NOT KABLE*/
+.book .book-body .page-wrapper .page-inner section.normal table td{
+  border-left: none;
+  border-right: none;
+  background: white !important;
+  border: 1px solid white;
+  padding: 0;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal table th{
+  border-left: none;
+  border-right: none;
+  background: white !important;
+  border: 1px solid white;
+  padding: 0;
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table th{
+  border-color: #ffe0a4;
+  background: #ffe0a4  !important; /* sepia mode for table color*/
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table td {
+  border-color: #ffe0a4;
+  background: #ffe0a4 !important; /* sepia mode for table color*/
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal table th{
+  border-color: #3b3f54;
+  background: #3b3f54 !important; /* night mode for table color*/
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal table td {
+  border-color: #3b3f54;
+  background: #3b3f54 !important; /* night mode for table color*/
+}
+
+
+.custom-row {
+  line-height: 20px !important; 
+}
+
+.centered-row td,  .centered-row th {
+  text-align: center; 
+}
 
 /* ------------------------------------------------- */
 /* Pris du CSS de SCI 1031*/

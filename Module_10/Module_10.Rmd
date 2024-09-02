@@ -1,8 +1,60 @@
 # Régression linéaire simple et corrélation {#lecon10}
 
+--- 
+
 Dans le texte de la leçon prédécédente, nous avons vu illustré de nombreux éléments importants à considérer lors de l'élaboration de plans d'échantillonnage. Certains problèmes liés à l'échantillonnage ont été présentés, notamment la pseudoréplication et des sources de confusion. Ces conseils s'appliquent aussi à d'autres types d'analyses. Dans la présente leçon, nous introduirons la régression linéaire simple et la corrélation. Les conditions d'utilisation et les tests d'hypothèses qui y sont associés seront présentés.
 
 Dans les dernières leçons, la variable réponse était numérique et l'objectif était de déterminer comment cette variable changeait selon les niveaux d'un ou de plusieurs facteurs (p. ex., test $t$, ANOVA). Les facteurs définissaient des groupes et les moyennes des groupes étaient comparées entre elles. Nous allons maintenant voir des applications où on veut déterminer la relation entre une variable réponse et une variable explicative numérique (au lieu d'un facteur). Ici, la variable explicative est mesurée sur une échelle numérique (p. ex., âge) au lieu d'être exprimée en niveaux (p. ex., classes d'âge). 
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `summary( )`
+  - `lm( )`
+  - `fitted( )`
+  - `plot( )`, `par( )`, `abline( )`, `text( )`, `segments( )`, `lines( )`
+  - `qqnorm( )`, `qqline( )`
+  - `residuals( )`
+  - `ifelse( )`
+  - `rownames( )`
+  - `rstudent( )`
+  - `coef( )`
+  - `data.frame( )`
+  - `predict( )`
+  - `qt( )`
+  - `cor( )`
+  - `cor.test( )`
+  - `function( )`
+</div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Dans la partie Lecon, les fichiers suivantes sont utilisés :
+
+  - Le fichier `influencers.csv` sur le pouvoir des campagnes publicitaires lorsqu’elles utilisent principalement des “influenceurs” ou “influenceuses” du web.
+  - Le fichier `chocolats.txt` sur le prix de tablettes de chocolat.
+
+Dans la partie Autoévaluation, le fichier `Pression_sanguine.txt` est utilisé. Il présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -112,10 +164,12 @@ beta.0 <- mean(facteur) - beta.x * mean(nombre)
 MSE <- SSE/(length(facteur) - 2)
 ``` 
 
-La somme des carrés de $Y$:
+La somme des carrés de $Y$ :
+
 $$SSY = \sum_{i=1}^n (y_i - \bar{y})^2$$
 $$SSY = (`r facteur[1]` - `r round(mean(facteur), 1)`)^2 + \ldots + (`r facteur[13]` - `r round(mean(facteur), 1)`)^2$$
 $$SSY = `r round(SSY, 1)`$$
+
 La somme des carrés de $X$:
 $$SSX = \sum_{i=1}^n (x_i - \bar{x})^2$$
 $$SSX = (`r nombre[1]` - `r round(mean(nombre), 1)`)^2 + \ldots + (`r nombre[13]` - `r round(mean(nombre), 1)`)^2$$

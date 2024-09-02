@@ -1,6 +1,48 @@
 # Blocs complets aléatoires {#lecon8}
 
+---
+
 Dans la leçon précédente, nous avons présenté l'ANOVA à deux critères avec répétitions. Nous avons vue en détail les concepts d'interaction et d'additivité. Rappelons qu'en présence d'une interaction entre deux facteurs, on ne peut pas interpréter les effets principaux séparément. En effet, une interaction implique que l'effet d'un facteur sur la variable réponse dépend du niveau de l'autre. On dit dans ce cas que les effets ne sont pas additifs.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `str( )`
+  - `as.factor( )`
+  - `boxplot( )`
+  - `aov( )`
+  - `plot( )`, `par( )`, `axis( )`, `arrows( )`, `text( )`,
+  - `log( )`
+  - `tapply( )`
+  - `TukeyHSD( )`
+  - `exp( )`
+</div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Dans la partie Lecon, le fichier `cochon.txt` est utilisé. Il contient l’effet de quatre diètes différentes sur le gain de masse en grammes de cochons d’Inde.
+
+Dans la partie Autoévaluation, le fichier `lavage.txt` est utilisé. Il présente la blancheur des vêtements (indice de 0 à 10) après avoir laver ces vêtements avec trois détergents différents.   
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -68,8 +110,8 @@ colnames(df) <- c("Facteur",
 kable(df,  
       row.names = FALSE, 
       caption = "Termes d'erreurs utilisés pour tester les effets de A, de B et de leur interaction selon la nature des effets (fixes ou aléatoires) en présence de répétitions.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = T, position = "center")
 ``` 
 
 Le modèle III est aussi appelé **modèle mixte** puisqu'il contient des effets fixes et des effets aléatoires. Les modèles mixtes englobent une variété d'approches qui tiennent compte de la structure de données complexes, telles que celles provenant d'un dispositif dit niché ou emboité (p.ex., sondages auprès d'individus emboîtés dans des quartiers, ces derniers emboîtés eux-mêmes dans différentes villes) ou encore avec des mesures répétées dans le temps. Le dispositif expérimental le plus simple du modèle III est le dispositif en **blocs complets aléatoires** et c'est celui que nous verrons en détail dans la prochaine section.
@@ -217,24 +259,24 @@ TukeyHSD(x = bloc.aov.log, which = "Diete")
 Les comparaisons multiples identifient deux groupes, le premier est constitué des diètes 4 et 1, et le deuxième est composé des diètes 2 et 3 :
 
 <table>
-  <tr>
-    <th style="border: 0px solid black; padding: 3px;">4</th>
-    <th style="border: 0px solid black; padding: 3px;">1</th>
-    <th style="border: 0px solid black; padding: 3px;">2</th>
-    <th style="border: 0px solid black; padding: 3px;">3</th>
+  <tr class="centered-row">
+    <th>4</th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
   </tr>
-  <tr>
+  <tr class="centered-row">
     <td>1.24<sup>2</sup></td>
     <td>1.38<sup>2</sup></td>
     <td>2.24<sup>2</sup></td>
     <td>2.80<sup>2</sup></td>
   </tr>
-  <tr>
+  <tr class="custom-row">
     <td colspan="2" style="border-bottom: 2px solid;">&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
-  <tr>
+  <tr class="custom-row">
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td colspan="2" style="border-bottom: 2px solid;">&nbsp;</td>

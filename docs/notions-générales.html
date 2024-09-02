@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Notions générales | Statistiques avec R</title>
   <meta name="description" content="Notions générales | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Notions générales | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -435,7 +435,8 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="notions-générales.html#cb15-1" tabindex="-1"></a>Albums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;16 Horsepower&quot;</span>, <span class="st">&quot;Sackcloth &#39;n&#39; Ashes&quot;</span>, <span class="st">&quot;Low Estate&quot;</span>, </span>
 <span id="cb15-2"><a href="notions-générales.html#cb15-2" tabindex="-1"></a>            <span class="st">&quot;Secret South&quot;</span>, <span class="st">&quot;Hoarse&quot;</span>, <span class="st">&quot;Folklore&quot;</span>, <span class="st">&quot;Olden&quot;</span>)</span>
 <span id="cb15-3"><a href="notions-générales.html#cb15-3" tabindex="-1"></a>Albums</span></code></pre></div>
-<pre><code>## [1] &quot;16 Horsepower&quot;       &quot;Sackcloth &#39;n&#39; Ashes&quot; &quot;Low Estate&quot;          &quot;Secret South&quot;        &quot;Hoarse&quot;              &quot;Folklore&quot;            &quot;Olden&quot;</code></pre>
+<pre><code>## [1] &quot;16 Horsepower&quot;       &quot;Sackcloth &#39;n&#39; Ashes&quot; &quot;Low Estate&quot;          &quot;Secret South&quot;        &quot;Hoarse&quot;             
+## [6] &quot;Folklore&quot;            &quot;Olden&quot;</code></pre>
 </div>
 <div id="sélectionner-des-valeurs" class="section level5 unnumbered hasAnchor">
 <h5>Sélectionner des valeurs<a href="notions-générales.html#sélectionner-des-valeurs" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -463,8 +464,9 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La fonction <code>rep()</code> inclut deux arguments : <code>x</code> spécifie la valeur à répéter, tandis que <code>times</code> indique le nombre de répétitions. On peut aussi répéter des caractères.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="notions-générales.html#cb29-1" tabindex="-1"></a>y20.caracteres <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;vieux&quot;</span>), <span class="at">times =</span> <span class="dv">20</span>)</span>
 <span id="cb29-2"><a href="notions-générales.html#cb29-2" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [22] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [15] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [29] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
 <p>Plusieurs fonctions de base peuvent être appliquées à une multitude de scénarios, et c’est l’un des attraits de la programmation en <code>R</code>. Ici, nous avons utilisé à nouveau la fonction <code>c()</code> pour créer un vecteur à 2 valeurs, <code>neuf</code> et <code>vieux</code>, et nous avons répété ce vecteur 20 fois. Il est donc important d’apprendre quelques fonctions de base qui reviendront souvent dans le cours.</p>
 </div>
 <div id="créer-une-série" class="section level5 unnumbered hasAnchor">
@@ -478,7 +480,8 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 <p>La valeur de l’argument <code>by</code> n’est pas limitée aux entiers.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="notions-générales.html#cb34-1" tabindex="-1"></a>y.seq<span class="fl">.01</span> <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb34-2"><a href="notions-générales.html#cb34-2" tabindex="-1"></a>y.seq<span class="fl">.01</span></span></code></pre></div>
-<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
+<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7
+## [29] 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0</code></pre>
 <p>La fonction <code>seq()</code> possède également un argument <code>length.out</code> qui permet d’obtenir le nombre de valeurs sans indiquer le pas.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="notions-générales.html#cb36-1" tabindex="-1"></a>y.seq.length <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
 <span id="cb36-2"><a href="notions-générales.html#cb36-2" tabindex="-1"></a>y.seq.length</span></code></pre></div>
@@ -526,148 +529,148 @@ Figure 0.7: Aide dans R avec <code>r help.start( )</code>.
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Fonction
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>min(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 valeur minimale parmi les éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>max(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 valeur maximale parmi les éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>range(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 étendue des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>rank(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 le rang des éléments de x (ième observation en ordre croissant)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>round(x, digits)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 arrondit les éléments de x à digits décimales
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>sum(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 somme des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>cumsum(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 renvoie le vecteur dont le ième élément est la somme de x[1] à x[i]
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>prod(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 produit des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>cumprod(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 renvoie le vecteur dont le ième élément est le produit de x[1] à x[i]
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>abs(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 valeur absolue des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>sqrt(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 racine carrée des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>log2(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 logarithme en base 2 des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>log10(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 logarithme en base 10 des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>log(x, base)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 logarithme en base base des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>log(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 logarithme naturel des éléments de x équivaut à log(x, base = exp(1))
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>exp(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 renvoie la valeur de e élevée à la puissance x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>x^y</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 la valeur de x élevée à la puissance y
 </td>
 </tr>
@@ -680,60 +683,60 @@ la valeur de x élevée à la puissance y
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Fonction
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>cos(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 cosinus en radians des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>sin(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 sinus en radians des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>tan(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 tangente en radians des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>acos(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 arc-cosinus en radians des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>asin(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 arc-sinus en radians des éléments de x
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <code>atan(x)</code>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 arc-tangente en radians des éléments de x
 </td>
 </tr>
@@ -789,8 +792,9 @@ arc-tangente en radians des éléments de x
 <pre><code>## [1] 0 1 1 1 1 0 1</code></pre>
 <p>On procède de la même façon si le vecteur contient des caractères :</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="notions-générales.html#cb95-1" tabindex="-1"></a>y20.caracteres</span></code></pre></div>
-<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot; 
-## [22] &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
+<pre><code>##  [1] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [15] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;
+## [29] &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot; &quot;neuf&quot;  &quot;vieux&quot;</code></pre>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="notions-générales.html#cb97-1" tabindex="-1"></a>bin.y20 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y20.caracteres <span class="sc">==</span> <span class="st">&quot;neuf&quot;</span>, <span class="st">&quot;nouveau&quot;</span>, <span class="st">&quot;ancien&quot;</span>)</span>
 <span id="cb97-2"><a href="notions-générales.html#cb97-2" tabindex="-1"></a>bin.y20[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot; &quot;ancien&quot;  &quot;nouveau&quot;</code></pre>
@@ -1028,162 +1032,162 @@ arc-tangente en radians des éléments de x
 <h5>Importer des fichiers de données<a href="notions-générales.html#importer-des-fichiers-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Au lieu d’entrer à la main les données dans <code>R</code>, nous allons généralement importer les données sauvegardées dans un fichier. Il est facile d’importer des fichiers au format texte brut en <code>R</code> en suivant quelques lignes directrices. Il existe une multitude de moyens pour importer des fichiers dans <code>R</code>, mais nous n’en présenterons que quelques-uns.</p>
 <p>Bien que le fichier doive être en format texte, l’extension peut être celle de votre choix. Pour faciliter l’analyse de jeux de données, nous recommandons de structurer vos fichiers en format « long ». Dans ce format, toutes les valeurs d’une même variable se trouvent sous une même colonne. Par exemple, dans une expérience agricole, on pourrait présenter les données dans un tableau en format « large » (Table <a href="notions-générales.html#tab:agri">0.3</a>).</p>
-<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:agri">Table 0.3: </span>Données récoltées lors d’une expérience agricole en format « large ».
 </caption>
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Témoin
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Engrais.A
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Engrais.B
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Engrais.C
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 6.1
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 6.3
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 7.1
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 8.1
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 5.9
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 6.2
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 8.2
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 8.5
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 5.8
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 5.8
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 7.3
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 7.6
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 5.4
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 6.3
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 6.9
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 8em; ">
 7.8
 </td>
 </tr>
 </tbody>
 </table>
 <p>Bien que le format « large » permette de visualiser rapidement les données, il n’est pas celui qui est généralement utilisable par plusieurs fonctions d’analyses statistiques. En effet, le format le plus souvent requis est le format « long ». Le tableau <a href="notions-générales.html#tab:agri2">0.4</a> présente le même jeu de données en ce format.</p>
-<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:agri2">Table 0.4: </span>Données récoltées lors d’une expérience agricole en format “long”.
+<span id="tab:agri2">Table 0.4: </span>Données récoltées lors d’une expérience agricole en format « long ».
 </caption>
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:center;">
 Réponse
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Traitement
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 6.1
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 Témoin
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 5.9
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 Témoin
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 5.8
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 Témoin
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 5.4
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 Témoin
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 6.3
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 EngraisA
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 6.2
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 EngraisA
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 5.8
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 EngraisA
 </td>
 </tr>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 12em; ">
 6.3
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;width: 12em; ">
 EngraisA
 </td>
 </tr>

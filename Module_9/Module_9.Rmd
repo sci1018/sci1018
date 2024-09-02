@@ -1,6 +1,11 @@
 # Élaboration et optimisation de plans d'échantillonnage {#lecon9}
 
+---
+
 La leçon précédente a illustré les concepts d'effets fixes et d'effets aléatoires ainsi que de modèle mixte. L'ANOVA en blocs complets aléatoires a été présentée comme étant le cas le plus simple de modèle mixte et comme l'extension du test $t$ pour les données appariées. Le dispositif en blocs complets aléatoires comporte des avantages importants, notamment sur le plan logistique comparé aux dispositifs complètement aléatoires (p. ex., ANOVA à un critère avec répétitions, ANOVA à deux critères avec répétitions). Dans la présente leçon, nous discuterons de façon plus générale de l'élaboration de dispositifs expérimentaux. Nous fournirons plusieurs conseils afin d'arriver à des conclusions solides.
+
+---
+
 
 ## Leçon
 

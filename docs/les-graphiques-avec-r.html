@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.2 Les graphiques avec R | Statistiques avec R</title>
   <meta name="description" content="2.2 Les graphiques avec R | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.2 Les graphiques avec R | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -383,7 +383,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>La fonction <code>hist()</code> permet de construire un histogramme de fréquence à partir d’une variable numérique (Figure <a href="les-graphiques-avec-r.html#fig:hist">2.8</a>). On remarque que les étiquettes de l’axe des x’s (abscisses) et des y’s (ordonnées) ainsi que le titre principal laissent un peu à désirer: par défaut, <code>hist()</code> affiche le nom de la variable tel qu’il a été spécifié. On peut changer les étiquettes à l’aide des arguments <code>xlab</code>, <code>ylab</code> et <code>main</code> (Figure <a href="les-graphiques-avec-r.html#fig:nicehist">2.9</a>).</p>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="les-graphiques-avec-r.html#cb355-1" tabindex="-1"></a>vers <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_2/data/vers.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) </span>
 <span id="cb355-2"><a href="les-graphiques-avec-r.html#cb355-2" tabindex="-1"></a><span class="fu">hist</span>(vers<span class="sc">$</span>Superficie) </span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:hist"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hist"></span>
 <img src="Cours_Stats_R_files/figure-html/hist-1.png" alt="Histogramme des valeurs de superficie dans le jeu de données de vers de terre." width="672" />
 <p class="caption">
 Figure 2.8: Histogramme des valeurs de superficie dans le jeu de données de vers de terre.
@@ -391,7 +391,7 @@ Figure 2.8: Histogramme des valeurs de superficie dans le jeu de données de ver
 </div>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="les-graphiques-avec-r.html#cb356-1" tabindex="-1"></a><span class="fu">hist</span>(vers<span class="sc">$</span>Superficie, <span class="at">ylab =</span> <span class="st">&quot;Fréquences&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Superficie&quot;</span>,</span>
 <span id="cb356-2"><a href="les-graphiques-avec-r.html#cb356-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histogramme de fréquences pour les valeurs de superficie&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:nicehist"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nicehist"></span>
 <img src="Cours_Stats_R_files/figure-html/nicehist-1.png" alt="Histogramme plus élaboré à partir des valeurs de superficie dans le jeu de données de vers de terre." width="672" />
 <p class="caption">
 Figure 2.9: Histogramme plus élaboré à partir des valeurs de superficie dans le jeu de données de vers de terre.
@@ -408,7 +408,7 @@ Figure 2.9: Histogramme plus élaboré à partir des valeurs de superficie dans 
 ##         3         4         9         3         1</code></pre>
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="les-graphiques-avec-r.html#cb359-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(vers<span class="sc">$</span>Vegetation), <span class="at">ylab =</span> <span class="st">&quot;Fréquences&quot;</span>,</span>
 <span id="cb359-2"><a href="les-graphiques-avec-r.html#cb359-2" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Type de végétation&quot;</span>, <span class="at">col =</span> <span class="st">&quot;bisque&quot;</span>) <span class="co">#diagramme en bâton</span></span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:barplot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:barplot"></span>
 <img src="Cours_Stats_R_files/figure-html/barplot-1.png" alt="Diagramme à bâtons des fréquences de différentes classes de végétation dans le jeu de données de vers de terre." width="672" />
 <p class="caption">
 Figure 2.10: Diagramme à bâtons des fréquences de différentes classes de végétation dans le jeu de données de vers de terre.
@@ -429,7 +429,7 @@ Figure 2.10: Diagramme à bâtons des fréquences de différentes classes de vé
 <span id="cb362-7"><a href="les-graphiques-avec-r.html#cb362-7" tabindex="-1"></a><span class="fu">barplot</span>(tab.freq, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend.text =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb362-8"><a href="les-graphiques-avec-r.html#cb362-8" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;turquoise&quot;</span>), </span>
 <span id="cb362-9"><a href="les-graphiques-avec-r.html#cb362-9" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Légende et couleurs&quot;</span>) <span class="co">#ajouter légende et couleurs</span></span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:barplotb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:barplotb"></span>
 <img src="Cours_Stats_R_files/figure-html/barplotb-1.png" alt="Diagramme à bâtons avec différentes structures et couleurs à partir des fréquences de chaque classe de végétation." width="672" />
 <p class="caption">
 Figure 2.11: Diagramme à bâtons avec différentes structures et couleurs à partir des fréquences de chaque classe de végétation.
@@ -440,7 +440,7 @@ Figure 2.11: Diagramme à bâtons avec différentes structures et couleurs à pa
 <h3><span class="header-section-number">2.2.4</span> Diagramme de boîtes et moustaches<a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On peut obtenir un diagramme de boîtes et moustaches (<em>boxplot</em> ou <em>box-and-whisker plot</em>) à l’aide de la fonction <code>boxplot()</code> (Figure <a href="les-graphiques-avec-r.html#fig:boxplot">2.12</a>). Cette fonction permet d’illustrer une seule variable ou de visualiser plusieurs groupes simultanément. Ce graphique illustre la médiane (et non la moyenne arithmétique) par un trait gras à l’intérieur de la boîte. La limite inférieure de la boîte correspond au <span class="math inline">\(25^{\mathrm{e}}\)</span> percentile tandis que la limite supérieure indique le <span class="math inline">\(75^{\mathrm{e}}\)</span> percentile. La différence entre ces deux limites se nomme l’écart interquartile. Le graphique de boîtes et moustaches montre où se situent 50% des observations et s’avère un bon moyen de visualiser rapidement les données. Par défaut, les moustaches représentent 1.5 fois l’écart interquartile ou la valeur la plus extrême: la moustache présente la plus petite de ces deux valeurs. Ceci peut-être modifié à l’aide de l’argument <code>range</code>. Par exemple, si <code>range = 0</code>, les moustaches s’étendront jusqu’aux valeurs extrêmes.</p>
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="les-graphiques-avec-r.html#cb363-1" tabindex="-1"></a><span class="fu">boxplot</span>(Densite.vers <span class="sc">~</span> Vegetation, <span class="at">data =</span> vers)</span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:boxplot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot"></span>
 <img src="Cours_Stats_R_files/figure-html/boxplot-1.png" alt="boxplot" width="672" />
 <p class="caption">
 Figure 2.12: boxplot
@@ -457,7 +457,7 @@ Un point important pour créer des lignes: il faut ordonner les données selon l
 <span id="cb364-4"><a href="les-graphiques-avec-r.html#cb364-4" tabindex="-1"></a><span class="fu">plot</span>(Densite.vers <span class="sc">~</span> Superficie, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> vers) <span class="co">#lignes</span></span>
 <span id="cb364-5"><a href="les-graphiques-avec-r.html#cb364-5" tabindex="-1"></a><span class="fu">plot</span>(Densite.vers <span class="sc">~</span> Superficie, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> vers.ord) <span class="co">#lignes</span></span>
 <span id="cb364-6"><a href="les-graphiques-avec-r.html#cb364-6" tabindex="-1"></a><span class="fu">plot</span>(Densite.vers <span class="sc">~</span> Superficie, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">data =</span> vers.ord) <span class="co">#points et lignes</span></span></code></pre></div>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:plot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot"></span>
 <img src="Cours_Stats_R_files/figure-html/plot-1.png" alt="Différents types de graphiques obtenus avec la fonction  exttt{plot( )}." width="672" />
 <p class="caption">
 Figure 2.13: Différents types de graphiques obtenus avec la fonction exttt{plot( )}.
@@ -473,8 +473,8 @@ Figure 2.13: Différents types de graphiques obtenus avec la fonction exttt{plot
 <span id="cb365-4"><a href="les-graphiques-avec-r.html#cb365-4" tabindex="-1"></a><span class="fu">boxplot</span>(Densite.vers <span class="sc">~</span> Vegetation, <span class="at">data =</span> vers)</span>
 <span id="cb365-5"><a href="les-graphiques-avec-r.html#cb365-5" tabindex="-1"></a><span class="do">##on indique à R que le graphique est terminé</span></span>
 <span id="cb365-6"><a href="les-graphiques-avec-r.html#cb365-6" tabindex="-1"></a><span class="fu">dev.off</span>( ) <span class="co">#</span></span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
+<pre><code>## RStudioGD 
+##         2</code></pre>
 <p>On remarque que la commande <code>pdf()</code> indique que le graphique sera sauvegardé sous le format pdf dans le fichier <code>boxplot.pdf</code> à l’endroit spécifié. Si aucun chemin n’est spécifié, le fichier sera sauvegardé dans le répertoire de travail. On peut facilement déterminer le répertoire travail à l’aide de la commande <code>getwd()</code>. Les arguments <code>width</code> et <code>height</code> de <code>pdf( )</code> spécifient la largeur et la hauteur de la figure en pouces, et ces valeurs prennent 7 par défaut. La commande <code>dev.off( )</code> émise après le graphique informe R que le graphique est terminé. Le graphique à réaliser doit se trouver entre ces deux commandes et n’apparaîtra pas à l’écran puisqu’il sera sauvegardé dans le fichier directement.</p>
 <div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="les-graphiques-avec-r.html#cb367-1" tabindex="-1"></a><span class="do">##on indique à R qu&#39;on veut sauvegarder en jpeg</span></span>
 <span id="cb367-2"><a href="les-graphiques-avec-r.html#cb367-2" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="at">file =</span> <span class="st">&quot;Module_2/images/boxplot.jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">1200</span>, </span>
@@ -483,8 +483,8 @@ Figure 2.13: Différents types de graphiques obtenus avec la fonction exttt{plot
 <span id="cb367-5"><a href="les-graphiques-avec-r.html#cb367-5" tabindex="-1"></a><span class="fu">boxplot</span>(Densite.vers <span class="sc">~</span> Vegetation, <span class="at">data =</span> vers)</span>
 <span id="cb367-6"><a href="les-graphiques-avec-r.html#cb367-6" tabindex="-1"></a><span class="do">##on indique à R que le graphique est terminé</span></span>
 <span id="cb367-7"><a href="les-graphiques-avec-r.html#cb367-7" tabindex="-1"></a><span class="fu">dev.off</span>( ) </span></code></pre></div>
-<pre><code>## png 
-##   2</code></pre>
+<pre><code>## RStudioGD 
+##         2</code></pre>
 <p>Le graphique sera sauvegardé en format jpeg à l’endroit spécifié avec une taille de 1200 x 1200 pixels et une qualité de 100 % (avec peu de compression). Nous continuerons à explorer d’autres fonctionnalités graphiques lors des leçons subséquentes.</p>
 </div>
 </div>

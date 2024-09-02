@@ -1,6 +1,31 @@
 # Analyse de fréquences et test du khi carré ($\chi^2$) {#lecon5}
 
+---
+
 Dans la leçon précédente, nous avons illustré des variantes du test $t$ de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Nous avons présenté les suppositions sous-jacentes à ces analyses ainsi que plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions. Dans tous les cas, les variables réponses étaient numériques avec des valeurs décimales, comme la hauteur, le temps et la masse. Pour ce genre de données, la décimale représente une valeur observable: une hauteur de 193.24 cm a un sens. Toutefois, les fréquences, comme celles provenant du décompte d'événements d'intérêt prennent uniquement des valeurs entières (discrètes). Par exemple, si nous étudions le nombre de personnes atteintes d'une maladie ou le nombre survivant à cette maladie, nous ne pouvons pas observer 12.23 événements. Nous en observerons plutôt 12 ou 13. Ce type de données fera l'objet de cette leçon.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `pchisq( )`
+  - `names( )`
+  - `c( )`
+  - `chisq.test( )`
+  - `matrix( )`
+  - `sum( )`
+  - `abs( )`
+  - `colnames( )`  
+  - `rownames( )`
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -30,8 +55,8 @@ chi2 <- ((freq.data[1] - f.hat)^2)/f.hat + ((freq.data[2] - f.hat)^2)/f.hat + ((
 kable(df.freqs, 
       row.names = FALSE, 
       caption = "Habitudes d'utilisation de différents modes de transports dans un échantillon de 500 individus à la TÉLUQ.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(latex_options = c("hold_position"))
 
 ```
 :::
@@ -202,9 +227,8 @@ moose.data <- data.frame(Habitat = c("jeune coupe forestière", "vieille coupe f
 kable(moose.data, 
       row.names = FALSE, 
       caption = "Sélection d'habitat par des Orignaux selon la disponibilité d'habitat dans une aire d'étude.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
-
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(latex_options = c("hold_position"))
 ``` 
 
 L'objectif est de déterminer si certains habitats sont surutilisés ou sous-utilisés par les orignaux. On émet les hypothèses statistiques suivantes :  
@@ -222,7 +246,7 @@ $$\hat{f_4} = 0.455 \cdot 117 = 53.23$$
 Ce qui nous permet ensuite de calculer le $\chi^2$:
 
 $$
-\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  
+\chi^2 = \sum_{i=1}^k \frac{(f_i - \hat{f_i})^2}{\hat{f_i}}  \\
 \chi^2 = \frac{(25 - 39.78)^2}{39.78} + \frac{(22 - 11.82)^2}{11.82} + \frac{(30 - 12.17)^2}{12.17} + \frac{(40 - 53.23)^2}{53.23}   
 $$
 
@@ -242,7 +266,6 @@ out.select <- chisq.test(select, p = c(0.340, 0.101, 0.104, 0.455))
 out.select
 ``` 
 :::
-
 
 
 On conclut qu'il est peu probable d'observer une valeur de $\chi^2 \geq 43.689$ avec 3 degrés de liberté dans une population où l'utilisation de l'habitat par les orignaux est proportionnelle à la disponibilité de l'habitat. Effectivement, on rejette $H_0$. Certains types d'habitat sont sous-utilisés et d'autres surutilisés par rapport à leur disponibilité dans l'aire d'étude. De façon équivalente, on peut dire que l'utilisation de différents habitats par les Orignaux ne dépend pas seulement des disponibilités de ces habitats.
@@ -329,8 +352,8 @@ rownames(freq_obs) <- c("Bleu", "Brun")
 
 kable(freq_obs, 
       caption = "Tableau de contingence selon la couleur des cheveux et des yeux.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(latex_options = c("hold_position"))
 ``` 
 :::
 
@@ -364,14 +387,14 @@ $$\hat{f_{ij}} = \frac{R_i \times C_j}{G}$$
 
 
 :::{.exemple section=5}
-On applique le calcul des fréquences théoriques aux données de l'échantillon de couleur des yeux et des cheveux. Le tableau \@ref(tab:fi.hat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s'obtient: 
+On applique le calcul des fréquences théoriques aux données de l'échantillon de couleur des yeux et des cheveux. Le tableau \@ref(tab:fihat) montre les fréquences observées avec les fréquences théoriques entre parenthèses. Pour illustrer, la fréquence théorique des individus avec des cheveux pâles et des yeux bleus s'obtient: 
 
 $$\hat{f_{ij}} = \frac{R_i \times C_j}{G} $$
 $$\hat{f}_{bleu-p\hat{a}le} = \frac{(38 + 11) \times (38 + 14)}{(38 + 11 + 14 + 51)} $$
 $$\hat{f}_{bleu-p\hat{a}le} = \frac{49 \times 52}{114} $$
 $$\hat{f}_{bleu-p\hat{a}le} =  `r round(49*52/114, 2)` $$
 
-```{r echo = FALSE, keep.source = FALSE}
+```{r fihat, echo = FALSE, keep.source = FALSE}
 df <- data.frame(
   Col1 = c("", "Bleu", "Brun", "**Somme des colonnes**"),
   Col2 = c("Pâle", "38 (22.35)", "14 (29.65)", "52"),
@@ -384,8 +407,8 @@ kable(df,
       col.names = NULL, 
       row.names = FALSE, 
       caption = "Fréquences observées et théoriques (entre parenthèses) et totaux marginaux selon la couleur des cheveux et des yeux.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(latex_options = c("hold_position"))
 ``` 
 
 Avant d'aller plus loin, allons voir les détails du calcul du $\chi^2$ d'indépendance.
@@ -465,8 +488,11 @@ rownames(surv) <- c("Vivant", "Mort")
 
 kable(surv, 
       caption = "Effet d'un traitement sur la survie d'individus.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "c") %>% 
+  column_spec(1, width = '5em') %>% 
+  column_spec(2, width = '5em') %>% 
+  column_spec(3, width = '5em')
 ``` 
 
 D'après ce tableau, on serait porté à conclure que la survie des souris est indépendante du traitement ($60/120$ vs $200/400$ = 0.5 vs 0.5). Toutefois, en stratifiant l'analyse par sexe, on obtient un résultat différent. Le tableau des mâles suggère que le traitement augmente la survie (Table \@ref(tab:survMales), $14/60$ vs $60/70$ = 0.23 vs 0.85). 
@@ -480,7 +506,10 @@ rownames(surv.males) <- c("Vivant", "Mort")
 kable(surv.males, 
       caption = "Effet d'un traitement sur la survie des mâles.",
       "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '5em') %>% 
+  column_spec(2, width = '5em') %>% 
+  column_spec(3, width = '5em')
 ``` 
 
 Le tableau des femelles, quant à lui, suggère que le traitement diminue la survie (Table \@ref(tab:survFemales), $46/60$ vs $140/330$ = 0.77 vs 0.42). Dans cet exemple, les analyses réalisées séparément par sexe mènent à des conclusions différentes. Dans ce cas-ci, faire abstraction du sexe dans l'analyse mène au paradoxe de Simpson et à une conclusion erronée. Il faut songer attentivement avant de se lancer dans l'analyse de fréquences et il est important de considérer toutes les variables pouvant influencer les résultats. Un moyen de prévenir le paradoxe de Simpson est de mieux cibler la population statistique d'intérêt en échantillonnant une partie de la population bien précise (p. ex., âge, type d'habitat). Une autre approche consiste à stratifier l'analyse selon une ou plusieurs variables (p. ex., le sexe, la taille).
@@ -494,7 +523,10 @@ rownames(surv.females) <- c("Vivant", "Mort")
 kable(surv.females, 
       caption = "Effet d'un traitement sur la survie des femelles.",
       "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '5em') %>% 
+  column_spec(2, width = '5em') %>% 
+  column_spec(3, width = '5em')
 ``` 
 
 ### Conclusion

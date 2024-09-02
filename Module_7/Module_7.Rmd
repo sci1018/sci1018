@@ -1,6 +1,63 @@
 # Analyse de variance à deux critères {#lecon7}
 
+---
+
 Dans la leçon précédente, nous avons vu l'application de l'analyse de la variance (ANOVA) dans des expériences où il n'y avait qu'un seul critère de classification (ou facteur). Les observations étaient classées selon un seul facteur en un nombre donné de groupes. Nous pouvions ainsi tester l'influence de ce facteur (p. ex., le sexe) sur la variable réponse. Dans d'autres cas, les données peuvent être réparties selon deux facteurs ou critères de classification. Par exemple, nous pourrions avoir une expérience qui étudie la concentration de calcium dans le plasma sanguin (la variable réponse) selon le traitement hormonal (avec traitement *vs* sans traitement) pour des individus selon leur sexe (mâle *vs* femelle). Nous pouvons généraliser l'ANOVA en présence de plusieurs facteurs. En présence de deux facteurs, nous réaliserons l'ANOVA à deux critères de classification (c.-à-d., facteurs). 
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `str( )`
+  - `as.factor( )`
+  - `boxplot( )`
+  - `table( )`
+  - `mean( )`, `sum( )`, `sqrt( )`
+  - `length( )`
+  - `nrow( )`
+  - `qqnorm( )`, `qqline( )`
+  - `plot( )`, `axis( )`, `points( )`, `arrows( )`, `text( )`, `par( )`, `legend( )`, `mtext( )`
+  - `aov( )`
+  - `summary( )`
+  - `TukeyHSD( )`
+  - `expand.grid( )`
+  - `predict( )`
+  - `qt( )`
+  - `exp( )`
+  - `tapply( )`
+  - `data.frame( )`
+  - `residuals( )`
+  - `log( )`
+</div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Dans la partie Lecon, les fichiers suivantes sont utilisés :  
+
+  - Le fichier `calcium.txt` sur l’effet d’un traitement hormonal sur la concentration de calcium dans le plasma sanguin chez des oiseaux mâles et femelles. 
+  - Le fichier `croissance.csv` sur l’effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (agrimore, control, supergain et supersupp) sur le gain en masse en kg de bétail après 6 semaines.
+  - Le fichier `antibio.txt` sur l’effet de la concentration d’un antibiotique et de l’humidité sur la croissance d’une espèce de bactéries que l’on peut cultiver en laboratoire dans des plats de Pétri contenant un substrat de sucres appelé agar-agar.
+  
+Dans la partie Laboratoire, le fichier `Longueur_poisson.txt` est utilisé. Il présente la longueur en cm d'une espèce de poisson.   
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_7.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -196,12 +253,15 @@ df.SSE
 
 Finalement, on obtient la somme des carrés du terme d'interaction entre les deux facteurs. Notez que l'équation pour $SSinter$ peut se décomposer de la façon suivante :
 
-$$SSinter = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2  $$
-$$= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)$$
-$$= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2$$
-$$+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 $$
-$$+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2$$
-$$+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2))$$
+\begin{align*}
+SS_{\text{inter}} &= n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 \\
+&= n \sum_{i=1}^a \left( (\bar{y}_{i.\text{horm}} - \bar{y}_i - \bar{y}_{\text{horm}} + \bar{y})^2 + (\bar{y}_{i.\text{nohorm}} - \bar{y}_i - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right) \\
+&= n \left( (\bar{y}_{f.\text{horm}} - \bar{y}_f - \bar{y}_{\text{horm}} + \bar{y})^2 \right. \\
+&\quad + (\bar{y}_{f.\text{nohorm}} - \bar{y}_f - \bar{y}_{\text{nohorm}} + \bar{y})^2 \\
+&\quad + (\bar{y}_{m.\text{horm}} - \bar{y}_m - \bar{y}_{\text{horm}} + \bar{y})^2 \\
+&\quad \left. + (\bar{y}_{m.\text{nohorm}} - \bar{y}_m - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right)
+\end{align*}
+
 Ansi, nous calculons $SSinter$ de la façon suivante :
 
 ```{r SSInter, echo = TRUE, keep.source = TRUE}
@@ -883,8 +943,9 @@ diet.df <- data.frame(
 
 kable(diet.df, 
       row.names = FALSE, 
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(c(1:4), width = "10em")
 ```
 
 On peut représenter les résultats des comparaisons multiples comme suit pour le type de moulée (`Diete`)  :
@@ -898,8 +959,9 @@ diet.df2 <- data.frame(
 
 kable(diet.df2, 
       row.names = FALSE, 
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(c(1:3), width = "10em")
 ```
 
 La figure \@ref(fig:figcrois) illustre les résultats.
@@ -1056,38 +1118,16 @@ mult.inter$'Humidite:Concentration'
 
 Les comparaisons multiples suggèrent les groupes suivants :
 
-```{r eval=FALSE, include=FALSE}
-### LES LIGNES NE MARCHENT PAS ICI MAIS AVEC LE TABLEAU HTML
-# Create the table data
-data <- data.frame(
-  "humide-élevée" = c("1.64 mm^2","",""),
-  "sec-faible" = c("2.25 mm^2","",""),
-  "sec-modérée" = c("2.29 mm^2","",""),
-  "sec-élevée" = c("3.07 mm^2","",""),
-  "humide-modérée" = c("5.04 mm^2","",""),
-  "humide-faible" = c("5.87 mm^2","","")
-)
-# Insert underscores to simulate horizontal lines
-data[2, 1:2] <- c('<span style="border-bottom: 1px solid;">_________</span>')
-data[3, 2:3] <- c('<span style="border-bottom: 1px solid;">_________</span>')
-data[2, 4:6] <- c('<span style="border-bottom: 1px solid;">_________</span>')
-
-# Display the table
-kable(data, format = "html", escape = FALSE, col.names = names(data)) %>%
-  kable_styling("striped", full_width = FALSE)
-
-```
-
 <table>
-  <tr>
-    <th style="border: 0px solid black; padding: 3px;">humide-élevée</th>
-    <th style="border: 0px solid black; padding: 3px;">sec-faible</th>
-    <th style="border: 0px solid black; padding: 3px;">sec-modérée</th>
-    <th style="border: 0px solid black; padding: 3px;">sec-élevée</th>
-    <th style="border: 0px solid black; padding: 3px;">humide-modérée</th>
-    <th style="border: 0px solid black; padding: 3px;">humide-faible</th>
+  <tr class="centered-row">
+    <th>humide-élevée</th>
+    <th>sec-faible</th>
+    <th>sec-modérée</th>
+    <th>sec-élevée</th>
+    <th>humide-modérée</th>
+    <th>humide-faible</th>
   </tr>
-  <tr>
+  <tr class="centered-row">
     <td>1.64 mm<sup>2</sup></td>
     <td>2.25 mm<sup>2</sup></td>
     <td>2.29 mm<sup>2</sup></td>
@@ -1095,14 +1135,14 @@ kable(data, format = "html", escape = FALSE, col.names = names(data)) %>%
     <td>5.04 mm<sup>2</td>
     <td>5.87 mm<sup>2</sup></td>
   </tr>
-  <tr>
+  <tr class="custom-row">
     <td colspan="2" style="border-bottom: 2px solid;">&nbsp;</td>
     <td></td>
     <td style="border-bottom: 2px solid;">&nbsp;</td>
     <td></td>
     <td style="border-bottom: 2px solid;">&nbsp;</td>
   </tr>
-  <tr>
+  <tr class="custom-row">
     <td></td>
     <td colspan="2" style="border-bottom: 2px solid;">&nbsp;</td>
     <td></td>
@@ -1110,6 +1150,7 @@ kable(data, format = "html", escape = FALSE, col.names = names(data)) %>%
     <td></td>
   </tr>
 </table>
+
 
 Représentons maintenant les résultats graphiquement.
 

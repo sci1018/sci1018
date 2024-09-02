@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 3 Tests d’hypothèse sur un seul groupe | Statistiques avec R</title>
   <meta name="description" content="Module 3 Tests d’hypothèse sur un seul groupe | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 3 Tests d’hypothèse sur un seul groupe | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -374,7 +374,68 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon3" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Module 3</span> Tests d’hypothèse sur un seul groupe<a href="lecon3.html#lecon3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Lors de la leçon précédente, nous avons illustré le concept d’intervalle de confiance en nous appuyant sur le rééchantillonnage. Afin de construire des intervalles de confiance, nous avons utilisé la distribution normale ou la distribution du <em>t</em> de Student selon la taille de l’échantillon. Différentes stratégies d’échantillonnage ont été présentées, bien que l’échantillonnage complètement aléatoire et l’échantillonnage stratifié aléatoire soient les approches les plus fréquemment utilisées dans le cours.</p>
+<hr />
+<div class="row">
+
+<div class="column lefticon">
+<img src="images/Icones_Bibliotheques.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-packages-r-suivants" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les packages <code>R</code> suivants :<a href="lecon3.html#vous-utiliserez-les-packages-r-suivants" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>nortest</code></li>
+<li><code>MASS</code></li>
+<li><code>readxl</code>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="row">
+
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-3" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon3.html#vous-utiliserez-les-fonctions-suivantes-3" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>qt( )</code>, <code>pt( )</code></li>
+<li><code>sd( )</code></li>
+<li><code>sqrt( )</code></li>
+<li><code>length( )</code></li>
+<li><code>t.test( )</code></li>
+<li><code>c( )</code></li>
+<li><code>mean( )</code></li>
+<li><code>ad.test( )</code></li>
+<li><code>cvm.test( )</code></li>
+<li><code>shapiro.test( )</code></li>
+<li><code>qqnorm( )</code></li>
+<li><code>qqline( )</code></li>
+<li><code>read_excel( )</code><br />
+</li>
+<li><code>library( )</code></li>
+<li><code>install.packages( )</code></li>
+<li><code>detach( )</code></li>
+<li><code>remove.packages( )</code>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Donnees.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-données-suivantes-2" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les données suivantes :<a href="lecon3.html#vous-utiliserez-les-données-suivantes-2" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le fichier <code>vers.txt</code> dans la partie théorique qui contient des données sur l’abondance des vers de terre dans différents types de parcs publics et le fichier <code>temp.csv</code> dans la partie Autoévaluation qui contient des données sur la température de l’air pour différentes stations de mesures météorologiques dans l’Arctique.</p>
+Les données peuvent être téléchargées <a href="https://github.com/sci1018/sci1018_data/raw/main/Module_3.zip">ici</a>.
+</div>
+</div>
+</div>
 </div>
             </section>
 

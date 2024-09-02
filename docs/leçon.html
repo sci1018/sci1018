@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="1.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -399,7 +399,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 \bar{x} = \frac{\sum\limits_{i=1}^nx_i}{n} = \frac{12.3 + 4.2 + 5.9 +  \ldots + 8.0 + 6.1}{10} \\
 \bar{x} = 6.51
 \]</span>
-<!-- je n'arrive pas à mettre les calculs dans les équations ci-dessus comme dans le texte ci-dessous pour afficher le résultat 6.51 -->
 Ainsi, la moyenne arithmétique de cet échantillon est de 6.51 cm.</p>
 </div>
 <p>L’estimateur de <span class="math inline">\(\bar{x}\)</span> est un estimateur non-biaisé de <span class="math inline">\(\mu\)</span> si:</p>
@@ -486,7 +485,7 @@ SSE = \sum_{i=1}^n (x_i - \bar{x})^2
 </div>
 <div id="carré-moyen-variance" class="section level4 hasAnchor" number="1.1.3.2">
 <h4><span class="header-section-number">1.1.3.2</span> Carré moyen (variance)<a href="leçon.html#carré-moyen-variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Comme nous l’avons mentionné plus tôt, la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>) augmente avec la taille de l’échantillon. Une meilleure mesure devrait tenir compte de la taille d’échantillon. Le <strong>carré moyen</strong>(<em>mean square, mean squared error, MSE</em>) est une telle mesure de dispersion :</p>
+<p>Comme nous l’avons mentionné plus tôt, la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>) augmente avec la taille de l’échantillon. Une meilleure mesure devrait tenir compte de la taille d’échantillon. Le <strong>carré moyen</strong> (<em>mean square, mean squared error, MSE</em>) est une telle mesure de dispersion :</p>
 <p><span class="math display">\[
 MSE = \frac{SSE}{df} = \frac{\sum\limits_{i=1}^n (x_i - \bar{x})^2}{n - 1}
 \]</span>
@@ -548,8 +547,7 @@ L’<strong>erreur-type de la moyenne</strong> d’un échantillon (<span class=
 <p><span class="math display">\[
 P(\bar{x} - 1.96 \cdot SE \leq \mu \leq \bar{x} + 1.96 \cdot SE) = 0.95
 \]</span>
-Un <span class="math inline">\(IC\)</span> à 95 % indique que la moyenne de la population (<span class="math inline">\(\mu\)</span>) devrait se trouver 95 % du temps (c.-à-d., la probabilité est de 0.95) à l’intérieur de l’intervalle si on répète l’échantillonnage à plusieurs reprises avec le même nombre d’observations. Pour un <span class="math inline">\(IC\)</span> donné, la moyenne de la population <span class="math inline">\(\mu\)</span> est incluse ou non <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. L’<span class="math inline">\(IC\)</span> est construit à partir d’un échantillon, mais concerne la moyenne <span class="math inline">\(\mu\)</span> de la population. Nous expliquerons en détail la construction et l’interprétation d’intervalles de confiance à la prochaine leçon(voir aussi la section 7 de la présente leçon pour comprendre l’origine du facteur 1.96). Pour l’instant, il suffit de réaliser qu’on peut utiliser cette intervalle pour en indiquer la précision.</p>
-<!-- La phrase "voir aussi la section 7 de la présente leçon pour comprendre l'origine du facteur 1.96" se trouve dans le PDF mais pas dans le latex -->
+Un <span class="math inline">\(IC\)</span> à 95 % indique que la moyenne de la population (<span class="math inline">\(\mu\)</span>) devrait se trouver 95 % du temps (c.-à-d., la probabilité est de 0.95) à l’intérieur de l’intervalle si on répète l’échantillonnage à plusieurs reprises avec le même nombre d’observations. Pour un <span class="math inline">\(IC\)</span> donné, la moyenne de la population <span class="math inline">\(\mu\)</span> est incluse ou non <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. L’<span class="math inline">\(IC\)</span> est construit à partir d’un échantillon, mais concerne la moyenne <span class="math inline">\(\mu\)</span> de la population. Nous expliquerons en détail la construction et l’interprétation d’intervalles de confiance à la prochaine leçon. Pour l’instant, il suffit de réaliser qu’on peut utiliser cette intervalle pour en indiquer la précision.</p>
 </div>
 <div id="autres-mesures-de-dispersion" class="section level4 hasAnchor" number="1.1.3.4">
 <h4><span class="header-section-number">1.1.3.4</span> Autres mesures de dispersion<a href="leçon.html#autres-mesures-de-dispersion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -590,9 +588,10 @@ Figure 1.4: Présentation des longueurs de 100 serpents (variable continue, a) e
 <li>la construction d’intervalles de confiance.</li>
 </ul>
 <p>La distribution normale se définit par la <strong>fonction de densité de probabilité</strong> (<em>probability density function, pdf</em>) suivante:</p>
-<p>$$
-f(x , ) = e<sup>{-()</sup>2} = </p>
-<p>$$
+<p><span class="math display">\[
+f(x \vert \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
+= \frac{\mathrm{exp}(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}}
+\]</span>
 où <span class="math inline">\(x\)</span> correspond à la valeur numérique d’intérêt, <span class="math inline">\(\mu\)</span> représente la moyenne de la population, <span class="math inline">\(\sigma\)</span> est l’écart-type de la population, <span class="math inline">\(\pi\)</span> est la constante 3.14159… et <span class="math inline">\(e\)</span> est la constante 2.71828…. Cette distribution comporte deux paramètres, <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma\)</span> et on représente parfois cette distribution avec la notation N(<span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>).</p>
 <p>En mots, l’équation nous donne la densité de probabilité d’une variable qui prend la valeur <span class="math inline">\(x\)</span> et qui provient d’une distribution normale avec une moyenne <span class="math inline">\(\mu\)</span> et un écart-type <span class="math inline">\(\sigma\)</span>. On peut interpréter la densité de probabilité comme on le ferait pour une fréquence relative d’un histogramme. La densité de probabilité de la distribution normale ne correspond pas à la probabilité d’observer <span class="math inline">\(X = x\)</span>. La raison de cette interprétation plus complexe provient du fait que la probabilité d’observer une valeur spécifique (p. ex., comme la masse ou la longueur) dans une distribution continue est de 0. La valeur mesurée d’une variable continue est en réalité un intervalle qui dépend de la précision de l’instrument de mesure au mg près, au g près, ou au kg près. Pour un serpent dont la mesure obtenue est de 102.54 cm, on obtient :</p>
 <p><span class="math display">\[

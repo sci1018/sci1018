@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 7 Analyse de variance à deux critères | Statistiques avec R</title>
   <meta name="description" content="Module 7 Analyse de variance à deux critères | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 7 Analyse de variance à deux critères | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -374,7 +374,59 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon7" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Module 7</span> Analyse de variance à deux critères<a href="lecon7.html#lecon7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Dans la leçon précédente, nous avons vu l’application de l’analyse de la variance (ANOVA) dans des expériences où il n’y avait qu’un seul critère de classification (ou facteur). Les observations étaient classées selon un seul facteur en un nombre donné de groupes. Nous pouvions ainsi tester l’influence de ce facteur (p. ex., le sexe) sur la variable réponse. Dans d’autres cas, les données peuvent être réparties selon deux facteurs ou critères de classification. Par exemple, nous pourrions avoir une expérience qui étudie la concentration de calcium dans le plasma sanguin (la variable réponse) selon le traitement hormonal (avec traitement <em>vs</em> sans traitement) pour des individus selon leur sexe (mâle <em>vs</em> femelle). Nous pouvons généraliser l’ANOVA en présence de plusieurs facteurs. En présence de deux facteurs, nous réaliserons l’ANOVA à deux critères de classification (c.-à-d., facteurs).</p>
+<hr />
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-7" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon7.html#vous-utiliserez-les-fonctions-suivantes-7" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>read.table( )</code>, <code>head( )</code>, <code>str( )</code></li>
+<li><code>as.factor( )</code></li>
+<li><code>boxplot( )</code></li>
+<li><code>table( )</code></li>
+<li><code>mean( )</code>, <code>sum( )</code>, <code>sqrt( )</code></li>
+<li><code>length( )</code></li>
+<li><code>nrow( )</code></li>
+<li><code>qqnorm( )</code>, <code>qqline( )</code></li>
+<li><code>plot( )</code>, <code>axis( )</code>, <code>points( )</code>, <code>arrows( )</code>, <code>text( )</code>, <code>par( )</code>, <code>legend( )</code>, <code>mtext( )</code></li>
+<li><code>aov( )</code></li>
+<li><code>summary( )</code></li>
+<li><code>TukeyHSD( )</code></li>
+<li><code>expand.grid( )</code></li>
+<li><code>predict( )</code></li>
+<li><code>qt( )</code></li>
+<li><code>exp( )</code></li>
+<li><code>tapply( )</code></li>
+<li><code>data.frame( )</code></li>
+<li><code>residuals( )</code></li>
+<li><code>log( )</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Donnees.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-données-suivantes-5" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les données suivantes :<a href="lecon7.html#vous-utiliserez-les-données-suivantes-5" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Dans la partie Lecon, les fichiers suivantes sont utilisés :</p>
+<ul>
+<li>Le fichier <code>calcium.txt</code> sur l’effet d’un traitement hormonal sur la concentration de calcium dans le plasma sanguin chez des oiseaux mâles et femelles.</li>
+<li>Le fichier <code>croissance.csv</code> sur l’effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (agrimore, control, supergain et supersupp) sur le gain en masse en kg de bétail après 6 semaines.</li>
+<li>Le fichier <code>antibio.txt</code> sur l’effet de la concentration d’un antibiotique et de l’humidité sur la croissance d’une espèce de bactéries que l’on peut cultiver en laboratoire dans des plats de Pétri contenant un substrat de sucres appelé agar-agar.</li>
+</ul>
+<p>Dans la partie Laboratoire, le fichier <code>Longueur_poisson.txt</code> est utilisé. Il présente la longueur en cm d’une espèce de poisson.</p>
+Les données peuvent être téléchargées <a href="https://github.com/sci1018/sci1018_data/raw/main/Module_7.zip">ici</a>.
+</div>
+</div>
+</div>
 </div>
             </section>
 

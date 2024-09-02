@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="8.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -401,66 +401,66 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Modèle III: A aléatoire et B fixe<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></li>
 </ul>
 <p>Le type d’effet (fixe <em>vs</em> aléatoire) détermine le terme d’erreur à utiliser dans le tableau d’ANOVA. Le tableau <a href="leçon-7.html#tab:SS">8.1</a> présente la formulation des différents ratios des carrés moyens pour tester les effets de A, de B et de leur interaction selon la nature de ces effets.</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:SS">Table 8.1: </span>Termes d’erreurs utilisés pour tester les effets de A, de B et de leur interaction selon la nature des effets (fixes ou aléatoires) en présence de répétitions.
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Facteur
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Modèle I <br> (A fixe, B fixe)
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Modèle II <br> (A aléatoire, B aléatoire)
 </th>
-<th style="text-align:left;">
+<th style="text-align:center;">
 Modèle III <br> (A aléatoire, B fixe)
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 A
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A}}{MS \: \mathrm{erreur}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A}}{MS \: \mathrm{A \: \times \: B}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A}}{MS \: \mathrm{erreur}}\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 B
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{B}}{MS \: \mathrm{erreur}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{B}}{MS \: \mathrm{A \: \times \: B}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{B}}{MS \: \mathrm{A \: \times \: B}}\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:center;">
 A x B
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A \: \times \: B}}{MS \: \mathrm{erreur}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A \: \times \: B}}{MS \: \mathrm{erreur}}\)</span>
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 <span class="math inline">\(\frac{MS \: \mathrm{A \: \times \: B}}{MS \: \mathrm{erreur}}\)</span>
 </td>
 </tr>
@@ -632,21 +632,21 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
 ## 4-3 -0.5979595 -0.8294861 -0.36643294 0.0000299</code></pre>
 <p>Les comparaisons multiples identifient deux groupes, le premier est constitué des diètes 4 et 1, et le deuxième est composé des diètes 2 et 3 :</p>
 <table>
-<tr>
-<th style="border: 0px solid black; padding: 3px;">
+<tr class="centered-row">
+<th>
 4
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 1
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 2
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 3
 </th>
 </tr>
-<tr>
+<tr class="centered-row">
 <td>
 1.24<sup>2</sup>
 </td>
@@ -660,7 +660,7 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
 2.80<sup>2</sup>
 </td>
 </tr>
-<tr>
+<tr class="custom-row">
 <td colspan="2" style="border-bottom: 2px solid;">
  
 </td>
@@ -671,7 +671,7 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
  
 </td>
 </tr>
-<tr>
+<tr class="custom-row">
 <td>
  
 </td>

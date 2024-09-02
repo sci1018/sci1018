@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="7.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -540,13 +540,15 @@ Figure 7.1: Diagramme de boîtes et moustaches avec les données de concentratio
 <span id="cb645-9"><a href="leçon-6.html#cb645-9" tabindex="-1"></a>df.SSE</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
 <p>Finalement, on obtient la somme des carrés du terme d’interaction entre les deux facteurs. Notez que l’équation pour <span class="math inline">\(SSinter\)</span> peut se décomposer de la façon suivante :</p>
-<p><span class="math display">\[SSinter = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2  \]</span>
-<span class="math display">\[= n \sum_{i=1}^a ( (\bar{y}_{i.horm} - \bar{y}_i - \bar{y}_{horm} + \bar{y})^2 + (\bar{y}_{i.nohorm} - \bar{y}_i - \bar{y}_{nohorm} + \bar{y})^2)\]</span>
-<span class="math display">\[= n ( (\bar{y}_{f.horm} - \bar{y}_f - \bar{y}_{horm} + \bar{y})^2\]</span>
-<span class="math display">\[+ (\bar{y}_{f.nohorm} - \bar{y}_f - \bar{y}_{nohorm} + \bar{y})^2 \]</span>
-<span class="math display">\[+ (\bar{y}_{m.horm} - \bar{y}_m - \bar{y}_{horm} + \bar{y})^2\]</span>
-<span class="math display">\[+ (\bar{y}_{m.nohorm} - \bar{y}_m - \bar{y}_{nohorm} + \bar{y})^2))\]</span>
-Ansi, nous calculons <span class="math inline">\(SSinter\)</span> de la façon suivante :</p>
+<p><span class="math display">\[\begin{align*}
+SS_{\text{inter}} &amp;= n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 \\
+&amp;= n \sum_{i=1}^a \left( (\bar{y}_{i.\text{horm}} - \bar{y}_i - \bar{y}_{\text{horm}} + \bar{y})^2 + (\bar{y}_{i.\text{nohorm}} - \bar{y}_i - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right) \\
+&amp;= n \left( (\bar{y}_{f.\text{horm}} - \bar{y}_f - \bar{y}_{\text{horm}} + \bar{y})^2 \right. \\
+&amp;\quad + (\bar{y}_{f.\text{nohorm}} - \bar{y}_f - \bar{y}_{\text{nohorm}} + \bar{y})^2 \\
+&amp;\quad + (\bar{y}_{m.\text{horm}} - \bar{y}_m - \bar{y}_{\text{horm}} + \bar{y})^2 \\
+&amp;\quad \left. + (\bar{y}_{m.\text{nohorm}} - \bar{y}_m - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right)
+\end{align*}\]</span></p>
+<p>Ansi, nous calculons <span class="math inline">\(SSinter\)</span> de la façon suivante :</p>
 <div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="leçon-6.html#cb647-1" tabindex="-1"></a><span class="do">## SS de l&#39;interaction</span></span>
 <span id="cb647-2"><a href="leçon-6.html#cb647-2" tabindex="-1"></a>SSInter.f.horm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.f.horm <span class="sc">-</span> y.bar.f <span class="sc">-</span> y.bar.horm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb647-3"><a href="leçon-6.html#cb647-3" tabindex="-1"></a>SSInter.m.horm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.m.horm <span class="sc">-</span> y.bar.m <span class="sc">-</span> y.bar.horm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
@@ -980,32 +982,32 @@ Figure 7.7: Vérification des suppositions de l’ANOVA à deux critères.
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:center;">
 supergain
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 control
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 supersupp
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 agrimore
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 19.714
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 20.399
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 22.368
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 23.005
 </td>
 </tr>
@@ -1015,26 +1017,26 @@ agrimore
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:center;">
 blé
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 avoine
 </th>
-<th style="text-align:right;">
+<th style="text-align:center;">
 orge
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 18.431
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 21.329
 </td>
-<td style="text-align:right;">
+<td style="text-align:center;width: 10em; ">
 24.422
 </td>
 </tr>
@@ -1206,27 +1208,27 @@ Figure 7.10: Homogénéité des variances et normalité des résidus de l’ANOV
 ## sec:moderee-humide:moderee   -2.74435680 -3.397024340 -2.0916893 3.354361e-11</code></pre>
 <p>Les comparaisons multiples suggèrent les groupes suivants :</p>
 <table>
-<tr>
-<th style="border: 0px solid black; padding: 3px;">
+<tr class="centered-row">
+<th>
 humide-élevée
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 sec-faible
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 sec-modérée
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 sec-élevée
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 humide-modérée
 </th>
-<th style="border: 0px solid black; padding: 3px;">
+<th>
 humide-faible
 </th>
 </tr>
-<tr>
+<tr class="centered-row">
 <td>
 1.64 mm<sup>2</sup>
 </td>
@@ -1246,7 +1248,7 @@ humide-faible
 5.87 mm<sup>2</sup>
 </td>
 </tr>
-<tr>
+<tr class="custom-row">
 <td colspan="2" style="border-bottom: 2px solid;">
  
 </td>
@@ -1261,7 +1263,7 @@ humide-faible
  
 </td>
 </tr>
-<tr>
+<tr class="custom-row">
 <td>
 </td>
 <td colspan="2" style="border-bottom: 2px solid;">

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 6 Analyse de variance à un critère | Statistiques avec R</title>
   <meta name="description" content="Module 6 Analyse de variance à un critère | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 6 Analyse de variance à un critère | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -147,6 +147,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
 <ul>
@@ -374,7 +375,59 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lecon6" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Module 6</span> Analyse de variance à un critère<a href="lecon6.html#lecon6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
 <p>Dans la leçon précédente, nous avons vu l’analyse de fréquences, particulièrement le test du <span class="math inline">\(\chi^2\)</span> d’ajustement et d’indépendance. Nous continuons ici avec l’analyse de données numériques continues, du même type que pour le test <span class="math inline">\(t\)</span>. Dans la présente leçon, nous verrons un outil pour comparer plus de deux groupes, l’analyse de la variance.</p>
+<hr />
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Fonctions.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-fonctions-suivantes-6" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les fonctions suivantes :<a href="lecon6.html#vous-utiliserez-les-fonctions-suivantes-6" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>read.table( )</code>, <code>head()</code>, <code>nrow( )</code>, <code>colnames( )</code></li>
+<li><code>matrix( )</code></li>
+<li><code>sum( )</code>, <code>sqrt( )</code>, <code>mean( )</code>, <code>str( )</code></li>
+<li><code>round( )</code></li>
+<li><code>sort( )</code></li>
+<li><code>as.factor( )</code></li>
+<li><code>aov( )</code></li>
+<li><code>summary( )</code></li>
+<li><code>fitted( )</code></li>
+<li><code>residuals( )</code></li>
+<li><code>qqnorm( )</code>, <code>qqline( )</code></li>
+<li><code>boxplot( )</code></li>
+<li><code>plot( )</code>, <code>axis( )</code>, <code>points( )</code>, <code>arrows( )</code>, <code>text( )</code>, <code>par( )</code></li>
+<li><code>ptukey( )</code></li>
+<li><code>TukeyHSD( )</code></li>
+<li><code>rep( )</code></li>
+<li><code>for( )</code></li>
+<li><code>tapply( )</code></li>
+<li><code>apply( )</code></li>
+<li><code>rowSums( )</code></li>
+<li><code>colSums( )</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="column lefticon">
+<img src="images/Icones_Donnees.svg" />
+</div>
+<div class="column righttext">
+<div id="vous-utiliserez-les-données-suivantes-4" class="section level5 unnumbered hasAnchor">
+<h5>Vous utiliserez les données suivantes :<a href="lecon6.html#vous-utiliserez-les-données-suivantes-4" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Dans la partie Lecon, les fichiers suivantes sont utilisés :</p>
+<ul>
+<li>Le fichier <code>jardins.txt</code> sur la concentration d’ozone en parties par million (ppm) diffère entre trois jardins d’une ville industrielle.</li>
+<li>Le fichier <code>consommation.txt</code> sur la consommation de boissons sucrées par les jeunes de 19 à 25 ans dans cinq régions de l’Est du Québec.</li>
+</ul>
+<p>Dans la partie Autoévaluation, le fichier <code>Survie.txt</code> est utilise. Il présente le temps de survie en heures d’animaux exposés à trois doses de poison.</p>
+Les données peuvent être téléchargées <a href="https://github.com/sci1018/sci1018_data/raw/main/Module_6.zip">ici</a>.
+</div>
+</div>
+</div>
 </div>
             </section>
 

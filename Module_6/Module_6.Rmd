@@ -1,6 +1,63 @@
 # Analyse de variance à un critère {#lecon6}
 
+---
+
 Dans la leçon précédente, nous avons vu l'analyse de fréquences, particulièrement le test du $\chi^2$ d'ajustement et d'indépendance. Nous continuons ici avec l'analyse de données numériques continues, du même type que pour le test $t$. Dans la présente leçon, nous verrons un outil pour comparer plus de deux groupes, l'analyse de la variance.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head()`, `nrow( )`, `colnames( )`
+  - `matrix( )`
+  - `sum( )`, `sqrt( )`, `mean( )`, `str( )`
+  - `round( )`
+  - `sort( )`
+  - `as.factor( )`
+  - `aov( )`
+  - `summary( )`
+  - `fitted( )`
+  - `residuals( )`
+  - `qqnorm( )`, `qqline( )`
+  - `boxplot( )`
+  - `plot( )`, `axis( )`, `points( )`, `arrows( )`, `text( )`, `par( )`
+  - `ptukey( )`
+  - `TukeyHSD( )`
+  - `rep( )`
+  - `for( )`
+  - `tapply( )`
+  - `apply( )`
+  - `rowSums( )`
+  - `colSums( )`
+</div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Dans la partie Lecon, les fichiers suivantes sont utilisés :
+  
+  - Le fichier `jardins.txt` sur la concentration d’ozone en parties par million (ppm) diffère entre trois jardins d’une ville industrielle. 
+  - Le fichier `consommation.txt` sur la consommation de boissons sucrées par les jeunes de 19 à 25 ans dans cinq régions de l’Est du Québec.
+
+Dans la partie Autoévaluation, le fichier `Survie.txt` est utilise. Il présente le temps de survie en heures d’animaux exposés à trois doses de poison.   
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_6.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -29,10 +86,13 @@ Une alternative à ce problème consiste à corriger le seuil $\alpha$ par le no
 :::{.exemple section=6}
 Dans une expérience où on étudie 5 traitements différents, nous avons cinq moyennes arithmétiques (5 groupes: A, B, C, D, E) et les comparaisons suivantes :
 
-$$A \: vs \: B $$ 
-$$A \: vs \: C \qquad B \: vs \: C   $$
-$$A \: vs \: D \qquad B \: vs \: D \qquad C \: vs \: D $$
-$$A \: vs \: E \qquad B \: vs \: E \qquad C \: vs \: E \qquad D \: vs \: E \: .$$
+\begin{align*}
+& A \: \text{vs} \: B \\
+& A \: \text{vs} \: C \quad \text{and} \quad B \: \text{vs} \: C \\
+& A \: \text{vs} \: D \quad \text{and} \quad B \: \text{vs} \: D \quad \text{and} \quad C \: \text{vs} \: D \\
+& A \: \text{vs} \: E \quad \text{and} \quad B \: \text{vs} \: E \quad \text{and} \quad C \: \text{vs} \: E \quad \text{and} \quad D \: \text{vs} \: E \: .
+\end{align*}
+
 Puisqu'il y a 10 comparaisons, on devrait diviser le seuil $\alpha$ par 10 pour exécuter l'ajustement de Bonferroni. Si on utilise un seuil de 0.05, il faudra observer $P \leq 0.005$ pour déclarer une différence significative entre deux groupes ($\alpha/10 = 0.05/10 = 0.005$).
 :::
 
@@ -163,7 +223,7 @@ df <- data.frame(
   Col1 = c("Traitement", "Erreur", "Total"),
   Col2 = c("$SSA$", "$SSE$", "$SST$"),
   Col3 = c("$k-1$", "$k(n-1)$", "$N-1$"),
-  Col4 = c("$SSA/df_A$", "$SSE/df_erreur$", " "),
+  Col4 = c("$SSA/df_A$", "$SSE/df_{erreur}$", " "),
   Col5 = c("$MSA/MSE$", " ", " ")
   )
 
@@ -262,8 +322,8 @@ colnames(df) <- c("Source", "Somme des carrés <br> ($SS$)", "Degrés de libert�
 kable(df,  
       row.names = FALSE, 
       caption = "Calcul des différents éléments du tableau d'ANOVA.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = T, position = "center")
 ``` 
 
 On constate que le ratio $F$ est de 0.28 ($16.22/58.37$). Étant donné que $P(F_{2, 42} \geq 0.28) = 0.7588$^[Rappel: Ici, la valeur de $P$ correspond à la probabilité d'obtenir une valeur de $F$ supérieure ou égale à celle qu'on a observée (dans les données originales) lorsqu'on répète l'échantillonnage avec la même taille d'échantillon dans la même population et que l'hypothèse nulle est vraie. On peut écrire plus succinctement: $P = 0.7588$.], on ne rejette pas $H_0$ et on conclut que les moyennes des groupes ne diffèrent pas les unes des autres. La fonction `aov( )` permet de réaliser une ANOVA dans R lorsque chaque groupe contient le même nombre d'observations^[Dans les cas où le nombre d'observations varie d'un groupe à l'autre, il est préférable d'utiliser la fonction plus générale, `lm( )` qui permet de réaliser plusieurs types de modèles linéaires.]. 
@@ -534,9 +594,9 @@ comp1 <- t.test(group1, group2)
 comp2 <- t.test(group1, group3)
 ##2vs3
 comp3 <- t.test(group2, group3)
-out[i, 1] <- ifelse(comp1$p.value<=0.05, "*", "NS")
-out[i, 2] <- ifelse(comp2$p.value<=0.05, "*", "NS")
-out[i, 3] <- ifelse(comp3$p.value<=0.05, "*", "NS")
+out[i, 1] <- ifelse(comp1$p.value<=0.05, "<span>*</span>", "NS")
+out[i, 2] <- ifelse(comp2$p.value<=0.05, "<span>*</span>", "NS")
+out[i, 3] <- ifelse(comp3$p.value<=0.05, "<span>*</span>", "NS")
 out[i, 4] <- ifelse(any(c(comp1$p.value, comp2$p.value,comp3$p.value) <= 0.05), 1, 0)
 }
 ```
@@ -547,11 +607,11 @@ Le tableau \@ref(tab:error) montre le résultat des 10 premières itérations de
 
 ```{r error, keep.source = FALSE, echo = FALSE}
 ##comparison-wise error rate of comparison 1
-Error_comp1 <- sum(ifelse(out[,1]=="*", 1, 0))/nsims
+Error_comp1 <- sum(ifelse(out[,1]=="<span>*</span>", 1, 0))/nsims
 ##comparison-wise error rate of comparison 2
-Error_comp2 <- sum(ifelse(out[,2]=="*", 1, 0))/nsims
+Error_comp2 <- sum(ifelse(out[,2]=="<span>*</span>", 1, 0))/nsims
 ##comparison-wise error rate of comparison 3
-Error_comp3 <- sum(ifelse(out[,3]=="*", 1, 0))/nsims
+Error_comp3 <- sum(ifelse(out[,3]=="<span>*</span>", 1, 0))/nsims
 
 ##experiment-wise error rate error among any comparison
 Error_exp <- sum(ifelse(out[,4]=="1", 1, 0))/nsims
@@ -717,8 +777,14 @@ data <- data.frame(
 kable(data, 
       row.names = FALSE, 
       caption = "Comparaisons multiples de Tukey entre les groupe définis par les régions.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = "8em") %>% 
+  column_spec(2, width = "8em") %>% 
+  column_spec(3, width = "5em") %>% 
+  column_spec(4, width = "10em") %>% 
+  column_spec(5, width = "5em") %>% 
+  column_spec(6, width = "10em") 
 ```
 
 On peut créer ce tableau rapidement à l'aide de la fonction `TukeyHSD( )` :
@@ -755,8 +821,9 @@ data <- data.frame(
 
 kable(data, 
       row.names = FALSE, 
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(c(1:5), width = "8em")
 ```
 
 La présentation des résultats à l'aide de traits facilite l'interprétation. On voit rapidement que CA et CN ont une double appartenance: ils appartiennent au groupe constitué de BSL, CA et CN ainsi qu'au groupe composé de CA, CN, SLSJ et GIM. Les groupes SLSJ et GIM ne diffèrent pas entre eux, mais sont différents du groupe BSL. En effet, le même trait relie les groupes SLSJ et GIM et ce même trait n'inclut pas le groupe BSL. Le graphique montre la même information (présence de deux groupes), mais à l'aide de lettres (Figure \@ref(fig:plotregion)). On remarque que les groupes CA et CN ont une double appartenance puisqu'ils sont identifiés avec deux lettres. On trouve le code complet pour obtenir le graphique ci-dessous : 

@@ -1,7 +1,77 @@
 # Tests d'hypothèse sur deux groupes {#lecon4}
 
+---
+
 Dans la leçon précédente, nous avons discuté de la démarche scientifique et de l'élaboration d'hypothèses scientifiques et statistiques. Deux types d'erreurs associées à la réalisation d'un test d'hypothèse ont été présentées: l'erreur de type I et l'erreur de type II. Le seuil de signification ($\alpha$) correspond à la probabilité de rejeter une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui aurait dû être rejetée est donnée par $\beta$ (erreur de type II). Nous avons vu le concept de la puissance statistique. Nous avons réalisé un exemple de test d'hypothèse statistique sur un échantillon (groupe) concernant la moyenne à l'aide du test $t$. Ce test peut être unilatéral ou bilatéral. Le test unilatéral cible une seule des deux queues de la distribution alors que le test bilatérale cible les deux queues de la distribution. 
 
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Bibliotheques.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les packages `R` suivants : {-} 
+  - `nortest`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `tail( )`
+  - `t.test( )`
+  - `mean( )`
+  - `sd( )`
+  - `sqrt( )`
+  - `c( )`
+  - `qt( )`
+  - `library( )`
+  - `ad.test( )`
+  - `t.test( )`
+  - `qqnorm( )`
+  - `qqline( )`
+  - `boxplot( )`
+  - `hist( )`  
+  - `par( )`
+  - `text( )`
+  - `plot( )`
+  - `axis( )`
+  - `points( )`
+  - `arrows( )`
+  - `nrow( )`
+  - `segments( )`
+  - `log( )`
+  - `rpois( )`
+  - `rbeta( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le fichier `eleves.txt` est utilise dans la partie théorique et contient des données sur les notes des élèves d’une école primaire avec et sans aides aux devoirs pendant l’année. Le fichier `poissons.txt` est également utilisés et concerne l’effet des eaux usées sur le nombre d’espèces de poissons dans différents cours d’eau.   
+
+Le fichier `recup.txt` est utilisé dans la partie Laboratoire. Il contient des données sur l’efficacité d’un médicament qui améliore le temps de récupération après un effort physique.   
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip).
+  </div>
+  
+</div> 
 
 ## Leçon
 
@@ -75,9 +145,9 @@ kable(df_notes,
       col.names = NULL,
       row.names = FALSE, 
       caption = "Notes sur 40 des élèves dans les deux groupes de l'expérience.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
   add_header_above(c("Aide aux devoirs" = 3, "Témoins" = 3)) %>%
-  kable_styling(full_width = F, position = "center")
+  kable_styling(full_width = T, position = "center") 
 
 ```
 
@@ -97,7 +167,7 @@ On peut utiliser un test $t$ pour déterminer s'il y a une différence entre les
 
 Dans le cas du test $t$ sur un seul groupe, nous avons l'équation
 
-$t = \frac{\bar{x} - \mu}{SE}$
+$$t = \frac{\bar{x} - \mu}{SE}$$
 
 où $\bar{x}$ correspond à la moyenne du groupe et $\mu$ représente la valeur à laquelle on désire comparer la moyenne. Comme nous l'avons vu à la leçon précédente, le test $t$ sur un groupe suppose la normalité des résidus et l'indépendance des observations. En présence de deux groupes, le test $t$ se calcule comme suit :
 
@@ -132,21 +202,18 @@ Maintenant, reprenons notre exemple sur le succès scolaire des élèves en cons
 On peut effectuer un test $t$ pour comparer les deux groupes d'élèves de l'exemple 4.1. Commençons par calculer la variance combinée qui sera nécessaire pour obtenir le dénominateur du test $t$ sur deux groupes :
 
 $$
-s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{aide}} - 1)s^2_{\mathrm{aide}} + (n_{\mathrm{t\acute{e}moins}} - 1)s^2_{\mathrm{t\acute{e}moins}}}{n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2} 
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{aide}} - 1)s^2_{\mathrm{aide}} + (n_{\mathrm{t\acute{e}moins}} - 1)s^2_{\mathrm{t\acute{e}moins}}}{n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2}
+$$
+$$
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot `r round(var(df.aides), 2)` + (30 - 1) \cdot `r round(var(df.aides), 2)`}{30 + 30 - 2}
 $$
 
 $$
-s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot 0.96 + (30 - 1) \cdot 0.98}{30 + 30 - 2}
+s^2_{\mathrm{combin\acute{e}e}} = `r round((29*var(df.aides) + 29*var(df.aides))/(30 + 30 - 2), 2)`
 $$
 
-<! 
-This line is not centered
-$s^2_{\mathrm{combin\acute{e}e}}$ = `r round((29*var(df.aides) + 29*var(df.temoins))/(30 + 30 - 2), 2)` 
--->
 
-$$
-s^2_{\mathrm{combin\acute{e}e}} = 0.97
-$$
+
 Ensuite calculons l'erreur-type sur la différence des moyennes :
 
 $$
@@ -155,18 +222,16 @@ $$
 
 $$
 SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = \sqrt{\frac{0.97}{30} + \frac{0.97}{30}} \\
-SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = 0.25 
+SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = `r round(SE, 2)`
 $$
 La statistique du test s'obtient ainsi :
 
 $$
-  t = \frac{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}{SE_{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}} 
+t = \frac{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}{SE_{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}} \\
+t = \frac{`r round(mean(df.aides), 2)` - `r round(mean(df.temoins), 2)`}{`r round(SE, 2)`}\\
+t = `r round(t.out$statistic, 3)`
 $$
 
-$$
-  t = \frac{36.48 - 19.92}{0.25}\\
-  t = 65.217
-$$
 Nous déterminons la probabilité d'observer une valeur $t = `r round(t.out$statistic, 3)`$ dans des populations où $H_0$ est vraie, soit l'énoncé $P(\lvert t_{df = 58} \rvert \ge `r round(t.out$statistic, 3)`)$. On peut consulter la distribution du $t$ de Student avec 58 degrés de liberté ($df = n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2$) dans un livre de statistique ou encore avec \texttt{R} à l'aide de \texttt{pt( )}. On constate que la valeur observée  $t = `r round(t.out$statistic, 3)`$ est très peu probable lorsque $H_0$ est vraie, puisque $P(\lvert t_{df = 58} \rvert \ge `r round(t.out$statistic, 3)`) < 0.0001$. On rejette donc $H_0$ et on conclut que les deux moyennes diffèrent, c'est-à-dire que la moyenne des notes des élèves ayant eu l'aide aux devoirs diffère de celle des élèves n'ayant pas eu cette aide.
 
 :::
@@ -341,9 +406,9 @@ kable(df_temps,
       col.names = NULL,
       row.names = FALSE, 
       caption = "Temps en minutes passé sur son téléphone portable de différents individus dînant avec des compères ou des étudiants inconnus de d'autres disciplines.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
   add_header_above(c("Inconnus" = 3, "Compères" = 3)) %>%
-  kable_styling(full_width = F, position = "center")
+  kable_styling(latex_options = c("hold_position")) 
 ```
 
 Les données se trouvent dans le fichier `temps.txt`. Puisqu'on s'attend à ce que les individus dînant avec des compères passent plus de temps sur leurs téléphones portables que ceux dînant avec des inconnus (car ils sont désinhibés en présence de leurs compères et moins polis), nous effectuerons un test unilatéral.
@@ -407,7 +472,7 @@ boxplot(Res ~ Accompagnateurs, data = temps)
 text(x = 0.5, y = 14.5, labels = "b", cex = 1.2)
 ``` 
 
-Le test de normalité d'Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure \@ref(fig:norm2)a). La figure \@ref(fig:norm2)b ne montre pas de signes d'hétérogénéité de la variance. On peut procéder à l'inteprétation des résultats. Puisque $P(t_{df = 28}$ `r round(t.out$statistic, digits = 3)`) = `r round(t.out$p.value, 5)`, on rejette $H_0$ et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu'avec des inconnus. Autrement dit, la valeur de $t$ observée est beaucoup plus extrême que ce qui est attendu selon $H_0$. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure \@ref(fig:two)).
+Le test de normalité d'Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure \@ref(fig:norm2)a). La figure \@ref(fig:norm2)b ne montre pas de signes d'hétérogénéité de la variance. On peut procéder à l'inteprétation des résultats. Puisque $P(t_{df = 28}$ $`r round(t.out$statistic, digits = 3)`$) = $`r round(t.out$p.value, 5)`$, on rejette $H_0$ et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu'avec des inconnus. Autrement dit, la valeur de $t$ observée est beaucoup plus extrême que ce qui est attendu selon $H_0$. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure \@ref(fig:two)).
 
 ```{r two, echo = TRUE, eval = TRUE, keep.source = TRUE, fig = TRUE, fig.align='center', fig.cap="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%."}
 ##moyenne des groupes
@@ -505,14 +570,14 @@ t.poissons <- t.test(poissons$Diff, alternative = "less")
 ```
 
 On sait que :  
-$\bar{x}_{\mathrm{diff\acute{e}rence}} =$ `r round(mean.diff, 1)`  
-$SD_{\mathrm{diff\acute{e}rence}} =$ `r round(SD, 2)`  
-$SE_{\mathrm{diff\acute{e}rence}} =$  `r round(SE, 2)`  
+$$\bar{x}_{\mathrm{diff\acute{e}rence}} = `r round(mean.diff, 1)` $$ 
+$$SD_{\mathrm{diff\acute{e}rence}} = `r round(SD, 2)`  $$
+$$SE_{\mathrm{diff\acute{e}rence}} =  `r round(SE, 2)` $$ 
 
 On obtient ainsi :  
 $$t = \frac{\bar{x}_{\mathrm{diff\acute{e}rence}} - \mu_{H_{0}}}{SE_{\mathrm{diff\acute{e}rence}}}$$
-$$t = \frac{-0.9 - 0}{0.29}$$
-$$t =  -3.05$$
+$$t = \frac{`r round(mean.diff, 1)` - 0}{`r round(SE, 2)` } $$
+$$t =  `r round(t.poissons$statistic, 3)`$$
 On peut effectuer rapidement le test dans R à l'aide de `t.test( )` :
 
 ```{r invert3, echo = TRUE, keep.source = TRUE, eval = TRUE}
@@ -618,7 +683,7 @@ $$
 
 La transformation racine carrée se réalise à l'aide de `sqrt( )` :
 
-```{r sqrt, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'left', fig.cap = "Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite)."}
+```{r sqrt, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'center', fig.cap = "Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite)."}
 ##on crée une variable de fréquences provenant
 ##d'une distribution de Poisson avec
 ##une moyenne de 2.5
@@ -644,7 +709,7 @@ X^\prime = \sqrt{(n + \frac{1}{2})} \arcsin \sqrt{\frac{X + \frac{3}{8}}{n + \fr
 $$
 À noter qu'il faut ramener les pourcentages en proportions avant d'utiliser la transformation arcsinus (0.1 et 0.04, au lieu de 10 \% et 4 \%). Après la transformation, les données sont exprimées en radians ($\frac{180^\circ}{2\pi}$). Dans R, on exécute la transformation arcsinus comme suit:
 
-```{r asin, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'left', fig.cap = "Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite)."}
+```{r asin, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'center', fig.cap = "Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite)."}
 ##on crée une série de proportions
 ##à partir d'une distribution bêta
 props <- rbeta(n = 60, shape1 = 5, shape2 = 1)

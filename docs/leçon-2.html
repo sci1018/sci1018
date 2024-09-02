@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 Leçon | Statistiques avec R</title>
   <meta name="description" content="3.1 Leçon | Statistiques avec R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 Leçon | Statistiques avec R" />
   <meta property="og:type" content="book" />
@@ -469,8 +469,8 @@ Figure 3.2: Schéma de l’approche hypothético-déductive en sciences. L’hyp
 <p>L’hypothèse alternative (<span class="math inline">\(H_a\)</span>), quant à elle, est l’hypothèse statistique qui correspond à un effet ou une différence. C’est cette hypothèse qui indique qu’il se passe quelque chose. Le test d’hypothèse statistique consiste à essayer de rejeter <span class="math inline">\(H_0\)</span>. Si l’hypothèse nulle (<span class="math inline">\(H_0\)</span>) est fausse, on la rejette et on se tourne vers l’hypothèse alternative (<span class="math inline">\(H_a\)</span>). On parle toujours en termes de <span class="math inline">\(H_0\)</span>: on rejette <span class="math inline">\(H_0\)</span> ou non. On ne peut pas accepter <span class="math inline">\(H_0\)</span>, seulement échouer de la rejeter faute de preuves. C’est ce système binaire d’hypothèses que les chercheurs utilisent depuis près d’un siècle. Toutefois, des méthodes alternatives ont été développées récemment qui permettent de comparer plusieurs hypothèses (&gt; 2) simultanément, à l’aide de la sélection de modèles.</p>
 <div class="exemple" section="3">
 <p>On réalise une expérience pour tester l’hypothèse scientifique suivante: la lumière abondante dans les coupes forestières favorise les espèces végétales intolérantes à l’ombre.</p>
-<p>Pour ce faire, on pourrait comparer la croissance moyenne de certaines espèces intolérantes à l’ombre dans 10 parcelles en coupes forestières et 10 parcelles en forêt sans coupe (témoins). Après avoir récolté les données, on pourrait procéder à une analyse statistique pour tester les hypothèses statistiques suivantes à propos des moyennes des deux groupes:
-<span class="math inline">\(H_0\)</span> (hypothèse nulle): <span class="math inline">\(\mu_{coupes} = \mu_{t\acute{e}moins}\)</span> \
+<p>Pour ce faire, on pourrait comparer la croissance moyenne de certaines espèces intolérantes à l’ombre dans 10 parcelles en coupes forestières et 10 parcelles en forêt sans coupe (témoins). Après avoir récolté les données, on pourrait procéder à une analyse statistique pour tester les hypothèses statistiques suivantes à propos des moyennes des deux groupes :<br />
+<span class="math inline">\(H_0\)</span> (hypothèse nulle): <span class="math inline">\(\mu_{coupes} = \mu_{t\acute{e}moins}\)</span><br />
 <span class="math inline">\(H_a\)</span> (hypothèse alternative): <span class="math inline">\(\mu_{coupes} \neq \mu_{t\acute{e}moins}\)</span></p>
 <p>Si le test statistique indique que la différence observée entre les parcelle coupées et témoins est peu probable pour un échantillon de même taille tiré à partir de la même population lorsque <span class="math inline">\(H_0\)</span> est vraie, nous allons rejeter <span class="math inline">\(H_0\)</span>. En d’autres mots, on se base sur une distribution statistique qui reflète <span class="math inline">\(H_0\)</span> pour situer la valeur observée de la statistique du test obtenue à partir de l’échantillon. Si cette valeur se trouve dans les extrémités de la distribution (c.-à-d., dans les queues), on va considérer cette valeur comme peu plausible lorsque <span class="math inline">\(H_0\)</span> est vraie. On conclura alors qu’il y a une différence de croissance des espèces intolérantes à l’ombre dans les coupes et dans les témoins, ce qui confirmera notre hypothèse scientifique de départ.</p>
 </div>
@@ -490,7 +490,7 @@ Figure 3.2: Schéma de l’approche hypothético-déductive en sciences. L’hyp
 <h3><span class="header-section-number">3.1.3</span> Erreurs de type I et II<a href="leçon-2.html#erreurs-de-type-i-et-ii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Le choix du seuil de signification influence la probabilité d’arriver à la bonne conclusion. Si on fixe <span class="math inline">\(\alpha\)</span> à 0.05, on va rejeter <span class="math inline">\(H_0\)</span> si la probabilité d’observer une différence comme celle de l’échantillon (lorsque <span class="math inline">\(H_0\)</span> est vraie) est inférieure à 0.05. Même avec la meilleure des intentions, on va donc rejeter <span class="math inline">\(H_0\)</span> dans des cas où <span class="math inline">\(H_0\)</span> est vraie avec une probabilité de <span class="math inline">\(\alpha\)</span>. Bien qu’il existe des valeurs dans les extrémités d’une distribution lorsque <span class="math inline">\(H_0\)</span> est vraie, notre choix de traiter ces valeurs comme des cas peu probables fait en sorte qu’on rejette parfois <span class="math inline">\(H_0\)</span> alors que nous n’aurions pas dû la rejeter. Avec <span class="math inline">\(\alpha = 0.05\)</span>, on va rejeter <span class="math inline">\(H_0\)</span> à tort 5 % du temps (1 fois sur 20). On appelle ce type d’erreur, l’<strong>erreur de type I</strong> (erreur <span class="math inline">\(\alpha\)</span>, <em>type I error</em>). C’est équivalent de déclarer un accusé “coupable” alors qu’il est “non coupable” (Table <a href="leçon-2.html#tab:hoha">3.1</a>).</p>
 <p>De la même façon, à d’autres occasions, nous ne rejetterons pas <span class="math inline">\(H_0\)</span> lorsqu’elle est fausse et qu’elle aurait dû être rejetée. Il s’agit de <strong>l’erreur de type II</strong> (erreur <span class="math inline">\(\beta\)</span>, <em>type II error</em>) – on déclare l’accusé “non coupable” alors qu’il est “coupable”. La probabilité de commettre une erreur de type II peut se calculer à partir de formules ou de simulations, mais elle dépend de la taille de l’effet que l’on veut observer, de la taille de l’échantillon, de la variance des données, de la formulation de <span class="math inline">\(H_0\)</span>, du design expérimental et du type d’échantillonnage. Les calculs de la puissance ne seront pas présentés dans le cours.</p>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
@@ -526,10 +526,10 @@ On rejette <span class="math inline">\(H_0\)</span>
 <span class="math inline">\(H_0\)</span> vraie
 </td>
 <td style="text-align:left;">
-décision correcte
+<span style="     color: blue !important;">décision correcte</span>
 </td>
 <td style="text-align:left;">
-erreur de type I (<span class="math inline">\(\alpha\)</span>) <br> (faux positif)
+<span style="     color: red !important;">erreur de type I (<span class="math inline">\(\alpha\)</span>) <br> (faux positif)</span>
 </td>
 </tr>
 <tr>
@@ -539,17 +539,17 @@ erreur de type I (<span class="math inline">\(\alpha\)</span>) <br> (faux positi
 <span class="math inline">\(H_0\)</span> fausse
 </td>
 <td style="text-align:left;">
-erreur de type II (<span class="math inline">\(\beta\)</span>) <br> (faux négatif)
+<span style="     color: red !important;">erreur de type II (<span class="math inline">\(\beta\)</span>) <br> (faux négatif)</span>
 </td>
 <td style="text-align:left;">
-décision correcte <br> (puissance = 1 - <span class="math inline">\(\beta\)</span>)
+<span style="     color: blue !important;">décision correcte <br> (puissance = 1 - <span class="math inline">\(\beta\)</span>)</span>
 </td>
 </tr>
 </tbody>
 </table>
 <div id="puissance" class="section level4 hasAnchor" number="3.1.3.1">
 <h4><span class="header-section-number">3.1.3.1</span> Puissance<a href="leçon-2.html#puissance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>La <strong>puissance</strong>, définie comme étant <span class="math inline">\(1 - \beta\)</span>, est la probabilité de rejeter correctement <span class="math inline">\(H_0\)</span> lorsqu’elle est fausse. La puissance dépend de la taille de l’effet, de la taille de l’échantillon, de la variabilité des données, de l’hypothèse testée et du dispositif expérimental. Cette quantité peut être calculée à l’aide de données préliminaires avant d’effectuer l’échantillonnage afin de nous guider quant à la taille d’échantillon nécessaire étant donné l’effet que l’on veut mesurer (p. ex., les différences entre moyennes de groupes). Le calcul de la puissance doit s’effectuer <em>a priori</em> avec des données préliminaires. Le calcul <em>a posteriori</em> de la puissance, à partir des données de l’expérience ou de l’étude d’observation, est à proscrire. %D’ailleurs, l’usage des analyses de puissance <em>a posteriori</em> a fait l’objet de vives critiques dans les années 1990’s dans le monde statistique.</p>
+<p>La <strong>puissance</strong>, définie comme étant <span class="math inline">\(1 - \beta\)</span>, est la probabilité de rejeter correctement <span class="math inline">\(H_0\)</span> lorsqu’elle est fausse. La puissance dépend de la taille de l’effet, de la taille de l’échantillon, de la variabilité des données, de l’hypothèse testée et du dispositif expérimental. Cette quantité peut être calculée à l’aide de données préliminaires avant d’effectuer l’échantillonnage afin de nous guider quant à la taille d’échantillon nécessaire étant donné l’effet que l’on veut mesurer (p. ex., les différences entre moyennes de groupes). Le calcul de la puissance doit s’effectuer <em>a priori</em> avec des données préliminaires. Le calcul <em>a posteriori</em> de la puissance, à partir des données de l’expérience ou de l’étude d’observation, est à proscrire. D’ailleurs, l’usage des analyses de puissance <em>a posteriori</em> a fait l’objet de vives critiques dans les années 1990’s dans le monde statistique.</p>
 <p>Dans toute analyse, nous voulons que la puissance soit élevée (le plus près possible de 1). Les mesures suivantes permettent d’augmenter la puissance d’une analyse :</p>
 <ul>
 <li>augmenter l’erreur de type I – si <span class="math inline">\(\alpha\)</span> augmente, <span class="math inline">\(\beta\)</span> diminue, et par conséquent, <span class="math inline">\(1 - \beta\)</span> augmente;</li>
@@ -722,7 +722,8 @@ t = \frac{\bar{x} - \mu}{SE} = \frac{-0.608 - 0}{0.633/\sqrt{12}} = -3.329
 <div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="leçon-2.html#cb396-1" tabindex="-1"></a><span class="do">##on crée un vecteur avec les observations</span></span>
 <span id="cb396-2"><a href="leçon-2.html#cb396-2" tabindex="-1"></a>residus <span class="ot">&lt;-</span> poids <span class="sc">-</span> <span class="fu">mean</span>(poids)</span>
 <span id="cb396-3"><a href="leçon-2.html#cb396-3" tabindex="-1"></a>residus</span></code></pre></div>
-<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333  0.508333333  0.608333333  0.008333333 -0.491666667 -0.591666667 -0.191666667</code></pre>
+<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333  0.508333333  0.608333333
+##  [9]  0.008333333 -0.491666667 -0.591666667 -0.191666667</code></pre>
 <p>La vérification de la normalité peut se faire à l’aide de méthodes formelles telles que les tests d’Anderson-Darling, de Cramér-von Mises, ou de Shapiro-Wilk. L’hypothèse nulle de ces tests correspond au respect de la supposition de normalité (<span class="math inline">\(H_0\)</span>: la normalité est respectée). Le rejet de cette hypothèse indique que les résidus ne suivent pas la distribution normale. Plusieurs tests de normalité sont disponibles dans dans le package (banque de fonctions) . Étant donné que ce package n’est pas distribué avec l’installation de base de , nous devons l’installer avant de pouvoir l’utiliser. Le document <em>Introduction à R - les packages</em> illustre toutes les étapes pour y arriver.</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="leçon-2.html#cb398-1" tabindex="-1"></a><span class="do">##on charge le package</span></span>
 <span id="cb398-2"><a href="leçon-2.html#cb398-2" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
