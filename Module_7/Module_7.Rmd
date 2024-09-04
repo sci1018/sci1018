@@ -747,7 +747,7 @@ En l'absence d'une interaction statistiquement significative (comme dans cet exe
        type = "n", 
        cex.lab = 1.2, 
        xaxt = "n", 
-       main = "Moyennes ± racine carrée de MSE")
+       main = "Moyennes ± racine carrée de MSE", cex.main=1)
   
   ##ajout de l'axe des x's
   axis(side = 1, 
@@ -782,7 +782,7 @@ En l'absence d'une interaction statistiquement significative (comme dans cet exe
        type = "n", 
        cex.lab = 1.2, 
        xaxt = "n", 
-       main = "Moyennes ± racine carrée de MSE")
+       main = "Moyennes ± racine carrée de MSE", cex.main=1)
   
   ##ajout de l'axe des x's
   axis(side = 1, 

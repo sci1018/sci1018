@@ -656,10 +656,10 @@ gg <- data.frame(Val = c(g1, g2),
 gg$log.Val <- log(gg$Val)
 par(mfrow = c(1, 2))
 boxplot(Val ~ Group, data = gg, 
-        main = "Groupes avec variances hétérogènes")
+        main = "Groupes avec variances hétérogènes", cex.main = 1)
 text(x = 0.5, y = 295, labels = "a")
 boxplot(log.Val ~ Group, data = gg, 
-        main = "Groupes avec variances homogènes")
+        main = "Groupes avec variances homogènes", cex.main = 1)
 text(x = 0.5, y = 5.72, labels = "b")
 ```
 

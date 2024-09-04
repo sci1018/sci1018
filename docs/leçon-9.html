@@ -408,7 +408,7 @@ Figure 10.1: Augmentation des ventes de divers produits cosmétiques en fonction
 </div>
 <div id="estimation" class="section level4 hasAnchor" number="10.1.1.2">
 <h4><span class="header-section-number">10.1.1.2</span> Estimation<a href="leçon-9.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>La régression linéaire minimise la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>)<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a> par la méthode des moindres carrés pour obtenir les estimations de l’ordonnée à l’origine et de la pente. Autrement dit, pour un jeu de données, l’équation de régression est l’équation qui donne la plus faible distance verticale entre chaque point (<span class="math inline">\(y_i\)</span>) et la droite de régression (<span class="math inline">\(\hat{y}_i\)</span>). Pour des problèmes plus complexes, comme la régression multiple que nous ne verrons pas dans le cours, les paramètres sont estimés à l’aide d’algèbre matricielle.</p>
+<p>La régression linéaire minimise la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>)<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a> par la méthode des moindres carrés pour obtenir les estimations de l’ordonnée à l’origine et de la pente. Autrement dit, pour un jeu de données, l’équation de régression est l’équation qui donne la plus faible distance verticale entre chaque point (<span class="math inline">\(y_i\)</span>) et la droite de régression (<span class="math inline">\(\hat{y}_i\)</span>). Pour des problèmes plus complexes, comme la régression multiple que nous ne verrons pas dans le cours, les paramètres sont estimés à l’aide d’algèbre matricielle.</p>
 <p>On peut calculer différentes sommes des carrés à partir des données de la régression linéaire, un peu comme nous l’avons effectué pour l’ANOVA. Les prochaines lignes montrent les sommes des carrés qui nous permettront d’obtenir les estimations des paramètres (variance résiduelle et coefficients de régression) à l’aide de la méthode des moindres carrés.</p>
 <p>La somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>) donne la somme des carrés de la déviation entre les valeurs observées de la variable dépendante (<span class="math inline">\(y_i\)</span>) et les valeurs prédites (<span class="math inline">\(\hat{y}_i\)</span>) par l’équation de régression :</p>
 <p><span class="math display">\[  SSE = \sum_{i=1}^n (y_i - \hat{y_i})^2\]</span></p>
@@ -434,38 +434,55 @@ Puisque la droite de régression passe par le point <span class="math inline">\(
 <div class="exemple" section="10">
 <p>Nous allons estimer le facteur d’augmentation des ventes à partir des équations vues dans la section précédente.</p>
 <p>La somme des carrés de <span class="math inline">\(Y\)</span> :</p>
-<p><span class="math display">\[SSY = \sum_{i=1}^n (y_i - \bar{y})^2\]</span>
-<span class="math display">\[SSY = (1.4 - 3.4)^2 + \ldots + (4.5 - 3.4)^2\]</span>
-<span class="math display">\[SSY = 13\]</span></p>
-<p>La somme des carrés de <span class="math inline">\(X\)</span>:
-<span class="math display">\[SSX = \sum_{i=1}^n (x_i - \bar{x})^2\]</span>
-<span class="math display">\[SSX = (3 - 10)^2 + \ldots + (17 - 10)^2\]</span>
-<span class="math display">\[SSX = 262\]</span>
-La somme des produits croisés :
-<span class="math display">\[SSXY = \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})\]</span>
-<span class="math display">\[SSXY = (1.4 - 3.4)(3 - 10) + \ldots + (4.5 - 3.4)(17 - 10)\]</span>
-<span class="math display">\[SSXY = 51.1\]</span>
-La somme des carrés de la régression:
-<span class="math display">\[SS_{\mathrm{r\acute{e}gression}} = \frac{SSXY^2}{SSX}\]</span>
-<span class="math display">\[SS_{\mathrm{r\acute{e}gression}} = \frac{51.1^2}{262}\]</span>
-<span class="math display">\[SS_{\mathrm{r\acute{e}gression}} = 10\]</span></p>
-<p>La somme des carrés des erreurs:
-<span class="math display">\[SSE = SSY - SS_{r\acute{e}gression}\]</span>
-<span class="math display">\[SSE = 13  - 10\]</span>
-<span class="math display">\[SSE = 3\]</span>
-Nous pouvons ensuite calculer la pente de la droite de régression:
-<span class="math display">\[\beta_x = \frac{SSXY}{SSX}\]</span>
-<span class="math display">\[\beta_x = \frac{51.1}{262}\]</span>
-<span class="math display">\[\beta_x = 0.2\]</span></p>
-<p>L’ordonnée à l’origine s’obtient comme suit:
-<span class="math display">\[\beta_0 = \bar{y} - \beta_x\bar{x}\]</span>
-<span class="math display">\[\beta_0 = 3.4 - 0.2 * 10\]</span>
-<span class="math display">\[\beta_0 = 1.5\]</span></p>
-<p>Et la variance résiduelle est donnée par:
-<span class="math display">\[MSE = \frac{SSE}{n - 2}\]</span>
-<span class="math display">\[MSE = \frac{3.1}{13 - 2}\]</span>
-<span class="math display">\[MSE = 0.3\]</span>
-Nous pouvons réaliser rapidement tous ces calculs en appliquant les formules dans R ou encore en utilisant directement la fonction <code>lm( )</code> :</p>
+<p><span class="math display">\[\begin{align*}
+SSY &amp;= \sum_{i=1}^n (y_i - \bar{y})^2 \\
+SSY &amp;= (1.4 - 3.4)^2 + \ldots + (4.5 - 3.4)^2 \\
+SSY &amp;= 13
+\end{align*}\]</span></p>
+<p>La somme des carrés de <span class="math inline">\(X\)</span> :</p>
+<p><span class="math display">\[\begin{align*}
+SSX &amp;= \sum_{i=1}^n (x_i - \bar{x})^2 \\
+SSX &amp;= (3 - 10)^2 + \ldots + (17 - 10)^2 \\
+SSX &amp;= 262
+\end{align*}\]</span></p>
+<p>La somme des produits croisés :</p>
+<p><span class="math display">\[\begin{align*}
+SSXY &amp;= \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) \\
+SSXY &amp;= (1.4 - 3.4)(3 - 10) + \ldots \\
+&amp;\quad + (4.5 - 3.4)(17 - 10) \\
+SSXY &amp;= 51.1
+\end{align*}\]</span></p>
+<p>La somme des carrés de la régression :</p>
+<p><span class="math display">\[\begin{align*}
+SS_{\mathrm{r\acute{e}gression}} &amp;= \frac{SSXY^2}{SSX} \\
+SS_{\mathrm{r\acute{e}gression}} &amp;= \frac{51.1^2}{262} \\
+SS_{\mathrm{r\acute{e}gression}} &amp;= 10
+\end{align*}\]</span></p>
+<p>La somme des carrés des erreurs :</p>
+<p><span class="math display">\[\begin{align*}
+SSE &amp;= SSY - SS_{\mathrm{r\acute{e}gression}} \\
+SSE &amp;= 13 - 10 \\
+SSE &amp;= 3
+\end{align*}\]</span></p>
+<p>Nous pouvons ensuite calculer la pente de la droite de régression :</p>
+<p><span class="math display">\[\begin{align*}
+\beta_x &amp;= \frac{SSXY}{SSX} \\
+\beta_x &amp;= \frac{51.1}{262} \\
+\beta_x &amp;= 0.2
+\end{align*}\]</span></p>
+<p>L’ordonnée à l’origine s’obtient comme suit :</p>
+<p><span class="math display">\[\begin{align*}
+\beta_0 &amp;= \bar{y} - \beta_x \bar{x} \\
+\beta_0 &amp;= 3.4 - 0.2 \times 10 \\
+\beta_0 &amp;= 1.5
+\end{align*}\]</span></p>
+<p>Et la variance résiduelle est donnée par :</p>
+<p><span class="math display">\[\begin{align*}
+MSE &amp;= \frac{SSE}{n - 2} \\
+MSE &amp;= \frac{3.1}{13 - 2} \\
+MSE &amp;= 0.3
+\end{align*}\]</span></p>
+<p>Nous pouvons réaliser rapidement tous ces calculs en appliquant les formules dans R ou encore en utilisant directement la fonction <code>lm( )</code> :</p>
 <div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="leçon-9.html#cb748-1" tabindex="-1"></a><span class="do">##on crée des objets pour stocker chaque variable</span></span>
 <span id="cb748-2"><a href="leçon-9.html#cb748-2" tabindex="-1"></a>nombre <span class="ot">&lt;-</span> influenceurs<span class="sc">$</span>Nombre</span>
 <span id="cb748-3"><a href="leçon-9.html#cb748-3" tabindex="-1"></a>facteur <span class="ot">&lt;-</span> influenceurs<span class="sc">$</span>Facteur</span>
@@ -562,7 +579,7 @@ Figure 10.2: Droite de régression linéaire du facteur d’augmentation des ven
 <li><strong>normalité:</strong> les erreurs proviennent d’une distribution normale. Cette supposition peut être vérifiée à l’aide d’un graphique quantile-quantile à partir des résidus;</li>
 <li><strong>homoscédasticité:</strong> la variance de <span class="math inline">\(y\)</span> (et des erreurs) est la même pour chaque <span class="math inline">\(x\)</span>. Le graphique des résidus en fonction des valeurs prédites permet de diagnostiquer des problèmes associés à l’hétérogénéité de la variance;</li>
 <li><strong>indépendance:</strong> es valeurs de <span class="math inline">\(y\)</span> (et les erreurs) sont indépendantes les unes des autres. L’échantillonnage aléatoire des observations assure l’indépendance des observations et des erreurs;</li>
-<li><strong>linéarité:</strong> la relation entre <span class="math inline">\(y\)</span> et <span class="math inline">\(x\)</span> est linéaire. La régression linéaire implique une relation linéaire: un graphique des valeurs observées (<span class="math inline">\(y\)</span>) en fonction de la variable explicative (<span class="math inline">\(x\)</span>) permet de vérifier la plausibilité de cette supposition. Si la relation n’a pas une forme linéaire (une relation exponentielle par exemple), on peut considérer une transformation afin de linéariser la relation<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>.</li>
+<li><strong>linéarité:</strong> la relation entre <span class="math inline">\(y\)</span> et <span class="math inline">\(x\)</span> est linéaire. La régression linéaire implique une relation linéaire: un graphique des valeurs observées (<span class="math inline">\(y\)</span>) en fonction de la variable explicative (<span class="math inline">\(x\)</span>) permet de vérifier la plausibilité de cette supposition. Si la relation n’a pas une forme linéaire (une relation exponentielle par exemple), on peut considérer une transformation afin de linéariser la relation<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>.</li>
 <li><strong>mesure de <span class="math inline">\(x\)</span> sans erreur:</strong> les valeurs de <span class="math inline">\(x\)</span> sont mesurées sans erreur. Un assouplissement de cette supposition consiste à supposer que l’erreur sur <span class="math inline">\(x\)</span> est très faible par rapport à l’erreur de mesure de <span class="math inline">\(y\)</span>. La prévention et la rigueur dans la prise de mesure permet de satisfaire à cette condition.</li>
 </ol>
 <div class="exemple" section="10">
@@ -571,12 +588,12 @@ Figure 10.2: Droite de régression linéaire du facteur d’augmentation des ven
 <span id="cb769-2"><a href="leçon-9.html#cb769-2" tabindex="-1"></a><span class="do">##homogénéité de la variance</span></span>
 <span id="cb769-3"><a href="leçon-9.html#cb769-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(m1) <span class="sc">~</span> <span class="fu">fitted</span>(m1), <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>,</span>
 <span id="cb769-4"><a href="leçon-9.html#cb769-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>, </span>
-<span id="cb769-5"><a href="leçon-9.html#cb769-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Homogénéité des variances&quot;</span>)</span>
+<span id="cb769-5"><a href="leçon-9.html#cb769-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Homogénéité des variances&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span>
 <span id="cb769-6"><a href="leçon-9.html#cb769-6" tabindex="-1"></a><span class="do">##normalité</span></span>
 <span id="cb769-7"><a href="leçon-9.html#cb769-7" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&quot;a&quot;</span>, <span class="at">x=</span> <span class="fl">2.3</span>, <span class="at">y =</span> <span class="fl">0.7</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
 <span id="cb769-8"><a href="leçon-9.html#cb769-8" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(m1), <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
 <span id="cb769-9"><a href="leçon-9.html#cb769-9" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>,</span>
-<span id="cb769-10"><a href="leçon-9.html#cb769-10" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Normalité des résidus&quot;</span>)</span>
+<span id="cb769-10"><a href="leçon-9.html#cb769-10" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Normalité des résidus&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span>
 <span id="cb769-11"><a href="leçon-9.html#cb769-11" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(m1))</span>
 <span id="cb769-12"><a href="leçon-9.html#cb769-12" tabindex="-1"></a><span class="fu">text</span>(<span class="st">&quot;b&quot;</span>, <span class="at">x=</span> <span class="sc">-</span><span class="fl">1.4</span>, <span class="at">y =</span> <span class="fl">0.7</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotdiaginf"></span>
@@ -774,11 +791,11 @@ Figure 10.7: Graphique du prix de tablettes de chocolat australiennes en fonctio
 <span id="cb787-4"><a href="leçon-9.html#cb787-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">rstudent</span>(m.chocs) <span class="sc">~</span> <span class="fu">fitted</span>(m.chocs), </span>
 <span id="cb787-5"><a href="leçon-9.html#cb787-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Résidus de Student&quot;</span>,</span>
 <span id="cb787-6"><a href="leçon-9.html#cb787-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>,</span>
-<span id="cb787-7"><a href="leçon-9.html#cb787-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Homogénéité des variances&quot;</span>)</span>
+<span id="cb787-7"><a href="leçon-9.html#cb787-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Homogénéité des variances&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span>
 <span id="cb787-8"><a href="leçon-9.html#cb787-8" tabindex="-1"></a><span class="fu">text</span>(<span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">x =</span> <span class="fl">1.025</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
 <span id="cb787-9"><a href="leçon-9.html#cb787-9" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">rstudent</span>(m.chocs), <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
 <span id="cb787-10"><a href="leçon-9.html#cb787-10" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
-<span id="cb787-11"><a href="leçon-9.html#cb787-11" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Normalité des résidus&quot;</span>)</span>
+<span id="cb787-11"><a href="leçon-9.html#cb787-11" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Normalité des résidus&quot;</span>, <span class="at">cex.main =</span> <span class="dv">1</span>)</span>
 <span id="cb787-12"><a href="leçon-9.html#cb787-12" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">rstudent</span>(m.chocs))</span>
 <span id="cb787-13"><a href="leçon-9.html#cb787-13" tabindex="-1"></a><span class="fu">text</span>(<span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">1.9</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:regchocs"></span>
@@ -867,7 +884,7 @@ Figure 10.9: Droite de régression et limites de confiance à 95 % (pointillés)
 <p>La <strong>corrélation</strong> est une relation d’association entre deux variables. Contrairement à la régression, il n’y a aucune allusion à une relation de cause à effet avec la corrélation. En d’autres mots, on ne distingue pas entre variable dépendante (<span class="math inline">\(y\)</span>) et indépendante (<span class="math inline">\(x\)</span>) – les deux variables varient en même temps et une troisième variable peut potentiellement agir sur les deux. Pour distinguer entre la régression et la corrélation, considérons un exemple où on veut expliquer le nombre moyen de verres cassés par jour dans des restaurants d’une ville selon le nombre de clients. Si le nombre de clients influence le nombre de verres cassés, nous aurons un cas de régression linéaire. À l’opposé, si on mesure le nombre moyen de verres cassés par jour dans des restaurants d’une ville et la quantité de déchets dans les rues autour de ces restaurants, la relation entre les deux variables serait plutôt une corrélation, et cette corrélation pourrait être expliquée par une troisième variable qui influencent les deux premières variables, c.-à-d. la densité de population ou le nombre de clients.</p>
 <div id="corrélation-de-pearson" class="section level4 hasAnchor" number="10.1.2.1">
 <h4><span class="header-section-number">10.1.2.1</span> Corrélation de Pearson<a href="leçon-9.html#corrélation-de-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Le <strong>coefficient de corrélation de Pearson</strong> (<em>Pearson’s product-moment correlation coefficient</em>) nous donne la corrélation entre deux variables<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>:</p>
+<p>Le <strong>coefficient de corrélation de Pearson</strong> (<em>Pearson’s product-moment correlation coefficient</em>) nous donne la corrélation entre deux variables<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>:</p>
 <p><span class="math display">\[r = \frac{SSXY}{\sqrt{SSX \cdot SSY}}\]</span></p>
 <p>où <span class="math inline">\(SSXY\)</span>, <span class="math inline">\(SSX\)</span> et <span class="math inline">\(SSY\)</span> sont les mêmes termes que l’on calcule dans la régression. La figure <a href="leçon-9.html#fig:corr1">10.10</a> présente différents degrés de corrélation positive, alors que la figure <a href="leçon-9.html#fig:corr2">10.11</a> illustre des corrélations négatives.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:corr1"></span>
@@ -924,10 +941,10 @@ Figure 10.11: Différents degrés de corrélation négative (<span class="math i
 </div>
 <div class="footnotes">
 <hr />
-<ol start="33">
-<li id="fn33"><p>Rappel: la somme des carrés des erreurs s’obtient avec l’équation <span class="math inline">\(SSE = \sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span>, où <span class="math inline">\(y_i\)</span> correspond aux observations de la variable réponse et <span class="math inline">\(\hat{y}_i\)</span> représente les valeurs prédites par l’équation de régression.<a href="leçon-9.html#fnref33" class="footnote-back">↩︎</a></p></li>
-<li id="fn34"><p>Dans le cas de certaines relations comme une relation exponentielle, transformer la variable réponse à l’échelle log peut linéariser la relation. Si le patron est plutôt quadratique (p. ex., une courbe avec un optimum), on peut aussi considérer un terme quadratique dans l’équation, c’est-à-dire, utiliser une régression polynomiale avec variable <span class="math inline">\(x + x^2\)</span><a href="leçon-9.html#fnref34" class="footnote-back">↩︎</a></p></li>
-<li id="fn35"><p>Il existe aussi des analogues non-paramétriques de la corrélation, tels que la corrélation de Spearman ou de Kendall.<a href="leçon-9.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<ol start="32">
+<li id="fn32"><p>Rappel: la somme des carrés des erreurs s’obtient avec l’équation <span class="math inline">\(SSE = \sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span>, où <span class="math inline">\(y_i\)</span> correspond aux observations de la variable réponse et <span class="math inline">\(\hat{y}_i\)</span> représente les valeurs prédites par l’équation de régression.<a href="leçon-9.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>Dans le cas de certaines relations comme une relation exponentielle, transformer la variable réponse à l’échelle log peut linéariser la relation. Si le patron est plutôt quadratique (p. ex., une courbe avec un optimum), on peut aussi considérer un terme quadratique dans l’équation, c’est-à-dire, utiliser une régression polynomiale avec variable <span class="math inline">\(x + x^2\)</span><a href="leçon-9.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>Il existe aussi des analogues non-paramétriques de la corrélation, tels que la corrélation de Spearman ou de Kendall.<a href="leçon-9.html#fnref34" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

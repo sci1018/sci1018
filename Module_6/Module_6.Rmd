@@ -618,9 +618,12 @@ Error_exp <- sum(ifelse(out[,4]=="1", 1, 0))/nsims
 kable(out[1:10, ], 
       row.names = FALSE, 
       caption = "Premières itérations de la simulation illustrant les erreurs liée à la comparaison et à l'expérience.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
-  kable_styling(full_width = F, position = "center")
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1:3, width = "70px") %>%
+  column_spec(4, width = "200px")  
 ```
+
 La première rangée du tableau \@ref(tab:error) correspond à la première itération, et on constate qu'aucune erreur de comparaison n'a été commise, et, par conséquent, aucune erreur liée à l'expérience. La huitième rangée du même tableau montre que les comparaisons 1 *vs* 3 et 2 *vs* 3 ont rejeté par erreur $H_0$ (erreurs liées à la comparaison) et qu'il y a donc une erreur au niveau de l'expérience. On remarquera qu'à l'intérieur de chaque colonne, la proportion du nombre d'erreurs de comparaison par rapport au nombre total d'itérations oscille autour de $\alpha = 0.05$, puisque c'est le seuil que nous avons utilisé dans les comparaisons multiples. Toutefois, en compilant le nombre total d'erreurs au niveau de l'expérience (la quatrième colonne), on obtient la probabilité de commettre une erreur au niveau de l'expérience. Ici, nous avons :
 
 $$\frac{`r sum(ifelse(out[,4]=="1", 1, 0))` \: \mathrm{erreurs \: li\acute{e}es \: \grave{a} \: l^\prime exp\acute{e}rience}}{`r nrow(out)` \: \mathrm{it\acute{e}rations}} = `r Error_exp`$$
@@ -645,10 +648,14 @@ Un grand nombre de tests de comparaisons multiples ont été développés pour d
 6. on compare le $q_{obs}$ à un $q_{th\acute{e}orique}$, qui dépend du seuil $\alpha$, des $df$ du $MSE$ et du nombre de groupes comparés. Dans la plupart des cas, $\alpha$ représente l'erreur au niveau de l'expérience;
 7. un $q_{obs} \geq q_{th\acute{e}orique}$ indique qu'il y a une différence entre la paire de moyennes comparées.
  
-Habituellement, on commence en comparant la plus grande moyenne $\bar{x}_{k}$ des $k$ groupes (ordonnés en ordre croissant de 1 à $k$) aux autres (*vs* $\bar{x}_{1}$, *vs* $\bar{x}_{2}$, \ldots, *vs* $\bar{x}_{k - 1}$). Si, par exemple, on ne rejette plus $H_0$ à partir de la comparaison de $\bar{x}_{k}$ *vs* $\bar{x}_{2}$, il n'est pas nécessaire de vérifier les comparaisons pour les moyennes de 3 à $k-1$ parce que l'on sait déjà qu'on ne rejettera pas $H_0$. On passe ensuite à la comparaison de $\bar{x}_{k - 1}$ avec les moyennes de 1 à $k-2$. Encore une fois, nous pouvons arrêter les comparaisons avec les moyennes subséquentes, dès qu'on ne rejettera plus $H_0$ pour l'une des moyennes. On procède ainsi pour toutes les moyennes pour, enfin, terminer en comparant $\bar{x}_{2}$ *vs* $\bar{x}_{1}$. Par exemple, considérons les moyennes de cinq groupes organisées par ordre croissant:
+Habituellement, on commence en comparant la plus grande moyenne $\bar{x}_{k}$ des $k$ groupes (ordonnés en ordre croissant de 1 à $k$) aux autres (*vs* $\bar{x}_{1}$, *vs* $\bar{x}_{2}$, \ldots, *vs* $\bar{x}_{k - 1}$). Si, par exemple, on ne rejette plus $H_0$ à partir de la comparaison de $\bar{x}_{k}$ *vs* $\bar{x}_{2}$, il n'est pas nécessaire de vérifier les comparaisons pour les moyennes de 3 à $k-1$ parce que l'on sait déjà qu'on ne rejettera pas $H_0$. On passe ensuite à la comparaison de $\bar{x}_{k - 1}$ avec les moyennes de 1 à $k-2$. Encore une fois, nous pouvons arrêter les comparaisons avec les moyennes subséquentes, dès qu'on ne rejettera plus $H_0$ pour l'une des moyennes. On procède ainsi pour toutes les moyennes pour, enfin, terminer en comparant $\bar{x}_{2}$ *vs* $\bar{x}_{1}$. Par exemple, considérons les moyennes de cinq groupes organisées par ordre croissant :
 
-$$ A \qquad C \qquad B \qquad E \qquad D $$
-$$  3.1 \qquad 9.3 \qquad 10.5 \qquad 10.9 \qquad 11.8 $$
+\[
+\begin{array}{l c c c c c}
+A & \quad C & \quad B & \quad E & \quad D \\
+3.1 & \quad 9.3 & \quad 10.5 & \quad 10.9 & \quad 11.8
+\end{array}
+\]
 
 Si on compare la plus grande moyenne (groupe D) au groupe C et que l'on ne rejette pas $H_0$, on ne testera ni le groupe D vs le groupe B, ni le groupe D vs le groupe E. De plus, on ne testera pas le groupe E vs le groupe C, car les groupes D et C ne diffèrent pas l'un de l'autre, et la valeur de E est comprise entre celles de C et D.
 

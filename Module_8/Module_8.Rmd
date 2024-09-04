@@ -111,7 +111,8 @@ kable(df,
       row.names = FALSE, 
       caption = "Termes d'erreurs utilisés pour tester les effets de A, de B et de leur interaction selon la nature des effets (fixes ou aléatoires) en présence de répétitions.",
       "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
-  kable_styling(full_width = T, position = "center")
+  kable_styling(full_width = T, position = "center") %>% 
+  row_spec(1:3, extra_css = "height: 50px !important")
 ``` 
 
 Le modèle III est aussi appelé **modèle mixte** puisqu'il contient des effets fixes et des effets aléatoires. Les modèles mixtes englobent une variété d'approches qui tiennent compte de la structure de données complexes, telles que celles provenant d'un dispositif dit niché ou emboité (p.ex., sondages auprès d'individus emboîtés dans des quartiers, ces derniers emboîtés eux-mêmes dans différentes villes) ou encore avec des mesures répétées dans le temps. Le dispositif expérimental le plus simple du modèle III est le dispositif en **blocs complets aléatoires** et c'est celui que nous verrons en détail dans la prochaine section.

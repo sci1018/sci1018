@@ -147,7 +147,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
 <li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
-<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#contact"><i class="fa fa-check"></i>Contact</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
 <ul>
@@ -402,9 +401,9 @@ L’erreur au niveau de la comparaison se produit lorsqu’on rejette faussement
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="autoévaluation-4.html#cb95-1" tabindex="-1"></a><span class="do">##on importe le jeu de données</span></span>
-<span id="cb95-2"><a href="autoévaluation-4.html#cb95-2" tabindex="-1"></a>poison <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/Survie.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb95-3"><a href="autoévaluation-4.html#cb95-3" tabindex="-1"></a><span class="fu">head</span>(poison)</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="autoévaluation-4.html#cb603-1" tabindex="-1"></a><span class="do">##on importe le jeu de données</span></span>
+<span id="cb603-2"><a href="autoévaluation-4.html#cb603-2" tabindex="-1"></a>poison <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/Survie.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb603-3"><a href="autoévaluation-4.html#cb603-3" tabindex="-1"></a><span class="fu">head</span>(poison)</span></code></pre></div>
 <pre><code>##       Temps   Dose
 ## 1 15.998507 faible
 ## 2 12.539667 faible
@@ -431,35 +430,35 @@ Les hypothèses statistiques testées sont :<br />
 Réponse
 </summary>
 <p>Avant de faire l’ANOVA, observons la structure interne des données :</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="autoévaluation-4.html#cb97-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="autoévaluation-4.html#cb605-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
 ##  $ Temps: num  16 12.54 3.02 7.62 22.27 ...
 ##  $ Dose : chr  &quot;faible&quot; &quot;faible&quot; &quot;faible&quot; &quot;faible&quot; ...</code></pre>
 <p>On observe que la variable <code>Dose</code> est une variable caractère (<code>chr</code>). Or elle doit être un <code>facteur</code> (<code>factor</code>) pour être utilisée dans l’analyse. Nous devons donc la transformer :</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="autoévaluation-4.html#cb99-1" tabindex="-1"></a>poison<span class="sc">$</span>Dose <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(poison<span class="sc">$</span>Dose)</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="autoévaluation-4.html#cb607-1" tabindex="-1"></a>poison<span class="sc">$</span>Dose <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(poison<span class="sc">$</span>Dose)</span></code></pre></div>
 <p>Remarquer que le changement a bel et bien été réalisé dans la structure des données :</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="autoévaluation-4.html#cb100-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="autoévaluation-4.html#cb608-1" tabindex="-1"></a><span class="fu">str</span>(poison)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
 ##  $ Temps: num  16 12.54 3.02 7.62 22.27 ...
 ##  $ Dose : Factor w/ 3 levels &quot;elevee&quot;,&quot;faible&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
 <p>Nous pouvons maintenant réaliser l’ANOVA.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="autoévaluation-4.html#cb102-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
-<span id="cb102-2"><a href="autoévaluation-4.html#cb102-2" tabindex="-1"></a></span>
-<span id="cb102-3"><a href="autoévaluation-4.html#cb102-3" tabindex="-1"></a></span>
-<span id="cb102-4"><a href="autoévaluation-4.html#cb102-4" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées. </span></span>
-<span id="cb102-5"><a href="autoévaluation-4.html#cb102-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb102-6"><a href="autoévaluation-4.html#cb102-6" tabindex="-1"></a><span class="fu">plot</span>(m1)</span></code></pre></div>
-<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="autoévaluation-4.html#cb610-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
+<span id="cb610-2"><a href="autoévaluation-4.html#cb610-2" tabindex="-1"></a></span>
+<span id="cb610-3"><a href="autoévaluation-4.html#cb610-3" tabindex="-1"></a></span>
+<span id="cb610-4"><a href="autoévaluation-4.html#cb610-4" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées. </span></span>
+<span id="cb610-5"><a href="autoévaluation-4.html#cb610-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb610-6"><a href="autoévaluation-4.html#cb610-6" tabindex="-1"></a><span class="fu">plot</span>(m1)</span></code></pre></div>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p>On constate que les variances ne sont pas homogènes, puisque le graphique des résidus en fonction des valeurs prédites montre qu’un groupe varie moins que les autres.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="autoévaluation-4.html#cb103-1" tabindex="-1"></a><span class="do">##on essaie une transformation log</span></span>
-<span id="cb103-2"><a href="autoévaluation-4.html#cb103-2" tabindex="-1"></a>poison<span class="sc">$</span>log.Temps <span class="ot">&lt;-</span> <span class="fu">log</span>(poison<span class="sc">$</span>Temps)</span>
-<span id="cb103-3"><a href="autoévaluation-4.html#cb103-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(log.Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
-<span id="cb103-4"><a href="autoévaluation-4.html#cb103-4" tabindex="-1"></a></span>
-<span id="cb103-5"><a href="autoévaluation-4.html#cb103-5" tabindex="-1"></a></span>
-<span id="cb103-6"><a href="autoévaluation-4.html#cb103-6" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées suite à cette transformation:</span></span>
-<span id="cb103-7"><a href="autoévaluation-4.html#cb103-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb103-8"><a href="autoévaluation-4.html#cb103-8" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
-<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="autoévaluation-4.html#cb611-1" tabindex="-1"></a><span class="do">##on essaie une transformation log</span></span>
+<span id="cb611-2"><a href="autoévaluation-4.html#cb611-2" tabindex="-1"></a>poison<span class="sc">$</span>log.Temps <span class="ot">&lt;-</span> <span class="fu">log</span>(poison<span class="sc">$</span>Temps)</span>
+<span id="cb611-3"><a href="autoévaluation-4.html#cb611-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(log.Temps <span class="sc">~</span> Dose, <span class="at">data =</span> poison)</span>
+<span id="cb611-4"><a href="autoévaluation-4.html#cb611-4" tabindex="-1"></a></span>
+<span id="cb611-5"><a href="autoévaluation-4.html#cb611-5" tabindex="-1"></a></span>
+<span id="cb611-6"><a href="autoévaluation-4.html#cb611-6" tabindex="-1"></a><span class="do">## Vérifions que les suppositions sont respectées suite à cette transformation:</span></span>
+<span id="cb611-7"><a href="autoévaluation-4.html#cb611-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb611-8"><a href="autoévaluation-4.html#cb611-8" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
+<p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>Les variances sont maintenant homogènes après cette transformation. Les résidus respectent aussi la condition de normalité. De plus, nous assumons que le dispositif expérimental assure la supposition d’indépendance des erreurs. Nous pouvons donc procéder avec l’interprétation de l’ANOVA.</p>
 </details>
 <p><br></p>
@@ -468,7 +467,7 @@ Réponse
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="autoévaluation-4.html#cb104-1" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="autoévaluation-4.html#cb612-1" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Dose         2  26.27  13.136   12.49 4.85e-05 ***
 ## Residuals   45  47.33   1.052                     
@@ -482,7 +481,7 @@ On conclut qu’il y a au moins une moyenne d’un groupe soumis à une dose de 
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="autoévaluation-4.html#cb106-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="autoévaluation-4.html#cb614-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(m2)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -494,79 +493,79 @@ Réponse
 ## moyenne-elevee  1.0975613  0.2187956 1.9763271 0.0111516
 ## moyenne-faible -0.7000397 -1.5788054 0.1787261 0.1418379</code></pre>
 <p>Le test de Tukey indique que les groupes de dose <code>moyenne</code> et <code>faible</code> ne diffèrent pas l’un de l’autre, mais que le groupe à dose <code>elevee</code> diffère des deux autres groupes. On peut représenter le tout dans un graphique en suivant les étapes suivantes :</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="autoévaluation-4.html#cb108-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
-<span id="cb108-2"><a href="autoévaluation-4.html#cb108-2" tabindex="-1"></a>moy.orig <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> poison<span class="sc">$</span>log.Temps, <span class="at">INDEX =</span> poison<span class="sc">$</span>Dose, <span class="at">FUN =</span> mean)</span>
-<span id="cb108-3"><a href="autoévaluation-4.html#cb108-3" tabindex="-1"></a></span>
-<span id="cb108-4"><a href="autoévaluation-4.html#cb108-4" tabindex="-1"></a><span class="do">##on met les moyenne en ordre croissant</span></span>
-<span id="cb108-5"><a href="autoévaluation-4.html#cb108-5" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">sort</span>(moy.orig)</span>
-<span id="cb108-6"><a href="autoévaluation-4.html#cb108-6" tabindex="-1"></a></span>
-<span id="cb108-7"><a href="autoévaluation-4.html#cb108-7" tabindex="-1"></a><span class="do">##extraire MSE</span></span>
-<span id="cb108-8"><a href="autoévaluation-4.html#cb108-8" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">1.0527</span></span>
-<span id="cb108-9"><a href="autoévaluation-4.html#cb108-9" tabindex="-1"></a><span class="do">##aussi possible d&#39;extraire à partir du summary</span></span>
-<span id="cb108-10"><a href="autoévaluation-4.html#cb108-10" tabindex="-1"></a><span class="co">#MSE &lt;- summary(m2)[[1]][2, &quot;Mean Sq&quot;]</span></span>
-<span id="cb108-11"><a href="autoévaluation-4.html#cb108-11" tabindex="-1"></a></span>
-<span id="cb108-12"><a href="autoévaluation-4.html#cb108-12" tabindex="-1"></a><span class="do">##calculer racine carrée de MSE</span></span>
-<span id="cb108-13"><a href="autoévaluation-4.html#cb108-13" tabindex="-1"></a>sqrt.MSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(MSE)</span>
-<span id="cb108-14"><a href="autoévaluation-4.html#cb108-14" tabindex="-1"></a></span>
-<span id="cb108-15"><a href="autoévaluation-4.html#cb108-15" tabindex="-1"></a><span class="do">##calculer les limites des barres d&#39;erreur</span></span>
-<span id="cb108-16"><a href="autoévaluation-4.html#cb108-16" tabindex="-1"></a>lim.sup <span class="ot">&lt;-</span> moy <span class="sc">+</span> sqrt.MSE</span>
-<span id="cb108-17"><a href="autoévaluation-4.html#cb108-17" tabindex="-1"></a>lim.inf <span class="ot">&lt;-</span> moy <span class="sc">-</span> sqrt.MSE</span>
-<span id="cb108-18"><a href="autoévaluation-4.html#cb108-18" tabindex="-1"></a></span>
-<span id="cb108-19"><a href="autoévaluation-4.html#cb108-19" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
-<span id="cb108-20"><a href="autoévaluation-4.html#cb108-20" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb108-21"><a href="autoévaluation-4.html#cb108-21" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(lim.inf), <span class="fu">max</span>(lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
-<span id="cb108-22"><a href="autoévaluation-4.html#cb108-22" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
-<span id="cb108-23"><a href="autoévaluation-4.html#cb108-23" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Log du temps de survie&quot;</span>, </span>
-<span id="cb108-24"><a href="autoévaluation-4.html#cb108-24" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
-<span id="cb108-25"><a href="autoévaluation-4.html#cb108-25" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
-<span id="cb108-26"><a href="autoévaluation-4.html#cb108-26" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
-<span id="cb108-27"><a href="autoévaluation-4.html#cb108-27" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb108-28"><a href="autoévaluation-4.html#cb108-28" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(moy))</span>
-<span id="cb108-29"><a href="autoévaluation-4.html#cb108-29" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
-<span id="cb108-30"><a href="autoévaluation-4.html#cb108-30" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
-<span id="cb108-31"><a href="autoévaluation-4.html#cb108-31" tabindex="-1"></a>       <span class="at">y =</span> moy)</span>
-<span id="cb108-32"><a href="autoévaluation-4.html#cb108-32" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
-<span id="cb108-33"><a href="autoévaluation-4.html#cb108-33" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb108-34"><a href="autoévaluation-4.html#cb108-34" tabindex="-1"></a>       <span class="at">y0 =</span> lim.inf,</span>
-<span id="cb108-35"><a href="autoévaluation-4.html#cb108-35" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb108-36"><a href="autoévaluation-4.html#cb108-36" tabindex="-1"></a>       <span class="at">y1 =</span> lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
-<span id="cb108-37"><a href="autoévaluation-4.html#cb108-37" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
-<span id="cb108-38"><a href="autoévaluation-4.html#cb108-38" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.05</span></span>
-<span id="cb108-39"><a href="autoévaluation-4.html#cb108-39" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb108-40"><a href="autoévaluation-4.html#cb108-40" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb108-41"><a href="autoévaluation-4.html#cb108-41" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="autoévaluation-4.html#cb616-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
+<span id="cb616-2"><a href="autoévaluation-4.html#cb616-2" tabindex="-1"></a>moy.orig <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> poison<span class="sc">$</span>log.Temps, <span class="at">INDEX =</span> poison<span class="sc">$</span>Dose, <span class="at">FUN =</span> mean)</span>
+<span id="cb616-3"><a href="autoévaluation-4.html#cb616-3" tabindex="-1"></a></span>
+<span id="cb616-4"><a href="autoévaluation-4.html#cb616-4" tabindex="-1"></a><span class="do">##on met les moyenne en ordre croissant</span></span>
+<span id="cb616-5"><a href="autoévaluation-4.html#cb616-5" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">sort</span>(moy.orig)</span>
+<span id="cb616-6"><a href="autoévaluation-4.html#cb616-6" tabindex="-1"></a></span>
+<span id="cb616-7"><a href="autoévaluation-4.html#cb616-7" tabindex="-1"></a><span class="do">##extraire MSE</span></span>
+<span id="cb616-8"><a href="autoévaluation-4.html#cb616-8" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">1.0527</span></span>
+<span id="cb616-9"><a href="autoévaluation-4.html#cb616-9" tabindex="-1"></a><span class="do">##aussi possible d&#39;extraire à partir du summary</span></span>
+<span id="cb616-10"><a href="autoévaluation-4.html#cb616-10" tabindex="-1"></a><span class="co">#MSE &lt;- summary(m2)[[1]][2, &quot;Mean Sq&quot;]</span></span>
+<span id="cb616-11"><a href="autoévaluation-4.html#cb616-11" tabindex="-1"></a></span>
+<span id="cb616-12"><a href="autoévaluation-4.html#cb616-12" tabindex="-1"></a><span class="do">##calculer racine carrée de MSE</span></span>
+<span id="cb616-13"><a href="autoévaluation-4.html#cb616-13" tabindex="-1"></a>sqrt.MSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb616-14"><a href="autoévaluation-4.html#cb616-14" tabindex="-1"></a></span>
+<span id="cb616-15"><a href="autoévaluation-4.html#cb616-15" tabindex="-1"></a><span class="do">##calculer les limites des barres d&#39;erreur</span></span>
+<span id="cb616-16"><a href="autoévaluation-4.html#cb616-16" tabindex="-1"></a>lim.sup <span class="ot">&lt;-</span> moy <span class="sc">+</span> sqrt.MSE</span>
+<span id="cb616-17"><a href="autoévaluation-4.html#cb616-17" tabindex="-1"></a>lim.inf <span class="ot">&lt;-</span> moy <span class="sc">-</span> sqrt.MSE</span>
+<span id="cb616-18"><a href="autoévaluation-4.html#cb616-18" tabindex="-1"></a></span>
+<span id="cb616-19"><a href="autoévaluation-4.html#cb616-19" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
+<span id="cb616-20"><a href="autoévaluation-4.html#cb616-20" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb616-21"><a href="autoévaluation-4.html#cb616-21" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(lim.inf), <span class="fu">max</span>(lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
+<span id="cb616-22"><a href="autoévaluation-4.html#cb616-22" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
+<span id="cb616-23"><a href="autoévaluation-4.html#cb616-23" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Log du temps de survie&quot;</span>, </span>
+<span id="cb616-24"><a href="autoévaluation-4.html#cb616-24" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
+<span id="cb616-25"><a href="autoévaluation-4.html#cb616-25" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb616-26"><a href="autoévaluation-4.html#cb616-26" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
+<span id="cb616-27"><a href="autoévaluation-4.html#cb616-27" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-28"><a href="autoévaluation-4.html#cb616-28" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(moy))</span>
+<span id="cb616-29"><a href="autoévaluation-4.html#cb616-29" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
+<span id="cb616-30"><a href="autoévaluation-4.html#cb616-30" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb616-31"><a href="autoévaluation-4.html#cb616-31" tabindex="-1"></a>       <span class="at">y =</span> moy)</span>
+<span id="cb616-32"><a href="autoévaluation-4.html#cb616-32" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
+<span id="cb616-33"><a href="autoévaluation-4.html#cb616-33" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-34"><a href="autoévaluation-4.html#cb616-34" tabindex="-1"></a>       <span class="at">y0 =</span> lim.inf,</span>
+<span id="cb616-35"><a href="autoévaluation-4.html#cb616-35" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb616-36"><a href="autoévaluation-4.html#cb616-36" tabindex="-1"></a>       <span class="at">y1 =</span> lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
+<span id="cb616-37"><a href="autoévaluation-4.html#cb616-37" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb616-38"><a href="autoévaluation-4.html#cb616-38" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.05</span></span>
+<span id="cb616-39"><a href="autoévaluation-4.html#cb616-39" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb616-40"><a href="autoévaluation-4.html#cb616-40" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb616-41"><a href="autoévaluation-4.html#cb616-41" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.05</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
 <p><img src="Cours_Stats_R_files/figure-html/tukey-1.png" width="672" /></p>
 <p>Il est aussi approprié de présenter les résultats sur l’échelle originale de la variable. Ici, puisque nous avons utilisé la transformation logarithmique à base <span class="math inline">\(e\)</span> pour effectuer l’ANOVA, on peut faire la transformation inverse pour ramener les données à l’échelle originale (l’inverse de <code>log( )</code> est <code>exp( )</code>).</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="autoévaluation-4.html#cb109-1" tabindex="-1"></a><span class="do">##on transforme les moyennes </span></span>
-<span id="cb109-2"><a href="autoévaluation-4.html#cb109-2" tabindex="-1"></a>orig.moy <span class="ot">&lt;-</span> <span class="fu">exp</span>(moy)</span>
-<span id="cb109-3"><a href="autoévaluation-4.html#cb109-3" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="autoévaluation-4.html#cb109-4" tabindex="-1"></a><span class="do">##on transforme les bornes des barres d&#39;erreurs</span></span>
-<span id="cb109-5"><a href="autoévaluation-4.html#cb109-5" tabindex="-1"></a>orig.lim.inf <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.inf)</span>
-<span id="cb109-6"><a href="autoévaluation-4.html#cb109-6" tabindex="-1"></a>orig.lim.sup <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.sup)</span>
-<span id="cb109-7"><a href="autoévaluation-4.html#cb109-7" tabindex="-1"></a></span>
-<span id="cb109-8"><a href="autoévaluation-4.html#cb109-8" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
-<span id="cb109-9"><a href="autoévaluation-4.html#cb109-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb109-10"><a href="autoévaluation-4.html#cb109-10" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(orig.lim.inf), <span class="fu">max</span>(orig.lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
-<span id="cb109-11"><a href="autoévaluation-4.html#cb109-11" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
-<span id="cb109-12"><a href="autoévaluation-4.html#cb109-12" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Temps de survie (h)&quot;</span>, </span>
-<span id="cb109-13"><a href="autoévaluation-4.html#cb109-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
-<span id="cb109-14"><a href="autoévaluation-4.html#cb109-14" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
-<span id="cb109-15"><a href="autoévaluation-4.html#cb109-15" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
-<span id="cb109-16"><a href="autoévaluation-4.html#cb109-16" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb109-17"><a href="autoévaluation-4.html#cb109-17" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(orig.moy))</span>
-<span id="cb109-18"><a href="autoévaluation-4.html#cb109-18" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
-<span id="cb109-19"><a href="autoévaluation-4.html#cb109-19" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
-<span id="cb109-20"><a href="autoévaluation-4.html#cb109-20" tabindex="-1"></a>       <span class="at">y =</span> orig.moy)</span>
-<span id="cb109-21"><a href="autoévaluation-4.html#cb109-21" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
-<span id="cb109-22"><a href="autoévaluation-4.html#cb109-22" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb109-23"><a href="autoévaluation-4.html#cb109-23" tabindex="-1"></a>       <span class="at">y0 =</span> orig.lim.inf,</span>
-<span id="cb109-24"><a href="autoévaluation-4.html#cb109-24" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb109-25"><a href="autoévaluation-4.html#cb109-25" tabindex="-1"></a>       <span class="at">y1 =</span> orig.lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
-<span id="cb109-26"><a href="autoévaluation-4.html#cb109-26" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
-<span id="cb109-27"><a href="autoévaluation-4.html#cb109-27" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.40</span></span>
-<span id="cb109-28"><a href="autoévaluation-4.html#cb109-28" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb109-29"><a href="autoévaluation-4.html#cb109-29" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb109-30"><a href="autoévaluation-4.html#cb109-30" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="autoévaluation-4.html#cb617-1" tabindex="-1"></a><span class="do">##on transforme les moyennes </span></span>
+<span id="cb617-2"><a href="autoévaluation-4.html#cb617-2" tabindex="-1"></a>orig.moy <span class="ot">&lt;-</span> <span class="fu">exp</span>(moy)</span>
+<span id="cb617-3"><a href="autoévaluation-4.html#cb617-3" tabindex="-1"></a></span>
+<span id="cb617-4"><a href="autoévaluation-4.html#cb617-4" tabindex="-1"></a><span class="do">##on transforme les bornes des barres d&#39;erreurs</span></span>
+<span id="cb617-5"><a href="autoévaluation-4.html#cb617-5" tabindex="-1"></a>orig.lim.inf <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.inf)</span>
+<span id="cb617-6"><a href="autoévaluation-4.html#cb617-6" tabindex="-1"></a>orig.lim.sup <span class="ot">&lt;-</span> <span class="fu">exp</span>(lim.sup)</span>
+<span id="cb617-7"><a href="autoévaluation-4.html#cb617-7" tabindex="-1"></a></span>
+<span id="cb617-8"><a href="autoévaluation-4.html#cb617-8" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
+<span id="cb617-9"><a href="autoévaluation-4.html#cb617-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb617-10"><a href="autoévaluation-4.html#cb617-10" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(orig.lim.inf), <span class="fu">max</span>(orig.lim.sup)<span class="sc">+</span><span class="fl">0.1</span>),</span>
+<span id="cb617-11"><a href="autoévaluation-4.html#cb617-11" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">xlab =</span> <span class="st">&quot;Doses de poison&quot;</span>,</span>
+<span id="cb617-12"><a href="autoévaluation-4.html#cb617-12" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Temps de survie (h)&quot;</span>, </span>
+<span id="cb617-13"><a href="autoévaluation-4.html#cb617-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
+<span id="cb617-14"><a href="autoévaluation-4.html#cb617-14" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb617-15"><a href="autoévaluation-4.html#cb617-15" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
+<span id="cb617-16"><a href="autoévaluation-4.html#cb617-16" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-17"><a href="autoévaluation-4.html#cb617-17" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(orig.moy))</span>
+<span id="cb617-18"><a href="autoévaluation-4.html#cb617-18" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
+<span id="cb617-19"><a href="autoévaluation-4.html#cb617-19" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb617-20"><a href="autoévaluation-4.html#cb617-20" tabindex="-1"></a>       <span class="at">y =</span> orig.moy)</span>
+<span id="cb617-21"><a href="autoévaluation-4.html#cb617-21" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
+<span id="cb617-22"><a href="autoévaluation-4.html#cb617-22" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-23"><a href="autoévaluation-4.html#cb617-23" tabindex="-1"></a>       <span class="at">y0 =</span> orig.lim.inf,</span>
+<span id="cb617-24"><a href="autoévaluation-4.html#cb617-24" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb617-25"><a href="autoévaluation-4.html#cb617-25" tabindex="-1"></a>       <span class="at">y1 =</span> orig.lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
+<span id="cb617-26"><a href="autoévaluation-4.html#cb617-26" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb617-27"><a href="autoévaluation-4.html#cb617-27" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 0.40</span></span>
+<span id="cb617-28"><a href="autoévaluation-4.html#cb617-28" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">1</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb617-29"><a href="autoévaluation-4.html#cb617-29" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">2</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb617-30"><a href="autoévaluation-4.html#cb617-30" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> orig.lim.sup[<span class="dv">3</span>] <span class="sc">+</span> <span class="fl">0.40</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span></code></pre></div>
 <img src="Cours_Stats_R_files/figure-html/backtransform-1.png" width="672" />
 </details>
 <p><br></p>

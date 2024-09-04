@@ -550,7 +550,7 @@ barplot(tab.freq, beside = TRUE, legend.text = TRUE,
 
 On peut obtenir un diagramme de boîtes et moustaches (*boxplot* ou *box-and-whisker plot*) à l'aide de la fonction `boxplot()` (Figure \@ref(fig:boxplot)). Cette fonction permet d'illustrer une seule variable ou de visualiser plusieurs groupes simultanément. Ce graphique illustre la médiane (et non la moyenne arithmétique) par un trait gras à l'intérieur de la boîte. La limite inférieure de la boîte correspond au $25^{\mathrm{e}}$ percentile tandis que la limite supérieure indique le $75^{\mathrm{e}}$ percentile. La différence entre ces deux limites se nomme l'écart interquartile. Le graphique de boîtes et moustaches montre où se situent 50\% des observations et s'avère un bon moyen de visualiser rapidement les données. Par défaut, les moustaches représentent 1.5 fois l'écart interquartile ou la valeur la plus extrême: la moustache présente la plus petite de ces deux valeurs. Ceci peut-être modifié à l'aide de l'argument `range`. Par exemple, si `range = 0`, les moustaches s'étendront jusqu'aux valeurs extrêmes.
 
-```{r boxplot, echo=TRUE, fig.align='center', fig.cap="boxplot"}
+```{r boxplot, echo=TRUE, fig.align='center', fig.cap="Diagramme de boîtes et moustaches de densités de vers de terre pour chaque classe de végétation."}
 boxplot(Densite.vers ~ Vegetation, data = vers)
 ```
 
@@ -559,7 +559,7 @@ boxplot(Densite.vers ~ Vegetation, data = vers)
 La fonction `plot()` permet de créer des nuages de points (`type = "p"`), des lignes (`type = "l"`), une combinaison de lignes et de points (`type = "b"`), et quelques autres graphiques inusités (Figure \@ref(fig:plot)). Cette fonction comporte un grand nombre d'arguments. On peut modifier plusieurs paramètres graphiques généraux de R à l'aide de `par()`. Par exemple, on peut ajouter plusieurs graphiques dans une même fenêtre, à l'aide des arguments `mfrow` ou `mfcol`. La première remplit la fenêtre une rangée à la fois, alors que la deuxième remplit la fenêtre une colonne à la fois.
 Un point important pour créer des lignes:  il faut ordonner les données selon la variable indépendante (i.e., l'axe des x's), sinon on obtient des zigzags qui n'ont aucun sens (Figure \@ref(fig:plot)).
 
-```{r plot, echo=TRUE, fig.align='center', fig.cap="Différents types de graphiques obtenus avec la fonction \texttt{plot( )}."}
+```{r plot, echo=TRUE, fig.align='center', fig.cap="Différents types de graphiques obtenus avec la fonction `plot( )`."}
 vers.ord <- vers[order(vers$Superficie), ] #ordonner selon Superficie
 par(mfrow = c(2, 2)) #combiner graphiques sur c(2 rangées, 2 colonnes)
 plot(Densite.vers ~ Superficie, type = "p", data = vers) #points

@@ -722,8 +722,8 @@ t = \frac{\bar{x} - \mu}{SE} = \frac{-0.608 - 0}{0.633/\sqrt{12}} = -3.329
 <div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="leçon-2.html#cb396-1" tabindex="-1"></a><span class="do">##on crée un vecteur avec les observations</span></span>
 <span id="cb396-2"><a href="leçon-2.html#cb396-2" tabindex="-1"></a>residus <span class="ot">&lt;-</span> poids <span class="sc">-</span> <span class="fu">mean</span>(poids)</span>
 <span id="cb396-3"><a href="leçon-2.html#cb396-3" tabindex="-1"></a>residus</span></code></pre></div>
-<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333  0.508333333  0.608333333
-##  [9]  0.008333333 -0.491666667 -0.591666667 -0.191666667</code></pre>
+<pre><code>##  [1]  0.808333333  0.108333333 -0.691666667 -0.991666667 -0.091666667  1.008333333  0.508333333  0.608333333  0.008333333
+## [10] -0.491666667 -0.591666667 -0.191666667</code></pre>
 <p>La vérification de la normalité peut se faire à l’aide de méthodes formelles telles que les tests d’Anderson-Darling, de Cramér-von Mises, ou de Shapiro-Wilk. L’hypothèse nulle de ces tests correspond au respect de la supposition de normalité (<span class="math inline">\(H_0\)</span>: la normalité est respectée). Le rejet de cette hypothèse indique que les résidus ne suivent pas la distribution normale. Plusieurs tests de normalité sont disponibles dans dans le package (banque de fonctions) . Étant donné que ce package n’est pas distribué avec l’installation de base de , nous devons l’installer avant de pouvoir l’utiliser. Le document <em>Introduction à R - les packages</em> illustre toutes les étapes pour y arriver.</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="leçon-2.html#cb398-1" tabindex="-1"></a><span class="do">##on charge le package</span></span>
 <span id="cb398-2"><a href="leçon-2.html#cb398-2" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
