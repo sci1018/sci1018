@@ -762,6 +762,7 @@ Par exemple, lors d'une étude d'observation, on dénombre les arrestations pour
 
 Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Les suppositions sous-jacentes à ces analyses ont été énoncées, et plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions ont été illustrés. Nous avons également vu une modification du test $t$, celle de Welch, qui est appropriée lorsque les variances des groupes ne sont pas homogènes. Une série de transformations de données ont été présentées afin d'arriver à respecter les suppositions de normalité et d'homogénéité des variances.
 
+<!--  
 ## Laboratoire 
 
 Les données peuvent être retrouvées dans le dossier [Module 4](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip).
@@ -804,3 +805,4 @@ On effectue une expérience sur l'efficacité d'un médicament qui améliore le 
 
 **f.** Interprétez les résultats.    
 
+--> 

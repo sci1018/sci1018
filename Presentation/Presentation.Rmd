@@ -130,7 +130,7 @@ Les deux premiers laboratoires comptent pour 15 % de l’évaluation globale alo
 
 ##### L'encadrement {-}
 
-L’encadrement est assuré par la personne tutrice qui vous sera assignée ou par la professeure responsable du cours. Vos interactions avec la personne qui vous encadre se font par messagerie électronique (de préférence), par visioconférence ou téléphone ainsi que dans un forum de discussion.
+L’encadrement est assuré par la personne tutrice qui vous sera assignée ou par la professeure responsable du cours. Vos interactions avec la personne qui vous encadre se font par messagerie électronique (de préférence), par visioconférence ou téléphone ainsi que dans un [forum](#forum) de discussion.
 
 La personne responsable de l’encadrement communique avec l’étudiant, au besoin, pour fournir des conseils ou pour transmettre des commentaires sur les travaux.
 
@@ -184,7 +184,7 @@ Les étudiants inscrits dans un programme en informatique ou en science des donn
 
 <br>
 
-### Feuille de route {-}
+### Feuille de route {.unnumbered #route}
 
 
 ```{r route, echo = FALSE, warning = FALSE, out.width = '100%'}
@@ -264,26 +264,29 @@ opts <- options(knitr.kable.NA = "", knitr.table.format = "simple")
 
 ### Crédits {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+L'ensemble du contenu de ce cours a été rédigé, dans sa première version, par [Marc Mazerolle](https://www.ffgg.ulaval.ca/departements/sbf/professeurs/marc-mazerolle), sous la direction pédagogique de [Nicolas Bélanger](https://www.teluq.ca/siteweb/univ/nibelang.html). 
+
+Au fil du temps, les personnes suivantes ont contribué à la mise à jour du contenu: Yves Claveau, Élise Filotas, Marc-Olivier Martin-Guay et Rindra Fanomezana Ranaivomanana.
 
 
-<!--  
+
 ### Contact {-}
-
+<!--  --> 
 <div class="row">
 
   <div class="column left">
-  ![](images/photo.jpg) 
+  ![](images/Photo_Yves-Claveau.jpg) 
   </div>
- 
+
   <div class="column right">
-##### Élise Filotas {-} 
-  Je suis professeure au Département Science et technologie de la TELUQ en écologie quantitative et je suis responsable du cours SCI 1018. <br>
-  Vous pouvez me contacter à l'adresse suivante: elise.filotas@teluq.ca <br>  
+##### Yves Claveau {-} 
   
-  Consultez mon [site web](http://elisefilotas.ca/fr/maison/) pour en savoir plus sur ma recherche.
+  Je suis le tuteur du cours SCI 1018 depuis plus de 10 ans. <br>
+  Vous pouvez me contacter à l'adresse suivante: yves.claveau@teluq.ca <br>  
+  
+  
   </div>
   
 </div> 
--->
+
 

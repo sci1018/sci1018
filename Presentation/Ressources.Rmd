@@ -3,6 +3,17 @@
 
 # Ressources {-}
 
+### Travaux notés {-}
+
+Le cours comprends quatre (4) travaux notés: trois (3) laboratoire et un (1) examen final. Les deux premiers laboratoires comptent pour 15&nbsp;% de l’évaluation globale alors que le troisième compte pour 30&nbsp;%. L’examen final, réalisé à domicile lors de la dernière semaine compte pour 40&nbsp;% de l’évaluation.
+
+La date de remise des travaux notés, telle que suggérée dans la [feuille de route](#route) est flexible: vous ne serez pas pénalisé si vous remettez votre travail après cette date. Toutefois, il est préférable d'espacer la remise des travaux pour pouvoir bénéficier d'une rétroaction de la part de la personne qui corrige. 
+
+Noter que vous devez faire l'examen au plus tard au cours de la dernière semaine. Il s'agit d'un examen à faire chez soi. L'examen dure 3 heures. 
+
+Les consignes, les données à utiliser, et les gabarits de réponses pour les travaux notés et l'examen sont disponibles sur la [page web du cours](mettre à jour) sur le site de la TÉLUQ.
+Seuls les étudiants inscrits à la TÉLUQ ont accès aux évaluations. 
+
 ### Données {-}
 
 Les liens suivants vous dirigerons directement vers les données utilisées pour chaque module :
@@ -16,10 +27,76 @@ Les liens suivants vous dirigerons directement vers les données utilisées pour
   - [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip)
   - [Module 9](https://github.com/sci1018/sci1018_data/raw/main/Module_9.zip)
 
+### Forum du cours {.unnumbered #forum}
+
+Un [forum](https://groups.google.com/g/sci1018-teluq?pli=1) de discussion est disponible pour trouver des informations pertinentes sur la matière du cours et pour poser des questions à la communauté du cours SCI 1018 (la personne tutrice et les autres étudiants). Ne vous gênez pas pour l'utiliser!
+
+
+### Guides R {-}
+
+Les liens suivants vous redirigent vers des sections du cours dédiées à des fonctionnalités spécifiques de R:
+
+* [Installation de R](#InstallationR)
+* [Notions générales](#NotionsR)
+* [Les graphiques avec R](#GraphiquesR)
+* [Les packages avec R](#PackagesR)
+* [Les boucles avec R](#BouclesR)
+
 ### Ressources R {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+Voici quelques sites Web où vous pourrez trouver de la documentation sur R:
+
+* Site officiel de R: [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/index.html)
+* [An introduction to R](https://intro2r.com/)
+* Forum francophone des [utilisateurs du logiciel R](http://forums.cirad.fr/logiciel-R/)
+* Forum de la [communauté RStudio](https://community.rstudio.com/)
+* [Introduction to R](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
+* [R for Data Science](https://r4ds.had.co.nz/index.html)
+
+
+### Ressources R commander {-}
+
+Voici plusieurs guides en version animée ou en version PDF pour vous accompagner dans votre apprentissage de R commander.
+La communauté R met également à votre disposition ce [document](https://cran.r-project.org/doc/contrib/Gaudron-GuideRcmdr.pdf).
+
+* Installation de R et de R Commander ([Animation](https://docs.google.com/presentation/d/1vmDX1Ovd-23U9d4bh6l6pCDGR_AlJIcxNBsKQ6M17-8/edit#slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander_installation-rrcommander.pdf))
+* Notions de base avec R Commander ([Animation](https://docs.google.com/presentation/d/16ahD6KKm695VE--X83LLsK1COVgT1viqFSLOlKyFqfc/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander_notions-base-rcommander.pdf))
+* Importation et exportation des données ([Animation](https://docs.google.com/presentation/d/1tW0jKcDtcNJOUWtL2KgiG_w9dpo7T8MJuOx-QYsk4WM/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander_importation-exportation-donnees.pdf))
+* Création et édition de jeux de données ([Animation](https://docs.google.com/presentation/d/1Lr2S5-43JVpBH_jfvOyy0S2Lx9_Stdt7D_bCxErrUaQ/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander3_creation-edition-jeu-de-donnees.pdf))
+* Transformation et manipulation de données ([Animation](https://docs.google.com/presentation/d/1JARzl8FYCxiCO_nRCOybZfAmrqXP9vF4g4DZz-XX93E/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander_transformation-manipulation-de-donnees.pdf))
+* Statistiques de base (leçon 1) ([Animation](https://docs.google.com/presentation/d/1dcS8h2gyBgf1g9hWM0mJzmegoc548Q0pCmtvO4Qk09s/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander5_statistiques-de-base_lecon1.pdf))
+* Graphiques avec R Commander ([Animation](https://docs.google.com/presentation/d/1wX-8gR9mzZ_Cv1NGKi_CN12t-yAZguL_eJJ6Ac8IQrc/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander6_graphiques-avec-rcommander.pdf))
+* Test-t (leçons 3 et 4) ([Animation](https://docs.google.com/presentation/d/1sGc-Ht6AOkPk9F1GjLQSXjcPCaEQXuOa3PPTuKJO6kA/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander7_test-t_lecons_3-4.pdf))
+* Analyse de fréquences (leçon 5) ([Animation](https://docs.google.com/presentation/d/1rJDMHS0NnIFpmUeIRWB9lPpxsUhg8ttD4qSo0KwP13M/pub?start=false&loop=false&delayms=3000&slide=id.gaeec60134_0_2))([PDF](GuidesRCommander/sci1018_guidercommander8_analyses-frequences_lecon5.pdf))
+* ANOVA et comparaisons multiples des moyennes (test de Tukey, leçons 6 à 8) ([Animation](https://docs.google.com/presentation/d/13eWkWjIcW7nY2SoBimvCggyaVtpybRFIFkROAvPyOlY/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander9_anova-comparaisons-multiples-moyennes_lecons_6-7-8.pdf))
+* Régression et corrélation (leçon 10) ([Animation](https://docs.google.com/presentation/d/1v-wFVL5pjJoOjCTlhX4EXD6WWRaFq5zSY8dsfODFS_o/pub?start=false&loop=false&delayms=3000&slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander10_regression-correlation_lecon10.pdf))
+* Vérification des suppositions ([Animation](https://docs.google.com/presentation/d/1kSyIETBIsbyYD8XYYUQGa5SLjNFvFOIKeHgzj0FUvow/pub?start=false&loop=false&delayms=3000&slide=id.gaeec60134_0_2))([PDF](GuidesRCommander/sci1018_guidercommander11_verification-suppositions.pdf))
+
 
 ### Références {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+Agresti, A. 1996. *An introduction to categorical data analysis*. John Wiley & Sons, N.Y.
+
+Chambers, J. M. 2008. *Software for data analysis : Programming with R*. Springer, New York, USA.
+
+Crawley, M. J. 2005. *Statistics : An introduction using R*. John Wiley and Sons. Chichester, UK.
+
+Dalgaard, P. 2002. *Introductory Statistics with R*. Springer, New York.
+
+Fox, J. 2002. *An R and S-PLUS companion to applied regression*. Sage Publications, Inc., London, UK.
+
+Gotelli, N. J. et Ellison, A. M. 2004. *A primer of ecological statistics*. Sinauer Associates, Sunderland, MA, USA.
+
+Heiberger, R. M. et Holland, B. 2004. *Statistical Analysis and Data Display : an intermediate course with examples in S-PLUS, R, and SAS*. Springer, New York, USA.
+
+Hilborn, R. et Mangel, M. 1997. *The ecological detective : confronting models with data*. Princeton University Press, Princeton, New Jersey, USA.
+
+Hurlbert, S. H. 1984. *Pseudoreplication and the design of ecological field experiments*. Ecological Monographs, 54:187-211.
+
+Kleinbaum, D. G., Kupper, L. L., Muller, K. E. et Nizam, A. 1998. *Applied regression analysis and other multivariable methods* (3e éd). Duxbury Press, Toronto.
+
+Thompson, S. K. 2002. *Sampling* (2e éd). John Wiley & Sons, New York, USA.
+
+Venables, W. N. et Ripley, B. D. 2002. Modern Applied Statistics with S. Springer-Verlag, New York, USA.
+
+Zar, J. H. 1984. Biostatistical analysis (2e éd). Prentice Hall, Englewood Cliffs, New Jersey, USA.

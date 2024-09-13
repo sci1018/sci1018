@@ -378,8 +378,8 @@ hist(echantillon.1, xlab = "Hauteur en cm", ylab = "Nombre de semis",
      main = "")
 #expression(paste("Histogramme de fréquence ", italic(n), " = 25")
 text(y = 10, x = 55, labels = expression(bold(b)), cex = 1.2) 
-moy1 <- mean(echantillon.1)
-ecartype1 <- sd(echantillon.1)
+moy.1 <- mean(echantillon.1)
+ecartype.1 <- sd(echantillon.1)
 SE <- ecartype.1/sqrt(25)
 lci <- moy.1 + qt(p = 0.025, df = 24)*SE
 uci <- moy.1 - qt(p = 0.025, df = 24)*SE
@@ -500,7 +500,7 @@ Parmi toutes les stratégies d'échantillonnage présentées, nous allons utilis
 
 Dans ce texte, nous avons introduit le concept d'intervalle de confiance en nous appuyant sur le rééchantillonnage. Selon la taille d'échantillon, nous avons utilisé la distribution normale ou la distribution du *t* de Student pour construire les intervalles de confiance. Parmi les différentes stratégies d'échantillonnage présentées, nous verrons le plus souvent l'échantillonnage complètement aléatoire et l'échantillonnage stratifié aléatoire.
 
-## Les graphiques avec R
+## Les graphiques avec R {#GraphiquesR}
 
 ### Graphiques de base
 
