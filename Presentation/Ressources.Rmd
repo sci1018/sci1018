@@ -3,13 +3,18 @@
 
 # Ressources {-}
 
-### Travaux notés {-}
-
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
-
 ### Données {-}
 
-Lorem ipsum dolor sit amet, an homero populo has. Ei petentium laboramus aliquando duo, an ius omnesque laboramus, vel in reque dicant impedit. Id magna quaestio vim, eu has possit verear. Nec tation repudiare ea, autem quodsi te vel, democritum definitiones ut quo. Dico posse ea sed, ridens iuvaret duo ea, nibh sonet sapientem vim at.
+Les liens suivants vous dirigerons directement vers les données utilisées pour chaque module :
+
+  - [Programmation avec R](https://github.com/sci1018/sci1018_data/raw/main/Guide_R_2.zip)
+  - [Module 2](https://github.com/sci1018/sci1018_data/raw/main/Module_2.zip)
+  - [Module 3](https://github.com/sci1018/sci1018_data/raw/main/Module_3.zip)
+  - [Module 4](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip)
+  - [Module 6](https://github.com/sci1018/sci1018_data/raw/main/Module_6.zip)
+  - [Module 7](https://github.com/sci1018/sci1018_data/raw/main/Module_7.zip)
+  - [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip)
+  - [Module 9](https://github.com/sci1018/sci1018_data/raw/main/Module_9.zip)
 
 ### Ressources R {-}
 

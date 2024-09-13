@@ -1,9 +1,79 @@
-# Tests d'hypothèse sur deux groupes
+# Tests d'hypothèse sur deux groupes {#lecon4}
+
+---
 
 Dans la leçon précédente, nous avons discuté de la démarche scientifique et de l'élaboration d'hypothèses scientifiques et statistiques. Deux types d'erreurs associées à la réalisation d'un test d'hypothèse ont été présentées: l'erreur de type I et l'erreur de type II. Le seuil de signification ($\alpha$) correspond à la probabilité de rejeter une hypothèse nulle qui est vraie (erreur de type I), alors que la probabilité de ne pas rejeter une hypothèse nulle qui aurait dû être rejetée est donnée par $\beta$ (erreur de type II). Nous avons vu le concept de la puissance statistique. Nous avons réalisé un exemple de test d'hypothèse statistique sur un échantillon (groupe) concernant la moyenne à l'aide du test $t$. Ce test peut être unilatéral ou bilatéral. Le test unilatéral cible une seule des deux queues de la distribution alors que le test bilatérale cible les deux queues de la distribution. 
 
+---
 
-## Théories
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Bibliotheques.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les packages `R` suivants : {-} 
+  - `nortest`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `tail( )`
+  - `t.test( )`
+  - `mean( )`
+  - `sd( )`
+  - `sqrt( )`
+  - `c( )`
+  - `qt( )`
+  - `library( )`
+  - `ad.test( )`
+  - `t.test( )`
+  - `qqnorm( )`
+  - `qqline( )`
+  - `boxplot( )`
+  - `hist( )`  
+  - `par( )`
+  - `text( )`
+  - `plot( )`
+  - `axis( )`
+  - `points( )`
+  - `arrows( )`
+  - `nrow( )`
+  - `segments( )`
+  - `log( )`
+  - `rpois( )`
+  - `rbeta( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le fichier `eleves.txt` est utilise dans la partie théorique et contient des données sur les notes des élèves d’une école primaire avec et sans aides aux devoirs pendant l’année. Le fichier `poissons.txt` est également utilisés et concerne l’effet des eaux usées sur le nombre d’espèces de poissons dans différents cours d’eau.   
+
+Le fichier `recup.txt` est utilisé dans la partie Laboratoire. Il contient des données sur l’efficacité d’un médicament qui améliore le temps de récupération après un effort physique.   
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip).
+  </div>
+  
+</div> 
+
+## Leçon
 
 ### Tests d'hypothèses sur la moyenne de deux groupes indépendants
 
@@ -75,9 +145,9 @@ kable(df_notes,
       col.names = NULL,
       row.names = FALSE, 
       caption = "Notes sur 40 des élèves dans les deux groupes de l'expérience.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
   add_header_above(c("Aide aux devoirs" = 3, "Témoins" = 3)) %>%
-  kable_styling(full_width = F, position = "center")
+  kable_styling(full_width = T, position = "center") 
 
 ```
 
@@ -97,7 +167,7 @@ On peut utiliser un test $t$ pour déterminer s'il y a une différence entre les
 
 Dans le cas du test $t$ sur un seul groupe, nous avons l'équation
 
-$t = \frac{\bar{x} - \mu}{SE}  $
+$$t = \frac{\bar{x} - \mu}{SE}$$
 
 où $\bar{x}$ correspond à la moyenne du groupe et $\mu$ représente la valeur à laquelle on désire comparer la moyenne. Comme nous l'avons vu à la leçon précédente, le test $t$ sur un groupe suppose la normalité des résidus et l'indépendance des observations. En présence de deux groupes, le test $t$ se calcule comme suit :
 
@@ -132,21 +202,18 @@ Maintenant, reprenons notre exemple sur le succès scolaire des élèves en cons
 On peut effectuer un test $t$ pour comparer les deux groupes d'élèves de l'exemple 4.1. Commençons par calculer la variance combinée qui sera nécessaire pour obtenir le dénominateur du test $t$ sur deux groupes :
 
 $$
-s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{aide}} - 1)s^2_{\mathrm{aide}} + (n_{\mathrm{t\acute{e}moins}} - 1)s^2_{\mathrm{t\acute{e}moins}}}{n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2} 
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{aide}} - 1)s^2_{\mathrm{aide}} + (n_{\mathrm{t\acute{e}moins}} - 1)s^2_{\mathrm{t\acute{e}moins}}}{n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2}
+$$
+$$
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot `r round(var(df.aides), 2)` + (30 - 1) \cdot `r round(var(df.aides), 2)`}{30 + 30 - 2}
 $$
 
 $$
-s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot 0.96 + (30 - 1) \cdot 0.98}{30 + 30 - 2}
+s^2_{\mathrm{combin\acute{e}e}} = `r round((29*var(df.aides) + 29*var(df.aides))/(30 + 30 - 2), 2)`
 $$
 
-<! 
-This line is not centered
-$s^2_{\mathrm{combin\acute{e}e}}$ = `r round((29*var(df.aides) + 29*var(df.temoins))/(30 + 30 - 2), 2)` 
--->
 
-$$
-s^2_{\mathrm{combin\acute{e}e}} = 0.97
-$$
+
 Ensuite calculons l'erreur-type sur la différence des moyennes :
 
 $$
@@ -155,18 +222,16 @@ $$
 
 $$
 SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = \sqrt{\frac{0.97}{30} + \frac{0.97}{30}} \\
-SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = 0.25 
+SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = `r round(SE, 2)`
 $$
 La statistique du test s'obtient ainsi :
 
 $$
-  t = \frac{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}{SE_{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}} 
+t = \frac{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}{SE_{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}} \\
+t = \frac{`r round(mean(df.aides), 2)` - `r round(mean(df.temoins), 2)`}{`r round(SE, 2)`}\\
+t = `r round(t.out$statistic, 3)`
 $$
 
-$$
-  t = \frac{36.48 - 19.92}{0.25}\\
-  t = 65.217
-$$
 Nous déterminons la probabilité d'observer une valeur $t = `r round(t.out$statistic, 3)`$ dans des populations où $H_0$ est vraie, soit l'énoncé $P(\lvert t_{df = 58} \rvert \ge `r round(t.out$statistic, 3)`)$. On peut consulter la distribution du $t$ de Student avec 58 degrés de liberté ($df = n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2$) dans un livre de statistique ou encore avec \texttt{R} à l'aide de \texttt{pt( )}. On constate que la valeur observée  $t = `r round(t.out$statistic, 3)`$ est très peu probable lorsque $H_0$ est vraie, puisque $P(\lvert t_{df = 58} \rvert \ge `r round(t.out$statistic, 3)`) < 0.0001$. On rejette donc $H_0$ et on conclut que les deux moyennes diffèrent, c'est-à-dire que la moyenne des notes des élèves ayant eu l'aide aux devoirs diffère de celle des élèves n'ayant pas eu cette aide.
 
 :::
@@ -209,7 +274,7 @@ Le meilleur moyen de respecter cette condition est d'utiliser un design complèt
 
 Afin de vérifier la normalité des résidus, nous pouvons utiliser les mêmes diagnostics que ceux présentés pour le test $t$ à un groupe. Les tests formels ou les méthodes graphiques peuvent nous aider à détecter des déviations de cette condition. Dans notre exemple sur le succès scolaire des élèves, nous pourrions procéder comme suit :
 
-```{r normality, fig.align='left', fig.cap="Graphique quantile-quantile à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
+```{r normality, fig.align='center', fig.cap="Graphique quantile-quantile à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
 ##on crée un sous-jeu de données pour les élèves ayant eu l'aide aux devoirs
 eleves.aide <- eleves[eleves$Type == "aide", "Note"]
 eleves.aide
@@ -246,7 +311,7 @@ Le test $t$ sur deux groupes indépendants suppose que les deux groupes comparé
 
 La méthode graphique la plus simple consiste à observer le patron de la variance à l'aide des résidus. Puisque nous n'avons que deux groupes, nous pouvons utiliser un diagramme de boîtes et moustaches (*boxplot*). Si la condition d'homogénéité de la variance est respectée, nous observerons deux boîtes de même hauteur sur le graphique.
 
-```{r homog2, fig.align='left', fig.cap="Diagramme de boîtes et moustaches à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
+```{r homog2, fig.align='center', fig.cap="Diagramme de boîtes et moustaches à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves."}
 ##on met les résidus dans le jeu de données
 eleves$res.combo <- res.combo
 ##on crée le graphique
@@ -255,7 +320,7 @@ boxplot(res.combo ~ Type, data = eleves)
 
 On voit que les boîtes des deux groupes sont très semblables (la distance interquartile est similaire). On peut donc procéder avec le test $t$ (Figure \@ref(fig:homog2)). Dans d'autres cas, les variances des deux groupes sont différentes et la supposition d'homogénéité de la variance n'est pas respectée (Figure \@ref(fig:hetero)). Lorsqu'il y a un doute sur l'interprétation du diagramme, il vaut mieux utiliser des tests qui ne nécessitent pas l'homogénéité de la variance (voir la prochaine section).
 
-```{r hetero, echo = FALSE, keep.source = FALSE, include = TRUE, fig.align='left', fig.cap="Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2."}
+```{r hetero, echo = FALSE, keep.source = FALSE, include = TRUE, fig.align='center', fig.cap="Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2."}
 ##generate one group, low variance
 g1 <- rnorm(30, mean = 3, sd = 1)
 g2 <- rnorm(30, mean = 0, sd = 10)
@@ -341,9 +406,9 @@ kable(df_temps,
       col.names = NULL,
       row.names = FALSE, 
       caption = "Temps en minutes passé sur son téléphone portable de différents individus dînant avec des compères ou des étudiants inconnus de d'autres disciplines.",
-      "html", booktabs = TRUE, escape = FALSE) %>% 
+      "html", booktabs = TRUE, escape = FALSE, align = "c") %>% 
   add_header_above(c("Inconnus" = 3, "Compères" = 3)) %>%
-  kable_styling(full_width = F, position = "center")
+  kable_styling(latex_options = c("hold_position")) 
 ```
 
 Les données se trouvent dans le fichier `temps.txt`. Puisqu'on s'attend à ce que les individus dînant avec des compères passent plus de temps sur leurs téléphones portables que ceux dînant avec des inconnus (car ils sont désinhibés en présence de leurs compères et moins polis), nous effectuerons un test unilatéral.
@@ -378,7 +443,7 @@ t.out
 
 Toutefois, avant de se lancer dans l'interprétation de l'analyse, il faut vérifier les suppositions. 
 
-```{r norm2, echo = TRUE, eval = TRUE, keep.source = TRUE, fig.align='left', fig.cap="Graphique quantile-quantile sur les résidus du test $t$ sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d'homogénéité de la variance à partir des résidus du test $t$ sur deux groupes indépendants avec avec les mêmes données (b)."}
+```{r norm2, echo = TRUE, eval = TRUE, keep.source = TRUE, fig.align='center', fig.cap="Graphique quantile-quantile sur les résidus du test $t$ sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d'homogénéité de la variance à partir des résidus du test $t$ sur deux groupes indépendants avec avec les mêmes données (b)."}
 
 ##calculer les résidus - groupe inconnus
 inconnus.res <- inconnus - mean(inconnus)
@@ -407,9 +472,9 @@ boxplot(Res ~ Accompagnateurs, data = temps)
 text(x = 0.5, y = 14.5, labels = "b", cex = 1.2)
 ``` 
 
-Le test de normalité d'Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure \@ref(fig:norm2)a). La figure \@ref(fig:norm2)b ne montre pas de signes d'hétérogénéité de la variance. On peut procéder à l'inteprétation des résultats. Puisque $P(t_{df = 28}$ `r round(t.out$statistic, digits = 3)`) = `r round(t.out$p.value, 5)`, on rejette $H_0$ et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu'avec des inconnus. Autrement dit, la valeur de $t$ observée est beaucoup plus extrême que ce qui est attendu selon $H_0$. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure \@ref(fig:two)).
+Le test de normalité d'Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure \@ref(fig:norm2)a). La figure \@ref(fig:norm2)b ne montre pas de signes d'hétérogénéité de la variance. On peut procéder à l'inteprétation des résultats. Puisque $P(t_{df = 28}$ $`r round(t.out$statistic, digits = 3)`$) = $`r round(t.out$p.value, 5)`$, on rejette $H_0$ et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu'avec des inconnus. Autrement dit, la valeur de $t$ observée est beaucoup plus extrême que ce qui est attendu selon $H_0$. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure \@ref(fig:two)).
 
-```{r two, echo = TRUE, eval = TRUE, keep.source = TRUE, fig = TRUE, fig.align='left', fig.cap="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%."}
+```{r two, echo = TRUE, eval = TRUE, keep.source = TRUE, fig = TRUE, fig.align='center', fig.cap="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%."}
 ##moyenne des groupes
 moy.inconnus <- mean(inconnus)
 moy.comperes <- mean(comperes)
@@ -505,14 +570,14 @@ t.poissons <- t.test(poissons$Diff, alternative = "less")
 ```
 
 On sait que :  
-$\bar{x}_{\mathrm{diff\acute{e}rence}} =$ `r round(mean.diff, 1)`  
-$SD_{\mathrm{diff\acute{e}rence}} =$ `r round(SD, 2)`  
-$SE_{\mathrm{diff\acute{e}rence}} =$  `r round(SE, 2)`  
+$$\bar{x}_{\mathrm{diff\acute{e}rence}} = `r round(mean.diff, 1)` $$ 
+$$SD_{\mathrm{diff\acute{e}rence}} = `r round(SD, 2)`  $$
+$$SE_{\mathrm{diff\acute{e}rence}} =  `r round(SE, 2)` $$ 
 
 On obtient ainsi :  
 $$t = \frac{\bar{x}_{\mathrm{diff\acute{e}rence}} - \mu_{H_{0}}}{SE_{\mathrm{diff\acute{e}rence}}}$$
-$$t = \frac{-0.9 - 0}{0.29}$$
-$$t =  -3.05$$
+$$t = \frac{`r round(mean.diff, 1)` - 0}{`r round(SE, 2)` } $$
+$$t =  `r round(t.poissons$statistic, 3)`$$
 On peut effectuer rapidement le test dans R à l'aide de `t.test( )` :
 
 ```{r invert3, echo = TRUE, keep.source = TRUE, eval = TRUE}
@@ -529,7 +594,7 @@ t.test(poissons$Aval, poissons$Amont, paired = TRUE,
        alternative = "less")
 ``` 
 
-```{r norm6, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align='left', fig.cap="Vérification de la normalité à partir des résidus des données appariées sur le nombre d'espèces de poissons."}
+```{r norm6, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align='center', fig.cap="Vérification de la normalité à partir des résidus des données appariées sur le nombre d'espèces de poissons."}
 ##calcul des résidus
 res.diff <- poissons$Diff - mean(poissons$Diff)
 ##graphique quantile-quantile
@@ -541,7 +606,7 @@ qqline(res.diff)
 
 La vérification de la normalité indique que les résidus ont une distribution normale (Figure \@ref(fig:norm6)). On conclut qu'il est peu probable d'observer une valeur $t$ de `r round(t.poissons$statistic, 3)` ou plus extrême (ici, plus faible étant donné notre hypothèse alternative) avec \mbox{15 degrés} de liberté lorsque $H_0$ est vraie. Effectivement, $P(t_{`r t.poissons$parameter`} \leq `r round(t.poissons$statistic, 3)`) = `r round(t.poissons$p.value, 4)`$. On rejette $H_0$ et on déclare dans notre rapport que le nombre espèces de poissons est significativement plus faible en aval qu'en amont d'une décharge d'eaux usées. On peut également formuler la conclusion en déclarant que le nombre d'espèces de poissons est significativement plus élevée en amont qu'en aval d'une décharge d'eaux usées dans notre aire d'étude. Finalement, on peut créer un graphique pour illustrer les résultats. Puisque les deux groupes sont appariés et que le test $t$ pour deux groupes appariés est en fait un test $t$ réalisé sur la différence entre les paires, on peut présenter la moyenne de la différence entre les paires et son intervalle de confiance à 95\% (Figure \@ref(fig:pairedci)). 
 
-```{r pairedci, fig = TRUE, fig = TRUE, fig.align='left', fig.cap="Moyenne de la différence du nombre d'espèces de poissons (aval - amont) et intervalle de confiance à 95%."}
+```{r pairedci, fig = TRUE, fig = TRUE, fig.align='center', fig.cap="Moyenne de la différence du nombre d'espèces de poissons (aval - amont) et intervalle de confiance à 95%."}
 ##degrés de liberté résiduels
 res.df <- nrow(poissons) - 1
 
@@ -582,7 +647,7 @@ X^\prime = \log(X + 1) \:,
 $$
 où $X$ correspond à la variable originale et $X^\prime$ représente la nouvelle variable résultant de cette transformation sur chacune des valeurs originales. On ajoute une constante à cette transformation lorsque certaines des valeurs de la variable originale sont 0, puisque le logarithme n'est pas défini pour de telles valeurs. Bien qu'il soit possible d'utiliser n'importe quelle base pour le logarithme, la base $e$ (log népérien, naturel) et la base 10 sont les plus fréquemment utilisées. En présence d'hétéroscédasticité, cette transformation peut rendre les variances homogènes (Figure \@ref(fig:hetlog)). Cette transformation influence à la fois l'homogénéité de la variance et la normalité des résidus. Si les résidus ont déja une distribution normale, mais que les variances ne sont pas homogènes, il se peut que la transformation rétablisse l'homogénéité de la variance mais que la normalité des résidus ne soit plus rencontrée.
 
-```{r hetlog, eval = TRUE, fig = TRUE, keep.source = FALSE, echo = FALSE, fig.align='left', fig.cap="Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L'application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable."}
+```{r hetlog, eval = TRUE, fig = TRUE, keep.source = FALSE, echo = FALSE, fig.align='center', fig.cap="Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L'application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable."}
 set.seed(seed = 122)
 g1 <- rnorm(50, mean = 50.5, sd = 12)
 g2 <- rnorm(50, mean = 190, sd = 40)
@@ -591,10 +656,10 @@ gg <- data.frame(Val = c(g1, g2),
 gg$log.Val <- log(gg$Val)
 par(mfrow = c(1, 2))
 boxplot(Val ~ Group, data = gg, 
-        main = "Groupes avec variances hétérogènes")
+        main = "Groupes avec variances hétérogènes", cex.main = 1)
 text(x = 0.5, y = 295, labels = "a")
 boxplot(log.Val ~ Group, data = gg, 
-        main = "Groupes avec variances homogènes")
+        main = "Groupes avec variances homogènes", cex.main = 1)
 text(x = 0.5, y = 5.72, labels = "b")
 ```
 
@@ -618,7 +683,7 @@ $$
 
 La transformation racine carrée se réalise à l'aide de `sqrt( )` :
 
-```{r sqrt, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'left', fig.cap = "Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite)."}
+```{r sqrt, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'center', fig.cap = "Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite)."}
 ##on crée une variable de fréquences provenant
 ##d'une distribution de Poisson avec
 ##une moyenne de 2.5
@@ -644,7 +709,7 @@ X^\prime = \sqrt{(n + \frac{1}{2})} \arcsin \sqrt{\frac{X + \frac{3}{8}}{n + \fr
 $$
 À noter qu'il faut ramener les pourcentages en proportions avant d'utiliser la transformation arcsinus (0.1 et 0.04, au lieu de 10 \% et 4 \%). Après la transformation, les données sont exprimées en radians ($\frac{180^\circ}{2\pi}$). Dans R, on exécute la transformation arcsinus comme suit:
 
-```{r asin, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'left', fig.cap = "Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite)."}
+```{r asin, echo = TRUE, keep.source = TRUE, eval = TRUE, fig = TRUE, fig.align = 'center', fig.cap = "Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite)."}
 ##on crée une série de proportions
 ##à partir d'une distribution bêta
 props <- rbeta(n = 60, shape1 = 5, shape2 = 1)
@@ -663,9 +728,9 @@ hist(props.transf)
 La **transformation réciproque ou inverse** (*reciprocal transformation*) peut être utilisée lorsque les variances des groupes sont proportionnelles au carré des moyennes :
 
 $$
-X^\prime &=& \frac{1}{X} \\
+X^\prime = \frac{1}{X} \\
 \mathrm{ou} \\
-X^\prime &=& \frac{1}{X + 1} \: .
+X^\prime = \frac{1}{X + 1} \: 
 $$
 
 Toutefois, il faut rester vigilant dans l'interprétation des résultats lorsqu'on a appliqué la transformation inverse. Le signe sera inversé. Par exemple, si on obtient après la transformation inverse que la différence du groupe 1 est plus grande que celle du groupe 2, cela implique que pour les données brutes, c'est en effet le contraire qui se produit. La transformation inverse s'obtient de la manière suivante dans R :
@@ -680,7 +745,6 @@ La **transformation au carré**\index{transformations!carré} est parfois utile 
 
 $$
 X^\prime = X^2
-\end{equation*}
 $$
 On exécute la transformation au carré ainsi:
 
@@ -700,7 +764,10 @@ Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour c
 
 ## Laboratoire 
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 4](https://github.com/sci1018/sci1018_data/raw/main/Module_4.zip).
+
+
+### Question 1 {-}
 
 **a.** Lequel des éléments suivants n'est pas associé à une supposition du test $t$ sur deux groupes indépendants?      
 
@@ -716,7 +783,7 @@ Dans ce texte, nous avons présenté des variantes du test $t$ de Student pour c
 **c.** Le test $t$ de Welch est le plus approprié lorsqu'on ne peut respecter la supposition de normalité des résidus. Vrai ou faux?  
 
 
-### Question 2
+### Question 2 {-}
 
 On effectue une expérience sur l'efficacité d'un médicament qui améliore le temps de récupération après un effort physique. On sélectionne aléatoirement 50 étudiants à la TÉLUQ. On prépare deux séries de comprimés. La première série de comprimés contient uniquement du sucre (placebo), alors que la deuxième série contient le médicament. Pendant l'expérience, chaque individu reçoit deux comprimés, l'un de sucre, et l'autre contenant le médicament. On détermine aléatoirement l'ordre dans lequel chaque individu reçoit les comprimés.  On administre ensuite un des deux comprimés à chaque individu et on mesure son temps de récupération en minutes après qu'il a couru sur un tapis roulant pendant 10 minutes à une vitesse de 10 km/h. Le jour suivant, on administre l'autre comprimé en suivant le même protocole. 
 

@@ -1,0 +1,1105 @@
+# (PART) APPRENTISSAGE {-}
+
+# Programmation avec R {-}
+
+---
+
+Ce document a pour but d'illustrer les bases nécessaires afin de se familiariser avec `R`. Pour les personnes qui n'ont jamais rencontré cet environnement, nous recommandons très fortement de répéter les exemples afin de bien comprendre la syntaxe et les subtilités de la programmation en ce qui est devenu la *lingua franca* des statistiques. Dans ce document, le code `R` est distingué du reste du texte en utilisant une `police monospace comme celle-ci`. Aussi, vous remarquerez que le symbole `>` précède toujours les commandes illustrées dans les exemples du document. Ce symbole indique que les commandes pourraient être saisies dans la console `R` ou dans l'éditeur.
+
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `RSiteSearch( )`
+  - `c( )`
+  - `rep( )`
+  - `seq( )`
+  - `class( )`
+  - `length( )`
+  - `all( )`, `any( )`, `all.equal( )`, `identical( )`
+  - `which( )`, `which.min( )`, `which.max( )`
+  - `ifelse( )`
+  - `paste( )`
+  - `matrix( )`
+  - `diag( )`
+  - `colSums( )`, `colMeans( )`
+  - `data.frame( )`
+  - `str( )`, `dim( )`, `nrow( )`, `ncol( )`, `names( )`, `rownames( )`, `colnames( )`
+  - `summary( )`, `head( )`, `tail( )`
+  - `read.table( )`
+  - `setwd( )`
+  - `subset( )`
+  - `sort( )`
+  - `table( )`
+  - `xtabs( )`
+  - `reshape( )`
+  - `save( )`, `write.table( )`, `load( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le fichier `vers.txt` dans la partie théorique qui contient des données sur l'abondance des vers de terre dans différents types de parcs publics et le fichier `richesse.txt` dans la partie exercices. 
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Guide_R_2.zip).
+  </div>
+  
+</div> 
+
+## Notions générales {-}
+
+#### Le projet R  {-}
+
+`R` est un langage de programmation ainsi qu'un logiciel développés spécifiquement pour les analyses statistiques et les graphiques. Il est le résultat des travaux de deux statisticiens-programmeurs de la Nouvelle-Zélande, Ross Ihaka et Robert Gentleman qui se sont inspirés des langages `S` et `Scheme` (http://fr.wikipedia.org/wiki/Scheme). D'ailleurs, ils ont nommé le langage `R` en référence à leur prénom (`R`oss et `R`obert), mais aussi en guise de clin d'oeil à son prédecesseur `S` (http://fr.wikipedia.org/wiki/S_(langage_de_programmation)). 
+
+Dès les débuts, Ihaka et Gentleman ont rendu le code source de leur langage disponible gratuitement à tous, mettant en pratique la philosophie que la qualité des graphiques et des analyses executés ne doivent pas être une fonction de l'épaisseur du portefeuille. Quiconque peut ainsi faire des analyses de très haut niveau peu importe sa situation financière. Le code source du langage étant ouvert, quiconque peut aller voir, s'il le désire, comment les fonctions ont été codées, les modifier pour son propre usage ou en créer de nouvelles pour des applications spécifiques, puis les rendre disponibles à tous par l'intermédiaire de banques de fonctions. Cette transparence et cet esprit de partage expliquent en partie le succès fulgurant de ce langage et la formation d’une large communauté d'utilisateurs dans le monde. 
+
+L’initiative des deux Néo-Zélandais a pris la forme d’un projet global auquel s’est greffée une équipe de programmeurs et de statisticiens qui mettent à jour régulièrement le logiciel, y apportent des améliorations et rendent le tout disponible gratuitement à partir de plus de 75 sites répartis sur les cinq continents. Un aspect important de `R` est qu'il est disponible sous différents systèmes d'exploitation, incluant MS-Windows, Mac, et GNU/Linux. 
+
+#### La syntaxe {-}
+
+`R` est un langage de programmation orienté objet et interprété, ce qui signifie que toute information est gardée en mémoire sous forme d'objet pendant une session `R` tant que ce dernier n'est pas modifié ou éliminé ("orienté objet") et qu'on n'a pas à compiler le programme avant de l'exécuter ("interprété"). On peut créer un objet en lui assignant un nom et de l'information. Une fois créé, cet objet existe dans la mémoire de `R` et peut prendre différentes formes comme une valeur numérique, du texte, un vecteur, une matrice, une fonction, un jeu de données ou le résultat d'une analyse . 
+
+Contrairement à d'autres logiciels, lorsqu'on crée un élément, il demeure accessible durant toute la session. Par exemple, après avoir réalisé une analyse et stocké les résultats dans un objet, on peut décider d'extraire les résidus du modèle, des valeurs prédites, un $R^2$ ou une autre valeur sans avoir à faire rouler à nouveau l'analyse. En effet, `R` garde en mémoire le résultat de l'analyse pour extraire les valeurs nécessaires. Conceptuellement, un objet est l'équivalent d'un contenant utilisé pour conserver des aliments dans un réfrigérateur dans votre milieu de travail -- on peut mettre des étiquettes avec le nom du propriétaire sur le contenant afin de distinguer les différents contenants dans le réfrigérateur. C'est le même principe utilisé par `R`: on stocke de l'information dans un objet (le contenant) et le nom de cet objet (l'étiquette) permet à `R` de gérer l'information qu'on lui soumet.
+
+Toutes les commandes ou les fonctions en `R` suivent la même stratégie: un nom suivi de parenthèses. Par exemple, la fonction `mean( )`, étonnamment, permet de calculer la moyenne arithmétique. La plupart des fonctions possèdent des arguments séparés par des virgules. Dans notre exemple, la fonction `mean( )` possède un argument `'x = '` que nous utilisons pour spécifier la variable sur laquelle nous voulons calculer la moyenne. Toutefois, avant de continuer avec des exemples, voyons comment accéder à l'aide disponible dans `R`.
+
+#### À l'aide {-}
+
+Il existe plusieurs ressources pour assister les utilisateurs de `R`. Par exemple, la commande `help.start( )` génère une page `html` à partir de laquelle nous pouvons naviguer vers différents thèmes au moyen d'hyperliens (Figure \@ref(fig:helpstart)).
+
+```{r helpstart, fig.align='center', echo=FALSE, fig.link='images/Capture_help1.png', fig.cap="Aide dans R avec `r help.start( )`."}
+knitr::include_graphics("Guide_R_2/images/Capture_help1.png")
+```
+
+La commande `help.search( )` permet de faire une recherche spécifique dans les fichiers d'aide de `R`. L'argument `apropos` permet de spécifier le sujet de la recherche. Par exemple, la commande :
+
+```{r exA1.2,keep.source=TRUE,eval=FALSE}
+help.search(apropos = "generalized linear models")
+``` 
+
+retournera l'ensemble des fonctions qui traitent des modèles linéaires généralisés parmi les fonctions de `R`.
+
+Afin d'accéder directement à l'aide d'une fonction, on peut utiliser la commande `?` suivie du nom de la fonction. Toute la documentation des fonctions est fondée sur la même structure: la présentation de la syntaxe, des arguments, et des détails sur l'usage et le résultat de l'opération, de l'auteur de la fonction et des références. La plupart des fonctions finissent par des exemples qu'on peut reproduire soi-même: il suffit de copier-coller le code dans la console. C'est un excellent moyen de se familiariser avec une fonction et son utilisation.
+
+```{r exA1.3,keep.source=TRUE,eval=FALSE}
+?mean #retourne l'aide de la fonction mean( )
+``` 
+
+Un autre outil pratique est la fonction `RSiteSearch( )` avec l'objet de la recherche entre guillements. Cette fonction cherche dans les pages d'aide de toutes les fonctions de `R` du site de `R` et n'est pas limité aux fonctions installées sur votre ordinateur. Après avoir exécuté la commande, une fenêtre de votre fureteur internet préféré s'ouvrira pour accéder aux résultats. Bien sûr, il est nécessaire d'avoir une connexion internet lors de l'exécution de cette fonction. Par exemple, 
+
+```{r exA1.4,eval=FALSE}
+RSiteSearch("error bars")
+``` 
+
+présentera comme résultat les pages de fonctions faisant mention de barres d'erreurs sur des graphiques. On peut ensuite modifier la recherche ou l'étendre à partir du moteur de recherche directement sur la page web.
+
+Plusieurs ressources électroniques sont également disponibles sur une multitude de sites internet de chercheurs ou d'utilisateurs de `R`. Le site (http://www.rseek.org) peut faciliter cette recherche.
+
+#### Vecteurs et opérations de base {-}
+
+`R` stocke l'information sous forme d'objets et ces derniers peuvent prendre différentes formes. Le premier type d'objet que nous verrons est le vecteur[^1]. Les éléments contenus dans un vecteur sont d'un seul type ou mode. Parmi les modes les plus courants, on compte, le mode numérique (`numeric`), entier (`integer`), caractère (`character`), facteur (`factor`) ou logique (`logical`).
+
+##### Créer un vecteur {-}
+
+Le plus simple vecteur dans `R` consiste en une seule valeur (un scalaire). Comme premier exemple, créons un objet pour stocker le nombre de pistes (10) sur l'album *Folklore* du groupe 16 Horsepower^[Un groupe folk alternatif apprécié par l'auteur. Pour plus d'informations, voir (http://fr.wikipedia.org/wiki/16_Horsepower).]. Créons un vecteur que nous nommerons `Nbre.pistes` et qui prendra la valeur 10.
+
+```{r exA1.5}
+Nbre.pistes <- 10
+``` 
+
+Notons le symbole `<-` (symbole inférieur suivi d'un tiret) qui est un opérateur d'assignation. En d'autres mots, la valeur de 10 est envoyée dans l'objet dénommé `Nbre.pistes`. Le symbole `=` peut aussi être utilisé pour assigner des valeurs, mais cela n'a pas toujours été le cas. Dans ce cours, nous utilisons le symbole classique d'assignation `<-`.
+
+Rappelons aussi que l'on créé simplement en lui donnant un nom. Ce nom doit commencer par une lettre, laquelle peut être suivie de chiffres ou d'autres lettres. Par ailleurs, le nom de l'objet ne peut contenir d'espace; on peut le remplacer au besoin par un point ou un trait souligné. C'est une bonne pratique de garder le nom des objets court et informatif (éviter toto1, toto2) et d'éviter d'attribuer des noms déjà utilisés par des fonctions^[Généralement, choisir un nom qui est déjà utilisé par une fonction de `R` ne causera pas de problèmes, mais c'est préférable d'éviter cette situation.]. Pour reprendre à l'analogie des contenants dans un réfrigérateur, nous avons créé un contenant qui stocke la valeur `10`, et avons placé l'étiquette `Nbre.pistes` sur ce contenant afin de pouvoir facilement l'identifier par la suite.
+
+Pour visualiser le contenu de l'objet, nous pouvons simplement saisir son nom dans la console (ou, préférablement, l'envoyer à `R` à partir de notre éditeur).
+
+```{r exA1.6}
+Nbre.pistes
+``` 
+
+Remarquons aussi que `R` fait la distinction entre les minuscules et les majuscules. Si nous interrogeons `R` à propos de l'objet `nbre.Pistes` :
+
+```{r exA1.7, error=TRUE}
+nbre.Pistes
+``` 
+Il ne reconnaît pas l'objet. À noter aussi qu'on peut créer un objet en lui assignant les valeurs d'un autre objet. Par exemple, si nous désirons créer un nouvel objet qui prendra la même valeur que `Nbre.pistes`, nous pouvons écrire :
+
+```{r exA1.7b,eval=FALSE,echo=TRUE,keep.source=TRUE}
+le.nombre.de.pistes <- Nbre.pistes
+Nbre.pistes #l'objet original
+le.nombre.de.pistes #le nouvel objet créé
+``` 
+
+Si au lieu d'assigner une seule valeur à l'objet, nous désirons stocker le nombre de pistes de toute la discographie du groupe 16 Horsepower^[Pour les albums lancés en Amérique du Nord avant la désintégration du groupe en 2005.], nous pouvons procéder ainsi :
+
+```{r exA1.8}
+Nbre.pistes <- c(6, 14, 14, 11, 11, 10, 20)
+``` 
+
+L'opérateur d'assignation `<-` indique que nous créons un objet, ici une variable numérique constituée des 7 valeurs à droite de l'opérateur. La fonction `c()`[^1] est une fonction qui combine les valeurs en un vecteur. Ces valeurs doivent être séparées par des virgules. La fonction `c()`[^1] est très souvent utilisée dans `R` pour combiner des éléments.
+
+Maintenant, observons ce que `R` retourne avec la commande `Nbre.pistes`.
+
+```{r exA1.9}
+Nbre.pistes
+``` 
+
+Nous voyons le nombre de pistes de chaque album: le vecteur initial a été remplacé par les nouvelles valeurs que nous avons spécifiées. On remarque que les valeurs sont précédées par `[1]`. Le chiffre entre `[ ]` donne l'indice de l'observation qui la succède (la valeur 6 est la première). Pour des vecteurs beaucoup plus longs, `R` retournera l'indice à chaque nouvelle ligne.
+
+Le même principe s'applique pour créer une chaîne de caractères. Dans le même ordre d'idées, nous pourrions créer un objet pour stocker les noms des albums de 16 Horsepower auxquels nous faisions référence dans `Nbre.pistes`.
+
+```{r exA1.10}
+Albums <- c("16 Horsepower", "Sackcloth 'n' Ashes", "Low Estate", 
+            "Secret South", "Hoarse", "Folklore", "Olden")
+Albums
+```
+
+##### Sélectionner des valeurs {-}
+
+On peut sélectionner certaines valeurs à partir d'un vecteur à l'aide de `[]`[^1]. Par exemple, pour choisir la deuxième valeur du vecteur `Nbre.pistes`, on peut écrire :
+
+```{r exA1.11}
+Nbre.pistes[2]
+``` 
+
+Pour extraire les trois premières valeurs du vecteur, on peut utiliser :
+
+```{r exA1.12}
+Nbre.pistes[1:3]
+```
+
+L'opérateur `:` crée une séquence, ici de 1 à 3. On peut aussi sélectionner des valeurs non-consécutives en utilisant la fonction `c()` :
+
+```{r exA1.13}
+Nbre.pistes[c(1, 3, 5)]
+```
+
+Dans l'exemple ci-dessus, on a extrait les première, troisième et cinquième valeurs du vecteur. Il est aussi possible d'exclure des valeurs en précédant les indices du symbole `-` à l'intérieur des `[]`.
+
+```{r exA1.14}
+Nbre.pistes[-1]
+Nbre.pistes[-c(1,3,6)]
+```
+
+##### Répéter des valeurs {-}
+
+La fonction `rep()` permet de répéter une ou plusieurs valeurs. Par exemple, pour répéter la valeur 5 vingt fois :
+
+```{r exA1.15}
+y20 <- rep(x = 5, times = 20)
+y20
+``` 
+
+La fonction `rep()` inclut deux arguments : `x` spécifie la valeur à répéter, tandis que `times` indique le nombre de répétitions. On peut aussi répéter des caractères.
+
+```{r exA1.16}
+y20.caracteres <- rep(x = c("neuf", "vieux"), times = 20)
+y20.caracteres
+``` 
+
+Plusieurs fonctions de base peuvent être appliquées à une multitude de scénarios, et c'est l'un des attraits de la programmation en `R`. Ici, nous avons utilisé à nouveau la fonction `c()` pour créer un vecteur à 2 valeurs, `neuf` et `vieux`, et nous avons répété ce vecteur 20 fois. Il est donc important d'apprendre quelques fonctions de base qui reviendront souvent dans le cours.
+
+##### Créer une série {-}
+
+La création d'une série ou séquence de valeurs avec un pas spécifique est réalisée avec la fonction `seq()`.
+
+```{r exA1.17}
+y.seq <- seq(from = 1, to = 10, by = 1)
+y.seq
+``` 
+
+Les arguments de la fonction sont assez explicites : `from` indique le départ de la série, `to` indique la fin, et `by` spécifie le pas. On peut facilement créer une séquence qui décline.
+
+```{r exA1.18}
+y.seq.decl <- seq(from = 10, to = 1, by = -1)
+``` 
+
+La valeur de l'argument `by` n'est pas limitée aux entiers.
+
+```{r exA1.19}
+y.seq.01 <- seq(from = 1, to = 5, by = 0.1)
+y.seq.01
+``` 
+
+La fonction `seq()` possède également un argument `length.out` qui permet d'obtenir le nombre de valeurs sans indiquer le pas.
+
+```{r exA1.20}
+y.seq.length <- seq(from = 1, to = 100, length.out = 12)
+y.seq.length
+``` 
+
+##### Connaître les caractéristiques d'un vecteur {-}
+
+Afin de s'informer sur la nature d'un objet, on peut utiliser la fonction `class()`.
+
+```{r exA1.21}
+class(Nbre.pistes)
+class(Albums)
+``` 
+
+On remarque que `R` identifie `Nbre.pistes` comme un vecteur numérique alors que `Albums` est identifié comme un vecteur de caractères. `R` possède aussi plusieurs fonctions logiques nous dévoilant les caractéristiques d'un vecteur.
+
+```{r exA1.22}
+is.numeric(Nbre.pistes)
+is.character(Albums)
+``` 
+
+La fonction `length()` est particulièrement utile pour déterminer le nombre d'observations .
+
+```{r exA1.23}
+length(Nbre.pistes)
+length(y.seq.01)
+``` 
+
+#### Opérateurs mathématiques {-}
+
+`R` utilise les opérateurs mathématiques conventionnels tels que l'addition (`+`) , la soustraction (`-`), la multiplication (`*`) et la division (`/`), et respecte les conventions de priorité des opérations. Ainsi, dans une équation, la multiplication et la division ont priorité sur l’addition et la soustraction.
+
+```{r exA1.24}
+30 + 10 - 2 * 3
+``` 
+
+Ceci étant dit, c'est une bonne idée de regrouper certains termes lorsque les calculs sont particulièrement longs pour éviter les problèmes. Lors d'opérations mathématiques impliquant deux vecteurs de différentes tailles, les valeurs du vecteur le plus court sont recyclées ou réutilisées. Ce comportement est un aspect important de la programmation en `R`.
+
+```{r exA1.25}
+Nbre.pistes + Nbre.pistes
+``` 
+
+Les deux vecteurs ci-dessus sont de la même taille et l'opération s'effectue un élément à la fois. Toutefois, dans l'exemple suivant, on calcule la différence entre `Nbre.pistes` (7 valeurs) et 24 (1 valeur).
+
+```{r exA1.26}
+Nbre.pistes - 24
+``` 
+
+Ici, la valeur 24 est recyclée et est soustraite de chaque valeur du vecteur `Nbre.pistes`. On observe le même comportement pour la multiplication de `Nbre.pistes` et `y.seq` créé plus tôt.
+
+```{r exA1.26b}
+Nbre.pistes * y.seq
+``` 
+
+Puisque `Nbre.pistes` comporte 7 valeurs et que `y.seq` en compte 10, les premières valeurs de `Nbre.pistes` seront réutilisées avec les dernières valeurs de `y.seq` pour compléter le calcul. On remarque le message d'avertissement de `R` à propos de l'objet le plus long qui n'est pas un multiple de l'objet le plus court (10 n'est pas un multiple de 7, mais est un multiple de 5 et de 2).
+
+Le tableau \@ref(tab:math) montre plusieurs fonctions mathématiques de base. Les fonctions trigonométriques sont également disponibles en `R` (Tableau \@ref(tab:trig)).
+
+```{r include=FALSE}
+library(knitr)
+library(kableExtra)
+```
+
+```{r math, echo=FALSE}
+math_functions <- data.frame(
+  Function = c(
+    "`min(x)`",
+    "`max(x)`",
+    "`range(x)`",
+    "`rank(x)`",
+    "`round(x, digits)`",
+    "`sum(x)`",
+    "`cumsum(x)`",
+    "`prod(x)`",
+    "`cumprod(x)`",
+    "`abs(x)`",
+    "`sqrt(x)`",
+    "`log2(x)`",
+    "`log10(x)`",
+    "`log(x, base)`",
+    "`log(x)`",
+    "`exp(x)`",
+    "`x^y`"
+  ),
+  Description = c(
+    "valeur minimale parmi les éléments de x",
+    "valeur maximale parmi les éléments de x",
+    "étendue des éléments de x",
+    "le rang des éléments de x (ième observation en ordre croissant)",
+    "arrondit les éléments de x à digits décimales",
+    "somme des éléments de x",
+    "renvoie le vecteur dont le ième élément est la somme de x[1] à x[i]",
+    "produit des éléments de x",
+    "renvoie le vecteur dont le ième élément est le produit de x[1] à x[i]",
+    "valeur absolue des éléments de x",
+    "racine carrée des éléments de x",
+    "logarithme en base 2 des éléments de x",
+    "logarithme en base 10 des éléments de x",
+    "logarithme en base base des éléments de x",
+    "logarithme naturel des éléments de x équivaut à log(x, base = exp(1))",
+    "renvoie la valeur de e élevée à la puissance x",
+    "la valeur de x élevée à la puissance y"
+  ),
+  stringsAsFactors = FALSE
+)
+
+# Create the table
+kable(math_functions, 
+      col.names = c("Fonction", "Description"),
+      caption = "Fonctions mathématiques de base courantes en R.",
+      booktabs = TRUE,
+      escape = FALSE, "html", align = "c") %>%
+  kable_styling(latex_options = c("hold_position"))
+```
+
+<br> 
+
+```{r trig, echo=FALSE}
+trig_functions <- data.frame(
+  Function = c(
+    "`cos(x)`",
+    "`sin(x)`",
+    "`tan(x)`",
+    "`acos(x)`",
+    "`asin(x)`",
+    "`atan(x)`"
+  ),
+  Description = c(
+    "cosinus en radians des éléments de x",
+    "sinus en radians des éléments de x",
+    "tangente en radians des éléments de x",
+    "arc-cosinus en radians des éléments de x",
+    "arc-sinus en radians des éléments de x",
+    "arc-tangente en radians des éléments de x"
+  ),
+  stringsAsFactors = FALSE
+)
+
+# Create the table
+kable(trig_functions, 
+      col.names = c("Fonction", "Description"),
+      caption = "Fonctions trigonométriques courantes en R.",
+      booktabs = TRUE,
+      escape = FALSE, "html", align = "c") %>%
+  kable_styling(latex_options = c("hold_position"))
+```
+
+#### Tests logiques {-}
+
+Une série d'opérateurs logiques sont disponibles en `R`, le résultat étant `TRUE` ou `FALSE`. Les opérateurs logiques les plus intuitifs sont `<`, `<=`, `>`, et `>=`. L'opérateur `==` teste si deux éléments sont exactement égaux, alors que `!=` teste si deux éléments sont différents.
+
+Pour comparer deux vecteurs de valeurs logiques, on peut utiliser l'opérateur `&` qui déterminera l'intersection des deux vecteurs, c'est-à-dire les cas où les tests sont vrais pour les deux simultanément. L'opérateur `|` (ou logique) permet de déterminer l'union des deux vecteurs (les cas où les tests sont vrais pour l'un ou l'autre).
+
+```{r exA1.27,keep.source=TRUE}
+Nbre.pistes
+``` 
+
+```{r exA1.27b,keep.source=TRUE}
+Nbre.pistes >= 10
+Nbre.pistes != 10
+Albums == "Olden" #spécifier les caractères entre " "
+vec.log1 <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+vec.log2 <- c(TRUE, TRUE, FALSE, FALSE, FALSE)
+vec.log1 & vec.log2 #deux tests vrais pour la valeur 1
+vec.log1 | vec.log2 #test vrai pour valeurs 1, 2, 3, 4
+``` 
+
+Les fonctions `all()` et `any()` déterminent si toutes ou au moins l'une des valeurs répondent au test logique, respectivement. Pour comparer deux vecteurs entre eux, on utilisera plutôt les fonctions `all.equal()` ou `identical()`.
+
+```{r exA1.28,keep.source=TRUE}
+any(Nbre.pistes > 11) 
+all(Nbre.pistes == 11) 
+all.equal(Nbre.pistes, Nbre.pistes) 
+Nbre <- rep(10, 7) #on crée un autre vecteur
+Nbre
+all.equal(Nbre.pistes, Nbre) 
+identical(Nbre.pistes, Nbre)
+``` 
+
+Le dernier appel à `all.equal()` nous indique que les deux vecteurs ne sont pas identiques puisqu'il y a une différence moyenne entre les deux de 0.31579. La fonction `which()` est aussi apparentée aux tests logiques. Elle permet de déterminer lesquelles des valeurs répondent à une certaine condition énoncée par un test logique. Les variantes `which.min()` et `which.max()` permettent d'identifier les valeurs minimales et maximales, respectivement.
+
+```{r exA1.29,keep.source=TRUE}
+which(Nbre.pistes > 11) #retourne les indices
+Nbre.pistes[which(Nbre.pistes > 11)] #retourne les valeurs
+which(Albums == "Folklore") #retourne les indices
+which.max(Nbre.pistes) #indice de l'observation maximale
+which.min(Nbre.pistes) #indice de l'observation minimale
+``` 
+
+La fonction `ifelse()` permet de faire un test conditionnel sur un vecteur. Par exemple, pour créer une variable binaire à partir de la variable `Nbre.pistes` (c.-à-d., `<= 10` ou `> 10`), on procéderait ainsi :
+
+```{r exA1.30,keep.source=TRUE}
+Bin10 <- ifelse(Nbre.pistes <= 10, 0, 1)
+Bin10
+``` 
+
+On procède de la même façon si le vecteur contient des caractères :
+
+```{r exA1.31}
+y20.caracteres
+bin.y20 <- ifelse(y20.caracteres == "neuf", "nouveau", "ancien")
+bin.y20[1:5]
+``` 
+
+La fonction `ifelse( )` est aussi pratique pour créer des classes (i.e., une variable catégorique) en imbriquant plusieurs tests sur le vecteur :
+
+```{r exA1.32}
+Classe.pistes <- ifelse(Nbre.pistes < 10, "< 10", 
+                        ifelse(Nbre.pistes >= 10 & Nbre.pistes < 15, 
+                               "10 - 15", "> 15"))
+``` 
+
+Le code ci-dessus est réparti sur plusieurs lignes pour en améliorer la lisibilité, mais nous aurions obtenu exactement le même résultat si tout le code s'était trouvé sur une même ligne. Lorsqu'on saisit une commande sur plusieurs lignes, `R` attend la parenthèse de fermeture avant de réaliser l'opération. On débute en déterminant si `Nbre.pistes < 10`, et on attribue la valeur `"< 10"` le cas échéant. Sinon, on teste si `Nbre.pistes >= 10` mais `< 15`, et, si c'est le cas, on donne la valeur de `"10-15"` au vecteur. Si ce test est faux, on attribue une valeur de `"> 15"` au vecteur.
+
+On peut utiliser plusieurs des opérateurs logiques pour faire des tests de conditions pour décider de l'exécution d'autres opérations. Par exemple, si le test est vrai, on effectue une opération particulière, et, si le test est faux, on effectue une opération différente. L'énoncé `if` appelle un test de condition spécifié entre parenthèses. L'opération à exécuter le cas échéant sera indiquée entre `{}`.
+
+Dans l'exemple ci-dessous, on teste si l'objet contient une valeur numérique ou une chaîne de caractères. Si la valeur est une chaîne de caractères, on imprime à l'écran `"des caractères"` à l'aide de la fonction `paste()`. Pour une valeur numérique, le test imprimera `"pas des caractères"` à l'écran.
+
+```{r exA1.33}
+valeur <- 200 #une valeur numérique
+if(is.character(valeur)) {paste("des caractères")
+} else {paste("pas des caractères")}
+
+valeur <- "du texte" #une chaîne de caractères
+if(is.character(valeur)) {paste("des caractères")
+} else {paste("pas des caractères")}
+``` 
+
+On remarque que, si le test est faux, l'opération à effectuer doit être spécifiée après l'énoncé `else` et doit être insérée entre `{}`. Il est possible d'imbriquer les tests de conditions. Pour les vecteurs plus haut, nous avons utilisé `&` et `|` et le comportement était similaire à des opérateurs mathématiques : le calcul était exécuté pour chaque paire d'éléments des deux vecteurs comparés. 
+
+Les homologues `&&` et `||` ont un usage légèrement différent. En effet, lorsqu'on utilise `&&`, le test à droite s'effectue sur le premier élément de l'objet seulement si le test sur le premier élément de gauche est vrai. Avec `||`, le test à droite de l'opérateur sera évalué sur le premier élément seulement si le test de gauche sur le premier élément est faux.
+
+
+```{r exA1.34, echo=TRUE, keep.source=TRUE, error = TRUE}
+des.valeurs <- 1:10
+des.valeurs
+des.valeurs > 0
+des.valeurs < 0
+des.valeurs > 0 & des.valeurs < 0
+des.valeurs > 0 | des.valeurs < 0
+
+des.valeurs > 0 && des.valeurs < 0 # CODE ORIGINAL NE MARCHE PAS
+des.valeurs > 0 || des.valeurs < 0 # CODE ORIGINAL NE MARCHE PAS
+
+# NOUVEAU CODE
+all_positive <- all(des.valeurs > 0) 
+all_negative <- all(des.valeurs < 0) 
+
+all_positive && all_negative
+all_positive || all_negative
+```
+
+Nous revisiterons les tests logiques à la section *Créer des sous-ensembles* pour créer des sous-ensembles de jeux de données.
+
+#### Matrices et calculs matriciels {-}
+
+##### Créer une matrice {-}
+
+La création et la manipulation de matrices sont simples dans `R`. La matrice est un autre type d'objet. Elle contient des éléments qui sont soit numériques ou des caractères, mais pas un mélange des deux. Par exemple, si la matrice contient au moins un seul caractère, tous les éléments seront convertis en caractères. Créons une matrice simple à l'aide de `matrix()` constituée d'une séquence de 1 à 9 avec un pas de 1 :
+
+```{r exA1.41}
+mat <- matrix(data = 1:12, nrow = 3, ncol = 4)
+mat
+``` 
+
+Les arguments `nrow` et `ncol` indiquent les dimensions de la matrice que nous désirons obtenir (une matrice de 3 rangées et de 4 colonnes). On remarque que les éléments sont insérés dans la matrice par colonnes : la première colonne est remplie, ensuite la deuxième et la troisième. L'argument `byrow` permet de changer la manière d'insérer les éléments dans la matrice.
+
+```{r exA1.42}
+mat<-matrix(data = 1:12, nrow = 3, ncol = 4, byrow = TRUE)
+mat
+``` 
+
+On obtient une nouvelle matrice dans laquelle les valeurs ont été insérées une rangée à la fois. Par défaut, l'argument `byrow` prend la valeur `FALSE`.
+
+##### Sélectionner des valeurs {-}
+
+Tout comme pour le vecteur, on utilise `[]` pour extraire des éléments d'une matrice. Toutefois, on devra spécifier les deux dimensions `[rangée, colonne]`. Par exemple,
+
+```{r exA1.45}
+mat[1, 3]
+mat[1, ]
+mat[, 2]
+mat[1:2, 1]
+mat[c(1, 3), 3]
+``` 
+
+À noter que si on spécifie seulement l'indice de la rangée, toute la rangée sera extraite. De la même façon, si seul l'indice de la colonne est spécifié, toute la colonne sera extraite.
+
+
+##### Connaître les caractéristiques d'une matrice {-}
+
+On peut vérifier les caractéristiques de la matrice à l'aide de la fonction `class` ou de tests logiques.
+
+```{r exA1.43}
+class(mat)
+is.numeric(mat)
+is.vector(mat)
+``` 
+
+La fonction `length()` permet de déterminer le nombre d'éléments de la matrice. On peut utiliser `dim()`, `nrow()` ou `ncol()` pour connaître les dimensions de la matrice (rangées, colonnes).
+
+```{r exA1.44}
+length(mat)
+dim(mat)
+nrow(mat)
+ncol(mat)
+``` 
+
+Il est possible d'ajouter des étiquettes aux colonnes et aux rangées à l'aide de `colnames()` et `rownames()`, respectivement.
+
+```{r exA1.46}
+colnames(mat)
+colnames(mat) <- c("C1", "C2", "C3", "C4")
+colnames(mat)
+rownames(mat) <- c("R1", "R2", "R3")
+mat
+``` 
+
+##### Opérations et manipulation de matrices {-}
+
+Plusieurs fonctions agissent sur les matrices. Par exemple, `diag( ` permet d'extraire la diagonale de la matrice.
+
+```{r exA1.47}
+diag(mat)
+``` 
+
+On peut facilement transposer une matrice.
+
+```{r exA1.48}
+t(mat)
+``` 
+
+Afin d'obtenir la somme ou la moyenne des colonnes d'une matrice, on peut utiliser les fonctions `colSums()` et `colMeans()`, respectivement. Il existe des fonctions similaires pour les rangées d'une matrice.
+
+```{r exA1.49}
+colSums(mat)
+colMeans(mat)
+rowSums(mat)
+rowMeans(mat)
+``` 
+ 
+Pour multiplier des matrices, il faut mettre l'opérateur de multiplication entre des signes de pourcentage :
+
+```{r exA1.51}
+vecteur <- c(2, 4, 5)
+vecteur%*%mat
+``` 
+
+#### Jeux de données {-}
+
+Un des types d'objet les plus utilisés dans `R` est le jeu de données ou `data.frame`. L'objet `data.frame` a deux dimensions et peut être constitué de colonnes de différents types. On peut retrouver des colonnes de valeurs numériques, de valeurs logiques, d'entiers, de caractères ou de facteurs (`factor`).
+
+##### Créer un jeu de données {-}
+
+La fonction `data.frame()` permet de créer un jeu de données. On peut combiner une série de vecteurs en un `data.frame`.
+
+```{r exA1.52}
+Temps <- c(1.2, 3.4, 2.1, 5.5) #vecteur de temps
+Masse <- c(2.5, 4.2, 5.6, 3.4) #vecteur de masse
+Sexe <- c("mâle", "femelle", "mâle", "femelle") #vecteur de caractères
+jeu <- data.frame(Temps, Masse, Sexe) #création du data.frame
+jeu
+``` 
+
+On peut bien sûr créer un jeu de données en une seule étape :
+
+```{r exA1.53}
+autos <- data.frame(Vitesse = c(25, 40, 70, 100),
+                   Type = c("auto", "camion", "auto", "camion"))
+autos                     
+``` 
+
+##### Connaître les caractéristiques de jeu de données {-}
+
+Plusieurs des fonctions que nous avons déjà présentées permettent de décrire un jeu de données. Notons les fonctions `class()`, `length()`, `dim()`, `nrow()`, `ncol()`, `names()`, `rownames()`, et `colnames()`. Nous pouvons aussi utiliser la fonction `str()` pour connaître la structure du jeu de données, incluant l'identification de chacune des variables, son type, ainsi que les premières observations.
+
+```{r exA1.54}
+str(jeu)
+``` 
+
+Remarquons que la variable `Sexe` a été créée comme vecteur de caractères et est maintenant reconnue comme facteur (`factor`) une fois ajoutée à l'objet de type `data.frame`. Plusieurs fonctions sont disponibles pour transformer un objet d'un type à un autre. Mentionnons ici `as.factor(~)` qui permet de convertir un vecteur en variable catégorique. La fonction `summary()` quant à elle, nous informe sur les statistiques descriptives des variables du jeu de données.
+
+```{r exA1.55}
+summary(jeu)
+``` 
+
+D'autres fonctions, comme `head()` ou `tail()`, permettent d'afficher les six premières ou six dernières lignes du jeu de données. Utilisons ces fonctions sur un jeu de données déjà dans `R`, lequel traite de données de diamètre, de hauteur et du volume de cerisiers. Afin de déterminer les jeux de données disponibles dans `R`, il suffit d'utiliser la commande `data()` sans valeurs entre les parenthèses. Afin de charger le jeu de données de notre choix, il suffit d'exécuter la commande `data()`, cette fois-ci en spécifiant le nom du jeu de données entre parenthèses.
+
+```{r exA1.56,keep.source=TRUE}
+data(trees) #jeu de données déja dans R
+str(trees)
+head(trees) #comparer à trees[1:6, ]
+tail(trees) #comparer à trees[(nrow(trees)-5):nrow(trees), ]
+``` 
+
+##### Accéder aux variables d'un jeu de données {-}
+
+On remarque rapidement qu'il n'est pas possible d'aller chercher une variable d'un jeu de données simplement en tapant son nom. Par exemple, la variable `Vitesse` se trouve dans le jeu de données `autos` créé plus haut.
+
+```{r exA1.57}
+autos
+names(autos)
+``` 
+
+Pourtant, on obtient un message d'erreur si on spécifie `Vitesse`. L'objet `autos` est un jeu de données et les variables en sont des éléments. Il existe différentes stratégies pour extraire des éléments d'un jeu de données. La première, et celle qui est la plus polyvalente, consiste à utiliser l'opérateur `$`.
+
+```{r exA1.58,eval=FALSE}
+Vitesse
+``` 
+
+```{r exA1.59}
+autos$Vitesse
+``` 
+
+Nous spécifions le jeu de données suivi de l'opérateur `$`, lui-même suivi du nom de la variable d'intérêt : `Vitesse` est un élément de `autos`. Nous utiliserons la même stratégie pour extraire certains éléments d'objets plus complexes, tels que la sortie (output) d'une analyse statistique.
+
+Comme seconde stratégie, on peut utiliser `[ , ]` pour extraire les éléments du jeu de données, puisqu'il a deux dimensions comme la matrice.
+
+```{r exA1.60}
+autos[, 1]
+``` 
+
+Une variante de l'utilisation de `[ , ]` consiste à spécifier le nom de la variable.
+
+```{r exA1.61}
+autos[, "Vitesse"]
+```
+
+##### Importer des fichiers de données {-}
+
+Au lieu d'entrer à la main les données dans `R`, nous allons généralement importer les données sauvegardées dans un fichier. Il est facile d'importer des fichiers au format texte brut en `R` en suivant quelques lignes directrices. Il existe une multitude de moyens pour importer des fichiers dans `R`, mais nous n'en présenterons que quelques-uns.
+
+Bien que le fichier doive être en format texte, l'extension peut être celle de votre choix. Pour faciliter l'analyse de jeux de données, nous recommandons de structurer vos fichiers en format « long ». Dans ce format, toutes les valeurs d'une même variable se trouvent sous une même colonne. Par exemple, dans une expérience agricole, on pourrait présenter les données dans un tableau en format « large » (Table \@ref(tab:agri)).
+
+```{r agri, echo=FALSE}
+agricultural_data <- data.frame(
+  Témoin = c(6.1, 5.9, 5.8, 5.4),
+  `Engrais A` = c(6.3, 6.2, 5.8, 6.3),
+  `Engrais B` = c(7.1, 8.2, 7.3, 6.9),
+  `Engrais C` = c(8.1, 8.5, 7.6, 7.8),
+  stringsAsFactors = FALSE
+)
+
+kable(agricultural_data, 
+      caption = "Données récoltées lors d'une expérience agricole en format « large ».",
+      "html", align = "c") %>%
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '8em') %>% 
+  column_spec(2, width = '8em') %>% 
+  column_spec(3, width = '8em') %>% 
+  column_spec(4, width = '8em')
+```
+
+Bien que le format « large » permette de visualiser rapidement les données, il n'est pas celui qui est généralement utilisable par plusieurs fonctions d'analyses statistiques. En effet, le format le plus souvent requis est le format « long ». Le tableau \@ref(tab:agri2) présente le même jeu de données en ce format.
+
+```{r agri2, echo=FALSE}
+long_data <- data.frame(
+  Réponse = c(6.1, 5.9, 5.8, 5.4, 6.3, 6.2, 5.8, 6.3), # Add more rows as needed
+  Traitement = c("Témoin", "Témoin", "Témoin", "Témoin", "EngraisA", "EngraisA", "EngraisA", "EngraisA"),
+  stringsAsFactors = FALSE
+)
+
+kable(long_data, 
+      caption = "Données récoltées lors d'une expérience agricole en format « long ».",
+      "html", align = "c") %>%
+  kable_styling(full_width = F, position = "center") %>% 
+  column_spec(1, width = '12em') %>% 
+  column_spec(2, width = '12em') 
+```
+
+Une fois le fichier en format « long », on peut sauvegarder en texte avec des séparateurs tabulations ou espace à partir du chiffrier de notre choix. Afin de rendre l'importation plus agréable et plus facile, il est important de respecter les points suivants :
+
+- Réserver la première ligne de chaque colonne pour le nom de la colonne.
+- Éviter les espaces dans le nom d'une colonne donnée (par exemple, ne pas écrire hauteur moyenne, mais plutôt hauteur_moyenne, hauteur.moyenne, hauteurmoyenne).
+- Utiliser NA pour indiquer les valeurs manquantes à l'intérieur du jeu de données : aucune cellule ne peut être vide.
+- Éviter les accents dans les noms des variables ou dans les données.
+
+La fonction principale d'importation de jeux de données est `read.table()`. Cette fonction comporte un argument `file =`, avec lequel on doit spécifier le chemin complet du fichier. L'argument logique `header` doit prendre la valeur `TRUE`. Pour réussir l'importation, il faut :
+
+- Spécifier le bon chemin en se souciant des majuscules et des minuscules.
+- Utiliser `/` ou `\\` mais pas le `\` de MS-Windows.
+- Terminer le chemin complet par le nom du fichier et mettre le tout entre `""`.
+- Stocker le jeu de données dans un objet, sinon il ne sera imprimé qu'à l'écran.
+- Remplacer les virgules par des points pour indiquer la décimale des valeurs numériques avant d'importer le fichier dans `R` ou spécifier l'argument `dec = ","` de la fonction `read.table()`. Cette démarche est nécessaire puisque `R` utilise le point pour indiquer les décimales.
+
+Bien que `R` reconnaisse généralement sans difficulté les caractères accentués (par exemple, é, à, ê), il peut y avoir un problème lorsque le fichier est créé dans un système d'exploitation et importé dans `R` dans un autre. Dans de tels cas, les caractères accentués ne seront pas reconnus par défaut. Par exemple, si vous travaillez sous Windows et que vous désirez qu'un collègue opérant sous Mac importe un de vos fichiers de données dans `R`, il peut survenir des problèmes d'importation en présence d'accents dans le fichier. Certains arguments de `read.table()` permettent de modifier ceci (`encoding =`), mais c'est plus simple d'éviter les accents.
+
+Illustrons avec le jeu de données `vers` qui traite de l'abondance de vers de terre dans différents types de parcs publics. Voici trois stratégies équivalentes pour importer un fichier en format texte et qui respecte les consignes mentionnées plus haut :
+
+  -  Pour la première, on spécifie le chemin complet sur l'ordinateur où se trouve le fichier. Par exemple, pour importer un jeu de données stocké dans le fichier \texttt{vers.txt}, on pourrait envoyer la commande
+  
+```{r exA1.62}
+vers <- read.table(file = "Guide_R_2/data/vers.txt", 
+                    header = TRUE)
+``` 
+
+-  La deuxième variation consiste à spécifier le répertoire où se trouve le fichier à l'aide de la fonction `setwd( )`.
+
+```{r exA1.63,eval=FALSE}
+setwd("Guide_R_2/data/")
+vers <- read.table(file = "vers.txt", header = TRUE)
+``` 
+
+-  Une troisième stratégie s'avère l'utilisation de la fonction `file.choose( )`. Cette dernière permet de sélectionner le fichier à l'aide d'une fenêtre graphique. Il faut toutefois savoir où se trouve le fichier ...
+
+```{r exA1.64,eval=FALSE}
+vers <- read.table(file = file.choose( ), header = TRUE)
+``` 
+
+Si vous ne respectez pas ces consignes, vous risquez de générer un message d'erreur. Vous devrez retracer l'erreur ou alors décortiquer plus en détail les pages d'aide des fonctions d'importation afin de modifier les arguments qui reflètent votre situation. Les fonctions `read.delim()`, `read.delim2()`, `read.csv()`, `read.csv2()` sont des versions de `read.table()` avec différentes valeurs par défaut. Il est aussi possible d'importer directement des fichiers en format MS-Excel ou MS-Access à l'aide de banques de fonctions téléchargeables. Il suffit d'utiliser `RSiteSearch(" ")` avec le sujet de votre requête entre `""` pour obtenir plus d'informations.
+
+##### Ajouter une variable {-}
+
+Il est facile d'ajouter une variable à un jeu de données. Pour ce faire, on peut utiliser l'opérateur `$` afin d'indiquer à `R` l'objet qui stocke le jeu de données et le nom de la nouvelle variable que l'on veut créer :
+
+```{r exA1.65,eval=FALSE}
+head(vers) #affiche les 6 premières observations
+vers$log.Superficie <- log(vers$Superficie) #créer une nouvelle variable
+head(vers) #inclut maintenant la nouvelle variable
+``` 
+
+La nouvelle variable sera ajoutée dans une colonne à la suite des autres variables du jeu de données.
+
+##### Créer des sous-ensembles {-}
+
+Nous pouvons utiliser différentes approches afin de sélectionner des sous-ensembles d'un jeu de données. Nous avons déjà vu l'extraction à l'aide de `[ , ]`. Par exemple, dans le jeu de données `trees`, on peut extraire les 15 premières observations des variables `Girth` et `Height`.
+
+```{r exA1.66}
+trees[1:15, c("Girth", "Height")]
+``` 
+
+Les tests logiques s'avèrent aussi d'excellents outils pour créer des sous-ensembles de jeux de données. Par exemple, on peut créer un sous-ensemble de `trees` pour lequel `Girth` > 12 ou de `vers` pour le type `Vegetation` correspondant à `Prairie`.
+
+```{r exA1.67}
+trees22 <- trees[trees$Girth >= 12, ] 
+```
+
+```{r exA1.68}
+vers.prairie <- vers[vers$Vegetation == "Prairie", ]
+``` 
+
+Il est aussi possible de combiner des tests logiques. Créons, par exemple, un jeu de données à partir de `vers` pour lequel `Vegetation` correspond à `Prairie` et `Pente` > 5 en utilisant l'opérateur `&` (intersection).
+
+```{r exA1.69}
+versb <- vers[vers$Vegetation == "Prairie" & vers$Pente > 5, ]
+``` 
+
+Comparons le résultat de l'union des deux conditions avec l'opérateur `|`.
+
+```{r exA1.70}
+versc <- vers[vers$Vegetation == "Prairie" | vers$Pente > 5, ]
+```
+
+La fonction `subset( )` utilise les tests logiques pour créer un sous-ensemble d'un jeu de données. Cette fonction est une alternative à la sélection avec `[, ]` combinée à un test logique et donnera exactement le même résultat que dans l'exemple précédent.
+
+```{r exA1.71}
+vers.les.prairie <- subset(x = vers, 
+                      subset = vers$Vegetation == "Prairie")
+identical(vers.les.prairie, vers.prairie)
+versbb <- subset(x = vers, 
+                  subset = vers$Vegetation == "Prairie" & vers$Pente > 5)
+identical(versb, versbb)
+``` 
+
+##### Effectuer un tri {-}
+
+Les tris dans `R` comportent quelques subtilités : la fonction à utiliser dépend de ce que l'on veut trier. Pour faire le tri en ordre croissant d'une seule variable ou vecteur, on peut utiliser `sort()`. Cette fonction comporte un argument `decreasing = FALSE` qui peut prendre la valeur `FALSE` pour un tri en ordre décroissant. Comme alternative à l'argument `decreasing = TRUE`, la fonction `rev()` permet de faire un tri en ordre décroissant.
+
+```{r exA1.72}
+sort(vers$Superficie) #en ordre croissant
+sort(vers$Superficie, decreasing = TRUE) #en ordre décroissant
+rev(sort(vers$Superficie)) #en ordre décroissant
+``` 
+
+Comme toute autre manipulation dans `R`, si on veut que le tri prenne effet, il faut assigner ce tri à un objet. Autrement, le résultat s'affichera à l'écran et disparaîtra à tout jamais sans être disponible plus tard dans la session de travail.
+
+Afin de trier un jeu de données, on doit plutôt utiliser `order()`. Par exemple, pour trier le jeu de données `vers` en ordre croissant selon la variable `Pente`, on procède ainsi :
+
+```{r exA1.73,keep.source=TRUE}
+##tri en ordre croissant selon Pente
+vers.ord <- vers[order(vers$Pente), ]
+##tri en ordre décroissant selon Pente
+vers.ord.dec <- vers[order(vers$Pente, decreasing = TRUE), ]
+##autre moyen d'obtenir un tri décroissant avec sort( )
+vers.ord.dec2 <- vers[rev(order(vers$Pente)), ]
+``` 
+
+Il est facile d'effectuer un tri pour seulement une partie du jeu de données en spécifiant les colonnes désirées. Une autre option est de faire un tri selon plusieurs variables.
+
+```{r exA1.74,keep.source=TRUE}
+##tri des variables 1, 2 et 4 selon Pente
+vers.ordb <- vers[order(vers$Pente), c(1,2,4)] 
+##tri du jeu de données selon Pente ET Superficie
+vers.ord2 <- vers[order(vers$Pente, vers$Superficie) , ]
+``` 
+
+##### Créer des tableaux récapitulatifs des fréquences {-}
+
+Quelques fonctions sont très pratiques pour réaliser des résumés d'un jeu de données selon quelques variables. Notamment, pour obtenir l'équivalent du *tableau croisé dynamique* de `MS EXCEL` ou du *pilote de données* de `Calc` de `OpenOffice`, la fonction `table()` s'avère fort utile. Cette fonction résume la fréquence à laquelle chaque valeur d'une variable apparaît dans un jeu de données dans un tableau, lequel est un autre type d'objet en `R`.
+
+```{r exA1.75,keep.source=TRUE}
+table(vers$Vegetation) #la fréquence de chaque type de végétation
+table(vers$Superficie) #la fréquence de chaque observation numérique
+class(table(vers$Superficie))
+``` 
+
+On peut également construire un tableau à deux dimensions ou de dimensions supérieures selon des variables généralement catégoriques. L'argument `deparse.level` permet d'ajouter le nom des variables aux rangées ou aux colonnes.
+
+```{r exA1.76,keep.source=TRUE}
+##tableau à deux dimensions
+table(vers$Vegetation, vers$Pente) 
+##tableau à deux dimensions avec les noms
+table(vers$Vegetation, vers$Pente, deparse.level = 2) 
+##tableau à trois dimensions
+table(vers$Vegetation, vers$Pente, vers$Humide) 
+``` 
+
+La dernière commande présentée ci-dessus crée une série de tableaux à deux dimensions pour chaque valeur de la variable `Humide` (i.e., `TRUE`, `FALSE`).
+
+La fonction `xtabs()` offre la possibilité de résumer une variable de fréquence qui apparaît dans un jeu de données selon une série de variables en utilisant une formule du genre `freq ~ var1 + var2` où la variable de fréquence apparaît à la gauche de l'équation et les variables de classification à la droite.
+
+```{r exA1.77,keep.source=TRUE}
+##on crée un jeu de données
+jeu.freq <- data.frame(Freq = c(0, 1, 0, 10, 2, 3, 5, 0),
+                    Trait = rep(c("A", "B"), 4),
+                    Sexe = rep(c("F", "M"), 4))
+jeu.freq
+xtabs(Freq ~ Trait + Sexe, data = jeu.freq)
+``` 
+
+Cette fonction possède un argument `data` qui permet de spécifier où se trouvent les variables pour lesquelles on désire un tableau. La plupart des fonctions de modélisation, comme `lm()` pour effectuer des modèles de régression, comportent ce même argument pour faciliter la syntaxe. Si aucune variable de fréquence n'apparaît dans le jeu de données, `xtabs()` aura le même effet que `table()`.
+
+```{r exA1.78,keep.source=TRUE}
+table(jeu.freq$Trait)
+xtabs(~ Trait, data = jeu.freq)
+table(jeu.freq$Trait, jeu.freq$Sexe) 
+#comparer avec l'exemple plus haut avec Freq ~ Trait + Sexe
+xtabs(~ Trait + Sexe, data = jeu.freq)
+``` 
+
+##### Modifier la structure d'un jeu de données {-}
+
+On peut convertir un jeu de données du format "long" au format "large". En présence de mesures répétées, la fonction `reshape( )` permet de passer d'un format à l'autre. Considérons, par exemple, un jeu de données qui traite de la concentration en indométhacine (un anti-inflammatoire) dans le plasma sanguin de patients. Le jeu de données original est en format "long". On peut le convertir en format "large" comme suit:
+
+```{r exA1.80,keep.source=TRUE}
+head(Indometh, 15) #15 premières observations - format long
+large <- reshape(data = Indometh, idvar = "Subject",
+                 timevar = "time", direction = "wide") #mettre en format large
+large
+``` 
+
+Il est possible de passer du format "large" au format "long" avec la même fonction:\
+
+```{r exA1.80b,keep.source=TRUE}
+long <- reshape(data = large, idvar = "Subject", 
+                timevar = "Time", v.names = "Concentration", 
+                varying = 2:12, 
+                direction = "long") #mettre en format long
+long.ord <- long[order(long$Subject), ] #tri selon Subject
+``` 
+
+Dans certains cas, les valeurs d'une variable sont entrées dans différentes colonnes selon les traitements, comme dans le tableau \@ref(tab:agri). La plupart des analyses en `R` ne pouvant utiliser ce format, il faut convertir le jeu de données en format long afin d'insérer les valeurs de la variable réponse dans une seule colonne. Les fonctions `stack()` et `unstack()` permettent de telles manipulations.
+
+```{r exA1.81,keep.source=TRUE}
+fert <- data.frame(Temoin = c(6.1, 6.3, 7.1, 8.1),
+                   EngraisA = c(5.9, 6.2, 8.2, 8.5),
+                   EngraisB = c(5.8, 5.8, 7.3, 7.6),
+                   EngraisC = c(5.4, 6.3, 6.9, 7.8))
+fert #format large
+long <- stack(fert) #format long - 1 colonne par variable
+long
+unstack(long) #remettre en format large
+``` 
+
+##### Exporter un jeu de données {-}
+
+Alors que `read.table()` permet d'importer un jeu de données à partir d'un fichier, `write.table()` permet de sauvegarder un jeu de données (un objet `R`) dans un fichier. Tout comme son homologue `read.table()`, elle comporte des arguments pour spécifier le chemin et le nom du fichier, le type de séparateur, l'option d'inclure ou non les en-têtes des colonnes ou les étiquettes des rangées. Illustrons avec le jeu de données `fert` créé plus haut.
+
+```{r exA1.82,keep.source=TRUE,eval=FALSE}
+##exporter à un fichier avec séparateur espace
+write.table(x = fert, file = "/chemin_sur_ordi/fert.txt", 
+            row.names = FALSE, col.names = TRUE, sep = " ")
+```
+
+L'argument `sep` spécifie le type de séparateur entre les valeurs du jeu de données du fichier. Les plus communes sont `sep = " "` pour un espace, `sep = ","` pour la virgule, `sep = "\t"` pour la tabulation, et `sep = ";"` pour le point-virgule. Lors de l'exportation avec `write.table()`, `R` met le nom des en-têtes de colonnes, les étiquettes des rangées ainsi que les valeurs de variables catégoriques ou de caractères entre `" "`. L'argument `quote` prend la valeur `TRUE` par défaut (garde les `" "` dans le fichier). L'importation d'un fichier avec `" "` dans `R` se fait sans difficulté, mais peut causer des problèmes dans d'autres logiciels. On peut simplement spécifier `quote = FALSE` afin de remédier à la situation.
+
+Une autre option possible est de stocker un objet avec la fonction `save()`. Alors que `write.table()` permet d'exporter des fichiers de données (un objet à 2 dimensions), la fonction `save()` sauvegarde des objets beaucoup plus complexes tout en gardant leur structure intacte.
+
+```{r exA1.82b,keep.source=TRUE,eval=TRUE}
+##on crée un tableau
+tableau <- table(vers$Vegetation, vers$Pente, vers$Humide)
+tableau
+save(tableau, file = "Guide_R_2/un.tableau.rdata")
+``` 
+
+Par exemple, après avoir stocké le résultat d'une analyse dans un objet, il est possible de sauvegarder les résultats dans un fichier. Ce fichier peut-être importé dans `R` à un moment ultérieur en invoquant la fonction `load( )`. Chacune de ces deux fonctions nécessite le chemin menant au fichier.
+
+```{r exA1.82c,keep.source=TRUE,eval=TRUE}
+##dans une session ultérieure, on importe l'objet directement
+load(file = "Guide_R_2/un.tableau.rdata")
+tableau
+``` 
+
+Nous venons de faire un survol des fonctions de base de `R`. Nous continuerons à explorer d'autres fonctionnalités de `R` lors des leçons subséquentes.
+
+## Exercices {-}
+
+Les données peuvent être retrouvées dans le dossier [Programmation avec R](https://github.com/sci1018/sci1018_data/raw/main/Guide_R_2.zip).  
+
+#### Question 1 {-}
+
+**a.** Créez une variable à partir des valeurs suivantes (voir *Créer un vecteur*) :   
+  2.1  
+  3.2  
+  1.9  
+  5.3  
+  4.5  
+  6.5  
+  4.3  
+  0.7  
+  1.1  
+  4.6   
+
+<details>
+<summary> Réponse</summary>
+```{r lab1a, keep.source = TRUE, echo = TRUE}
+##créer variable
+variable <- c(2.1, 3.2, 1.9, 5.3, 4.5, 6.5, 4.3, 0.7, 1.1, 4.6)
+``` 
+</details>
+
+<br>
+
+**b.** À partir de la variable que vous venez de créer, utilisez la fonction appropriée pour déterminer le nombre d'observations (voir *Connaître les caractéristiques d'un vecteur*).  
+
+<details>
+<summary> Réponse</summary>
+```{r lab1b, keep.source = TRUE, echo = TRUE}
+length(variable)
+``` 
+</details>
+
+<br>
+
+**c.** Sélectionnez les observations 1, 5, 8 et stockez-les dans un nouvel objet (voir *Sélectionner des valeurs*).  
+
+<details>
+<summary> Réponse</summary>
+```{r lab1c, keep.source = TRUE, echo = TRUE}
+nouvel.objet <- variable[c(1, 5, 8)]
+``` 
+</details>
+
+<br>
+
+**d.** Créez une matrice de 2 rangées et de 5 colonnes. Insérez dans cette matrice les valeurs de la variable créée en **a** (voir *Créer une matrice*) en insérant les données de façon à remplir une colonne à la fois, de telle sorte que les deux premières observations se retrouvent dans la première colonne, les deux suivantes dans la deuxième colonne, et ainsi de suite \ldots).
+
+<details>
+<summary> Réponse</summary>
+```{r lab1d, keep.source = TRUE, echo = TRUE}
+la.matrice <- matrix(data = variable, nrow = 2, ncol = 5)
+la.matrice
+```
+</details>
+
+<br>
+
+**e.** Calculez la somme de chaque colonne de la matrice avec la fonction la plus appropriée (voir *Opérations et manipulation de matrices*).
+
+<details>
+<summary> Réponse</summary>
+```{r lab1e}
+colSums(la.matrice)
+``` 
+</details>
+
+<br>
+
+#### Question 2 {-}
+
+**a.** Importez le jeu de données contenu dans le fichier `richesse.txt` (voir *Importer des fichiers de données*).
+
+<details>
+<summary> Réponse</summary>
+```{r lab2a}
+##importer en spécifiant le chemin complet
+##si le fichier n'est pas dans le répertoire
+##de travail
+rich <- read.table("Guide_R_2/data/richesse.txt", header = TRUE)
+``` 
+</details>
+
+<br>
+
+**b.** Créez une nouvelle variable à partir du log naturel (à base $e$) de la variable `Profondeur` et ajoutez-la au jeu de données (voir *Ajouter une variable*). 
+
+<details>
+<summary> Réponse</summary>
+```{r lab2b}
+##on crée une variable de log de la Profondeur
+rich$log.Profondeur <- log(rich$Profondeur)
+``` 
+</details>
+
+<br>
+
+**c.** Modifiez le nom de la variable `Profondeur` à `la.profondeur` directement dans le jeu de données (voir *Accéder aux variables d'un jeu de données*). Indice: vous aurez besoin de sélectionner le nom de la variable que vous voulez remplacer avec `[ ]`.
+
+<details>
+<summary> Réponse</summary>
+```{r lab2c}
+names(rich)
+names(rich)[1] <- "la.profondeur"
+names(rich)
+``` 
+</details>
+
+<br>
+
+**d.** Créez une variable binaire à partir de la variable `Nombre.espece` en assignant la valeur `pauvre` lorsque la variable a des valeurs $\leq 3$ et `riche` lorsque la variable prend des valeurs > 3 (voir *Tests logiques*).  
+
+<details>
+<summary> Réponse</summary>
+```{r lab2d}
+rich$Nombre.espece.bin <- ifelse(rich$Nombre.espece <= 3, "pauvre", "riche")
+head(rich)
+``` 
+</details>
+
+<br>
+
+**e.** Créez un sous-jeu de données pour la partie correspondant aux sites de type `champ` et stockez-le dans un objet (voir *Créer des sous-ensembles*).  
+
+<details>
+<summary> Réponse</summary>
+```{r lab2e}
+##avec [ , ]
+champ <- rich[rich$Site == "champ", ]
+##ou avec subset
+champ <- subset(rich, subset = rich$Site == "champ")
+head(champ)
+``` 
+</details>
+
+<br>
+
+**f.** Exportez le sous-jeu de données créé en **e** dans un fichier (voir *Exporter un jeu de données*).
+
+<details>
+<summary> Réponse</summary>
+```{r lab2f}
+##séparateur tabulation
+write.table(champ, file = "Guide_R_2/data/champ.txt", sep = "\t",
+            row.names = FALSE, col.names = TRUE)
+
+##séparateur espace
+write.table(champ, file = "Guide_R_2/data/champ.txt", sep = " ",
+            row.names = FALSE, col.names = TRUE)
+
+##séparateur point-virgule
+write.table(champ, file = "Guide_R_2/data/champ.txt", sep = ";",
+            row.names = FALSE, col.names = TRUE)
+
+``` 
+</details>
+
+<br>

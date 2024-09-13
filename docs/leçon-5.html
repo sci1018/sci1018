@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Leçon | Statistiques avec R</title>
+  <meta name="description" content="6.1 Leçon | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Leçon | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="6.1 Leçon | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Leçon | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="6.1 Leçon | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lecon6.html"/>
+<link rel="next" href="les-boucles-avec-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="lecon1.html"><a href="lecon1.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="leçon.html"><a href="leçon.html"><i class="fa fa-check"></i><b>1.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="leçon.html"><a href="leçon.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="leçon.html"><a href="leçon.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="leçon.html"><a href="leçon.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a></li>
+<li class="chapter" data-level="1.1.4" data-path="leçon.html"><a href="leçon.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="leçon.html"><a href="leçon.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="leçon.html"><a href="leçon.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a></li>
+<li class="chapter" data-level="1.1.7" data-path="leçon.html"><a href="leçon.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="autoévaluation.html"><a href="autoévaluation.html"><i class="fa fa-check"></i><b>1.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lecon2.html"><a href="lecon2.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="leçon-1.html"><a href="leçon-1.html"><i class="fa fa-check"></i><b>2.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="leçon-1.html"><a href="leçon-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.2" data-path="leçon-1.html"><a href="leçon-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="leçon-1.html"><a href="leçon-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="2.1.4" data-path="leçon-1.html"><a href="leçon-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="leçon-1.html"><a href="leçon-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html"><i class="fa fa-check"></i><b>2.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lecon3.html"><a href="lecon3.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
+<li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="leçon-2.html"><a href="leçon-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a></li>
+<li class="chapter" data-level="3.1.7" data-path="leçon-2.html"><a href="leçon-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html"><i class="fa fa-check"></i><b>3.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-1-3"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-2-3"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lecon4.html"><a href="lecon4.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="leçon-3.html"><a href="leçon-3.html"><i class="fa fa-check"></i><b>4.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a></li>
+<li class="chapter" data-level="4.1.2" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="leçon-3.html"><a href="leçon-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a></li>
+<li class="chapter" data-level="4.1.4" data-path="leçon-3.html"><a href="leçon-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lecon5.html"><a href="lecon5.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="leçon-4.html"><a href="leçon-4.html"><i class="fa fa-check"></i><b>5.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="leçon-4.html"><a href="leçon-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="leçon-4.html"><a href="leçon-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="5.1.3" data-path="leçon-4.html"><a href="leçon-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="leçon-4.html"><a href="leçon-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="leçon-4.html"><a href="leçon-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html"><i class="fa fa-check"></i><b>5.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-1-5"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-2-5"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lecon6.html"><a href="lecon6.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leçon-5.html"><a href="leçon-5.html"><i class="fa fa-check"></i><b>6.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="leçon-5.html"><a href="leçon-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a></li>
+<li class="chapter" data-level="6.1.4" data-path="leçon-5.html"><a href="leçon-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html"><i class="fa fa-check"></i><b>6.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-1-6"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-2-6"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lecon7.html"><a href="lecon7.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="leçon-6.html"><a href="leçon-6.html"><i class="fa fa-check"></i><b>7.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="leçon-6.html"><a href="leçon-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="leçon-6.html"><a href="leçon-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="leçon-6.html"><a href="leçon-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="leçon-6.html"><a href="leçon-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="leçon-6.html"><a href="leçon-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="leçon-6.html"><a href="leçon-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i>Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lecon8.html"><a href="lecon8.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="leçon-7.html"><a href="leçon-7.html"><i class="fa fa-check"></i><b>8.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="leçon-7.html"><a href="leçon-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2" data-path="leçon-7.html"><a href="leçon-7.html#blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.3" data-path="leçon-7.html"><a href="leçon-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html"><i class="fa fa-check"></i><b>8.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-1-8"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-2-7"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lecon9.html"><a href="lecon9.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="leçon-8.html"><a href="leçon-8.html"><i class="fa fa-check"></i><b>9.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="leçon-8.html"><a href="leçon-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.2" data-path="leçon-8.html"><a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="leçon-8.html"><a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.4" data-path="leçon-8.html"><a href="leçon-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i>Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lecon10.html"><a href="lecon10.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="leçon-9.html"><a href="leçon-9.html"><i class="fa fa-check"></i><b>10.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="leçon-9.html"><a href="leçon-9.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a></li>
+<li class="chapter" data-level="10.1.2" data-path="leçon-9.html"><a href="leçon-9.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="leçon-9.html"><a href="leçon-9.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="leçon-9.html"><a href="leçon-9.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html"><i class="fa fa-check"></i><b>10.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-1-9"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-2-8"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="leçon-5" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Leçon<a href="leçon-5.html#leçon-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="comparaison-de-plusieurs-groupes" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Comparaison de plusieurs groupes<a href="leçon-5.html#comparaison-de-plusieurs-groupes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous avons vu que le test <span class="math inline">\(t\)</span> permet de comparer deux groupes afin de déterminer s’ils proviennent de la même population. Dans certains cas, on s’intéresse à plus de deux groupes. Par exemple, on pourrait vouloir comparer la distance quotidienne parcourue par les chauffeurs de trois compagnies de transport différentes. Rappelons qu’à chaque fois que nous réalisons un test d’hypothèse statistique, nous avons une probabilité <span class="math inline">\(\alpha\)</span> de commettre une erreur de type I (c.-à-d., déclarer une différence lorsqu’il n’y en a pas, un faux positif). Avec trois groupes (A, B, C), il existe trois comparaisons possibles:</p>
+<p><span class="math display">\[  A \: vs \: B \qquad A \: vs \: C \qquad B \: vs \: C\]</span></p>
+<p>À noter que la comparaison <span class="math inline">\(A \: vs \: B\)</span> est identique à <span class="math inline">\(B \: vs \: A\)</span>. La probabilité de trouver une différence entre les trois moyennes est supérieure à <span class="math inline">\(\alpha\)</span>. Plus on fait de comparaisons avec un test <span class="math inline">\(t\)</span> (e.g., <span class="math inline">\(A \: vs \: B\)</span>, <span class="math inline">\(A \: vs \: C\)</span>), plus on risque de conclure à tort qu’il y a une différence entre les moyennes des groupes (c.-à-d. l’erreur de type I augmente avec le nombre de comparaisons). Si les tests sont indépendants, on peut calculer la probabilité de commettre au moins une erreur de type I à l’aide de l’équation:</p>
+<p><span class="math display">\[P = 1 - (1 - \alpha)^k\]</span></p>
+<p>où <span class="math inline">\(\alpha\)</span> est le seuil de signification pour chaque comparaison et <span class="math inline">\(k\)</span> est le nombre de comparaisons effectuées. Pour un seuil fixé à <span class="math inline">\(\alpha = 0.05\)</span> :</p>
+<ul>
+<li>avec 3 comparaisons, la probabilité de commettre une erreur de type I est de 0.14;<br />
+</li>
+<li>avec 10 comparaisons, la probabilité de commettre une erreur de type I est de 0.40;<br />
+</li>
+<li>avec 20 comparaisons, la probabilité de commettre une erreur de type I est de 0.64.</li>
+</ul>
+<p>Toutefois, si les comparaisons ne sont pas indépendantes, la probabilité réelle de commettre une erreur de type I est inférieure ou égale à celle obtenue avec l’équation ci-haut. On comprend que l’augmentation du nombre de comparaisons risque d’entraîner des conclusions erronées.</p>
+<p>Une alternative à ce problème consiste à corriger le seuil <span class="math inline">\(\alpha\)</span> par le nombre de comparaisons que l’on veut effectuer. C’est ce qu’on appelle l’<strong>ajustement de Bonferroni</strong> (<em>Bonferroni adjustment</em>).</p>
+<div class="exemple" section="6">
+<p>Dans une expérience où on étudie 5 traitements différents, nous avons cinq moyennes arithmétiques (5 groupes: A, B, C, D, E) et les comparaisons suivantes :</p>
+<p><span class="math display">\[\begin{align*}
+&amp; A \: \text{vs} \: B \\
+&amp; A \: \text{vs} \: C \quad \text{and} \quad B \: \text{vs} \: C \\
+&amp; A \: \text{vs} \: D \quad \text{and} \quad B \: \text{vs} \: D \quad \text{and} \quad C \: \text{vs} \: D \\
+&amp; A \: \text{vs} \: E \quad \text{and} \quad B \: \text{vs} \: E \quad \text{and} \quad C \: \text{vs} \: E \quad \text{and} \quad D \: \text{vs} \: E \: .
+\end{align*}\]</span></p>
+<p>Puisqu’il y a 10 comparaisons, on devrait diviser le seuil <span class="math inline">\(\alpha\)</span> par 10 pour exécuter l’ajustement de Bonferroni. Si on utilise un seuil de 0.05, il faudra observer <span class="math inline">\(P \leq 0.005\)</span> pour déclarer une différence significative entre deux groupes (<span class="math inline">\(\alpha/10 = 0.05/10 = 0.005\)</span>).</p>
+</div>
+<p>On constate que l’ajustement de Bonferroni est une stratégie souvent trop conservatrice, qui augmente la probabilité de commettre une erreur de type II (un faux négatif). Une meilleure stratégie consiste à comparer tous les groupes simultanément. C’est d’ailleurs ce que permet de faire l’analyse de variance – on compare tous les groupes en une seule étape.</p>
+</div>
+<div id="analyse-de-variance-anova" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Analyse de variance (ANOVA)<a href="leçon-5.html#analyse-de-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’<strong>analyse de variance</strong> (<em>analysis of variance</em>, ANOVA) est une approche statistique qui compare les moyennes de plusieurs groupes entre eux pour déterminer si au moins un des groupes diffère des autres. Le scénario typique de l’ANOVA est celui d’une expérience visant à comparer l’effet d’une <strong>variable catégorique</strong> sur une <strong>variable réponse</strong> d’intérêt. Une variable catégorique est une variable à partir de laquelle la variable réponse peut être classée dans une catégorie particulière. Par variable réponse, on entend une variable dépendante que l’on mesure et qui peut être influencée par la variable catégorique. On utilise aussi le terme <strong>facteur</strong> pour désigner une variable catégorique. En fait, les termes “variable catégorique”, “facteur” et “critère” sont souvent interchangeables dans la littérature. Nous utiliserons le terme “facteur” pour les besoins du cours.</p>
+<p>Des exemples de variables catégoriques incluent les classes d’âge (jeune, mature, vieux), les traitements pharmaceutiques (médicament 1, médicament 2, placebo), et la concentration d’engrais (très faible, modérée, élevée, très élevée). Dans le contexte de l’ANOVA, la variable réponse est une variable numérique continue qui varie selon les niveaux du facteur. Comme nous le verrons plus loin, l’ANOVA est l’extension du test <span class="math inline">\(t\)</span> pour des cas avec des variables catégoriques qui ont plus de 2 niveaux.</p>
+<p>Étant donné que l’on s’intéresse aux moyennes, on pourrait se demander pourquoi appeler cette approche ANOVA. Lorsqu’on réalise une ANOVA, on détermine si la variabilité des données expliquée par le traitement est plus grande que la variabilité inexpliquée. Pour ce faire, nous calculons la <strong>somme des carrés</strong> (<em>sum of squares</em>). Le concept de la somme des carrés a été présenté lors de la leçon 1 <em>Statistiques descriptives</em>.</p>
+<div id="décomposition-de-la-variance" class="section level4 hasAnchor" number="6.1.2.1">
+<h4><span class="header-section-number">6.1.2.1</span> Décomposition de la variance<a href="leçon-5.html#décomposition-de-la-variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="sommes-des-carrés" class="section level5 hasAnchor" number="6.1.2.1.1">
+<h5><span class="header-section-number">6.1.2.1.1</span> Sommes des carrés<a href="leçon-5.html#sommes-des-carrés" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Pendant l’ANOVA, on décortique la variance totale des données en différentes composantes: une partie expliquée et une autre inexpliquée. Puisque les sommes des carrés sont additives, on peut écrire :</p>
+<p><span class="math display">\[SST = SSA + SSE \: \]</span>
+où <span class="math inline">\(SST\)</span> correspond à la <strong>somme des carrés totale</strong>, <span class="math inline">\(SSA\)</span> correspond à la <strong>somme des carrés du facteur <span class="math inline">\(A\)</span></strong> (aussi appelée somme des carrés du traitement) et <span class="math inline">\(SSE\)</span> est la <strong>somme des carrés des erreurs</strong>. On peut diviser les sommes des carrés par les degrés de liberté appropriés pour obtenir le <strong>carré moyen</strong> (la variance) attribuable aux effets qui nous intéressent. Nous présentons dans les prochaines lignes le calcul de chacune des sommes des carrés discutées précédemment.</p>
+<p>On calcule la somme des carrés totale (<span class="math inline">\(SST\)</span>):</p>
+<p><span class="math display">\[ SST = \sum_{i=1}^n (y_i - \bar{y})^2\]</span></p>
+<p>où <span class="math inline">\(y_i\)</span> est la <span class="math inline">\(i^{\mathrm{i\grave{e}me}}\)</span> observation et <span class="math inline">\(\bar{y}\)</span> représente la moyenne globale de toutes les observations (tous les groupes confondus). Cette somme des carrés compare chaque observation à la moyenne globale. Les degrés de liberté associés à <span class="math inline">\(SST\)</span> sont obtenus avec <span class="math inline">\(df = N - 1\)</span>, où <span class="math inline">\(N\)</span> correspond au nombre total d’observations.</p>
+<p>On calcule la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>):</p>
+<p><span class="math display">\[ SSE = \sum_{j=1}^k \sum_{i=1}^n (y_{ij} - \bar{y_j})^2\]</span></p>
+<p>où <span class="math inline">\(y_{ij}\)</span> correspond à la <span class="math inline">\(i^{\mathrm{i\grave{e}me}}\)</span> observation du groupe <span class="math inline">\(j\)</span> et <span class="math inline">\(\bar{y_j}\)</span> est la moyenne du groupe <span class="math inline">\(j\)</span>. Cette somme des carrés compare chaque observation à la moyenne de son groupe respectif. On obtient les degrés de liberté avec <span class="math inline">\(df = k(n - 1)\)</span>, où <span class="math inline">\(k\)</span> correspond au nombre de groupes et <span class="math inline">\(n\)</span> correspond au nombre d’observations dans chacun des groupes.</p>
+<p>On calcule la somme des carrés du facteur <span class="math inline">\(A\)</span> (le traitement qui définit les différents groupes) (<span class="math inline">\(SSA\)</span>):</p>
+<p><span class="math display">\[SSA = \sum_{j=1}^k \sum_{i=1}^n (\bar{y}_{j} - \bar{y})^2 = n \sum_{j=1}^k (\bar{y}_{j} - \bar{y})^2\]</span>
+où <span class="math inline">\(\bar{y}_{j}\)</span> correspond à la moyenne du groupe <span class="math inline">\(j\)</span>, <span class="math inline">\(\bar{y}\)</span> est la moyenne globale et <span class="math inline">\(n\)</span> correspond au nombre d’observations dans chacun des groupes. On peut aussi la calculer par soustraction à l’aide de <span class="math inline">\(SSA = SST - SSE\)</span>. La somme des carrés du traitement compare la moyenne de chaque groupe à la moyenne globale. Les degrés de liberté s’obtiennent avec <span class="math inline">\(df = k - 1\)</span> où <span class="math inline">\(k\)</span> est le nombre de groupes dans le facteur <span class="math inline">\(A\)</span>.</p>
+<div class="exemple" section="6">
+<p>On veut déterminer si la concentration d’ozone en parties par million (ppm) diffère entre trois jardins d’une ville industrielle. Le jeu de données <code>jardins.txt</code> contient les observations suivantes :</p>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="leçon-5.html#cb509-1" tabindex="-1"></a><span class="do">##importation du jeu de données</span></span>
+<span id="cb509-2"><a href="leçon-5.html#cb509-2" tabindex="-1"></a>ozone <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/jardins.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb509-3"><a href="leçon-5.html#cb509-3" tabindex="-1"></a>ozone</span></code></pre></div>
+<pre><code>##    Ozone Jardin
+## 1  14.82      A
+## 2  20.59      A
+## 3   6.18      A
+## 4   7.61      A
+## 5  31.35      A
+## 6  11.62      A
+## 7  32.70      A
+## 8  26.18      A
+## 9  19.91      A
+## 10 10.96      A
+## 11 12.60      A
+## 12 17.09      A
+## 13  5.97      A
+## 14 17.95      A
+## 15  9.60      A
+## 16 20.46      B
+## 17 18.26      B
+## 18 28.63      B
+## 19 14.81      B
+## 20 14.22      B
+## 21 13.97      B
+## 22 20.19      B
+## 23 16.21      B
+## 24 23.63      B
+## 25 21.02      B
+## 26 20.41      B
+## 27 18.59      B
+## 28 13.19      B
+## 29 18.28      B
+## 30 11.15      B
+## 31 10.03      C
+## 32 11.58      C
+## 33 26.68      C
+## 34  5.61      C
+## 35 12.21      C
+## 36 24.87      C
+## 37 18.60      C
+## 38 34.78      C
+## 39 14.63      C
+## 40 17.09      C
+## 41  5.05      C
+## 42 20.53      C
+## 43 28.67      C
+## 44 12.19      C
+## 45 28.65      C</code></pre>
+<p>On peut visualiser les données à l’aide d’un diagramme de boîtes et moustaches (Figure <a href="leçon-5.html#fig:ozone">6.1</a>).</p>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="leçon-5.html#cb511-1" tabindex="-1"></a><span class="do">##diagramme de boîtes et moustaches</span></span>
+<span id="cb511-2"><a href="leçon-5.html#cb511-2" tabindex="-1"></a><span class="fu">boxplot</span>(Ozone <span class="sc">~</span> Jardin, <span class="at">data =</span> ozone,</span>
+<span id="cb511-3"><a href="leçon-5.html#cb511-3" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Concentration d&#39;ozone (ppm)&quot;</span>,</span>
+<span id="cb511-4"><a href="leçon-5.html#cb511-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Jardin&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ozone"></span>
+<img src="Cours_Stats_R_files/figure-html/ozone-1.png" alt="Diagramme de boîtes et moustaches de la concentration d'ozone dans les trois jardins." width="672" />
+<p class="caption">
+Figure 6.1: Diagramme de boîtes et moustaches de la concentration d’ozone dans les trois jardins.
+</p>
+</div>
+<p>La somme des carrés des erreurs s’obtient ainsi :</p>
+<p><span class="math display">\[ SSE = \hspace{1em} \sum_{j=1}^k \sum_{i=1}^n (y_{ij} - \bar{y_j})^2 \hspace{2em} \bar{y_A} = 16.34 \hspace{2em} \bar{y_B} = 18.20 \hspace{2em} \bar{y_C} = 18.08 \]</span>
+<span class="math display">\[ SSE = \hspace{1em}\sum_{i=1}^n((y_{iA} - \bar{y_A})^2 + (y_{iB} - \bar{y_B})^2 + (y_{iC} - \bar{y_C})^2) \]</span></p>
+<p><span class="math display">\[  SSE = (14.82 - 16.34)^2 + \ldots + (9.60 - 16.34)^2 +  \]</span></p>
+<p><span class="math display">\[\hspace{1em} (20.46 - 18.20)^2 + \ldots + (11.15 - 18.20)^2 + \]</span></p>
+<p><span class="math display">\[\hspace{1em} (10.03 - 18.08)^2 + \ldots + (28.65 - 18.08)^2  \]</span></p>
+<p><span class="math display">\[ SSE = 2451.5    \]</span>
+On calcule la somme des carrés des traitements avec l’équation complète ou par soustraction:
+<span class="math display">\[ SSA = \sum_{j=1}^k \sum_{i=1}^n (\bar{y}_{j} - \bar{y})^2 = n \sum_{j=1}^k (\bar{y}_{j} - \bar{y})^2  \hspace{4em} n_A = n_B = n_C = 15  \]</span>
+<span class="math display">\[SSA = 15 \cdot ((16.34 - 17.54)^2 + (18.20 - 17.54)^2 + (18.08 - 17.54)^2) \]</span><br />
+<span class="math display">\[SSA = 32.43\]</span></p>
+<p>On effectue ces calculs dans R :</p>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="leçon-5.html#cb512-1" tabindex="-1"></a><span class="do">##SST</span></span>
+<span id="cb512-2"><a href="leçon-5.html#cb512-2" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((ozone<span class="sc">$</span>Ozone <span class="sc">-</span> <span class="fu">mean</span>(ozone<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb512-3"><a href="leçon-5.html#cb512-3" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 2483.881</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="leçon-5.html#cb514-1" tabindex="-1"></a><span class="do">##degrés de liberté de SST</span></span>
+<span id="cb514-2"><a href="leçon-5.html#cb514-2" tabindex="-1"></a>df.tot <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ozone) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb514-3"><a href="leçon-5.html#cb514-3" tabindex="-1"></a>df.tot</span></code></pre></div>
+<pre><code>## [1] 44</code></pre>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="leçon-5.html#cb516-1" tabindex="-1"></a><span class="do">##SSE</span></span>
+<span id="cb516-2"><a href="leçon-5.html#cb516-2" tabindex="-1"></a><span class="do">##sous-jeu de données</span></span>
+<span id="cb516-3"><a href="leçon-5.html#cb516-3" tabindex="-1"></a>ozoneA <span class="ot">&lt;-</span> ozone[ozone<span class="sc">$</span>Jardin <span class="sc">==</span> <span class="st">&quot;A&quot;</span>, ]</span>
+<span id="cb516-4"><a href="leçon-5.html#cb516-4" tabindex="-1"></a>ozoneB <span class="ot">&lt;-</span> ozone[ozone<span class="sc">$</span>Jardin <span class="sc">==</span> <span class="st">&quot;B&quot;</span>, ]</span>
+<span id="cb516-5"><a href="leçon-5.html#cb516-5" tabindex="-1"></a>ozoneC <span class="ot">&lt;-</span> ozone[ozone<span class="sc">$</span>Jardin <span class="sc">==</span> <span class="st">&quot;C&quot;</span>, ]</span>
+<span id="cb516-6"><a href="leçon-5.html#cb516-6" tabindex="-1"></a><span class="do">##SSE de A</span></span>
+<span id="cb516-7"><a href="leçon-5.html#cb516-7" tabindex="-1"></a>SSE.A <span class="ot">&lt;-</span> <span class="fu">sum</span>((ozoneA<span class="sc">$</span>Ozone<span class="sc">-</span><span class="fu">mean</span>(ozoneA<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb516-8"><a href="leçon-5.html#cb516-8" tabindex="-1"></a><span class="do">##SSE de B</span></span>
+<span id="cb516-9"><a href="leçon-5.html#cb516-9" tabindex="-1"></a>SSE.B <span class="ot">&lt;-</span> <span class="fu">sum</span>((ozoneB<span class="sc">$</span>Ozone<span class="sc">-</span><span class="fu">mean</span>(ozoneB<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb516-10"><a href="leçon-5.html#cb516-10" tabindex="-1"></a><span class="do">##SSE de C</span></span>
+<span id="cb516-11"><a href="leçon-5.html#cb516-11" tabindex="-1"></a>SSE.C <span class="ot">&lt;-</span> <span class="fu">sum</span>((ozoneC<span class="sc">$</span>Ozone<span class="sc">-</span><span class="fu">mean</span>(ozoneC<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb516-12"><a href="leçon-5.html#cb516-12" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> SSE.A <span class="sc">+</span> SSE.B <span class="sc">+</span> SSE.C</span>
+<span id="cb516-13"><a href="leçon-5.html#cb516-13" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 2451.451</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="leçon-5.html#cb518-1" tabindex="-1"></a><span class="do">##degrés de liberté de SSE</span></span>
+<span id="cb518-2"><a href="leçon-5.html#cb518-2" tabindex="-1"></a>df.erreur <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> (<span class="dv">15</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb518-3"><a href="leçon-5.html#cb518-3" tabindex="-1"></a>df.erreur</span></code></pre></div>
+<pre><code>## [1] 42</code></pre>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="leçon-5.html#cb520-1" tabindex="-1"></a><span class="do">##SSA</span></span>
+<span id="cb520-2"><a href="leçon-5.html#cb520-2" tabindex="-1"></a>SSA <span class="ot">&lt;-</span> SST <span class="sc">-</span> SSE</span>
+<span id="cb520-3"><a href="leçon-5.html#cb520-3" tabindex="-1"></a>SSA</span></code></pre></div>
+<pre><code>## [1] 32.43014</code></pre>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="leçon-5.html#cb522-1" tabindex="-1"></a><span class="do">##autre façon de la calculer</span></span>
+<span id="cb522-2"><a href="leçon-5.html#cb522-2" tabindex="-1"></a>SSA.alt <span class="ot">&lt;-</span> (<span class="dv">15</span> <span class="sc">*</span> (<span class="fu">mean</span>(ozoneA<span class="sc">$</span>Ozone) <span class="sc">-</span> <span class="fu">mean</span>(ozone<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb522-3"><a href="leçon-5.html#cb522-3" tabindex="-1"></a>  (<span class="dv">15</span> <span class="sc">*</span> (<span class="fu">mean</span>(ozoneB<span class="sc">$</span>Ozone) <span class="sc">-</span> <span class="fu">mean</span>(ozone<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb522-4"><a href="leçon-5.html#cb522-4" tabindex="-1"></a>  (<span class="dv">15</span> <span class="sc">*</span> (<span class="fu">mean</span>(ozoneC<span class="sc">$</span>Ozone) <span class="sc">-</span> <span class="fu">mean</span>(ozone<span class="sc">$</span>Ozone))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb522-5"><a href="leçon-5.html#cb522-5" tabindex="-1"></a>SSA.alt</span></code></pre></div>
+<pre><code>## [1] 32.43014</code></pre>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="leçon-5.html#cb524-1" tabindex="-1"></a><span class="do">##degrés de liberté du traitement</span></span>
+<span id="cb524-2"><a href="leçon-5.html#cb524-2" tabindex="-1"></a>df.trait <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb524-3"><a href="leçon-5.html#cb524-3" tabindex="-1"></a>df.trait</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+</div>
+</div>
+<div id="tableau-de-lanova" class="section level5 hasAnchor" number="6.1.2.1.2">
+<h5><span class="header-section-number">6.1.2.1.2</span> Tableau de l’ANOVA<a href="leçon-5.html#tableau-de-lanova" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Après avoir calculé les sommes des carrés des différents termes ainsi que leurs degrés de liberté respectifs, on peut les assembler dans un tableau d’ANOVA (Table <a href="leçon-5.html#tab:aov">6.1</a>). Ce tableau constitue une partie importante des résultats de l’analyse et doit figurer dans les rapports ou au moins y être résumé par écrit.</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:aov">Table 6.1: </span>Calcul des différents éléments du tableau d’ANOVA.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Source
+</th>
+<th style="text-align:center;">
+Somme des carrés (<span class="math inline">\(SS\)</span>)
+</th>
+<th style="text-align:center;">
+Degrés de liberté (<span class="math inline">\(df\)</span>)
+</th>
+<th style="text-align:center;">
+Carré moyen (<span class="math inline">\(CM\)</span>)
+</th>
+<th style="text-align:center;">
+ratio <span class="math inline">\(F\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Traitement
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(SSA\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(k-1\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(SSA/df_A\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(MSA/MSE\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Erreur
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(SSE\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(k(n-1)\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(SSE/df_{erreur}\)</span>
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Total
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(SST\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(N-1\)</span>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>Le carré moyen du traitement (<span class="math inline">\(SSA/df_A\)</span>) estime la variance due au traitement, alors que le carré moyen des erreurs (<span class="math inline">\(SSE/df_{erreur}\)</span>) estime la variance inexpliquée aussi appelée <strong>variance résiduelle</strong> (<em>residual variance</em>). La variance résiduelle est la meilleure estimation de la variance (<span class="math inline">\(\sigma^2\)</span>) commune à tous les <span class="math inline">\(k\)</span> groupes comparés. C’est une des raisons pour lesquelles la méthode est appelée “analyse de variance” : on estime en même temps la variance commune à tous les groupes.</p>
+<p>Le ratio <span class="math inline">\(F\)</span> consiste à comparer la variabilité expliquée et la variabilité inexpliquée. Si le ratio est nettement supérieur à 1, c’est parce que la variance expliquée par le traitement excède de beaucoup la variance résiduelle: il y a probablement un effet du traitement sur la variable réponse. Un ratio inférieur ou s’approchant de 1 suggère qu’il n’y a pas d’effet du traitement. L’interprétation du ratio <span class="math inline">\(F\)</span> dépend aussi de la taille de l’échantillon. Ce ratio de variances est comparé à une distribution théorique, celle du <span class="math inline">\(F\)</span>.</p>
+</div>
+</div>
+<div id="la-distribution-du-f" class="section level4 hasAnchor" number="6.1.2.2">
+<h4><span class="header-section-number">6.1.2.2</span> La distribution du <span class="math inline">\(F\)</span><a href="leçon-5.html#la-distribution-du-f" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La distribution du <span class="math inline">\(F\)</span> est une distribution continue qui est définie par la fonction de densité :</p>
+<p><span class="math display">\[   f(x \vert \nu_1, \nu_2) = \frac{\sqrt{\frac{(\nu_1 x)^{\nu_1}\nu_{2}^{\nu_2}}{(\nu_1 x + \nu_2)^{\nu_1 + \nu_2}}}}{x \mathrm{B} \left (\frac{\nu_1}{2}, \frac{\nu_2}{2} \right )} \: \]</span></p>
+<p>où <span class="math inline">\(\nu_1\)</span> et <span class="math inline">\(\nu_2\)</span> sont les degrés de liberté et <span class="math inline">\(B\)</span> est la fonction beta qui implique des intégrales (voir <code>?beta</code> dans R). En ce qui concerne l’application de cette distribution à l’ANOVA, les degrés de liberté <span class="math inline">\(\nu_1\)</span> et <span class="math inline">\(\nu_2\)</span> sont ceux associés au numérateur et au dénominateur du ratio <span class="math inline">\(F\)</span>, respectivement, c.-à-d., <span class="math inline">\(df_A\)</span> et <span class="math inline">\(df_{erreur}\)</span> tels que présentés dans le Tableau <a href="leçon-5.html#tab:aov">6.1</a>. La Figure <a href="leçon-5.html#fig:F">6.2</a> présente la forme de la distribution du <span class="math inline">\(F\)</span> selon différents degrés de liberté. Comme d’habitude, nous comparons la statistique obtenue à partir des données de l’échantillon à celle de la distribution du <span class="math inline">\(F\)</span> selon les degrés de liberté et le seuil de signification spécifiés lorsque l’hypothèse nulle est vraie. Si la valeur du <span class="math inline">\(F\)</span> observée est plus grande que celle déterminée par la distribution du <span class="math inline">\(F\)</span>, nous rejetterons l’hypothèse nulle.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:F"></span>
+<img src="Cours_Stats_R_files/figure-html/F-1.png" alt="Distribution du $F$ selon différentes valeurs de degrés de liberté." width="672" />
+<p class="caption">
+Figure 6.2: Distribution du <span class="math inline">\(F\)</span> selon différentes valeurs de degrés de liberté.
+</p>
+</div>
+</div>
+<div id="hypothèses-statistiques" class="section level4 hasAnchor" number="6.1.2.3">
+<h4><span class="header-section-number">6.1.2.3</span> Hypothèses statistiques<a href="leçon-5.html#hypothèses-statistiques" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Comme nous l’avons vu dans les leçons précédentes, l’hypothèse nulle (bilatérale) avec le test <span class="math inline">\(t\)</span> de Student sur deux groupes indépendants implique l’égalité des moyennes des deux groupes :</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{A}} = \mu_{\mathrm{B}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{A}} \neq \mu_{\mathrm{B}}\)</span> (différence)</p>
+<p>En ce qui a trait à l’ANOVA, l’hypothèse nulle a la même forme. Par exemple, pour un facteur qui compte quatre niveaux (p. ex., faible, modéré, élevé, très élevé), nous aurions l’hypothèse nulle suivante :</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{A}} = \mu_{\mathrm{B}}\)</span> = <span class="math inline">\(\mu_{\mathrm{C}} = \mu_{\mathrm{D}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: au moins une moyenne diffère des autres moyennes</p>
+<div class="exemple" section="6">
+<p>Reprenons notre exemple sur la concentration d’ozone dans les trois jardins d’une ville industrielle. Nous pouvons émettre les hypothèses statistiques suivantes :</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{jardin \: A}} = \mu_{\mathrm{jardin \: B}}\)</span> = <span class="math inline">\(\mu_{\mathrm{jardin \: C}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: au moins une moyenne diffère des autres moyennes<br />
+<span class="math inline">\(\alpha = 0.05\)</span></p>
+<p>Puisque nous avons déja calculé les sommes des carrés dans l’exemple 6.2, nous pouvons construire le tableau d’ANOVA qui nous permettra de tester l’hypothèse nulle (Table <a href="leçon-5.html#tab:aov1">6.2</a>).</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:aov1">Table 6.2: </span>Calcul des différents éléments du tableau d’ANOVA.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Source
+</th>
+<th style="text-align:center;">
+Somme des carrés <br> (<span class="math inline">\(SS\)</span>)
+</th>
+<th style="text-align:center;">
+Degrés de liberté <br> (<span class="math inline">\(df\)</span>)
+</th>
+<th style="text-align:center;">
+Carré moyen <br> (<span class="math inline">\(CM\)</span>)
+</th>
+<th style="text-align:center;">
+ratio <span class="math inline">\(F\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Jardin
+</td>
+<td style="text-align:center;">
+32.43
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+16.22
+</td>
+<td style="text-align:center;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Residuals
+</td>
+<td style="text-align:center;">
+2451.45
+</td>
+<td style="text-align:center;">
+42
+</td>
+<td style="text-align:center;">
+58.37
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>On constate que le ratio <span class="math inline">\(F\)</span> est de 0.28 (<span class="math inline">\(16.22/58.37\)</span>). Étant donné que <span class="math inline">\(P(F_{2, 42} \geq 0.28) = 0.7588\)</span><a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>, on ne rejette pas <span class="math inline">\(H_0\)</span> et on conclut que les moyennes des groupes ne diffèrent pas les unes des autres. La fonction <code>aov( )</code> permet de réaliser une ANOVA dans R lorsque chaque groupe contient le même nombre d’observations<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>.</p>
+<p>On peut constater que la variable <code>Jardin</code> est une variable caractère (<code>chr</code>). Celle-ci doit être un facteur afin de réaliser l’ANOVA. La transformation est réalisée à l’aide de la commande suivante :</p>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="leçon-5.html#cb526-1" tabindex="-1"></a>ozone<span class="sc">$</span>Jardin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(ozone<span class="sc">$</span>Jardin)</span></code></pre></div>
+<p>La commande ci-dessous permet de valider que la variable <code>Jardin</code> est maintenant un facteur (<code>factor</code>).</p>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="leçon-5.html#cb527-1" tabindex="-1"></a><span class="fu">str</span>(ozone)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    45 obs. of  2 variables:
+##  $ Ozone : num  14.82 20.59 6.18 7.61 31.35 ...
+##  $ Jardin: Factor w/ 3 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>On peut maintenant réaliser l’ANOVA et l’extraire à l’aide de la fonction <code>summary( )</code>. Cette dernière fonction est souvent utilisée pour obtenir un résumé des résultats d’une analyse statistique.</p>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="leçon-5.html#cb529-1" tabindex="-1"></a><span class="do">##exécuter l&#39;ANOVA</span></span>
+<span id="cb529-2"><a href="leçon-5.html#cb529-2" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Ozone <span class="sc">~</span> Jardin, <span class="at">data =</span> ozone)</span>
+<span id="cb529-3"><a href="leçon-5.html#cb529-3" tabindex="-1"></a><span class="do">##on extrait les résultats</span></span>
+<span id="cb529-4"><a href="leçon-5.html#cb529-4" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## Jardin       2   32.4   16.22   0.278  0.759
+## Residuals   42 2451.5   58.37</code></pre>
+</div>
+</div>
+<div id="suppositions-2" class="section level4 hasAnchor" number="6.1.2.4">
+<h4><span class="header-section-number">6.1.2.4</span> Suppositions<a href="leçon-5.html#suppositions-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>L’analyse de variance est une extension du test <span class="math inline">\(t\)</span> de Student lorsqu’on souhaite comparer les moyennes entre plus de deux groupes. Il n’est donc pas surprenant que l’analyse de variance doive répondre aux mêmes conditions d’utilisation que le test <span class="math inline">\(t\)</span>. Pour effectuer l’ANOVA, les erreurs doivent être indépendantes. L’échantillonnage aléatoire et l’utilisation d’un bon dispositif expérimental aident à respecter cette condition. L’ANOVA requiert également que les variances des groupes soient égales (homoscédasticité): <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = \sigma_3^2 \ldots \sigma_k^2\)</span>. Finalement, on suppose que chacun des groupes est issu d’une population normale (c.-à-d., résidus ou erreurs sont distribués normalement). Autrement dit, afin de pouvoir comparer des groupes dont la moyenne peut potentiellement différer d’un groupe à l’autre, il faut que ces groupes aient la même variance. Cette variance commune est estimée par le carré moyen de l’erreur (<em>residual mean square, error mean square</em>).</p>
+<div id="résidus" class="section level5 hasAnchor" number="6.1.2.4.1">
+<h5><span class="header-section-number">6.1.2.4.1</span> Résidus<a href="leçon-5.html#résidus" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>À l’instar du test <span class="math inline">\(t\)</span>, nous utilisons les résidus pour diagnostiquer des problèmes liés à la normalité et à l’homogénéité des variances. Les résidus sont obtenus en calculant la différence entre les valeurs observées <span class="math inline">\(y_i\)</span> et les valeurs qui sont prédites <span class="math inline">\(\hat{y}_i\)</span> par notre modèle d’ANOVA. Dans le cas de l’ANOVA à un critère, les valeurs prédites (<span class="math inline">\(\hat{y}_i\)</span>) correspondent à la moyenne arithmétique de chaque groupe. Nous obtenons les résidus à l’aide de <span class="math inline">\(y_i - \hat{y}_i\)</span>. Les fonctions <code>residuals( )</code> et <code>fitted( )</code> dans R permettent d’extraire les résidus et les valeurs prédites de plusieurs types d’analyses statistiques. Le prochain exemple illustre l’application directe de ces fonctions à l’objet qui contient le résultat de l’ANOVA.</p>
+<div class="exemple" section="6">
+<p>On peut vérifier les suppositions de l’ANOVA que nous avons exécutée dans l’exemple précédent. On obtient les résidus en calculant la différence entre les valeurs observées et les valeurs prédites, <span class="math inline">\(y_i - \hat{y}_i\)</span>. On commence par extraire les valeurs observées et les valeurs prédites :</p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="leçon-5.html#cb531-1" tabindex="-1"></a><span class="do">##valeurs observées</span></span>
+<span id="cb531-2"><a href="leçon-5.html#cb531-2" tabindex="-1"></a>obs <span class="ot">&lt;-</span> ozone<span class="sc">$</span>Ozone</span>
+<span id="cb531-3"><a href="leçon-5.html#cb531-3" tabindex="-1"></a>obs[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>##  [1] 14.82 20.59  6.18  7.61 31.35 11.62 32.70 26.18 19.91 10.96</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="leçon-5.html#cb533-1" tabindex="-1"></a><span class="do">##extraire les valeurs prédites</span></span>
+<span id="cb533-2"><a href="leçon-5.html#cb533-2" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">fitted</span>(aov1)</span>
+<span id="cb533-3"><a href="leçon-5.html#cb533-3" tabindex="-1"></a>pred[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>##      1      2      3      4      5      6      7      8      9     10 
+## 16.342 16.342 16.342 16.342 16.342 16.342 16.342 16.342 16.342 16.342</code></pre>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="leçon-5.html#cb535-1" tabindex="-1"></a><span class="do">##moyenne arithmétique de chaque groupe</span></span>
+<span id="cb535-2"><a href="leçon-5.html#cb535-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> ozone<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> ozone<span class="sc">$</span>Jardin, <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##        A        B        C 
+## 16.34200 18.20133 18.07800</code></pre>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="leçon-5.html#cb537-1" tabindex="-1"></a><span class="do">##résidus</span></span>
+<span id="cb537-2"><a href="leçon-5.html#cb537-2" tabindex="-1"></a>obs[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">-</span> pred[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>##       1       2       3       4       5       6       7       8       9      10 
+##  -1.522   4.248 -10.162  -8.732  15.008  -4.722  16.358   9.838   3.568  -5.382</code></pre>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="leçon-5.html#cb539-1" tabindex="-1"></a><span class="do">##extraire résidus du modèle</span></span>
+<span id="cb539-2"><a href="leçon-5.html#cb539-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(aov1)</span>
+<span id="cb539-3"><a href="leçon-5.html#cb539-3" tabindex="-1"></a>res[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co">#valeurs identiques au calcul obs - pred</span></span></code></pre></div>
+<pre><code>##       1       2       3       4       5       6       7       8       9      10 
+##  -1.522   4.248 -10.162  -8.732  15.008  -4.722  16.358   9.838   3.568  -5.382</code></pre>
+</div>
+</div>
+<div id="normalité-des-résidus-et-homogénéité-de-la-variance" class="section level5 hasAnchor" number="6.1.2.4.2">
+<h5><span class="header-section-number">6.1.2.4.2</span> Normalité des résidus et homogénéité de la variance<a href="leçon-5.html#normalité-des-résidus-et-homogénéité-de-la-variance" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>De la même façon qu’on utilise le graphique quantile-quantile lorsqu’on effectue un test <span class="math inline">\(t\)</span>, on utilise ce même graphique pour diagnostiquer des déviations par rapport à la supposition de normalité. La fonction <code>qqnorm( )</code> permet d’obtenir ce graphique et la fonction <code>qqline( )</code> ajoute une droite théorique représentant une distribution normale.</p>
+<p>Pour évaluer l’homogénéité des variances des différents groupes, on peut utiliser le diagramme de boîtes et moustaches (<code>boxplot( )</code>) des résidus en fonction de chaque groupe. Un autre graphique utile pour diagnostiquer des problèmes de variances hétérogènes est le graphique des résidus en fonction des valeurs prédites. Ce dernier devrait montrer un patron nul, c’est-à-dire des points distribués uniformément de part et d’autre de 0 sur l’axe des <span class="math inline">\(y\)</span> sans patron apparent (Figure <a href="leçon-5.html#fig:homog">6.3</a>a). L’hétérogénéité des variances se traduit parfois par l’apparition d’un patron en forme d’entonnoir, indiquant que les variances augmentent avec les valeurs prédites (Figure <a href="leçon-5.html#fig:homog">6.3</a>b). S’il y a des doutes par rapport au respect de ces conditions, plusieurs options sont possibles. Les transformations vues dans la leçon 4 de ce cours peuvent être utiles, ou encore des tests plus complexes qui ne nécessitent pas ces conditions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:homog"></span>
+<img src="Cours_Stats_R_files/figure-html/homog-1.png" alt="Graphique de résidus en fonction des valeurs prédites illustrant l'homogénéité des variances (a) et l'hétérogénéité des variances (b). Notez le patron en forme d'entonnoir en b qui est indiqué par une variance qui augmente avec les valeurs prédites." width="672" />
+<p class="caption">
+Figure 6.3: Graphique de résidus en fonction des valeurs prédites illustrant l’homogénéité des variances (a) et l’hétérogénéité des variances (b). Notez le patron en forme d’entonnoir en b qui est indiqué par une variance qui augmente avec les valeurs prédites.
+</p>
+</div>
+<div class="exemple" section="6">
+<p>Nous poursuivons l’exemple 6.4 en vérifiant si la condition de normalité est respectée. Pour vérifier la normalité, on extrait les résidus de l’ANOVA et on examine le graphique quantile-quantile. On constate que la condition de normalité est assez bien respectée, quoiqu’il y ait quelques valeurs aux extrémités des queues qui dévient de la normalité (Figure <a href="leçon-5.html#fig:qqplot6">6.4</a>a). Le graphique des résidus en fonction des valeurs prédites suggère que les variances sont plutôt homogènes, bien que le groupe avec la plus grande moyenne ait une variabilité légèrement plus faible que les autres (Figure <a href="leçon-5.html#fig:qqplot6">6.4</a>b).</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="leçon-5.html#cb541-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb541-2"><a href="leçon-5.html#cb541-2" tabindex="-1"></a><span class="do">##graphique quantile-quantile</span></span>
+<span id="cb541-3"><a href="leçon-5.html#cb541-3" tabindex="-1"></a><span class="fu">qqnorm</span>(res, <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
+<span id="cb541-4"><a href="leçon-5.html#cb541-4" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>,</span>
+<span id="cb541-5"><a href="leçon-5.html#cb541-5" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>,</span>
+<span id="cb541-6"><a href="leçon-5.html#cb541-6" tabindex="-1"></a>       <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb541-7"><a href="leçon-5.html#cb541-7" tabindex="-1"></a><span class="do">##cex.lab indique que les étiquettes seront 1.2 fois plus grande</span></span>
+<span id="cb541-8"><a href="leçon-5.html#cb541-8" tabindex="-1"></a></span>
+<span id="cb541-9"><a href="leçon-5.html#cb541-9" tabindex="-1"></a></span>
+<span id="cb541-10"><a href="leçon-5.html#cb541-10" tabindex="-1"></a><span class="do">##ajout de droite théorique</span></span>
+<span id="cb541-11"><a href="leçon-5.html#cb541-11" tabindex="-1"></a><span class="fu">qqline</span>(res)</span>
+<span id="cb541-12"><a href="leçon-5.html#cb541-12" tabindex="-1"></a><span class="fu">text</span>(<span class="at">y =</span> <span class="dv">15</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb541-13"><a href="leçon-5.html#cb541-13" tabindex="-1"></a></span>
+<span id="cb541-14"><a href="leçon-5.html#cb541-14" tabindex="-1"></a><span class="do">##résidus vs valeurs prédites</span></span>
+<span id="cb541-15"><a href="leçon-5.html#cb541-15" tabindex="-1"></a><span class="fu">plot</span>(res <span class="sc">~</span> pred, <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>,</span>
+<span id="cb541-16"><a href="leçon-5.html#cb541-16" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Résidus vs valeurs prédites&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb541-17"><a href="leçon-5.html#cb541-17" tabindex="-1"></a><span class="fu">text</span>(<span class="at">y =</span> <span class="dv">15</span>, <span class="at">x =</span> <span class="fl">16.5</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:qqplot6"></span>
+<img src="Cours_Stats_R_files/figure-html/qqplot6-1.png" alt="Graphique quantile-quantile des résidus de l'ANOVA sur les concentrations d'ozone (a) et résidus en fonction des valeurs prédites (b)." width="672" />
+<p class="caption">
+Figure 6.4: Graphique quantile-quantile des résidus de l’ANOVA sur les concentrations d’ozone (a) et résidus en fonction des valeurs prédites (b).
+</p>
+</div>
+</div>
+<p>Nous avons maintenant toutes les notions en main afin de réaliser l’ANOVA et de vérifier le respect des conditions. C’est ce que nous ferons dans le prochain exemple.</p>
+<div class="exemple" section="6">
+<p>On fait une étude de santé publique sur la consommation de boissons sucrées par les jeunes de 19 à 25 ans dans cinq régions de l’Est du Québec. Pour ce faire, on fait un sondage détaillé auprès de six jeunes par région et on estime pour chacun sa consommation annuelle en litres. Les cinq régions sont:</p>
+<ul>
+<li>Chaudière-Appalaches ();</li>
+<li>Côte-Nord ();</li>
+<li>Saguenay Lac-Saint-Jean ().</li>
+<li>Bas-Saint-Laurent ();</li>
+<li>Gaspésie-Iles–de-la-Madeleine ();</li>
+</ul>
+<p>Les données sont incluses dans le jeu de données <code>consommation.txt</code>.</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="leçon-5.html#cb542-1" tabindex="-1"></a>cons <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_6/data/consommation.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb542-2"><a href="leçon-5.html#cb542-2" tabindex="-1"></a></span>
+<span id="cb542-3"><a href="leçon-5.html#cb542-3" tabindex="-1"></a><span class="fu">head</span>(cons)</span></code></pre></div>
+<pre><code>##   Volume Region
+## 1   55.1     CA
+## 2   45.7     CA
+## 3   45.0     CA
+## 4   73.1     CA
+## 5   49.9     CA
+## 6   63.2     CA</code></pre>
+<p>Nous avons les hypothèses statistiques suivantes :<br />
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{SLSJ}} = \mu_{\mathrm{GIM}} = \mu_{\mathrm{CA}} = \mu_{\mathrm{CN}} = \mu_{\mathrm{BSL}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: au moins une moyenne diffère parmi toutes les moyennes<br />
+<span class="math inline">\(\alpha = 0.05\)</span></p>
+<p>Avant de faire l’analyse, on peut visualiser rapidement les données et la variabilité de chaque groupe avec <code>boxplot( )</code> (Figure <a href="leçon-5.html#fig:box2">6.5</a>).</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="leçon-5.html#cb544-1" tabindex="-1"></a><span class="do">##boxplot de données brutes</span></span>
+<span id="cb544-2"><a href="leçon-5.html#cb544-2" tabindex="-1"></a><span class="fu">boxplot</span>(Volume <span class="sc">~</span> Region, <span class="at">data =</span> cons,</span>
+<span id="cb544-3"><a href="leçon-5.html#cb544-3" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Volume&quot;</span>,</span>
+<span id="cb544-4"><a href="leçon-5.html#cb544-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Régions&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:box2"></span>
+<img src="Cours_Stats_R_files/figure-html/box2-1.png" alt="Diagramme de boîtes et moustaches de la consommation annuelle de volume de boissées sucrées par jeune dans 5 régions de l'Est du Québec." width="672" />
+<p class="caption">
+Figure 6.5: Diagramme de boîtes et moustaches de la consommation annuelle de volume de boissées sucrées par jeune dans 5 régions de l’Est du Québec.
+</p>
+</div>
+<p>On exécute l’ANOVA à un critère :</p>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="leçon-5.html#cb545-1" tabindex="-1"></a><span class="do">## Conversion en facteur de la variable Region</span></span>
+<span id="cb545-2"><a href="leçon-5.html#cb545-2" tabindex="-1"></a>cons<span class="sc">$</span>Region <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cons<span class="sc">$</span>Region) </span>
+<span id="cb545-3"><a href="leçon-5.html#cb545-3" tabindex="-1"></a><span class="do">##ANOVA</span></span>
+<span id="cb545-4"><a href="leçon-5.html#cb545-4" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Volume <span class="sc">~</span> Region, <span class="at">data =</span> cons)</span></code></pre></div>
+<p>Avant de se lancer dans l’interprétation, il faut vérifier les suppositions de l’ANOVA, notamment celles concernant l’homoscédasticité et la normalité des résidus. On constate que la supposition d’homogénéité des variances est assez bien respectée et une seule observation se démarque des autres avec une valeur &gt; 15 (Figure <a href="leçon-5.html#fig:diag3">6.6</a>a}). Toutefois, il est important de noter que six observations par groupe est une taille d’échantillon faible pour vérifier cette supposition d’homoscédasticité. Le graphique quantile-quantile avec les résidus indique que la supposition de normalité est respectée pour ce jeu de données (Figure <a href="leçon-5.html#fig:diag3">6.6</a>b).</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="leçon-5.html#cb546-1" tabindex="-1"></a><span class="do">##on organise la fenêtre graphique</span></span>
+<span id="cb546-2"><a href="leçon-5.html#cb546-2" tabindex="-1"></a><span class="do">##pour avoir 1 rangée et deux colonnes</span></span>
+<span id="cb546-3"><a href="leçon-5.html#cb546-3" tabindex="-1"></a><span class="do">##de graphiques</span></span>
+<span id="cb546-4"><a href="leçon-5.html#cb546-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb546-5"><a href="leçon-5.html#cb546-5" tabindex="-1"></a><span class="do">##homoscédasticité</span></span>
+<span id="cb546-6"><a href="leçon-5.html#cb546-6" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(m1) <span class="sc">~</span> <span class="fu">fitted</span>(m1),</span>
+<span id="cb546-7"><a href="leçon-5.html#cb546-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>,</span>
+<span id="cb546-8"><a href="leçon-5.html#cb546-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Résidus vs valeurs prédites&quot;</span>,</span>
+<span id="cb546-9"><a href="leçon-5.html#cb546-9" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb546-10"><a href="leçon-5.html#cb546-10" tabindex="-1"></a><span class="do">##normalité</span></span>
+<span id="cb546-11"><a href="leçon-5.html#cb546-11" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(m1), <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
+<span id="cb546-12"><a href="leçon-5.html#cb546-12" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>,</span>
+<span id="cb546-13"><a href="leçon-5.html#cb546-13" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>,</span>
+<span id="cb546-14"><a href="leçon-5.html#cb546-14" tabindex="-1"></a>       <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb546-15"><a href="leçon-5.html#cb546-15" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(m1))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diag3"></span>
+<img src="Cours_Stats_R_files/figure-html/diag3-1.png" alt="Diagnostics de l'ANOVA." width="672" />
+<p class="caption">
+Figure 6.6: Diagnostics de l’ANOVA.
+</p>
+</div>
+<p>On peut procéder à l’interprétation des résultats.</p>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="leçon-5.html#cb547-1" tabindex="-1"></a><span class="do">##on extrait les résultats</span></span>
+<span id="cb547-2"><a href="leçon-5.html#cb547-2" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## Region       4  853.6  213.39   4.302 0.00875 **
+## Residuals   25 1240.2   49.61                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>On note dans <code>summary(m1)</code> que la dernière ligne du tableau <code>Signif. codes</code> donne les symboles qui décrivent le seuil de signification statistique du facteur <code>Region</code>. Ces caractères ne sont affichés qu’en présence de termes significatifs dans l’analyse. Ici, <code>Region</code> a les caractères <span class="math inline">\(\mathtt{\ast\ast}\)</span> sur sa ligne, indiquant que <span class="math inline">\(P \leq 0.01\)</span>. Ces symboles n’ont d’autre fonction que d’attirer l’attention de l’analyste sur les termes significatifs dans l’analyse. Il est peu probable d’observer une valeur de <span class="math inline">\(F\)</span> de 4.3 dans une expérience avec des échantillons (groupes) qui ont la même taille que le jeu de données original tirés d’une population où <span class="math inline">\(H_0\)</span> est vraie. La valeur exacte du <span class="math inline">\(P\)</span> est de 0.0088 (<span class="math inline">\(P(F_{4, 25} \geq 4.3015) = 0.0088\)</span>). On rejette l’hypothèse nulle et on conclut qu’il y a un effet de la région : au moins une moyenne d’une région diffère d’une autre. Toutefois, l’ANOVA ne nous permet pas d’identifier quelles régions diffèrent entre elles. Pour ce faire, on doit utiliser un autre type de test qui sera présenté dans la prochaine section.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="comparaison-multiples" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Comparaison multiples<a href="leçon-5.html#comparaison-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’ANOVA permet de déterminer si la variance expliquée par le facteur à l’étude est supérieure à la variance résiduelle (c.-à-d., la variance inexpliquée). Ainsi, le tableau d’ANOVA nous permet de rejeter ou non <span class="math inline">\(H_0\)</span>. Lorsqu’on rejette l’hypothèse nulle après avoir effectué un test <span class="math inline">\(t\)</span> pour comparer deux groupes indépendants, on sait qu’il existe une différence entre ces deux groupes. Dans une ANOVA qui a plus de deux groupes, le rejet de <span class="math inline">\(H_0\)</span> ne nous révèle pas où se trouvent les différences<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>. Les comparaisons multiples permettent d’identifier les différences entre les moyennes des groupes.</p>
+<p>Comme nous l’avons mentionné au début de ce texte, effectuer des comparaisons multiples augmente la probabilité de commettre une erreur de type I. L’ANOVA est conçue pour comparer tous les groupes simultanément afin d’évaluer l’effet global du traitement. Lorsque l’ANOVA entraîne le rejet de l’hypothèse nulle, il s’avère nécessaire d’exécuter des comparaisons multiples entre les groupes afin de trouver quelles sont les différences. Ces comparaisons effectuées après l’ANOVA augmentent aussi la probabilité de commettre une erreur de type I – la probabilité de commettre ce type d’erreur est supérieure au seuil <span class="math inline">\(\alpha\)</span> que nous avons fixé. Puisque les comparaisons multiples sont effectués après l’ANOVA, on parle souvent de tests <em>a posteriori</em> ou <em>post hoc</em> (post hoc <em>tests</em>, a posteriori <em>tests</em>).</p>
+<div id="erreurs-associées-aux-comparaisons-multiples" class="section level4 hasAnchor" number="6.1.3.1">
+<h4><span class="header-section-number">6.1.3.1</span> Erreurs associées aux comparaisons multiples<a href="leçon-5.html#erreurs-associées-aux-comparaisons-multiples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>On peut commettre des erreurs à deux niveaux lorsqu’on fait des comparaisons multiples : une <strong>erreur au niveau de la comparaison</strong> (<em>comparison-wise error</em>) et une <strong>erreur au niveau de l’expérience</strong> (<em>experiment-wise error</em>). L’erreur au niveau de la comparaison se traduit par la déclaration d’un faux positif lors d’une comparaison spécifique entre deux groupes. La probabilité de commettre cette erreur pour une comparaison donnée est déterminée par <span class="math inline">\(\alpha\)</span>. L’erreur au niveau de l’expérience, quant à elle, correspond à déclarer au moins un faux positif parmi toutes les comparaisons effectuées. Plus on a de groupes (et de comparaisons), plus notre erreur au niveau de l’expérience augmente. Le prochain exemple illustre les différences entre les deux niveaux d’erreur.</p>
+<div class="exemple" section="6">
+<p>Pour faciliter la compréhension de l’erreur liée à la comparaison entre les groupes et l’erreur liée à l’expérimentation, nous vous proposons l’exercice de simulation suivant. Nous simulons des données où l’hypothèse nulle est vraie, c’est-à-dire qu’il n’y a aucune différence entre les moyennes des groupes. On crée trois groupes de <span class="math inline">\(n = 50\)</span> tirés d’une population suivant une distribution normale avec <span class="math inline">\(\mu = 5\)</span> et <span class="math inline">\(\sigma = 3\)</span> (c.-à-d., N(5, 3)). En d’autres mots, nous simulons les données de trois groupes et ces données sont toutes tirées de la même population pour satisfaire <span class="math inline">\(H_0\)</span>. Il y a trois comparaisons possibles: groupe 1 <em>vs</em> groupe 3, groupe 2 <em>vs</em> groupe 3 et groupe 1 <em>vs</em> groupe 2. Nous voulons savoir quelle est la probabilité de commettre une erreur liée à la comparaison et une erreur liée à l’expérience. On peut décrire l’algorithme de la simulation comme suit :</p>
+</div>
+<ol style="list-style-type: decimal">
+<li>on génère des données aléatoires pour chacun des groupes conformément à <span class="math inline">\(H_0\)</span> (<code>rnorm(n = 50, mean = 5, sd = 3)</code>);</li>
+<li>on réalise les trois comparaisons (1 <em>vs</em> 3, 2 <em>vs</em> 3, 1 <em>vs</em> 2) à l’aide de trois tests <span class="math inline">\(t\)</span> (<code>t.test( )</code>);</li>
+<li>on détermine pour chaque test <span class="math inline">\(t\)</span> effectué, si <span class="math inline">\(P \leq \alpha\)</span> (p. ex., <span class="math inline">\(P \leq 0.05\)</span>);</li>
+<li>on répète les étapes 1 à 3 un grand nombre de fois (p. ex., 1000 fois).</li>
+</ol>
+<p>On peut réaliser ce genre d’exercice avec des boucles dans R. Le document <em>Les boucles avec R</em> couvre les concepts de base et donne des exemples pour construire des boucles qui permettront de réaliser des tâches répétitives.</p>
+<p>À la fin de la simulation, nous pouvons constater le nombre de fois où nous avons rejeté <span class="math inline">\(H_0\)</span> par erreur. Ici, nous savons que <span class="math inline">\(H_0\)</span> est vraie puisque nous avons simulé des données qui respectent l’hypothèse nulle (aucune différence entre les moyennes des groupes). À chaque fois que nous avons rejeté <span class="math inline">\(H_0\)</span> dans cette simulation, nous avons commis une erreur.</p>
+<p>Le tableau <a href="leçon-5.html#tab:error">6.3</a> montre le résultat des 10 premières itérations de la simulation (les étapes 1 à 3 ci-dessus). Les trois premières colonnes correspondent aux trois comparaisons possibles. La valeur NS correspond à un résultat non significatif (<span class="math inline">\(H_0\)</span> non rejetée). Le symbole * indique le rejet de <span class="math inline">\(H_0\)</span> et, par conséquent, une erreur liée à la comparaison. La quatrième colonne correspond à l’erreur liée à l’expérience. Cette colonne prend la valeur de 1 lorsqu’au moins une comparaison a rejeté <span class="math inline">\(H_0\)</span> (une erreur liée à l’expérience) et la valeur de 0 lorsqu’aucune comparaison ne rejette <span class="math inline">\(H_0\)</span>.</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:error">Table 6.3: </span>Premières itérations de la simulation illustrant les erreurs liée à la comparaison et à l’expérience.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+1 vs 2
+</th>
+<th style="text-align:center;">
+1 vs 3
+</th>
+<th style="text-align:center;">
+2 vs 3
+</th>
+<th style="text-align:center;">
+Erreur liée à l’expérience
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+<span>*</span>
+</td>
+<td style="text-align:center;width: 70px; ">
+<span>*</span>
+</td>
+<td style="text-align:center;width: 200px; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 70px; ">
+<span>*</span>
+</td>
+<td style="text-align:center;width: 70px; ">
+NS
+</td>
+<td style="text-align:center;width: 200px; ">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>La première rangée du tableau <a href="leçon-5.html#tab:error">6.3</a> correspond à la première itération, et on constate qu’aucune erreur de comparaison n’a été commise, et, par conséquent, aucune erreur liée à l’expérience. La huitième rangée du même tableau montre que les comparaisons 1 <em>vs</em> 3 et 2 <em>vs</em> 3 ont rejeté par erreur <span class="math inline">\(H_0\)</span> (erreurs liées à la comparaison) et qu’il y a donc une erreur au niveau de l’expérience. On remarquera qu’à l’intérieur de chaque colonne, la proportion du nombre d’erreurs de comparaison par rapport au nombre total d’itérations oscille autour de <span class="math inline">\(\alpha = 0.05\)</span>, puisque c’est le seuil que nous avons utilisé dans les comparaisons multiples. Toutefois, en compilant le nombre total d’erreurs au niveau de l’expérience (la quatrième colonne), on obtient la probabilité de commettre une erreur au niveau de l’expérience. Ici, nous avons :</p>
+<p><span class="math display">\[\frac{124 \: \mathrm{erreurs \: li\acute{e}es \: \grave{a} \: l^\prime exp\acute{e}rience}}{1000 \: \mathrm{it\acute{e}rations}} = 0.124\]</span></p>
+<p>Bien que nous ayons fixé le seuil <span class="math inline">\(\alpha\)</span> à 0.05, la probabilité de commettre une erreur au niveau de l’expérience est supérieure à ce seuil (0.124). Ce problème a motivé le développement de plusieurs types de comparaisons multiples afin de contrôler l’erreur au niveau de l’expérience.</p>
+</div>
+<div id="suppositions-3" class="section level4 hasAnchor" number="6.1.3.2">
+<h4><span class="header-section-number">6.1.3.2</span> Suppositions<a href="leçon-5.html#suppositions-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les tests de comparaisons multiples ont les mêmes suppositions de normalité et d’homoscédasticité que l’ANOVA. Les comparaisons multiples sont moins robustes face aux déviations de ces conditions, surtout à celles d’homoscédasticité, qui augmentent les erreurs de type I et II.</p>
+</div>
+<div id="structure-générale" class="section level4 hasAnchor" number="6.1.3.3">
+<h4><span class="header-section-number">6.1.3.3</span> Structure générale<a href="leçon-5.html#structure-générale" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Un grand nombre de tests de comparaisons multiples ont été développés pour différentes applications. En général, les tests de comparaisons multiples suivent le même principe:</p>
+<ol style="list-style-type: decimal">
+<li>on effectue l’ANOVA;</li>
+<li>si on rejette <span class="math inline">\(H_0\)</span>, on peut faire des comparaisons multiples. Si on ne rejette pas <span class="math inline">\(H_0\)</span>, l’analyse est terminée. Ce choix de ne pas poursuivre avec des comparaisons multiples s’explique du fait que l’ANOVA est plus puissante que les comparaisons multiples;</li>
+<li>on classe les moyennes des groupes par ordre croissant;</li>
+<li>on calcule la différence entre la plus grande moyenne <em>vs</em> la plus petite;</li>
+<li>comme pour un test <span class="math inline">\(t\)</span> (voir la leçon 4), on divise les différences par une erreur-type pour une statistique <span class="math inline">\(q\)</span>, c-à-d un quantile de la distribution associée à l’hypothèse nulle: <span class="math inline">\(q = (\bar{x}_{grande} - \bar{x}_{petite})/SE\)</span> . Le calcul du quantile <span class="math inline">\(q\)</span> implique donc le carré moyen des erreurs, <span class="math inline">\(MSE\)</span> (<span class="math inline">\(MSE\)</span> étant une fonction de <span class="math inline">\(SE\)</span>), mais dépend du test et de sa distribution;</li>
+<li>on compare le <span class="math inline">\(q_{obs}\)</span> à un <span class="math inline">\(q_{th\acute{e}orique}\)</span>, qui dépend du seuil <span class="math inline">\(\alpha\)</span>, des <span class="math inline">\(df\)</span> du <span class="math inline">\(MSE\)</span> et du nombre de groupes comparés. Dans la plupart des cas, <span class="math inline">\(\alpha\)</span> représente l’erreur au niveau de l’expérience;</li>
+<li>un <span class="math inline">\(q_{obs} \geq q_{th\acute{e}orique}\)</span> indique qu’il y a une différence entre la paire de moyennes comparées.</li>
+</ol>
+<p>Habituellement, on commence en comparant la plus grande moyenne <span class="math inline">\(\bar{x}_{k}\)</span> des <span class="math inline">\(k\)</span> groupes (ordonnés en ordre croissant de 1 à <span class="math inline">\(k\)</span>) aux autres (<em>vs</em> <span class="math inline">\(\bar{x}_{1}\)</span>, <em>vs</em> <span class="math inline">\(\bar{x}_{2}\)</span>, , <em>vs</em> <span class="math inline">\(\bar{x}_{k - 1}\)</span>). Si, par exemple, on ne rejette plus <span class="math inline">\(H_0\)</span> à partir de la comparaison de <span class="math inline">\(\bar{x}_{k}\)</span> <em>vs</em> <span class="math inline">\(\bar{x}_{2}\)</span>, il n’est pas nécessaire de vérifier les comparaisons pour les moyennes de 3 à <span class="math inline">\(k-1\)</span> parce que l’on sait déjà qu’on ne rejettera pas <span class="math inline">\(H_0\)</span>. On passe ensuite à la comparaison de <span class="math inline">\(\bar{x}_{k - 1}\)</span> avec les moyennes de 1 à <span class="math inline">\(k-2\)</span>. Encore une fois, nous pouvons arrêter les comparaisons avec les moyennes subséquentes, dès qu’on ne rejettera plus <span class="math inline">\(H_0\)</span> pour l’une des moyennes. On procède ainsi pour toutes les moyennes pour, enfin, terminer en comparant <span class="math inline">\(\bar{x}_{2}\)</span> <em>vs</em> <span class="math inline">\(\bar{x}_{1}\)</span>. Par exemple, considérons les moyennes de cinq groupes organisées par ordre croissant :</p>
+<p><span class="math display">\[
+\begin{array}{l c c c c c}
+A &amp; \quad C &amp; \quad B &amp; \quad E &amp; \quad D \\
+3.1 &amp; \quad 9.3 &amp; \quad 10.5 &amp; \quad 10.9 &amp; \quad 11.8
+\end{array}
+\]</span></p>
+<p>Si on compare la plus grande moyenne (groupe D) au groupe C et que l’on ne rejette pas <span class="math inline">\(H_0\)</span>, on ne testera ni le groupe D vs le groupe B, ni le groupe D vs le groupe E. De plus, on ne testera pas le groupe E vs le groupe C, car les groupes D et C ne diffèrent pas l’un de l’autre, et la valeur de E est comprise entre celles de C et D.</p>
+</div>
+<div id="test-de-tukey" class="section level4 hasAnchor" number="6.1.3.4">
+<h4><span class="header-section-number">6.1.3.4</span> Test de Tukey<a href="leçon-5.html#test-de-tukey" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Parmi les tests de comparaisons multiples, mentionnons le test de Dunnett (lorsqu’on veut comparer tous les groupes à un témoin), le test de Student-Newman-Keuls (SNK, Newman-Keuls) qui dépend du nombre de moyennes séparant les moyennes comparées, le test de Scheffé, et le test de Tukey (<em>Tukey test</em>, <em>Tukey’s Honestly Significant Difference (HSD) test</em>). Le test de Tukey est d’ailleurs l’un des tests de comparaisons multiples les plus recommandés. La statistique <span class="math inline">\(q\)</span> s’obtient comme suit :</p>
+<p><span class="math display">\[ q_{obs} = \frac{\bar{x}_{groupe \: 1} - \bar{x}_{groupe \: 2}}{SE}\]</span></p>
+<p>où <span class="math inline">\(\bar{x}_{groupe \: 1}\)</span> correspond à la moyenne du groupe 1, <span class="math inline">\(\bar{x}_{groupe \: 2}\)</span> à la moyenne du groupe 2 et <span class="math inline">\(SE\)</span> est l’erreur-type du test de Tukey. Cette dernière est donnée par <span class="math inline">\(SE = \sqrt{\frac{MSE}{n}}\)</span>, où <span class="math inline">\(MSE\)</span> est le carré moyen des erreurs et <span class="math inline">\(n\)</span> est le nombre d’observations dans chaque groupe. Nous appliquons le test de Tukey dans le prochain exemple.</p>
+<div class="exemple" section="6">
+<p>Dans l’exemple 6.6, nous avons rejeté l’hypothèse nulle à l’aide de l’ANOVA réalisée sur des données de consommation annuelle de boissons sucrées par des jeunes de 5 régions différentes. On peut appliquer le test de Tukey pour trouver où se trouvent les différences entre les moyennes des groupes. On peut commencer par calculer les moyennes des groupes et les ordonner :</p>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="leçon-5.html#cb549-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
+<span id="cb549-2"><a href="leçon-5.html#cb549-2" tabindex="-1"></a>moy <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> cons<span class="sc">$</span>Volume, <span class="at">INDEX =</span> cons<span class="sc">$</span>Region, <span class="at">FUN =</span> mean)</span>
+<span id="cb549-3"><a href="leçon-5.html#cb549-3" tabindex="-1"></a><span class="do">##en ordre croissant et en arrondissant à deux décimales</span></span>
+<span id="cb549-4"><a href="leçon-5.html#cb549-4" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sort</span>(moy), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   BSL    CA    CN  SLSJ   GIM 
+## 46.52 55.33 56.93 61.05 61.07</code></pre>
+<p>Nous pouvons calculer l’erreur-type du dénominateur nécessaire au calcul de la statistique, <span class="math inline">\(SE = \sqrt{\frac{MSE}{n}}\)</span> :</p>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="leçon-5.html#cb551-1" tabindex="-1"></a><span class="do">##sous-jeu de données</span></span>
+<span id="cb551-2"><a href="leçon-5.html#cb551-2" tabindex="-1"></a>SLSJ <span class="ot">&lt;-</span> cons[cons<span class="sc">$</span>Region <span class="sc">==</span> <span class="st">&quot;SLSJ&quot;</span>, ]</span>
+<span id="cb551-3"><a href="leçon-5.html#cb551-3" tabindex="-1"></a>GIM <span class="ot">&lt;-</span> cons[cons<span class="sc">$</span>Region <span class="sc">==</span> <span class="st">&quot;GIM&quot;</span>, ]</span>
+<span id="cb551-4"><a href="leçon-5.html#cb551-4" tabindex="-1"></a>CA <span class="ot">&lt;-</span> cons[cons<span class="sc">$</span>Region <span class="sc">==</span> <span class="st">&quot;CA&quot;</span>, ]</span>
+<span id="cb551-5"><a href="leçon-5.html#cb551-5" tabindex="-1"></a>CN <span class="ot">&lt;-</span> cons[cons<span class="sc">$</span>Region <span class="sc">==</span> <span class="st">&quot;CN&quot;</span>, ]</span>
+<span id="cb551-6"><a href="leçon-5.html#cb551-6" tabindex="-1"></a>BSL <span class="ot">&lt;-</span> cons[cons<span class="sc">$</span>Region <span class="sc">==</span> <span class="st">&quot;BSL&quot;</span>, ]</span>
+<span id="cb551-7"><a href="leçon-5.html#cb551-7" tabindex="-1"></a><span class="do">##SSE de SLSJ</span></span>
+<span id="cb551-8"><a href="leçon-5.html#cb551-8" tabindex="-1"></a>SSE.SLSJ <span class="ot">&lt;-</span> <span class="fu">sum</span>((SLSJ<span class="sc">$</span>Volume<span class="sc">-</span><span class="fu">mean</span>(SLSJ<span class="sc">$</span>Volume))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb551-9"><a href="leçon-5.html#cb551-9" tabindex="-1"></a><span class="do">##SSE de GIM</span></span>
+<span id="cb551-10"><a href="leçon-5.html#cb551-10" tabindex="-1"></a>SSE.GIM <span class="ot">&lt;-</span> <span class="fu">sum</span>((GIM<span class="sc">$</span>Volume<span class="sc">-</span><span class="fu">mean</span>(GIM<span class="sc">$</span>Volume))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb551-11"><a href="leçon-5.html#cb551-11" tabindex="-1"></a><span class="do">##SSE de CA</span></span>
+<span id="cb551-12"><a href="leçon-5.html#cb551-12" tabindex="-1"></a>SSE.CA <span class="ot">&lt;-</span> <span class="fu">sum</span>((CA<span class="sc">$</span>Volume<span class="sc">-</span><span class="fu">mean</span>(CA<span class="sc">$</span>Volume))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb551-13"><a href="leçon-5.html#cb551-13" tabindex="-1"></a><span class="do">##SSE de CN</span></span>
+<span id="cb551-14"><a href="leçon-5.html#cb551-14" tabindex="-1"></a>SSE.CN <span class="ot">&lt;-</span> <span class="fu">sum</span>((CN<span class="sc">$</span>Volume<span class="sc">-</span><span class="fu">mean</span>(CN<span class="sc">$</span>Volume))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb551-15"><a href="leçon-5.html#cb551-15" tabindex="-1"></a><span class="do">##SSE de BSL</span></span>
+<span id="cb551-16"><a href="leçon-5.html#cb551-16" tabindex="-1"></a>SSE.BSL <span class="ot">&lt;-</span> <span class="fu">sum</span>((BSL<span class="sc">$</span>Volume<span class="sc">-</span><span class="fu">mean</span>(BSL<span class="sc">$</span>Volume))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb551-17"><a href="leçon-5.html#cb551-17" tabindex="-1"></a><span class="do">##SSE</span></span>
+<span id="cb551-18"><a href="leçon-5.html#cb551-18" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> SSE.SLSJ <span class="sc">+</span> SSE.GIM <span class="sc">+</span> SSE.CA <span class="sc">+</span> SSE.CN <span class="sc">+</span> SSE.BSL</span>
+<span id="cb551-19"><a href="leçon-5.html#cb551-19" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 1240.203</code></pre>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="leçon-5.html#cb553-1" tabindex="-1"></a><span class="do">##degrés de liberté de SSE</span></span>
+<span id="cb553-2"><a href="leçon-5.html#cb553-2" tabindex="-1"></a>df.erreur <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">*</span> (<span class="dv">6</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb553-3"><a href="leçon-5.html#cb553-3" tabindex="-1"></a>df.erreur</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="leçon-5.html#cb555-1" tabindex="-1"></a><span class="do">##carré moyen des erreurs</span></span>
+<span id="cb555-2"><a href="leçon-5.html#cb555-2" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> SSE<span class="sc">/</span>df.erreur</span>
+<span id="cb555-3"><a href="leçon-5.html#cb555-3" tabindex="-1"></a>MSE</span></code></pre></div>
+<pre><code>## [1] 49.60813</code></pre>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="leçon-5.html#cb557-1" tabindex="-1"></a><span class="do">##SE pour le Tukey</span></span>
+<span id="cb557-2"><a href="leçon-5.html#cb557-2" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(MSE<span class="sc">/</span><span class="dv">6</span>)</span>
+<span id="cb557-3"><a href="leçon-5.html#cb557-3" tabindex="-1"></a>SE</span></code></pre></div>
+<pre><code>## [1] 2.875417</code></pre>
+<p>Par la suite, on calcule le <span class="math inline">\(q\)</span> pour chaque comparaison multiple (tableau <a href="leçon-5.html#tab:tuk">6.4</a>). Chaque valeur de <span class="math inline">\(q\)</span> est comparée à ce qu’on devrait obtenir si <span class="math inline">\(H_0\)</span> est vraie et la fonction <code>ptukey( )</code> nous fournit la probabilité cumulative en faveur de <span class="math inline">\(H_0\)</span> pour <code>nmeans</code> groupes et <code>df</code> degrés de liberté du terme d’erreur <strong>de l’ANOVA</strong>. À titre d’exemple, la probabilité de la comparison GIM vs BSL se calcule à l’aide de la commande suivante :</p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="leçon-5.html#cb559-1" tabindex="-1"></a><span class="fu">ptukey</span>(<span class="at">q=</span><span class="fl">5.06</span>, <span class="at">nmeans=</span><span class="dv">5</span>, <span class="at">df=</span><span class="dv">25</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.01152797</code></pre>
+<p>Où <span class="math inline">\(q\)</span> est <span class="math inline">\(q_{obs} = (\bar{x}_{GIM} - \bar{x}_{BSL})/{SE}\)</span></p>
+<p>Comme d’habitude, on rejette <span class="math inline">\(H_0\)</span> lorsqu’elle est peu probable (c-à-d, <span class="math inline">\(P \leq \alpha\)</span>).</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tuk">Table 6.4: </span>Comparaisons multiples de Tukey entre les groupe définis par les régions.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Comparaison
+</th>
+<th style="text-align:center;">
+Difference
+</th>
+<th style="text-align:center;">
+SE
+</th>
+<th style="text-align:center;">
+q_obs
+</th>
+<th style="text-align:center;">
+P
+</th>
+<th style="text-align:center;">
+Conclusion
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;width: 8em; ">
+GIM vs BSL
+</td>
+<td style="text-align:center;width: 8em; ">
+14.55
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+5.06
+</td>
+<td style="text-align:center;width: 5em; ">
+0.012
+</td>
+<td style="text-align:center;width: 10em; ">
+rejeter <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+GIM vs CA
+</td>
+<td style="text-align:center;width: 8em; ">
+5.73
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+1.994
+</td>
+<td style="text-align:center;width: 5em; ">
+0.627
+</td>
+<td style="text-align:center;width: 10em; ">
+ne pas rejeter <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+GIM vs CN
+</td>
+<td style="text-align:center;width: 8em; ">
+4.13
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+GIM vs SLJS
+</td>
+<td style="text-align:center;width: 8em; ">
+0.02
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+SLSJ vs BSL
+</td>
+<td style="text-align:center;width: 8em; ">
+14.53
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+5.054
+</td>
+<td style="text-align:center;width: 5em; ">
+0.012
+</td>
+<td style="text-align:center;width: 10em; ">
+rejeter <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+SLSJ vs CA
+</td>
+<td style="text-align:center;width: 8em; ">
+5.72
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+SLSJ vs CN
+</td>
+<td style="text-align:center;width: 8em; ">
+4.12
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+CN vs BSL
+</td>
+<td style="text-align:center;width: 8em; ">
+10.42
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+3.623
+</td>
+<td style="text-align:center;width: 5em; ">
+0.109
+</td>
+<td style="text-align:center;width: 10em; ">
+ne pas rejeter <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+CN vs CA
+</td>
+<td style="text-align:center;width: 8em; ">
+1.6
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 8em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;width: 8em; ">
+CA vs BSL
+</td>
+<td style="text-align:center;width: 8em; ">
+8.82
+</td>
+<td style="text-align:center;width: 5em; ">
+2.88
+</td>
+<td style="text-align:center;width: 10em; ">
+on ne teste pas
+</td>
+<td style="text-align:center;width: 5em; ">
+</td>
+<td style="text-align:center;width: 10em; ">
+</td>
+</tr>
+</tbody>
+</table>
+<p>On peut créer ce tableau rapidement à l’aide de la fonction <code>TukeyHSD( )</code> :</p>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="leçon-5.html#cb561-1" tabindex="-1"></a><span class="do">##test de Tukey</span></span>
+<span id="cb561-2"><a href="leçon-5.html#cb561-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(m1, <span class="at">which =</span> <span class="st">&quot;Region&quot;</span>)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = Volume ~ Region, data = cons)
+## 
+## $Region
+##                 diff        lwr      upr     p adj
+## CA-BSL    8.81666667  -3.125984 20.75932 0.2243248
+## CN-BSL   10.41666667  -1.525984 22.35932 0.1088202
+## GIM-BSL  14.55000000   2.607350 26.49265 0.0115253
+## SLSJ-BSL 14.53333333   2.590683 26.47598 0.0116387
+## CN-CA     1.60000000 -10.342650 13.54265 0.9946026
+## GIM-CA    5.73333333  -6.209317 17.67598 0.6272414
+## SLSJ-CA   5.71666667  -6.225984 17.65932 0.6297485
+## GIM-CN    4.13333333  -7.809317 16.07598 0.8453941
+## SLSJ-CN   4.11666667  -7.825984 16.05932 0.8472695
+## SLSJ-GIM -0.01666667 -11.959317 11.92598 1.0000000</code></pre>
+<p>D’après la sortie R, on observe seulement deux différences significatives (<span class="math inline">\(\alpha= 0.05\)</span>) : la consommation moyenne pour la région BSL est plus petite que celles des régions SLSJ et GIM. En conséquence, on ne peut pas conclure que les moyennes pour les régions CA et CN diffèrent avec celles des autres régions, ni que la moyenne pour la région SLSJ diffère de celle de la région GIM.</p>
+</div>
+</div>
+<div id="présentation-des-résultats" class="section level4 hasAnchor" number="6.1.3.5">
+<h4><span class="header-section-number">6.1.3.5</span> Présentation des résultats<a href="leçon-5.html#présentation-des-résultats" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Il est possible de présenter les résultats des comparaisons multiples de différentes manières. L’une d’elles consiste à ordonner les groupes selon la valeur des moyennes et d’unir à l’aide d’un trait les groupes qui ne diffèrent pas entre eux. On peut aussi présenter les résultats graphiquement, typiquement en présentant les moyennes ± des barres d’erreur. Comme barre d’erreur, on peut utiliser l’erreur-type des moyennes de chaque groupe, la racine-carrée du carré moyen des erreurs (<span class="math inline">\(\sqrt{MSE}\)</span>) ou des intervalles de confiance construits à partir de l’une ou l’autres des mesures de dispersion mentionnées. On emploie des lettres pour distinguer les groupes qui diffèrent entre eux sur le graphique. Le prochain exemple illustre ces deux méthodes avec les données de consommation annuelle de boissons sucrées par des jeunes selon différentes régions de l’Est du Québec. À noter que les comparaisons multiples indiquent parfois qu’un traitement appartient à deux groupes. Cette double appartenance indique que la comparaison multiple n’a pas permis de détecter une différence entre ces deux groupes.</p>
+<p>Les tests de comparaisons multiples ne peuvent parfois trouver de groupes qui diffèrent entre eux, alors que l’ANOVA avait rejeté <span class="math inline">\(H_0\)</span>. L’ANOVA est plus puissante que les tests de comparaisons multiples, ce qui explique, à l’occasion, l’absence d’une différence entre les paires de groupes. Puisque l’ANOVA est plus puissante que les comparaisons multiples, nous recommandons de ne pas procéder à des comparaisons multiples si l’ANOVA n’a pas réussi à rejeter <span class="math inline">\(H_0\)</span>.</p>
+<div class="exemple" section="6">
+<p>On peut représenter succinctement le résultat des comparaisons multiples sur les données de consommation de boissons sucrées selon la région :</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+BSL
+</th>
+<th style="text-align:center;">
+CA
+</th>
+<th style="text-align:center;">
+CN
+</th>
+<th style="text-align:center;">
+SLSJ
+</th>
+<th style="text-align:center;">
+GIM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;width: 8em; ">
+46.52
+</td>
+<td style="text-align:center;width: 8em; ">
+55.33
+</td>
+<td style="text-align:center;width: 8em; ">
+56.93
+</td>
+<td style="text-align:center;width: 8em; ">
+61.05
+</td>
+<td style="text-align:center;width: 8em; ">
+61.07
+</td>
+</tr>
+</tbody>
+</table>
+<p>La présentation des résultats à l’aide de traits facilite l’interprétation. On voit rapidement que CA et CN ont une double appartenance: ils appartiennent au groupe constitué de BSL, CA et CN ainsi qu’au groupe composé de CA, CN, SLSJ et GIM. Les groupes SLSJ et GIM ne diffèrent pas entre eux, mais sont différents du groupe BSL. En effet, le même trait relie les groupes SLSJ et GIM et ce même trait n’inclut pas le groupe BSL. Le graphique montre la même information (présence de deux groupes), mais à l’aide de lettres (Figure <a href="leçon-5.html#fig:plotregion">6.7</a>). On remarque que les groupes CA et CN ont une double appartenance puisqu’ils sont identifiés avec deux lettres. On trouve le code complet pour obtenir le graphique ci-dessous :</p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="leçon-5.html#cb563-1" tabindex="-1"></a><span class="do">##ordonner moyennes</span></span>
+<span id="cb563-2"><a href="leçon-5.html#cb563-2" tabindex="-1"></a>moys <span class="ot">&lt;-</span> <span class="fu">sort</span>(moy)</span>
+<span id="cb563-3"><a href="leçon-5.html#cb563-3" tabindex="-1"></a><span class="do">##calculer racine carrée de MSE</span></span>
+<span id="cb563-4"><a href="leçon-5.html#cb563-4" tabindex="-1"></a>sqrt.MSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb563-5"><a href="leçon-5.html#cb563-5" tabindex="-1"></a></span>
+<span id="cb563-6"><a href="leçon-5.html#cb563-6" tabindex="-1"></a><span class="do">##calculer les limites des barres d&#39;erreur</span></span>
+<span id="cb563-7"><a href="leçon-5.html#cb563-7" tabindex="-1"></a>lim.sup <span class="ot">&lt;-</span> moys <span class="sc">+</span> sqrt.MSE</span>
+<span id="cb563-8"><a href="leçon-5.html#cb563-8" tabindex="-1"></a>lim.inf <span class="ot">&lt;-</span> moys <span class="sc">-</span> sqrt.MSE</span>
+<span id="cb563-9"><a href="leçon-5.html#cb563-9" tabindex="-1"></a></span>
+<span id="cb563-10"><a href="leçon-5.html#cb563-10" tabindex="-1"></a><span class="do">##créer graphique vide sans axe des x&#39;s</span></span>
+<span id="cb563-11"><a href="leçon-5.html#cb563-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb563-12"><a href="leçon-5.html#cb563-12" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(lim.inf), <span class="fu">max</span>(lim.sup<span class="sc">+</span><span class="dv">10</span>)),</span>
+<span id="cb563-13"><a href="leçon-5.html#cb563-13" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="at">xlab =</span> <span class="st">&quot;Région&quot;</span>,</span>
+<span id="cb563-14"><a href="leçon-5.html#cb563-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Consommation annuelle (L)&quot;</span>,</span>
+<span id="cb563-15"><a href="leçon-5.html#cb563-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine-carrée de MSE&quot;</span>,</span>
+<span id="cb563-16"><a href="leçon-5.html#cb563-16" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb563-17"><a href="leçon-5.html#cb563-17" tabindex="-1"></a><span class="do">##ajouter axe des x&#39;s</span></span>
+<span id="cb563-18"><a href="leçon-5.html#cb563-18" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb563-19"><a href="leçon-5.html#cb563-19" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">names</span>(moys))</span>
+<span id="cb563-20"><a href="leçon-5.html#cb563-20" tabindex="-1"></a><span class="do">##ajouter moyennes</span></span>
+<span id="cb563-21"><a href="leçon-5.html#cb563-21" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb563-22"><a href="leçon-5.html#cb563-22" tabindex="-1"></a>       <span class="at">y =</span> moys)</span>
+<span id="cb563-23"><a href="leçon-5.html#cb563-23" tabindex="-1"></a><span class="do">##ajouter barres d&#39;erreurs</span></span>
+<span id="cb563-24"><a href="leçon-5.html#cb563-24" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb563-25"><a href="leçon-5.html#cb563-25" tabindex="-1"></a>       <span class="at">y0 =</span> lim.inf,</span>
+<span id="cb563-26"><a href="leçon-5.html#cb563-26" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb563-27"><a href="leçon-5.html#cb563-27" tabindex="-1"></a>       <span class="at">y1 =</span> lim.sup, <span class="at">length =</span> <span class="fl">0.05</span>,</span>
+<span id="cb563-28"><a href="leçon-5.html#cb563-28" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb563-29"><a href="leçon-5.html#cb563-29" tabindex="-1"></a><span class="do">##ajouter les lettres, lim.sup + 10</span></span>
+<span id="cb563-30"><a href="leçon-5.html#cb563-30" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">54.5</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb563-31"><a href="leçon-5.html#cb563-31" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">63.3</span>, <span class="at">labels =</span> <span class="st">&quot;ab&quot;</span>)</span>
+<span id="cb563-32"><a href="leçon-5.html#cb563-32" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">64.9</span>, <span class="at">labels =</span> <span class="st">&quot;ab&quot;</span>)</span>
+<span id="cb563-33"><a href="leçon-5.html#cb563-33" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">69.0</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb563-34"><a href="leçon-5.html#cb563-34" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">69.1</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotregion"></span>
+<img src="Cours_Stats_R_files/figure-html/plotregion-1.png" alt="Présentation graphique des résultats des comparaisons multiples avec le test de Tukey." width="672" />
+<p class="caption">
+Figure 6.7: Présentation graphique des résultats des comparaisons multiples avec le test de Tukey.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="conclusion-5" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Conclusion<a href="leçon-5.html#conclusion-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous venons d’étudier le concept de comparaisons multiples ainsi que les problèmes qui y sont associés, notamment une augmentation de la probabilité de commettre une erreur de type I (déclarer un faux positif). Au lieu d’utiliser une série de tests <span class="math inline">\(t\)</span>, nous avons vu que l’analyse de variance (ANOVA) permet de comparer tous les groupes simultanément en estimant la variance expliquée par le facteur (variable catégorique) d’intérêt et en la comparant à la variance résiduelle (inexpliquée). Le tableau d’ANOVA véhicule beaucoup d’information et il est important d’inclure ses détails dans la rédaction des résultats. Bien que l’ANOVA permette de déterminer si le facteur a un effet important sur la variable réponse, elle ne permet pas de déterminer où se trouvent les différences. Pour ce faire, nous avons recours à des tests de comparaisons multiples exécutés <em>a posteriori</em> qui contrôlent l’erreur au niveau de l’expérience. Pour terminer, nous avons fait quelques propositions concernant la présentation des résultats afin de faciliter l’interprétation d’une ANOVA.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="18">
+<li id="fn18"><p>Rappel: Ici, la valeur de <span class="math inline">\(P\)</span> correspond à la probabilité d’obtenir une valeur de <span class="math inline">\(F\)</span> supérieure ou égale à celle qu’on a observée (dans les données originales) lorsqu’on répète l’échantillonnage avec la même taille d’échantillon dans la même population et que l’hypothèse nulle est vraie. On peut écrire plus succinctement: <span class="math inline">\(P = 0.7588\)</span>.<a href="leçon-5.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>Dans les cas où le nombre d’observations varie d’un groupe à l’autre, il est préférable d’utiliser la fonction plus générale, <code>lm( )</code> qui permet de réaliser plusieurs types de modèles linéaires.<a href="leçon-5.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p>Le tableau d’ANOVA classique ne permet pas de décortiquer où se trouvent les différences entre les groupes. Néanmoins, il est possible d’utiliser des contrastes orthogonaux pour décomposer la somme des carrés du facteur à l’intérieur du tableau d’ANOVA. Ce concept est plus avancé et ne sera pas couvert dans le cours.<a href="leçon-5.html#fnref20" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lecon6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="les-boucles-avec-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

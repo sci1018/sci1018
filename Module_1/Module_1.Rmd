@@ -1,16 +1,9 @@
-# (PART) APPRENTISSAGE {-}
 
-# Statistiques descriptives
-
----
-
-Le contenu théorique de chaque leçon est présenté dans un document comme celui-ci et intègre souvent du code en langage de programmation R. Nous sommes conscients que la convention en français est d'utiliser la virgule pour indiquer la décimale.
-Toutefois, nous utilisons systématiquement le point pour désigner la décimale dans le texte. Ce choix vient du fait que la syntaxe de R utilise le point comme décimale - à la fois pour la saisie de valeurs numériques et pour l'affichage des sorties d'analyses. Ainsi, l'usage du point uniformisera le texte et nous sommes d'avis que cette décision facilitera sa compréhension.
-
----
-
+# Statistiques descriptives {#lecon1}
 
 ###### À quoi servent les statistiques {-}
+
+--- 
 
 Les statistiques constituent une partie importante de la démarche scientifque. Elles s'appliquent à des domaines aussi variés que l'écologie, le génie, la psychologie, la médecine, et les sciences sociales. Les objectifs de l'analyse statistique sont les suivants :
 
@@ -19,9 +12,34 @@ Les statistiques constituent une partie importante de la démarche scientifque. 
  -	Inférer les résultats dans un contexte plus général (où inférer signife "tirer des conclusions"). C'est ce que font, par exemple, régulièrement les maisons de sondage d'opinions politiques auprès de la population.
  -	Faire des prédictions. La prédiction consiste à construire un modèle et l'utiliser pour prédire le comportement d'une variable d'intérêt. On peut utiliser la prédiction en médecine, météorologie ou en toxicologie, par exemple. 
  
-Définissons maintenant certains termes et concepts en statistique.
+Nous allons définir dans cette leçon certains termes et concepts en statistique.
 
-## Théories
+---  
+
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `c( )`
+  - `sd( )`
+  - `sqrt( )`
+  - `var( )`
+  - `sum( )`
+  - `mean( )`
+  - `median( )`
+  - `quantile( )`
+  - `dnorm( )`
+  - `pnorm( )`
+  - `qnorm( )`
+  - `rnorm( )`
+  </div>
+  
+</div> 
+
+## Leçon
 
 ### Paramètre vs statistique
 
@@ -55,9 +73,8 @@ Lors d'une expérience sur la hauteur de semis sur un sol argileux après une sa
 
 $$
 \bar{x} = \frac{\sum\limits_{i=1}^nx_i}{n} = \frac{12.3 + 4.2 + 5.9 +  \ldots + 8.0 + 6.1}{10} \\
-\bar{x} = 6.51 
+\bar{x} = `r round(mean(c(12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1)), digits = 2)`
 $$
-<!-- je n'arrive pas à mettre les calculs dans les équations ci-dessus comme dans le texte ci-dessous pour afficher le résultat 6.51 -->
 Ainsi, la moyenne arithmétique de cet échantillon est de `r round(mean(c(12.3, 4.2, 5.9, 9.1, 3.3, 5.1, 7.3, 3.8, 8.0, 6.1)), digits = 2) ` cm.
 :::
 
@@ -204,7 +221,7 @@ Imaginez qu'on ait un échantillon de 5 observations dont on ne connait rien. Ce
 
 #### Carré moyen (variance)
 
-Comme nous l'avons mentionné plus tôt, la somme des carrés des erreurs ($SSE$) augmente avec la taille de l'échantillon. Une meilleure mesure devrait tenir compte de la taille d'échantillon. Le **carré moyen**(*mean square, mean squared error, MSE*) est une telle mesure de dispersion :
+Comme nous l'avons mentionné plus tôt, la somme des carrés des erreurs ($SSE$) augmente avec la taille de l'échantillon. Une meilleure mesure devrait tenir compte de la taille d'échantillon. Le **carré moyen** (*mean square, mean squared error, MSE*) est une telle mesure de dispersion :
 
 $$
 MSE = \frac{SSE}{df} = \frac{\sum\limits_{i=1}^n (x_i - \bar{x})^2}{n - 1}
@@ -299,9 +316,8 @@ L'erreur-type nous permet de calculer des **intervalles de confiance** autour de
 $$
 P(\bar{x} - 1.96 \cdot SE \leq \mu \leq \bar{x} + 1.96 \cdot SE) = 0.95
 $$
-Un $IC$ à 95 \% indique que la moyenne de la population ($\mu$) devrait se trouver 95 \% du temps (c.-à-d., la probabilité est de 0.95) à l'intérieur de l'intervalle si on répète l'échantillonnage à plusieurs reprises avec le même nombre d'observations. Pour un $IC$ donné, la moyenne de la population $\mu$ est incluse ou non ^[Les gens ont souvent une interprétation bayésienne de l'intervalle de confiance en affirmant que c'est la probabilité que la moyenne soit comprise dans l'intervalle de confiance construit à partir d'un seul échantillon. Dans le cours, nous ferons uniquement appel aux statistiques classiques aussi appelées fréquentistes et nous utiliserons la définition classique de l'intervalle de confiance.]. L'$IC$ est construit à partir d'un échantillon, mais concerne la moyenne $\mu$ de la population. Nous expliquerons en détail la construction et l'interprétation d'intervalles de confiance à la prochaine leçon(voir aussi la section 7 de la présente leçon pour comprendre l'origine du facteur 1.96). Pour l'instant, il suffit de réaliser qu'on peut utiliser cette intervalle pour en indiquer la précision.
+Un $IC$ à 95 \% indique que la moyenne de la population ($\mu$) devrait se trouver 95 \% du temps (c.-à-d., la probabilité est de 0.95) à l'intérieur de l'intervalle si on répète l'échantillonnage à plusieurs reprises avec le même nombre d'observations. Pour un $IC$ donné, la moyenne de la population $\mu$ est incluse ou non ^[Les gens ont souvent une interprétation bayésienne de l'intervalle de confiance en affirmant que c'est la probabilité que la moyenne soit comprise dans l'intervalle de confiance construit à partir d'un seul échantillon. Dans le cours, nous ferons uniquement appel aux statistiques classiques aussi appelées fréquentistes et nous utiliserons la définition classique de l'intervalle de confiance.]. L'$IC$ est construit à partir d'un échantillon, mais concerne la moyenne $\mu$ de la population. Nous expliquerons en détail la construction et l'interprétation d'intervalles de confiance à la prochaine leçon. Pour l'instant, il suffit de réaliser qu'on peut utiliser cette intervalle pour en indiquer la précision.
 
-<!-- La phrase "voir aussi la section 7 de la présente leçon pour comprendre l'origine du facteur 1.96" se trouve dans le PDF mais pas dans le latex -->
 
 #### Autres mesures de dispersion
 
@@ -339,6 +355,7 @@ barplot(data, axis.lty = 1, space = 1, ylim =c(0, 22), ylab = "Fréquence",
         xlab = "Nombre de pucerons", main = "Diagramme en bâton", col = "bisque")
 text(x = 1, y = 20, labels = expression(bold(b)))
 ```
+
 ### Loi des grands nombres et théorème de la limite centrale
 
 Deux principes importants agissent sur l'échantillonnage (et les échantillons) et nous permettent d'analyser les données. La **loi des grands nombres** stipule que la moyenne de l'échantillon ($\bar{x}$) tend vers la moyenne de la population ($\mu$) au fur et à mesure que la taille de l'échantillon augmente. D'où l'importance d'une bonne taille d'échantillon. 
@@ -360,8 +377,8 @@ On connaît bien les propriétés de la distribution normale et plusieurs approc
 La distribution normale se définit par la **fonction de densité de probabilité** (*probability density function, pdf*) suivante:
 
 $$
-f(x \vert \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2} = \frac{\mathrm{exp}(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}} 
-
+f(x \vert \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2} 
+= \frac{\mathrm{exp}(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}} 
 $$
 où $x$ correspond à la valeur numérique d'intérêt, $\mu$ représente la moyenne de la population, $\sigma$ est l'écart-type de la population, $\pi$ est la constante 3.14159... et $e$ est la constante 2.71828.... Cette distribution comporte deux paramètres, $\mu$ et $\sigma$ et on représente parfois cette distribution avec la notation N($\mu$, $\sigma$).
 
@@ -435,7 +452,6 @@ legend(x = "topright", pch = 17, col = c("red", "blue", "green"),
        legend = c("3.4 g", "8.9 g", "10.2 g"), title = "Souris")
 ```
 :::
-
 
 
 La distribution normale comprend deux paramètres, $\mu$ et $\sigma$, ce qui signifie que l'on peut tracer une courbe normale dès que nous connaissons ces deux valeurs. La moyenne ($\mu$) détermine la position (fig. \@ref(fig:shape)a) et la variance détermine la forme de la courbe (Figure \@ref(fig:shape)b).
@@ -836,11 +852,9 @@ rnorm(n = 30, mean = 5.2, sd = 9.3)
 
 On remarque qu'à chaque fois que l'on utilise `rnorm()`, on obtient un résultat des observations (aléatoires) différentes.
 
-## Exercices
+## Autoévaluation
 
-Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques de base* de la section *Statistiques descriptives* pour réaliser les exercices suivants dans R. 
-
-### Question 1
+### Question 1 {-}
 
 **a.** La somme des carrés des erreurs est une mesure de tendance centrale: Vrai ou Faux?
 
@@ -873,7 +887,7 @@ Veuillez consulter les sections *Théories* et *Introduction à R - Statistiques
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a.** On mesure la profondeur de matière organique dans le sol de 100 parcelles en milieu agricole. À partir de 100 valeurs de profondeurs de sols, on obtient une moyenne de 12.3 cm et un écart-type de 4.5 cm. Calculez l'erreur-type de la moyenne. N.B. Cette question s'applique uniquement à l'approche par programmation. 
 

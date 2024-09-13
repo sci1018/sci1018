@@ -1,10 +1,62 @@
-# Régression linéaire simple et corrélation
+# Régression linéaire simple et corrélation {#lecon10}
+
+--- 
 
 Dans le texte de la leçon prédécédente, nous avons vu illustré de nombreux éléments importants à considérer lors de l'élaboration de plans d'échantillonnage. Certains problèmes liés à l'échantillonnage ont été présentés, notamment la pseudoréplication et des sources de confusion. Ces conseils s'appliquent aussi à d'autres types d'analyses. Dans la présente leçon, nous introduirons la régression linéaire simple et la corrélation. Les conditions d'utilisation et les tests d'hypothèses qui y sont associés seront présentés.
 
 Dans les dernières leçons, la variable réponse était numérique et l'objectif était de déterminer comment cette variable changeait selon les niveaux d'un ou de plusieurs facteurs (p. ex., test $t$, ANOVA). Les facteurs définissaient des groupes et les moyennes des groupes étaient comparées entre elles. Nous allons maintenant voir des applications où on veut déterminer la relation entre une variable réponse et une variable explicative numérique (au lieu d'un facteur). Ici, la variable explicative est mesurée sur une échelle numérique (p. ex., âge) au lieu d'être exprimée en niveaux (p. ex., classes d'âge). 
 
-## Théorie
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `read.table( )`, `head( )`, `summary( )`
+  - `lm( )`
+  - `fitted( )`
+  - `plot( )`, `par( )`, `abline( )`, `text( )`, `segments( )`, `lines( )`
+  - `qqnorm( )`, `qqline( )`
+  - `residuals( )`
+  - `ifelse( )`
+  - `rownames( )`
+  - `rstudent( )`
+  - `coef( )`
+  - `data.frame( )`
+  - `predict( )`
+  - `qt( )`
+  - `cor( )`
+  - `cor.test( )`
+  - `function( )`
+</div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Dans la partie Lecon, les fichiers suivantes sont utilisés :
+
+  - Le fichier `influencers.csv` sur le pouvoir des campagnes publicitaires lorsqu’elles utilisent principalement des “influenceurs” ou “influenceuses” du web.
+  - Le fichier `chocolats.txt` sur le prix de tablettes de chocolat.
+
+Dans la partie Autoévaluation, le fichier `Pression_sanguine.txt` est utilisé. Il présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip).
+  </div>
+  
+</div> 
+
+## Leçon
 
 ### La régression linéaire
 
@@ -112,41 +164,73 @@ beta.0 <- mean(facteur) - beta.x * mean(nombre)
 MSE <- SSE/(length(facteur) - 2)
 ``` 
 
-La somme des carrés de $Y$:
-$$SSY = \sum_{i=1}^n (y_i - \bar{y})^2$$
-$$SSY = (`r facteur[1]` - `r round(mean(facteur), 1)`)^2 + \ldots + (`r facteur[13]` - `r round(mean(facteur), 1)`)^2$$
-$$SSY = `r round(SSY, 1)`$$
-La somme des carrés de $X$:
-$$SSX = \sum_{i=1}^n (x_i - \bar{x})^2$$
-$$SSX = (`r nombre[1]` - `r round(mean(nombre), 1)`)^2 + \ldots + (`r nombre[13]` - `r round(mean(nombre), 1)`)^2$$
-$$SSX = `r round(SSX, 1)`$$
+La somme des carrés de $Y$ :
+
+\begin{align*}
+SSY &= \sum_{i=1}^n (y_i - \bar{y})^2 \\
+SSY &= (`r facteur[1]` - `r round(mean(facteur), 1)`)^2 + \ldots + (`r facteur[13]` - `r round(mean(facteur), 1)`)^2 \\
+SSY &= `r round(SSY, 1)`
+\end{align*}
+
+
+
+La somme des carrés de $X$ :
+
+\begin{align*}
+SSX &= \sum_{i=1}^n (x_i - \bar{x})^2 \\
+SSX &= (`r nombre[1]` - `r round(mean(nombre), 1)`)^2 + \ldots + (`r nombre[13]` - `r round(mean(nombre), 1)`)^2 \\
+SSX &= `r round(SSX, 1)`
+\end{align*}
+
 La somme des produits croisés :
-$$SSXY = \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})$$
-$$SSXY = (`r facteur[1]` - `r round(mean(facteur), 1)`)(`r nombre[1]` - `r round(mean(nombre), 1)`) + \ldots + (`r facteur[13]` - `r round(mean(facteur), 1)`)(`r nombre[13]` - `r round(mean(nombre), 1)`)$$
-$$SSXY = `r round(SSXY, 1)`$$
-La somme des carrés de la régression:
-$$SS_{\mathrm{r\acute{e}gression}} = \frac{SSXY^2}{SSX}$$
-$$SS_{\mathrm{r\acute{e}gression}} = \frac{`r round(SSXY, 1)`^2}{`r round(SSX, 1)`}$$
-$$SS_{\mathrm{r\acute{e}gression}} = `r round(SSReg, 1)`$$
 
-La somme des carrés des erreurs:
-$$SSE = SSY - SS_{r\acute{e}gression}$$
-$$SSE = `r round(SSY, 1)`  - `r round(SSReg, 1)`$$
-$$SSE = `r round(SSE, 0)`$$
-Nous pouvons ensuite calculer la pente de la droite de régression:
-$$\beta_x = \frac{SSXY}{SSX}$$
-$$\beta_x = \frac{`r round(SSXY, 1)`}{`r round(SSX, 1)`}$$
-$$\beta_x = `r round(beta.x, 1)`$$
+\begin{align*}
+SSXY &= \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) \\
+SSXY &= (`r facteur[1]` - `r round(mean(facteur), 1)`)(`r nombre[1]` - `r round(mean(nombre), 1)`) + \ldots \\
+&\quad + (`r facteur[13]` - `r round(mean(facteur), 1)`)(`r nombre[13]` - `r round(mean(nombre), 1)`) \\
+SSXY &= `r round(SSXY, 1)`
+\end{align*}
 
-L'ordonnée à l'origine s'obtient comme suit:
-$$\beta_0 = \bar{y} - \beta_x\bar{x}$$
-$$\beta_0 = `r round(mean(facteur), 1)` - `r round(beta.x, 1)` * `r mean(nombre)`$$
-$$\beta_0 = `r round(beta.0, 1)`$$
+La somme des carrés de la régression :
 
-Et la variance résiduelle est donnée par:
-$$MSE = \frac{SSE}{n - 2}$$
-$$MSE = \frac{`r round(SSE, 1)`}{`r length(facteur)` - 2}$$
-$$MSE = `r round(MSE, 1)`$$
+\begin{align*}
+SS_{\mathrm{r\acute{e}gression}} &= \frac{SSXY^2}{SSX} \\
+SS_{\mathrm{r\acute{e}gression}} &= \frac{`r round(SSXY, 1)`^2}{`r round(SSX, 1)`} \\
+SS_{\mathrm{r\acute{e}gression}} &= `r round(SSReg, 1)`
+\end{align*}
+
+La somme des carrés des erreurs :
+
+\begin{align*}
+SSE &= SSY - SS_{\mathrm{r\acute{e}gression}} \\
+SSE &= `r round(SSY, 1)` - `r round(SSReg, 1)` \\
+SSE &= `r round(SSE, 0)`
+\end{align*}
+
+Nous pouvons ensuite calculer la pente de la droite de régression :
+
+\begin{align*}
+\beta_x &= \frac{SSXY}{SSX} \\
+\beta_x &= \frac{`r round(SSXY, 1)`}{`r round(SSX, 1)`} \\
+\beta_x &= `r round(beta.x, 1)`
+\end{align*}
+
+L'ordonnée à l'origine s'obtient comme suit :
+
+\begin{align*}
+\beta_0 &= \bar{y} - \beta_x \bar{x} \\
+\beta_0 &= `r round(mean(facteur), 1)` - `r round(beta.x, 1)` \times `r mean(nombre)` \\
+\beta_0 &= `r round(beta.0, 1)`
+\end{align*}
+
+Et la variance résiduelle est donnée par :
+
+\begin{align*}
+MSE &= \frac{SSE}{n - 2} \\
+MSE &= \frac{`r round(SSE, 1)`}{`r length(facteur)` - 2} \\
+MSE &= `r round(MSE, 1)`
+\end{align*}
+
 Nous pouvons réaliser rapidement tous ces calculs en appliquant les formules dans R ou encore en utilisant directement la fonction `lm( )` :
 
 ```{r echo=TRUE, keep.source = TRUE}
@@ -250,12 +334,12 @@ par(mfrow = c(1, 2), cex = 1.2)
 ##homogénéité de la variance
 plot(residuals(m1) ~ fitted(m1), ylab = "Résidus",
      xlab = "Valeurs prédites", 
-     main = "Homogénéité des variances")
+     main = "Homogénéité des variances", cex.main = 1)
 ##normalité
 text("a", x= 2.3, y = 0.7, cex = 1.2)
 qqnorm(residuals(m1), ylab = "Quantiles observés",
        xlab = "Quantiles théoriques",
-       main = "Normalité des résidus")
+       main = "Normalité des résidus", cex.main = 1)
 qqline(residuals(m1))
 text("b", x= -1.4, y = 0.7, cex = 1.2)
 ``` 
@@ -475,11 +559,11 @@ par(mfrow = c(1, 2), cex = 1.2)
 plot(rstudent(m.chocs) ~ fitted(m.chocs), 
      ylab = "Résidus de Student",
      xlab = "Valeurs prédites",
-     main = "Homogénéité des variances")
+     main = "Homogénéité des variances", cex.main = 1)
 text(y = 1.5, x = 1.025, labels = "a")
 qqnorm(rstudent(m.chocs), ylab = "Quantiles observés",
        xlab = "Quantiles théoriques", 
-       main = "Normalité des résidus")
+       main = "Normalité des résidus", cex.main = 1)
 qqline(rstudent(m.chocs))
 text(y = 1.5, x = -1.9, labels = "b")
 ``` 
@@ -641,9 +725,11 @@ La régression est souvent utilisée pour des études d'observation. Dans de tel
 
 Cette leçon a présenté la régression linéaire simple, les suppositions et conditions nécessaires à son application, l'interprétation et la présentation des résultats. Nous avons vu les tests d'hypothèses associés aux coefficients de la régression ainsi que l'utilisation d'intervalles de confiance comme mesure de précision autour des coefficients et des valeurs prédites. Nous avons également présenté la corrélation linéaire et nous l'avons comparé à la régression linéaire simple.
 
-## Exercices
+## Autoévaluation
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 10](https://github.com/sci1018/sci1018_data/raw/main/Module_10.zip).
+
+### Question 1 {-}
 
 Importez le fichier `Pression_sanguine.txt` qui présente les données relatives à la pression sanguine en mm de Hg chez des patients de différents âges.
 
@@ -785,7 +871,7 @@ lines(y = jeu.pred$sup95, x = jeu.pred$Age, lty = "dotted")
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 Dans une étude d'observation, on s'intéresse au aux taux annuels de noyade dans les grandes villes nord-américaines. Pour ce faire, nous sélectionnons aléatoirement 50 villes dans notre aire d’étude et récoltons les données auprès des autorités de ces villes. Lors de cette même étude d’observation, nous avons également récolté les taux d'homicide dans ces différentes villes. 
 

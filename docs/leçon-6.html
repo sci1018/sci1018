@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7.1 Leçon | Statistiques avec R</title>
+  <meta name="description" content="7.1 Leçon | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7.1 Leçon | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="7.1 Leçon | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7.1 Leçon | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="7.1 Leçon | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lecon7.html"/>
+<link rel="next" href="laboratoire-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="lecon1.html"><a href="lecon1.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="leçon.html"><a href="leçon.html"><i class="fa fa-check"></i><b>1.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="leçon.html"><a href="leçon.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="leçon.html"><a href="leçon.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="leçon.html"><a href="leçon.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a></li>
+<li class="chapter" data-level="1.1.4" data-path="leçon.html"><a href="leçon.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="leçon.html"><a href="leçon.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="leçon.html"><a href="leçon.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a></li>
+<li class="chapter" data-level="1.1.7" data-path="leçon.html"><a href="leçon.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="autoévaluation.html"><a href="autoévaluation.html"><i class="fa fa-check"></i><b>1.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lecon2.html"><a href="lecon2.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="leçon-1.html"><a href="leçon-1.html"><i class="fa fa-check"></i><b>2.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="leçon-1.html"><a href="leçon-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.2" data-path="leçon-1.html"><a href="leçon-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="leçon-1.html"><a href="leçon-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="2.1.4" data-path="leçon-1.html"><a href="leçon-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="leçon-1.html"><a href="leçon-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html"><i class="fa fa-check"></i><b>2.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lecon3.html"><a href="lecon3.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
+<li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="leçon-2.html"><a href="leçon-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a></li>
+<li class="chapter" data-level="3.1.7" data-path="leçon-2.html"><a href="leçon-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html"><i class="fa fa-check"></i><b>3.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-1-3"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-2-3"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lecon4.html"><a href="lecon4.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="leçon-3.html"><a href="leçon-3.html"><i class="fa fa-check"></i><b>4.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a></li>
+<li class="chapter" data-level="4.1.2" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="leçon-3.html"><a href="leçon-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a></li>
+<li class="chapter" data-level="4.1.4" data-path="leçon-3.html"><a href="leçon-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lecon5.html"><a href="lecon5.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="leçon-4.html"><a href="leçon-4.html"><i class="fa fa-check"></i><b>5.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="leçon-4.html"><a href="leçon-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="leçon-4.html"><a href="leçon-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="5.1.3" data-path="leçon-4.html"><a href="leçon-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="leçon-4.html"><a href="leçon-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="leçon-4.html"><a href="leçon-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html"><i class="fa fa-check"></i><b>5.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-1-5"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-2-5"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lecon6.html"><a href="lecon6.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leçon-5.html"><a href="leçon-5.html"><i class="fa fa-check"></i><b>6.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="leçon-5.html"><a href="leçon-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a></li>
+<li class="chapter" data-level="6.1.4" data-path="leçon-5.html"><a href="leçon-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html"><i class="fa fa-check"></i><b>6.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-1-6"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-2-6"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lecon7.html"><a href="lecon7.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="leçon-6.html"><a href="leçon-6.html"><i class="fa fa-check"></i><b>7.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="leçon-6.html"><a href="leçon-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="leçon-6.html"><a href="leçon-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="leçon-6.html"><a href="leçon-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="leçon-6.html"><a href="leçon-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="leçon-6.html"><a href="leçon-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="leçon-6.html"><a href="leçon-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i>Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lecon8.html"><a href="lecon8.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="leçon-7.html"><a href="leçon-7.html"><i class="fa fa-check"></i><b>8.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="leçon-7.html"><a href="leçon-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2" data-path="leçon-7.html"><a href="leçon-7.html#blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.3" data-path="leçon-7.html"><a href="leçon-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html"><i class="fa fa-check"></i><b>8.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-1-8"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-2-7"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lecon9.html"><a href="lecon9.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="leçon-8.html"><a href="leçon-8.html"><i class="fa fa-check"></i><b>9.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="leçon-8.html"><a href="leçon-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.2" data-path="leçon-8.html"><a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="leçon-8.html"><a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.4" data-path="leçon-8.html"><a href="leçon-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i>Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lecon10.html"><a href="lecon10.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="leçon-9.html"><a href="leçon-9.html"><i class="fa fa-check"></i><b>10.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="leçon-9.html"><a href="leçon-9.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a></li>
+<li class="chapter" data-level="10.1.2" data-path="leçon-9.html"><a href="leçon-9.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="leçon-9.html"><a href="leçon-9.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="leçon-9.html"><a href="leçon-9.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html"><i class="fa fa-check"></i><b>10.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-1-9"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-2-8"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="leçon-6" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Leçon<a href="leçon-6.html#leçon-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="anova-à-deux-critères" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> ANOVA à deux critères<a href="leçon-6.html#anova-à-deux-critères" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On pourrait avoir le réflexe d’effectuer deux analyses, en effectuant une ANOVA à un critère sur chacun des facteurs pris séparément. Toutefois, cette approche n’est pas optimale, puisqu’effectuer deux tests séparément augmentera notre probabilité de commettre une erreur de type I (c.-à-d., un faux positif). En plus de tester l’effet de chacun des facteurs sur la variable réponse, l’ANOVA à deux critères permet de tester si l’effet d’un facteur dépend du niveau de l’autre. C’est ce qu’on entend par l’<strong>interaction</strong> entre les deux facteurs sur la variable réponse. Ainsi, nous dirons qu’il y a interaction entre le traitement hormonal et le sexe lorsque l’effet du traitement sur la concentration en calcium est soit plus grand ou plus petit selon le sexe des individus étudiés, et vice-versa, c’est-à-dire que la différence de la variable réponse entre mâle et femelle dépend du traitement hormonal. L’interaction est souvent d’intérêt puisqu’elle révèle un patron inattendu.</p>
+<p>À noter qu’on peut tester le terme d’interaction uniquement lorsqu’on a plus d’une observation pour chaque combinaison des groupes des deux facteurs (p. ex., mâle avec traitement, mâle sans traitement, femelle avec traitement, femelle sans traitement). On dit alors qu’il y a des <strong>répétitions</strong> (<em>replication</em>). Nous illustrerons le concept de l’interaction dans les exemples de cette leçon. L’ANOVA à un critère effectuée séparément sur chaque traitement ne permet pas de tester d’interaction, et c’est pourquoi il est préférable d’utiliser l’ANOVA à deux critères pour analyser les données en une seule étape.</p>
+</div>
+<div id="suppositions-et-dispositif-expérimental" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Suppositions et dispositif expérimental<a href="leçon-6.html#suppositions-et-dispositif-expérimental" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’ANOVA à deux critères requiert les mêmes suppositions que l’ANOVA à un critère, soit l’indépendance des observations, l’homoscédasticité et la normalité des résidus. Toutefois, le design expérimental de l’ANOVA à deux critères diffère légèrement de celui de l’ANOVA à un critère. À titre de rappel, l’ANOVA à un critère utilise un dispositif expérimental complètement aléatoire. On attribue aléatoirement un traitement (c.-à-d., un des niveaux du facteur testé) à chacune des unités expérimentales. Ici, l’unité expérimentale dépend de l’expérience, mais peut être constituée d’un patient, d’un client sondé au téléphone, d’un quadrat, d’un aquarium, ou d’un site, par exemple. Dans une expérience avec deux facteurs, nous attribuerons aléatoirement une combinaison des deux facteurs à chaque unité expérimentale.</p>
+<p>Reprenons notre exemple sur le traitement hormonal en fonction du sexe. Quatre combinaisons de groupes des deux facteurs sont possibles: mâle sans traitement, mâle avec traitement hormonal, femelle sans traitement et femelle avec traitement hormonal. Un <strong>dispositif équilibré</strong> (<em>balanced design</em>), c’est-à-dire, une expérience avec un nombre égal d’observations pour chaque combinaison des traitements, procure une puissance plus élevée qu’un dispositif avec un nombre inégal d’observations par combinaison des traitements. Ainsi, on devrait sélectionner un nombre égal de mâles et de femelles et attribuer le traitement à la moitié des mâles et des femelles.</p>
+</div>
+<div id="hypothèses-statistiques-1" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Hypothèses statistiques<a href="leçon-6.html#hypothèses-statistiques-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les hypothèses statistiques de l’ANOVA à deux critères sont formulées de la même façon qu’avec l’ANOVA à un critère. Poursuivons l’exemple en testant les différences entre les moyennes des groupes définis par le facteur d’intérêt :</p>
+<p>Traitement hormonal :<br />
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{horm}} = \mu_{\mathrm{sans.horm}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{horm}} \neq \mu_{\mathrm{sans.horm}}\)</span></p>
+<p>Sexe :<br />
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{m\hat{a}le}} = \mu_{\mathrm{femelle}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{m\hat{a}le}} \neq \mu_{\mathrm{femelle}}\)</span></p>
+<p>Puisqu’il y a plusieurs observations par combinaison des deux facteurs (mâle avec traitement, mâle sans traitement, femelle avec traitement, femelle sans traitement), il est possible de tester l’interaction entre le traitement hormonal et le sexe. Le terme d’interaction teste si l’effet du traitement hormonal sur la variable réponse dépend du sexe.</p>
+<p>Interaction traitement hormonal <span class="math inline">\(\times\)</span> sexe :<br />
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{m\hat{a}le -- horm}} = \mu_{\mathrm{m\hat{a}le -- sans.horm}} = \mu_{\mathrm{femelle -- horm}} = \mu_{\mathrm{femelle -- sans.horm}}\)</span> (non-différence)<br />
+<span class="math inline">\(H_a\)</span>: au moins une moyenne diffère des autres</p>
+<p>En mots, si la différence de moyenne entre traitement et sans traitement est égale entre mâle et femelle, il n’y a pas d’interactions et on ne rejette pas <span class="math inline">\(H_0\)</span>. À noter que cette dernière hypothèse ne peut pas être testée en présence d’une seule observation pour chaque combinaison des deux facteurs – il faut plus d’une observation (répétition) pour tester le terme d’interaction. Le seuil de signification (<span class="math inline">\(\alpha\)</span>) pour chacune de ces hypothèses est de 0.05.</p>
+</div>
+<div id="sommes-des-carrés-1" class="section level3 hasAnchor" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> Sommes des carrés<a href="leçon-6.html#sommes-des-carrés-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On construit les sommes des carrés de l’ANOVA à deux critères de classification de façon similaire à l’ANOVA à un critère de classification. Ainsi, la somme des carrés totale (<span class="math inline">\(SST\)</span>) s’obtient avec :</p>
+<p><span class="math display">\[SST = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n (y_{ijk} - \bar{y})^2\]</span></p>
+<p>où on compare l’observation <span class="math inline">\(k\)</span> du groupe <span class="math inline">\(i\)</span> du facteur <span class="math inline">\(A\)</span> et du groupe <span class="math inline">\(j\)</span> du facteur <span class="math inline">\(B\)</span> (<span class="math inline">\(y_{ijk}\)</span>) à la moyenne globale (<span class="math inline">\(\bar{y}\)</span>). Les degrés de liberté associés à la somme des carrés totale est obtenue à l’aide de <span class="math inline">\(df = N - 1\)</span>, où <span class="math inline">\(N\)</span> correspond au nombre total d’observations dans l’expérience.</p>
+<p>On calcule la somme des carrés de chaque facteur de la même manière que pour une ANOVA à un critère. Nous obtenons ainsi :</p>
+<p><span class="math display">\[ SSA = \sum_{i=1}^a \sum_{k=1}^n (\bar{y}_{i} - \bar{y})^2 = n \sum_{i=1}^a (\bar{y}_{i} - \bar{y})^2\]</span>
+où on compare la moyenne de chaque groupe <span class="math inline">\(i\)</span> du facteur <span class="math inline">\(A\)</span> (<span class="math inline">\(\bar{y}_{i}\)</span>) à la moyenne globale (<span class="math inline">\(\bar{y}\)</span>) et où ce calcul se répète <span class="math inline">\(n\)</span> fois pour chaque moyenne d’un groupe <span class="math inline">\(i\)</span> donné. Les degrés de liberté correspondant à <span class="math inline">\(SSA\)</span> sont donnés par <span class="math inline">\(df = a - 1\)</span>, où <span class="math inline">\(a\)</span> est le nombre de groupes défini par le facteur A. Le calcul de la somme des carrés du deuxième facteur (<span class="math inline">\(B\)</span>) est identique à celui du facteur <span class="math inline">\(A\)</span> :</p>
+<p><span class="math display">\[SSB = \sum_{j=1}^b \sum_{k=1}^n (\bar{y}_{j} - \bar{y})^2 = n \sum_{j=1}^b (\bar{y}_{j} - \bar{y})^2\]</span></p>
+<p>Les degrés de liberté s’obtiennent avec <span class="math inline">\(df = b - 1\)</span>, où <span class="math inline">\(b\)</span> correspond au nombre de groupes du facteur <span class="math inline">\(B\)</span>.</p>
+<p>La somme des carrés résiduelle (<span class="math inline">\(SSE\)</span>), aussi appelée somme des carrés des erreurs, se calcule de la même façon que pour l’ANOVA à un critère:</p>
+<p><span class="math display">\[SSE = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n (y_{ijk} - \bar{y}_{ij})^2\]</span></p>
+<p>où on compare une observation <span class="math inline">\(k\)</span> appartenant à la fois à un groupe donné <span class="math inline">\(i\)</span> du facteur <span class="math inline">\(A\)</span> et d’un groupe <span class="math inline">\(j\)</span> du facteur <span class="math inline">\(B\)</span> à la moyenne de ces groupes combinés (<span class="math inline">\(\bar{y}_{ij}\)</span>). Les degrés de liberté associés à <span class="math inline">\(SSE\)</span> sont <span class="math inline">\(df = ab(n - 1)\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> sont le nombre de groupes du facteur <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span>, respectivement, et <span class="math inline">\(n\)</span> est le nombre d’observations pour chaque combinaison des facteurs <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span>.</p>
+<p>L’ANOVA à deux critères qui contient plus d’une observation des combinaisons de groupes des deux facteurs permet de tester l’interaction entre les deux facteurs de l’expérience. La somme des carrés de l’interaction (<span class="math inline">\(SSInter\)</span>) s’obtient avec:</p>
+<p><span class="math display">\[SSinter = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n ( (\bar{y}_{ij} -\bar{y}) - (\bar{y}_i - \bar{y} )  - (\bar{y}_j - \bar{y}) )^2\]</span></p>
+<p>où le premier terme, <span class="math inline">\((\bar{y}_{ij} -\bar{y})\)</span>, est la différence observée de la moyenne des groupes combinés <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> avec la moyenne globale, et les deux autres termes représentent la différence que devrait avoir cette moyenne des groupes combinés avec la moyenne globale s’il n’y avait pas d’interaction, c-à-d, la somme des différences entre la moyenne du groupe <span class="math inline">\(i\)</span> et la moyenne globale, <span class="math inline">\((\bar{y}_{i} -\bar{y})\)</span>, et entre la moyenne du groupe <span class="math inline">\(j\)</span> et la moyenne globale, <span class="math inline">\((\bar{y}_{j} -\bar{y})\)</span>. Nous pouvons simplifier l’équation pour <span class="math inline">\(SSinter\)</span>:</p>
+<p><span class="math display">\[ SSinter = \sum_{i=1}^a \sum_{j=1}^b \sum_{k=1}^n (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 = n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2\]</span></p>
+<p>L’exemple qui suit illustre le calcul de ces différentes valeurs nécessaires à l’ANOVA à deux critères. Les degrés de liberté associés au terme <span class="math inline">\(SSInter\)</span> sont donnés par <span class="math inline">\(df = (a - 1)(b - 1)\)</span>, où <span class="math inline">\(a\)</span> et <span class="math inline">\(b\)</span> correspondent aux nombre de groupes du facteur <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span>, respectivement.</p>
+<div class="exemple" section="7">
+<p>On s’intéresse à l’effet d’un traitement hormonal sur la concentration de calcium dans le plasma sanguin chez des oiseaux mâles et femelles. La variable réponse est la concentration du calcium dans le plasma sanguin. Nos deux facteurs sont le traitement hormonal (avec traitement, sans traitement) et le sexe (mâle, femelle). Les données sont contenues dans le fichier <code>calcium.txt</code>.</p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="leçon-6.html#cb618-1" tabindex="-1"></a><span class="do">## On importe le jeu de données</span></span>
+<span id="cb618-2"><a href="leçon-6.html#cb618-2" tabindex="-1"></a>calcium <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/calcium.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb618-3"><a href="leçon-6.html#cb618-3" tabindex="-1"></a></span>
+<span id="cb618-4"><a href="leçon-6.html#cb618-4" tabindex="-1"></a><span class="do">## On jette un coup d&#39;oeil aux premières observations</span></span>
+<span id="cb618-5"><a href="leçon-6.html#cb618-5" tabindex="-1"></a><span class="fu">head</span>(calcium)</span></code></pre></div>
+<pre><code>##   Concentration     Trait Sexe
+## 1          16.5 sans_horm    f
+## 2          18.4 sans_horm    f
+## 3          12.7 sans_horm    f
+## 4          14.0 sans_horm    f
+## 5          12.8 sans_horm    f
+## 6          14.5 sans_horm    m</code></pre>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="leçon-6.html#cb620-1" tabindex="-1"></a><span class="do">## On transforme en facteurs les colonnes </span></span>
+<span id="cb620-2"><a href="leçon-6.html#cb620-2" tabindex="-1"></a><span class="do">## de caractères `Trait` et `Sexe`</span></span>
+<span id="cb620-3"><a href="leçon-6.html#cb620-3" tabindex="-1"></a>calcium<span class="sc">$</span>Trait <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(calcium<span class="sc">$</span>Trait)</span>
+<span id="cb620-4"><a href="leçon-6.html#cb620-4" tabindex="-1"></a>calcium<span class="sc">$</span>Sexe <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(calcium<span class="sc">$</span>Sexe)</span></code></pre></div>
+<p>La Figure <a href="leçon-6.html#fig:boxplotcalcium">7.1</a> illustre les données selon les différentes combinaisons des deux facteurs.</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="leçon-6.html#cb621-1" tabindex="-1"></a><span class="do">## On crée un boxplot pour chaque</span></span>
+<span id="cb621-2"><a href="leçon-6.html#cb621-2" tabindex="-1"></a><span class="do">## combinaison des deux facteurs</span></span>
+<span id="cb621-3"><a href="leçon-6.html#cb621-3" tabindex="-1"></a><span class="fu">boxplot</span>(Concentration <span class="sc">~</span> Trait <span class="sc">+</span> Sexe, <span class="at">data =</span> calcium,</span>
+<span id="cb621-4"><a href="leçon-6.html#cb621-4" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Concentration&quot;</span>, </span>
+<span id="cb621-5"><a href="leçon-6.html#cb621-5" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Combinaison de traitement et sexe&quot;</span>,</span>
+<span id="cb621-6"><a href="leçon-6.html#cb621-6" tabindex="-1"></a>        <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplotcalcium"></span>
+<img src="Cours_Stats_R_files/figure-html/boxplotcalcium-1.png" alt="Diagramme de boîtes et moustaches avec les données de concentration en calcium en fonction du traitement hormonal et du sexe." width="672" />
+<p class="caption">
+Figure 7.1: Diagramme de boîtes et moustaches avec les données de concentration en calcium en fonction du traitement hormonal et du sexe.
+</p>
+</div>
+<p>On peut déterminer le nombre d’observations pour chaque combinaison des deux facteurs à l’aide de la fonction <code>table( )</code> :</p>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="leçon-6.html#cb622-1" tabindex="-1"></a><span class="do">## On détermine le nombre de répétitions par groupe</span></span>
+<span id="cb622-2"><a href="leçon-6.html#cb622-2" tabindex="-1"></a><span class="fu">table</span>(calcium<span class="sc">$</span>Trait, calcium<span class="sc">$</span>Sexe)</span></code></pre></div>
+<pre><code>##            
+##             f m
+##   horm      5 5
+##   sans_horm 5 5</code></pre>
+<p>On constate qu’il y a cinq observations pour chaque combinaison des niveaux des deux facteurs. Nous dirons donc qu’il y a cinq répétitions (<em>replicates</em>) par combinaison de traitements.</p>
+<p>Calculons la somme des carrés totale :</p>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="leçon-6.html#cb624-1" tabindex="-1"></a><span class="do">##moyenne globale</span></span>
+<span id="cb624-2"><a href="leçon-6.html#cb624-2" tabindex="-1"></a>y.bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(calcium<span class="sc">$</span>Concentration)</span>
+<span id="cb624-3"><a href="leçon-6.html#cb624-3" tabindex="-1"></a><span class="do">##SST</span></span>
+<span id="cb624-4"><a href="leçon-6.html#cb624-4" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">sum</span>((calcium<span class="sc">$</span>Concentration <span class="sc">-</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb624-5"><a href="leçon-6.html#cb624-5" tabindex="-1"></a>SST</span></code></pre></div>
+<pre><code>## [1] 1827.697</code></pre>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="leçon-6.html#cb626-1" tabindex="-1"></a><span class="do">##df</span></span>
+<span id="cb626-2"><a href="leçon-6.html#cb626-2" tabindex="-1"></a>df.SST <span class="ot">&lt;-</span> <span class="fu">length</span>(calcium<span class="sc">$</span>Concentration) <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div>
+<p>On peut ensuite calculer la somme des carrés des facteurs <span class="math inline">\(A\)</span> et <span class="math inline">\(B\)</span> :</p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="leçon-6.html#cb627-1" tabindex="-1"></a><span class="do">##sous-jeu de données</span></span>
+<span id="cb627-2"><a href="leçon-6.html#cb627-2" tabindex="-1"></a>fem <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;f&quot;</span>, ]</span>
+<span id="cb627-3"><a href="leçon-6.html#cb627-3" tabindex="-1"></a>mal <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;m&quot;</span>, ]</span>
+<span id="cb627-4"><a href="leçon-6.html#cb627-4" tabindex="-1"></a>horm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;horm&quot;</span>, ]</span>
+<span id="cb627-5"><a href="leçon-6.html#cb627-5" tabindex="-1"></a>nohorm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;sans_horm&quot;</span>, ]</span>
+<span id="cb627-6"><a href="leçon-6.html#cb627-6" tabindex="-1"></a></span>
+<span id="cb627-7"><a href="leçon-6.html#cb627-7" tabindex="-1"></a><span class="do">##moyenne des groupes</span></span>
+<span id="cb627-8"><a href="leçon-6.html#cb627-8" tabindex="-1"></a>y.bar.f <span class="ot">&lt;-</span> <span class="fu">mean</span>(fem<span class="sc">$</span>Concentration)</span>
+<span id="cb627-9"><a href="leçon-6.html#cb627-9" tabindex="-1"></a>y.bar.m <span class="ot">&lt;-</span> <span class="fu">mean</span>(mal<span class="sc">$</span>Concentration)</span>
+<span id="cb627-10"><a href="leçon-6.html#cb627-10" tabindex="-1"></a>y.bar.horm <span class="ot">&lt;-</span> <span class="fu">mean</span>(horm<span class="sc">$</span>Concentration)</span>
+<span id="cb627-11"><a href="leçon-6.html#cb627-11" tabindex="-1"></a>y.bar.nohorm <span class="ot">&lt;-</span> <span class="fu">mean</span>(nohorm<span class="sc">$</span>Concentration)</span>
+<span id="cb627-12"><a href="leçon-6.html#cb627-12" tabindex="-1"></a><span class="do">## Calcul de SSA</span></span>
+<span id="cb627-13"><a href="leçon-6.html#cb627-13" tabindex="-1"></a><span class="do">## où le nombre d&#39;observations femelle et mâle est</span></span>
+<span id="cb627-14"><a href="leçon-6.html#cb627-14" tabindex="-1"></a><span class="fu">nrow</span>(fem)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="leçon-6.html#cb629-1" tabindex="-1"></a><span class="fu">nrow</span>(mal)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="leçon-6.html#cb631-1" tabindex="-1"></a>SSA <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">*</span>(y.bar.f <span class="sc">-</span> y.bar)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>(y.bar.m <span class="sc">-</span> y.bar)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb631-2"><a href="leçon-6.html#cb631-2" tabindex="-1"></a>SSA</span></code></pre></div>
+<pre><code>## [1] 70.3125</code></pre>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="leçon-6.html#cb633-1" tabindex="-1"></a><span class="do">## Calculer df.SSA. On a df.SSA&lt;- a - 1 </span></span>
+<span id="cb633-2"><a href="leçon-6.html#cb633-2" tabindex="-1"></a><span class="do">## où a est le nombre de groupes definis par le facteur A.</span></span>
+<span id="cb633-3"><a href="leçon-6.html#cb633-3" tabindex="-1"></a><span class="do">## Ici, il y a homme et femme, donc a = 2.</span></span>
+<span id="cb633-4"><a href="leçon-6.html#cb633-4" tabindex="-1"></a>df.SSA <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb633-5"><a href="leçon-6.html#cb633-5" tabindex="-1"></a>df.SSA</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="leçon-6.html#cb635-1" tabindex="-1"></a><span class="do">##SSB</span></span>
+<span id="cb635-2"><a href="leçon-6.html#cb635-2" tabindex="-1"></a><span class="do">## où le nombre d&#39;observations horm et nohorm est</span></span>
+<span id="cb635-3"><a href="leçon-6.html#cb635-3" tabindex="-1"></a><span class="fu">nrow</span>(horm)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="leçon-6.html#cb637-1" tabindex="-1"></a><span class="fu">nrow</span>(nohorm)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="leçon-6.html#cb639-1" tabindex="-1"></a>SSB <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">*</span>(y.bar.horm <span class="sc">-</span> y.bar)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span>(y.bar.nohorm <span class="sc">-</span> y.bar)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb639-2"><a href="leçon-6.html#cb639-2" tabindex="-1"></a>SSB</span></code></pre></div>
+<pre><code>## [1] 1386.112</code></pre>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="leçon-6.html#cb641-1" tabindex="-1"></a><span class="do">## Calculer df.SSB. On a df.SSB&lt;- b - 1 </span></span>
+<span id="cb641-2"><a href="leçon-6.html#cb641-2" tabindex="-1"></a><span class="do">## où b est le nombre de groupes définis par le facteur B. </span></span>
+<span id="cb641-3"><a href="leçon-6.html#cb641-3" tabindex="-1"></a><span class="do">## Ici, il y a traitement hormonal et pas</span></span>
+<span id="cb641-4"><a href="leçon-6.html#cb641-4" tabindex="-1"></a><span class="do">## de traitement, donc b = 2</span></span>
+<span id="cb641-5"><a href="leçon-6.html#cb641-5" tabindex="-1"></a>df.SSB <span class="ot">&lt;-</span>  <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb641-6"><a href="leçon-6.html#cb641-6" tabindex="-1"></a>df.SSB</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>La somme des carrés des erreurs se calcule comme suit :</p>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="leçon-6.html#cb643-1" tabindex="-1"></a><span class="do">##sous-groupes en combinant les deux facteurs</span></span>
+<span id="cb643-2"><a href="leçon-6.html#cb643-2" tabindex="-1"></a>f.horm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">&amp;</span> calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;horm&quot;</span>, ]</span>
+<span id="cb643-3"><a href="leçon-6.html#cb643-3" tabindex="-1"></a>m.horm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;m&quot;</span> <span class="sc">&amp;</span> calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;horm&quot;</span>, ] </span>
+<span id="cb643-4"><a href="leçon-6.html#cb643-4" tabindex="-1"></a>f.nohorm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">&amp;</span> calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;sans_horm&quot;</span>, ]</span>
+<span id="cb643-5"><a href="leçon-6.html#cb643-5" tabindex="-1"></a>m.nohorm <span class="ot">&lt;-</span> calcium[calcium<span class="sc">$</span>Sexe <span class="sc">==</span> <span class="st">&quot;m&quot;</span> <span class="sc">&amp;</span> calcium<span class="sc">$</span>Trait <span class="sc">==</span> <span class="st">&quot;sans_horm&quot;</span>, ]</span>
+<span id="cb643-6"><a href="leçon-6.html#cb643-6" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb643-7"><a href="leçon-6.html#cb643-7" tabindex="-1"></a><span class="do">##calculs des moyennes des combinaisons de groupes</span></span>
+<span id="cb643-8"><a href="leçon-6.html#cb643-8" tabindex="-1"></a>y.bar.f.horm <span class="ot">&lt;-</span> <span class="fu">mean</span>(f.horm<span class="sc">$</span>Concentration)</span>
+<span id="cb643-9"><a href="leçon-6.html#cb643-9" tabindex="-1"></a>y.bar.m.horm <span class="ot">&lt;-</span> <span class="fu">mean</span>(m.horm<span class="sc">$</span>Concentration)</span>
+<span id="cb643-10"><a href="leçon-6.html#cb643-10" tabindex="-1"></a>y.bar.f.nohorm <span class="ot">&lt;-</span> <span class="fu">mean</span>(f.nohorm<span class="sc">$</span>Concentration)</span>
+<span id="cb643-11"><a href="leçon-6.html#cb643-11" tabindex="-1"></a>y.bar.m.nohorm <span class="ot">&lt;-</span> <span class="fu">mean</span>(m.nohorm<span class="sc">$</span>Concentration)</span>
+<span id="cb643-12"><a href="leçon-6.html#cb643-12" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb643-13"><a href="leçon-6.html#cb643-13" tabindex="-1"></a><span class="do">## Calcul de SSE</span></span>
+<span id="cb643-14"><a href="leçon-6.html#cb643-14" tabindex="-1"></a>SSE.f.horm <span class="ot">&lt;-</span> <span class="fu">sum</span>((f.horm<span class="sc">$</span>Concentration <span class="sc">-</span> y.bar.f.horm)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb643-15"><a href="leçon-6.html#cb643-15" tabindex="-1"></a>SSE.m.horm <span class="ot">&lt;-</span> <span class="fu">sum</span>((m.horm<span class="sc">$</span>Concentration <span class="sc">-</span> y.bar.m.horm)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb643-16"><a href="leçon-6.html#cb643-16" tabindex="-1"></a>SSE.f.nohorm <span class="ot">&lt;-</span> <span class="fu">sum</span>((f.nohorm<span class="sc">$</span>Concentration <span class="sc">-</span> y.bar.f.nohorm)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb643-17"><a href="leçon-6.html#cb643-17" tabindex="-1"></a>SSE.m.nohorm <span class="ot">&lt;-</span> <span class="fu">sum</span>((m.nohorm<span class="sc">$</span>Concentration <span class="sc">-</span> y.bar.m.nohorm)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb643-18"><a href="leçon-6.html#cb643-18" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> SSE.f.horm <span class="sc">+</span> SSE.m.horm <span class="sc">+</span> SSE.f.nohorm <span class="sc">+</span> SSE.m.nohorm</span>
+<span id="cb643-19"><a href="leçon-6.html#cb643-19" tabindex="-1"></a>SSE</span></code></pre></div>
+<pre><code>## [1] 366.372</code></pre>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="leçon-6.html#cb645-1" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb645-2"><a href="leçon-6.html#cb645-2" tabindex="-1"></a><span class="do">## Cacul des degrés de liberté</span></span>
+<span id="cb645-3"><a href="leçon-6.html#cb645-3" tabindex="-1"></a><span class="do">## df.SSE = ab(n-1), où a et b sont le nombre de groupes </span></span>
+<span id="cb645-4"><a href="leçon-6.html#cb645-4" tabindex="-1"></a><span class="do">## du facteur A et B, respectivement,</span></span>
+<span id="cb645-5"><a href="leçon-6.html#cb645-5" tabindex="-1"></a><span class="do">## et n est le nombre d&#39;observations pour chaque combinaison </span></span>
+<span id="cb645-6"><a href="leçon-6.html#cb645-6" tabindex="-1"></a><span class="do">## des facteurs A et B.</span></span>
+<span id="cb645-7"><a href="leçon-6.html#cb645-7" tabindex="-1"></a>df.SSE <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">levels</span>(calcium<span class="sc">$</span>Sexe)) <span class="sc">*</span> </span>
+<span id="cb645-8"><a href="leçon-6.html#cb645-8" tabindex="-1"></a>          <span class="fu">length</span>(<span class="fu">levels</span>(calcium<span class="sc">$</span>Trait)) <span class="sc">*</span> (<span class="dv">5</span> <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb645-9"><a href="leçon-6.html#cb645-9" tabindex="-1"></a>df.SSE</span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<p>Finalement, on obtient la somme des carrés du terme d’interaction entre les deux facteurs. Notez que l’équation pour <span class="math inline">\(SSinter\)</span> peut se décomposer de la façon suivante :</p>
+<p><span class="math display">\[\begin{align*}
+SS_{\text{inter}} &amp;= n \sum_{i=1}^a \sum_{j=1}^b  (\bar{y}_{ij} - \bar{y}_i - \bar{y}_j + \bar{y})^2 \\
+&amp;= n \sum_{i=1}^a \left( (\bar{y}_{i.\text{horm}} - \bar{y}_i - \bar{y}_{\text{horm}} + \bar{y})^2 + (\bar{y}_{i.\text{nohorm}} - \bar{y}_i - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right) \\
+&amp;= n \left( (\bar{y}_{f.\text{horm}} - \bar{y}_f - \bar{y}_{\text{horm}} + \bar{y})^2 \right. \\
+&amp;\quad + (\bar{y}_{f.\text{nohorm}} - \bar{y}_f - \bar{y}_{\text{nohorm}} + \bar{y})^2 \\
+&amp;\quad + (\bar{y}_{m.\text{horm}} - \bar{y}_m - \bar{y}_{\text{horm}} + \bar{y})^2 \\
+&amp;\quad \left. + (\bar{y}_{m.\text{nohorm}} - \bar{y}_m - \bar{y}_{\text{nohorm}} + \bar{y})^2 \right)
+\end{align*}\]</span></p>
+<p>Ansi, nous calculons <span class="math inline">\(SSinter\)</span> de la façon suivante :</p>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="leçon-6.html#cb647-1" tabindex="-1"></a><span class="do">## SS de l&#39;interaction</span></span>
+<span id="cb647-2"><a href="leçon-6.html#cb647-2" tabindex="-1"></a>SSInter.f.horm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.f.horm <span class="sc">-</span> y.bar.f <span class="sc">-</span> y.bar.horm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb647-3"><a href="leçon-6.html#cb647-3" tabindex="-1"></a>SSInter.m.horm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.m.horm <span class="sc">-</span> y.bar.m <span class="sc">-</span> y.bar.horm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb647-4"><a href="leçon-6.html#cb647-4" tabindex="-1"></a>SSInter.f.nohorm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.f.nohorm <span class="sc">-</span> y.bar.f <span class="sc">-</span> </span>
+<span id="cb647-5"><a href="leçon-6.html#cb647-5" tabindex="-1"></a>                             y.bar.nohorm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb647-6"><a href="leçon-6.html#cb647-6" tabindex="-1"></a>SSInter.m.nohorm <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">*</span><span class="fu">sum</span>((y.bar.m.nohorm <span class="sc">-</span> y.bar.m <span class="sc">-</span> </span>
+<span id="cb647-7"><a href="leçon-6.html#cb647-7" tabindex="-1"></a>                             y.bar.nohorm <span class="sc">+</span> y.bar)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb647-8"><a href="leçon-6.html#cb647-8" tabindex="-1"></a>SSInter <span class="ot">&lt;-</span> SSInter.f.horm <span class="sc">+</span> SSInter.m.horm <span class="sc">+</span> </span>
+<span id="cb647-9"><a href="leçon-6.html#cb647-9" tabindex="-1"></a>           SSInter.f.nohorm <span class="sc">+</span> SSInter.m.nohorm</span>
+<span id="cb647-10"><a href="leçon-6.html#cb647-10" tabindex="-1"></a></span>
+<span id="cb647-11"><a href="leçon-6.html#cb647-11" tabindex="-1"></a>SSInter</span></code></pre></div>
+<pre><code>## [1] 4.9005</code></pre>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="leçon-6.html#cb649-1" tabindex="-1"></a><span class="do">## degrés de liberté de SSInter</span></span>
+<span id="cb649-2"><a href="leçon-6.html#cb649-2" tabindex="-1"></a><span class="do">## df.SSInter = (a-1)(b-1), où a et b correspondent aux  </span></span>
+<span id="cb649-3"><a href="leçon-6.html#cb649-3" tabindex="-1"></a><span class="do">## nombre de groupes du facteur A et B, respectivement.</span></span>
+<span id="cb649-4"><a href="leçon-6.html#cb649-4" tabindex="-1"></a></span>
+<span id="cb649-5"><a href="leçon-6.html#cb649-5" tabindex="-1"></a>df.SSInter <span class="ot">&lt;-</span> df.SSA <span class="sc">*</span> df.SSB</span>
+<span id="cb649-6"><a href="leçon-6.html#cb649-6" tabindex="-1"></a>df.SSInter</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>On peut réaliser tous ces calculs directement dans R à l’aide de la fonction <code>aov( )</code> :</p>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="leçon-6.html#cb651-1" tabindex="-1"></a>aov2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Concentration <span class="sc">~</span> Sexe <span class="sc">+</span> Trait <span class="sc">+</span> Sexe<span class="sc">:</span>Trait, <span class="at">data =</span> calcium)</span>
+<span id="cb651-2"><a href="leçon-6.html#cb651-2" tabindex="-1"></a><span class="fu">summary</span>(aov2)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Sexe         1   70.3    70.3   3.071   0.0989 .  
+## Trait        1 1386.1  1386.1  60.534 7.94e-07 ***
+## Sexe:Trait   1    4.9     4.9   0.214   0.6499    
+## Residuals   16  366.4    22.9                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>On peut reconstituer ce même tableau à partir des calculs que nous avons effectués plus haut :</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="leçon-6.html#cb653-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Df =</span> <span class="fu">c</span>(df.SSA, df.SSB, df.SSInter, df.SSE),</span>
+<span id="cb653-2"><a href="leçon-6.html#cb653-2" tabindex="-1"></a>                     <span class="at">Sum.Sq =</span> <span class="fu">c</span>(SSA, SSB, SSInter, SSE))</span>
+<span id="cb653-3"><a href="leçon-6.html#cb653-3" tabindex="-1"></a>result<span class="sc">$</span>Mean.Sq <span class="ot">&lt;-</span> result<span class="sc">$</span>Sum.Sq<span class="sc">/</span>result<span class="sc">$</span>Df</span>
+<span id="cb653-4"><a href="leçon-6.html#cb653-4" tabindex="-1"></a>result<span class="sc">$</span>F.value <span class="ot">&lt;-</span> <span class="fu">c</span>(result<span class="sc">$</span>Mean.Sq[<span class="dv">1</span>]<span class="sc">/</span>result<span class="sc">$</span>Mean.Sq[<span class="dv">4</span>],</span>
+<span id="cb653-5"><a href="leçon-6.html#cb653-5" tabindex="-1"></a>                    result<span class="sc">$</span>Mean.Sq[<span class="dv">2</span>]<span class="sc">/</span>result<span class="sc">$</span>Mean.Sq[<span class="dv">4</span>],</span>
+<span id="cb653-6"><a href="leçon-6.html#cb653-6" tabindex="-1"></a>                    result<span class="sc">$</span>Mean.Sq[<span class="dv">3</span>]<span class="sc">/</span>result<span class="sc">$</span>Mean.Sq[<span class="dv">4</span>],</span>
+<span id="cb653-7"><a href="leçon-6.html#cb653-7" tabindex="-1"></a>                    <span class="cn">NA</span>)</span>
+<span id="cb653-8"><a href="leçon-6.html#cb653-8" tabindex="-1"></a>result<span class="sc">$</span>P.value <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(result<span class="sc">$</span>F.value[<span class="dv">1</span>], </span>
+<span id="cb653-9"><a href="leçon-6.html#cb653-9" tabindex="-1"></a>                    <span class="at">df1 =</span> result<span class="sc">$</span>Df[<span class="dv">1</span>], </span>
+<span id="cb653-10"><a href="leçon-6.html#cb653-10" tabindex="-1"></a>                    <span class="at">df2 =</span> result<span class="sc">$</span>Df[<span class="dv">4</span>]),</span>
+<span id="cb653-11"><a href="leçon-6.html#cb653-11" tabindex="-1"></a>                    <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(result<span class="sc">$</span>F.value[<span class="dv">2</span>], </span>
+<span id="cb653-12"><a href="leçon-6.html#cb653-12" tabindex="-1"></a>                    <span class="at">df1 =</span> result<span class="sc">$</span>Df[<span class="dv">2</span>], </span>
+<span id="cb653-13"><a href="leçon-6.html#cb653-13" tabindex="-1"></a>                    <span class="at">df2 =</span> result<span class="sc">$</span>Df[<span class="dv">4</span>]),</span>
+<span id="cb653-14"><a href="leçon-6.html#cb653-14" tabindex="-1"></a>                    <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(result<span class="sc">$</span>F.value[<span class="dv">3</span>], </span>
+<span id="cb653-15"><a href="leçon-6.html#cb653-15" tabindex="-1"></a>                    <span class="at">df1 =</span> result<span class="sc">$</span>Df[<span class="dv">3</span>],  </span>
+<span id="cb653-16"><a href="leçon-6.html#cb653-16" tabindex="-1"></a>                    <span class="at">df2 =</span> result<span class="sc">$</span>Df[<span class="dv">4</span>]), </span>
+<span id="cb653-17"><a href="leçon-6.html#cb653-17" tabindex="-1"></a>                    <span class="cn">NA</span>)  </span>
+<span id="cb653-18"><a href="leçon-6.html#cb653-18" tabindex="-1"></a></span>
+<span id="cb653-19"><a href="leçon-6.html#cb653-19" tabindex="-1"></a><span class="do">##tableau identique à aov( )</span></span>
+<span id="cb653-20"><a href="leçon-6.html#cb653-20" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>##   Df    Sum.Sq    Mean.Sq   F.value      P.value
+## 1  1   70.3125   70.31250  3.070650 9.885618e-02
+## 2  1 1386.1125 1386.11250 60.533556 7.943078e-07
+## 3  1    4.9005    4.90050  0.214012 6.498700e-01
+## 4 16  366.3720   22.89825        NA           NA</code></pre>
+<p>Avant d’interpréter les résultats, on doit vérifier les suppositions du modèle. On vérifie les suppositions de l’ANOVA à deux critères avec les mêmes outils que pour l’ANOVA à un critère. On constate que les résidus suivent une distribution normale (Figure <a href="leçon-6.html#fig:normcalcium">7.2</a>a):</p>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="leçon-6.html#cb655-1" tabindex="-1"></a><span class="do">##vérification de la normalité des résidus</span></span>
+<span id="cb655-2"><a href="leçon-6.html#cb655-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb655-3"><a href="leçon-6.html#cb655-3" tabindex="-1"></a></span>
+<span id="cb655-4"><a href="leçon-6.html#cb655-4" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(aov2),</span>
+<span id="cb655-5"><a href="leçon-6.html#cb655-5" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Normalité des résidus&quot;</span>,</span>
+<span id="cb655-6"><a href="leçon-6.html#cb655-6" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>, </span>
+<span id="cb655-7"><a href="leçon-6.html#cb655-7" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
+<span id="cb655-8"><a href="leçon-6.html#cb655-8" tabindex="-1"></a>       <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb655-9"><a href="leçon-6.html#cb655-9" tabindex="-1"></a></span>
+<span id="cb655-10"><a href="leçon-6.html#cb655-10" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(aov2))</span>
+<span id="cb655-11"><a href="leçon-6.html#cb655-11" tabindex="-1"></a></span>
+<span id="cb655-12"><a href="leçon-6.html#cb655-12" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">1.9</span>, <span class="at">y =</span> <span class="fl">7.5</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb655-13"><a href="leçon-6.html#cb655-13" tabindex="-1"></a></span>
+<span id="cb655-14"><a href="leçon-6.html#cb655-14" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(aov2) <span class="sc">~</span> <span class="fu">fitted</span>(aov2), </span>
+<span id="cb655-15"><a href="leçon-6.html#cb655-15" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>,</span>
+<span id="cb655-16"><a href="leçon-6.html#cb655-16" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>, </span>
+<span id="cb655-17"><a href="leçon-6.html#cb655-17" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb655-18"><a href="leçon-6.html#cb655-18" tabindex="-1"></a></span>
+<span id="cb655-19"><a href="leçon-6.html#cb655-19" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">12.5</span>, <span class="at">y =</span> <span class="fl">7.5</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:normcalcium"></span>
+<img src="Cours_Stats_R_files/figure-html/normcalcium-1.png" alt="Graphique quantile-quantile évaluant la normalité des résidus (a) et le graphique des résidus en fonction des valeurs prédites pour diagnostiquer l'hétérogénéité de la variance (b) à partir de l'ANOVA à deux critères sur les données de concentration en calcium dans le plasma sanguin." width="672" />
+<p class="caption">
+Figure 7.2: Graphique quantile-quantile évaluant la normalité des résidus (a) et le graphique des résidus en fonction des valeurs prédites pour diagnostiquer l’hétérogénéité de la variance (b) à partir de l’ANOVA à deux critères sur les données de concentration en calcium dans le plasma sanguin.
+</p>
+</div>
+<p>Le graphique des résidus en fonction des valeurs prédites présente des signes d’hétérogénéité de la variance (Figure <a href="leçon-6.html#fig:normcalcium">7.2</a>b). En effet, le patron en forme d’entonnoir montre que la variance augmente avec les valeurs prédites. Par conséquent, on ne peut pas interpréter le tableau de l’ANOVA obtenu plus haut. Afin de corriger l’hétérogénéité de la variance, la transformation logarithmique s’avère souvent efficace. Essayons-la sur la concentration en calcium.</p>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="leçon-6.html#cb656-1" tabindex="-1"></a><span class="do">## Transformation log</span></span>
+<span id="cb656-2"><a href="leçon-6.html#cb656-2" tabindex="-1"></a>calcium<span class="sc">$</span>log.concentration <span class="ot">&lt;-</span> <span class="fu">log</span>(calcium<span class="sc">$</span>Concentration)</span>
+<span id="cb656-3"><a href="leçon-6.html#cb656-3" tabindex="-1"></a>aov.log <span class="ot">&lt;-</span> <span class="fu">aov</span>(log.concentration <span class="sc">~</span> Trait <span class="sc">+</span> Sexe <span class="sc">+</span> Trait<span class="sc">:</span>Sexe,</span>
+<span id="cb656-4"><a href="leçon-6.html#cb656-4" tabindex="-1"></a>               <span class="at">data =</span> calcium)</span></code></pre></div>
+<p>Produisons le nouveau graphique pour évaluer la normalité des résidus et l’hétérogénéité de la variace.</p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="leçon-6.html#cb657-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb657-2"><a href="leçon-6.html#cb657-2" tabindex="-1"></a></span>
+<span id="cb657-3"><a href="leçon-6.html#cb657-3" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(aov.log), </span>
+<span id="cb657-4"><a href="leçon-6.html#cb657-4" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
+<span id="cb657-5"><a href="leçon-6.html#cb657-5" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles prédits&quot;</span>,</span>
+<span id="cb657-6"><a href="leçon-6.html#cb657-6" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot; &quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb657-7"><a href="leçon-6.html#cb657-7" tabindex="-1"></a></span>
+<span id="cb657-8"><a href="leçon-6.html#cb657-8" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(aov.log))</span>
+<span id="cb657-9"><a href="leçon-6.html#cb657-9" tabindex="-1"></a></span>
+<span id="cb657-10"><a href="leçon-6.html#cb657-10" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">1.5</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb657-11"><a href="leçon-6.html#cb657-11" tabindex="-1"></a></span>
+<span id="cb657-12"><a href="leçon-6.html#cb657-12" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(aov.log) <span class="sc">~</span> <span class="fu">fitted</span>(aov.log),</span>
+<span id="cb657-13"><a href="leçon-6.html#cb657-13" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>, </span>
+<span id="cb657-14"><a href="leçon-6.html#cb657-14" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>,</span>
+<span id="cb657-15"><a href="leçon-6.html#cb657-15" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb657-16"><a href="leçon-6.html#cb657-16" tabindex="-1"></a></span>
+<span id="cb657-17"><a href="leçon-6.html#cb657-17" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">3.3</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logcheck"></span>
+<img src="Cours_Stats_R_files/figure-html/logcheck-1.png" alt="Graphique quantile-quantile (a) et résidus en fonction des valeurs prédites (b) de l'ANOVA à deux critères réalisée à partir des données de concentration de calcium log-transformées." width="672" />
+<p class="caption">
+Figure 7.3: Graphique quantile-quantile (a) et résidus en fonction des valeurs prédites (b) de l’ANOVA à deux critères réalisée à partir des données de concentration de calcium log-transformées.
+</p>
+</div>
+<p>Les suppositions de normalité et d’homogénéité de la variance sont maintenant respectées (Figure <a href="leçon-6.html#fig:logcheck">7.3</a>).</p>
+<p>Le tableau d’ANOVA réalisé à partir du logarithme de la concentration en calcium donne :</p>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="leçon-6.html#cb658-1" tabindex="-1"></a><span class="do">## Résultats</span></span>
+<span id="cb658-2"><a href="leçon-6.html#cb658-2" tabindex="-1"></a><span class="fu">summary</span>(aov.log)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Trait        1  3.196   3.196  86.121 7.69e-08 ***
+## Sexe         1  0.145   0.145   3.901   0.0658 .  
+## Trait:Sexe   1  0.007   0.007   0.176   0.6805    
+## Residuals   16  0.594   0.037                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Lorsqu’on effectue une analyse de variance à deux critères avec répétitions, on doit toujours vérifier en premier la signification du terme d’interaction. Ici, on remarque qu’il n’y a pas d’interaction entre les deux facteurs (). Par ailleurs, on remarque un effet marginal du sexe ()<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a> et un effet important du traitement hormonal sur le log de la concentration en calcium (<span class="math inline">\(F_{1, 16} = 86.12, P &lt; 0.0001\)</span>). L’effet de chaque facteur est indépendant de l’effet de l’autre, puisque l’ANOVA n’a pu démontrer que le terme d’interaction était statistiquement significatif.</p>
+<p>Tout comme l’ANOVA à un critère, on peut poursuivre l’ANOVA à deux critères avec des comparaisons multiples afin de déterminer où se trouvent les différences lorsque nous avons rejeté <span class="math inline">\(H_0\)</span><a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>.</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="leçon-6.html#cb660-1" tabindex="-1"></a><span class="do">##comparaisons multiples - Sexe</span></span>
+<span id="cb660-2"><a href="leçon-6.html#cb660-2" tabindex="-1"></a>sexe.mult <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(aov.log, <span class="at">which =</span> <span class="st">&quot;Sexe&quot;</span>)</span>
+<span id="cb660-3"><a href="leçon-6.html#cb660-3" tabindex="-1"></a>sexe.mult<span class="sc">$</span>Sexe</span></code></pre></div>
+<pre><code>##           diff        lwr        upr      p adj
+## m-f -0.1701524 -0.3527725 0.01246759 0.06576033</code></pre>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="leçon-6.html#cb662-1" tabindex="-1"></a><span class="do">##comparaisons multiples - Trait</span></span>
+<span id="cb662-2"><a href="leçon-6.html#cb662-2" tabindex="-1"></a>trait.mult <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(aov.log, <span class="at">which =</span> <span class="st">&quot;Trait&quot;</span>)</span>
+<span id="cb662-3"><a href="leçon-6.html#cb662-3" tabindex="-1"></a>trait.mult<span class="sc">$</span>Trait</span></code></pre></div>
+<pre><code>##                      diff        lwr        upr        p adj
+## sans_horm-horm -0.7994414 -0.9820614 -0.6168213 7.686578e-08</code></pre>
+<p>Les comparaisons multiples basées sur le test de Tukey indiquent la même conclusion que le tableau d’ANOVA, puisque chaque facteur ne comporte ici que deux niveaux. Le log de la concentration en calcium du plasma sanguin des femelles est marginalement supérieur à celui des mâles (<span class="math inline">\(\bar{x}_{\mathrm{m\hat{a}les}} - \bar{x}_{\mathrm{femelles}} = -0.17, P = 0.0658\)</span>). En ce qui concerne le facteur du traitement hormonal, on constate que le groupe avec traitement hormonal est supérieur à celui du groupe sans traitement hormonal (<span class="math inline">\(\bar{x}_{\mathrm{sans\_horm}} - \bar{x}_{\mathrm{horm}} = -0.799, P &lt; 0.0001\)</span>).</p>
+<p>On peut aussi illustrer les résultats à l’aide d’un graphique en représentant les moyennes de chaque groupe <span class="math inline">\(\pm\)</span> un intervalle de confiance à 95 %. Tout d’abord produisons un graphique sur une échelle logarithmique.</p>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="leçon-6.html#cb664-1" tabindex="-1"></a><span class="do">## Sexe - moyenne des groupes</span></span>
+<span id="cb664-2"><a href="leçon-6.html#cb664-2" tabindex="-1"></a><span class="do">## valeurs pour lesquelles faire des prédictions</span></span>
+<span id="cb664-3"><a href="leçon-6.html#cb664-3" tabindex="-1"></a><span class="do">## On commence par créer un tableau dans lequel </span></span>
+<span id="cb664-4"><a href="leçon-6.html#cb664-4" tabindex="-1"></a><span class="do">## chaque ligne correspond à une combinaison des facteurs A et B.</span></span>
+<span id="cb664-5"><a href="leçon-6.html#cb664-5" tabindex="-1"></a>pred.set <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Sexe =</span> <span class="fu">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>), </span>
+<span id="cb664-6"><a href="leçon-6.html#cb664-6" tabindex="-1"></a>                        <span class="at">Trait =</span> <span class="fu">c</span>(<span class="st">&quot;sans_horm&quot;</span>, <span class="st">&quot;horm&quot;</span>))</span>
+<span id="cb664-7"><a href="leçon-6.html#cb664-7" tabindex="-1"></a></span>
+<span id="cb664-8"><a href="leçon-6.html#cb664-8" tabindex="-1"></a><span class="do">## La fonction predict nous donne les valeurs prédites par l’ANOVA</span></span>
+<span id="cb664-9"><a href="leçon-6.html#cb664-9" tabindex="-1"></a>sex.means <span class="ot">&lt;-</span> <span class="fu">predict</span>(aov.log, <span class="at">newdata =</span> pred.set, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb664-10"><a href="leçon-6.html#cb664-10" tabindex="-1"></a></span>
+<span id="cb664-11"><a href="leçon-6.html#cb664-11" tabindex="-1"></a><span class="do">## Ajout des prédictions dans le jeu de données</span></span>
+<span id="cb664-12"><a href="leçon-6.html#cb664-12" tabindex="-1"></a>pred.set<span class="sc">$</span>fit <span class="ot">&lt;-</span> sex.means<span class="sc">$</span>fit</span>
+<span id="cb664-13"><a href="leçon-6.html#cb664-13" tabindex="-1"></a>pred.set<span class="sc">$</span>se.fit <span class="ot">&lt;-</span> sex.means<span class="sc">$</span>se.fit</span>
+<span id="cb664-14"><a href="leçon-6.html#cb664-14" tabindex="-1"></a></span>
+<span id="cb664-15"><a href="leçon-6.html#cb664-15" tabindex="-1"></a><span class="do">##IC à 95%</span></span>
+<span id="cb664-16"><a href="leçon-6.html#cb664-16" tabindex="-1"></a><span class="do">## On détermine l’intervalle de confiance pour </span></span>
+<span id="cb664-17"><a href="leçon-6.html#cb664-17" tabindex="-1"></a><span class="do">## construire nos barres d’erreur</span></span>
+<span id="cb664-18"><a href="leçon-6.html#cb664-18" tabindex="-1"></a><span class="do">## Rappelons que l’intervalle de confiance est donné par : </span></span>
+<span id="cb664-19"><a href="leçon-6.html#cb664-19" tabindex="-1"></a><span class="do">## (IC.inf, IC.sup) (voir leçon 2)</span></span>
+<span id="cb664-20"><a href="leçon-6.html#cb664-20" tabindex="-1"></a><span class="do">## IC.inf = x.bar + qt(p=0.025, df)*SE</span></span>
+<span id="cb664-21"><a href="leçon-6.html#cb664-21" tabindex="-1"></a><span class="do">## IC.sup = x.bar - qt(p=0.025, df)*SE</span></span>
+<span id="cb664-22"><a href="leçon-6.html#cb664-22" tabindex="-1"></a></span>
+<span id="cb664-23"><a href="leçon-6.html#cb664-23" tabindex="-1"></a>pred.set<span class="sc">$</span>low95 <span class="ot">&lt;-</span> pred.set<span class="sc">$</span>fit <span class="sc">+</span> </span>
+<span id="cb664-24"><a href="leçon-6.html#cb664-24" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> aov.log<span class="sc">$</span>df.residual) <span class="sc">*</span> pred.set<span class="sc">$</span>se.fit</span>
+<span id="cb664-25"><a href="leçon-6.html#cb664-25" tabindex="-1"></a></span>
+<span id="cb664-26"><a href="leçon-6.html#cb664-26" tabindex="-1"></a>pred.set<span class="sc">$</span>upp95 <span class="ot">&lt;-</span> pred.set<span class="sc">$</span>fit <span class="sc">-</span> </span>
+<span id="cb664-27"><a href="leçon-6.html#cb664-27" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> aov.log<span class="sc">$</span>df.residual) <span class="sc">*</span> pred.set<span class="sc">$</span>se.fit</span>
+<span id="cb664-28"><a href="leçon-6.html#cb664-28" tabindex="-1"></a>pred.set</span>
+<span id="cb664-29"><a href="leçon-6.html#cb664-29" tabindex="-1"></a></span>
+<span id="cb664-30"><a href="leçon-6.html#cb664-30" tabindex="-1"></a><span class="do">##créer le graphique</span></span>
+<span id="cb664-31"><a href="leçon-6.html#cb664-31" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, </span>
+<span id="cb664-32"><a href="leçon-6.html#cb664-32" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Log de la concentration en calcium&quot;</span>,</span>
+<span id="cb664-33"><a href="leçon-6.html#cb664-33" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Traitement&quot;</span>, </span>
+<span id="cb664-34"><a href="leçon-6.html#cb664-34" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(pred.set<span class="sc">$</span>low95), <span class="fu">max</span>(pred.set<span class="sc">$</span>upp95)), </span>
+<span id="cb664-35"><a href="leçon-6.html#cb664-35" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="dv">2</span>,</span>
+<span id="cb664-36"><a href="leçon-6.html#cb664-36" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>), </span>
+<span id="cb664-37"><a href="leçon-6.html#cb664-37" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb664-38"><a href="leçon-6.html#cb664-38" tabindex="-1"></a>     <span class="at">cex.axis =</span> <span class="dv">2</span>, </span>
+<span id="cb664-39"><a href="leçon-6.html#cb664-39" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb664-40"><a href="leçon-6.html#cb664-40" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± IC 95 % (échelle log)&quot;</span>, </span>
+<span id="cb664-41"><a href="leçon-6.html#cb664-41" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb664-42"><a href="leçon-6.html#cb664-42" tabindex="-1"></a></span>
+<span id="cb664-43"><a href="leçon-6.html#cb664-43" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb664-44"><a href="leçon-6.html#cb664-44" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, </span>
+<span id="cb664-45"><a href="leçon-6.html#cb664-45" tabindex="-1"></a>     <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), </span>
+<span id="cb664-46"><a href="leçon-6.html#cb664-46" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;sans horm&quot;</span>, <span class="st">&quot;horm&quot;</span>), </span>
+<span id="cb664-47"><a href="leçon-6.html#cb664-47" tabindex="-1"></a>     <span class="at">cex.axis =</span> <span class="dv">2</span>)</span>
+<span id="cb664-48"><a href="leçon-6.html#cb664-48" tabindex="-1"></a></span>
+<span id="cb664-49"><a href="leçon-6.html#cb664-49" tabindex="-1"></a><span class="do">##ajout des points pour mâles</span></span>
+<span id="cb664-50"><a href="leçon-6.html#cb664-50" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.set<span class="sc">$</span>fit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)], </span>
+<span id="cb664-51"><a href="leçon-6.html#cb664-51" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb664-52"><a href="leçon-6.html#cb664-52" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">1</span>, </span>
+<span id="cb664-53"><a href="leçon-6.html#cb664-53" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb664-54"><a href="leçon-6.html#cb664-54" tabindex="-1"></a></span>
+<span id="cb664-55"><a href="leçon-6.html#cb664-55" tabindex="-1"></a><span class="do">##ajout des points pour femelles</span></span>
+<span id="cb664-56"><a href="leçon-6.html#cb664-56" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.set<span class="sc">$</span>fit[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)], </span>
+<span id="cb664-57"><a href="leçon-6.html#cb664-57" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb664-58"><a href="leçon-6.html#cb664-58" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">2</span>, </span>
+<span id="cb664-59"><a href="leçon-6.html#cb664-59" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb664-60"><a href="leçon-6.html#cb664-60" tabindex="-1"></a></span>
+<span id="cb664-61"><a href="leçon-6.html#cb664-61" tabindex="-1"></a><span class="do">##barres d&#39;erreurs pour mâles</span></span>
+<span id="cb664-62"><a href="leçon-6.html#cb664-62" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb664-63"><a href="leçon-6.html#cb664-63" tabindex="-1"></a>       <span class="at">y0 =</span> pred.set<span class="sc">$</span>low95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], </span>
+<span id="cb664-64"><a href="leçon-6.html#cb664-64" tabindex="-1"></a>       <span class="at">y1 =</span> pred.set<span class="sc">$</span>upp95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)],</span>
+<span id="cb664-65"><a href="leçon-6.html#cb664-65" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb664-66"><a href="leçon-6.html#cb664-66" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb664-67"><a href="leçon-6.html#cb664-67" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb664-68"><a href="leçon-6.html#cb664-68" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb664-69"><a href="leçon-6.html#cb664-69" tabindex="-1"></a></span>
+<span id="cb664-70"><a href="leçon-6.html#cb664-70" tabindex="-1"></a><span class="do">##barres d&#39;erreurs pour femelles</span></span>
+<span id="cb664-71"><a href="leçon-6.html#cb664-71" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb664-72"><a href="leçon-6.html#cb664-72" tabindex="-1"></a>       <span class="at">y0 =</span> pred.set<span class="sc">$</span>low95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)], </span>
+<span id="cb664-73"><a href="leçon-6.html#cb664-73" tabindex="-1"></a>       <span class="at">y1 =</span> pred.set<span class="sc">$</span>upp95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)],</span>
+<span id="cb664-74"><a href="leçon-6.html#cb664-74" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb664-75"><a href="leçon-6.html#cb664-75" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb664-76"><a href="leçon-6.html#cb664-76" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb664-77"><a href="leçon-6.html#cb664-77" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb664-78"><a href="leçon-6.html#cb664-78" tabindex="-1"></a></span>
+<span id="cb664-79"><a href="leçon-6.html#cb664-79" tabindex="-1"></a><span class="do">##ajouter légende</span></span>
+<span id="cb664-80"><a href="leçon-6.html#cb664-80" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;topleft&quot;</span>, </span>
+<span id="cb664-81"><a href="leçon-6.html#cb664-81" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;mâles&quot;</span>, <span class="st">&quot;femelles&quot;</span>), </span>
+<span id="cb664-82"><a href="leçon-6.html#cb664-82" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb664-83"><a href="leçon-6.html#cb664-83" tabindex="-1"></a></span>
+<span id="cb664-84"><a href="leçon-6.html#cb664-84" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">2.8</span>, <span class="at">y =</span> <span class="fl">2.3</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span></code></pre></div>
+<!-- Ce prochain chunk de code n'apparait pas mais est utilisé pour générer la figure' -->
+<pre><code>##   Sexe     Trait      fit     se.fit    low95    upp95
+## 1    m sans_horm 2.482887 0.08614538 2.300267 2.665507
+## 2    f sans_horm 2.689163 0.08614538 2.506543 2.871783
+## 3    m      horm 3.318452 0.08614538 3.135832 3.501072
+## 4    f      horm 3.452481 0.08614538 3.269861 3.635101</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotresult"></span>
+<img src="Cours_Stats_R_files/figure-html/plotresult-1.png" alt="Résultats de l'ANOVA à deux critères présentés sur l'échelle logarithmique (a) et sur l'échelle originale de la variable réponse (b)." width="672" />
+<p class="caption">
+Figure 7.4: Résultats de l’ANOVA à deux critères présentés sur l’échelle logarithmique (a) et sur l’échelle originale de la variable réponse (b).
+</p>
+</div>
+<p>Le graphique sur l’échelle logarithmique (Figure <a href="leçon-6.html#fig:plotresult">7.4</a>a) montre clairement que les effets sont additifs (pas d’effet d’interaction), puisque la distance entre le cercle et le triangle du traitement hormonal est la même que celle entre les deux symboles du traitement sans hormone.</p>
+<p>Il est aussi approprié de présenter les résultats sur l’échelle originale de la variable réponse en effectuant l’opération inverse du logarithme naturel (c.-à-d., <code>exp( )</code>) sur la moyenne et sur les bornes inférieures et supérieures des intervalles de confiance.</p>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="leçon-6.html#cb666-1" tabindex="-1"></a><span class="do">## On prend l’exponentiel pour convertir les données </span></span>
+<span id="cb666-2"><a href="leçon-6.html#cb666-2" tabindex="-1"></a><span class="do">## transformées par le logarithme.</span></span>
+<span id="cb666-3"><a href="leçon-6.html#cb666-3" tabindex="-1"></a>pred.set<span class="sc">$</span>orig.fit <span class="ot">&lt;-</span> <span class="fu">exp</span>(pred.set<span class="sc">$</span>fit)</span>
+<span id="cb666-4"><a href="leçon-6.html#cb666-4" tabindex="-1"></a>pred.set<span class="sc">$</span>orig.low95 <span class="ot">&lt;-</span> <span class="fu">exp</span>(pred.set<span class="sc">$</span>low95)</span>
+<span id="cb666-5"><a href="leçon-6.html#cb666-5" tabindex="-1"></a>pred.set<span class="sc">$</span>orig.upp95 <span class="ot">&lt;-</span> <span class="fu">exp</span>(pred.set<span class="sc">$</span>upp95)</span>
+<span id="cb666-6"><a href="leçon-6.html#cb666-6" tabindex="-1"></a></span>
+<span id="cb666-7"><a href="leçon-6.html#cb666-7" tabindex="-1"></a><span class="do">##créer graphique</span></span>
+<span id="cb666-8"><a href="leçon-6.html#cb666-8" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, </span>
+<span id="cb666-9"><a href="leçon-6.html#cb666-9" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Concentration en calcium&quot;</span>,</span>
+<span id="cb666-10"><a href="leçon-6.html#cb666-10" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Traitement&quot;</span>, </span>
+<span id="cb666-11"><a href="leçon-6.html#cb666-11" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="dv">2</span>, </span>
+<span id="cb666-12"><a href="leçon-6.html#cb666-12" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(pred.set<span class="sc">$</span>orig.low95), <span class="fu">max</span>(pred.set<span class="sc">$</span>orig.upp95)), </span>
+<span id="cb666-13"><a href="leçon-6.html#cb666-13" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>), </span>
+<span id="cb666-14"><a href="leçon-6.html#cb666-14" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb666-15"><a href="leçon-6.html#cb666-15" tabindex="-1"></a>     <span class="at">cex.axis =</span> <span class="dv">2</span>, </span>
+<span id="cb666-16"><a href="leçon-6.html#cb666-16" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb666-17"><a href="leçon-6.html#cb666-17" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± IC 95 % (échelle originale)&quot;</span>, </span>
+<span id="cb666-18"><a href="leçon-6.html#cb666-18" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="dv">2</span>)</span>
+<span id="cb666-19"><a href="leçon-6.html#cb666-19" tabindex="-1"></a></span>
+<span id="cb666-20"><a href="leçon-6.html#cb666-20" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb666-21"><a href="leçon-6.html#cb666-21" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, </span>
+<span id="cb666-22"><a href="leçon-6.html#cb666-22" tabindex="-1"></a>     <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), </span>
+<span id="cb666-23"><a href="leçon-6.html#cb666-23" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;sans horm&quot;</span>, <span class="st">&quot;horm&quot;</span>), </span>
+<span id="cb666-24"><a href="leçon-6.html#cb666-24" tabindex="-1"></a>     <span class="at">cex.axis =</span> <span class="dv">2</span>)</span>
+<span id="cb666-25"><a href="leçon-6.html#cb666-25" tabindex="-1"></a></span>
+<span id="cb666-26"><a href="leçon-6.html#cb666-26" tabindex="-1"></a><span class="do">##ajout des points pour mâles</span></span>
+<span id="cb666-27"><a href="leçon-6.html#cb666-27" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.set<span class="sc">$</span>orig.fit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)], </span>
+<span id="cb666-28"><a href="leçon-6.html#cb666-28" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb666-29"><a href="leçon-6.html#cb666-29" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">1</span>, </span>
+<span id="cb666-30"><a href="leçon-6.html#cb666-30" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb666-31"><a href="leçon-6.html#cb666-31" tabindex="-1"></a></span>
+<span id="cb666-32"><a href="leçon-6.html#cb666-32" tabindex="-1"></a><span class="do">##ajout des points pour femelles</span></span>
+<span id="cb666-33"><a href="leçon-6.html#cb666-33" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.set<span class="sc">$</span>orig.fit[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)],</span>
+<span id="cb666-34"><a href="leçon-6.html#cb666-34" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb666-35"><a href="leçon-6.html#cb666-35" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">2</span>, </span>
+<span id="cb666-36"><a href="leçon-6.html#cb666-36" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb666-37"><a href="leçon-6.html#cb666-37" tabindex="-1"></a></span>
+<span id="cb666-38"><a href="leçon-6.html#cb666-38" tabindex="-1"></a><span class="do">##barres d&#39;erreurs pour mâles</span></span>
+<span id="cb666-39"><a href="leçon-6.html#cb666-39" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb666-40"><a href="leçon-6.html#cb666-40" tabindex="-1"></a>       <span class="at">y0 =</span> pred.set<span class="sc">$</span>orig.low95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], </span>
+<span id="cb666-41"><a href="leçon-6.html#cb666-41" tabindex="-1"></a>       <span class="at">y1 =</span> pred.set<span class="sc">$</span>orig.upp95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)],</span>
+<span id="cb666-42"><a href="leçon-6.html#cb666-42" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.9</span>), </span>
+<span id="cb666-43"><a href="leçon-6.html#cb666-43" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb666-44"><a href="leçon-6.html#cb666-44" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb666-45"><a href="leçon-6.html#cb666-45" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb666-46"><a href="leçon-6.html#cb666-46" tabindex="-1"></a></span>
+<span id="cb666-47"><a href="leçon-6.html#cb666-47" tabindex="-1"></a><span class="do">##barres d&#39;erreurs pour femelles</span></span>
+<span id="cb666-48"><a href="leçon-6.html#cb666-48" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb666-49"><a href="leçon-6.html#cb666-49" tabindex="-1"></a>       <span class="at">y0 =</span> pred.set<span class="sc">$</span>orig.low95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)], </span>
+<span id="cb666-50"><a href="leçon-6.html#cb666-50" tabindex="-1"></a>       <span class="at">y1 =</span> pred.set<span class="sc">$</span>orig.upp95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)],</span>
+<span id="cb666-51"><a href="leçon-6.html#cb666-51" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.1</span>), </span>
+<span id="cb666-52"><a href="leçon-6.html#cb666-52" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb666-53"><a href="leçon-6.html#cb666-53" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb666-54"><a href="leçon-6.html#cb666-54" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb666-55"><a href="leçon-6.html#cb666-55" tabindex="-1"></a></span>
+<span id="cb666-56"><a href="leçon-6.html#cb666-56" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">2.8</span>, </span>
+<span id="cb666-57"><a href="leçon-6.html#cb666-57" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">10</span>, </span>
+<span id="cb666-58"><a href="leçon-6.html#cb666-58" tabindex="-1"></a>     <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, </span>
+<span id="cb666-59"><a href="leçon-6.html#cb666-59" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb666-60"><a href="leçon-6.html#cb666-60" tabindex="-1"></a></span>
+<span id="cb666-61"><a href="leçon-6.html#cb666-61" tabindex="-1"></a><span class="do">##ajouter légende</span></span>
+<span id="cb666-62"><a href="leçon-6.html#cb666-62" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;topleft&quot;</span>, </span>
+<span id="cb666-63"><a href="leçon-6.html#cb666-63" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;mâles&quot;</span>, <span class="st">&quot;femelles&quot;</span>), </span>
+<span id="cb666-64"><a href="leçon-6.html#cb666-64" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), </span>
+<span id="cb666-65"><a href="leçon-6.html#cb666-65" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>En l’absence d’une interaction statistiquement significative (comme dans cet exemple), on présente les résultats séparément pour chaque facteur (Figure <a href="leçon-6.html#fig:resCalcium">7.5</a>). On voit à la Figure <a href="leçon-6.html#fig:resCalcium">7.5</a> que la concentration de calcium du groupe sans traitement hormonal est bien inférieure à celle du groupe avec traitement hormonal, alors que les différences entre mâles et femelles sont beaucoup moins marquées.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:resCalcium"></span>
+<img src="Cours_Stats_R_files/figure-html/resCalcium-1.png" alt="Résultats présentés séparément pour chaque facteur de l'ANOVA à deux critères présentés sur l'échelle d'origine. Les groupes qui ont les mêmes lettres ne diffèrent pas entre eux pour un facteur donné et avec un seuil de d'effet significatif $\alpha$ &lt; 0.05." width="672" />
+<p class="caption">
+Figure 7.5: Résultats présentés séparément pour chaque facteur de l’ANOVA à deux critères présentés sur l’échelle d’origine. Les groupes qui ont les mêmes lettres ne diffèrent pas entre eux pour un facteur donné et avec un seuil de d’effet significatif <span class="math inline">\(\alpha\)</span> &lt; 0.05.
+</p>
+</div>
+</div>
+</div>
+<div id="effets-additifs" class="section level3 hasAnchor" number="7.1.5">
+<h3><span class="header-section-number">7.1.5</span> Effets additifs<a href="leçon-6.html#effets-additifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans l’exemple précédent, on remarque que l’effet du premier facteur est indépendant de l’effet du deuxième facteur. En d’autres mots, la différence entre les mâles et les femelles est constante, peu importe le traitement hormonal. En l’absence d’une interaction statistiquement significative entre les deux facteurs, nous dirons que les effets des facteurs sont <strong>additifs</strong>. C’est ce qu’on entend par l’<strong>additivité</strong> des facteurs. En contrepartie, la présence d’une interaction significative entre les facteurs complique l’interprétation des résultats de l’expérimentation. Effectivement, la présence d’une interaction permet d’identifier des phénomènes souvent plus intéressants scientifiquement que s’il n’y avait pas d’interaction entre les facteurs. C’est ce que nous constaterons dans certains des exemples suivants.</p>
+<div class="exemple" section="7">
+<p>Nous désirons déterminer l’effet du type de moulée (avoine, blé ou orge) et du type de supplément alimentaire (<em>agrimore</em>, <em>control</em>, <em>supergain</em> et <em>supersupp</em>) sur le gain en masse en kg de bétail après 6 semaines. Les données sont stockées dans le fichier <code>croissance.csv</code><a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>.</p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="leçon-6.html#cb667-1" tabindex="-1"></a><span class="do">## importation avec séparateur virgule car ici les champs sont séparés par des virgules</span></span>
+<span id="cb667-2"><a href="leçon-6.html#cb667-2" tabindex="-1"></a>croissance <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/croissance.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb667-3"><a href="leçon-6.html#cb667-3" tabindex="-1"></a><span class="fu">head</span>(croissance)</span></code></pre></div>
+<pre><code>##   Supplement Diete     Gain
+## 1  supergain   ble 17.37125
+## 2  supergain   ble 16.81489
+## 3  supergain   ble 18.08184
+## 4  supergain   ble 15.78175
+## 5    control   ble 17.70656
+## 6    control   ble 18.22717</code></pre>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="leçon-6.html#cb669-1" tabindex="-1"></a><span class="do">## la fonction str() affiche la structure interne du tableau C’est une fonction alternative à summary()</span></span>
+<span id="cb669-2"><a href="leçon-6.html#cb669-2" tabindex="-1"></a><span class="fu">str</span>(croissance)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    48 obs. of  3 variables:
+##  $ Supplement: chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
+##  $ Diete     : chr  &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; &quot;ble&quot; ...
+##  $ Gain      : num  17.4 16.8 18.1 15.8 17.7 ...</code></pre>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="leçon-6.html#cb671-1" tabindex="-1"></a><span class="do">## comparer avec importation sans sep = &#39;,&#39;</span></span>
+<span id="cb671-2"><a href="leçon-6.html#cb671-2" tabindex="-1"></a>crois2 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/croissance.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb671-3"><a href="leçon-6.html#cb671-3" tabindex="-1"></a><span class="fu">head</span>(crois2)</span></code></pre></div>
+<pre><code>##   Supplement   X..Diete...Gain.
+## 1  supergain ,&quot;ble&quot;,17.37125111
+## 2  supergain ,&quot;ble&quot;,16.81488903
+## 3  supergain  ,&quot;ble&quot;,18.0818374
+## 4  supergain ,&quot;ble&quot;,15.78174829
+## 5    control ,&quot;ble&quot;,17.70656456
+## 6    control ,&quot;ble&quot;,18.22716932</code></pre>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="leçon-6.html#cb673-1" tabindex="-1"></a><span class="do">## on remarque un problème à l&#39;importation les étiquettes des variables et les valeurs sont erronées</span></span>
+<span id="cb673-2"><a href="leçon-6.html#cb673-2" tabindex="-1"></a><span class="fu">str</span>(crois2)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    48 obs. of  2 variables:
+##  $ Supplement      : chr  &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; &quot;supergain&quot; ...
+##  $ X..Diete...Gain.: chr  &quot;,\&quot;ble\&quot;,17.37125111&quot; &quot;,\&quot;ble\&quot;,16.81488903&quot; &quot;,\&quot;ble\&quot;,18.0818374&quot; &quot;,\&quot;ble\&quot;,15.78174829&quot; ...</code></pre>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="leçon-6.html#cb675-1" tabindex="-1"></a><span class="do">## transformer en facteurs les variables en caracteres</span></span>
+<span id="cb675-2"><a href="leçon-6.html#cb675-2" tabindex="-1"></a>croissance<span class="sc">$</span>Supplement <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(croissance<span class="sc">$</span>Supplement)</span>
+<span id="cb675-3"><a href="leçon-6.html#cb675-3" tabindex="-1"></a>croissance<span class="sc">$</span>Diete <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(croissance<span class="sc">$</span>Diete)</span></code></pre></div>
+<p>On vérifie le nombre de répétitions pour chaque combinaison des deux facteurs :</p>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="leçon-6.html#cb676-1" tabindex="-1"></a><span class="fu">table</span>(croissance<span class="sc">$</span>Supplement, croissance<span class="sc">$</span>Diete)</span></code></pre></div>
+<pre><code>##            
+##             avoine ble orge
+##   agrimore       4   4    4
+##   control        4   4    4
+##   supergain      4   4    4
+##   supersupp      4   4    4</code></pre>
+<p>Nous disposons de quatre répétitions pour chaque combinaison de facteurs. Ainsi, nous pourrons inclure un terme d’interaction dans l’ANOVA à deux facteurs. Avant de lancer l’analyse, on peut jeter un coup d’oeil aux données brutes à l’aide d’un diagramme de boîtes et moustaches (Figure <a href="leçon-6.html#fig:croisbox">7.6</a>).</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="leçon-6.html#cb678-1" tabindex="-1"></a><span class="do">##on crée un boxplot</span></span>
+<span id="cb678-2"><a href="leçon-6.html#cb678-2" tabindex="-1"></a><span class="fu">boxplot</span>(Gain <span class="sc">~</span> Supplement <span class="sc">+</span> Diete, <span class="at">data =</span> croissance)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:croisbox"></span>
+<img src="Cours_Stats_R_files/figure-html/croisbox-1.png" alt="Diagramme de boîtes et moustaches présentant les données de gain de masse en fonction du type de moulée (Diete) et de supplément (Supplement)." width="672" />
+<p class="caption">
+Figure 7.6: Diagramme de boîtes et moustaches présentant les données de gain de masse en fonction du type de moulée (Diete) et de supplément (Supplement).
+</p>
+</div>
+<p>Calculons maintenant l’ANOVA :</p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="leçon-6.html#cb679-1" tabindex="-1"></a>aov.crois <span class="ot">&lt;-</span> <span class="fu">aov</span>(Gain <span class="sc">~</span> Supplement <span class="sc">+</span> Diete <span class="sc">+</span> Supplement<span class="sc">:</span>Diete,</span>
+<span id="cb679-2"><a href="leçon-6.html#cb679-2" tabindex="-1"></a>                 <span class="at">data =</span> croissance)</span>
+<span id="cb679-3"><a href="leçon-6.html#cb679-3" tabindex="-1"></a><span class="fu">summary</span>(aov.crois)</span></code></pre></div>
+<pre><code>##                  Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Supplement        3  91.88   30.63   17.82 2.95e-07 ***
+## Diete             2 287.17  143.59   83.52 3.00e-14 ***
+## Supplement:Diete  6   3.41    0.57    0.33    0.917    
+## Residuals        36  61.89    1.72                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Avant d’interpréter les résultats, on vérifie les suppositions du modèle.</p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="leçon-6.html#cb681-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb681-2"><a href="leçon-6.html#cb681-2" tabindex="-1"></a></span>
+<span id="cb681-3"><a href="leçon-6.html#cb681-3" tabindex="-1"></a><span class="do">##Vérification de la normalité des résidus</span></span>
+<span id="cb681-4"><a href="leçon-6.html#cb681-4" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(aov.crois), </span>
+<span id="cb681-5"><a href="leçon-6.html#cb681-5" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
+<span id="cb681-6"><a href="leçon-6.html#cb681-6" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
+<span id="cb681-7"><a href="leçon-6.html#cb681-7" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>,</span>
+<span id="cb681-8"><a href="leçon-6.html#cb681-8" tabindex="-1"></a>       <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span>
+<span id="cb681-9"><a href="leçon-6.html#cb681-9" tabindex="-1"></a></span>
+<span id="cb681-10"><a href="leçon-6.html#cb681-10" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(aov.crois))</span>
+<span id="cb681-11"><a href="leçon-6.html#cb681-11" tabindex="-1"></a></span>
+<span id="cb681-12"><a href="leçon-6.html#cb681-12" tabindex="-1"></a><span class="do">##Vérification de l&#39;homogénéité de la variance</span></span>
+<span id="cb681-13"><a href="leçon-6.html#cb681-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(aov.crois) <span class="sc">~</span> <span class="fu">fitted</span>(aov.crois), </span>
+<span id="cb681-14"><a href="leçon-6.html#cb681-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Résidus&quot;</span>, </span>
+<span id="cb681-15"><a href="leçon-6.html#cb681-15" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valeurs prédites&quot;</span>, </span>
+<span id="cb681-16"><a href="leçon-6.html#cb681-16" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="fu">bold</span>(Résidus), <span class="st">&quot; &quot;</span>, <span class="fu">bold</span>(<span class="fu">italic</span>(vs)), <span class="st">&quot; &quot;</span>, </span>
+<span id="cb681-17"><a href="leçon-6.html#cb681-17" tabindex="-1"></a>         <span class="fu">bold</span>(valeurs), <span class="st">&quot; &quot;</span>, <span class="fu">bold</span>(prédites))), </span>
+<span id="cb681-18"><a href="leçon-6.html#cb681-18" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:croisdiag"></span>
+<img src="Cours_Stats_R_files/figure-html/croisdiag-1.png" alt="Vérification des suppositions de l'ANOVA à deux critères." width="672" />
+<p class="caption">
+Figure 7.7: Vérification des suppositions de l’ANOVA à deux critères.
+</p>
+</div>
+<p>Nous remarquons que les résidus sur le graphique suivent généralement une distribution normale et qu’à l’exception de trois observations, l’homogénéité des variances est respectée (Figure <a href="leçon-6.html#fig:croisdiag">7.7</a>). Nous pouvons donc procéder à l’interprétation des résultats.</p>
+<p>Le type de supplément et le type de moulée ont tous deux un effet important sur le gain de masse (supplément: <span class="math inline">\(F_{3, 36} = 17.81, P &lt; 0.0001\)</span>; type de moulée: <span class="math inline">\(F_{2, 36} = 83.52, P &lt; 0.0001\)</span>). Toutefois, il n’y aucune preuve d’une interaction entre les deux facteurs (<span class="math inline">\(F_{6, 36} = 0.33, P = 0.92\)</span>). On peut donc conclure que les effets sont additifs. Les comparaisons multiples suggèrent des différences entre certains groupes de chaque facteur :</p>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="leçon-6.html#cb682-1" tabindex="-1"></a><span class="do">##On test d’abord les interactions entre les suppléments</span></span>
+<span id="cb682-2"><a href="leçon-6.html#cb682-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> croissance<span class="sc">$</span>Gain, <span class="at">INDEX =</span> croissance<span class="sc">$</span>Supplement, </span>
+<span id="cb682-3"><a href="leçon-6.html#cb682-3" tabindex="-1"></a>       <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##  agrimore   control supergain supersupp 
+##  23.09531  20.39861  19.71385  22.36796</code></pre>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="leçon-6.html#cb684-1" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb684-2"><a href="leçon-6.html#cb684-2" tabindex="-1"></a><span class="do">##Tukey</span></span>
+<span id="cb684-3"><a href="leçon-6.html#cb684-3" tabindex="-1"></a>mult.supp <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(aov.crois, <span class="at">which =</span> <span class="st">&quot;Supplement&quot;</span>)</span>
+<span id="cb684-4"><a href="leçon-6.html#cb684-4" tabindex="-1"></a>mult.supp<span class="sc">$</span>Supplement</span></code></pre></div>
+<pre><code>##                           diff       lwr        upr        p adj
+## control-agrimore    -2.6967005 -4.138342 -1.2550592 7.641492e-05
+## supergain-agrimore  -3.3814586 -4.823100 -1.9398173 1.534370e-06
+## supersupp-agrimore  -0.7273521 -2.168993  0.7142892 5.326710e-01
+## supergain-control   -0.6847581 -2.126399  0.7568832 5.817637e-01
+## supersupp-control    1.9693484  0.527707  3.4109897 4.053368e-03
+## supersupp-supergain  2.6541065  1.212465  4.0957478 9.722472e-05</code></pre>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="leçon-6.html#cb686-1" tabindex="-1"></a><span class="do">##On test les interactions entre les diètes</span></span>
+<span id="cb686-2"><a href="leçon-6.html#cb686-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> croissance<span class="sc">$</span>Gain, <span class="at">INDEX =</span> croissance<span class="sc">$</span>Diete, </span>
+<span id="cb686-3"><a href="leçon-6.html#cb686-3" tabindex="-1"></a>       <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##   avoine      ble     orge 
+## 21.32882 18.43134 24.42164</code></pre>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="leçon-6.html#cb688-1" tabindex="-1"></a><span class="do">##Tukey</span></span>
+<span id="cb688-2"><a href="leçon-6.html#cb688-2" tabindex="-1"></a>mult.diete <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(aov.crois, <span class="at">which =</span> <span class="st">&quot;Diete&quot;</span>)</span>
+<span id="cb688-3"><a href="leçon-6.html#cb688-3" tabindex="-1"></a>mult.diete<span class="sc">$</span>Diete</span></code></pre></div>
+<pre><code>##                  diff       lwr       upr        p adj
+## ble-avoine  -2.897481 -4.030582 -1.764379 9.530072e-07
+## orge-avoine  3.092817  1.959715  4.225918 2.634600e-07
+## orge-ble     5.990298  4.857196  7.123399 0.000000e+00</code></pre>
+<p>On peut représenter les résultats des comparaisons multiples comme suit pour le type de supplément :</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+supergain
+</th>
+<th style="text-align:center;">
+control
+</th>
+<th style="text-align:center;">
+supersupp
+</th>
+<th style="text-align:center;">
+agrimore
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;width: 10em; ">
+19.714
+</td>
+<td style="text-align:center;width: 10em; ">
+20.399
+</td>
+<td style="text-align:center;width: 10em; ">
+22.368
+</td>
+<td style="text-align:center;width: 10em; ">
+23.005
+</td>
+</tr>
+</tbody>
+</table>
+<p>On peut représenter les résultats des comparaisons multiples comme suit pour le type de moulée (<code>Diete</code>) :</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+blé
+</th>
+<th style="text-align:center;">
+avoine
+</th>
+<th style="text-align:center;">
+orge
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;width: 10em; ">
+18.431
+</td>
+<td style="text-align:center;width: 10em; ">
+21.329
+</td>
+<td style="text-align:center;width: 10em; ">
+24.422
+</td>
+</tr>
+</tbody>
+</table>
+<p>La figure <a href="leçon-6.html#fig:figcrois">7.8</a> illustre les résultats.</p>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="leçon-6.html#cb690-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb690-2"><a href="leçon-6.html#cb690-2" tabindex="-1"></a><span class="do">##supplement</span></span>
+<span id="cb690-3"><a href="leçon-6.html#cb690-3" tabindex="-1"></a>supp.means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> croissance<span class="sc">$</span>Gain, </span>
+<span id="cb690-4"><a href="leçon-6.html#cb690-4" tabindex="-1"></a>                     <span class="at">INDEX =</span> croissance<span class="sc">$</span>Supplement, <span class="at">FUN =</span> mean)</span>
+<span id="cb690-5"><a href="leçon-6.html#cb690-5" tabindex="-1"></a>supp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(supp.means, <span class="at">MSE =</span> <span class="fl">1.719</span>)</span>
+<span id="cb690-6"><a href="leçon-6.html#cb690-6" tabindex="-1"></a>supp<span class="sc">$</span>RMSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(supp<span class="sc">$</span>MSE)</span>
+<span id="cb690-7"><a href="leçon-6.html#cb690-7" tabindex="-1"></a>supp<span class="sc">$</span>low <span class="ot">&lt;-</span> supp<span class="sc">$</span>supp.means <span class="sc">-</span> supp<span class="sc">$</span>RMSE</span>
+<span id="cb690-8"><a href="leçon-6.html#cb690-8" tabindex="-1"></a>supp<span class="sc">$</span>upp <span class="ot">&lt;-</span> supp<span class="sc">$</span>supp.means <span class="sc">+</span> supp<span class="sc">$</span>RMSE</span>
+<span id="cb690-9"><a href="leçon-6.html#cb690-9" tabindex="-1"></a></span>
+<span id="cb690-10"><a href="leçon-6.html#cb690-10" tabindex="-1"></a><span class="do">##diete</span></span>
+<span id="cb690-11"><a href="leçon-6.html#cb690-11" tabindex="-1"></a>diet.means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> croissance<span class="sc">$</span>Gain, </span>
+<span id="cb690-12"><a href="leçon-6.html#cb690-12" tabindex="-1"></a>                     <span class="at">INDEX =</span> croissance<span class="sc">$</span>Diet, <span class="at">FUN =</span> mean)</span>
+<span id="cb690-13"><a href="leçon-6.html#cb690-13" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(diet.means, <span class="at">MSE =</span> <span class="fl">1.719</span>)</span>
+<span id="cb690-14"><a href="leçon-6.html#cb690-14" tabindex="-1"></a>diet<span class="sc">$</span>RMSE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(diet<span class="sc">$</span>MSE)</span>
+<span id="cb690-15"><a href="leçon-6.html#cb690-15" tabindex="-1"></a>diet<span class="sc">$</span>low <span class="ot">&lt;-</span> diet<span class="sc">$</span>diet.means <span class="sc">-</span> diet<span class="sc">$</span>RMSE</span>
+<span id="cb690-16"><a href="leçon-6.html#cb690-16" tabindex="-1"></a>diet<span class="sc">$</span>upp <span class="ot">&lt;-</span> diet<span class="sc">$</span>diet.means <span class="sc">+</span> diet<span class="sc">$</span>RMSE</span>
+<span id="cb690-17"><a href="leçon-6.html#cb690-17" tabindex="-1"></a></span>
+<span id="cb690-18"><a href="leçon-6.html#cb690-18" tabindex="-1"></a><span class="do">##créer graphique</span></span>
+<span id="cb690-19"><a href="leçon-6.html#cb690-19" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, </span>
+<span id="cb690-20"><a href="leçon-6.html#cb690-20" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Gain de masse (kg)&quot;</span>,</span>
+<span id="cb690-21"><a href="leçon-6.html#cb690-21" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Supplément&quot;</span>, </span>
+<span id="cb690-22"><a href="leçon-6.html#cb690-22" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="fu">max</span>(supp<span class="sc">$</span>upp)), </span>
+<span id="cb690-23"><a href="leçon-6.html#cb690-23" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), </span>
+<span id="cb690-24"><a href="leçon-6.html#cb690-24" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb690-25"><a href="leçon-6.html#cb690-25" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>, </span>
+<span id="cb690-26"><a href="leçon-6.html#cb690-26" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb690-27"><a href="leçon-6.html#cb690-27" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
+<span id="cb690-28"><a href="leçon-6.html#cb690-28" tabindex="-1"></a></span>
+<span id="cb690-29"><a href="leçon-6.html#cb690-29" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb690-30"><a href="leçon-6.html#cb690-30" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, </span>
+<span id="cb690-31"><a href="leçon-6.html#cb690-31" tabindex="-1"></a>     <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), </span>
+<span id="cb690-32"><a href="leçon-6.html#cb690-32" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;agri&quot;</span>, <span class="st">&quot;cont&quot;</span>, <span class="st">&quot;sgain&quot;</span>, <span class="st">&quot;ssupp&quot;</span>), </span>
+<span id="cb690-33"><a href="leçon-6.html#cb690-33" tabindex="-1"></a>     <span class="at">cex.axis =</span> <span class="fl">0.85</span>)</span>
+<span id="cb690-34"><a href="leçon-6.html#cb690-34" tabindex="-1"></a></span>
+<span id="cb690-35"><a href="leçon-6.html#cb690-35" tabindex="-1"></a><span class="do">##ajout des points pour l&#39;ensemble des cereales</span></span>
+<span id="cb690-36"><a href="leçon-6.html#cb690-36" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> supp<span class="sc">$</span>supp.means, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span>
+<span id="cb690-37"><a href="leçon-6.html#cb690-37" tabindex="-1"></a></span>
+<span id="cb690-38"><a href="leçon-6.html#cb690-38" tabindex="-1"></a><span class="do">##barres d&#39;erreurs</span></span>
+<span id="cb690-39"><a href="leçon-6.html#cb690-39" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb690-40"><a href="leçon-6.html#cb690-40" tabindex="-1"></a>       <span class="at">y0 =</span> supp<span class="sc">$</span>low, </span>
+<span id="cb690-41"><a href="leçon-6.html#cb690-41" tabindex="-1"></a>       <span class="at">y1 =</span> supp<span class="sc">$</span>upp,</span>
+<span id="cb690-42"><a href="leçon-6.html#cb690-42" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb690-43"><a href="leçon-6.html#cb690-43" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb690-44"><a href="leçon-6.html#cb690-44" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb690-45"><a href="leçon-6.html#cb690-45" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb690-46"><a href="leçon-6.html#cb690-46" tabindex="-1"></a></span>
+<span id="cb690-47"><a href="leçon-6.html#cb690-47" tabindex="-1"></a><span class="do">##groups</span></span>
+<span id="cb690-48"><a href="leçon-6.html#cb690-48" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">18.93</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-49"><a href="leçon-6.html#cb690-49" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">18.25</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-50"><a href="leçon-6.html#cb690-50" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">21.61</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-51"><a href="leçon-6.html#cb690-51" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">20.89</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-52"><a href="leçon-6.html#cb690-52" tabindex="-1"></a>     </span>
+<span id="cb690-53"><a href="leçon-6.html#cb690-53" tabindex="-1"></a><span class="do">##créer graphique</span></span>
+<span id="cb690-54"><a href="leçon-6.html#cb690-54" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, </span>
+<span id="cb690-55"><a href="leçon-6.html#cb690-55" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Gain de masse (kg)&quot;</span>,</span>
+<span id="cb690-56"><a href="leçon-6.html#cb690-56" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>, </span>
+<span id="cb690-57"><a href="leçon-6.html#cb690-57" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="fu">max</span>(diet<span class="sc">$</span>upp)), </span>
+<span id="cb690-58"><a href="leçon-6.html#cb690-58" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), </span>
+<span id="cb690-59"><a href="leçon-6.html#cb690-59" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb690-60"><a href="leçon-6.html#cb690-60" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>, </span>
+<span id="cb690-61"><a href="leçon-6.html#cb690-61" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb690-62"><a href="leçon-6.html#cb690-62" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
+<span id="cb690-63"><a href="leçon-6.html#cb690-63" tabindex="-1"></a></span>
+<span id="cb690-64"><a href="leçon-6.html#cb690-64" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb690-65"><a href="leçon-6.html#cb690-65" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, </span>
+<span id="cb690-66"><a href="leçon-6.html#cb690-66" tabindex="-1"></a>     <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb690-67"><a href="leçon-6.html#cb690-67" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;avoine&quot;</span>, <span class="st">&quot;blé&quot;</span>, <span class="st">&quot;orge&quot;</span>), </span>
+<span id="cb690-68"><a href="leçon-6.html#cb690-68" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-69"><a href="leçon-6.html#cb690-69" tabindex="-1"></a></span>
+<span id="cb690-70"><a href="leçon-6.html#cb690-70" tabindex="-1"></a><span class="do">##ajout des points pour blé</span></span>
+<span id="cb690-71"><a href="leçon-6.html#cb690-71" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> diet<span class="sc">$</span>diet.means, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span>
+<span id="cb690-72"><a href="leçon-6.html#cb690-72" tabindex="-1"></a></span>
+<span id="cb690-73"><a href="leçon-6.html#cb690-73" tabindex="-1"></a><span class="do">##barres d&#39;erreurs</span></span>
+<span id="cb690-74"><a href="leçon-6.html#cb690-74" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb690-75"><a href="leçon-6.html#cb690-75" tabindex="-1"></a>       <span class="at">y0 =</span> diet<span class="sc">$</span>low, </span>
+<span id="cb690-76"><a href="leçon-6.html#cb690-76" tabindex="-1"></a>       <span class="at">y1 =</span> diet<span class="sc">$</span>upp,</span>
+<span id="cb690-77"><a href="leçon-6.html#cb690-77" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb690-78"><a href="leçon-6.html#cb690-78" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb690-79"><a href="leçon-6.html#cb690-79" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb690-80"><a href="leçon-6.html#cb690-80" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb690-81"><a href="leçon-6.html#cb690-81" tabindex="-1"></a></span>
+<span id="cb690-82"><a href="leçon-6.html#cb690-82" tabindex="-1"></a><span class="do">##groups</span></span>
+<span id="cb690-83"><a href="leçon-6.html#cb690-83" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">19.7</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-84"><a href="leçon-6.html#cb690-84" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">16.8</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb690-85"><a href="leçon-6.html#cb690-85" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">22.8</span>, <span class="at">labels =</span> <span class="st">&quot;c&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:figcrois"></span>
+<img src="Cours_Stats_R_files/figure-html/figcrois-1.png" alt="Graphique des effets du type de supplément alimentaire ( exttt{Supplement}) et du type de moulée (   exttt{Diete}) sur le gain de masse en kilogrammes." width="672" />
+<p class="caption">
+Figure 7.8: Graphique des effets du type de supplément alimentaire ( exttt{Supplement}) et du type de moulée ( exttt{Diete}) sur le gain de masse en kilogrammes.
+</p>
+</div>
+</div>
+<p><br></p>
+<div class="exemple" section="7">
+<p>Comme dernier exemple, nous analyserons l’effet de la concentration d’un antibiotique et de l’humidité sur la croissance d’une espèce de bactéries que l’on peut cultiver en laboratoire dans des plats de Pétri contenant un substrat de sucres appelé agar-agar. La variable réponse ici est la surface du substrat couverte par les colonies de bactérie mesurée en mm<span class="math inline">\(^2\)</span>. Le fichier <code>antibio.txt</code> contient les données.</p>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="leçon-6.html#cb691-1" tabindex="-1"></a>antibio <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_7/data/antibio.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb691-2"><a href="leçon-6.html#cb691-2" tabindex="-1"></a><span class="fu">head</span>(antibio)</span></code></pre></div>
+<pre><code>##    Surface Humidite Concentration
+## 1 2.103529      sec        faible
+## 2 2.732448      sec        faible
+## 3 1.864153      sec        faible
+## 4 2.358879      sec        faible
+## 5 2.195207      sec        faible
+## 6 1.897846      sec       moderee</code></pre>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="leçon-6.html#cb693-1" tabindex="-1"></a><span class="do">##on détermine le nombre de répétitions</span></span>
+<span id="cb693-2"><a href="leçon-6.html#cb693-2" tabindex="-1"></a><span class="fu">table</span>(antibio<span class="sc">$</span>Humidite, antibio<span class="sc">$</span>Concentration)</span></code></pre></div>
+<pre><code>##         
+##          elevee faible moderee
+##   humide      5      5       5
+##   sec         5      5       5</code></pre>
+<p>On présente les données par un diagramme de boîtes et moustaches (Figure <a href="leçon-6.html#fig:boxantibio">7.9</a>).</p>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="leçon-6.html#cb695-1" tabindex="-1"></a><span class="fu">boxplot</span>(Surface <span class="sc">~</span> Humidite <span class="sc">+</span> Concentration, <span class="at">data =</span> antibio)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxantibio"></span>
+<img src="Cours_Stats_R_files/figure-html/boxantibio-1.png" alt="Diagramme de boîtes et moustaches de la surface couverte en mm$^2$ en fonction de la concentration d'un antibiotique et de l'humidité." width="672" />
+<p class="caption">
+Figure 7.9: Diagramme de boîtes et moustaches de la surface couverte en mm<span class="math inline">\(^2\)</span> en fonction de la concentration d’un antibiotique et de l’humidité.
+</p>
+</div>
+<!-- L'ordre des codes et textes dans dans le pdf c'est : le texte "On vérifie..." puis on a directement ensuite "On réalise...", puis le code de l'anova et puis la figure 10. Donc j'ai inversé les codes ici pour matcher avec le pdf car dans .rnw c'est text "On vérifie...", code anova, code graph, text "On réalise...", re-code anova -->
+<p>On vérifie ensuite les suppositions d’homogénéité des variances et de normalités des résidus. On remarque que celles sont respectées (fig. <a href="leçon-6.html#fig:antibioDiag">7.10</a>).</p>
+<p>On réalise maintenant l’ANOVA à deux critères :</p>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="leçon-6.html#cb696-1" tabindex="-1"></a>aov.antibio <span class="ot">&lt;-</span> <span class="fu">aov</span>(Surface <span class="sc">~</span> Humidite <span class="sc">+</span> Concentration <span class="sc">+</span> </span>
+<span id="cb696-2"><a href="leçon-6.html#cb696-2" tabindex="-1"></a>                   Humidite<span class="sc">:</span>Concentration,</span>
+<span id="cb696-3"><a href="leçon-6.html#cb696-3" tabindex="-1"></a>                   <span class="at">data =</span> antibio)</span>
+<span id="cb696-4"><a href="leçon-6.html#cb696-4" tabindex="-1"></a><span class="fu">summary</span>(aov.antibio)</span></code></pre></div>
+<pre><code>##                        Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Humidite                1  20.23  20.228   181.6 1.09e-12 ***
+## Concentration           2  15.93   7.965    71.5 7.76e-11 ***
+## Humidite:Concentration  2  36.40  18.199   163.4 1.05e-14 ***
+## Residuals              24   2.67   0.111                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:antibioDiag"></span>
+<img src="Cours_Stats_R_files/figure-html/antibioDiag-1.png" alt="Homogénéité des variances et normalité des résidus de l'ANOVA à deux critères réalisées sur les données d'activité bactérienne (surface couverte par les colonies de bactéries)." width="672" />
+<p class="caption">
+Figure 7.10: Homogénéité des variances et normalité des résidus de l’ANOVA à deux critères réalisées sur les données d’activité bactérienne (surface couverte par les colonies de bactéries).
+</p>
+</div>
+<p>Le tableau d’ANOVA montre une interaction importante entre les facteurs <code>Humidite</code> et <code>Concentration</code> (<span class="math inline">\(F_{2, 24} = 163.4, P &lt; 0.0001\)</span>). Les effets de la concentration d’antibiotique et de l’humidité ne sont pas additifs. Ceci implique que nous ne pouvons pas interpréter ces effets séparément, car l’effet d’un facteur dépend du niveau de l’autre facteur. Nous pouvons utiliser les comparaisons multiples pour trouver les différences entre les groupes définis par les différentes combinaisons des deux facteurs.</p>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="leçon-6.html#cb698-1" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> antibio<span class="sc">$</span>Surface, </span>
+<span id="cb698-2"><a href="leçon-6.html#cb698-2" tabindex="-1"></a>       <span class="at">INDEX =</span> <span class="fu">list</span>(antibio<span class="sc">$</span>Humidite, antibio<span class="sc">$</span>Concentration), </span>
+<span id="cb698-3"><a href="leçon-6.html#cb698-3" tabindex="-1"></a>       <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##          elevee   faible  moderee
+## humide 1.637384 5.865661 5.036441
+## sec    3.069767 2.250843 2.292084</code></pre>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="leçon-6.html#cb700-1" tabindex="-1"></a>mult.inter <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(aov.antibio, <span class="at">which =</span> <span class="st">&quot;Humidite:Concentration&quot;</span>)</span>
+<span id="cb700-2"><a href="leçon-6.html#cb700-2" tabindex="-1"></a>mult.inter<span class="sc">$</span><span class="st">&#39;Humidite:Concentration&#39;</span></span></code></pre></div>
+<pre><code>##                                     diff          lwr        upr        p adj
+## sec:elevee-humide:elevee      1.43238312  0.779715574  2.0850507 6.988460e-06
+## humide:faible-humide:elevee   4.22827694  3.575609401  4.8809445 2.331468e-14
+## sec:faible-humide:elevee      0.61345927 -0.039208277  1.2661268 7.400734e-02
+## humide:moderee-humide:elevee  3.39905706  2.746389512  4.0517246 3.608225e-13
+## sec:moderee-humide:elevee     0.65470026  0.002032716  1.3073678 4.897318e-02
+## humide:faible-sec:elevee      2.79589383  2.143226283  3.4485614 2.259004e-11
+## sec:faible-sec:elevee        -0.81892385 -1.471591395 -0.1662563 8.269047e-03
+## humide:moderee-sec:elevee     1.96667394  1.314006394  2.6193415 2.716546e-08
+## sec:moderee-sec:elevee       -0.77768286 -1.430350402 -0.1250153 1.312775e-02
+## sec:faible-humide:faible     -3.61481768 -4.267485222 -2.9621501 1.112443e-13
+## humide:moderee-humide:faible -0.82921989 -1.481887432 -0.1765523 7.359216e-03
+## sec:moderee-humide:faible    -3.57357668 -4.226244229 -2.9209091 1.366685e-13
+## humide:moderee-sec:faible     2.78559779  2.132930246  3.4382653 2.443656e-11
+## sec:moderee-sec:faible        0.04124099 -0.611426550  0.6939085 9.999549e-01
+## sec:moderee-humide:moderee   -2.74435680 -3.397024340 -2.0916893 3.354361e-11</code></pre>
+<p>Les comparaisons multiples suggèrent les groupes suivants :</p>
+<table>
+<tr class="centered-row">
+<th>
+humide-élevée
+</th>
+<th>
+sec-faible
+</th>
+<th>
+sec-modérée
+</th>
+<th>
+sec-élevée
+</th>
+<th>
+humide-modérée
+</th>
+<th>
+humide-faible
+</th>
+</tr>
+<tr class="centered-row">
+<td>
+1.64 mm<sup>2</sup>
+</td>
+<td>
+2.25 mm<sup>2</sup>
+</td>
+<td>
+2.29 mm<sup>2</sup>
+</td>
+<td>
+3.07 mm<sup>2</sup>
+</td>
+<td>
+5.04 mm<sup>2
+</td>
+<td>
+5.87 mm<sup>2</sup>
+</td>
+</tr>
+<tr class="custom-row">
+<td colspan="2" style="border-bottom: 2px solid;">
+ 
+</td>
+<td>
+</td>
+<td style="border-bottom: 2px solid;">
+ 
+</td>
+<td>
+</td>
+<td style="border-bottom: 2px solid;">
+ 
+</td>
+</tr>
+<tr class="custom-row">
+<td>
+</td>
+<td colspan="2" style="border-bottom: 2px solid;">
+ 
+</td>
+<td>
+</td>
+<td style="border-bottom: 2px solid;">
+ 
+</td>
+<td>
+</td>
+</tr>
+</table>
+<p>Représentons maintenant les résultats graphiquement.</p>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="leçon-6.html#cb702-1" tabindex="-1"></a><span class="do">##valeurs prédites</span></span>
+<span id="cb702-2"><a href="leçon-6.html#cb702-2" tabindex="-1"></a>pred.out <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Humidite =</span> <span class="fu">c</span>(<span class="st">&quot;sec&quot;</span>, <span class="st">&quot;humide&quot;</span>), </span>
+<span id="cb702-3"><a href="leçon-6.html#cb702-3" tabindex="-1"></a>              <span class="at">Concentration =</span> <span class="fu">c</span>(<span class="st">&quot;faible&quot;</span>, <span class="st">&quot;moderee&quot;</span>, <span class="st">&quot;elevee&quot;</span>))</span>
+<span id="cb702-4"><a href="leçon-6.html#cb702-4" tabindex="-1"></a></span>
+<span id="cb702-5"><a href="leçon-6.html#cb702-5" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(aov.antibio, <span class="at">newdata =</span> pred.out, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb702-6"><a href="leçon-6.html#cb702-6" tabindex="-1"></a></span>
+<span id="cb702-7"><a href="leçon-6.html#cb702-7" tabindex="-1"></a>pred.out<span class="sc">$</span>mean <span class="ot">&lt;-</span> preds<span class="sc">$</span>fit</span>
+<span id="cb702-8"><a href="leçon-6.html#cb702-8" tabindex="-1"></a>pred.out<span class="sc">$</span>se <span class="ot">&lt;-</span> preds<span class="sc">$</span>se.fit</span>
+<span id="cb702-9"><a href="leçon-6.html#cb702-9" tabindex="-1"></a></span>
+<span id="cb702-10"><a href="leçon-6.html#cb702-10" tabindex="-1"></a><span class="do">##IC à 95%</span></span>
+<span id="cb702-11"><a href="leçon-6.html#cb702-11" tabindex="-1"></a>pred.out<span class="sc">$</span>low95 <span class="ot">&lt;-</span> pred.out<span class="sc">$</span>mean <span class="sc">+</span> </span>
+<span id="cb702-12"><a href="leçon-6.html#cb702-12" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> aov.antibio<span class="sc">$</span>df.residual) <span class="sc">*</span> pred.out<span class="sc">$</span>se</span>
+<span id="cb702-13"><a href="leçon-6.html#cb702-13" tabindex="-1"></a>pred.out<span class="sc">$</span>upp95 <span class="ot">&lt;-</span> pred.out<span class="sc">$</span>mean <span class="sc">-</span> </span>
+<span id="cb702-14"><a href="leçon-6.html#cb702-14" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> aov.antibio<span class="sc">$</span>df.residual) <span class="sc">*</span> pred.out<span class="sc">$</span>se</span>
+<span id="cb702-15"><a href="leçon-6.html#cb702-15" tabindex="-1"></a></span>
+<span id="cb702-16"><a href="leçon-6.html#cb702-16" tabindex="-1"></a><span class="do">##graphique</span></span>
+<span id="cb702-17"><a href="leçon-6.html#cb702-17" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, </span>
+<span id="cb702-18"><a href="leçon-6.html#cb702-18" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb702-19"><a href="leçon-6.html#cb702-19" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Concentration d&#39;antibiotique&quot;</span>, </span>
+<span id="cb702-20"><a href="leçon-6.html#cb702-20" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">max</span>(pred.out<span class="sc">$</span>upp95)), </span>
+<span id="cb702-21"><a href="leçon-6.html#cb702-21" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), </span>
+<span id="cb702-22"><a href="leçon-6.html#cb702-22" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb702-23"><a href="leçon-6.html#cb702-23" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.2</span>, </span>
+<span id="cb702-24"><a href="leçon-6.html#cb702-24" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb702-25"><a href="leçon-6.html#cb702-25" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± IC à 95 %&quot;</span>)</span>
+<span id="cb702-26"><a href="leçon-6.html#cb702-26" tabindex="-1"></a></span>
+<span id="cb702-27"><a href="leçon-6.html#cb702-27" tabindex="-1"></a><span class="do">##ajout d&#39;étiquette en marge</span></span>
+<span id="cb702-28"><a href="leçon-6.html#cb702-28" tabindex="-1"></a><span class="do">##expression permet d&#39;ajouter des lettres grecques,</span></span>
+<span id="cb702-29"><a href="leçon-6.html#cb702-29" tabindex="-1"></a><span class="do">##indices ou exposants</span></span>
+<span id="cb702-30"><a href="leçon-6.html#cb702-30" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">text =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Surface (&quot;</span>, mm<span class="sc">^</span><span class="dv">2</span>, <span class="st">&quot;)&quot;</span>)),</span>
+<span id="cb702-31"><a href="leçon-6.html#cb702-31" tabindex="-1"></a>      <span class="at">side =</span> <span class="dv">2</span>, </span>
+<span id="cb702-32"><a href="leçon-6.html#cb702-32" tabindex="-1"></a>      <span class="at">line =</span> <span class="dv">2</span>, </span>
+<span id="cb702-33"><a href="leçon-6.html#cb702-33" tabindex="-1"></a>      <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-34"><a href="leçon-6.html#cb702-34" tabindex="-1"></a></span>
+<span id="cb702-35"><a href="leçon-6.html#cb702-35" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb702-36"><a href="leçon-6.html#cb702-36" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, </span>
+<span id="cb702-37"><a href="leçon-6.html#cb702-37" tabindex="-1"></a>     <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb702-38"><a href="leçon-6.html#cb702-38" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;faible&quot;</span>, <span class="st">&quot;modérée&quot;</span>, <span class="st">&quot;élevée&quot;</span>), </span>
+<span id="cb702-39"><a href="leçon-6.html#cb702-39" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-40"><a href="leçon-6.html#cb702-40" tabindex="-1"></a></span>
+<span id="cb702-41"><a href="leçon-6.html#cb702-41" tabindex="-1"></a><span class="do">##points pour sec</span></span>
+<span id="cb702-42"><a href="leçon-6.html#cb702-42" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.out<span class="sc">$</span>mean[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)], <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span>
+<span id="cb702-43"><a href="leçon-6.html#cb702-43" tabindex="-1"></a></span>
+<span id="cb702-44"><a href="leçon-6.html#cb702-44" tabindex="-1"></a><span class="do">##barres d&#39;erreurs</span></span>
+<span id="cb702-45"><a href="leçon-6.html#cb702-45" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb702-46"><a href="leçon-6.html#cb702-46" tabindex="-1"></a>       <span class="at">y0 =</span> pred.out<span class="sc">$</span>low95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)], </span>
+<span id="cb702-47"><a href="leçon-6.html#cb702-47" tabindex="-1"></a>       <span class="at">y1 =</span> pred.out<span class="sc">$</span>upp95[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)],</span>
+<span id="cb702-48"><a href="leçon-6.html#cb702-48" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb702-49"><a href="leçon-6.html#cb702-49" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb702-50"><a href="leçon-6.html#cb702-50" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb702-51"><a href="leçon-6.html#cb702-51" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb702-52"><a href="leçon-6.html#cb702-52" tabindex="-1"></a></span>
+<span id="cb702-53"><a href="leçon-6.html#cb702-53" tabindex="-1"></a><span class="do">##points pour humide</span></span>
+<span id="cb702-54"><a href="leçon-6.html#cb702-54" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> pred.out<span class="sc">$</span>mean[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)], <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">2</span>)</span>
+<span id="cb702-55"><a href="leçon-6.html#cb702-55" tabindex="-1"></a></span>
+<span id="cb702-56"><a href="leçon-6.html#cb702-56" tabindex="-1"></a><span class="do">##barres d&#39;erreurs</span></span>
+<span id="cb702-57"><a href="leçon-6.html#cb702-57" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb702-58"><a href="leçon-6.html#cb702-58" tabindex="-1"></a>       <span class="at">y0 =</span> pred.out<span class="sc">$</span>low95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)], </span>
+<span id="cb702-59"><a href="leçon-6.html#cb702-59" tabindex="-1"></a>       <span class="at">y1 =</span> pred.out<span class="sc">$</span>upp95[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)],</span>
+<span id="cb702-60"><a href="leçon-6.html#cb702-60" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb702-61"><a href="leçon-6.html#cb702-61" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, </span>
+<span id="cb702-62"><a href="leçon-6.html#cb702-62" tabindex="-1"></a>       <span class="at">code =</span> <span class="dv">3</span>, </span>
+<span id="cb702-63"><a href="leçon-6.html#cb702-63" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb702-64"><a href="leçon-6.html#cb702-64" tabindex="-1"></a></span>
+<span id="cb702-65"><a href="leçon-6.html#cb702-65" tabindex="-1"></a><span class="do">##légende</span></span>
+<span id="cb702-66"><a href="leçon-6.html#cb702-66" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;topright&quot;</span>, </span>
+<span id="cb702-67"><a href="leçon-6.html#cb702-67" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), </span>
+<span id="cb702-68"><a href="leçon-6.html#cb702-68" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;sec&quot;</span>, <span class="st">&quot;humide&quot;</span>),</span>
+<span id="cb702-69"><a href="leçon-6.html#cb702-69" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Humidité&quot;</span>)</span>
+<span id="cb702-70"><a href="leçon-6.html#cb702-70" tabindex="-1"></a></span>
+<span id="cb702-71"><a href="leçon-6.html#cb702-71" tabindex="-1"></a><span class="do">##groupes</span></span>
+<span id="cb702-72"><a href="leçon-6.html#cb702-72" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">5.4</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-73"><a href="leçon-6.html#cb702-73" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">4.6</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-74"><a href="leçon-6.html#cb702-74" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">1.2</span>, <span class="at">labels =</span> <span class="st">&quot;c&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-75"><a href="leçon-6.html#cb702-75" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">1.82</span>, <span class="at">labels =</span> <span class="st">&quot;cd&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-76"><a href="leçon-6.html#cb702-76" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">1.87</span>, <span class="at">labels =</span> <span class="st">&quot;d&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb702-77"><a href="leçon-6.html#cb702-77" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">2.6</span>, <span class="at">labels =</span> <span class="st">&quot;e&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:antibioRes"></span>
+<img src="Cours_Stats_R_files/figure-html/antibioRes-1.png" alt="Interaction significative entre l'humidité et la concentration d'antibiotique sur l'activité bactérienne." width="672" />
+<p class="caption">
+Figure 7.11: Interaction significative entre l’humidité et la concentration d’antibiotique sur l’activité bactérienne.
+</p>
+</div>
+<p>La Figure <a href="leçon-6.html#fig:antibioRes">7.11</a> montre qu’il y a bien une interaction entre les deux facteurs. Nous voyons clairement que la différence entre la moyenne du groupe “sec” et celle du groupe “humide” varie énormément avec la concentration d’antibiotique, et que cette différence est la plus faible quand la concentration d’antibiotique est élevée.</p>
+<p>On remarque qu’il y a une inversion des différences entre les groupes “sec” et les groupes “humide” : la surface couverte moyenne du groupe “humide” est supérieure à celle du groupe “sec” aux concentrations faible et modérée d’antibitioque. Toutefois, le groupe “sec” a une plus grande surface couverte moyenne que le groupe “humide” à la concentration élevée d’antibiotique. On conclut que l’augmentation de la concentration de l’antibiotique réduit l’activité bactérienne sous des conditions humides, mais augmente l’activité bactérienne en conditions plus sèches.</p>
+</div>
+</div>
+<div id="conclusion-6" class="section level3 hasAnchor" number="7.1.6">
+<h3><span class="header-section-number">7.1.6</span> Conclusion<a href="leçon-6.html#conclusion-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans ce texte, vous vous êtes familiarisés avec l’ANOVA à deux critères avec plusieurs répétitions par groupe aux traitements combinés, et particulièrement avec les concepts d’interaction et d’additivité. Trois exemples ont été présentés afin d’illustrer les différentes étapes de l’analyse, de la vérification des suppositions, de l’interprétation et de la présentation graphique des résultats. Nous avons vu qu’en présence d’une interaction entre deux facteurs, on ne peut pas interpréter les effets principaux, car l’effet d’un facteur sur la variable réponse dépend du niveau de l’autre. On dit dans ce cas que les effets ne sont pas additifs. C’est justement ce qu’illustre le dernier exemple sur l’activité bactérienne: l’augmentation de la concentration d’antibiotique n’avait pas le même effet selon le niveau d’humidité du milieu. Le concept d’interaction est important et il est souvent associé à des hypothèses intéressantes en sciences. Nous vous encourageons à revoir les exemples afin de bien saisir la notion d’interaction, car nous l’étudierons à nouveau dans les leçons à venir.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="21">
+<li id="fn21"><p>Les résultats de l’ANOVA montrent que la probabilité associée au facteur sexe est suffisamment près du seuil de 0.05 pour que l’effet soit considéré biologiquement significatif. Pour cette raison, on peut retenir ce facteur dans les comparaisons multiples.<a href="leçon-6.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>À noter que dans notre exemple, il n’y a que deux niveaux (groupes) à chaque facteur: sexe a deux niveaux (mâle, femelle), et traitement hormonal n’a que deux niveaux (avec traitement, sans traitement). Ainsi, il ne serait pas absolument nécessaire de poursuivre avec des comparaisons multiples, car si on rejette <span class="math inline">\(H_0\)</span>, on sait que les deux groupes diffèrent entre eux.<a href="leçon-6.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>Le fichier <code>csv</code> est un type de fichier de texte standard où chaque élément est séparé le plus souvent par une virgule, un espace ou une point-virgule. Ce format s’importe dans R à l’aide de <code>read.table( )</code> puisque c’est un fichier de texte, en modifiant la valeur de l’argument <code>delim</code>.<a href="leçon-6.html#fnref23" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lecon7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="laboratoire-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

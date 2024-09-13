@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1 Leçon | Statistiques avec R</title>
+  <meta name="description" content="4.1 Leçon | Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1 Leçon | Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="4.1 Leçon | Statistiques avec R" />
+  <meta name="github-repo" content="sci1018/sci1018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1 Leçon | Statistiques avec R" />
+  
+  <meta name="twitter:description" content="4.1 Leçon | Statistiques avec R" />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lecon4.html"/>
+<link rel="next" href="laboratoire.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TÉLUQ - SCI 1018</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="part"><span><b>I SCI 1018</b></span></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html"><i class="fa fa-check"></i>À propos du cours</a>
+<ul>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#présentation"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#feuille-de-route"><i class="fa fa-check"></i>Feuille de route</a></li>
+<li class="chapter" data-level="" data-path="à-propos-du-cours.html"><a href="à-propos-du-cours.html#crédits"><i class="fa fa-check"></i>Crédits</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html"><i class="fa fa-check"></i>Ressources</a>
+<ul>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#données"><i class="fa fa-check"></i>Données</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#références"><i class="fa fa-check"></i>Références</a></li>
+</ul></li>
+<li class="part"><span><b>II GUIDE R</b></span></li>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html"><i class="fa fa-check"></i>Installation de R</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-de-r.html"><a href="installation-de-r.html#où-se-procurer"><i class="fa fa-check"></i>Où se procurer ?</a></li>
+<li class="chapter" data-level="" data-path="pour-débuter-avec-r.html"><a href="pour-débuter-avec-r.html"><i class="fa fa-check"></i>Pour débuter avec R</a></li>
+<li class="chapter" data-level="" data-path="choisir-son-éditeur.html"><a href="choisir-son-éditeur.html"><i class="fa fa-check"></i>Choisir son éditeur</a></li>
+</ul></li>
+<li class="part"><span><b>III APPRENTISSAGE</b></span></li>
+<li class="chapter" data-level="" data-path="programmation-avec-r.html"><a href="programmation-avec-r.html"><i class="fa fa-check"></i>Programmation avec R</a>
+<ul>
+<li class="chapter" data-level="" data-path="notions-générales.html"><a href="notions-générales.html"><i class="fa fa-check"></i>Notions générales</a></li>
+<li class="chapter" data-level="" data-path="exercices.html"><a href="exercices.html"><i class="fa fa-check"></i>Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="lecon1.html"><a href="lecon1.html"><i class="fa fa-check"></i><b>1</b> Statistiques descriptives</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="leçon.html"><a href="leçon.html"><i class="fa fa-check"></i><b>1.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="leçon.html"><a href="leçon.html#paramètre-vs-statistique"><i class="fa fa-check"></i><b>1.1.1</b> Paramètre vs statistique</a></li>
+<li class="chapter" data-level="1.1.2" data-path="leçon.html"><a href="leçon.html#mesures-de-la-tendance-centrale"><i class="fa fa-check"></i><b>1.1.2</b> Mesures de la tendance centrale</a></li>
+<li class="chapter" data-level="1.1.3" data-path="leçon.html"><a href="leçon.html#mesures-de-dispersion"><i class="fa fa-check"></i><b>1.1.3</b> Mesures de dispersion</a></li>
+<li class="chapter" data-level="1.1.4" data-path="leçon.html"><a href="leçon.html#variables-aléatoires"><i class="fa fa-check"></i><b>1.1.4</b> Variables aléatoires</a></li>
+<li class="chapter" data-level="1.1.5" data-path="leçon.html"><a href="leçon.html#loi-des-grands-nombres-et-théorème-de-la-limite-centrale"><i class="fa fa-check"></i><b>1.1.5</b> Loi des grands nombres et théorème de la limite centrale</a></li>
+<li class="chapter" data-level="1.1.6" data-path="leçon.html"><a href="leçon.html#distribution-normale"><i class="fa fa-check"></i><b>1.1.6</b> Distribution normale</a></li>
+<li class="chapter" data-level="1.1.7" data-path="leçon.html"><a href="leçon.html#conclusion"><i class="fa fa-check"></i><b>1.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html"><i class="fa fa-check"></i><b>1.2</b> Statistiques de base avec R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#fonctions-statistiques-de-base"><i class="fa fa-check"></i><b>1.2.1</b> Fonctions statistiques de base</a></li>
+<li class="chapter" data-level="1.2.2" data-path="statistiques-de-base-avec-r.html"><a href="statistiques-de-base-avec-r.html#distribution-statistiques"><i class="fa fa-check"></i><b>1.2.2</b> Distribution statistiques</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="autoévaluation.html"><a href="autoévaluation.html"><i class="fa fa-check"></i><b>1.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation.html"><a href="autoévaluation.html#question-2-1"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lecon2.html"><a href="lecon2.html"><i class="fa fa-check"></i><b>2</b> Intervalles de confiance et stratégies d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="leçon-1.html"><a href="leçon-1.html"><i class="fa fa-check"></i><b>2.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="leçon-1.html"><a href="leçon-1.html#problèmes-déchantillonnage"><i class="fa fa-check"></i><b>2.1.1</b> Problèmes d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.2" data-path="leçon-1.html"><a href="leçon-1.html#échantillonnage-complètement-aléatoire"><i class="fa fa-check"></i><b>2.1.2</b> Échantillonnage complètement aléatoire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="leçon-1.html"><a href="leçon-1.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>2.1.3</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="2.1.4" data-path="leçon-1.html"><a href="leçon-1.html#autres-stratégies-déchantillonnage"><i class="fa fa-check"></i><b>2.1.4</b> Autres stratégies d’échantillonnage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="leçon-1.html"><a href="leçon-1.html#conclusion-1"><i class="fa fa-check"></i><b>2.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html"><i class="fa fa-check"></i><b>2.2</b> Les graphiques avec R</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-de-base"><i class="fa fa-check"></i><b>2.2.1</b> Graphiques de base</a></li>
+<li class="chapter" data-level="2.2.2" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#histogramme"><i class="fa fa-check"></i><b>2.2.2</b> Histogramme</a></li>
+<li class="chapter" data-level="2.2.3" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-à-bâtons"><i class="fa fa-check"></i><b>2.2.3</b> Diagramme à bâtons</a></li>
+<li class="chapter" data-level="2.2.4" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#diagramme-de-boîtes-et-moustaches"><i class="fa fa-check"></i><b>2.2.4</b> Diagramme de boîtes et moustaches</a></li>
+<li class="chapter" data-level="2.2.5" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#graphiques-génériques"><i class="fa fa-check"></i><b>2.2.5</b> Graphiques génériques</a></li>
+<li class="chapter" data-level="2.2.6" data-path="les-graphiques-avec-r.html"><a href="les-graphiques-avec-r.html#sauvegarder-des-graphiques"><i class="fa fa-check"></i><b>2.2.6</b> Sauvegarder des graphiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html"><i class="fa fa-check"></i><b>2.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-1.html"><a href="autoévaluation-1.html#question-2-2"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lecon3.html"><a href="lecon3.html"><i class="fa fa-check"></i><b>3</b> Tests d’hypothèse sur un seul groupe</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypothèse-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
+<li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypothèse"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
+<li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-paramètres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
+<li class="chapter" data-level="3.1.6" data-path="leçon-2.html"><a href="leçon-2.html#tests-dhypothèse-sur-la-moyenne-dun-seul-groupe"><i class="fa fa-check"></i><b>3.1.6</b> Tests d’hypothèse sur la moyenne d’un seul groupe</a></li>
+<li class="chapter" data-level="3.1.7" data-path="leçon-2.html"><a href="leçon-2.html#conclusion-2"><i class="fa fa-check"></i><b>3.1.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html"><i class="fa fa-check"></i><b>3.2</b> Les packages avec R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#activer-un-package"><i class="fa fa-check"></i><b>3.2.1</b> Activer un package</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#installer-un-package"><i class="fa fa-check"></i><b>3.2.2</b> Installer un package</a></li>
+<li class="chapter" data-level="3.2.3" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#mettre-à-jour-un-package"><i class="fa fa-check"></i><b>3.2.3</b> Mettre à jour un package</a></li>
+<li class="chapter" data-level="3.2.4" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désactiver-un-package"><i class="fa fa-check"></i><b>3.2.4</b> Désactiver un package</a></li>
+<li class="chapter" data-level="3.2.5" data-path="les-packages-avec-r.html"><a href="les-packages-avec-r.html#désinstaller-un-package"><i class="fa fa-check"></i><b>3.2.5</b> Désinstaller un package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html"><i class="fa fa-check"></i><b>3.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-1-3"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-2.html"><a href="autoévaluation-2.html#question-2-3"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lecon4.html"><a href="lecon4.html"><i class="fa fa-check"></i><b>4</b> Tests d’hypothèse sur deux groupes</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="leçon-3.html"><a href="leçon-3.html"><i class="fa fa-check"></i><b>4.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants"><i class="fa fa-check"></i><b>4.1.1</b> Tests d’hypothèses sur la moyenne de deux groupes indépendants</a></li>
+<li class="chapter" data-level="4.1.2" data-path="leçon-3.html"><a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés"><i class="fa fa-check"></i><b>4.1.2</b> Tests d’hypothèse pour deux groupes appariés</a></li>
+<li class="chapter" data-level="4.1.3" data-path="leçon-3.html"><a href="leçon-3.html#transformations"><i class="fa fa-check"></i><b>4.1.3</b> Transformations</a></li>
+<li class="chapter" data-level="4.1.4" data-path="leçon-3.html"><a href="leçon-3.html#conclusion-3"><i class="fa fa-check"></i><b>4.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="laboratoire.html"><a href="laboratoire.html"><i class="fa fa-check"></i><b>4.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-1-4"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="laboratoire.html"><a href="laboratoire.html#question-2-4"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lecon5.html"><a href="lecon5.html"><i class="fa fa-check"></i><b>5</b> Analyse de fréquences et test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="leçon-4.html"><a href="leçon-4.html"><i class="fa fa-check"></i><b>5.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="leçon-4.html"><a href="leçon-4.html#analyse-de-fréquences-le-test-du-khi-carré-chi2"><i class="fa fa-check"></i><b>5.1.1</b> Analyse de fréquences : le test du khi carré (<span class="math inline">\(\chi^2\)</span>)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="leçon-4.html"><a href="leçon-4.html#tableau-de-contingence"><i class="fa fa-check"></i><b>5.1.2</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="5.1.3" data-path="leçon-4.html"><a href="leçon-4.html#alternative-au-test-du-chi2"><i class="fa fa-check"></i><b>5.1.3</b> Alternative au test du <span class="math inline">\(\chi^2\)</span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="leçon-4.html"><a href="leçon-4.html#le-paradoxe-de-simpson"><i class="fa fa-check"></i><b>5.1.4</b> Le paradoxe de Simpson</a></li>
+<li class="chapter" data-level="5.1.5" data-path="leçon-4.html"><a href="leçon-4.html#conclusion-4"><i class="fa fa-check"></i><b>5.1.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html"><i class="fa fa-check"></i><b>5.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-1-5"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-3.html"><a href="autoévaluation-3.html#question-2-5"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lecon6.html"><a href="lecon6.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance à un critère</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leçon-5.html"><a href="leçon-5.html"><i class="fa fa-check"></i><b>6.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-de-plusieurs-groupes"><i class="fa fa-check"></i><b>6.1.1</b> Comparaison de plusieurs groupes</a></li>
+<li class="chapter" data-level="6.1.2" data-path="leçon-5.html"><a href="leçon-5.html#analyse-de-variance-anova"><i class="fa fa-check"></i><b>6.1.2</b> Analyse de variance (ANOVA)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="leçon-5.html"><a href="leçon-5.html#comparaison-multiples"><i class="fa fa-check"></i><b>6.1.3</b> Comparaison multiples</a></li>
+<li class="chapter" data-level="6.1.4" data-path="leçon-5.html"><a href="leçon-5.html#conclusion-5"><i class="fa fa-check"></i><b>6.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html"><i class="fa fa-check"></i><b>6.2</b> Les boucles avec R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#les-boucles"><i class="fa fa-check"></i><b>6.2.1</b> Les boucles</a></li>
+<li class="chapter" data-level="6.2.2" data-path="les-boucles-avec-r.html"><a href="les-boucles-avec-r.html#alternatives-aux-boucles"><i class="fa fa-check"></i><b>6.2.2</b> Alternatives aux boucles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html"><i class="fa fa-check"></i><b>6.3</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-1-6"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-4.html"><a href="autoévaluation-4.html#question-2-6"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lecon7.html"><a href="lecon7.html"><i class="fa fa-check"></i><b>7</b> Analyse de variance à deux critères</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="leçon-6.html"><a href="leçon-6.html"><i class="fa fa-check"></i><b>7.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="leçon-6.html"><a href="leçon-6.html#anova-à-deux-critères"><i class="fa fa-check"></i><b>7.1.1</b> ANOVA à deux critères</a></li>
+<li class="chapter" data-level="7.1.2" data-path="leçon-6.html"><a href="leçon-6.html#suppositions-et-dispositif-expérimental"><i class="fa fa-check"></i><b>7.1.2</b> Suppositions et dispositif expérimental</a></li>
+<li class="chapter" data-level="7.1.3" data-path="leçon-6.html"><a href="leçon-6.html#hypothèses-statistiques-1"><i class="fa fa-check"></i><b>7.1.3</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="7.1.4" data-path="leçon-6.html"><a href="leçon-6.html#sommes-des-carrés-1"><i class="fa fa-check"></i><b>7.1.4</b> Sommes des carrés</a></li>
+<li class="chapter" data-level="7.1.5" data-path="leçon-6.html"><a href="leçon-6.html#effets-additifs"><i class="fa fa-check"></i><b>7.1.5</b> Effets additifs</a></li>
+<li class="chapter" data-level="7.1.6" data-path="leçon-6.html"><a href="leçon-6.html#conclusion-6"><i class="fa fa-check"></i><b>7.1.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="laboratoire-1.html"><a href="laboratoire-1.html"><i class="fa fa-check"></i><b>7.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-1.html"><a href="laboratoire-1.html#question-1-7"><i class="fa fa-check"></i>Question 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lecon8.html"><a href="lecon8.html"><i class="fa fa-check"></i><b>8</b> Blocs complets aléatoires</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="leçon-7.html"><a href="leçon-7.html"><i class="fa fa-check"></i><b>8.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="leçon-7.html"><a href="leçon-7.html#effets-fixes-et-effets-aléatoires"><i class="fa fa-check"></i><b>8.1.1</b> Effets fixes et effets aléatoires</a></li>
+<li class="chapter" data-level="8.1.2" data-path="leçon-7.html"><a href="leçon-7.html#blocs-complets-aléatoires"><i class="fa fa-check"></i><b>8.1.2</b> Blocs complets aléatoires</a></li>
+<li class="chapter" data-level="8.1.3" data-path="leçon-7.html"><a href="leçon-7.html#conclusion-7"><i class="fa fa-check"></i><b>8.1.3</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html"><i class="fa fa-check"></i><b>8.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-1-8"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-5.html"><a href="autoévaluation-5.html#question-2-7"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lecon9.html"><a href="lecon9.html"><i class="fa fa-check"></i><b>9</b> Élaboration et optimisation de plans d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="leçon-8.html"><a href="leçon-8.html"><i class="fa fa-check"></i><b>9.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="leçon-8.html"><a href="leçon-8.html#plans-déchantillonnage"><i class="fa fa-check"></i><b>9.1.1</b> Plans d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.2" data-path="leçon-8.html"><a href="leçon-8.html#nos-meilleurs-alliés-dans-lélaboration-dun-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.2</b> Nos meilleurs alliés dans l’élaboration d’un plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.3" data-path="leçon-8.html"><a href="leçon-8.html#problèmes-associés-à-certains-plan-déchantillonnage"><i class="fa fa-check"></i><b>9.1.3</b> Problèmes associés à certains plan d’échantillonnage</a></li>
+<li class="chapter" data-level="9.1.4" data-path="leçon-8.html"><a href="leçon-8.html#conclusion-8"><i class="fa fa-check"></i><b>9.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="laboratoire-2.html"><a href="laboratoire-2.html"><i class="fa fa-check"></i><b>9.2</b> Laboratoire</a>
+<ul>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#instructions"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="laboratoire-2.html"><a href="laboratoire-2.html#suggestions-de-thèmes-à-étudier"><i class="fa fa-check"></i>Suggestions de thèmes à étudier</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lecon10.html"><a href="lecon10.html"><i class="fa fa-check"></i><b>10</b> Régression linéaire simple et corrélation</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="leçon-9.html"><a href="leçon-9.html"><i class="fa fa-check"></i><b>10.1</b> Leçon</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="leçon-9.html"><a href="leçon-9.html#la-régression-linéaire"><i class="fa fa-check"></i><b>10.1.1</b> La régression linéaire</a></li>
+<li class="chapter" data-level="10.1.2" data-path="leçon-9.html"><a href="leçon-9.html#corrélation"><i class="fa fa-check"></i><b>10.1.2</b> Corrélation</a></li>
+<li class="chapter" data-level="10.1.3" data-path="leçon-9.html"><a href="leçon-9.html#corrélation-vs-régression"><i class="fa fa-check"></i><b>10.1.3</b> Corrélation vs régression</a></li>
+<li class="chapter" data-level="10.1.4" data-path="leçon-9.html"><a href="leçon-9.html#conclusion-9"><i class="fa fa-check"></i><b>10.1.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html"><i class="fa fa-check"></i><b>10.2</b> Autoévaluation</a>
+<ul>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-1-9"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="autoévaluation-6.html"><a href="autoévaluation-6.html#question-2-8"><i class="fa fa-check"></i>Question 2</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="leçon-3" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Leçon<a href="leçon-3.html#leçon-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Tests d’hypothèses sur la moyenne de deux groupes indépendants<a href="leçon-3.html#tests-dhypothèses-sur-la-moyenne-de-deux-groupes-indépendants" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comme nous l’avons vu précédemment, le but du test d’hypothèse sur un groupe est de déterminer si la moyenne d’une population diffère d’une valeur d’intérêt (test bilatéral) ou si la moyenne est inférieure ou supérieure à une valeur d’intérêt (test unilatéral). Ce même concept s’étend naturellement en présence de deux échantillons ou deux groupes, comme l’illustre l’exemple qui suit.</p>
+<div class="exemple" section="4">
+<p>On veut déterminer si les notes des élèves d’une école primaire sont différentes lorsqu’ils ont eu de l’aide aux devoirs pendant l’année comparativement à d’autres élèves n’ayant pas eu cette aide. Pour ce faire, on sélectionne aléatoirement 30 élèves qui recevront l’aide et 30 autres qui ne recevront pas l’aide. Les élèves auront le même enseignant et leurs capacités seront mesurées dans un examen ministériel uniforme valant 40 <span class="math inline">\(\%\)</span> (Table <a href="leçon-3.html#tab:notes">4.1</a>).</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{aide}} = \mu_{\mathrm{t\acute{e}moins}}\)</span> (test bilatéral)<br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{aide}} \neq \mu_{\mathrm{t\acute{e}moins}}\)</span><br />
+<span class="math inline">\(\alpha = 0.05\)</span></p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Aide aux devoirs
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Témoins
+</div>
+</th>
+</tr>
+</thead>
+<caption>
+<span id="tab:notes">Table 4.1: </span>Notes sur 40 des élèves dans les deux groupes de l’expérience.
+</caption>
+<tbody>
+<tr>
+<td style="text-align:center;">
+36.36
+</td>
+<td style="text-align:center;">
+36.10
+</td>
+<td style="text-align:center;">
+34.97
+</td>
+<td style="text-align:center;">
+19.20
+</td>
+<td style="text-align:center;">
+19.31
+</td>
+<td style="text-align:center;">
+21.06
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+37.70
+</td>
+<td style="text-align:center;">
+37.22
+</td>
+<td style="text-align:center;">
+39.05
+</td>
+<td style="text-align:center;">
+21.21
+</td>
+<td style="text-align:center;">
+19.41
+</td>
+<td style="text-align:center;">
+18.89
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+35.75
+</td>
+<td style="text-align:center;">
+36.32
+</td>
+<td style="text-align:center;">
+35.42
+</td>
+<td style="text-align:center;">
+18.78
+</td>
+<td style="text-align:center;">
+17.66
+</td>
+<td style="text-align:center;">
+19.24
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+35.92
+</td>
+<td style="text-align:center;">
+37.55
+</td>
+<td style="text-align:center;">
+35.08
+</td>
+<td style="text-align:center;">
+20.00
+</td>
+<td style="text-align:center;">
+18.21
+</td>
+<td style="text-align:center;">
+19.92
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+36.24
+</td>
+<td style="text-align:center;">
+36.90
+</td>
+<td style="text-align:center;">
+36.92
+</td>
+<td style="text-align:center;">
+20.73
+</td>
+<td style="text-align:center;">
+19.88
+</td>
+<td style="text-align:center;">
+18.97
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+36.04
+</td>
+<td style="text-align:center;">
+37.86
+</td>
+<td style="text-align:center;">
+37.28
+</td>
+<td style="text-align:center;">
+19.50
+</td>
+<td style="text-align:center;">
+20.88
+</td>
+<td style="text-align:center;">
+20.96
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+37.17
+</td>
+<td style="text-align:center;">
+36.52
+</td>
+<td style="text-align:center;">
+35.60
+</td>
+<td style="text-align:center;">
+20.18
+</td>
+<td style="text-align:center;">
+20.15
+</td>
+<td style="text-align:center;">
+18.97
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+35.65
+</td>
+<td style="text-align:center;">
+36.03
+</td>
+<td style="text-align:center;">
+36.00
+</td>
+<td style="text-align:center;">
+20.06
+</td>
+<td style="text-align:center;">
+21.88
+</td>
+<td style="text-align:center;">
+21.26
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+37.57
+</td>
+<td style="text-align:center;">
+34.66
+</td>
+<td style="text-align:center;">
+36.26
+</td>
+<td style="text-align:center;">
+20.12
+</td>
+<td style="text-align:center;">
+19.21
+</td>
+<td style="text-align:center;">
+19.99
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+36.49
+</td>
+<td style="text-align:center;">
+36.22
+</td>
+<td style="text-align:center;">
+37.67
+</td>
+<td style="text-align:center;">
+19.98
+</td>
+<td style="text-align:center;">
+20.76
+</td>
+<td style="text-align:center;">
+21.23
+</td>
+</tr>
+</tbody>
+</table>
+<p>On obtient les statistiques descriptives suivantes :</p>
+<p><span class="math inline">\(\bar{x}_{aide}\)</span> = 36.48 &amp; <span class="math inline">\(\bar{x}_{\mathrm{t\acute{e}moins}}\)</span> = 36.48</p>
+<p><span class="math inline">\(s^2_{aide}\)</span> = 0.96 &amp; <span class="math inline">\(s^2_{\mathrm{t\acute{e}moins}}\)</span> = 0.96</p>
+<p><span class="math inline">\(n_{aide}\)</span> = 30 &amp; <span class="math inline">\(n_{\mathrm{t\acute{e}moins}}\)</span>= 30</p>
+<p>On peut utiliser un test <span class="math inline">\(t\)</span> pour déterminer s’il y a une différence entre les moyennes des deux groupes.</p>
+</div>
+<p>Dans le cas du test <span class="math inline">\(t\)</span> sur un seul groupe, nous avons l’équation</p>
+<p><span class="math display">\[t = \frac{\bar{x} - \mu}{SE}\]</span></p>
+<p>où <span class="math inline">\(\bar{x}\)</span> correspond à la moyenne du groupe et <span class="math inline">\(\mu\)</span> représente la valeur à laquelle on désire comparer la moyenne. Comme nous l’avons vu à la leçon précédente, le test <span class="math inline">\(t\)</span> sur un groupe suppose la normalité des résidus et l’indépendance des observations. En présence de deux groupes, le test <span class="math inline">\(t\)</span> se calcule comme suit :</p>
+<p><span class="math display">\[  
+t = \frac{\bar{x}_{\mathrm{groupe \: 1}} - \bar{x}_{\mathrm{groupe \: 2}}}{SE_{\bar{x}_{\mathrm{groupe \: 1}} -  \bar{x}_{\mathrm{groupe \: 2}}}}
+\]</span>
+Ici, les moyennes des deux groupes (<span class="math inline">\(\bar{x}_{\mathrm{groupe \: 1}}\)</span>, <span class="math inline">\(\bar{x}_{\mathrm{groupe \: 2}}\)</span>) sont comparées entre elles. Le dénominateur, <span class="math inline">\(SE_{\bar{x}_{\mathrm{groupe \: 1}} - \bar{x}_{\mathrm{groupe \: 2}}}\)</span> correspond à l’erreur-type de la différence des moyennes. Voyons maintenant comment calculer cette valeur.</p>
+<p>La variance de la différence des moyennes équivaut à la somme des variances séparées :</p>
+<p><span class="math display">\[
+  \sigma^2_{\bar{x}_{\mathrm{groupe \: 1}} -  \bar{x}_{\mathrm{groupe \: 2}}} = \sigma^2_{\mathrm{groupe \: 1}} + \sigma^2_{\mathrm{groupe \: 2}}
+\]</span></p>
+<p>En plus des suppositions de normalité des résidus et de l’indépendance des observations, le test <span class="math inline">\(t\)</span> sur deux groupes indépendants requiert que les variances des deux groupes soient égales (<span class="math inline">\(\sigma^2_{\mathrm{groupe \: 1}} = \sigma^2_{\mathrm{groupe \: 2}}\)</span>). On parle alors d’homogénéité des variances. Il faut donc estimer la variance commune aux deux groupes. La meilleure estimation de cette variance commune consiste à calculer une variance combinée ou “poolée” (<em>pooled variance</em>) :</p>
+<p><span class="math display">\[
+  s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{groupe \: 1}} - 1)s^2_{\mathrm{groupe \: 1}} + (n_{\mathrm{groupe \: 2}} - 1)s^2_{\mathrm{groupe \: 2}}}{n_{\mathrm{groupe \: 1}} + n_{\mathrm{groupe \: 2}} - 2} \:.
+\]</span></p>
+<p>On utilise cette variance pour calculer l’erreur-type des différences des moyennes :</p>
+<p><span class="math display">\[
+  SE_{\bar{x}_{\mathrm{groupe \: 1}} -  \bar{x}_{\mathrm{groupe \: 2}}} = \sqrt{\frac{s^2_{\mathrm{combin\acute{e}e}}}{n_{\mathrm{groupe \: 1}}} + \frac{s^2_{\mathrm{combin\acute{e}e}}}{n_{\mathrm{groupe \: 2}}}} \:.
+\]</span></p>
+<p>Maintenant, reprenons notre exemple sur le succès scolaire des élèves en considérant la variance combinée.</p>
+<div class="exemple" section="4">
+<p>On peut effectuer un test <span class="math inline">\(t\)</span> pour comparer les deux groupes d’élèves de l’exemple 4.1. Commençons par calculer la variance combinée qui sera nécessaire pour obtenir le dénominateur du test <span class="math inline">\(t\)</span> sur deux groupes :</p>
+<p><span class="math display">\[
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(n_{\mathrm{aide}} - 1)s^2_{\mathrm{aide}} + (n_{\mathrm{t\acute{e}moins}} - 1)s^2_{\mathrm{t\acute{e}moins}}}{n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2}
+\]</span>
+<span class="math display">\[
+s^2_{\mathrm{combin\acute{e}e}} = \frac{(30 - 1) \cdot 0.96 + (30 - 1) \cdot 0.96}{30 + 30 - 2}
+\]</span></p>
+<p><span class="math display">\[
+s^2_{\mathrm{combin\acute{e}e}} = 0.96
+\]</span></p>
+<p>Ensuite calculons l’erreur-type sur la différence des moyennes :</p>
+<p><span class="math display">\[
+SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = \sqrt{\frac{s^2_{\mathrm{combin\acute{e}e}}}{n_{\mathrm{aide}}} + \frac{s^2_{\mathrm{combin\acute{e}e}}}{n_{\mathrm{t\acute{e}moins}}}}
+\]</span></p>
+<p><span class="math display">\[
+SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = \sqrt{\frac{0.97}{30} + \frac{0.97}{30}} \\
+SE_{\bar{x}_{\mathrm{aide}} -  \bar{x}_{\mathrm{t\acute{e}moins}}} = 0.25
+\]</span>
+La statistique du test s’obtient ainsi :</p>
+<p><span class="math display">\[
+t = \frac{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}{SE_{\bar{x}_{\mathrm{aide}} - \bar{x}_{\mathrm{t\acute{e}moins}}}} \\
+t = \frac{36.48 - 19.92}{0.25}\\
+t = 65.217
+\]</span></p>
+<p>Nous déterminons la probabilité d’observer une valeur <span class="math inline">\(t = 65.217\)</span> dans des populations où <span class="math inline">\(H_0\)</span> est vraie, soit l’énoncé <span class="math inline">\(P(\lvert t_{df = 58} \rvert \ge 65.217)\)</span>. On peut consulter la distribution du <span class="math inline">\(t\)</span> de Student avec 58 degrés de liberté (<span class="math inline">\(df = n_{\mathrm{aide}} + n_{\mathrm{t\acute{e}moins}} - 2\)</span>) dans un livre de statistique ou encore avec à l’aide de . On constate que la valeur observée <span class="math inline">\(t = 65.217\)</span> est très peu probable lorsque <span class="math inline">\(H_0\)</span> est vraie, puisque <span class="math inline">\(P(\lvert t_{df = 58} \rvert \ge 65.217) &lt; 0.0001\)</span>. On rejette donc <span class="math inline">\(H_0\)</span> et on conclut que les deux moyennes diffèrent, c’est-à-dire que la moyenne des notes des élèves ayant eu l’aide aux devoirs diffère de celle des élèves n’ayant pas eu cette aide.</p>
+</div>
+<p>Dans R, il est bien sûr possible de réaliser le tout plus succinctement. Le jeu de données est stocké dans le fichier <code>eleves.txt</code>. Il faudra importer ce fichier avant de pouvoir accéder aux données :</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="leçon-3.html#cb421-1" tabindex="-1"></a>eleves <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_4/data/eleves.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb421-2"><a href="leçon-3.html#cb421-2" tabindex="-1"></a></span>
+<span id="cb421-3"><a href="leçon-3.html#cb421-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
+<span id="cb421-4"><a href="leçon-3.html#cb421-4" tabindex="-1"></a><span class="fu">head</span>(eleves)</span></code></pre></div>
+<pre><code>##    Note Type
+## 1 36.36 aide
+## 2 37.70 aide
+## 3 35.75 aide
+## 4 35.92 aide
+## 5 36.24 aide
+## 6 36.04 aide</code></pre>
+<p>Tout comme pour le test <span class="math inline">\(t\)</span> sur un groupe, la fonction <code>t.test( )</code> permet de réaliser le test <span class="math inline">\(t\)</span> sur deux groupes indépendants. Dans notre cas, nous utiliserons des arguments additionnels, notamment <code>var.equal = TRUE</code>, qui spécifie la supposition de variances homogènes entre les deux groupes. De plus, nous pourrons aussi utiliser une syntaxe sous forme de formule (c.-à-d., <code>Note</code> <span class="math inline">\(\sim\)</span> <code>Type</code>) pour indiquer la variable réponse (<code>Note</code>), la variable qui distingue les élèves avec aide aux devoirs et les témoins (<code>Type</code>) et l’argument <code>data</code>. L’argument <code>data</code> permet d’indiquer à R dans quel objet se trouvent les variables employées dans l’analyse. En présence de cet argument, il n’est pas nécessaire d’utiliser le symbole <code>$</code> à l’intérieur de la fonction <code>t.test( )</code> – <code>eleves$Note</code> <span class="math inline">\(\sim\)</span> <code>eleves$Type</code> donnera la même chose que <code>Note</code> <span class="math inline">\(\sim\)</span> <code>Typ, data = eleves</code>. Cette syntaxe est utilisée dans la plupart des analyses statistiques de R.</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="leçon-3.html#cb423-1" tabindex="-1"></a><span class="do">##on exécute le test t pour deux groupes</span></span>
+<span id="cb423-2"><a href="leçon-3.html#cb423-2" tabindex="-1"></a><span class="fu">t.test</span>(Note <span class="sc">~</span> Type, <span class="at">data =</span> eleves, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  Note by Type
+## t = 65.217, df = 58, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group aide and group temoins is not equal to 0
+## 95 percent confidence interval:
+##  16.0556 17.0724
+## sample estimates:
+##    mean in group aide mean in group temoins 
+##                36.484                19.920</code></pre>
+<p>On remarque que <code>t.test( )</code> donne le test <span class="math inline">\(t\)</span> bilatéral par défaut, comme c’est le cas pour le test <span class="math inline">\(t\)</span> sur un groupe. Nous pouvons facilement choisir un test unilatéral en modifiant l’argument <code>alternative</code>. Nous verrons un exemple de test unilatéral plus loin dans ce document (exemple 4.4).</p>
+<p>À noter que la probabilité retournée par <code>t.test( )</code> est très faible (<code>p.value &lt; 2.2e-16</code>). Par convention, on indique dans un rapport présentant des résultats statistiques que la probabilité est inférieure à une petite valeur, telle que <span class="math inline">\(P &lt; 0.0001\)</span> ou <span class="math inline">\(P &lt; 0.001\)</span>. Même si la probabilité est très faible, on n’indique jamais que <span class="math inline">\(P = 0\)</span>. Il est erroné d’écrire <span class="math inline">\(P = 0\)</span> puisque cela équivaut à dire que l’événement est impossible. Il faut distinguer entre <strong>impossible</strong> (ne se produira jamais) et <strong>peu probable</strong> (peut se produire avec une très faible probabilité). Par analogie, la probabilité de gagner à une loterie est peut-être faible (<span class="math inline">\(P &lt; 0.0001\)</span>) mais non nulle si on a acheté un billet. Par contre, si on n’achète aucun billet, on n’a aucune chance de gagner et, dans ce cas, on peut écrire <span class="math inline">\(P = 0\)</span>.</p>
+<div id="suppositions-1" class="section level4 hasAnchor" number="4.1.1.1">
+<h4><span class="header-section-number">4.1.1.1</span> Suppositions<a href="leçon-3.html#suppositions-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les suppositions ou conditions à respecter pour le test <span class="math inline">\(t\)</span> à deux groupes sont les suivantes :</p>
+<ul>
+<li>l’indépendance des observations: les deux échantillons sont indépendants et les observations proviennent d’un échantillonnage aléatoire;<br />
+</li>
+<li>la normalité des résidus: les deux groupes proviennent de populations normales et leurs erreurs suivent une distribution normale;<br />
+</li>
+<li>l’homogénéité des variances: les deux groupes ont la même variance.</li>
+</ul>
+<div id="indépendance-des-observations-1" class="section level5 hasAnchor" number="4.1.1.1.1">
+<h5><span class="header-section-number">4.1.1.1.1</span> Indépendance des observations<a href="leçon-3.html#indépendance-des-observations-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le meilleur moyen de respecter cette condition est d’utiliser un design complètement aléatoire afin de récolter les données. Comme nous l’avons vu dans la leçon précédente, des mesures répétées sur les mêmes unités avant et après un traitement ne constituent pas des observations indépendantes.</p>
+</div>
+<div id="normalité-des-résidus" class="section level5 hasAnchor" number="4.1.1.1.2">
+<h5><span class="header-section-number">4.1.1.1.2</span> Normalité des résidus<a href="leçon-3.html#normalité-des-résidus" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Afin de vérifier la normalité des résidus, nous pouvons utiliser les mêmes diagnostics que ceux présentés pour le test <span class="math inline">\(t\)</span> à un groupe. Les tests formels ou les méthodes graphiques peuvent nous aider à détecter des déviations de cette condition. Dans notre exemple sur le succès scolaire des élèves, nous pourrions procéder comme suit :</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="leçon-3.html#cb425-1" tabindex="-1"></a><span class="do">##on crée un sous-jeu de données pour les élèves ayant eu l&#39;aide aux devoirs</span></span>
+<span id="cb425-2"><a href="leçon-3.html#cb425-2" tabindex="-1"></a>eleves.aide <span class="ot">&lt;-</span> eleves[eleves<span class="sc">$</span>Type <span class="sc">==</span> <span class="st">&quot;aide&quot;</span>, <span class="st">&quot;Note&quot;</span>]</span>
+<span id="cb425-3"><a href="leçon-3.html#cb425-3" tabindex="-1"></a>eleves.aide</span></code></pre></div>
+<pre><code>##  [1] 36.36 37.70 35.75 35.92 36.24 36.04 37.17 35.65 37.57 36.49 36.10 37.22 36.32 37.55 36.90 37.86 36.52 36.03 34.66 36.22 34.97
+## [22] 39.05 35.42 35.08 36.92 37.28 35.60 36.00 36.26 37.67</code></pre>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="leçon-3.html#cb427-1" tabindex="-1"></a><span class="do">##on crée un sous-jeu de données les élèves témoins</span></span>
+<span id="cb427-2"><a href="leçon-3.html#cb427-2" tabindex="-1"></a>eleves.temoins <span class="ot">&lt;-</span> eleves[eleves<span class="sc">$</span>Type <span class="sc">==</span> <span class="st">&quot;temoins&quot;</span>, <span class="st">&quot;Note&quot;</span>]</span>
+<span id="cb427-3"><a href="leçon-3.html#cb427-3" tabindex="-1"></a>eleves.temoins</span></code></pre></div>
+<pre><code>##  [1] 19.20 21.21 18.78 20.00 20.73 19.50 20.18 20.06 20.12 19.98 19.31 19.41 17.66 18.21 19.88 20.88 20.15 21.88 19.21 20.76 21.06
+## [22] 18.89 19.24 19.92 18.97 20.96 18.97 21.26 19.99 21.23</code></pre>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="leçon-3.html#cb429-1" tabindex="-1"></a><span class="do">##résidus du groupe avec aide aux devoir</span></span>
+<span id="cb429-2"><a href="leçon-3.html#cb429-2" tabindex="-1"></a>res.aide <span class="ot">&lt;-</span> eleves.aide <span class="sc">-</span> <span class="fu">mean</span>(eleves.aide)</span>
+<span id="cb429-3"><a href="leçon-3.html#cb429-3" tabindex="-1"></a></span>
+<span id="cb429-4"><a href="leçon-3.html#cb429-4" tabindex="-1"></a><span class="do">##résidus du groupe témoins</span></span>
+<span id="cb429-5"><a href="leçon-3.html#cb429-5" tabindex="-1"></a>res.temoins <span class="ot">&lt;-</span> eleves.temoins <span class="sc">-</span> <span class="fu">mean</span>(eleves.temoins)</span>
+<span id="cb429-6"><a href="leçon-3.html#cb429-6" tabindex="-1"></a></span>
+<span id="cb429-7"><a href="leçon-3.html#cb429-7" tabindex="-1"></a><span class="do">##on combine les résidus des deux groupes</span></span>
+<span id="cb429-8"><a href="leçon-3.html#cb429-8" tabindex="-1"></a>res.combo <span class="ot">&lt;-</span> <span class="fu">c</span>(res.aide, res.temoins)</span>
+<span id="cb429-9"><a href="leçon-3.html#cb429-9" tabindex="-1"></a></span>
+<span id="cb429-10"><a href="leçon-3.html#cb429-10" tabindex="-1"></a><span class="do">##test formel Anderson-Darling</span></span>
+<span id="cb429-11"><a href="leçon-3.html#cb429-11" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb429-12"><a href="leçon-3.html#cb429-12" tabindex="-1"></a><span class="fu">ad.test</span>(res.combo)</span></code></pre></div>
+<pre><code>## 
+##  Anderson-Darling normality test
+## 
+## data:  res.combo
+## A = 0.3122, p-value = 0.5408</code></pre>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="leçon-3.html#cb431-1" tabindex="-1"></a><span class="do">##graphique quantile-quantile</span></span>
+<span id="cb431-2"><a href="leçon-3.html#cb431-2" tabindex="-1"></a><span class="fu">qqnorm</span>(res.combo, <span class="at">ylab =</span> <span class="st">&quot;Quantiles observées&quot;</span>,</span>
+<span id="cb431-3"><a href="leçon-3.html#cb431-3" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
+<span id="cb431-4"><a href="leçon-3.html#cb431-4" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>)</span>
+<span id="cb431-5"><a href="leçon-3.html#cb431-5" tabindex="-1"></a><span class="fu">qqline</span>(res.combo)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:normality"></span>
+<img src="Cours_Stats_R_files/figure-html/normality-1.png" alt="Graphique quantile-quantile à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves." width="672" />
+<p class="caption">
+Figure 4.1: Graphique quantile-quantile à partir des résidus du test <span class="math inline">\(t\)</span> sur deux groupes indépendants effectué sur les données du succès scolaire des élèves.
+</p>
+</div>
+<p>Les diagnostics suggèrent que la supposition de normalité des résidus est bien respectée (Figure. <a href="leçon-3.html#fig:normality">4.1</a>}). En effet, le résultat du test de Anderson-Darling (<code>p.value = 0.5408</code>) ne permet pas de rejeter l’hypothèse nulle selon laquelle les résidus suivent une distribution normale avec un seuil <span class="math inline">\(\alpha = 0.05\)</span>. De plus, les quantiles des observations s’alignent bien avec les quantiles théoriques d’une distribution normale.</p>
+</div>
+<div id="homogénéité-de-la-variance" class="section level5 hasAnchor" number="4.1.1.1.3">
+<h5><span class="header-section-number">4.1.1.1.3</span> Homogénéité de la variance<a href="leçon-3.html#homogénéité-de-la-variance" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le test <span class="math inline">\(t\)</span> sur deux groupes indépendants suppose que les deux groupes comparés ont des variances égales. C’est ce qu’on appelle la supposition d’<strong>homogénéité de la variance</strong>, aussi appelée <strong>homoscédasticité</strong> (<em>homogeneity of variance</em>, <em>homoscedasticity</em>, <em>homoskedasticity</em>). Lorsque deux groupes ont des variances inégales, nous dirons que l’homogénéité de la variance n’est pas respectée, ou de façon équivalente, que les variances sont hétérogènes (<em>heterogeneous variances</em>, <em>heteroscedasticity</em>, <em>heteroskedasticity</em>). Cette supposition est très importante et il est primordial de la vérifier. On peut évaluer si cette supposition est valide à l’aide de méthodes formelles telles que le test de Fligner-Killeen (<code>fligner.test( )</code>), de Bartlett (<code>bartlett.test( )</code>) ou celui de Levene (<code>leveneTest( )</code>) du package <code>car</code>. Toutefois, ces tests formels peuvent être sensibles à la non-normalité, c’est-à-dire que le rejet de l’hypothèse nulle (<span class="math inline">\(H_0\)</span> : homogénéité de la variance) peut être dû à des déviations de la normalité plutôt qu’à l’hétérogénéité de la variance. Ainsi, nous utiliserons plutôt des méthodes graphiques pour diagnostiquer les problèmes d’hétérogénéité de la variance.</p>
+<p>La méthode graphique la plus simple consiste à observer le patron de la variance à l’aide des résidus. Puisque nous n’avons que deux groupes, nous pouvons utiliser un diagramme de boîtes et moustaches (<em>boxplot</em>). Si la condition d’homogénéité de la variance est respectée, nous observerons deux boîtes de même hauteur sur le graphique.</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="leçon-3.html#cb432-1" tabindex="-1"></a><span class="do">##on met les résidus dans le jeu de données</span></span>
+<span id="cb432-2"><a href="leçon-3.html#cb432-2" tabindex="-1"></a>eleves<span class="sc">$</span>res.combo <span class="ot">&lt;-</span> res.combo</span>
+<span id="cb432-3"><a href="leçon-3.html#cb432-3" tabindex="-1"></a><span class="do">##on crée le graphique</span></span>
+<span id="cb432-4"><a href="leçon-3.html#cb432-4" tabindex="-1"></a><span class="fu">boxplot</span>(res.combo <span class="sc">~</span> Type, <span class="at">data =</span> eleves)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:homog2"></span>
+<img src="Cours_Stats_R_files/figure-html/homog2-1.png" alt="Diagramme de boîtes et moustaches à partir des résidus du test $t$ sur deux groupes indépendants effectué sur les données du succès scolaire des élèves." width="672" />
+<p class="caption">
+Figure 4.2: Diagramme de boîtes et moustaches à partir des résidus du test <span class="math inline">\(t\)</span> sur deux groupes indépendants effectué sur les données du succès scolaire des élèves.
+</p>
+</div>
+<p>On voit que les boîtes des deux groupes sont très semblables (la distance interquartile est similaire). On peut donc procéder avec le test <span class="math inline">\(t\)</span> (Figure <a href="leçon-3.html#fig:homog2">4.2</a>). Dans d’autres cas, les variances des deux groupes sont différentes et la supposition d’homogénéité de la variance n’est pas respectée (Figure <a href="leçon-3.html#fig:hetero">4.3</a>). Lorsqu’il y a un doute sur l’interprétation du diagramme, il vaut mieux utiliser des tests qui ne nécessitent pas l’homogénéité de la variance (voir la prochaine section).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hetero"></span>
+<img src="Cours_Stats_R_files/figure-html/hetero-1.png" alt="Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2." width="672" />
+<p class="caption">
+Figure 4.3: Diagrammes de boîtes et moustaches sur les résidus de groupes avec variances inégales. On remarque que les boîtes ont des hauteurs différentes (distance interquartile différente). Dans chaque diagramme, le groupe 1 varie moins que le groupe 2.
+</p>
+</div>
+</div>
+<div id="robustesse-du-test-t" class="section level5 hasAnchor" number="4.1.1.1.4">
+<h5><span class="header-section-number">4.1.1.1.4</span> Robustesse du test t<a href="leçon-3.html#robustesse-du-test-t" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Le test <span class="math inline">\(t\)</span> est robuste aux déviations, particulièrement si les deux groupes sont de tailles identiques et si on teste des hypothèses bilatérales. La robustesse du test augmente avec la taille de l’échantillon. Lorsque la supposition d’homogénéité de la variance ne peut être respectée, une version modifiée du test <span class="math inline">\(t\)</span> peut être utilisée, le test <span class="math inline">\(t\)</span> de Welch (<em>Welch’s <span class="math inline">\(t\)</span>-test</em>). C’est d’ailleurs ce test <span class="math inline">\(t\)</span> qui est exécuté par défaut, avec <code>t.test( )</code> (c.-à-d., l’argument <code>var.equal</code> prend la valeur <code>FALSE</code> par défaut). L’exemple suivant illustre ce qu’on obtient avec cette modification du test <span class="math inline">\(t\)</span>.</p>
+<div class="exemple" section="4">
+<p>Le test <span class="math inline">\(t\)</span> de Welch est une version modifiée du test <span class="math inline">\(t\)</span> classique et est adapté aux situations de variances hétérogènes. Alors que le test <span class="math inline">\(t\)</span> utilise un terme de variance combinée, le test <span class="math inline">\(t\)</span> de Welch inclut les variances des deux groupes dans le calcul de l’erreur-type sur la différence des moyennes :</p>
+<p><span class="math display">\[
+SE_{\bar{x}_{\mathrm{groupe \: 1}} - \bar{x}_{\mathrm{groupe \: 2}}} = \sqrt{\frac{s^2_{\mathrm{groupe \: 1}}}{n_{\mathrm{groupe \: 1}}} + \frac{s^2_{\mathrm{groupe \: 2}}}{n_{\mathrm{groupe \: 2}}}}
+\]</span>
+Le calcul des degrés de liberté est plus complexe avec le test <span class="math inline">\(t\)</span> de Welch :</p>
+<p><span class="math display">\[
+  df = \frac{\left(\frac{s^2_{\mathrm{groupe \: 1}}}{n_{\mathrm{groupe \: 1}}} + \frac{s^2_{\mathrm{groupe \: 2}}}{n_{\mathrm{groupe \: 2}}}\right)}{\frac{\left(\frac{s^2_{\mathrm{groupe \: 1}}}{n_{\mathrm{groupe \: 1}}}\right)^2}{n_{\mathrm{groupe \: 1}} - 1} + \frac{\left(\frac{s^2_{\mathrm{groupe \: 2}}}{n_{\mathrm{groupe \: 2}}}\right)^2}{n_{\mathrm{groupe \: 2}} - 1}} \:
+\]</span>
+On peut comparer la différence entre les résultats du test <span class="math inline">\(t\)</span> de Student et ceux du test <span class="math inline">\(t\)</span> de Welch concernant les données relatives au succès scolaire des élèves :</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="leçon-3.html#cb433-1" tabindex="-1"></a><span class="do">##test t de Student</span></span>
+<span id="cb433-2"><a href="leçon-3.html#cb433-2" tabindex="-1"></a><span class="fu">t.test</span>(Note <span class="sc">~</span> Type, <span class="at">data =</span> eleves, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  Note by Type
+## t = 65.217, df = 58, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group aide and group temoins is not equal to 0
+## 95 percent confidence interval:
+##  16.0556 17.0724
+## sample estimates:
+##    mean in group aide mean in group temoins 
+##                36.484                19.920</code></pre>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="leçon-3.html#cb435-1" tabindex="-1"></a><span class="do">##test t de Welch</span></span>
+<span id="cb435-2"><a href="leçon-3.html#cb435-2" tabindex="-1"></a><span class="fu">t.test</span>(Note <span class="sc">~</span> Type, <span class="at">data =</span> eleves, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Note by Type
+## t = 65.217, df = 57.993, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group aide and group temoins is not equal to 0
+## 95 percent confidence interval:
+##  16.0556 17.0724
+## sample estimates:
+##    mean in group aide mean in group temoins 
+##                36.484                19.920</code></pre>
+<p>On constate que les résultats des tests sont pratiquement les mêmes puisque la supposition d’homogénéité de la variance est respectée. Seuls les degrés de libertés diffèrent légèrement.</p>
+</div>
+<div class="exemple" section="4">
+<p>On effectue une expérience sur le temps passé à regarder son téléphone portable pour des étudiants de 19 à 23 ans dans deux situations distinctes : dîner avec des étudiants du même département et dîner avec des étudiants de départements différents. On recrute 30 volontaires que l’on assigne aléatoirement aux deux situations, à raison de 15 individus dînant avec des compères et 15 individus dînant avec des étudiants inconnus d’une autre discipline. Le temps que chaque volontaire passe à regarder son téléphone pendant le dîner de 1h30 est noté. À la fin de l’expérience, on obtient les résultats du tableau <a href="leçon-3.html#tab:temps">4.2</a>.</p>
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Inconnus
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Compères
+</div>
+</th>
+</tr>
+</thead>
+<caption>
+<span id="tab:temps">Table 4.2: </span>Temps en minutes passé sur son téléphone portable de différents individus dînant avec des compères ou des étudiants inconnus de d’autres disciplines.
+</caption>
+<tbody>
+<tr>
+<td style="text-align:center;">
+27.05083
+</td>
+<td style="text-align:center;">
+13.000143
+</td>
+<td style="text-align:center;">
+23.524914
+</td>
+<td style="text-align:center;">
+20.39442
+</td>
+<td style="text-align:center;">
+35.88428
+</td>
+<td style="text-align:center;">
+12.49332
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14.98468
+</td>
+<td style="text-align:center;">
+5.153957
+</td>
+<td style="text-align:center;">
+4.428985
+</td>
+<td style="text-align:center;">
+13.75534
+</td>
+<td style="text-align:center;">
+35.78062
+</td>
+<td style="text-align:center;">
+33.20128
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+26.18627
+</td>
+<td style="text-align:center;">
+27.647381
+</td>
+<td style="text-align:center;">
+9.389878
+</td>
+<td style="text-align:center;">
+30.06083
+</td>
+<td style="text-align:center;">
+24.73449
+</td>
+<td style="text-align:center;">
+26.80185
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11.92027
+</td>
+<td style="text-align:center;">
+18.461213
+</td>
+<td style="text-align:center;">
+19.881456
+</td>
+<td style="text-align:center;">
+34.20787
+</td>
+<td style="text-align:center;">
+42.13944
+</td>
+<td style="text-align:center;">
+27.49096
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16.49150
+</td>
+<td style="text-align:center;">
+5.271710
+</td>
+<td style="text-align:center;">
+13.398200
+</td>
+<td style="text-align:center;">
+23.95501
+</td>
+<td style="text-align:center;">
+18.36979
+</td>
+<td style="text-align:center;">
+40.77970
+</td>
+</tr>
+</tbody>
+</table>
+<p>Les données se trouvent dans le fichier <code>temps.txt</code>. Puisqu’on s’attend à ce que les individus dînant avec des compères passent plus de temps sur leurs téléphones portables que ceux dînant avec des inconnus (car ils sont désinhibés en présence de leurs compères et moins polis), nous effectuerons un test unilatéral.</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{inconnus}} \geq \mu_{\mathrm{comp\grave{e}res}}\)</span> (test unilatéral)<br />
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{inconnus}} &lt; \mu_{\mathrm{comp\grave{e}res}}\)</span></p>
+<p>On importe le jeu de données :</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="leçon-3.html#cb437-1" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_4/data/temps.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb437-2"><a href="leçon-3.html#cb437-2" tabindex="-1"></a></span>
+<span id="cb437-3"><a href="leçon-3.html#cb437-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
+<span id="cb437-4"><a href="leçon-3.html#cb437-4" tabindex="-1"></a><span class="fu">head</span>(temps)</span></code></pre></div>
+<pre><code>##      Temps Accompagnateurs
+## 1 27.05083        inconnus
+## 2 14.98468        inconnus
+## 3 26.18627        inconnus
+## 4 11.92027        inconnus
+## 5 16.49150        inconnus
+## 6 13.00014        inconnus</code></pre>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="leçon-3.html#cb439-1" tabindex="-1"></a><span class="do">##dernières observations</span></span>
+<span id="cb439-2"><a href="leçon-3.html#cb439-2" tabindex="-1"></a><span class="fu">tail</span>(temps)</span></code></pre></div>
+<pre><code>##       Temps Accompagnateurs
+## 25 18.36979        comperes
+## 26 12.49332        comperes
+## 27 33.20128        comperes
+## 28 26.80184        comperes
+## 29 27.49096        comperes
+## 30 40.77970        comperes</code></pre>
+<p>On peut effectuer le test <span class="math inline">\(t\)</span> de Student pour tester notre hypothèse :</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="leçon-3.html#cb441-1" tabindex="-1"></a><span class="do">##temps pour dîner avec inconnus</span></span>
+<span id="cb441-2"><a href="leçon-3.html#cb441-2" tabindex="-1"></a>inconnus <span class="ot">&lt;-</span> temps[temps<span class="sc">$</span>Accompagnateurs <span class="sc">==</span> <span class="st">&quot;inconnus&quot;</span>,  <span class="st">&quot;Temps&quot;</span>]</span>
+<span id="cb441-3"><a href="leçon-3.html#cb441-3" tabindex="-1"></a><span class="do">##temps pour dîner avec compères</span></span>
+<span id="cb441-4"><a href="leçon-3.html#cb441-4" tabindex="-1"></a>comperes <span class="ot">&lt;-</span> temps[temps<span class="sc">$</span>Accompagnateurs <span class="sc">==</span> <span class="st">&quot;comperes&quot;</span>, <span class="st">&quot;Temps&quot;</span>]</span>
+<span id="cb441-5"><a href="leçon-3.html#cb441-5" tabindex="-1"></a><span class="do">##test unilatéral avec x plus grand que y</span></span>
+<span id="cb441-6"><a href="leçon-3.html#cb441-6" tabindex="-1"></a>t.out <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> comperes, <span class="at">y=</span> inconnus, <span class="at">data =</span> temps, </span>
+<span id="cb441-7"><a href="leçon-3.html#cb441-7" tabindex="-1"></a>                <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span>
+<span id="cb441-8"><a href="leçon-3.html#cb441-8" tabindex="-1"></a>t.out</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  comperes and inconnus
+## t = 3.8997, df = 28, p-value = 0.0002747
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  6.887848      Inf
+## sample estimates:
+## mean of x mean of y 
+##  28.00328  15.78609</code></pre>
+<p>Toutefois, avant de se lancer dans l’interprétation de l’analyse, il faut vérifier les suppositions.</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="leçon-3.html#cb443-1" tabindex="-1"></a><span class="do">##calculer les résidus - groupe inconnus</span></span>
+<span id="cb443-2"><a href="leçon-3.html#cb443-2" tabindex="-1"></a>inconnus.res <span class="ot">&lt;-</span> inconnus <span class="sc">-</span> <span class="fu">mean</span>(inconnus)</span>
+<span id="cb443-3"><a href="leçon-3.html#cb443-3" tabindex="-1"></a></span>
+<span id="cb443-4"><a href="leçon-3.html#cb443-4" tabindex="-1"></a><span class="do">##calculer les résidus - groupe comperes</span></span>
+<span id="cb443-5"><a href="leçon-3.html#cb443-5" tabindex="-1"></a>comperes.res <span class="ot">&lt;-</span> comperes <span class="sc">-</span> <span class="fu">mean</span>(comperes)</span>
+<span id="cb443-6"><a href="leçon-3.html#cb443-6" tabindex="-1"></a></span>
+<span id="cb443-7"><a href="leçon-3.html#cb443-7" tabindex="-1"></a><span class="do">##combiner résidus dans jeu de données</span></span>
+<span id="cb443-8"><a href="leçon-3.html#cb443-8" tabindex="-1"></a>temps<span class="sc">$</span>Res <span class="ot">&lt;-</span> <span class="fu">c</span>(inconnus.res, comperes.res)</span>
+<span id="cb443-9"><a href="leçon-3.html#cb443-9" tabindex="-1"></a></span>
+<span id="cb443-10"><a href="leçon-3.html#cb443-10" tabindex="-1"></a><span class="do">##vérifier normalité avec test Anderson-Darling</span></span>
+<span id="cb443-11"><a href="leçon-3.html#cb443-11" tabindex="-1"></a><span class="fu">ad.test</span>(temps<span class="sc">$</span>Res)</span></code></pre></div>
+<pre><code>## 
+##  Anderson-Darling normality test
+## 
+## data:  temps$Res
+## A = 0.24703, p-value = 0.732</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="leçon-3.html#cb445-1" tabindex="-1"></a><span class="do">##combiner graphique dans une fenêtre</span></span>
+<span id="cb445-2"><a href="leçon-3.html#cb445-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb445-3"><a href="leçon-3.html#cb445-3" tabindex="-1"></a><span class="do">##graphique quantile-quantile</span></span>
+<span id="cb445-4"><a href="leçon-3.html#cb445-4" tabindex="-1"></a><span class="fu">qqnorm</span>(temps<span class="sc">$</span>Res, <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>,</span>
+<span id="cb445-5"><a href="leçon-3.html#cb445-5" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
+<span id="cb445-6"><a href="leçon-3.html#cb445-6" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>)</span>
+<span id="cb445-7"><a href="leçon-3.html#cb445-7" tabindex="-1"></a><span class="fu">qqline</span>(temps<span class="sc">$</span>Res)</span>
+<span id="cb445-8"><a href="leçon-3.html#cb445-8" tabindex="-1"></a><span class="do">##ajouter lettre a</span></span>
+<span id="cb445-9"><a href="leçon-3.html#cb445-9" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fl">14.5</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb445-10"><a href="leçon-3.html#cb445-10" tabindex="-1"></a><span class="do">##diagramme de boîtes et moustaches - homoscédasticité</span></span>
+<span id="cb445-11"><a href="leçon-3.html#cb445-11" tabindex="-1"></a><span class="fu">boxplot</span>(Res <span class="sc">~</span> Accompagnateurs, <span class="at">data =</span> temps)</span>
+<span id="cb445-12"><a href="leçon-3.html#cb445-12" tabindex="-1"></a><span class="do">##ajouter lettre b</span></span>
+<span id="cb445-13"><a href="leçon-3.html#cb445-13" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">14.5</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm2"></span>
+<img src="Cours_Stats_R_files/figure-html/norm2-1.png" alt="Graphique quantile-quantile sur les résidus du test $t$ sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d'homogénéité de la variance à partir des résidus du test $t$ sur deux groupes indépendants avec avec les mêmes données (b)." width="672" />
+<p class="caption">
+Figure 4.4: Graphique quantile-quantile sur les résidus du test <span class="math inline">\(t\)</span> sur deux groupes indépendants sur les données de temps passés par des étudiants sur leurs téléphones portables (a) et diagramme de boîtes et moustaches pour vérifier la supposition d’homogénéité de la variance à partir des résidus du test <span class="math inline">\(t\)</span> sur deux groupes indépendants avec avec les mêmes données (b).
+</p>
+</div>
+<p>Le test de normalité d’Anderson-Darling suggère que la supposition de normalité est respectée et il en va de même avec le graphique quantile-quantile (Figure <a href="leçon-3.html#fig:norm2">4.4</a>a). La figure <a href="leçon-3.html#fig:norm2">4.4</a>b ne montre pas de signes d’hétérogénéité de la variance. On peut procéder à l’inteprétation des résultats. Puisque <span class="math inline">\(P(t_{df = 28}\)</span> <span class="math inline">\(3.9\)</span>) = <span class="math inline">\(2.7\times 10^{-4}\)</span>, on rejette <span class="math inline">\(H_0\)</span> et on conclut que le temps passé à regarder son téléphone portable est plus grand lorsque les étudiants dînent avec leurs compères plutôt qu’avec des inconnus. Autrement dit, la valeur de <span class="math inline">\(t\)</span> observée est beaucoup plus extrême que ce qui est attendu selon <span class="math inline">\(H_0\)</span>. Finalement, on peut illustrer le résultat dans un graphique de la moyenne de chaque groupe accompagnée de son intervalle de confiance respectif (Figure <a href="leçon-3.html#fig:two">4.5</a>).</p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="leçon-3.html#cb446-1" tabindex="-1"></a><span class="do">##moyenne des groupes</span></span>
+<span id="cb446-2"><a href="leçon-3.html#cb446-2" tabindex="-1"></a>moy.inconnus <span class="ot">&lt;-</span> <span class="fu">mean</span>(inconnus)</span>
+<span id="cb446-3"><a href="leçon-3.html#cb446-3" tabindex="-1"></a>moy.comperes <span class="ot">&lt;-</span> <span class="fu">mean</span>(comperes)</span>
+<span id="cb446-4"><a href="leçon-3.html#cb446-4" tabindex="-1"></a></span>
+<span id="cb446-5"><a href="leçon-3.html#cb446-5" tabindex="-1"></a><span class="do">##SD des groupes</span></span>
+<span id="cb446-6"><a href="leçon-3.html#cb446-6" tabindex="-1"></a>sd.inconnus <span class="ot">&lt;-</span> <span class="fu">sd</span>(inconnus)</span>
+<span id="cb446-7"><a href="leçon-3.html#cb446-7" tabindex="-1"></a>sd.comperes <span class="ot">&lt;-</span> <span class="fu">sd</span>(comperes)</span>
+<span id="cb446-8"><a href="leçon-3.html#cb446-8" tabindex="-1"></a></span>
+<span id="cb446-9"><a href="leçon-3.html#cb446-9" tabindex="-1"></a><span class="do">##n des groupes</span></span>
+<span id="cb446-10"><a href="leçon-3.html#cb446-10" tabindex="-1"></a>n.inconnus <span class="ot">&lt;-</span> <span class="fu">length</span>(inconnus)</span>
+<span id="cb446-11"><a href="leçon-3.html#cb446-11" tabindex="-1"></a>n.comperes <span class="ot">&lt;-</span> <span class="fu">length</span>(comperes)</span>
+<span id="cb446-12"><a href="leçon-3.html#cb446-12" tabindex="-1"></a></span>
+<span id="cb446-13"><a href="leçon-3.html#cb446-13" tabindex="-1"></a><span class="do">##SE des moyennes</span></span>
+<span id="cb446-14"><a href="leçon-3.html#cb446-14" tabindex="-1"></a>SE.inconnus <span class="ot">&lt;-</span> sd.inconnus<span class="sc">/</span><span class="fu">sqrt</span>(n.inconnus)</span>
+<span id="cb446-15"><a href="leçon-3.html#cb446-15" tabindex="-1"></a>SE.comperes <span class="ot">&lt;-</span> sd.comperes<span class="sc">/</span><span class="fu">sqrt</span>(n.comperes)</span>
+<span id="cb446-16"><a href="leçon-3.html#cb446-16" tabindex="-1"></a></span>
+<span id="cb446-17"><a href="leçon-3.html#cb446-17" tabindex="-1"></a><span class="do">##IC&#39;s à 95%</span></span>
+<span id="cb446-18"><a href="leçon-3.html#cb446-18" tabindex="-1"></a>IC.inf95.inconnus <span class="ot">&lt;-</span> moy.inconnus <span class="sc">-</span> </span>
+<span id="cb446-19"><a href="leçon-3.html#cb446-19" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> n.inconnus <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> SE.inconnus</span>
+<span id="cb446-20"><a href="leçon-3.html#cb446-20" tabindex="-1"></a>IC.sup95.inconnus <span class="ot">&lt;-</span> moy.inconnus <span class="sc">+</span> </span>
+<span id="cb446-21"><a href="leçon-3.html#cb446-21" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> n.inconnus <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> SE.inconnus</span>
+<span id="cb446-22"><a href="leçon-3.html#cb446-22" tabindex="-1"></a>IC.inf95.comperes <span class="ot">&lt;-</span> moy.comperes <span class="sc">-</span> </span>
+<span id="cb446-23"><a href="leçon-3.html#cb446-23" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> n.comperes <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> SE.comperes</span>
+<span id="cb446-24"><a href="leçon-3.html#cb446-24" tabindex="-1"></a>IC.sup95.comperes <span class="ot">&lt;-</span> moy.comperes <span class="sc">+</span> </span>
+<span id="cb446-25"><a href="leçon-3.html#cb446-25" tabindex="-1"></a>  <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> n.comperes <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> SE.comperes</span>
+<span id="cb446-26"><a href="leçon-3.html#cb446-26" tabindex="-1"></a></span>
+<span id="cb446-27"><a href="leçon-3.html#cb446-27" tabindex="-1"></a><span class="do">##graphique</span></span>
+<span id="cb446-28"><a href="leçon-3.html#cb446-28" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">xlab =</span> <span class="st">&quot;Accompagnateurs&quot;</span>,</span>
+<span id="cb446-29"><a href="leçon-3.html#cb446-29" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Temps passé sur son téléphone (minutes)&quot;</span>, </span>
+<span id="cb446-30"><a href="leçon-3.html#cb446-30" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± IC à 95%&quot;</span>,</span>
+<span id="cb446-31"><a href="leçon-3.html#cb446-31" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(IC.inf95.inconnus, IC.inf95.comperes, </span>
+<span id="cb446-32"><a href="leçon-3.html#cb446-32" tabindex="-1"></a>                    IC.sup95.inconnus, IC.sup95.comperes)),</span>
+<span id="cb446-33"><a href="leçon-3.html#cb446-33" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb446-34"><a href="leçon-3.html#cb446-34" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb446-35"><a href="leçon-3.html#cb446-35" tabindex="-1"></a></span>
+<span id="cb446-36"><a href="leçon-3.html#cb446-36" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x</span></span>
+<span id="cb446-37"><a href="leçon-3.html#cb446-37" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Inconnus&quot;</span>, <span class="st">&quot;Compères&quot;</span>))</span>
+<span id="cb446-38"><a href="leçon-3.html#cb446-38" tabindex="-1"></a></span>
+<span id="cb446-39"><a href="leçon-3.html#cb446-39" tabindex="-1"></a><span class="do">##ajout des points</span></span>
+<span id="cb446-40"><a href="leçon-3.html#cb446-40" tabindex="-1"></a><span class="fu">points</span>(<span class="at">y =</span> <span class="fu">c</span>(moy.inconnus, moy.comperes), <span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>))</span>
+<span id="cb446-41"><a href="leçon-3.html#cb446-41" tabindex="-1"></a></span>
+<span id="cb446-42"><a href="leçon-3.html#cb446-42" tabindex="-1"></a><span class="co"># ajout des barres d&#39;erreur</span></span>
+<span id="cb446-43"><a href="leçon-3.html#cb446-43" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>), <span class="at">x1 =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>), </span>
+<span id="cb446-44"><a href="leçon-3.html#cb446-44" tabindex="-1"></a>       <span class="at">y0 =</span> <span class="fu">c</span>(IC.inf95.inconnus, IC.inf95.comperes),</span>
+<span id="cb446-45"><a href="leçon-3.html#cb446-45" tabindex="-1"></a>       <span class="at">y1 =</span> <span class="fu">c</span>(IC.sup95.inconnus, IC.sup95.comperes), </span>
+<span id="cb446-46"><a href="leçon-3.html#cb446-46" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">angle =</span> <span class="dv">90</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:two"></span>
+<img src="Cours_Stats_R_files/figure-html/two-1.png" alt="Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d'inconnus. Les barres d'erreurs correspondent à des intervalles de confiance à 95%." width="672" />
+<p class="caption">
+Figure 4.5: Moyennes du temps passé sur leurs téléphones par des étudiants dînant accompagnés de compères et d’inconnus. Les barres d’erreurs correspondent à des intervalles de confiance à 95%.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tests-dhypothèse-pour-deux-groupes-appariés" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Tests d’hypothèse pour deux groupes appariés<a href="leçon-3.html#tests-dhypothèse-pour-deux-groupes-appariés" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans certains dispositifs d’échantillonnage, on retrouve des données qui viennent en paires. On dira que les données sont <strong>appariées</strong>, c’est-à-dire que chaque observation d’un groupe est liée avec celle d’un autre groupe. Par exemple,</p>
+<ul>
+<li>on prend le pouls de jumeaux chez qui on a administré deux médicaments (un jumeau a le traitement 1, le deuxième a le traitement 2);</li>
+<li>on détermine l’asymétrie chez une espèce de moustique et on mesure la longueur de l’aile gauche et de l’aile droite. L’aile gauche d’un moustique constitue une observation du premier groupe alors que son aile droite est la donnée appariée qui fait partie du second groupe;</li>
+<li>on mesure la croissance des mêmes arbres avant et après l’ajout d’un fertilisant. La première mesure de croissance d’un arbre constitue donc une donnée du premier groupe alors que la deuxième mesure du même arbre est la donnée appariée qui fait partie du second groupe.</li>
+</ul>
+<p>Dans chaque exemple ci-dessus, on a des données sous forme de paires. Un dispositif avec des éléments appariés peut être une bonne stratégie pour réduire la variabilité de ce qu’on désire mesurer. Il réduit la variance entre deux observations d’une même paire. Ce dispositif est particulièrement utile lorsque la variabilité entre les individus (paires) est grande. On reconnaît que les paires diffèrent entre elles, mais la variabilité <strong>intrapaire</strong> (c.-à-d., à l’intérieur d’une même paire) est moindre.</p>
+<p>On ne peut pas considérer des mesures appariées comme indépendantes les unes des autres et cette structure doit être prise en compte lors de l’analyse. En d’autres mots, il est inapprorié de considérer ces données comme provenant de deux groupes indépendants. Par conséquent, on ne peut pas faire abstraction de cette structure et utiliser le test <span class="math inline">\(t\)</span> sur deux groupes qui sont indépendants. En présence de données appariées, nous utilisons plutôt le <strong>test <span class="math inline">\(t\)</span> pour données appariées</strong> (<em>paired <span class="math inline">\(t\)</span>-test</em>). Ce test est réalisé sur les différences entre les groupes et il correspond à un test <span class="math inline">\(t\)</span> sur un groupe. Illustrons avec un exemple.</p>
+<div class="exemple" section="4">
+<p>Dans une étude d’impact environnementale, on vise à évaluer l’effet des eaux usées sur le nombre d’espèces de poissons dans différents cours d’eau. Pour ce faire, on sélectionne 16 cours d’eau dans lesquels se déversent des eaux usées. On échantillonne les poissons en amont (avant la décharge) et en aval (après la décharge) des sources d’eaux usées. Tous les cours d’eau sont visités à la même période de l’année. Les données se trouvent dans le fichier <code>poissons.txt</code>.</p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="leçon-3.html#cb447-1" tabindex="-1"></a>poissons <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_4/data/poissons.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb447-2"><a href="leçon-3.html#cb447-2" tabindex="-1"></a><span class="fu">head</span>(poissons)</span></code></pre></div>
+<pre><code>##   Aval Amont
+## 1   20    23
+## 2   15    16
+## 3   10    10
+## 4    5     4
+## 5   20    22
+## 6   15    15</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="leçon-3.html#cb449-1" tabindex="-1"></a><span class="fu">tail</span>(poissons)</span></code></pre></div>
+<pre><code>##    Aval Amont
+## 11   10    11
+## 12    5     5
+## 13   20    22
+## 14   15    14
+## 15   10    10
+## 16    5     6</code></pre>
+<p>On peut utiliser un test <span class="math inline">\(t\)</span> pour données appariées pour déterminer si le nombre d’espèces en aval est inférieure à celui en amont des décharges d’eaux usées. Dans cet exemple, nous définissons la différence du nombre d’espèces comme étant <code>Aval - Amont</code>.</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\mathrm{diff\acute{e}rence}} \geq 0\)</span> (test unilatéral)
+<span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{\mathrm{diff\acute{e}rence}} &lt; 0\)</span></p>
+<p>À noter que le choix de calcul de la différence est totalement arbitraire et on aurait pu calculer plutôt . Le cas échéant, il aurait fallu modifier <span class="math inline">\(H_0\)</span> à <span class="math inline">\(\mu_{\mathrm{diff\acute{e}rence}} \leq 0\)</span> et <span class="math inline">\(H_a\)</span> à <span class="math inline">\(\mu_{\mathrm{diff\acute{e}rence}} &gt; 0\)</span>, puisqu’une valeur positive de la différence est conforme à notre prédiction que le nombre d’espèces est plus élevé en amont. Dans tous les cas, <span class="math inline">\(H_a\)</span> doit être conforme à la prédiction associée à notre hypothèse scientifique. Le test <span class="math inline">\(t\)</span> pour données appariées s’effectue sur la différence entre les paires d’observations de chaque groupe :</p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="leçon-3.html#cb451-1" tabindex="-1"></a>poissons<span class="sc">$</span>Diff <span class="ot">&lt;-</span> poissons<span class="sc">$</span>Aval <span class="sc">-</span> poissons<span class="sc">$</span>Amont</span>
+<span id="cb451-2"><a href="leçon-3.html#cb451-2" tabindex="-1"></a><span class="fu">head</span>(poissons) </span></code></pre></div>
+<pre><code>##   Aval Amont Diff
+## 1   20    23   -3
+## 2   15    16   -1
+## 3   10    10    0
+## 4    5     4    1
+## 5   20    22   -2
+## 6   15    15    0</code></pre>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="leçon-3.html#cb453-1" tabindex="-1"></a>mean.diff <span class="ot">&lt;-</span> <span class="fu">mean</span>(poissons<span class="sc">$</span>Diff)</span>
+<span id="cb453-2"><a href="leçon-3.html#cb453-2" tabindex="-1"></a>mean.diff</span></code></pre></div>
+<pre><code>## [1] -0.875</code></pre>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="leçon-3.html#cb455-1" tabindex="-1"></a>SD <span class="ot">&lt;-</span> <span class="fu">sd</span>(poissons<span class="sc">$</span>Diff)</span>
+<span id="cb455-2"><a href="leçon-3.html#cb455-2" tabindex="-1"></a>SD</span></code></pre></div>
+<pre><code>## [1] 1.147461</code></pre>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="leçon-3.html#cb457-1" tabindex="-1"></a>SE <span class="ot">&lt;-</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">nrow</span>(poissons))</span>
+<span id="cb457-2"><a href="leçon-3.html#cb457-2" tabindex="-1"></a>SE</span></code></pre></div>
+<pre><code>## [1] 0.2868652</code></pre>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="leçon-3.html#cb459-1" tabindex="-1"></a>t.poissons <span class="ot">&lt;-</span> <span class="fu">t.test</span>(poissons<span class="sc">$</span>Diff, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<p>On sait que :<br />
+<span class="math display">\[\bar{x}_{\mathrm{diff\acute{e}rence}} = -0.9 \]</span>
+<span class="math display">\[SD_{\mathrm{diff\acute{e}rence}} = 1.15  \]</span>
+<span class="math display">\[SE_{\mathrm{diff\acute{e}rence}} =  0.29 \]</span></p>
+<p>On obtient ainsi :<br />
+<span class="math display">\[t = \frac{\bar{x}_{\mathrm{diff\acute{e}rence}} - \mu_{H_{0}}}{SE_{\mathrm{diff\acute{e}rence}}}\]</span>
+<span class="math display">\[t = \frac{-0.9 - 0}{0.29 } \]</span>
+<span class="math display">\[t =  -3.05\]</span>
+On peut effectuer rapidement le test dans R à l’aide de <code>t.test( )</code> :</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="leçon-3.html#cb460-1" tabindex="-1"></a><span class="do">##test t à un groupe sur la différence</span></span>
+<span id="cb460-2"><a href="leçon-3.html#cb460-2" tabindex="-1"></a><span class="fu">t.test</span>(poissons<span class="sc">$</span>Diff, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  poissons$Diff
+## t = -3.0502, df = 15, p-value = 0.00405
+## alternative hypothesis: true mean is less than 0
+## 95 percent confidence interval:
+##        -Inf -0.3721108
+## sample estimates:
+## mean of x 
+##    -0.875</code></pre>
+<p>Vous aurez remarqué que le test <span class="math inline">\(t\)</span> pour données appariées n’est nul autre qu’un test <span class="math inline">\(t\)</span> sur un seul groupe (voir Leçon 3). Ce groupe est constitué des différences entre les paires d’observations. Le test <span class="math inline">\(t\)</span> pour données appariées doit respecter les mêmes suppositions que celles du test <span class="math inline">\(t\)</span> à un groupe, puisque le test <span class="math inline">\(t\)</span> pour données appariées <strong>est un test <span class="math inline">\(t\)</span> effectué sur un seul groupe</strong>. On peut aussi fournir les données brutes de chaque paire à la fonction <code>t.test( )</code>, mais il est très important d’inclure l’argument <code>paired = TRUE</code>.</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="leçon-3.html#cb462-1" tabindex="-1"></a><span class="do">##même test t, mais utilisant syntaxe de formule</span></span>
+<span id="cb462-2"><a href="leçon-3.html#cb462-2" tabindex="-1"></a><span class="do">##et l&#39;argument paired = TRUE</span></span>
+<span id="cb462-3"><a href="leçon-3.html#cb462-3" tabindex="-1"></a><span class="fu">t.test</span>(poissons<span class="sc">$</span>Aval, poissons<span class="sc">$</span>Amont, <span class="at">paired =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb462-4"><a href="leçon-3.html#cb462-4" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  poissons$Aval and poissons$Amont
+## t = -3.0502, df = 15, p-value = 0.00405
+## alternative hypothesis: true mean difference is less than 0
+## 95 percent confidence interval:
+##        -Inf -0.3721108
+## sample estimates:
+## mean difference 
+##          -0.875</code></pre>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="leçon-3.html#cb464-1" tabindex="-1"></a><span class="do">##calcul des résidus</span></span>
+<span id="cb464-2"><a href="leçon-3.html#cb464-2" tabindex="-1"></a>res.diff <span class="ot">&lt;-</span> poissons<span class="sc">$</span>Diff <span class="sc">-</span> <span class="fu">mean</span>(poissons<span class="sc">$</span>Diff)</span>
+<span id="cb464-3"><a href="leçon-3.html#cb464-3" tabindex="-1"></a><span class="do">##graphique quantile-quantile</span></span>
+<span id="cb464-4"><a href="leçon-3.html#cb464-4" tabindex="-1"></a><span class="fu">qqnorm</span>(res.diff, <span class="at">ylab =</span> <span class="st">&quot;Quantiles observés&quot;</span>, </span>
+<span id="cb464-5"><a href="leçon-3.html#cb464-5" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Quantiles théoriques&quot;</span>, </span>
+<span id="cb464-6"><a href="leçon-3.html#cb464-6" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Graphique quantile-quantile&quot;</span>)</span>
+<span id="cb464-7"><a href="leçon-3.html#cb464-7" tabindex="-1"></a><span class="fu">qqline</span>(res.diff)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:norm6"></span>
+<img src="Cours_Stats_R_files/figure-html/norm6-1.png" alt="Vérification de la normalité à partir des résidus des données appariées sur le nombre d'espèces de poissons." width="672" />
+<p class="caption">
+Figure 4.6: Vérification de la normalité à partir des résidus des données appariées sur le nombre d’espèces de poissons.
+</p>
+</div>
+<p>La vérification de la normalité indique que les résidus ont une distribution normale (Figure <a href="leçon-3.html#fig:norm6">4.6</a>). On conclut qu’il est peu probable d’observer une valeur <span class="math inline">\(t\)</span> de -3.05 ou plus extrême (ici, plus faible étant donné notre hypothèse alternative) avec de liberté lorsque <span class="math inline">\(H_0\)</span> est vraie. Effectivement, <span class="math inline">\(P(t_{15} \leq -3.05) = 0.004\)</span>. On rejette <span class="math inline">\(H_0\)</span> et on déclare dans notre rapport que le nombre espèces de poissons est significativement plus faible en aval qu’en amont d’une décharge d’eaux usées. On peut également formuler la conclusion en déclarant que le nombre d’espèces de poissons est significativement plus élevée en amont qu’en aval d’une décharge d’eaux usées dans notre aire d’étude. Finalement, on peut créer un graphique pour illustrer les résultats. Puisque les deux groupes sont appariés et que le test <span class="math inline">\(t\)</span> pour deux groupes appariés est en fait un test <span class="math inline">\(t\)</span> réalisé sur la différence entre les paires, on peut présenter la moyenne de la différence entre les paires et son intervalle de confiance à 95% (Figure <a href="leçon-3.html#fig:pairedci">4.7</a>).</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="leçon-3.html#cb465-1" tabindex="-1"></a><span class="do">##degrés de liberté résiduels</span></span>
+<span id="cb465-2"><a href="leçon-3.html#cb465-2" tabindex="-1"></a>res.df <span class="ot">&lt;-</span> <span class="fu">nrow</span>(poissons) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb465-3"><a href="leçon-3.html#cb465-3" tabindex="-1"></a></span>
+<span id="cb465-4"><a href="leçon-3.html#cb465-4" tabindex="-1"></a><span class="do">##IC à 95%</span></span>
+<span id="cb465-5"><a href="leçon-3.html#cb465-5" tabindex="-1"></a>inf95 <span class="ot">&lt;-</span> mean.diff <span class="sc">-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> res.df) <span class="sc">*</span> SE</span>
+<span id="cb465-6"><a href="leçon-3.html#cb465-6" tabindex="-1"></a>sup95 <span class="ot">&lt;-</span> mean.diff <span class="sc">+</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> res.df) <span class="sc">*</span> SE</span>
+<span id="cb465-7"><a href="leçon-3.html#cb465-7" tabindex="-1"></a></span>
+<span id="cb465-8"><a href="leçon-3.html#cb465-8" tabindex="-1"></a><span class="do">##graphique</span></span>
+<span id="cb465-9"><a href="leçon-3.html#cb465-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> mean.diff,</span>
+<span id="cb465-10"><a href="leçon-3.html#cb465-10" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Moyenne de différence entre les groupes&quot;</span>,</span>
+<span id="cb465-11"><a href="leçon-3.html#cb465-11" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Analyse réalisée sur le nombre d&#39;espèces (aval - amont)&quot;</span>,</span>
+<span id="cb465-12"><a href="leçon-3.html#cb465-12" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyenne ± IC à 95%&quot;</span>,</span>
+<span id="cb465-13"><a href="leçon-3.html#cb465-13" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(inf95, sup95)),</span>
+<span id="cb465-14"><a href="leçon-3.html#cb465-14" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb465-15"><a href="leçon-3.html#cb465-15" tabindex="-1"></a></span>
+<span id="cb465-16"><a href="leçon-3.html#cb465-16" tabindex="-1"></a><span class="do">##ajout d&#39;IC à 95%</span></span>
+<span id="cb465-17"><a href="leçon-3.html#cb465-17" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fl">0.5</span>, <span class="at">x1 =</span> <span class="fl">0.5</span>,</span>
+<span id="cb465-18"><a href="leçon-3.html#cb465-18" tabindex="-1"></a>         <span class="at">y0 =</span> inf95, <span class="at">y1 =</span> sup95)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pairedci"></span>
+<img src="Cours_Stats_R_files/figure-html/pairedci-1.png" alt="Moyenne de la différence du nombre d'espèces de poissons (aval - amont) et intervalle de confiance à 95%." width="672" />
+<p class="caption">
+Figure 4.7: Moyenne de la différence du nombre d’espèces de poissons (aval - amont) et intervalle de confiance à 95%.
+</p>
+</div>
+<p>Dans ce cas particulier, on remarque que la figure n’amène pas beaucoup plus d’information que de présenter la moyennne et l’intervalle de confiance directement dans le texte: <span class="math inline">\(\bar{x}_{\mathrm{Diff}} = -0.88\)</span>, <span class="math inline">\(IC\)</span> à 95%: (-1.49, -0.26).</p>
+</div>
+</div>
+<div id="transformations" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Transformations<a href="leçon-3.html#transformations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Parfois, les suppositions de normalité des résidus ou d’homogénéité de la variance ne peuvent pas être respectées. Dans de tels cas, il s’avère utile de transformer les données brutes. Dans cette section, nous verrons quelques transformations communes utilisées en statistiques.</p>
+<div id="transformation-logarithmique" class="section level4 hasAnchor" number="4.1.3.1">
+<h4><span class="header-section-number">4.1.3.1</span> Transformation logarithmique<a href="leçon-3.html#transformation-logarithmique" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La <strong>transformation logarithmique</strong> (<em>log transformation</em>) peut permettre d’arriver à la normalité ou d’homogénéiser les variances dans certains cas :</p>
+<p><span class="math display">\[
+X^\prime = \log(X) \\
+\mathrm{ou} \\
+X^\prime = \log(X + 1) \:,
+\]</span>
+où <span class="math inline">\(X\)</span> correspond à la variable originale et <span class="math inline">\(X^\prime\)</span> représente la nouvelle variable résultant de cette transformation sur chacune des valeurs originales. On ajoute une constante à cette transformation lorsque certaines des valeurs de la variable originale sont 0, puisque le logarithme n’est pas défini pour de telles valeurs. Bien qu’il soit possible d’utiliser n’importe quelle base pour le logarithme, la base <span class="math inline">\(e\)</span> (log népérien, naturel) et la base 10 sont les plus fréquemment utilisées. En présence d’hétéroscédasticité, cette transformation peut rendre les variances homogènes (Figure <a href="leçon-3.html#fig:hetlog">4.8</a>). Cette transformation influence à la fois l’homogénéité de la variance et la normalité des résidus. Si les résidus ont déja une distribution normale, mais que les variances ne sont pas homogènes, il se peut que la transformation rétablisse l’homogénéité de la variance mais que la normalité des résidus ne soit plus rencontrée.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hetlog"></span>
+<img src="Cours_Stats_R_files/figure-html/hetlog-1.png" alt="Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L'application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable." width="672" />
+<p class="caption">
+Figure 4.8: Utilisation de la transformation logarithmique pour homogénéiser les variances de deux groupes. Les données brutes présentent des variances hétérogènes (a) puisque le groupe 1 varie moins que le groupe 2. L’application du log naturel a homogénéisé les variances (b), puisque la hauteur des deux boîtes est très semblable.
+</p>
+</div>
+<p>Dans R, on peut facilement appliquer la transformation logarithmique à l’aide de la fonction <code>log( )</code> sur une variable existante, comme celle du temps passé sur son téléphone vue plus tôt :</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="leçon-3.html#cb466-1" tabindex="-1"></a><span class="do">##transformation log sur Temps passé sur téléphone</span></span>
+<span id="cb466-2"><a href="leçon-3.html#cb466-2" tabindex="-1"></a>temps<span class="sc">$</span>log.Temps <span class="ot">&lt;-</span> <span class="fu">log</span>(temps<span class="sc">$</span>Temps)</span>
+<span id="cb466-3"><a href="leçon-3.html#cb466-3" tabindex="-1"></a><span class="fu">head</span>(temps)</span></code></pre></div>
+<pre><code>##      Temps Accompagnateurs        Res log.Temps
+## 1 27.05083        inconnus 11.2647400  3.297718
+## 2 14.98468        inconnus -0.8014168  2.707028
+## 3 26.18627        inconnus 10.4001760  3.265235
+## 4 11.92027        inconnus -3.8658228  2.478240
+## 5 16.49150        inconnus  0.7054111  2.802845
+## 6 13.00014        inconnus -2.7859490  2.564960</code></pre>
+</div>
+<div id="transformation-racine-carrée" class="section level4 hasAnchor" number="4.1.3.2">
+<h4><span class="header-section-number">4.1.3.2</span> Transformation racine carrée<a href="leçon-3.html#transformation-racine-carrée" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La <strong>transformation racine carrée</strong> (<em>square-root transformation</em>) peut s’avérer utile lorsque les données sont sous forme de fréquences. Les fréquences sont constituées de valeurs entières (p. ex., 0, 10, 21) et ne peuvent prendre de valeurs décimales. Par exemple, dans une étude sur le nombre de naissances dans différents hôpitaux, on peut observer 3 naissances, ou encore 2 naissances, 1 naissances ou aucune, mais il est impossible d’observer 2.5 naissances dans un hôpital. De telles données suivent souvent une distribution autre que la distribution normale, comme la distribution de Poisson<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. Avec des fréquences, les variances des groupes sont souvent proportionnelles aux moyennes<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> et la transformation peut homogénéiser les variances. Il existe différentes versions de la transformation racine carrée, chacune utilisant différentes constantes, notamment :</p>
+<p><span class="math display">\[
+X^\prime = \sqrt{X + 0.5} \\
+\mathrm{et} \\
+X^\prime = \sqrt{X + \frac{3}{8}} \:.
+\]</span></p>
+<p>La transformation racine carrée se réalise à l’aide de <code>sqrt( )</code> :</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="leçon-3.html#cb468-1" tabindex="-1"></a><span class="do">##on crée une variable de fréquences provenant</span></span>
+<span id="cb468-2"><a href="leçon-3.html#cb468-2" tabindex="-1"></a><span class="do">##d&#39;une distribution de Poisson avec</span></span>
+<span id="cb468-3"><a href="leçon-3.html#cb468-3" tabindex="-1"></a><span class="do">##une moyenne de 2.5</span></span>
+<span id="cb468-4"><a href="leçon-3.html#cb468-4" tabindex="-1"></a>freqs <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb468-5"><a href="leçon-3.html#cb468-5" tabindex="-1"></a><span class="do">##transformation racine carrée sur des fréquences</span></span>
+<span id="cb468-6"><a href="leçon-3.html#cb468-6" tabindex="-1"></a>freqs.transf <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(freqs)</span>
+<span id="cb468-7"><a href="leçon-3.html#cb468-7" tabindex="-1"></a><span class="do">## On représente les deux distributions dans une même figure</span></span>
+<span id="cb468-8"><a href="leçon-3.html#cb468-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb468-9"><a href="leçon-3.html#cb468-9" tabindex="-1"></a><span class="do">## Distribution originale</span></span>
+<span id="cb468-10"><a href="leçon-3.html#cb468-10" tabindex="-1"></a><span class="fu">hist</span>(freqs, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>))</span>
+<span id="cb468-11"><a href="leçon-3.html#cb468-11" tabindex="-1"></a><span class="do">## Distribution transformée</span></span>
+<span id="cb468-12"><a href="leçon-3.html#cb468-12" tabindex="-1"></a><span class="fu">hist</span>(freqs.transf, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sqrt"></span>
+<img src="Cours_Stats_R_files/figure-html/sqrt-1.png" alt="Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite)." width="672" />
+<p class="caption">
+Figure 4.9: Distribution de Poisson avec une moyenne de 2.5. Fréquences originales (gauche) et fréquences transformées suivant la transformation racine carrée (droite).
+</p>
+</div>
+</div>
+<div id="transformation-arcsinus" class="section level4 hasAnchor" number="4.1.3.3">
+<h4><span class="header-section-number">4.1.3.3</span> Transformation arcsinus<a href="leçon-3.html#transformation-arcsinus" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Les données sous formes de pourcentages et de proportions suivent fréquemment une distribution binomiale plutôt que normale. Alors que la distribution normale est définie entre l’intervalle <span class="math inline">\([-\infty, +\infty]\)</span>, les pourcentages et les proportions sont limités dans l’intervalle <span class="math inline">\([0, 100]\)</span> ou <span class="math inline">\([0, 1]\)</span>. Il en résulte que les données sous forme de pourcentages et de proportions ont plus de valeurs aux extrémités de l’intervalle (0 – 30 %, 70 – 100 %) qu’une distribution normale. Pour pallier ce problème, la <strong>transformation arcsinus</strong> (<em>arcsine transformation, angular transformation</em>) peut être utile:</p>
+<p><span class="math display">\[
+X^\prime = \arcsin\sqrt{X} \\
+\mathrm{ou} \\
+X^\prime = \sqrt{(n + \frac{1}{2})} \arcsin \sqrt{\frac{X + \frac{3}{8}}{n + \frac{3}{4}}} \: .
+\]</span>
+À noter qu’il faut ramener les pourcentages en proportions avant d’utiliser la transformation arcsinus (0.1 et 0.04, au lieu de 10 % et 4 %). Après la transformation, les données sont exprimées en radians (<span class="math inline">\(\frac{180^\circ}{2\pi}\)</span>). Dans R, on exécute la transformation arcsinus comme suit:</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="leçon-3.html#cb469-1" tabindex="-1"></a><span class="do">##on crée une série de proportions</span></span>
+<span id="cb469-2"><a href="leçon-3.html#cb469-2" tabindex="-1"></a><span class="do">##à partir d&#39;une distribution bêta</span></span>
+<span id="cb469-3"><a href="leçon-3.html#cb469-3" tabindex="-1"></a>props <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">shape1 =</span> <span class="dv">5</span>, <span class="at">shape2 =</span> <span class="dv">1</span>)</span>
+<span id="cb469-4"><a href="leçon-3.html#cb469-4" tabindex="-1"></a><span class="do">##transformation arcsinus sur les proportions</span></span>
+<span id="cb469-5"><a href="leçon-3.html#cb469-5" tabindex="-1"></a>props.transf <span class="ot">&lt;-</span> <span class="fu">asin</span>(<span class="fu">sqrt</span>(props))</span>
+<span id="cb469-6"><a href="leçon-3.html#cb469-6" tabindex="-1"></a><span class="do">## On représente les deux distributions dans une même figure</span></span>
+<span id="cb469-7"><a href="leçon-3.html#cb469-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb469-8"><a href="leçon-3.html#cb469-8" tabindex="-1"></a><span class="do">## Distribution originale</span></span>
+<span id="cb469-9"><a href="leçon-3.html#cb469-9" tabindex="-1"></a><span class="fu">hist</span>(props)</span>
+<span id="cb469-10"><a href="leçon-3.html#cb469-10" tabindex="-1"></a><span class="do">## Distribution transformée</span></span>
+<span id="cb469-11"><a href="leçon-3.html#cb469-11" tabindex="-1"></a><span class="fu">hist</span>(props.transf)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:asin"></span>
+<img src="Cours_Stats_R_files/figure-html/asin-1.png" alt="Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite)." width="672" />
+<p class="caption">
+Figure 4.10: Distribution bêta. Proportions originales (gauche) et proportions transformées suivant la transformation arcsinus (droite).
+</p>
+</div>
+</div>
+<div id="autres-transformations" class="section level4 hasAnchor" number="4.1.3.4">
+<h4><span class="header-section-number">4.1.3.4</span> Autres transformations<a href="leçon-3.html#autres-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La <strong>transformation réciproque ou inverse</strong> (<em>reciprocal transformation</em>) peut être utilisée lorsque les variances des groupes sont proportionnelles au carré des moyennes :</p>
+<p><span class="math display">\[
+X^\prime = \frac{1}{X} \\
+\mathrm{ou} \\
+X^\prime = \frac{1}{X + 1} \:
+\]</span></p>
+<p>Toutefois, il faut rester vigilant dans l’interprétation des résultats lorsqu’on a appliqué la transformation inverse. Le signe sera inversé. Par exemple, si on obtient après la transformation inverse que la différence du groupe 1 est plus grande que celle du groupe 2, cela implique que pour les données brutes, c’est en effet le contraire qui se produit. La transformation inverse s’obtient de la manière suivante dans R :</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="leçon-3.html#cb470-1" tabindex="-1"></a><span class="do">##transformation inverse sur le Temps passé sur son téléphone</span></span>
+<span id="cb470-2"><a href="leçon-3.html#cb470-2" tabindex="-1"></a>temps<span class="sc">$</span>inv.Temps <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(temps<span class="sc">$</span>Temps)</span>
+<span id="cb470-3"><a href="leçon-3.html#cb470-3" tabindex="-1"></a><span class="fu">head</span>(temps)</span></code></pre></div>
+<pre><code>##      Temps Accompagnateurs        Res log.Temps  inv.Temps
+## 1 27.05083        inconnus 11.2647400  3.297718 0.03696744
+## 2 14.98468        inconnus -0.8014168  2.707028 0.06673484
+## 3 26.18627        inconnus 10.4001760  3.265235 0.03818795
+## 4 11.92027        inconnus -3.8658228  2.478240 0.08389072
+## 5 16.49150        inconnus  0.7054111  2.802845 0.06063729
+## 6 13.00014        inconnus -2.7859490  2.564960 0.07692223</code></pre>
+<p>La <strong>transformation au carré</strong> est parfois utile lorsque les variances diminuent alors que les moyennes augmentent, ou lorsque la distribution est allongée vers la gauche:</p>
+<p><span class="math display">\[
+X^\prime = X^2
+\]</span>
+On exécute la transformation au carré ainsi:</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="leçon-3.html#cb472-1" tabindex="-1"></a><span class="do">##transformation au carré sur le Temps passé sur son téléphone</span></span>
+<span id="cb472-2"><a href="leçon-3.html#cb472-2" tabindex="-1"></a>temps<span class="sc">$</span>carre.Temps <span class="ot">&lt;-</span> (temps<span class="sc">$</span>Temps)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb472-3"><a href="leçon-3.html#cb472-3" tabindex="-1"></a><span class="fu">head</span>(temps)</span></code></pre></div>
+<pre><code>##      Temps Accompagnateurs        Res log.Temps  inv.Temps carre.Temps
+## 1 27.05083        inconnus 11.2647400  3.297718 0.03696744    731.7475
+## 2 14.98468        inconnus -0.8014168  2.707028 0.06673484    224.5405
+## 3 26.18627        inconnus 10.4001760  3.265235 0.03818795    685.7207
+## 4 11.92027        inconnus -3.8658228  2.478240 0.08389072    142.0928
+## 5 16.49150        inconnus  0.7054111  2.802845 0.06063729    271.9697
+## 6 13.00014        inconnus -2.7859490  2.564960 0.07692223    169.0037</code></pre>
+<p>Il existe d’autres familles de transformation afin de respecter les conditions d’utilisation des tests, mais celles que nous avons présentées plus haut sont les plus fréquemment utilisées. Malgré toutes ces possibilités de transformation des données, certaines variables ne peuvent être amenées à respecter les suppositions. Le cas type est celui où la variable contient une majorité de 0’s.</p>
+<p>Par exemple, lors d’une étude d’observation, on dénombre les arrestations pour vol à main armée dans 60 villages durant les 10 dernières années, et on observe que la majorité des villages n’ont eu aucun vol. Peu importe le type de transformation que nous utiliserons pour ce type de données, il y aura toujours plus de valeurs dans les queues de la distribution que ce qui est prédit par la distribution normale. Lorsqu’il est impossible de respecter les conditions d’utilisation d’un test d’hypothèse, il est préférable d’éviter de réaliser l’analyse et d’opter pour une analyse alternative. Ceci est particulièrement vrai lorsque la supposition d’homogénéité de la variance n’est pas respectée.</p>
+</div>
+</div>
+<div id="conclusion-3" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Conclusion<a href="leçon-3.html#conclusion-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans ce texte, nous avons présenté des variantes du test <span class="math inline">\(t\)</span> de Student pour comparer les données de deux groupes indépendants ainsi que pour des données appariées. Les suppositions sous-jacentes à ces analyses ont été énoncées, et plusieurs diagnostics formels et informels permettant de vérifier le respect de ces suppositions ont été illustrés. Nous avons également vu une modification du test <span class="math inline">\(t\)</span>, celle de Welch, qui est appropriée lorsque les variances des groupes ne sont pas homogènes. Une série de transformations de données ont été présentées afin d’arriver à respecter les suppositions de normalité et d’homogénéité des variances.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="13">
+<li id="fn13"><p>La distribution de Poisson est une distribution théorique qui définit les événements rares. Cette distribution ne possède qu’un seul paramètre estimé: la moyenne. Cette distribution théorique est utilisée dans certaines analyses, comme la régression de Poisson.<a href="leçon-3.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Rappelons que la variance et la moyenne sont deux paramètres indépendants dans la distribution normale, ce qui n’est pas le cas avec la distribution de Poisson.<a href="leçon-3.html#fnref14" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lecon4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="laboratoire.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

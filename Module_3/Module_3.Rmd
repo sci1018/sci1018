@@ -1,8 +1,71 @@
-# Tests d'hypothèse sur un seul groupe
+# Tests d'hypothèse sur un seul groupe {#lecon3}
+
+---
 
 Lors de la leçon précédente, nous avons illustré le concept d'intervalle de confiance en nous appuyant sur le rééchantillonnage. Afin de construire des intervalles de confiance, nous avons utilisé la distribution normale ou la distribution du *t* de Student selon la taille de l'échantillon. Différentes stratégies d'échantillonnage ont été présentées, bien que l'échantillonnage complètement aléatoire et l'échantillonnage stratifié aléatoire soient les approches les plus fréquemment utilisées dans le cours.
 
-## Théories
+---
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Bibliotheques.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les packages `R` suivants : {-} 
+  - `nortest`
+  - `MASS`
+  - `readxl`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Fonctions.svg)
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les fonctions suivantes : {-} 
+  - `qt( )`, `pt( )`
+  - `sd( )`
+  - `sqrt( )`
+  - `length( )`
+  - `t.test( )`
+  - `c( )`
+  - `mean( )`
+  - `ad.test( )`
+  - `cvm.test( )`
+  - `shapiro.test( )`
+  - `qqnorm( )`
+  - `qqline( )`
+  - `read_excel( )`  
+  - `library( )`
+  - `install.packages( )`
+  - `detach( )`
+  - `remove.packages( )`
+  </div>
+  
+</div> 
+
+<div class="row">
+
+  <div class="column lefticon">
+  ![](images/Icones_Donnees.svg) 
+  </div>
+ 
+  <div class="column righttext">
+##### Vous utiliserez les données suivantes : {-} 
+Le fichier `vers.txt` dans la partie théorique qui contient des données sur l'abondance des vers de terre dans différents types de parcs publics et le fichier `temp.csv` dans la partie Autoévaluation qui contient des données sur la température de l'air pour différentes stations de mesures météorologiques dans l'Arctique.  
+
+Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1018_data/raw/main/Module_3.zip).
+  </div>
+  
+</div> 
+
+## Leçon
 
 ### Hypothèse
 
@@ -123,8 +186,8 @@ L'hypothèse alternative ($H_a$), quant à elle, est l'hypothèse statistique qu
 ::: {.exemple section=3}
 On réalise une expérience pour tester l'hypothèse scientifique suivante: la lumière abondante dans les coupes forestières favorise les espèces végétales intolérantes à l'ombre. 
 
-Pour ce faire, on pourrait comparer la croissance moyenne de certaines espèces intolérantes à l'ombre dans 10 parcelles en coupes forestières et 10 parcelles en forêt sans coupe (témoins). Après avoir récolté les données, on pourrait procéder à une analyse statistique pour tester les hypothèses statistiques suivantes à propos des moyennes des deux groupes: 
-$H_0$ (hypothèse nulle): $\mu_{coupes} = \mu_{t\acute{e}moins}$ \\
+Pour ce faire, on pourrait comparer la croissance moyenne de certaines espèces intolérantes à l'ombre dans 10 parcelles en coupes forestières et 10 parcelles en forêt sans coupe (témoins). Après avoir récolté les données, on pourrait procéder à une analyse statistique pour tester les hypothèses statistiques suivantes à propos des moyennes des deux groupes :   
+$H_0$ (hypothèse nulle): $\mu_{coupes} = \mu_{t\acute{e}moins}$  
 $H_a$ (hypothèse alternative): $\mu_{coupes} \neq \mu_{t\acute{e}moins}$
 
 Si le test statistique indique que la différence observée entre les parcelle coupées et témoins est peu probable pour un échantillon de même taille tiré à partir de la même population lorsque $H_0$ est vraie, nous allons rejeter $H_0$. En d'autres mots, on se base sur une distribution statistique qui reflète $H_0$ pour situer la valeur observée de la statistique du test obtenue à partir de l'échantillon. Si cette valeur se trouve dans les extrémités de la distribution (c.-à-d., dans les queues), on va considérer cette valeur comme peu plausible lorsque $H_0$ est vraie. On conclura alors qu'il y a une différence de croissance des espèces intolérantes à l'ombre dans les coupes et dans les témoins, ce qui confirmera notre hypothèse scientifique de départ.
@@ -170,12 +233,12 @@ df <- data.frame(
   Col1 = c("", "**RÉALITÉ**", ""),
   Col2 = c("", "$H_0$ vraie", "$H_0$ fausse"),
   Col3 = c("On ne rejette pas $H_0$", 
-           "décision correcte", 
-           "erreur de type II ($\\beta$) <br> (faux négatif)"),
+           cell_spec("décision correcte", color = "blue"),
+           cell_spec("erreur de type II ($\\beta$) \n (faux négatif)", color = "red")),
   Col4 = c("On rejette $H_0$", 
-           "erreur de type I ($\\alpha$) <br> (faux positif)", 
-           "décision correcte <br> (puissance = 1 - $\\beta$)")
-)
+           cell_spec("erreur de type I ($\\alpha$) \n (faux positif)", color = "red"), 
+           cell_spec("décision correcte \n (puissance = 1 - $\\beta$)", color = "blue"))
+  )
 
 # Generate the table with custom styling for merged cells
 kable(df, 
@@ -184,14 +247,14 @@ kable(df,
       caption = "Représentation des différents scénarios lors d'un test d'hypothèse nulle ($H_0$).",
       "html", booktabs = TRUE, escape = FALSE) %>% 
   add_header_above(c(" " = 2, "**CONCLUSION À PARTIR DU TEST**" = 2)) %>%
-  kable_styling(full_width = F, position = "center")
+  kable_styling(full_width = T, position = "center")
 
 ```
 
 
 #### Puissance
 
-La **puissance**, définie comme étant $1 - \beta$, est la probabilité de rejeter correctement $H_0$ lorsqu'elle est fausse. La puissance dépend de la taille de l'effet, de la taille de l'échantillon, de la variabilité des données, de l'hypothèse testée et du dispositif expérimental. Cette quantité peut être calculée à l'aide de données préliminaires avant d'effectuer l'échantillonnage afin de nous guider quant à la taille d'échantillon nécessaire étant donné l'effet que l'on veut mesurer (p. ex., les différences entre moyennes de groupes). Le calcul de la puissance doit s'effectuer *a priori* avec des données préliminaires. Le calcul *a posteriori* de la puissance, à partir des données de l'expérience ou de l'étude d'observation, est à proscrire. %D'ailleurs, l'usage des analyses de puissance *a posteriori* a fait l'objet de vives critiques dans les années 1990's dans le monde statistique.
+La **puissance**, définie comme étant $1 - \beta$, est la probabilité de rejeter correctement $H_0$ lorsqu'elle est fausse. La puissance dépend de la taille de l'effet, de la taille de l'échantillon, de la variabilité des données, de l'hypothèse testée et du dispositif expérimental. Cette quantité peut être calculée à l'aide de données préliminaires avant d'effectuer l'échantillonnage afin de nous guider quant à la taille d'échantillon nécessaire étant donné l'effet que l'on veut mesurer (p. ex., les différences entre moyennes de groupes). Le calcul de la puissance doit s'effectuer *a priori* avec des données préliminaires. Le calcul *a posteriori* de la puissance, à partir des données de l'expérience ou de l'étude d'observation, est à proscrire. D'ailleurs, l'usage des analyses de puissance *a posteriori* a fait l'objet de vives critiques dans les années 1990's dans le monde statistique.
 
 Dans toute analyse, nous voulons que la puissance soit élevée (le plus près possible de 1). Les mesures suivantes permettent d'augmenter la puissance d'une analyse :
 
@@ -235,7 +298,7 @@ Les tests d'hypothèse effectués sur la moyenne d'un groupe permettent de déte
 
 Le test d'hypothèse peut être **bilatéral** (*two-sided test*) ou **unilatéral** (*one-sided test*). Dans le test bilatéral, on considère l'information contenue dans les deux queues de la distribution théorique (Figure \@ref(fig:bilateral)a). À l'opposé, un test unilatéral s'intéresse spécifiquement à l'information contenue dans l'une des deux queues de la distribution (Figure \@ref(fig:bilateral)b, c). Le choix d'exécuter un test unilatéral plutôt qu'un test bilatéral dépend des objectifs de l'analyse. Les deux prochains exemples illustrent le test unilatéral et le test bilatéral, respectivement. 
 
-```{r bilateral, echo=FALSE, fig.cap="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $\alpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues."}
+```{r bilateral, echo=FALSE, fig.align='center',fig.cap="Tests d'hypothèse bilatéral (a) et unilatéral (b, c) associés à la distribution du $t$ de Student avec 19 degrés de liberté ($df = 19$). On note qu'avec un seuil $\alpha = 0.05$, on détermine si la valeur observée est dans le 2.5 $%$ des queues de la distribution (0.025 à gauche + 0.025 à droite $= 0.05$). Le test unilatéral, quant à lui, détermine si la valeur observée se trouve dans le 5 $%$ d'une des deux queues."}
 ##test bilatéral
 xvs <- seq(-4, 4, 0.01)
 #qt(0.975, df = 19)
@@ -448,7 +511,7 @@ qqnorm(residus, main = "Graphique quantile-quantile",
 qqline(residus)
 ``` 
 
-```{r qqplot, echo = FALSE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)."}
+```{r qqplot, echo = FALSE, fig.align='center', fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ sur les données de perte de masse (a) et un échantillon qui ne suit pas la normalité (b)."}
 par(mfrow = c(1, 2))
 ##un graphique quantile-quantile
 qqnorm(residus, main = "Graphique quantile-quantile",
@@ -472,7 +535,7 @@ Le graphique quantile-quantile compare les quantiles de la distribution des rés
 
 On peut refaire l'exemple pour les résidus provenant du test-$t$ sur l'âge des ours noirs de Montérégie (Figure \@ref(fig:qqplot2):
 
-```{r qqplot2, echo=TRUE, fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie."}
+```{r qqplot2, echo=TRUE, fig.align='center', fig.cap="Graphique quantile-quantile pour évaluer la normalité des résidus du test-$t$ de l'âge d'ours de Montérégie."}
 ##on crée un vecteur avec les observations
 age.ours <- c(18, 13, 17, 2, 8, 14, 8, 5, 9, 2, 8, 7, 7, 
               3, 19, 21, 20, 11, 7, 16)
@@ -597,9 +660,11 @@ remove.packages(pkgs = "readxl")
 
 Une raison possible de désinstaller un package est lorsqu'une mise à jour d'un package n'a pu être réalisée avec succès. Ceci serait indiqué par un message d'erreur lors de la mise à jour. Un changement de dépendances d'un package entre deux versions peut causer une telle erreur. Dans une pareille situation, il suffit de désinstaller l'ancienne version du package à l'aide de `remove.packages( )` et d'installer la nouvelle version du package avec `install.packages( )`.
  
-## Exercices
+## Autoévaluation
 
-### Question 1
+Les données peuvent être retrouvées dans le dossier [Module 3](https://github.com/sci1018/sci1018_data/raw/main/Module_3.zip).    
+
+### Question 1 {-}
 
 **a.** Quelle est la différence entre une expérience et une étude d'observation? 
 
@@ -649,7 +714,7 @@ La normalité des résidus et l'indépendance des observations sont les deux pri
 
 <br>
 
-### Question 2
+### Question 2 {-}
 
 **a.** Importez le jeu de données `temp.csv`. Ce dernier contient les données sur la température de l'air pour différentes stations de mesures météorologiques (`Site`) dans l'Arctique. La colonne `Diff.temp` est le résultat de la différence entre la température maximale de 2010 et celle de 1950.
 
