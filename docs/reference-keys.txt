@@ -159,7 +159,7 @@ estimation-de-la-probabilité-de-détection
 méthode-de-capture-marquage-recapture
 analyses-dorccupation-de-sites
 conclusion-1
-les-graphiques-avec-r
+GraphiquesR
 graphiques-de-base
 histogramme
 diagramme-à-bâtons
@@ -187,7 +187,7 @@ suppositions
 indépendance-des-observations
 la-normalité-des-résidus-et-des-moyennes
 conclusion-2
-les-packages-avec-r
+PackagesR
 activer-un-package
 installer-un-package
 mettre-à-jour-un-package
@@ -209,7 +209,6 @@ transformation-racine-carrée
 transformation-arcsinus
 autres-transformations
 conclusion-3
-laboratoire
 lecon5
 leçon-4
 analyse-de-fréquences-le-test-du-khi-carré-chi2
@@ -248,7 +247,7 @@ structure-générale
 test-de-tukey
 présentation-des-résultats
 conclusion-5
-les-boucles-avec-r
+BouclesR
 les-boucles
 structure
 alternatives-aux-boucles
@@ -262,7 +261,6 @@ hypothèses-statistiques-1
 sommes-des-carrés-1
 effets-additifs
 conclusion-6
-laboratoire-1
 lecon8
 leçon-7
 effets-fixes-et-effets-aléatoires
@@ -295,7 +293,6 @@ pseudoréplication-temporelle
 contrôler-la-variabilité-temporelle
 sources-de-confusion
 conclusion-8
-laboratoire-2
 lecon10
 leçon-9
 la-régression-linéaire

@@ -1,6 +1,6 @@
 # (PART) GUIDE R {-}
 
-# Installation de R {-}
+# Installation de R {.unnumbered #InstallationR}
 
 ```{r rsite, fig.align='center', echo=FALSE, fig.link='images/Capture_rsite.png', fig.cap="L'allure du site web de R."}
 knitr::include_graphics("Guide_R_1/images/Capture_rsite.png")

@@ -127,6 +127,8 @@ Malgré toutes ces précautions, certaines sources de confusion demeurent probl�
 
 Dans ce texte, nous avons vu plusieurs éléments importants à considérer lors de l'élaboration de plans d'échantillonnage, certains problèmes incluant la pseudoréplication et des sources de confusion atténuant ou invalidant les conclusions, ainsi que des solutions. La planification du plan d'échantillonnage est la partie la plus importante de votre projet et requiert une bonne réflexion. Cette étape détermine si l'analyse sera simple ou plus complexe. Un bon dispositif permet de tester l'hypothèse scientifique simplement et facilite énormément l'analyse. On peut pallier certains problèmes de dispositif expérimental avec des analyses sophistiquées, mais, dans certains cas, l'analyse des données s'avère impossible. Avec une analyse inappropriée réalisée à partir d'un plan d'échantillonnage solide, on peut toujours réanalyser les données, mais avec un mauvais dispositif, il faut refaire l'expérience.
 
+
+<!--
 ## Laboratoire
 
 ### Instructions {-}
@@ -209,3 +211,5 @@ Afin de bien distinguer le code R et les sorties (*output*) du reste du texte, v
 20. Le prix de l'essence à différentes stations-service au Québec, en Ontario et au Manitoba ((http://www.gasbuddy.com)).
 
 21. La fréquence de personnes portant des écouteurs dans différents types de transport en commun (autobus, métro, train de banlieue).
+
+--> 

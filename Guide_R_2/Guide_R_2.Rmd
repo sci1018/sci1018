@@ -58,7 +58,7 @@ Les données peuvent être téléchargées [ici](https://github.com/sci1018/sci1
   
 </div> 
 
-## Notions générales {-}
+## Notions générales {.unnumbered #NotionsR}
 
 #### Le projet R  {-}
 

@@ -569,7 +569,7 @@ Pour faciliter la compréhension de l'erreur liée à  la comparaison entre les 
 3. on détermine pour chaque test $t$ effectué, si $P \leq \alpha$ (p. ex., $P \leq 0.05$);
 4. on répète les étapes 1 à 3 un grand nombre de fois (p. ex., 1000 fois).
  
-On peut réaliser ce genre d'exercice avec des boucles dans R. Le document *Les boucles avec R* couvre les concepts de base et donne des exemples pour construire des boucles qui permettront de réaliser des tâches répétitives.
+On peut réaliser ce genre d'exercice avec des boucles dans R. La section [Les boucles avec R](#BouclesR) couvre les concepts de base et donne des exemples pour construire des boucles qui permettront de réaliser des tâches répétitives.
 
 ```{r errors, keep.source = FALSE, echo = FALSE}
 ##illustrate the experiment-wise error vs comparison-wise error
@@ -878,7 +878,7 @@ text(x = 5, y = 69.1, labels = "b")
 
 Nous venons d'étudier le concept de comparaisons multiples ainsi que les problèmes qui y sont associés, notamment une augmentation de la probabilité de commettre une erreur de type I (déclarer un faux positif). Au lieu d'utiliser une série de tests $t$, nous avons vu que l'analyse de variance (ANOVA) permet de comparer tous les groupes simultanément en estimant la variance expliquée par le facteur (variable catégorique) d'intérêt et en la comparant à la variance résiduelle (inexpliquée). Le tableau d'ANOVA véhicule beaucoup d'information et il est important d'inclure ses détails dans la rédaction des résultats. Bien que l'ANOVA permette de déterminer si le facteur a un effet important sur la variable réponse, elle ne permet pas de déterminer où se trouvent les différences. Pour ce faire, nous avons recours à des tests de comparaisons multiples exécutés *a posteriori* qui contrôlent l'erreur au niveau de l'expérience. Pour terminer, nous avons fait quelques propositions concernant la présentation des résultats afin de faciliter l'interprétation d'une ANOVA.
 
-## Les boucles avec R
+## Les boucles avec R {#BouclesR}
 
 ### Les boucles
 
