@@ -225,10 +225,10 @@ Réponse
 Réponse
 </summary>
 <p>On importe le jeu de données :</p>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="autoévaluation-5.html#cb727-1" tabindex="-1"></a><span class="do">##importation</span></span>
-<span id="cb727-2"><a href="autoévaluation-5.html#cb727-2" tabindex="-1"></a>lavage <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_8/data/lavage.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb727-3"><a href="autoévaluation-5.html#cb727-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
-<span id="cb727-4"><a href="autoévaluation-5.html#cb727-4" tabindex="-1"></a><span class="fu">head</span>(lavage)</span></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="autoévaluation-5.html#cb726-1" tabindex="-1"></a><span class="do">##importation</span></span>
+<span id="cb726-2"><a href="autoévaluation-5.html#cb726-2" tabindex="-1"></a>lavage <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_8/data/lavage.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb726-3"><a href="autoévaluation-5.html#cb726-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
+<span id="cb726-4"><a href="autoévaluation-5.html#cb726-4" tabindex="-1"></a><span class="fu">head</span>(lavage)</span></code></pre></div>
 <pre><code>##   Blancheur Detergent Bloc
 ## 1      4.59  Controle    1
 ## 2      8.15     Type1    1
@@ -236,32 +236,32 @@ Réponse
 ## 4      7.38     Type1    2
 ## 5      4.88  Controle    2
 ## 6      5.85     Type2    2</code></pre>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="autoévaluation-5.html#cb729-1" tabindex="-1"></a><span class="do">##structure du jeu de données</span></span>
-<span id="cb729-2"><a href="autoévaluation-5.html#cb729-2" tabindex="-1"></a><span class="fu">str</span>(lavage)</span></code></pre></div>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="autoévaluation-5.html#cb728-1" tabindex="-1"></a><span class="do">##structure du jeu de données</span></span>
+<span id="cb728-2"><a href="autoévaluation-5.html#cb728-2" tabindex="-1"></a><span class="fu">str</span>(lavage)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    15 obs. of  3 variables:
 ##  $ Blancheur: num  4.59 8.15 8.06 7.38 4.88 5.85 5.89 3.29 2.74 5.46 ...
 ##  $ Detergent: chr  &quot;Controle&quot; &quot;Type1&quot; &quot;Type2&quot; &quot;Type1&quot; ...
 ##  $ Bloc     : int  1 1 1 2 2 2 3 3 3 4 ...</code></pre>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="autoévaluation-5.html#cb731-1" tabindex="-1"></a><span class="do">##niveau du facteur bloc</span></span>
-<span id="cb731-2"><a href="autoévaluation-5.html#cb731-2" tabindex="-1"></a><span class="fu">levels</span>(lavage<span class="sc">$</span>Bloc)</span></code></pre></div>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="autoévaluation-5.html#cb730-1" tabindex="-1"></a><span class="do">##niveau du facteur bloc</span></span>
+<span id="cb730-2"><a href="autoévaluation-5.html#cb730-2" tabindex="-1"></a><span class="fu">levels</span>(lavage<span class="sc">$</span>Bloc)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>On remarque que la variable n’est pas reconnue comme facteur et on doit la convertir en facteur avant de continuer :</p>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="autoévaluation-5.html#cb733-1" tabindex="-1"></a>lavage<span class="sc">$</span>Bloc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(lavage<span class="sc">$</span>Bloc)</span>
-<span id="cb733-2"><a href="autoévaluation-5.html#cb733-2" tabindex="-1"></a><span class="do">##maintenant reconnu comme facteur</span></span>
-<span id="cb733-3"><a href="autoévaluation-5.html#cb733-3" tabindex="-1"></a><span class="fu">levels</span>(lavage<span class="sc">$</span>Bloc)</span></code></pre></div>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="autoévaluation-5.html#cb732-1" tabindex="-1"></a>lavage<span class="sc">$</span>Bloc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(lavage<span class="sc">$</span>Bloc)</span>
+<span id="cb732-2"><a href="autoévaluation-5.html#cb732-2" tabindex="-1"></a><span class="do">##maintenant reconnu comme facteur</span></span>
+<span id="cb732-3"><a href="autoévaluation-5.html#cb732-3" tabindex="-1"></a><span class="fu">levels</span>(lavage<span class="sc">$</span>Bloc)</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
 <p>On note que le dispositif est complètement balancé (aucune donnée manquante) :</p>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="autoévaluation-5.html#cb735-1" tabindex="-1"></a><span class="do">##nombre d&#39;observations par combinaison de facteurs</span></span>
-<span id="cb735-2"><a href="autoévaluation-5.html#cb735-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> lavage<span class="sc">$</span>Blancheur, <span class="at">INDEX =</span> <span class="fu">list</span>(lavage<span class="sc">$</span>Detergent, lavage<span class="sc">$</span>Bloc), </span>
-<span id="cb735-3"><a href="autoévaluation-5.html#cb735-3" tabindex="-1"></a>       <span class="at">FUN =</span> length)</span></code></pre></div>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="autoévaluation-5.html#cb734-1" tabindex="-1"></a><span class="do">##nombre d&#39;observations par combinaison de facteurs</span></span>
+<span id="cb734-2"><a href="autoévaluation-5.html#cb734-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> lavage<span class="sc">$</span>Blancheur, <span class="at">INDEX =</span> <span class="fu">list</span>(lavage<span class="sc">$</span>Detergent, lavage<span class="sc">$</span>Bloc), </span>
+<span id="cb734-3"><a href="autoévaluation-5.html#cb734-3" tabindex="-1"></a>       <span class="at">FUN =</span> length)</span></code></pre></div>
 <pre><code>##          1 2 3 4 5
 ## Controle 1 1 1 1 1
 ## Type1    1 1 1 1 1
 ## Type2    1 1 1 1 1</code></pre>
 <p>Le diagramme de boîtes et moustaches montre les données brutes (Figure <a href="autoévaluation-5.html#fig:boxplotlavage">8.12</a>).</p>
-<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="autoévaluation-5.html#cb737-1" tabindex="-1"></a><span class="fu">boxplot</span>(Blancheur <span class="sc">~</span> Detergent, <span class="at">data =</span> lavage,</span>
-<span id="cb737-2"><a href="autoévaluation-5.html#cb737-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Indice de blancheur (0 à 10)&quot;</span>, </span>
-<span id="cb737-3"><a href="autoévaluation-5.html#cb737-3" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Détergent&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="autoévaluation-5.html#cb736-1" tabindex="-1"></a><span class="fu">boxplot</span>(Blancheur <span class="sc">~</span> Detergent, <span class="at">data =</span> lavage,</span>
+<span id="cb736-2"><a href="autoévaluation-5.html#cb736-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Indice de blancheur (0 à 10)&quot;</span>, </span>
+<span id="cb736-3"><a href="autoévaluation-5.html#cb736-3" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Détergent&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplotlavage"></span>
 <img src="Cours_Stats_R_files/figure-html/boxplotlavage-1.png" alt="Diagramme de boîtes et moustaches présentant les données de la blancheur de vêtements lavés à l'aide d'un détergent conventionnel (Controle) et de deux nouveaux détergent (Type1 et Type2)." width="672" />
 <p class="caption">
@@ -269,14 +269,14 @@ Figure 8.12: Diagramme de boîtes et moustaches présentant les données de la b
 </p>
 </div>
 <p>On exécute l’ANOVA en blocs complets aléatoires :</p>
-<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="autoévaluation-5.html#cb738-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétitions</span></span>
-<span id="cb738-2"><a href="autoévaluation-5.html#cb738-2" tabindex="-1"></a>aov.bloc <span class="ot">&lt;-</span> <span class="fu">aov</span>(Blancheur <span class="sc">~</span> Detergent <span class="sc">+</span> Bloc, <span class="at">data =</span> lavage)</span></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="autoévaluation-5.html#cb737-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétitions</span></span>
+<span id="cb737-2"><a href="autoévaluation-5.html#cb737-2" tabindex="-1"></a>aov.bloc <span class="ot">&lt;-</span> <span class="fu">aov</span>(Blancheur <span class="sc">~</span> Detergent <span class="sc">+</span> Bloc, <span class="at">data =</span> lavage)</span></code></pre></div>
 <p>On fait la vérification des suppositions d’homogénéité de la variance et de la normalité des résidus (Figure <a href="autoévaluation-5.html#fig:aovplotlavage">8.13</a>):</p>
-<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="autoévaluation-5.html#cb739-1" tabindex="-1"></a><span class="do">##préparation de la fenêtre graphique</span></span>
-<span id="cb739-2"><a href="autoévaluation-5.html#cb739-2" tabindex="-1"></a><span class="do">##pour accomoder 4 graphiques sur la même page</span></span>
-<span id="cb739-3"><a href="autoévaluation-5.html#cb739-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb739-4"><a href="autoévaluation-5.html#cb739-4" tabindex="-1"></a><span class="do">##présentation de quatre graphiques diagnostiques</span></span>
-<span id="cb739-5"><a href="autoévaluation-5.html#cb739-5" tabindex="-1"></a><span class="fu">plot</span>(aov.bloc)</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="autoévaluation-5.html#cb738-1" tabindex="-1"></a><span class="do">##préparation de la fenêtre graphique</span></span>
+<span id="cb738-2"><a href="autoévaluation-5.html#cb738-2" tabindex="-1"></a><span class="do">##pour accomoder 4 graphiques sur la même page</span></span>
+<span id="cb738-3"><a href="autoévaluation-5.html#cb738-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb738-4"><a href="autoévaluation-5.html#cb738-4" tabindex="-1"></a><span class="do">##présentation de quatre graphiques diagnostiques</span></span>
+<span id="cb738-5"><a href="autoévaluation-5.html#cb738-5" tabindex="-1"></a><span class="fu">plot</span>(aov.bloc)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:aovplotlavage"></span>
 <img src="Cours_Stats_R_files/figure-html/aovplotlavage-1.png" alt="Diagnostics des suppositions d'homogénéité de la variance et de normalité des résidus à la suite de l'ANOVA en blocs complets aléatoires." width="672" />
 <p class="caption">
@@ -284,7 +284,7 @@ Figure 8.13: Diagnostics des suppositions d’homogénéité de la variance et d
 </p>
 </div>
 <p>Puisque les suppositions de l’ANOVA en blocs complets aléatoires sont respectées (fig. <a href="autoévaluation-5.html#fig:aovplotlavage">8.13</a>), on peut procéder à l’interprétation des résultats. Le tableau d’ANOVA nous indique :</p>
-<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="autoévaluation-5.html#cb740-1" tabindex="-1"></a><span class="fu">summary</span>(aov.bloc)</span></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="autoévaluation-5.html#cb739-1" tabindex="-1"></a><span class="fu">summary</span>(aov.bloc)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## Detergent    2  25.29  12.646  11.421 0.00453 **
 ## Bloc         4  44.27  11.069   9.997 0.00335 **
@@ -292,12 +292,12 @@ Figure 8.13: Diagnostics des suppositions d’homogénéité de la variance et d
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>On conclut que les blocs et le type de détergent ont un effet sur la blancheur des vêtements après lavage. On peut effectuer des comparaisons multiples pour déterminer où se trouve les différences entre les groupes de détergent. On ne fait aucune comparaisons multiples pour les blocs, qui représentent différents produits tachants, puisque ce facteur ne nous intéresse pas vraiment. On inclut les blocs dans l’analyse pour tenir compte du dispositif expérimental que nous avons utilisé.</p>
-<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="autoévaluation-5.html#cb742-1" tabindex="-1"></a><span class="do">##moyenne des groupes</span></span>
-<span id="cb742-2"><a href="autoévaluation-5.html#cb742-2" tabindex="-1"></a>Moys <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> lavage<span class="sc">$</span>Blancheur, <span class="at">INDEX =</span> lavage<span class="sc">$</span>Detergent, <span class="at">FUN =</span> mean)</span>
-<span id="cb742-3"><a href="autoévaluation-5.html#cb742-3" tabindex="-1"></a>Moys</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="autoévaluation-5.html#cb741-1" tabindex="-1"></a><span class="do">##moyenne des groupes</span></span>
+<span id="cb741-2"><a href="autoévaluation-5.html#cb741-2" tabindex="-1"></a>Moys <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> lavage<span class="sc">$</span>Blancheur, <span class="at">INDEX =</span> lavage<span class="sc">$</span>Detergent, <span class="at">FUN =</span> mean)</span>
+<span id="cb741-3"><a href="autoévaluation-5.html#cb741-3" tabindex="-1"></a>Moys</span></code></pre></div>
 <pre><code>## Controle    Type1    Type2 
 ##    3.644    6.730    5.854</code></pre>
-<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="autoévaluation-5.html#cb744-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(aov.bloc, <span class="at">which =</span> <span class="st">&quot;Detergent&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="autoévaluation-5.html#cb743-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(aov.bloc, <span class="at">which =</span> <span class="st">&quot;Detergent&quot;</span>)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -353,39 +353,39 @@ Type1
 </tr>
 </table>
 <p>Ou encore, on peut illustrer le résultat pour les différents niveaux du traitement <code>Detergent</code> directement dans un graphique (Figure <a href="autoévaluation-5.html#fig:last">8.14</a>).</p>
-<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="autoévaluation-5.html#cb746-1" tabindex="-1"></a><span class="do">##MSE de l&#39;ANOVA</span></span>
-<span id="cb746-2"><a href="autoévaluation-5.html#cb746-2" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">1.11</span></span>
-<span id="cb746-3"><a href="autoévaluation-5.html#cb746-3" tabindex="-1"></a><span class="do">##vecteur pour créer l&#39;axe des x&#39;s</span></span>
-<span id="cb746-4"><a href="autoévaluation-5.html#cb746-4" tabindex="-1"></a>Deter <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb746-5"><a href="autoévaluation-5.html#cb746-5" tabindex="-1"></a></span>
-<span id="cb746-6"><a href="autoévaluation-5.html#cb746-6" tabindex="-1"></a><span class="do">##barres d&#39;erreur</span></span>
-<span id="cb746-7"><a href="autoévaluation-5.html#cb746-7" tabindex="-1"></a>inf <span class="ot">&lt;-</span> Moys <span class="sc">-</span> <span class="fu">sqrt</span>(MSE)</span>
-<span id="cb746-8"><a href="autoévaluation-5.html#cb746-8" tabindex="-1"></a>sup <span class="ot">&lt;-</span> Moys <span class="sc">+</span> <span class="fu">sqrt</span>(MSE)</span>
-<span id="cb746-9"><a href="autoévaluation-5.html#cb746-9" tabindex="-1"></a></span>
-<span id="cb746-10"><a href="autoévaluation-5.html#cb746-10" tabindex="-1"></a><span class="do">##graphique</span></span>
-<span id="cb746-11"><a href="autoévaluation-5.html#cb746-11" tabindex="-1"></a><span class="do">##À noter que l&#39;on crée le graphique avec suffisamment</span></span>
-<span id="cb746-12"><a href="autoévaluation-5.html#cb746-12" tabindex="-1"></a><span class="do">##d&#39;espace pour permettre le placement des barres d&#39;erreurs</span></span>
-<span id="cb746-13"><a href="autoévaluation-5.html#cb746-13" tabindex="-1"></a><span class="do">##ainsi que les lettres en bas. C&#39;est pourquoi on étend </span></span>
-<span id="cb746-14"><a href="autoévaluation-5.html#cb746-14" tabindex="-1"></a><span class="do">##la limite inférieure à 0.2 unités au bas du graphique </span></span>
-<span id="cb746-15"><a href="autoévaluation-5.html#cb746-15" tabindex="-1"></a><span class="do">##au delà de la valeur minimale de la barre d&#39;erreur.</span></span>
-<span id="cb746-16"><a href="autoévaluation-5.html#cb746-16" tabindex="-1"></a><span class="fu">plot</span>(Moys <span class="sc">~</span> Deter, <span class="at">ylab =</span> <span class="st">&quot;Indice de blancheur (0 à 10)&quot;</span>, </span>
-<span id="cb746-17"><a href="autoévaluation-5.html#cb746-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Type de détergent&quot;</span>,</span>
-<span id="cb746-18"><a href="autoévaluation-5.html#cb746-18" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(inf) <span class="sc">-</span> <span class="fl">0.2</span>, <span class="fu">max</span>(sup)), </span>
-<span id="cb746-19"><a href="autoévaluation-5.html#cb746-19" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb746-20"><a href="autoévaluation-5.html#cb746-20" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
-<span id="cb746-21"><a href="autoévaluation-5.html#cb746-21" tabindex="-1"></a></span>
-<span id="cb746-22"><a href="autoévaluation-5.html#cb746-22" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
-<span id="cb746-23"><a href="autoévaluation-5.html#cb746-23" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
-<span id="cb746-24"><a href="autoévaluation-5.html#cb746-24" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Contrôle&quot;</span>, <span class="st">&quot;Type 1&quot;</span>, <span class="st">&quot;Type 2&quot;</span>))</span>
-<span id="cb746-25"><a href="autoévaluation-5.html#cb746-25" tabindex="-1"></a></span>
-<span id="cb746-26"><a href="autoévaluation-5.html#cb746-26" tabindex="-1"></a><span class="do">##ajout de barres d&#39;erreurs</span></span>
-<span id="cb746-27"><a href="autoévaluation-5.html#cb746-27" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> Deter, <span class="at">x1 =</span> Deter, <span class="at">y0 =</span> inf, <span class="at">y1 =</span> sup,</span>
-<span id="cb746-28"><a href="autoévaluation-5.html#cb746-28" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
-<span id="cb746-29"><a href="autoévaluation-5.html#cb746-29" tabindex="-1"></a></span>
-<span id="cb746-30"><a href="autoévaluation-5.html#cb746-30" tabindex="-1"></a><span class="do">##ajout des lettres</span></span>
-<span id="cb746-31"><a href="autoévaluation-5.html#cb746-31" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">2.46</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb746-32"><a href="autoévaluation-5.html#cb746-32" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">5.54</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb746-33"><a href="autoévaluation-5.html#cb746-33" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">4.67</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="autoévaluation-5.html#cb745-1" tabindex="-1"></a><span class="do">##MSE de l&#39;ANOVA</span></span>
+<span id="cb745-2"><a href="autoévaluation-5.html#cb745-2" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">1.11</span></span>
+<span id="cb745-3"><a href="autoévaluation-5.html#cb745-3" tabindex="-1"></a><span class="do">##vecteur pour créer l&#39;axe des x&#39;s</span></span>
+<span id="cb745-4"><a href="autoévaluation-5.html#cb745-4" tabindex="-1"></a>Deter <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb745-5"><a href="autoévaluation-5.html#cb745-5" tabindex="-1"></a></span>
+<span id="cb745-6"><a href="autoévaluation-5.html#cb745-6" tabindex="-1"></a><span class="do">##barres d&#39;erreur</span></span>
+<span id="cb745-7"><a href="autoévaluation-5.html#cb745-7" tabindex="-1"></a>inf <span class="ot">&lt;-</span> Moys <span class="sc">-</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb745-8"><a href="autoévaluation-5.html#cb745-8" tabindex="-1"></a>sup <span class="ot">&lt;-</span> Moys <span class="sc">+</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb745-9"><a href="autoévaluation-5.html#cb745-9" tabindex="-1"></a></span>
+<span id="cb745-10"><a href="autoévaluation-5.html#cb745-10" tabindex="-1"></a><span class="do">##graphique</span></span>
+<span id="cb745-11"><a href="autoévaluation-5.html#cb745-11" tabindex="-1"></a><span class="do">##À noter que l&#39;on crée le graphique avec suffisamment</span></span>
+<span id="cb745-12"><a href="autoévaluation-5.html#cb745-12" tabindex="-1"></a><span class="do">##d&#39;espace pour permettre le placement des barres d&#39;erreurs</span></span>
+<span id="cb745-13"><a href="autoévaluation-5.html#cb745-13" tabindex="-1"></a><span class="do">##ainsi que les lettres en bas. C&#39;est pourquoi on étend </span></span>
+<span id="cb745-14"><a href="autoévaluation-5.html#cb745-14" tabindex="-1"></a><span class="do">##la limite inférieure à 0.2 unités au bas du graphique </span></span>
+<span id="cb745-15"><a href="autoévaluation-5.html#cb745-15" tabindex="-1"></a><span class="do">##au delà de la valeur minimale de la barre d&#39;erreur.</span></span>
+<span id="cb745-16"><a href="autoévaluation-5.html#cb745-16" tabindex="-1"></a><span class="fu">plot</span>(Moys <span class="sc">~</span> Deter, <span class="at">ylab =</span> <span class="st">&quot;Indice de blancheur (0 à 10)&quot;</span>, </span>
+<span id="cb745-17"><a href="autoévaluation-5.html#cb745-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Type de détergent&quot;</span>,</span>
+<span id="cb745-18"><a href="autoévaluation-5.html#cb745-18" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(inf) <span class="sc">-</span> <span class="fl">0.2</span>, <span class="fu">max</span>(sup)), </span>
+<span id="cb745-19"><a href="autoévaluation-5.html#cb745-19" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb745-20"><a href="autoévaluation-5.html#cb745-20" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
+<span id="cb745-21"><a href="autoévaluation-5.html#cb745-21" tabindex="-1"></a></span>
+<span id="cb745-22"><a href="autoévaluation-5.html#cb745-22" tabindex="-1"></a><span class="do">##ajout de l&#39;axe des x&#39;s</span></span>
+<span id="cb745-23"><a href="autoévaluation-5.html#cb745-23" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb745-24"><a href="autoévaluation-5.html#cb745-24" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Contrôle&quot;</span>, <span class="st">&quot;Type 1&quot;</span>, <span class="st">&quot;Type 2&quot;</span>))</span>
+<span id="cb745-25"><a href="autoévaluation-5.html#cb745-25" tabindex="-1"></a></span>
+<span id="cb745-26"><a href="autoévaluation-5.html#cb745-26" tabindex="-1"></a><span class="do">##ajout de barres d&#39;erreurs</span></span>
+<span id="cb745-27"><a href="autoévaluation-5.html#cb745-27" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> Deter, <span class="at">x1 =</span> Deter, <span class="at">y0 =</span> inf, <span class="at">y1 =</span> sup,</span>
+<span id="cb745-28"><a href="autoévaluation-5.html#cb745-28" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb745-29"><a href="autoévaluation-5.html#cb745-29" tabindex="-1"></a></span>
+<span id="cb745-30"><a href="autoévaluation-5.html#cb745-30" tabindex="-1"></a><span class="do">##ajout des lettres</span></span>
+<span id="cb745-31"><a href="autoévaluation-5.html#cb745-31" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">2.46</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb745-32"><a href="autoévaluation-5.html#cb745-32" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">5.54</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb745-33"><a href="autoévaluation-5.html#cb745-33" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">4.67</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:last"></span>
 <img src="Cours_Stats_R_files/figure-html/last-1.png" alt="Effets de deux nouveaux type de détergents et d'un détergent conventionnel contrôle sur la blancheur de vêtements ayant été tachés." width="672" />
 <p class="caption">

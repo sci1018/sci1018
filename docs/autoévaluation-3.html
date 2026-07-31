@@ -293,14 +293,14 @@ Importé
 Réponse
 </summary>
 <p>On peut stocker les données dans une matrice:</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="autoévaluation-3.html#cb503-1" tabindex="-1"></a><span class="do">##matrice</span></span>
-<span id="cb503-2"><a href="autoévaluation-3.html#cb503-2" tabindex="-1"></a>autos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">223</span>, <span class="dv">62</span>, <span class="dv">180</span>, </span>
-<span id="cb503-3"><a href="autoévaluation-3.html#cb503-3" tabindex="-1"></a>                      <span class="dv">175</span>, <span class="dv">77</span>, <span class="dv">238</span>, <span class="dv">120</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb503-4"><a href="autoévaluation-3.html#cb503-4" tabindex="-1"></a><span class="do">##on peut ajouter les étiquettes</span></span>
-<span id="cb503-5"><a href="autoévaluation-3.html#cb503-5" tabindex="-1"></a><span class="fu">colnames</span>(autos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
-<span id="cb503-6"><a href="autoévaluation-3.html#cb503-6" tabindex="-1"></a><span class="fu">rownames</span>(autos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Domestique&quot;</span>, <span class="st">&quot;Importe&quot;</span>)</span>
-<span id="cb503-7"><a href="autoévaluation-3.html#cb503-7" tabindex="-1"></a><span class="do">##visualisons le tout</span></span>
-<span id="cb503-8"><a href="autoévaluation-3.html#cb503-8" tabindex="-1"></a>autos</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="autoévaluation-3.html#cb502-1" tabindex="-1"></a><span class="do">##matrice</span></span>
+<span id="cb502-2"><a href="autoévaluation-3.html#cb502-2" tabindex="-1"></a>autos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">223</span>, <span class="dv">62</span>, <span class="dv">180</span>, </span>
+<span id="cb502-3"><a href="autoévaluation-3.html#cb502-3" tabindex="-1"></a>                      <span class="dv">175</span>, <span class="dv">77</span>, <span class="dv">238</span>, <span class="dv">120</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb502-4"><a href="autoévaluation-3.html#cb502-4" tabindex="-1"></a><span class="do">##on peut ajouter les étiquettes</span></span>
+<span id="cb502-5"><a href="autoévaluation-3.html#cb502-5" tabindex="-1"></a><span class="fu">colnames</span>(autos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb502-6"><a href="autoévaluation-3.html#cb502-6" tabindex="-1"></a><span class="fu">rownames</span>(autos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Domestique&quot;</span>, <span class="st">&quot;Importe&quot;</span>)</span>
+<span id="cb502-7"><a href="autoévaluation-3.html#cb502-7" tabindex="-1"></a><span class="do">##visualisons le tout</span></span>
+<span id="cb502-8"><a href="autoévaluation-3.html#cb502-8" tabindex="-1"></a>autos</span></code></pre></div>
 <pre><code>##              A   B   C   D
 ## Domestique 125 223  62 180
 ## Importe    175  77 238 120</code></pre>
@@ -338,7 +338,7 @@ On peut analyser les données du tableau de contingence avec un test du <span cl
 Réponse
 </summary>
 <p>Si on a choisi le <span class="math inline">\(\chi^2\)</span>, on procédera comme suit :</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="autoévaluation-3.html#cb505-1" tabindex="-1"></a>out.autos <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>autos) </span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="autoévaluation-3.html#cb504-1" tabindex="-1"></a>out.autos <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x=</span>autos) </span></code></pre></div>
 On observe un <span class="math inline">\(\chi^2\)</span> de 194.36 avec trois degrés de liberté et <span class="math inline">\(P(\chi^2_{0.05, 3} &gt; 194.36) &lt; 0.0001\)</span>. On rejette <span class="math inline">\(H_0\)</span> et on conclut que l’origine des véhicules n’est pas indépendante de l’arrondissement. L’interprétation alternative, en termes de proportion, indique que la proportion de véhicules d’origine domestique varie avec le quartier. En d’autres mots, la compagnie peut viser certains quartiers afin d’optimiser sa campagne de publicité.
 </details>
 <p><br></p>
@@ -349,14 +349,14 @@ On observe un <span class="math inline">\(\chi^2\)</span> de 194.36 avec trois d
 Réponse
 </summary>
 <p>Il est pertinent d’identifier les différences entre les fréquences observées lorsqu’on rejette l’hypothèse nulle. Les résidus de Pearson sont les suivants :</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="autoévaluation-3.html#cb506-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
-<span id="cb506-2"><a href="autoévaluation-3.html#cb506-2" tabindex="-1"></a>out.autos<span class="sc">$</span>residuals</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="autoévaluation-3.html#cb505-1" tabindex="-1"></a><span class="do">##on extrait les résidus de Pearson des résultats du test</span></span>
+<span id="cb505-2"><a href="autoévaluation-3.html#cb505-2" tabindex="-1"></a>out.autos<span class="sc">$</span>residuals</span></code></pre></div>
 <pre><code>##                    A         B         C         D
 ## Domestique -1.852621  6.216572 -7.039959  2.676008
 ## Importe     1.821997 -6.113811  6.923588 -2.631773</code></pre>
 <p>L’étude de ces résidus indique qu’un concessionnaire de voitures fabriquées par des compagnies étrangères aura tout intérêt à cibler l’arrondissement C, puisque la proportion de leurs véhicules y est significativement plus élevée. Si, à l’inverse, la concession représente des manufacturiers domestiques, les arrondissements B et D devraient être considérés.</p>
 <p>Des valeurs de résidus près des limites de signification pour l’arrondissement A mènent à s’interroger sur la pertinence de s’intéresser à cette partie du territoire. La commande ci-dessous permet de connaître les différences entre les fréquences observées et théoriques. On remarque que ces différences sont les plus faibles. Il n’y a donc pas lieu de s’intéresser formellement à cet arrondissement pour accroitre les ventes de voitures importées.</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="autoévaluation-3.html#cb508-1" tabindex="-1"></a>out.autos<span class="sc">$</span>observed<span class="sc">-</span>out.autos<span class="sc">$</span>expected</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="autoévaluation-3.html#cb507-1" tabindex="-1"></a>out.autos<span class="sc">$</span>observed<span class="sc">-</span>out.autos<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>##                A     B     C     D
 ## Domestique -22.5  75.5 -85.5  32.5
 ## Importe     22.5 -75.5  85.5 -32.5</code></pre>
