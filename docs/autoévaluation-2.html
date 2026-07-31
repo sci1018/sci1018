@@ -243,12 +243,12 @@ La normalité des résidus et l’indépendance des observations sont les deux p
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="autoévaluation-2.html#cb414-1" tabindex="-1"></a><span class="do">##importer fichier</span></span>
-<span id="cb414-2"><a href="autoévaluation-2.html#cb414-2" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_3/data/temp.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb414-3"><a href="autoévaluation-2.html#cb414-3" tabindex="-1"></a><span class="do">## ou</span></span>
-<span id="cb414-4"><a href="autoévaluation-2.html#cb414-4" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_3/data/temp.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb414-5"><a href="autoévaluation-2.html#cb414-5" tabindex="-1"></a><span class="do">##on regarde les premières lignes du jeu de données</span></span>
-<span id="cb414-6"><a href="autoévaluation-2.html#cb414-6" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="autoévaluation-2.html#cb413-1" tabindex="-1"></a><span class="do">##importer fichier</span></span>
+<span id="cb413-2"><a href="autoévaluation-2.html#cb413-2" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_3/data/temp.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb413-3"><a href="autoévaluation-2.html#cb413-3" tabindex="-1"></a><span class="do">## ou</span></span>
+<span id="cb413-4"><a href="autoévaluation-2.html#cb413-4" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;Module_3/data/temp.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb413-5"><a href="autoévaluation-2.html#cb413-5" tabindex="-1"></a><span class="do">##on regarde les premières lignes du jeu de données</span></span>
+<span id="cb413-6"><a href="autoévaluation-2.html#cb413-6" tabindex="-1"></a><span class="fu">head</span>(temp)</span></code></pre></div>
 <pre><code>##    Site Diff.temp
 ## 1 site1  2.991231
 ## 2 site2  5.526125
@@ -274,8 +274,8 @@ On fixe le seuil de signification, au choix, <span class="math inline">\(\alpha 
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="autoévaluation-2.html#cb416-1" tabindex="-1"></a><span class="do">##on effectue le test t</span></span>
-<span id="cb416-2"><a href="autoévaluation-2.html#cb416-2" tabindex="-1"></a>t.out <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> temp<span class="sc">$</span>Diff.temp, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="autoévaluation-2.html#cb415-1" tabindex="-1"></a><span class="do">##on effectue le test t</span></span>
+<span id="cb415-2"><a href="autoévaluation-2.html#cb415-2" tabindex="-1"></a>t.out <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> temp<span class="sc">$</span>Diff.temp, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
 </details>
 <p><br></p>
 <p><strong>d.</strong> Vérifiez les suppositions du test. Utilisez un test formel et une méthode graphique informelle pour vérifier la normalité.</p>
@@ -283,27 +283,27 @@ Réponse
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="autoévaluation-2.html#cb417-1" tabindex="-1"></a><span class="do">##on calcule les résidus</span></span>
-<span id="cb417-2"><a href="autoévaluation-2.html#cb417-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> temp<span class="sc">$</span>Diff.temp <span class="sc">-</span> <span class="fu">mean</span>(temp<span class="sc">$</span>Diff.temp)</span>
-<span id="cb417-3"><a href="autoévaluation-2.html#cb417-3" tabindex="-1"></a></span>
-<span id="cb417-4"><a href="autoévaluation-2.html#cb417-4" tabindex="-1"></a></span>
-<span id="cb417-5"><a href="autoévaluation-2.html#cb417-5" tabindex="-1"></a><span class="do">##si ce package n&#39;est pas installé, on l&#39;installe</span></span>
-<span id="cb417-6"><a href="autoévaluation-2.html#cb417-6" tabindex="-1"></a><span class="do">##avec install.packages( )</span></span>
-<span id="cb417-7"><a href="autoévaluation-2.html#cb417-7" tabindex="-1"></a></span>
-<span id="cb417-8"><a href="autoévaluation-2.html#cb417-8" tabindex="-1"></a><span class="do">##une fois installé, on peut charger le package</span></span>
-<span id="cb417-9"><a href="autoévaluation-2.html#cb417-9" tabindex="-1"></a></span>
-<span id="cb417-10"><a href="autoévaluation-2.html#cb417-10" tabindex="-1"></a><span class="do">##on charge le package nortest</span></span>
-<span id="cb417-11"><a href="autoévaluation-2.html#cb417-11" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
-<span id="cb417-12"><a href="autoévaluation-2.html#cb417-12" tabindex="-1"></a><span class="fu">ad.test</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="autoévaluation-2.html#cb416-1" tabindex="-1"></a><span class="do">##on calcule les résidus</span></span>
+<span id="cb416-2"><a href="autoévaluation-2.html#cb416-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> temp<span class="sc">$</span>Diff.temp <span class="sc">-</span> <span class="fu">mean</span>(temp<span class="sc">$</span>Diff.temp)</span>
+<span id="cb416-3"><a href="autoévaluation-2.html#cb416-3" tabindex="-1"></a></span>
+<span id="cb416-4"><a href="autoévaluation-2.html#cb416-4" tabindex="-1"></a></span>
+<span id="cb416-5"><a href="autoévaluation-2.html#cb416-5" tabindex="-1"></a><span class="do">##si ce package n&#39;est pas installé, on l&#39;installe</span></span>
+<span id="cb416-6"><a href="autoévaluation-2.html#cb416-6" tabindex="-1"></a><span class="do">##avec install.packages( )</span></span>
+<span id="cb416-7"><a href="autoévaluation-2.html#cb416-7" tabindex="-1"></a></span>
+<span id="cb416-8"><a href="autoévaluation-2.html#cb416-8" tabindex="-1"></a><span class="do">##une fois installé, on peut charger le package</span></span>
+<span id="cb416-9"><a href="autoévaluation-2.html#cb416-9" tabindex="-1"></a></span>
+<span id="cb416-10"><a href="autoévaluation-2.html#cb416-10" tabindex="-1"></a><span class="do">##on charge le package nortest</span></span>
+<span id="cb416-11"><a href="autoévaluation-2.html#cb416-11" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb416-12"><a href="autoévaluation-2.html#cb416-12" tabindex="-1"></a><span class="fu">ad.test</span>(res)</span></code></pre></div>
 <pre><code>## 
 ##  Anderson-Darling normality test
 ## 
 ## data:  res
 ## A = 0.31088, p-value = 0.5438</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="autoévaluation-2.html#cb419-1" tabindex="-1"></a><span class="do">##on fait un graphique quantile-quantile</span></span>
-<span id="cb419-2"><a href="autoévaluation-2.html#cb419-2" tabindex="-1"></a><span class="fu">qqnorm</span>(res)</span>
-<span id="cb419-3"><a href="autoévaluation-2.html#cb419-3" tabindex="-1"></a><span class="do">##on ajoute la droite théorique</span></span>
-<span id="cb419-4"><a href="autoévaluation-2.html#cb419-4" tabindex="-1"></a><span class="fu">qqline</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="autoévaluation-2.html#cb418-1" tabindex="-1"></a><span class="do">##on fait un graphique quantile-quantile</span></span>
+<span id="cb418-2"><a href="autoévaluation-2.html#cb418-2" tabindex="-1"></a><span class="fu">qqnorm</span>(res)</span>
+<span id="cb418-3"><a href="autoévaluation-2.html#cb418-3" tabindex="-1"></a><span class="do">##on ajoute la droite théorique</span></span>
+<span id="cb418-4"><a href="autoévaluation-2.html#cb418-4" tabindex="-1"></a><span class="fu">qqline</span>(res)</span></code></pre></div>
 <p><img src="Cours_Stats_R_files/figure-html/unnamed-chunk-44-1.png" alt="" width="672" /></p>
 Le test d’Anderson-Darling indique que la supposition de normalité des résidus est respectée (<span class="math inline">\(H_0\)</span> n’est pas rejetée avec un <span class="math inline">\(P = 0.5438\)</span>). Le graphique quantile-quantile suggère également que la supposition de normalité est respectée.
 </details>
@@ -313,8 +313,8 @@ Le test d’Anderson-Darling indique que la supposition de normalité des résid
 <summary>
 Réponse
 </summary>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="autoévaluation-2.html#cb420-1" tabindex="-1"></a><span class="do">##on regarde le résultat</span></span>
-<span id="cb420-2"><a href="autoévaluation-2.html#cb420-2" tabindex="-1"></a>t.out</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="autoévaluation-2.html#cb419-1" tabindex="-1"></a><span class="do">##on regarde le résultat</span></span>
+<span id="cb419-2"><a href="autoévaluation-2.html#cb419-2" tabindex="-1"></a>t.out</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 

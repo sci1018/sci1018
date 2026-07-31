@@ -345,10 +345,10 @@ Figure 8.6: Les blocs sont perpendiculaires au gradient (ici, le gradient va de 
 <p>À l’instar de l’ANOVA à deux critères, le rejet de l’hypothèse nulle pour le facteur d’intérêt peut être suivi de comparaisons multiples pour déterminer où se trouvent les différences. Toutefois, si le facteur bloc explique une bonne partie de la variance et l’hypothèse nulle est rejetée pour le bloc (c.-à-d., <span class="math inline">\(P &lt; \alpha\)</span>), nous ne testons pas les différences entre blocs. Le facteur bloc n’est pas directement d’intérêt et il reflète simplement le dispositif qui a été utilisé. Le prochain exemple illustre l’application de l’ANOVA à ce dispositif expérimental.</p>
 <div class="exemple" section="8">
 <p>On veut déterminer l’effet de quatre diètes différentes sur le gain de masse en grammes de cochons d’Inde. Chaque individu est placé dans une cage individuelle située dans un grand entrepôt. Étant donné qu’il n’y a qu’une source de chaleur à une extrémité de l’entrepôt, on pourrait s’attendre à avoir un gradient de température. On dispose les cages en blocs complets aléatoires de façon à avoir des groupes de quatre cages à différentes distances de la source de chaleur. On trouve ces données dans le fichier <code>cochons.txt</code>.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="leçon-7.html#cb704-1" tabindex="-1"></a><span class="do">##importation</span></span>
-<span id="cb704-2"><a href="leçon-7.html#cb704-2" tabindex="-1"></a>cochons <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_8/data/cochons.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb704-3"><a href="leçon-7.html#cb704-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
-<span id="cb704-4"><a href="leçon-7.html#cb704-4" tabindex="-1"></a><span class="fu">head</span>(cochons)</span></code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="leçon-7.html#cb703-1" tabindex="-1"></a><span class="do">##importation</span></span>
+<span id="cb703-2"><a href="leçon-7.html#cb703-2" tabindex="-1"></a>cochons <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Module_8/data/cochons.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb703-3"><a href="leçon-7.html#cb703-3" tabindex="-1"></a><span class="do">##premières observations</span></span>
+<span id="cb703-4"><a href="leçon-7.html#cb703-4" tabindex="-1"></a><span class="fu">head</span>(cochons)</span></code></pre></div>
 <pre><code>##   Bloc Diete Masse
 ## 1    1     1   1.5
 ## 2    1     2   2.7
@@ -356,25 +356,25 @@ Figure 8.6: Les blocs sont perpendiculaires au gradient (ici, le gradient va de 
 ## 4    1     4   1.3
 ## 5    2     1   1.4
 ## 6    2     2   2.9</code></pre>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="leçon-7.html#cb706-1" tabindex="-1"></a><span class="do">##structure du jeu de données</span></span>
-<span id="cb706-2"><a href="leçon-7.html#cb706-2" tabindex="-1"></a><span class="fu">str</span>(cochons)</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="leçon-7.html#cb705-1" tabindex="-1"></a><span class="do">##structure du jeu de données</span></span>
+<span id="cb705-2"><a href="leçon-7.html#cb705-2" tabindex="-1"></a><span class="fu">str</span>(cochons)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ Bloc : int  1 1 1 1 2 2 2 2 3 3 ...
 ##  $ Diete: int  1 2 3 4 1 2 3 4 1 2 ...
 ##  $ Masse: num  1.5 2.7 2.1 1.3 1.4 2.9 2.2 1 1.4 2.1 ...</code></pre>
 <p>Dans notre expérience, les deux facteurs sont <code>Bloc</code> et <code>Diete</code>. Toutefois, R considère ces deux variables comme numérique (des entiers). À chaque fois qu’un facteur est codé avec des valeurs numériques, comme ici 1, 2, 3, 4, il faut recoder soi-même la variable en facteur.</p>
-<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="leçon-7.html#cb708-1" tabindex="-1"></a><span class="do">##convertir en facteur</span></span>
-<span id="cb708-2"><a href="leçon-7.html#cb708-2" tabindex="-1"></a>cochons<span class="sc">$</span>Bloc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cochons<span class="sc">$</span>Bloc)</span>
-<span id="cb708-3"><a href="leçon-7.html#cb708-3" tabindex="-1"></a>cochons<span class="sc">$</span>Diete <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cochons<span class="sc">$</span>Diete)</span>
-<span id="cb708-4"><a href="leçon-7.html#cb708-4" tabindex="-1"></a><span class="do">##reconnus maintenant comme facteurs</span></span>
-<span id="cb708-5"><a href="leçon-7.html#cb708-5" tabindex="-1"></a><span class="fu">str</span>(cochons)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="leçon-7.html#cb707-1" tabindex="-1"></a><span class="do">##convertir en facteur</span></span>
+<span id="cb707-2"><a href="leçon-7.html#cb707-2" tabindex="-1"></a>cochons<span class="sc">$</span>Bloc <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cochons<span class="sc">$</span>Bloc)</span>
+<span id="cb707-3"><a href="leçon-7.html#cb707-3" tabindex="-1"></a>cochons<span class="sc">$</span>Diete <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cochons<span class="sc">$</span>Diete)</span>
+<span id="cb707-4"><a href="leçon-7.html#cb707-4" tabindex="-1"></a><span class="do">##reconnus maintenant comme facteurs</span></span>
+<span id="cb707-5"><a href="leçon-7.html#cb707-5" tabindex="-1"></a><span class="fu">str</span>(cochons)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ Bloc : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 2 2 2 2 3 3 ...
 ##  $ Diete: Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 2 3 4 1 2 3 4 1 2 ...
 ##  $ Masse: num  1.5 2.7 2.1 1.3 1.4 2.9 2.2 1 1.4 2.1 ...</code></pre>
 <p>On peut visualiser les données à l’aide d’un diagramme de boîtes et moustaches (Figure <a href="leçon-7.html#fig:boxplotcochon">8.7</a>).</p>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="leçon-7.html#cb710-1" tabindex="-1"></a><span class="fu">boxplot</span>(Masse <span class="sc">~</span> Diete, <span class="at">data =</span> cochons, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>, </span>
-<span id="cb710-2"><a href="leçon-7.html#cb710-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Gain de massse (g)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="leçon-7.html#cb709-1" tabindex="-1"></a><span class="fu">boxplot</span>(Masse <span class="sc">~</span> Diete, <span class="at">data =</span> cochons, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>, </span>
+<span id="cb709-2"><a href="leçon-7.html#cb709-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Gain de massse (g)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplotcochon"></span>
 <img src="Cours_Stats_R_files/figure-html/boxplotcochon-1.png" alt="Diagramme de boîtes et moustaches à partir des données de gain de masse de cochons d'Inde." width="672" />
 <p class="caption">
@@ -382,12 +382,12 @@ Figure 8.7: Diagramme de boîtes et moustaches à partir des données de gain de
 </p>
 </div>
 <p>Pour réaliser l’ANOVA à deux critères sans répétition, on utilise encore une fois <code>aov( )</code> :</p>
-<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="leçon-7.html#cb711-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétition</span></span>
-<span id="cb711-2"><a href="leçon-7.html#cb711-2" tabindex="-1"></a>bloc.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Masse <span class="sc">~</span> Diete <span class="sc">+</span> Bloc, <span class="at">data =</span> cochons)</span></code></pre></div>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="leçon-7.html#cb710-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétition</span></span>
+<span id="cb710-2"><a href="leçon-7.html#cb710-2" tabindex="-1"></a>bloc.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Masse <span class="sc">~</span> Diete <span class="sc">+</span> Bloc, <span class="at">data =</span> cochons)</span></code></pre></div>
 <p>Avant d’interpréter les résultats de l’ANOVA, nous devons vérifier les suppositions habituelles.</p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="leçon-7.html#cb712-1" tabindex="-1"></a><span class="do">##vérification des suppositions</span></span>
-<span id="cb712-2"><a href="leçon-7.html#cb712-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb712-3"><a href="leçon-7.html#cb712-3" tabindex="-1"></a><span class="fu">plot</span>(bloc.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="leçon-7.html#cb711-1" tabindex="-1"></a><span class="do">##vérification des suppositions</span></span>
+<span id="cb711-2"><a href="leçon-7.html#cb711-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb711-3"><a href="leçon-7.html#cb711-3" tabindex="-1"></a><span class="fu">plot</span>(bloc.aov)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:aovblockfig"></span>
 <img src="Cours_Stats_R_files/figure-html/aovblockfig-1.png" alt="Vérifications des suppositions d'homogénéité des variances et de la normalité des résidus." width="672" />
 <p class="caption">
@@ -395,12 +395,12 @@ Figure 8.8: Vérifications des suppositions d’homogénéité des variances et 
 </p>
 </div>
 <p>On remarque que les variances sont légèrement hétérogènes (Figure <a href="leçon-7.html#fig:aovblockfig">8.8</a>). Essayons une transformation logarithmique afin d’homogénéiser les variances :</p>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="leçon-7.html#cb713-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétition</span></span>
-<span id="cb713-2"><a href="leçon-7.html#cb713-2" tabindex="-1"></a><span class="do">##en utilisant le logarithme de la Masse</span></span>
-<span id="cb713-3"><a href="leçon-7.html#cb713-3" tabindex="-1"></a>bloc.aov.log <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">log</span>(Masse) <span class="sc">~</span> Diete <span class="sc">+</span> Bloc, <span class="at">data =</span> cochons)</span></code></pre></div>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="leçon-7.html#cb714-1" tabindex="-1"></a><span class="do">##vérification des suppositions</span></span>
-<span id="cb714-2"><a href="leçon-7.html#cb714-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb714-3"><a href="leçon-7.html#cb714-3" tabindex="-1"></a><span class="fu">plot</span>(bloc.aov.log)</span></code></pre></div>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="leçon-7.html#cb712-1" tabindex="-1"></a><span class="do">##ANOVA à deux critères sans répétition</span></span>
+<span id="cb712-2"><a href="leçon-7.html#cb712-2" tabindex="-1"></a><span class="do">##en utilisant le logarithme de la Masse</span></span>
+<span id="cb712-3"><a href="leçon-7.html#cb712-3" tabindex="-1"></a>bloc.aov.log <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">log</span>(Masse) <span class="sc">~</span> Diete <span class="sc">+</span> Bloc, <span class="at">data =</span> cochons)</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="leçon-7.html#cb713-1" tabindex="-1"></a><span class="do">##vérification des suppositions</span></span>
+<span id="cb713-2"><a href="leçon-7.html#cb713-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb713-3"><a href="leçon-7.html#cb713-3" tabindex="-1"></a><span class="fu">plot</span>(bloc.aov.log)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:blockdiaglog"></span>
 <img src="Cours_Stats_R_files/figure-html/blockdiaglog-1.png" alt="Vérifications des suppositions d'homogénéité des variances et de la normalité des résidus avec les données log-transformées." width="672" />
 <p class="caption">
@@ -409,16 +409,16 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
 </div>
 <p>On observe que la transformation logarithmique a permis de mieux respecter les suppositions (Figure <a href="leçon-7.html#fig:blockdiaglog">8.9</a>).</p>
 <p>Comparons maintenant l’ANOVA en blocs complets aléatoires et l’ANOVA à un critère avec ces mêmes données.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="leçon-7.html#cb715-1" tabindex="-1"></a><span class="do">##ANOVA à 1 critère</span></span>
-<span id="cb715-2"><a href="leçon-7.html#cb715-2" tabindex="-1"></a>aov1.log <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">log</span>(Masse) <span class="sc">~</span> Diete, <span class="at">data =</span> cochons)</span>
-<span id="cb715-3"><a href="leçon-7.html#cb715-3" tabindex="-1"></a><span class="do">##comparaisons ANOVA à 1 critère vs blocs</span></span>
-<span id="cb715-4"><a href="leçon-7.html#cb715-4" tabindex="-1"></a><span class="fu">summary</span>(aov1.log)</span></code></pre></div>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="leçon-7.html#cb714-1" tabindex="-1"></a><span class="do">##ANOVA à 1 critère</span></span>
+<span id="cb714-2"><a href="leçon-7.html#cb714-2" tabindex="-1"></a>aov1.log <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">log</span>(Masse) <span class="sc">~</span> Diete, <span class="at">data =</span> cochons)</span>
+<span id="cb714-3"><a href="leçon-7.html#cb714-3" tabindex="-1"></a><span class="do">##comparaisons ANOVA à 1 critère vs blocs</span></span>
+<span id="cb714-4"><a href="leçon-7.html#cb714-4" tabindex="-1"></a><span class="fu">summary</span>(aov1.log)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Diete        3 2.2515  0.7505   43.12 6.83e-08 ***
 ## Residuals   16 0.2784  0.0174                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="leçon-7.html#cb717-1" tabindex="-1"></a><span class="fu">summary</span>(bloc.aov.log)</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="leçon-7.html#cb716-1" tabindex="-1"></a><span class="fu">summary</span>(bloc.aov.log)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Diete        3 2.2515  0.7505  49.363 5.03e-07 ***
 ## Bloc         4 0.0960  0.0240   1.579    0.243    
@@ -428,12 +428,12 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
 <p>On remarque que la somme des carrés du facteur <code>Diete</code> est le même pour les deux analyses (2.251). La différence entre l’ANOVA à un critère et l’ANOVA en blocs complets aléatoires est au niveau du terme d’erreur. Dans l’ANOVA en blocs complets aléatoires, la somme des carrés des erreurs (<span class="math inline">\(SSE\)</span>) est de 0.182, alors que celle de l’ANOVA à un critère est de 0.278. On constate que la somme des carrés du terme <code>Bloc</code> est de 0.096 et que cette valeur ajoutée à la somme de carrés des erreurs de l’ANOVA en blocs complets aléatoires donne un total de 0.278 (<span class="math inline">\(0.096 + 0.182 = 0.278\)</span>).</p>
 <p>Le terme <code>Bloc</code> explique une partie de la variabilité de la variable réponse (<code>Masse</code>) et réduit le terme d’erreur. Ceci a pour conséquence de réduire le carré moyen de l’erreur (<span class="math inline">\(MSE\)</span>). Puisque le <span class="math inline">\(F\)</span> est le ratio entre le carré moyen de <code>Diete</code> et le carré moyen de l’erreur, la valeur du <span class="math inline">\(F\)</span> est plus grande en présence du bloc.</p>
 <p>On constate que la diète influence fortement le gain de masse (<span class="math inline">\(F_{3, 12} = 49.36\)</span>, ) et que les blocs ne diffèrent pas entre eux (<span class="math inline">\(F_{4, 12} = 1.58, P = 0.24\)</span>). On peut procéder à des comparaisons multiples afin d’identifier les groupes définis par la diète.</p>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="leçon-7.html#cb719-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
-<span id="cb719-2"><a href="leçon-7.html#cb719-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> cochons<span class="sc">$</span>Masse, <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="leçon-7.html#cb718-1" tabindex="-1"></a><span class="do">##moyennes des groupes</span></span>
+<span id="cb718-2"><a href="leçon-7.html#cb718-2" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> cochons<span class="sc">$</span>Masse, <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##    1    2    3    4 
 ## 1.38 2.80 2.24 1.24</code></pre>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="leçon-7.html#cb721-1" tabindex="-1"></a><span class="do">##comparaisons multiples</span></span>
-<span id="cb721-2"><a href="leçon-7.html#cb721-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="at">x =</span> bloc.aov.log, <span class="at">which =</span> <span class="st">&quot;Diete&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="leçon-7.html#cb720-1" tabindex="-1"></a><span class="do">##comparaisons multiples</span></span>
+<span id="cb720-2"><a href="leçon-7.html#cb720-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="at">x =</span> bloc.aov.log, <span class="at">which =</span> <span class="st">&quot;Diete&quot;</span>)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -501,49 +501,49 @@ Figure 8.9: Vérifications des suppositions d’homogénéité des variances et 
 </tr>
 </table>
 <p>On peut présenter les résultats graphiquement.</p>
-<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="leçon-7.html#cb723-1" tabindex="-1"></a><span class="do">##Définissons l&#39;axe des x de la figure, c&#39;est à dire les diètes</span></span>
-<span id="cb723-2"><a href="leçon-7.html#cb723-2" tabindex="-1"></a>diete <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb723-3"><a href="leçon-7.html#cb723-3" tabindex="-1"></a></span>
-<span id="cb723-4"><a href="leçon-7.html#cb723-4" tabindex="-1"></a><span class="do">##Puis, calculons les moyennes sur les donnees transformees</span></span>
-<span id="cb723-5"><a href="leçon-7.html#cb723-5" tabindex="-1"></a>means.log <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> <span class="fu">log</span>(cochons<span class="sc">$</span>Masse), <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span>
-<span id="cb723-6"><a href="leçon-7.html#cb723-6" tabindex="-1"></a></span>
-<span id="cb723-7"><a href="leçon-7.html#cb723-7" tabindex="-1"></a><span class="do">##Il nous faut maintenant trouver le MSE. </span></span>
-<span id="cb723-8"><a href="leçon-7.html#cb723-8" tabindex="-1"></a><span class="do">##Pour se faire, nous devons nous référer au résumé de l&#39;ANOVA</span></span>
-<span id="cb723-9"><a href="leçon-7.html#cb723-9" tabindex="-1"></a><span class="fu">summary</span>(bloc.aov.log)</span></code></pre></div>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="leçon-7.html#cb722-1" tabindex="-1"></a><span class="do">##Définissons l&#39;axe des x de la figure, c&#39;est à dire les diètes</span></span>
+<span id="cb722-2"><a href="leçon-7.html#cb722-2" tabindex="-1"></a>diete <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb722-3"><a href="leçon-7.html#cb722-3" tabindex="-1"></a></span>
+<span id="cb722-4"><a href="leçon-7.html#cb722-4" tabindex="-1"></a><span class="do">##Puis, calculons les moyennes sur les donnees transformees</span></span>
+<span id="cb722-5"><a href="leçon-7.html#cb722-5" tabindex="-1"></a>means.log <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> <span class="fu">log</span>(cochons<span class="sc">$</span>Masse), <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span>
+<span id="cb722-6"><a href="leçon-7.html#cb722-6" tabindex="-1"></a></span>
+<span id="cb722-7"><a href="leçon-7.html#cb722-7" tabindex="-1"></a><span class="do">##Il nous faut maintenant trouver le MSE. </span></span>
+<span id="cb722-8"><a href="leçon-7.html#cb722-8" tabindex="-1"></a><span class="do">##Pour se faire, nous devons nous référer au résumé de l&#39;ANOVA</span></span>
+<span id="cb722-9"><a href="leçon-7.html#cb722-9" tabindex="-1"></a><span class="fu">summary</span>(bloc.aov.log)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Diete        3 2.2515  0.7505  49.363 5.03e-07 ***
 ## Bloc         4 0.0960  0.0240   1.579    0.243    
 ## Residuals   12 0.1824  0.0152                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="leçon-7.html#cb725-1" tabindex="-1"></a><span class="do">##Le MSE est la valeur données à la ligne Residuals de la colonne Mean Sq</span></span>
-<span id="cb725-2"><a href="leçon-7.html#cb725-2" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">0.0152</span></span>
-<span id="cb725-3"><a href="leçon-7.html#cb725-3" tabindex="-1"></a><span class="do">##On peut aussi le trouver de cette façon:</span></span>
-<span id="cb725-4"><a href="leçon-7.html#cb725-4" tabindex="-1"></a>S<span class="ot">&lt;-</span><span class="fu">summary</span>(bloc.aov.log)</span>
-<span id="cb725-5"><a href="leçon-7.html#cb725-5" tabindex="-1"></a>MSE<span class="ot">&lt;-</span>S[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">3</span>]]</span>
-<span id="cb725-6"><a href="leçon-7.html#cb725-6" tabindex="-1"></a></span>
-<span id="cb725-7"><a href="leçon-7.html#cb725-7" tabindex="-1"></a><span class="do">##Calculons maintenant les barres d&#39;erreur</span></span>
-<span id="cb725-8"><a href="leçon-7.html#cb725-8" tabindex="-1"></a>low.log <span class="ot">&lt;-</span> means.log <span class="sc">-</span> <span class="fu">sqrt</span>(MSE)</span>
-<span id="cb725-9"><a href="leçon-7.html#cb725-9" tabindex="-1"></a>upp.log <span class="ot">&lt;-</span> means.log <span class="sc">+</span> <span class="fu">sqrt</span>(MSE)</span>
-<span id="cb725-10"><a href="leçon-7.html#cb725-10" tabindex="-1"></a></span>
-<span id="cb725-11"><a href="leçon-7.html#cb725-11" tabindex="-1"></a><span class="do">##On affiche les moyennes</span></span>
-<span id="cb725-12"><a href="leçon-7.html#cb725-12" tabindex="-1"></a><span class="fu">plot</span>(means.log <span class="sc">~</span> diete, <span class="at">ylab =</span> <span class="st">&quot;Log du gain de masse (g)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>,</span>
-<span id="cb725-13"><a href="leçon-7.html#cb725-13" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(low.log), <span class="fu">max</span>(upp.log)), </span>
-<span id="cb725-14"><a href="leçon-7.html#cb725-14" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb725-15"><a href="leçon-7.html#cb725-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Log des Moyennes ± racine carrée de MSE&quot;</span>)</span>
-<span id="cb725-16"><a href="leçon-7.html#cb725-16" tabindex="-1"></a></span>
-<span id="cb725-17"><a href="leçon-7.html#cb725-17" tabindex="-1"></a><span class="do">##Ajoutons l&#39;axe des x</span></span>
-<span id="cb725-18"><a href="leçon-7.html#cb725-18" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb725-19"><a href="leçon-7.html#cb725-19" tabindex="-1"></a></span>
-<span id="cb725-20"><a href="leçon-7.html#cb725-20" tabindex="-1"></a><span class="do">##Ajoutons les barres d&#39;erreur</span></span>
-<span id="cb725-21"><a href="leçon-7.html#cb725-21" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> diete, <span class="at">x1 =</span> diete, <span class="at">y0 =</span> low.log, <span class="at">y1 =</span> upp.log,</span>
-<span id="cb725-22"><a href="leçon-7.html#cb725-22" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
-<span id="cb725-23"><a href="leçon-7.html#cb725-23" tabindex="-1"></a></span>
-<span id="cb725-24"><a href="leçon-7.html#cb725-24" tabindex="-1"></a><span class="do">##Ajoutons les lettres qui designent les groupes</span></span>
-<span id="cb725-25"><a href="leçon-7.html#cb725-25" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">0.18</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb725-26"><a href="leçon-7.html#cb725-26" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">0.07</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb725-27"><a href="leçon-7.html#cb725-27" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">0.88</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb725-28"><a href="leçon-7.html#cb725-28" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">0.66</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="leçon-7.html#cb724-1" tabindex="-1"></a><span class="do">##Le MSE est la valeur données à la ligne Residuals de la colonne Mean Sq</span></span>
+<span id="cb724-2"><a href="leçon-7.html#cb724-2" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> <span class="fl">0.0152</span></span>
+<span id="cb724-3"><a href="leçon-7.html#cb724-3" tabindex="-1"></a><span class="do">##On peut aussi le trouver de cette façon:</span></span>
+<span id="cb724-4"><a href="leçon-7.html#cb724-4" tabindex="-1"></a>S<span class="ot">&lt;-</span><span class="fu">summary</span>(bloc.aov.log)</span>
+<span id="cb724-5"><a href="leçon-7.html#cb724-5" tabindex="-1"></a>MSE<span class="ot">&lt;-</span>S[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">3</span>]]</span>
+<span id="cb724-6"><a href="leçon-7.html#cb724-6" tabindex="-1"></a></span>
+<span id="cb724-7"><a href="leçon-7.html#cb724-7" tabindex="-1"></a><span class="do">##Calculons maintenant les barres d&#39;erreur</span></span>
+<span id="cb724-8"><a href="leçon-7.html#cb724-8" tabindex="-1"></a>low.log <span class="ot">&lt;-</span> means.log <span class="sc">-</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb724-9"><a href="leçon-7.html#cb724-9" tabindex="-1"></a>upp.log <span class="ot">&lt;-</span> means.log <span class="sc">+</span> <span class="fu">sqrt</span>(MSE)</span>
+<span id="cb724-10"><a href="leçon-7.html#cb724-10" tabindex="-1"></a></span>
+<span id="cb724-11"><a href="leçon-7.html#cb724-11" tabindex="-1"></a><span class="do">##On affiche les moyennes</span></span>
+<span id="cb724-12"><a href="leçon-7.html#cb724-12" tabindex="-1"></a><span class="fu">plot</span>(means.log <span class="sc">~</span> diete, <span class="at">ylab =</span> <span class="st">&quot;Log du gain de masse (g)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>,</span>
+<span id="cb724-13"><a href="leçon-7.html#cb724-13" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(low.log), <span class="fu">max</span>(upp.log)), </span>
+<span id="cb724-14"><a href="leçon-7.html#cb724-14" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb724-15"><a href="leçon-7.html#cb724-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Log des Moyennes ± racine carrée de MSE&quot;</span>)</span>
+<span id="cb724-16"><a href="leçon-7.html#cb724-16" tabindex="-1"></a></span>
+<span id="cb724-17"><a href="leçon-7.html#cb724-17" tabindex="-1"></a><span class="do">##Ajoutons l&#39;axe des x</span></span>
+<span id="cb724-18"><a href="leçon-7.html#cb724-18" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb724-19"><a href="leçon-7.html#cb724-19" tabindex="-1"></a></span>
+<span id="cb724-20"><a href="leçon-7.html#cb724-20" tabindex="-1"></a><span class="do">##Ajoutons les barres d&#39;erreur</span></span>
+<span id="cb724-21"><a href="leçon-7.html#cb724-21" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> diete, <span class="at">x1 =</span> diete, <span class="at">y0 =</span> low.log, <span class="at">y1 =</span> upp.log,</span>
+<span id="cb724-22"><a href="leçon-7.html#cb724-22" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb724-23"><a href="leçon-7.html#cb724-23" tabindex="-1"></a></span>
+<span id="cb724-24"><a href="leçon-7.html#cb724-24" tabindex="-1"></a><span class="do">##Ajoutons les lettres qui designent les groupes</span></span>
+<span id="cb724-25"><a href="leçon-7.html#cb724-25" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">0.18</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb724-26"><a href="leçon-7.html#cb724-26" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">0.07</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb724-27"><a href="leçon-7.html#cb724-27" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">0.88</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb724-28"><a href="leçon-7.html#cb724-28" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">0.66</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotres"></span>
 <img src="Cours_Stats_R_files/figure-html/plotres-1.png" alt="Effet de la diète sur le logarithme du gain de masse. Les lettres différentes indiquent les groupes." width="672" />
 <p class="caption">
@@ -551,33 +551,33 @@ Figure 8.10: Effet de la diète sur le logarithme du gain de masse. Les lettres 
 </p>
 </div>
 <p>Pour faciliter l’interprétation de notre analyse représentons les données originales plutôt que les données transformées.</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="leçon-7.html#cb726-1" tabindex="-1"></a><span class="do">##Calculons les moyennes sur les donnees originales</span></span>
-<span id="cb726-2"><a href="leçon-7.html#cb726-2" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> cochons<span class="sc">$</span>Masse, <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span>
-<span id="cb726-3"><a href="leçon-7.html#cb726-3" tabindex="-1"></a></span>
-<span id="cb726-4"><a href="leçon-7.html#cb726-4" tabindex="-1"></a><span class="do">##Les barres d&#39;erreurs sur les donnees originales se determinent en prenant la fonction exp() </span></span>
-<span id="cb726-5"><a href="leçon-7.html#cb726-5" tabindex="-1"></a><span class="do">## sur les barres d&#39;erreurs des donnees transformees</span></span>
-<span id="cb726-6"><a href="leçon-7.html#cb726-6" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">exp</span>(low.log) </span>
-<span id="cb726-7"><a href="leçon-7.html#cb726-7" tabindex="-1"></a>upp <span class="ot">&lt;-</span> <span class="fu">exp</span>(upp.log) </span>
-<span id="cb726-8"><a href="leçon-7.html#cb726-8" tabindex="-1"></a></span>
-<span id="cb726-9"><a href="leçon-7.html#cb726-9" tabindex="-1"></a></span>
-<span id="cb726-10"><a href="leçon-7.html#cb726-10" tabindex="-1"></a><span class="do">##On cree la figure</span></span>
-<span id="cb726-11"><a href="leçon-7.html#cb726-11" tabindex="-1"></a><span class="fu">plot</span>(means <span class="sc">~</span> diete, <span class="at">ylab =</span> <span class="st">&quot;Gain de masse (g)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>,</span>
-<span id="cb726-12"><a href="leçon-7.html#cb726-12" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>((<span class="fu">min</span>(low)<span class="sc">-</span><span class="fl">0.2</span>), <span class="fu">max</span>(upp)), </span>
-<span id="cb726-13"><a href="leçon-7.html#cb726-13" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb726-14"><a href="leçon-7.html#cb726-14" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
-<span id="cb726-15"><a href="leçon-7.html#cb726-15" tabindex="-1"></a></span>
-<span id="cb726-16"><a href="leçon-7.html#cb726-16" tabindex="-1"></a><span class="do">##Ajoutons l&#39;axe des x</span></span>
-<span id="cb726-17"><a href="leçon-7.html#cb726-17" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb726-18"><a href="leçon-7.html#cb726-18" tabindex="-1"></a></span>
-<span id="cb726-19"><a href="leçon-7.html#cb726-19" tabindex="-1"></a><span class="do">##Ajoutons les barres d&#39;erreur</span></span>
-<span id="cb726-20"><a href="leçon-7.html#cb726-20" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> diete, <span class="at">x1 =</span> diete, <span class="at">y0 =</span> low, <span class="at">y1 =</span> upp,</span>
-<span id="cb726-21"><a href="leçon-7.html#cb726-21" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
-<span id="cb726-22"><a href="leçon-7.html#cb726-22" tabindex="-1"></a></span>
-<span id="cb726-23"><a href="leçon-7.html#cb726-23" tabindex="-1"></a><span class="do">##Ajoutons les lettres qui designent les groupes</span></span>
-<span id="cb726-24"><a href="leçon-7.html#cb726-24" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">1.19</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb726-25"><a href="leçon-7.html#cb726-25" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">1.0</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb726-26"><a href="leçon-7.html#cb726-26" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">2.4</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb726-27"><a href="leçon-7.html#cb726-27" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">1.9</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="leçon-7.html#cb725-1" tabindex="-1"></a><span class="do">##Calculons les moyennes sur les donnees originales</span></span>
+<span id="cb725-2"><a href="leçon-7.html#cb725-2" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(<span class="at">X =</span> cochons<span class="sc">$</span>Masse, <span class="at">INDEX =</span> cochons<span class="sc">$</span>Diete, <span class="at">FUN =</span> mean)</span>
+<span id="cb725-3"><a href="leçon-7.html#cb725-3" tabindex="-1"></a></span>
+<span id="cb725-4"><a href="leçon-7.html#cb725-4" tabindex="-1"></a><span class="do">##Les barres d&#39;erreurs sur les donnees originales se determinent en prenant la fonction exp() </span></span>
+<span id="cb725-5"><a href="leçon-7.html#cb725-5" tabindex="-1"></a><span class="do">## sur les barres d&#39;erreurs des donnees transformees</span></span>
+<span id="cb725-6"><a href="leçon-7.html#cb725-6" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">exp</span>(low.log) </span>
+<span id="cb725-7"><a href="leçon-7.html#cb725-7" tabindex="-1"></a>upp <span class="ot">&lt;-</span> <span class="fu">exp</span>(upp.log) </span>
+<span id="cb725-8"><a href="leçon-7.html#cb725-8" tabindex="-1"></a></span>
+<span id="cb725-9"><a href="leçon-7.html#cb725-9" tabindex="-1"></a></span>
+<span id="cb725-10"><a href="leçon-7.html#cb725-10" tabindex="-1"></a><span class="do">##On cree la figure</span></span>
+<span id="cb725-11"><a href="leçon-7.html#cb725-11" tabindex="-1"></a><span class="fu">plot</span>(means <span class="sc">~</span> diete, <span class="at">ylab =</span> <span class="st">&quot;Gain de masse (g)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Diète&quot;</span>,</span>
+<span id="cb725-12"><a href="leçon-7.html#cb725-12" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>((<span class="fu">min</span>(low)<span class="sc">-</span><span class="fl">0.2</span>), <span class="fu">max</span>(upp)), </span>
+<span id="cb725-13"><a href="leçon-7.html#cb725-13" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">cex.lab =</span> <span class="fl">1.2</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb725-14"><a href="leçon-7.html#cb725-14" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Moyennes ± racine carrée de MSE&quot;</span>)</span>
+<span id="cb725-15"><a href="leçon-7.html#cb725-15" tabindex="-1"></a></span>
+<span id="cb725-16"><a href="leçon-7.html#cb725-16" tabindex="-1"></a><span class="do">##Ajoutons l&#39;axe des x</span></span>
+<span id="cb725-17"><a href="leçon-7.html#cb725-17" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb725-18"><a href="leçon-7.html#cb725-18" tabindex="-1"></a></span>
+<span id="cb725-19"><a href="leçon-7.html#cb725-19" tabindex="-1"></a><span class="do">##Ajoutons les barres d&#39;erreur</span></span>
+<span id="cb725-20"><a href="leçon-7.html#cb725-20" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> diete, <span class="at">x1 =</span> diete, <span class="at">y0 =</span> low, <span class="at">y1 =</span> upp,</span>
+<span id="cb725-21"><a href="leçon-7.html#cb725-21" tabindex="-1"></a>       <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">length =</span> <span class="fl">0.05</span>)</span>
+<span id="cb725-22"><a href="leçon-7.html#cb725-22" tabindex="-1"></a></span>
+<span id="cb725-23"><a href="leçon-7.html#cb725-23" tabindex="-1"></a><span class="do">##Ajoutons les lettres qui designent les groupes</span></span>
+<span id="cb725-24"><a href="leçon-7.html#cb725-24" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">1.19</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb725-25"><a href="leçon-7.html#cb725-25" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fl">1.0</span>, <span class="at">labels =</span> <span class="st">&quot;a&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb725-26"><a href="leçon-7.html#cb725-26" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fl">2.4</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb725-27"><a href="leçon-7.html#cb725-27" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">1.9</span>, <span class="at">labels =</span> <span class="st">&quot;b&quot;</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotresorig"></span>
 <img src="Cours_Stats_R_files/figure-html/plotresorig-1.png" alt="Effet de la diète sur le gain de masse. Les lettres différentes indiquent les groupes.}" width="672" />
 <p class="caption">
