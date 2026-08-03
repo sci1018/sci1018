@@ -40,6 +40,7 @@ Ce document a pour but d'illustrer les bases nécessaires afin de se familiarise
   - `xtabs( )`
   - `reshape( )`
   - `save( )`, `write.table( )`, `load( )`
+
   </div>
   
 </div> 

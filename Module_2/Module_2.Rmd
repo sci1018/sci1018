@@ -32,6 +32,7 @@ Dans la leçon précédente, nous avons vu des concepts de base importants en st
   - `pdf( )`
   - `jpeg( )`
   - `dev.off( )`
+
   </div>
   
 </div> 

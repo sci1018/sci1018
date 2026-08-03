@@ -32,6 +32,7 @@ Dans les dernières leçons, la variable réponse était numérique et l'objecti
   - `cor( )`
   - `cor.test( )`
   - `function( )`
+
 </div>
   
 </div> 

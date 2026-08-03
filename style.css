@@ -80,8 +80,8 @@ body {
 
 .book .book-header {
   position: initial !important;
-  height: 350px !important; /* height à changer selon la taille de l'image */
-  background-image: url(images/Accueil.jpg) !important; /* extension à changer selon le format de l'image */
+  height: 465px !important; /* height à changer selon la taille de l'image */
+  background-image: url(images/Back_Accueil.jpg) !important; /* extension à changer selon le format de l'image */
   background-size: cover !important;
   background-position: bottom !important;
 }
@@ -103,7 +103,7 @@ body {
   }
 
 .book .book-header.presentation {
-  background-image: url(../images/Accueil.jpg);
+  background-image: url(images/Back_Presentation.jpg);
 }
   
   

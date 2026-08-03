@@ -35,6 +35,7 @@ Dans la leçon précédente, nous avons vu l'analyse de fréquences, particuliè
   - `apply( )`
   - `rowSums( )`
   - `colSums( )`
+
 </div>
   
 </div> 

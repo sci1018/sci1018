@@ -15,6 +15,7 @@ Dans la leçon précédente, nous avons discuté de la démarche scientifique et
   <div class="column righttext">
 ##### Vous utiliserez les packages `R` suivants : {-} 
   - `nortest`
+
   </div>
   
 </div> 
@@ -52,6 +53,7 @@ Dans la leçon précédente, nous avons discuté de la démarche scientifique et
   - `log( )`
   - `rpois( )`
   - `rbeta( )`
+
   </div>
   
 </div> 
