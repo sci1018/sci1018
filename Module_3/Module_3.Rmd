@@ -17,6 +17,7 @@ Lors de la leçon précédente, nous avons illustré le concept d'intervalle de 
   - `nortest`
   - `MASS`
   - `readxl`
+
   </div>
   
 </div> 
@@ -46,6 +47,7 @@ Lors de la leçon précédente, nous avons illustré le concept d'intervalle de 
   - `install.packages( )`
   - `detach( )`
   - `remove.packages( )`
+
   </div>
   
 </div> 

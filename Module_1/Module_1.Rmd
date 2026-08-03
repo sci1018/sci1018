@@ -21,6 +21,8 @@ Nous allons définir dans cette leçon certains termes et concepts en statistiqu
 
   <div class="column lefticon">
   ![](images/Icones_Fonctions.svg)
+  </div>
+
   <div class="column righttext">
 ##### Vous utiliserez les fonctions suivantes : {-} 
   - `c( )`
@@ -35,6 +37,7 @@ Nous allons définir dans cette leçon certains termes et concepts en statistiqu
   - `pnorm( )`
   - `qnorm( )`
   - `rnorm( )`
+
   </div>
   
 </div> 
