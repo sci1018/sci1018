@@ -86,38 +86,34 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  background-color: #f8f8f8; }
+  {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 <style type="text/css">
@@ -457,14 +453,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## [21] -11.3374816  13.0301788   1.6610982  12.3144666   9.8947239   1.9675440   1.5977410  16.0794961   9.2248124   6.3589486</code></pre>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="statistiques-de-base-avec-r.html#cb313-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb313-2"><a href="statistiques-de-base-avec-r.html#cb313-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]   3.891076   6.437654  13.138934  27.669089  17.389767  13.206080   0.112985   9.177399   6.017124  -6.590139
-## [11]   3.678571   6.841689   3.725873   2.247831  11.103295  14.638092  21.593551   9.881414   5.958514  12.310294
-## [21]  19.159532  27.288737  -4.554230  15.513337  -1.683616  -6.203075   6.073358 -18.626672  17.349910   5.408616</code></pre>
+<pre><code>##  [1]   3.891076   6.437654  13.138934  27.669089  17.389767  13.206080   0.112985   9.177399   6.017124  -6.590139   3.678571
+## [12]   6.841689   3.725873   2.247831  11.103295  14.638092  21.593551   9.881414   5.958514  12.310294  19.159532  27.288737
+## [23]  -4.554230  15.513337  -1.683616  -6.203075   6.073358 -18.626672  17.349910   5.408616</code></pre>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="statistiques-de-base-avec-r.html#cb315-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb315-2"><a href="statistiques-de-base-avec-r.html#cb315-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1] 19.0235248 19.2177859 -5.0853282 -0.1873660 -1.7421399 11.3806105  0.9224508  6.8150620 23.1308349  0.3419082
-## [11]  7.2135617 15.9216558  6.0659350 -1.1036486 -5.2447363 26.4559092  3.1149812  5.3037353 -0.5228139 -0.9207635
-## [21] 12.1369322  9.7821762 12.9507889  9.5936729 -2.8227169 -8.0050764 -7.6184817  6.4950019 11.1006956  3.7684386</code></pre>
+<pre><code>##  [1] 19.0235248 19.2177859 -5.0853282 -0.1873660 -1.7421399 11.3806105  0.9224508  6.8150620 23.1308349  0.3419082  7.2135617
+## [12] 15.9216558  6.0659350 -1.1036486 -5.2447363 26.4559092  3.1149812  5.3037353 -0.5228139 -0.9207635 12.1369322  9.7821762
+## [23] 12.9507889  9.5936729 -2.8227169 -8.0050764 -7.6184817  6.4950019 11.1006956  3.7684386</code></pre>
 <p>On remarque qu’à chaque fois que l’on utilise <code>rnorm()</code>, on obtient un résultat des observations (aléatoires) différentes.</p>
 </div>
 </div>

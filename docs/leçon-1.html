@@ -86,38 +86,34 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  background-color: #f8f8f8; }
+  {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
 <style type="text/css">
@@ -455,8 +451,8 @@ f(10.1 \vert 0, 10) = 0
 <span id="cb325-3"><a href="leçon-1.html#cb325-3" tabindex="-1"></a></span>
 <span id="cb325-4"><a href="leçon-1.html#cb325-4" tabindex="-1"></a><span class="do">##on utilise la distribution uniforme</span></span>
 <span id="cb325-5"><a href="leçon-1.html#cb325-5" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">60</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">400</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
-<pre><code>##  [1]  74  44 246 353 120 137  76 192  28  86 317  42 362 280 243 215 136 337 275 317 229 187 384 388  37 188 268  49  91 290
-## [31] 134  67 190  12 208 178 385   3 270  34 124 378 307 177  59 330  24 344   0 112 361 190 198  93 220 321 348 246  73  46</code></pre>
+<pre><code>##  [1]  74  44 246 353 120 137  76 192  28  86 317  42 362 280 243 215 136 337 275 317 229 187 384 388  37 188 268  49  91 290 134  67
+## [33] 190  12 208 178 385   3 270  34 124 378 307 177  59 330  24 344   0 112 361 190 198  93 220 321 348 246  73  46</code></pre>
 <p>On note ici que nous avons demandé 60 valeurs aléatoires d’une distribution uniforme continue alors que nous en voulons 40, au cas où il y aurait des doublons dans les 40 premières valeurs. De plus, l’utilisation de la fonction <code>round( )</code> permet d’arrondir les valeurs à l’entier le plus près.</p>
 <p>Encore plus simple, nous pourrions utiliser la fonction <code>sample( )</code> qui permet de sélectionner aléatoirement avec ou sans remise. La sélection sans remise consiste à retirer les observations qui ont déja été tirées afin de ne pouvoir les sélectionner à nouveau. La sélection avec remise implique de pouvoir sélectionner la même observation à plusieurs reprises pour constituer l’échantillon. Autrement dit, la même observation peut apparaître plusieurs fois dans l’échantillon.</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="leçon-1.html#cb327-1" tabindex="-1"></a><span class="do">##on crée une série de 10 observations</span></span>
