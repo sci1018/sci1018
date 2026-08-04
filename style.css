@@ -115,23 +115,23 @@ body {
   padding: 0;
   margin: 1.7em 0;
   overflow: hidden;
-  background-color: #d58043; /* white mode*/
+  background-color: #562EA4; /* white mode*/
   border: none;
 }
 
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal hr {
-  background-color: #d58043; /* sepia mode*/
+  background-color: #562EA4; /* sepia mode*/
 }
 
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal hr {
-  background-color: #68cdff; /* night mode */
+  background-color: #70FBCE; /* night mode */
 }
 
 .color-theme-1 .exemple { 
   counter-increment: exemple;
   margin-bottom: 1em;
   padding: 15px 15px 15px 15px;
-  background-color: #cfb996; /* color of example box on sepia mode */
+  background-color: #e4f7f1; /* color of example box on sepia mode */
 }
 
 .color-theme-2 .exemple { 
@@ -145,7 +145,7 @@ body {
   counter-increment: exemple;
   margin-bottom: 1em;
   padding: 15px 15px 15px 15px;
-  background-color: #fbf3eb; /* color of example box on white mode */
+  background-color: #e4f7f1; /* color of example box on white mode */
 }
 
 /* ------------------------------------------------- */
@@ -162,26 +162,26 @@ body {
 }
 
 .section h3 {
-  color: #A64907;
+  color: #241B60;
 }
 
 /* ------------------------------------------------- */
 /* CAPTION  COLOR*/
 
 .book.color-theme-1 p.caption {
-  color: #685722 !important; /* sepia mode for figure caption*/
+  color: #91245b !important; /* sepia mode for figure caption*/
 }
 
 .book.color-theme-1 caption {
-  color: #685722 !important; /* sepia mode for table caption*/
+  color: #91245b !important; /* sepia mode for table caption*/
 }
 
 .book.color-theme-2 p.caption {
-  color: #d8defd !important; /* night mode for figure caption*/
+  color: #f5faf8 !important; /* night mode for figure caption*/
 }
 
 .book.color-theme-2 caption {
-  color: #d8defd !important; /* night mode for table caption*/
+  color: #f5faf8 !important; /* night mode for table caption*/
 }
 
 /* ------------------------------------------------- */
@@ -203,13 +203,13 @@ body {
 }
 
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table th{
-  border-color: #ffe0a4;
-  background: #ffe0a4  !important; /* sepia mode for table color*/
+  border-color: #e4f7f1;
+  background: #e4f7f1  !important; /* sepia mode for table color*/
 }
 
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table td {
-  border-color: #ffe0a4;
-  background: #ffe0a4 !important; /* sepia mode for table color*/
+  border-color: #e4f7f1;
+  background: #e4f7f1 !important; /* sepia mode for table color*/
 }
 
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal table th{
@@ -237,7 +237,7 @@ body {
 blockquote {
   color: black !important;
   font-weight: 600 !important;
-  border-left: 4px solid #486864 !important;
+  border-left: 4px solid #EB6AAB !important;
   font-size: 15px;
 }
 
@@ -245,14 +245,14 @@ blockquote {
   font-size: 18px !important;
   line-height: 24px;
   font-weight: bold;
-  color: #0E5967;
+  color: #562EA4;
 }
 
 /* BOITE */
 .boite.emphase {
   padding: 25px;
   padding-bottom: 15px;
-  background-color: #C7D1D0;
+  background-color: #f5faf8;
   margin-bottom: 20px;
 }
 .boite.ico img[src*=".svg"] {
