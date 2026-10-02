@@ -150,10 +150,10 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <ul>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#travaux-not%C3%A9s"><i class="fa fa-check"></i>Travaux notés</a></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#donn%C3%A9es"><i class="fa fa-check"></i>Données</a></li>
-<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#forum"><i class="fa fa-check"></i>Forum du cours</a></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#guides-r"><i class="fa fa-check"></i>Guides R</a></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r"><i class="fa fa-check"></i>Ressources R</a></li>
-<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r-commander"><i class="fa fa-check"></i>Ressources R commander</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-rstudio"><i class="fa fa-check"></i>Ressources RStudio</a></li>
+<li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#ressources-r-commander"><i class="fa fa-check"></i>Ressources R Commander</a></li>
 <li class="chapter" data-level="" data-path="ressources.html"><a href="ressources.html#r%C3%A9f%C3%A9rences"><i class="fa fa-check"></i>Références</a></li>
 </ul></li>
 <li class="part"><span><b>II GUIDE R</b></span></li>
@@ -222,7 +222,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="3.1" data-path="leçon-2.html"><a href="leçon-2.html"><i class="fa fa-check"></i><b>3.1</b> Leçon</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="leçon-2.html"><a href="leçon-2.html#hypoth%C3%A8se"><i class="fa fa-check"></i><b>3.1.1</b> Hypothèse</a></li>
-<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypoth%C3%A8se-statistiques"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistiques</a></li>
+<li class="chapter" data-level="3.1.2" data-path="leçon-2.html"><a href="leçon-2.html#hypoth%C3%A8se-statistique"><i class="fa fa-check"></i><b>3.1.2</b> Hypothèse statistique</a></li>
 <li class="chapter" data-level="3.1.3" data-path="leçon-2.html"><a href="leçon-2.html#erreurs-de-type-i-et-ii"><i class="fa fa-check"></i><b>3.1.3</b> Erreurs de type I et II</a></li>
 <li class="chapter" data-level="3.1.4" data-path="leçon-2.html"><a href="leçon-2.html#utilisation-de-tests-dhypoth%C3%A8se"><i class="fa fa-check"></i><b>3.1.4</b> Utilisation de tests d’hypothèse</a></li>
 <li class="chapter" data-level="3.1.5" data-path="leçon-2.html"><a href="leçon-2.html#estimation-de-param%C3%A8tres"><i class="fa fa-check"></i><b>3.1.5</b> Estimation de paramètres</a></li>
@@ -443,24 +443,24 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <h4><span class="header-section-number">1.2.2.3</span> Nombres aléatoires<a href="statistiques-de-base-avec-r.html#nombres-al%C3%A9atoires" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>On peut générer des nombres aléatoires provenant d’une distribution normale avec une moyenne et un écart-type donnés à l’aide de <code>rnorm()</code>. Par exemple, pour générer un échantillon de 30 observations provenant d’une distribution normale avec une moyenne de 5.2 (<span class="math inline">\(\mu = 5.2\)</span>) et un écart-type de 9.3 (<span class="math inline">\(\sigma = 9.3)\)</span>, on procède ainsi:</p>
 <div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="statistiques-de-base-avec-r.html#cb309-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]  13.1015654   3.8738390   2.0262907  25.1906398   6.3453853  12.2407041   9.9600473  16.3554930  15.3004219  15.6653143
-## [11]  -5.2363812   2.1361361   0.3011311  14.2673387 -17.7739916  -9.3026133 -11.3246507   6.8461550   3.0471042  13.6141250
-## [21]   2.4075361  17.5214902  10.1071673  14.4077108  25.9460656  18.9730143   3.3120000 -11.0342477  -1.2842154  15.6671290</code></pre>
+<pre><code>##  [1]  13.1015654   3.8738390   2.0262907  25.1906398   6.3453853  12.2407041   9.9600473  16.3554930  15.3004219  15.6653143  -5.2363812   2.1361361
+## [13]   0.3011311  14.2673387 -17.7739916  -9.3026133 -11.3246507   6.8461550   3.0471042  13.6141250   2.4075361  17.5214902  10.1071673  14.4077108
+## [25]  25.9460656  18.9730143   3.3120000 -11.0342477  -1.2842154  15.6671290</code></pre>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="statistiques-de-base-avec-r.html#cb311-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb311-2"><a href="statistiques-de-base-avec-r.html#cb311-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]  11.0324419   7.1440206 -11.0511271  18.7920010  11.7094413   8.1519404 -14.1162357   2.9833200   8.4015529  17.3012837
-## [11]  -1.6124270  11.4817626   8.4525334  20.8241061   6.0612455   6.3076262   5.5756312   7.0758825   0.2320317  17.5802586
-## [21] -11.3374816  13.0301788   1.6610982  12.3144666   9.8947239   1.9675440   1.5977410  16.0794961   9.2248124   6.3589486</code></pre>
+<pre><code>##  [1]  11.0324419   7.1440206 -11.0511271  18.7920010  11.7094413   8.1519404 -14.1162357   2.9833200   8.4015529  17.3012837  -1.6124270  11.4817626
+## [13]   8.4525334  20.8241061   6.0612455   6.3076262   5.5756312   7.0758825   0.2320317  17.5802586 -11.3374816  13.0301788   1.6610982  12.3144666
+## [25]   9.8947239   1.9675440   1.5977410  16.0794961   9.2248124   6.3589486</code></pre>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="statistiques-de-base-avec-r.html#cb313-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb313-2"><a href="statistiques-de-base-avec-r.html#cb313-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1]   3.891076   6.437654  13.138934  27.669089  17.389767  13.206080   0.112985   9.177399   6.017124  -6.590139   3.678571
-## [12]   6.841689   3.725873   2.247831  11.103295  14.638092  21.593551   9.881414   5.958514  12.310294  19.159532  27.288737
-## [23]  -4.554230  15.513337  -1.683616  -6.203075   6.073358 -18.626672  17.349910   5.408616</code></pre>
+<pre><code>##  [1]   3.891076   6.437654  13.138934  27.669089  17.389767  13.206080   0.112985   9.177399   6.017124  -6.590139   3.678571   6.841689   3.725873
+## [14]   2.247831  11.103295  14.638092  21.593551   9.881414   5.958514  12.310294  19.159532  27.288737  -4.554230  15.513337  -1.683616  -6.203075
+## [27]   6.073358 -18.626672  17.349910   5.408616</code></pre>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="statistiques-de-base-avec-r.html#cb315-1" tabindex="-1"></a><span class="do">##Un autre échantillon</span></span>
 <span id="cb315-2"><a href="statistiques-de-base-avec-r.html#cb315-2" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean =</span> <span class="fl">5.2</span>, <span class="at">sd =</span> <span class="fl">9.3</span>)</span></code></pre></div>
-<pre><code>##  [1] 19.0235248 19.2177859 -5.0853282 -0.1873660 -1.7421399 11.3806105  0.9224508  6.8150620 23.1308349  0.3419082  7.2135617
-## [12] 15.9216558  6.0659350 -1.1036486 -5.2447363 26.4559092  3.1149812  5.3037353 -0.5228139 -0.9207635 12.1369322  9.7821762
-## [23] 12.9507889  9.5936729 -2.8227169 -8.0050764 -7.6184817  6.4950019 11.1006956  3.7684386</code></pre>
+<pre><code>##  [1] 19.0235248 19.2177859 -5.0853282 -0.1873660 -1.7421399 11.3806105  0.9224508  6.8150620 23.1308349  0.3419082  7.2135617 15.9216558  6.0659350
+## [14] -1.1036486 -5.2447363 26.4559092  3.1149812  5.3037353 -0.5228139 -0.9207635 12.1369322  9.7821762 12.9507889  9.5936729 -2.8227169 -8.0050764
+## [27] -7.6184817  6.4950019 11.1006956  3.7684386</code></pre>
 <p>On remarque qu’à chaque fois que l’on utilise <code>rnorm()</code>, on obtient un résultat des observations (aléatoires) différentes.</p>
 </div>
 </div>

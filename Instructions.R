@@ -27,3 +27,4 @@ bookdown::preview_chapter('Module6/index.Rmd', 'bookdown::gitbook')
 # Il faut déjà avoir préalablement créé l'entièreté du site pour utiliser cette fonction.
 
 
+#<!--  --> 
