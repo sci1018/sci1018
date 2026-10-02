@@ -724,8 +724,6 @@ La normalité des résidus et l'indépendance des observations sont les deux pri
 <summary> Réponse</summary>
 ```{r echo=TRUE}
 ##importer fichier
-temp <- read.table(file = "Module_3/data/temp.csv", header = TRUE)
-## ou
 temp <- read.table(file = "Module_3/data/temp.csv", header = TRUE, sep=",")
 ##on regarde les premières lignes du jeu de données
 head(temp)
