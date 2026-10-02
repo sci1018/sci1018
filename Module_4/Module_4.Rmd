@@ -613,8 +613,8 @@ La vérification de la normalité indique que les résidus ont une distribution 
 res.df <- nrow(poissons) - 1
 
 ##IC à 95%
-inf95 <- mean.diff - qt(p = 0.025, df = res.df) * SE
-sup95 <- mean.diff + qt(p = 0.025, df = res.df) * SE
+inf95 <- mean.diff + qt(p = 0.025, df = res.df) * SE
+sup95 <- mean.diff - qt(p = 0.025, df = res.df) * SE
 
 ##graphique
 plot(x = 0.5, y = mean.diff,

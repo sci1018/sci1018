@@ -679,9 +679,10 @@ str(croissance)
 
 **b** Calculez l'intervalle de confiance à 95 \% autour de la moyenne de chacun des trois groupes définis par le type de moulée.
 
+<!--  
 
-Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explications sur le script du calcul de l'intervalle de confiance".
-
+Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explication sur le script du calcul de l'intervalle de confiance".
+--> 
 
 <details>
 <summary> Réponse</summary>
@@ -745,9 +746,9 @@ out
   3. Ajoutez les points avec `points( )`.
   4. Ajoutez les barres d'erreur avec `arrows( )`. Cette dernière fonction nécessite un point de départ (`x0, y0`) et un point d'arrivée (`x1, y1`). Bien qu'elle puisse créer des flèches, on peut obtenir des barres d'erreur en utilisant `angle = 90`. L'argument `code = 3` spécifie que l'on veut une flèche au point d'arrivée et au point de départ.
 
-
-Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explications sur le script du graphique de la moyenne et des barres d'erreur". 
-
+<!-- 
+Vous trouverez de plus amples détails sur le script suivant dans le forum du cours à l’entrée "Explication sur le script du graphique de la moyenne et des barres d'erreur". 
+ --> 
 
 <details>
 <summary> Réponse</summary>

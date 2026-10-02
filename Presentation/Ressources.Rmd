@@ -27,10 +27,15 @@ Les liens suivants vous dirigerons directement vers les données utilisées pour
   - [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip)
   - [Module 9](https://github.com/sci1018/sci1018_data/raw/main/Module_9.zip)
 
+
+<!--  
+
+
 ### Forum du cours {.unnumbered #forum}
 
 Un [forum](https://groups.google.com/g/sci1018-teluq?pli=1) de discussion est disponible pour trouver des informations pertinentes sur la matière du cours et pour poser des questions à la communauté du cours SCI 1018 (la personne tutrice et les autres étudiants). Ne vous gênez pas pour l'utiliser!
 
+--> 
 
 ### Guides R {-}
 
@@ -48,15 +53,20 @@ Voici quelques sites Web où vous pourrez trouver de la documentation sur R:
 
 * Site officiel de R: [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/index.html)
 * [An introduction to R](https://intro2r.com/)
-* Forum francophone des [utilisateurs du logiciel R](http://forums.cirad.fr/logiciel-R/)
 * Forum de la [communauté RStudio](https://community.rstudio.com/)
-* [Introduction to R](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html)
-* [R for Data Science](https://r4ds.had.co.nz/index.html)
+* [Introduction to R](https://datacarpentry.github.io/R-ecology-lesson/)
+* [R for Data Science](https://r4ds.hadley.nz/)
 
+### Ressources RStudio {-}
 
-### Ressources R commander {-}
+Voici quelques ressources pour vous accompagner dans l'apprentissage de RStudio:
 
-Voici plusieurs guides en version animée ou en version PDF pour vous accompagner dans votre apprentissage de R commander.
+* Brève introduction à RStudio: [vidéo](https://drive.google.com/file/d/1o3PENaSY7eRh8u16OgFwuB0_Kdl21sjW/view?usp=sharing) 
+* [Aide-mémoire](GuidesRCommander/sci1018_AideMemoireR.pdf) sur des commandes R
+
+### Ressources R Commander {-}
+
+Voici plusieurs guides en version animée ou en version PDF pour vous accompagner dans votre apprentissage de R commander (voir la table des matières [ici](GuidesRCommander/sci1018_guidercommander_table-des-matieres.pdf)).
 La communauté R met également à votre disposition ce [document](https://cran.r-project.org/doc/contrib/Gaudron-GuideRcmdr.pdf).
 
 * Installation de R et de R Commander ([Animation](https://docs.google.com/presentation/d/1vmDX1Ovd-23U9d4bh6l6pCDGR_AlJIcxNBsKQ6M17-8/edit#slide=id.p))([PDF](GuidesRCommander/sci1018_guidercommander_installation-rrcommander.pdf))
@@ -81,7 +91,9 @@ Chambers, J. M. 2008. *Software for data analysis : Programming with R*. Springe
 
 Crawley, M. J. 2005. *Statistics : An introduction using R*. John Wiley and Sons. Chichester, UK.
 
-Dalgaard, P. 2002. *Introductory Statistics with R*. Springer, New York.
+Dalgaard, P. 2008. *Introductory Statistics with R*. Springer, New York.
+
+Field, A. 2026. *Discovering Statistics Using R and RStudio* (2e éd.). SAGE Publications Ltd.
 
 Fox, J. 2002. *An R and S-PLUS companion to applied regression*. Sage Publications, Inc., London, UK.
 
@@ -99,4 +111,4 @@ Thompson, S. K. 2002. *Sampling* (2e éd). John Wiley & Sons, New York, USA.
 
 Venables, W. N. et Ripley, B. D. 2002. Modern Applied Statistics with S. Springer-Verlag, New York, USA.
 
-Zar, J. H. 1984. Biostatistical analysis (2e éd). Prentice Hall, Englewood Cliffs, New Jersey, USA.
+Zar, J. H. 2009. Biostatistical analysis (5e éd). Prentice Hall, Englewood Cliffs, New Jersey, USA.

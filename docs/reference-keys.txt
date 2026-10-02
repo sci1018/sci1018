@@ -174,7 +174,7 @@ hypothèse-scientifique
 méthode-scientifique
 inférence-bayésienne
 méthode-hypothético-déductive
-hypothèse-statistiques
+hypothèse-statistique
 erreurs-de-type-i-et-ii
 puissance
 relation-entre-les-erreurs-de-type-i-et-ii

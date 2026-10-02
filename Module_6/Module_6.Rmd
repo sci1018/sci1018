@@ -1048,7 +1048,7 @@ tapply(X = ozone$Ozone, INDEX = ozone$Jardin, FUN = sd)
 ##on calcule le n pour chacun des groupes
 tapply(X = ozone$Ozone, INDEX = ozone$Jardin, FUN = length)
 ##on détermine si chaque groupe contient des valeurs numériques
-tapply(X = ozone$Ozone, INDEX = ozone$Jardin, FUN = is.matrix)
+tapply(X = ozone$Ozone, INDEX = ozone$Jardin, FUN = is.numeric)
 ``` 
 
 La fonction `tapply( )` est destinée aux jeux de données. De façon plus générale, on peut appliquer une fonction (`FUN`) sur les rangées ou colonnes (`MARGIN`) d'une matrice (`X`) à l'aide de `apply( )` :
