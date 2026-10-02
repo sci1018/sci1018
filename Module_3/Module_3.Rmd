@@ -177,7 +177,7 @@ Toutefois, la méthode hypothético-déductive comporte un désavantage importan
 
  - La méthode ne fonctionne pas si l'hypothèse correcte ne figure pas parmi les hypothèses énoncées avant l'expérience. En contrepartie, la méthode inductive peut commencer par une hypothèse incorrecte mais peut arriver à celle correcte après modification répétée de l'hypothèse suite à de nouvelles observations.
 
-### Hypothèse statistiques
+### Hypothèse statistique
 
 Alors que l'hypothèse scientifique est l'élément qui devrait avoir motivé l'expérience, l'**hypothèse statistique** est une formulation "mathématique"  de l'hypothèse scientifique. En effet, dans les approches classiques de tests d'hypothèse statistique, on compte deux hypothèses, l'**hypothèse nulle** ($H_0$) et l'**hypothèse alternative** ($H_a$). L'hypothèse nulle ($H_0$) représente l'absence de différence ou l'absence d'un effet. Elle se base sur un test statistique et une distribution indiquant que la variabilité observée dans les données est due au hasard ou à l'erreur d'échantillonnage. En d'autres mots, l'hypothèse nulle suppose qu'il ne se passe rien. 
 
