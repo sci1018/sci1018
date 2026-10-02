@@ -130,17 +130,19 @@ Les deux premiers laboratoires comptent pour 15 % de l’évaluation globale alo
 
 ##### L'encadrement {-}
 
-L’encadrement est assuré par la personne tutrice qui vous sera assignée ou par la professeure responsable du cours. Vos interactions avec la personne qui vous encadre se font par messagerie électronique (de préférence), par visioconférence ou téléphone ainsi que dans un [forum](#forum) de discussion.
+
+L’encadrement est assuré par la personne tutrice qui vous sera assignée ou par la professeure responsable du cours. Vos interactions avec la personne qui vous encadre se font par messagerie électronique (de préférence), par visioconférence ou téléphone et dans certains cas dans un forum de discussion.
 
 La personne responsable de l’encadrement communique avec l’étudiant, au besoin, pour fournir des conseils ou pour transmettre des commentaires sur les travaux.
 
-L’étudiant peut communiquer avec la personne responsable de son encadrement par messagerie électronique pour traiter de questions qui le concernent personnellement, et qui n’ont pas d’intérêt pour les autres étudiants. Si les questions ne sont pas personnelles, l’étudiant est invité à utiliser le forum de discussion.
 
+<!--  
+L’étudiant peut communiquer avec la personne responsable de son encadrement par messagerie électronique pour traiter de questions qui le concernent personnellement, et qui n’ont pas d’intérêt pour les autres étudiants. Si les questions ne sont pas personnelles, l’étudiant est invité à utiliser le forum de discussion.
+--> 
 
 ##### Préalable {-}
 
-Cours de statistiques de niveau collégial, sans quoi, cours de mathématiques de niveau collégial (par exemple, mathématiques discrètes, algèbre, calculs différentiel et intégral) ou le cours [MAT 1000 Outils mathématiques](http://www.teluq.uquebec.ca/siteweb/etudes/offre/cours/TELUQ/MAT%201000/?p_herit=etu) offert à la TÉLUQ.
-
+Cours de statistiques de niveau collégial, sans quoi, cours de mathématiques de niveau collégial (par exemple, mathématiques discrètes, algèbre, calculs différentiel et intégral).
 
 #### Le matériel du cours {-}
 
@@ -148,7 +150,7 @@ Le matériel de cours réside sur ce site web.
 
 Dans la section *À propos du cours* visible dans le menu de gauche, on trouve la feuille de route du cours. Celle-ci sert de guide pour bien cheminer dans le cours et planifier votre charge de travail. 
 
-Dans la section *Ressources*, on trouve les consignes, les gabarits et les données pour la réalisation des travaux notés, les données qui sont utilisées pour reproduire les exemples et accomplir les autoévaluations, les guides pour la prise en mains du logiciel R, l'accès au Forum et les références. 
+Dans la section *Ressources*, on trouve les consignes, les gabarits et les données pour la réalisation des travaux notés, les données qui sont utilisées pour reproduire les exemples et accomplir les autoévaluations, les guides pour la prise en mains du logiciel R,<!--  l'accès au Forum -->  et les références. 
 
 Dans la section *Apprentissage*, on trouve le contenu de chaque leçon, les consignes des auto-évaluations et leurs solutions.
 

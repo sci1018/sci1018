@@ -27,10 +27,15 @@ Les liens suivants vous dirigerons directement vers les données utilisées pour
   - [Module 8](https://github.com/sci1018/sci1018_data/raw/main/Module_8.zip)
   - [Module 9](https://github.com/sci1018/sci1018_data/raw/main/Module_9.zip)
 
+
+<!--  
+
+
 ### Forum du cours {.unnumbered #forum}
 
 Un [forum](https://groups.google.com/g/sci1018-teluq?pli=1) de discussion est disponible pour trouver des informations pertinentes sur la matière du cours et pour poser des questions à la communauté du cours SCI 1018 (la personne tutrice et les autres étudiants). Ne vous gênez pas pour l'utiliser!
 
+--> 
 
 ### Guides R {-}
 
