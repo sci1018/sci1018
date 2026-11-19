@@ -28,3 +28,14 @@ bookdown::preview_chapter('Module6/index.Rmd', 'bookdown::gitbook')
 
 
 #<!--  --> 
+
+# Ensuite 
+# verifier que tu es sur la branche dev_elise
+# git add
+# git commit -m " changement"
+# git push
+# aller sur github
+# Normalement une barniere "dev_elise had recent pushes" propose un bouton Compare & pull request
+# Ouvrir une PR compare base: master avec dev_elise, clique Create pull request
+# Cliquez sur Merge pull requestion puis sur Confirm merge
+# Tout ca fonctionne seulement si on est connectee sur github
