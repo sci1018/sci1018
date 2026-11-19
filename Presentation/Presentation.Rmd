@@ -274,21 +274,6 @@ Au fil du temps, les personnes suivantes ont contribué à la mise à jour du co
 
 ### Contact {-}
 <!--  --> 
-<div class="row">
 
-  <div class="column left">
-  ![](images/Photo_Yves-Claveau.jpg) 
-  </div>
-
-  <div class="column right">
-##### Yves Claveau {-} 
-  
-  Je suis le tuteur du cours SCI 1018 depuis plus de 10 ans. <br>
-  Vous pouvez me contacter à l'adresse suivante: yves.claveau@teluq.ca <br>  
-  
-  
-  </div>
-  
-</div> 
-
+Pour toutes questions lors de votre cheminement dans le cours, vous devez contacter la personne responsable de votre encadrement. Ses coordonnées sont disponibles dans votre portail étudiant MaTÉLUQ lorsque vous cliquez sur le titre du cours en question.
 
